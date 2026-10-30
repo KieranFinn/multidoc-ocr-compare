@@ -1,0 +1,16 @@
+{
+ "_readme": "复制为 channels.local.json 后填自己的值。该文件已 gitignore, 只写要覆盖的键, 其余继承 channels.json。",
+ "mineru_api": {
+  "token": "sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ },
+ "paddle_api": {
+  "token": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ },
+ "dots_api": {
+  "base": "https://your-dots-instance.example.com"
+ },
+ "desktop": {
+  "exe": "",
+  "landing": ""
+ }
+}
