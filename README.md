@@ -1,5 +1,9 @@
 # multidoc-ocr-compare
 
+**[English](README.md) · [中文](README.zh-CN.md)**
+
+> 这是中英双语 README 的**英文版**。中文版见 [README.zh-CN.md](README.zh-CN.md)。
+
 Run **several OCR / document-parsing engines on the same PDF**, put every block into one coordinate
 space, and look at them side by side — per page, per block, with the original scan behind them.
 
@@ -17,6 +21,35 @@ but silently disagrees with itself across pages. The point is not "which engine 
                      v                                v
          per-channel viewers + 1:3 compare        merged/ + metrics
 ```
+
+## Live example
+
+A real run is checked into the repo — [`examples/13625974/`](examples/13625974/): an 11-page Korean
+journal article (창의정보문화연구 2023, DOI `10.32823/jcic.9.4.202311.347`) processed by all three
+engines.
+
+| View | Link |
+| --- | --- |
+| Overview + metrics | [examples/13625974/index.html](examples/13625974/index.html) |
+| 1:3 comparison viewer (4 columns, hover to link boxes and text) | [viewer_compare.html](examples/13625974/viewer_compare.html) |
+| Single-channel viewers | [MinerU](examples/13625974/viewer_mineru.html) · [dots.ocr](examples/13625974/viewer_dots.html) · [PaddleOCR-VL](examples/13625974/viewer_paddle.html) |
+| Merged text | [merged.md](examples/13625974/merged.md) |
+
+What that run shows on 11 pages:
+
+| Channel | Blocks | Korean chars | U+FFFD |
+| --- | ---: | ---: | ---: |
+| MinerU (batch API) | 200 | 8,929 | 0 |
+| dots.ocr (Gradio 5) | 196 | 9,024 | 0 |
+| PaddleOCR-VL-1.6 (cloud job) | 214 | 9,032 | 0 |
+
+Text capture agrees within **1.2 %** across the three engines, yet block counts differ by ~9 %:
+splitting granularity is not text quality. The unified pass reports 610 raw blocks → 176 logical
+groups, `one_to_one` 0.898, `coverage` 1.0, `orphan_rate` 0.0, and attributes every disagreement to
+either the document (all three engines agree on the oddity) or a single engine.
+
+> GitHub shows HTML as source only. To click through the viewers, clone the repo and open
+> `examples/13625974/index.html` in a browser, or serve it: `python -m http.server -d examples/13625974`.
 
 ## What you get
 
@@ -101,11 +134,12 @@ regress.py         reference-entry quality checks (truncation, authors, page joi
 caption_audit.py   figure / table caption audit
 mineru_drive.py    CDP driver for the MinerU desktop app (fallback)
 channels.json      calibration + model defaults (no secrets)
-examples/          make_demo.py -> offline demo
+examples/          make_demo.py -> offline demo; 13625974/ -> real checked-in run
 docs/              architecture, calibration, channels
 ```
 
 ## License
 
-MIT — see [LICENSE](LICENSE). No documents are shipped with the repository; run it on files you have
-the right to process.
+MIT — see [LICENSE](LICENSE). The one checked-in run (`examples/13625974/`) contains a published
+Korean journal article used purely to demonstrate the output format; its copyright stays with the
+authors and the journal. Run the pipeline on files you have the right to process.
