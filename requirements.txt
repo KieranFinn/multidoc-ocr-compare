@@ -1,0 +1,3 @@
+pypdfium2>=4.20   # PDF 页面渲染(150dpi)
+Pillow>=9.0       # 页图尺寸/合成 demo
+websocket-client>=1.5   # 仅 MinerU 桌面版 CDP 兜底需要
