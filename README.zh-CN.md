@@ -56,20 +56,26 @@
 | `viewer_<渠道>.html` | 单渠道: 页图 + 块框, 悬停/点击联动文本 |
 | `viewer_compare.html` | 1:3 对照: 每页四栏(原图 + 三渠道), 渠道分色, 悬停显现框 |
 | `merged/` + `merged.md` | 逐页合并 + 每块来源(merge_out.py) |
-| `_analysis_report.html` / `_analysis_summary.csv` | 跨文档指标与归因(analyze.py) |
+| `unified/` | 跨引擎归并组 + `_unified_summary.json`(coverage / one_to_one / orphan_rate), 由 `unify.py` 产出 |
+| `_analysis_report.html` / `_analysis_summary.csv` | 跨文档指标与归因(`analyze.py`, 单独运行) |
 
 ## 离线跑通(不需要账号, 不联网)
 
 ```bash
 pip install -r requirements.txt
-python examples/make_demo.py
-python pipeline.py examples/demo/demo.pdf \
-    --mineru examples/demo/mineru --dots examples/demo/dots --paddle examples/demo/paddle \
-    --channels examples/demo/channels.json
-# 打开 out/demo/index.html
+python examples/make_demo.py            # 生成 examples/demo/: 合成 PDF + 三份 mock 引擎产物
+python pipeline.py examples/demo/samples/demo_kr.pdf \
+    --mineru examples/demo/inbox/demo_kr__mineru \
+    --dots   examples/demo/inbox/demo_kr__dots \
+    --paddle examples/demo/inbox/demo_kr__paddle \
+    --channels examples/demo/channels.json \
+    --out examples/demo/out
+python -m http.server -d examples/demo/out/demo_kr   # 然后打开 /index.html
 ```
 
-demo 是合成的两页文档 + 三份 mock 产物, 用来验证"渲染 → 适配 → 查看器"整条主干, 不含任何真实语料。
+`--channels` 把整份配置换成 `examples/demo/channels.json`: 标定是 **identity**(`src_w/src_h: null`,
+引擎坐标即页图像素), 三个云端渠道全部禁用。demo 文档是合成的韩文, 刻意埋了三处分歧(离群读法、
+空块、缺页码), 让查看器与归一化层都有东西可看。不含第三方语料、不需要 token、不联网。CI 跑的就是这条命令。
 
 ## 跑自己的文档
 
@@ -117,6 +123,7 @@ python webapp.py                                      # 或: 拖拽式工作台 
 pipeline.py        渲染 -> 获取 -> 适配 -> 查看器 -> 总览
 webapp.py app.js   拖拽式工作台(标准库 HTTP 服务 + 渠道参数面板)
 merge_out.py       跨渠道逐页合并
+unify.py           跨引擎归并 -> unified/ 与指标摘要
 analyze.py         跨文档指标 + 归因报告
 regress.py         参考文献质量检查(截断/作者/跨页拼接)
 caption_audit.py   图表标题审计
