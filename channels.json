@@ -1,0 +1,66 @@
+{
+ "mineru": {
+  "src_w": 1034,
+  "src_h": 1012,
+  "x_off": 17.8,
+  "y_off": 12.3,
+  "_note": "MinerU 桌面版 content_list_v2 的 bbox 空间: 横纵非等比(1034x1012), 偏移单位为 150dpi 页图像素。换渲染设置后须重新校准, 方法见 docs/calibration.md。"
+ },
+ "mineru_api": {
+  "token": "",
+  "src_w": 1017,
+  "src_h": 1008,
+  "x_off": 13,
+  "y_off": 8,
+  "model_version": "vlm",
+  "language": "korean",
+  "is_ocr": false,
+  "timeout": 1800,
+  "enable_formula": true,
+  "enable_table": true,
+  "_note": "API 的 bbox 空间与桌面版差约 1.6%, 故单列一行标定。token 不要写在这里: 放 channels.local.json 的 {\"mineru_api\":{\"token\":\"sk-...\"}} 或用环境变量 MINERU_API_TOKEN。"
+ },
+ "dots": {
+  "src_w": 1701,
+  "src_h": 2369,
+  "x_off": 14.6,
+  "y_off": 10.6,
+  "_note": "人工从 dots 导出的 page_N.json 的像素空间。走 fetch_dots_api 时产物已按页归一化(0-1), 免标定。"
+ },
+ "paddle": {
+  "_note": "Paddle 渠道块坐标已归一化(0-1), 无需标定; 来源可为 API 转换产物或平台导出。"
+ },
+ "dots_api": {
+  "base": "https://dotsocr.xiaohongshu.com",
+  "model": "dots.mocr",
+  "prompt": "prompt_layout_all_en",
+  "timeout": 1800,
+  "_note": "dots.ocr 的 Gradio5 实例: /config 拉组件态 -> /upload -> fn1 预热 -> fn0 解析 prompt -> fn6 推理 -> 同会话下载 zip。仅对自建或获授权的实例使用; 上游接口随时可能变。enable:false 可关掉该渠道。"
+ },
+ "paddle_api": {
+  "token": "",
+  "base": "https://paddleocr.aistudio-app.com",
+  "model": "PaddleOCR-VL",
+  "timeout": 900,
+  "_note": "PaddleOCR 云端异步 jobs。token 放 channels.local.json 或 PADDLE_API_TOKEN。"
+ },
+ "auto": {
+  "mineru": {
+   "cmd": "",
+   "timeout": 1800,
+   "_note": "装了 MinerU CLI 后填本地命令模板, 例如 mineru -p {pdf} -o {out}; 留空则走 API/CDP。"
+  },
+  "dots": {
+   "cmd": "",
+   "timeout": 1800,
+   "_note": "自部署 dots.ocr 后填推理命令模板; 留空则走云端实例。"
+  }
+ },
+ "desktop": {
+  "exe": "",
+  "landing": "",
+  "port": 9223,
+  "kill_existing": false,
+  "_note": "MinerU 桌面版 CDP 兜底: exe 为 App 路径(留空按平台猜), landing 为输出目录(默认 ~/MinerU)。kill_existing 打开后才会先结束同名进程, 默认不动用户已开的实例。"
+ }
+}
