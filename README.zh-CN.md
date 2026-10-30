@@ -1,10 +1,52 @@
 # multidoc-ocr-compare
 
+**[中文](README.zh-CN.md) · [English](README.md)**
+
+> 这是中英双语 README 的**中文版**。英文版见 [README.md](README.md)。
+
 把**同一个 PDF 丢给多个 OCR / 文档解析引擎**, 再把所有块换算到同一坐标系里逐页对照 —— 原图在下,
 三家引擎的框和文本在上, 一眼看出"这块到底是谁错了"。
 
 面向扫描版学术 PDF(韩/中/英)。目的不是给引擎打分, 而是**归因**: 三个引擎在同一页产生分歧时,
 是文档本身怪, 还是某个引擎坏了?
+
+```
+ PDF --> 渲染 150 dpi 页图 --> 三渠道并发获取 (缓存 -> API -> 桌面版兜底)
+                                     |
+                                     v
+                          统一成 {页: [{类别, 框, 文本}]}
+                                     |
+                     +---------------+----------------+
+                     v                                v
+         单渠道查看器 + 1:3 对照             merged/ + 指标
+```
+
+## 在线示例
+
+仓库里放了一份**真实跑出来的**产物 —— [`examples/13625974/`](examples/13625974/): 一篇 11 页的韩文期刊论文
+(창의정보문화연구 2023, DOI `10.32823/jcic.9.4.202311.347`), 三个引擎全部跑过。
+
+| 查看 | 链接 |
+| --- | --- |
+| 总览 + 指标 | [examples/13625974/index.html](examples/13625974/index.html) |
+| 1:3 对照查看器(四栏, 悬停联动框与文本) | [viewer_compare.html](examples/13625974/viewer_compare.html) |
+| 单渠道查看器 | [MinerU](examples/13625974/viewer_mineru.html) · [dots.ocr](examples/13625974/viewer_dots.html) · [PaddleOCR-VL](examples/13625974/viewer_paddle.html) |
+| 合并文本 | [merged.md](examples/13625974/merged.md) |
+
+这一份跑出来是什么样:
+
+| 渠道 | 块数 | 韩文字符 | U+FFFD |
+| --- | ---: | ---: | ---: |
+| MinerU(batch API) | 200 | 8,929 | 0 |
+| dots.ocr(Gradio 5) | 196 | 9,024 | 0 |
+| PaddleOCR-VL-1.6(云端 job) | 214 | 9,032 | 0 |
+
+三家字符捕获量差 **1.2%**, 块数却差约 9% —— **切分粒度不等于文本质量**。unified 对齐给出:
+610 个原始块 → 176 个逻辑块, `one_to_one` 0.898, `coverage` 1.0, `orphan_rate` 0.0;
+每一处分歧都归因到"文档本身"(三家都认为这里怪)或"某一渠道"(只有一家错)。
+
+> GitHub 只会把 HTML 当源码显示。要看可点的查看器, 请克隆仓库后用浏览器打开
+> `examples/13625974/index.html`, 或起个静态服务: `python -m http.server -d examples/13625974`。
 
 ## 产出
 
@@ -45,7 +87,7 @@ python webapp.py                                      # 或: 拖拽式工作台 
 
 | 渠道 | 获取方式 | 坐标系 |
 | --- | --- | --- |
-| MinerU | batch 签名上传 API; 失败则用 CDP 驱动桌面版 | 各向异性像素空间, 分桌面/云端两套标定 |
+| MinerU | batch 签名上传 API; 失败则用 CDP 驱动桌面版 | 各向异性像素空间, 分桌面/云端两套标定(`1034x1012` / `1017x1008`) |
 | dots.ocr | Gradio5 实例: /config → 上传 → 预热 → 推理 → 下载 zip | 按页归一化(0-1), 免标定 |
 | PaddleOCR-VL | 云端异步 jobs | 按页归一化(0-1), 免标定 |
 
@@ -69,6 +111,22 @@ python webapp.py                                      # 或: 拖拽式工作台 
 - regress.py 的参考文献检查是中韩文学术 PDF 的启发式规则。
 - 仓库不含联网测试(需要凭证与额度); CI 只做全模块编译 + 离线 demo 冒烟。
 
+## 目录结构
+
+```
+pipeline.py        渲染 -> 获取 -> 适配 -> 查看器 -> 总览
+webapp.py app.js   拖拽式工作台(标准库 HTTP 服务 + 渠道参数面板)
+merge_out.py       跨渠道逐页合并
+analyze.py         跨文档指标 + 归因报告
+regress.py         参考文献质量检查(截断/作者/跨页拼接)
+caption_audit.py   图表标题审计
+mineru_drive.py    MinerU 桌面版 CDP 驱动(兜底)
+channels.json      标定与模型默认值(不含密钥)
+examples/          make_demo.py -> 离线 demo; 13625974/ -> 真实产物示例
+docs/              架构 / 标定 / 渠道配置
+```
+
 ## 许可
 
-MIT, 见 [LICENSE](LICENSE)。仓库不附带任何文档; 请只处理你有权处理的文件。
+MIT, 见 [LICENSE](LICENSE)。仓库里唯一一份真实产物(`examples/13625974/`)含一篇已发表的韩文期刊论文,
+仅用于展示输出形态, 版权归原作者与期刊所有; 请只处理你有权处理的文件。
