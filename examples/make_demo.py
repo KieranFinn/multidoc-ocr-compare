@@ -1,171 +1,208 @@
 # -*- coding: utf-8 -*-
-"""生成离线 demo: 合成 2 页 PDF + 三渠道 mock 产物, 全部落在 examples/demo/。
+r"""生成离线 demo 输入(examples/demo/), 供 CI 无 token、无网络地跑通全链路。
 
-为什么需要: 真实链路要账号/额度/桌面版 App, 而评审、二次开发和 CI 只想验证
-"输入 PDF -> 三渠道对齐 -> 查看器可打开" 这条主干能不能跑通。
-合成页用 Pillow 画(白底 + 文字 + 灰块图), 三渠道 mock 只是同一批块的三种坐标写法:
+生成内容(全部是小体积 JSON/PDF, 便于入库与 diff):
+  samples/demo_kr.pdf            1 页、250x330pt 纯矢量 PDF(自写最小 PDF, 不依赖 PDF 库)
+  inbox/demo_kr__mineru/         demo_kr_content_list_v2.json + layout.json(_ocr_enable=false)
+  inbox/demo_kr__dots/page_0.json
+  inbox/demo_kr__paddle/page_0.json
+  channels.json                  标定 identity(src_w/src_h 为 null), token 为空, 三个 *_api.enabled=false
 
-    dots / paddle : 归一化 0-1 坐标(适配器按 max(bbox)<=1.5 自动识别, 免标定)
-    mineru        : 像素坐标 + identity 标定(examples/demo/channels.json 里 src_w=页宽)
-
-产物不含任何真实文档内容, 可安全入库/外发。
+三家 bbox 直接定义在 150dpi 页图像素空间(521x688); dots/paddle 落盘时除以页宽高归一化。
+所以 demo 数据自洽: 各家对同一句话的框几乎重合, 差异只体现在故意留的离群读法、
+一家缺一个块、一个空块、一家独有页码上。
 
 用法:
-    python examples/make_demo.py
-    python pipeline.py examples/demo/demo.pdf \
-        --mineru examples/demo/mineru --dots examples/demo/dots --paddle examples/demo/paddle \
-        --channels examples/demo/channels.json
-    # 结果: out/demo/index.html (含三渠道查看器与 1:3 对照)
+  python make_demo.py
+  python pipeline.py examples/demo/samples/demo_kr.pdf --mineru examples/demo/inbox/demo_kr__mineru --dots examples/demo/inbox/demo_kr__dots --paddle examples/demo/inbox/demo_kr__paddle --channels examples/demo/channels.json --out examples/demo/out
 """
-import os
-import io
-import json
-import shutil
+import os, io, json
 
-try:
-    from PIL import Image, ImageDraw, ImageFont
-except ImportError:  # pragma: no cover
-    raise SystemExit("需要 Pillow: pip install -r requirements.txt")
+HERE = os.path.dirname(os.path.abspath(__file__))      # 本脚本所在的 examples/
+ROOT = os.path.dirname(HERE)                          # 管道代码与 out/ 所在的仓库根
+DEMO = os.path.join(HERE, "demo")                     # 生成的输入与产物都留在 examples/demo/
+PW, PH = 250, 330          # 页面尺寸 pt; 150dpi 渲染后为 521x688 px
+PW_PX, PH_PX = 521, 688
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-DEMO = os.path.join(HERE, "demo")
-PAGE_W, PAGE_H = 1241, 1754  # 150 dpi 的 A4: 8.27in*150 x 11.69in*150
-
-# (页号, 类别, (x0,y0,x1,y1) 页图像素, 文本) —— 三个渠道都由这张表派生
 BLOCKS = [
-    (0, "Section-header", (120, 110, 1120, 190), "Multi-Engine OCR Comparison: A Demo Document"),
-    (0, "Text", (120, 240, 1120, 400),
-     "This page is synthetic. It exists so that the pipeline, the three channel "
-     "adapters and the viewers can be exercised without any network access."),
-    (0, "Text", (120, 430, 1120, 620),
-     "Each engine reports blocks in its own coordinate space. The adapters rewrite "
-     "every box into 150 dpi page pixels, which is what makes the side-by-side "
-     "comparison meaningful."),
-    (0, "Picture", (200, 700, 1040, 1120), ""),
-    (0, "Caption", (200, 1140, 1040, 1210),
-     "Figure 1. Placeholder figure block (image regions carry no text by design)."),
-    (1, "Section-header", (120, 110, 1120, 190), "Second Page: Tables and Structure"),
-    (1, "Text", (120, 240, 1120, 380),
-     "Page two adds a table block so the viewers show more than one block type."),
-    (1, "Table", (120, 420, 1120, 760), "Header A | Header B | Header C"),
-    (1, "Text", (120, 800, 1120, 980),
-     "Blocks keep their reading order because the adapters emit them in the order "
-     "reported by the engine."),
+    # 坐标均为 150dpi 页图像素(页图 521x688); 版心 x=140..480
+    dict(cat="Section-header", box=(140, 40, 480, 105), text="국문 초록",
+         mineru="title", dots="section_header", paddle="title"),
+    dict(cat="Text", box=(140, 125, 480, 230),
+         text="본 논문은 세 가지 광학 문자 인식 엔진의 한국어 인식 결과를 비교한다.",
+         mineru="text", dots="text", paddle="text"),
+    dict(cat="Text", box=(140, 250, 480, 350),
+         text="세 엔진 모두 문단 단위 분할이 유사하며, 문자 오류율은 1% 미만이었다.",
+         mineru="text", dots="text", paddle="text"),
+    dict(cat="Text", box=(140, 370, 480, 470),
+         text="각 엔진의 병렬 처리 방식과 표 구조 복원 성능을 함께 제시한다.",
+         mineru="text", dots="text", paddle="text",
+         # 故意: dots 把「병렬」读成「병열」, 演示单家离群读法(dice 仍高, 不触发 FFFD)
+         dots_override="각 엔진의 병열 처리 방식과 표 구조 복원 성능을 함께 제시한다."),
+    dict(cat="Caption", box=(140, 495, 400, 525), text="표 1. 엔진별 처리 시간",
+         mineru="table_caption", dots="caption", paddle="caption"),
+    dict(cat="Table", box=(140, 540, 480, 650),
+         text="<table><tr><th>엔진</th><th>페이지 수</th><th>소요 시간</th></tr>"
+              "<tr><td>MinerU</td><td>12</td><td>128 s</td></tr>"
+              "<tr><td>dots.ocr</td><td>12</td><td>96 s</td></tr>"
+              "<tr><td>PaddleOCR-VL</td><td>12</td><td>104 s</td></tr></table>",
+         mineru="table", dots="table", paddle="table", cap="표 1. 엔진별 처리 시간"),
+    # 故意: Paddle 在这一块识别为空(上游常见空块), 演示空块 + 跨渠道回填
+    dict(cat="Page-footer", box=(140, 655, 330, 678), text="한국문헌정보학회지",
+         mineru="page_footer", dots="page_footer", paddle="footer", paddle_empty=True),
+    # 故意: 只有 Paddle 出页码, MinerU/dots 都不出, 演示 coverage 差异
+    dict(cat="Page-number", box=(430, 655, 470, 678), text="17",
+         mineru="page_number", dots="page_number", paddle="number", mineru_skip=True, dots_skip=True),
 ]
 
-MINERU_TYPE = {"Section-header": "title", "Text": "text", "Table": "table",
-               "Picture": "image", "Caption": "image_caption"}
-# 每渠道给一点确定性抖动(像素), 让对照查看器能看到"同一块在三家引擎里的落点差异"
-JITTER = {"dots": 2.0, "paddle": -2.0, "mineru": 1.0}
+
+def norm_box(b):
+    x0, y0, x1, y1 = b["box"]
+    return [round(x0 / float(PW_PX), 6), round(y0 / float(PH_PX), 6),
+            round(x1 / float(PW_PX), 6), round(y1 / float(PH_PX), 6)]
 
 
-def _font(size):
-    try:
-        return ImageFont.load_default(size=size)
-    except TypeError:  # Pillow < 10 没有 size 参数, 退回位图字体
-        return ImageFont.load_default()
+def pdf_bytes():
+    """最小可用单页 PDF: 250x330pt, 页底浅灰 + 每个块一道深灰矩形(完全不依赖字体/字形)。
+    刻意不放任何文字算子: base-14 字体画 CJK 只会出黑块, 而省略 /Font 资源又依赖渲染器容错。
+    矩形位置与 BLOCKS 的可视区域对应, 便于肉眼核对标定是否对得上。
+    """
+    sx, sy = PW / float(PW_PX), PH / float(PH_PX)   # 页图像素 -> pt
+
+    def rule(x0, y0, x1, y1, gray):
+        # PDF 原点在左下, 与页图像素的左上原点相反
+        return b"%.2f g %.2f %.2f %.2f %.2f re f " % (
+            gray, x0 * sx, PH - y1 * sy, (x1 - x0) * sx, (y1 - y0) * sy)
+
+    parts = [b"1 g 0 0 %.2f %.2f re f " % (PW, PH)]                 # 白底
+    parts.append(rule(0, 0, PW_PX, PH_PX, 0.93))                    # 整页浅灰
+    for _b in BLOCKS:                                               # 每块一道中灰条
+        parts.append(rule(_b["box"][0], _b["box"][1], _b["box"][2], _b["box"][3], 0.55))
+    stream = b"".join(parts)
+    objs = [
+        b"<< /Type /Catalog /Pages 2 0 R >>",
+        b"<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        (b"<< /Type /Page /Parent 2 0 R /MediaBox [0 0 %.1f %.1f] /Resources << >> "
+         b"/Contents 4 0 R >>") % (PW, PH),
+    ]
+    objs.append(b"<< /Length %d >>" % len(stream) + b"\nstream\n" + stream + b"\nendstream")
+    out = io.BytesIO()
+    out.write(b"%PDF-1.4\n")
+    offs = []
+    for i, body in enumerate(objs, 1):
+        offs.append(out.tell())
+        out.write(b"%d 0 obj\n" % i + body + b"\nendobj\n")
+    xref = out.tell()
+    out.write(b"xref\n0 %d\n0000000000 65535 f \n" % (len(objs) + 1))
+    for o in offs:
+        out.write(b"%010d 00000 n \n" % o)
+    out.write(b"trailer\n<< /Size %d /Root 1 0 R >>\nstartxref\n%d\n%%%%EOF\n" % (len(objs) + 1, xref))
+    return out.getvalue()
 
 
-def _wrap(draw, text, font, width):
-    """按像素宽度折行; 超长单词退化为按字符切。"""
-    lines, cur = [], ""
-    for word in text.split():
-        cand = (cur + " " + word).strip()
-        if draw.textlength(cand, font=font) <= width:
-            cur = cand
+MCONTENT = {"title": "title_content", "text": "text_content", "table": "table_content",
+            "table_caption": "table_caption_content", "page_footer": "page_footer_content",
+            "page_number": "page_number_content"}
+
+
+def mineru_content_list():
+    """content_list_v2 形态: 一行 = 一页, 页内是块列表; 块正文统一挂在 content 下(新版 *_content 键名)。
+    标定是 identity, 所以 bbox 就是 150dpi 页图像素。"""
+    page = []
+    for b in BLOCKS:
+        if b.get("mineru_skip"):
+            continue  # 故意: MinerU 这份不出页码, 演示 coverage 差异
+        x0, y0, x1, y1 = b["box"]
+        it = {"type": b["mineru"], "bbox": [x0, y0, x1, y1], "page": 0}
+        if b["cat"] == "Table":
+            # 表格: html 在 content.html, 题注在 content.table_caption(适配器单独提出, 免随 html 丢失)
+            it["content"] = {"html": b["text"], "table_caption": [{"content": b.get("cap") or ""}]}
+        else:
+            it["content"] = {MCONTENT[b["mineru"]]: b["text"]}
+        page.append(it)
+    return [page]
+
+
+def layout_json():
+    return {"_ocr_enable": False, "page_info": {"page_no": 0, "width": PW_PX, "height": PH_PX}}
+
+
+def dots_page():
+    """dots.ocr 导出: 顶层 list, 每项 category + bbox(0-1) + text。
+    故意: 某段把「병렬」读成「병열」(离群读法, dice 仍高); 不出页码。"""
+    out = []
+    for b in BLOCKS:
+        if b.get("dots_skip"):
             continue
-        if cur:
-            lines.append(cur)
-        cur = word
-        while draw.textlength(cur, font=font) > width and len(cur) > 1:
-            cut = len(cur)
-            while cut > 1 and draw.textlength(cur[:cut], font=font) > width:
-                cut -= 1
-            lines.append(cur[:cut])
-            cur = cur[cut:]
-    if cur:
-        lines.append(cur)
-    return lines
+        it = {"category": b["dots"], "bbox": norm_box(b),
+              "text": b.get("dots_override") or b["text"]}
+        if b["cat"] == "Table":
+            it["html"] = b["text"]
+            it["text"] = b.get("cap") or ""
+        out.append(it)
+    return out
 
 
-def _render_page(page_no):
-    img = Image.new("RGB", (PAGE_W, PAGE_H), (255, 255, 255))
-    d = ImageDraw.Draw(img)
-    for pg, cat, (x0, y0, x1, y1), text in BLOCKS:
-        if pg != page_no:
-            continue
-        if cat == "Picture":
-            d.rectangle([x0, y0, x1, y1], fill=(226, 232, 240), outline=(148, 163, 184), width=3)
-            d.line([x0, y0, x1, y1], fill=(148, 163, 184), width=2)
-            d.line([x0, y1, x1, y0], fill=(148, 163, 184), width=2)
-            continue
-        size = 34 if cat == "Section-header" else 24
-        font = _font(size)
-        lines = _wrap(d, text, font, x1 - x0)
-        top = y0
-        for ln in lines:
-            if top + size > y1 + size:  # 超框就不再画, 保证 bbox 与可见内容大致一致
-                break
-            d.text((x0, top), ln, fill=(24, 24, 27), font=font)
-            top += int(size * 1.45)
-        if cat in ("Table", "Section-header"):  # 给这两类画一条下划线, 便于肉眼分辨
-            d.line([x0, y1, x1, y1], fill=(120, 120, 120), width=2)
-    return img
+def paddle_page():
+    """Paddle 异步 jobs 形态: {parsing_res_list:[{block_label, block_content, block_bbox}]}。
+    故意: 页脚 block_content 为空(上游常见空块), 演示空块与跨渠道回填。"""
+    res = []
+    for b in BLOCKS:
+        txt = "" if b.get("paddle_empty") else b["text"]
+        res.append({"block_label": b["paddle"], "block_content": txt,
+                    "block_bbox": norm_box(b)})
+    return {"parsing_res_list": res, "page_index": 0, "page_size": [PW_PX, PH_PX]}
 
 
-def _norm(box, dx=0.0, dy=0.0):
-    return [round((box[0] + dx) / PAGE_W, 4), round((box[1] + dy) / PAGE_H, 4),
-            round((box[2] + dx) / PAGE_W, 4), round((box[3] + dy) / PAGE_H, 4)]
+def channels_json():
+    return {
+        "keep_api_zip": False,
+        "_note": "离线 demo 配置: 标定 identity(引擎坐标即 150dpi 页图像素), 无 token, 三个 *_api.enabled=false。由 make_demo.py 生成, 请勿手改。",
+        "mineru": {"src_w": None, "src_h": None, "x_off": 0, "y_off": 0,
+                   "_note": "null = identity(坐标已等于页图像素)"},
+        "mineru_api": {"token": "", "src_w": None, "src_h": None, "x_off": 0, "y_off": 0,
+                       "model_version": "vlm", "language": "korean", "is_ocr": False,
+                       "timeout": 1800, "enabled": False},
+        "dots": {"src_w": None, "src_h": None, "x_off": 0, "y_off": 0},
+        "paddle": {},
+        "dots_api": {"base": "https://dotsocr.xiaohongshu.com", "model": "dots.mocr",
+                     "prompt": "prompt_layout_all_en", "timeout": 1800, "enabled": False},
+        "paddle_api": {"token": "", "model": "PaddleOCR-VL", "timeout": 900, "enabled": False},
+        "desktop": {"exe": "", "landing": "", "port": 9223, "kill_existing": False},
+    }
+
+
+def write(rel, data, as_json=False):
+    fp = os.path.join(DEMO, rel)
+    os.makedirs(os.path.dirname(fp), exist_ok=True)
+    if isinstance(data, (bytes, bytearray)):
+        io.open(fp, "wb").write(data)
+    elif as_json:
+        io.open(fp, "w", encoding="utf-8", newline="\n").write(
+            json.dumps(data, ensure_ascii=False, indent=1) + "\n")
+    else:
+        io.open(fp, "w", encoding="utf-8", newline="\n").write(data)
+    return fp
 
 
 def main():
-    if os.path.isdir(DEMO):
-        shutil.rmtree(DEMO)
-    for sub in ("mineru", "dots", "paddle"):
-        os.makedirs(os.path.join(DEMO, sub))
-
-    # 1) 合成 PDF: 两页 150dpi A4
-    pages = [_render_page(0), _render_page(1)]
-    pdf = os.path.join(DEMO, "demo.pdf")
-    pages[0].save(pdf, "PDF", resolution=150.0, save_all=True, append_images=pages[1:])
-
-    # 2) dots / paddle: page_N.json, 归一化坐标
-    for ch in ("dots", "paddle"):
-        by_page = {0: [], 1: []}
-        for i, (pg, cat, box, text) in enumerate(BLOCKS):
-            dx = JITTER[ch] * ((i % 3) - 1)
-            by_page[pg].append({"bbox": _norm(box, dx, dx * 0.5), "category": cat, "text": text})
-        for pg, blocks in by_page.items():
-            fp = os.path.join(DEMO, ch, "page_%d.json" % pg)
-            with io.open(fp, "w", encoding="utf-8") as f:
-                json.dump(blocks, f, ensure_ascii=False, indent=1)
-
-    # 3) mineru: content_list_v2.json(页列表 -> 块列表), bbox 用页图像素(identity 标定)
-    by_page = {0: [], 1: []}
-    for i, (pg, cat, box, text) in enumerate(BLOCKS):
-        d = JITTER["mineru"] * ((i % 3) - 1)
-        blk = {"type": MINERU_TYPE.get(cat, "text"),
-               "bbox": [box[0] + d, box[1] + d, box[2] + d, box[3] + d],
-               "content": [{"type": "text", "content": text}]}
-        by_page[pg].append(blk)
-    with io.open(os.path.join(DEMO, "mineru", "demo_content_list_v2.json"), "w", encoding="utf-8") as f:
-        json.dump([by_page[0], by_page[1]], f, ensure_ascii=False, indent=1)
-    with io.open(os.path.join(DEMO, "mineru", "layout.json"), "w", encoding="utf-8") as f:
-        json.dump({"_ocr_enable": False}, f)  # 适配器优先取非 OCR 运行目录
-
-    # 4) demo 专用渠道配置: 只有标定段, mineru 用 identity(源空间 == 页图像素)
-    ident = {"src_w": PAGE_W, "src_h": PAGE_H, "x_off": 0, "y_off": 0}
-    cfg = {"mineru": dict(ident), "mineru_api": dict(ident), "dots": {}, "paddle": {},
-           "_readme": "demo 专用: mock 产物与页图同空间, 故标定为 identity。真实文档请用仓库根的 channels.json。"}
-    with io.open(os.path.join(DEMO, "channels.json"), "w", encoding="utf-8") as f:
-        json.dump(cfg, f, ensure_ascii=False, indent=1)
-
-    print("demo 已生成: %s" % DEMO)
-    print("  demo.pdf / mineru/ / dots/ / paddle/ / channels.json")
-    print("下一步:")
-    print("  python pipeline.py examples/demo/demo.pdf --mineru examples/demo/mineru "
-          "--dots examples/demo/dots --paddle examples/demo/paddle --channels examples/demo/channels.json")
-    print("  然后打开 out/demo/index.html")
+    made = [
+        write("samples/demo_kr.pdf", pdf_bytes()),
+        write("inbox/demo_kr__mineru/demo_kr_content_list_v2.json", mineru_content_list(), True),
+        write("inbox/demo_kr__mineru/layout.json", layout_json(), True),
+        write("inbox/demo_kr__dots/page_0.json", dots_page(), True),
+        write("inbox/demo_kr__paddle/page_0.json", paddle_page(), True),
+        write("channels.json", channels_json(), True),
+    ]
+    print("已生成 %d 个 demo 文件 -> %s" % (len(made), DEMO))
+    for fp in made:
+        print("  %s" % os.path.relpath(fp, ROOT).replace(os.sep, "/"))
+    print("跑一遍(无网络、无 token):")
+    print("  python pipeline.py examples/demo/samples/demo_kr.pdf "
+          "--mineru examples/demo/inbox/demo_kr__mineru "
+          "--dots examples/demo/inbox/demo_kr__dots "
+          "--paddle examples/demo/inbox/demo_kr__paddle "
+          "--channels examples/demo/channels.json --out examples/demo/out")
 
 
 if __name__ == "__main__":
