@@ -107,7 +107,7 @@ function buildForm(cfg) {
             if (v === undefined || v === null) v = '';
             var id = 'c_' + s.sec + '_' + ft.k, inp;
             if (ft.bool) {
-                inp = '<input type="checkbox" id="' + id + '"' + (v === true || v === 1 || String(v).toLowerCase() === 'true' ? ' checked' : '') + '>';
+                inp = '<input type="checkbox" id="' + id + '"' + (v ? ' checked' : '') + '>';
             } else if (ft.sel) {
                 inp = '<select id="' + id + '" style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:6px;padding:6px">' +
                     ft.sel.map(o => '<option' + (o == v ? ' selected' : '') + '>' + esc(o) + '</option>').join('') + '</select>';
@@ -133,7 +133,7 @@ document.getElementById('savecfg').onclick = function () {
         out[s.sec] = {};
         s.fields.forEach(ft => {
             var el = document.getElementById('c_' + s.sec + '_' + ft.k);
-            out[s.sec][ft.k] = ft.bool ? el.checked : (ft.num ? (el.value === '' ? undefined : parseInt(el.value, 10)) : el.value);
+            out[s.sec][ft.k] = ft.bool ? el.checked : (ft.num ? parseInt(el.value || '0', 10) : el.value);
         });
     });
     fetch('/api/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(out) })
