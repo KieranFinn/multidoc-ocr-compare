@@ -26,29 +26,44 @@ def adapt_channel(doc_dir, ch, sizes):
             return pipeline.adapt_paddle_json(src, sizes), None, src
         return None, io.open(src, encoding="utf-8", errors="ignore").read(), src  # md 模式
     if ch == "mineru":
-        return pipeline.adapt_mineru(src, sizes, pipeline.mineru_calib_key(src)), None, src
+        # 前缀按"实际适配源目录"给(_api 缓存 vs inbox 归档), 不再硬编码 raw/mineru/
+        rel = pipeline._out_rel(src, os.path.dirname(os.path.dirname(os.path.abspath(src))))
+        if rel is None:
+            rel = "raw/mineru/"  # out 外来源(inbox 导出): preserve_raw 归档位
+        return pipeline.adapt_mineru(src, sizes, pipeline.mineru_calib_key(src), (rel,)), None, src
     if ch == "dots":
         return pipeline.adapt_dots(src, sizes), None, src
     return pipeline.adapt_paddle(src, sizes), None, src
 
 
-def merge_doc(doc, doc_dir):
-    r"""合并单文档, 产物写 doc_dir\merged\ 下。返回统计信息 dict。"""
-    sizes = []
-    pages_dir = os.path.join(doc_dir, "pages")
-    if os.path.isdir(pages_dir):
-        from PIL import Image
-        for x in sorted(os.listdir(pages_dir)):
-            if re.match(r"page_\d+\.jpg$", x):
-                sizes.append(Image.open(os.path.join(pages_dir, x)).size)
+def merge_doc(doc, doc_dir, sizes=None, in_memory=None):
+    r"""合并单文档, 产物写 doc_dir\merged\ 下。返回统计信息 dict。
+    sizes/in_memory 供流水线内调用: 直接吃本次 adapt 结果, 不复用磁盘 raw/(否则 --mineru 指定的源会被旧 raw/ 顶掉)。"""
+    if sizes is None:
+        sizes = []
+        pages_dir = os.path.join(doc_dir, "pages")
+        if os.path.isdir(pages_dir):
+            from PIL import Image
+            for x in sorted(os.listdir(pages_dir)):
+                if re.match(r"page_\d+\.jpg$", x):
+                    sizes.append(Image.open(os.path.join(pages_dir, x)).size)
     n = len(sizes)
-    ch_data, ch_md = {}, {}
-    for ch in CH:
-        pp, md_text, src = adapt_channel(doc_dir, ch, sizes)
-        if pp is not None:
-            ch_data[ch] = pp
-        if md_text is not None:
-            ch_md[ch] = md_text
+    ch_data, ch_md, ch_src = {}, {}, {}
+    if in_memory is not None:
+        for ch in CH:
+            res = in_memory.get(ch)
+            if isinstance(res, dict):
+                ch_data[ch] = res
+            elif isinstance(res, str):
+                ch_md[ch] = res
+    else:
+        for ch in CH:
+            pp, md_text, src = adapt_channel(doc_dir, ch, sizes)
+            if pp is not None:
+                ch_data[ch] = pp
+                ch_src[ch] = src
+            if md_text is not None:
+                ch_md[ch] = md_text
     merged_dir = os.path.join(doc_dir, "merged")
     if os.path.isdir(merged_dir):
         shutil.rmtree(merged_dir)
@@ -64,7 +79,8 @@ def merge_doc(doc, doc_dir):
                 blk = {"ch": ch, "cat": b.get("cat", "Text"), "box": b.get("box", [0, 0, 0, 0]),
                        "text": b.get("text") or ""}
                 if b.get("img"):
-                    blk["img"] = "raw/%s/%s" % (ch, b["img"])  # 相对 out/<doc>/ 的引擎抽取图, 供下游直接展示
+                    # img 已是 adapt_mineru 补好前缀的相对 out/<doc>/ 路径(与查看器同一实现), 此处不再二次拼 raw/<ch>/
+                    blk["img"] = b["img"]
                 if b.get("cap"):
                     blk["cap"] = b["cap"]  # 表格题注/脚注(随 html 提出, 免丢失)
                 if b.get("text_from"):
