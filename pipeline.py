@@ -2,7 +2,7 @@
 """
 三渠道解析对比 pipeline
 用法:
-  python pipeline.py <input.pdf> [--mineru <dir>] [--dots <dir>] [--paddle <dir或md>] [--out <dir>] [--channels <cfg.json>]
+  python pipeline.py <input.pdf> [--mineru <dir>] [--dots <dir>] [--paddle <dir或md>] [--out <dir>]
   未显式给出的渠道自动获取: 先扫 pipeline/inbox/ 按名称(<doc>__渠道)或内容签名识别,
   仍缺则调云端 API(产物落 out/<文档名>/raw/<渠道>_api, 优先复用); mineru 再兜底 CDP 驱动桌面版。
   三路并行获取(ThreadPoolExecutor), 仍无产物的渠道跳过并在 index.html 中标注"未提供"。
@@ -14,69 +14,16 @@ inbox 渠道识别优先级:
 统一中间表示(第③步的核心约定):
   适配器返回 {页码int: [ {"cat":类别, "box":[x0,y0,x1,y1], "text":文本} ]}  (box=150dpi图像素,左上原点)
   或整篇 md 字符串(md 模式, 无块联动)。
-渠道 bbox 坐标系各不相同, 用 channels.json 标定(src_w/src_h/x_off/y_off, 每次调用重读; 换源时叠图重校, 方法见 docs/calibration.md)。
+渠道 bbox 坐标系各不相同, 用 channels.json 标定(src_w/src_h/x_off/y_off, 每次调用重读; 换源时叠图重校, 方法见 README)。
 
 产物: out/<文档名>/ index.html + viewer_{mineru,dots,paddle,compare}.html + pages/ + raw/<渠道>/
       (merged/ 由 merge_out.py 生成)
 """
-import os, re, io, json, html, argparse, shutil, subprocess, datetime
+import os, re, io, json, html, argparse, shutil, subprocess, datetime, time
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 INBOX = os.path.join(ROOT, "inbox")
-
-# ========== 渠道配置 ==========
-# 三层加载, 后者覆盖前者:
-#   ① channels.json        入库基线(标定值/模型名/超时/开关), 不含任何 token
-#   ② channels.local.json  本地私有覆盖, 已 gitignore(放 token、内网地址); 路径可用 MDOCR_CHANNELS 覆盖
-#   ③ 环境变量 MINERU_API_TOKEN / PADDLE_API_TOKEN 覆盖对应渠道的 token(适合 CI)
-# 命令行 --channels <file> 可把①换成指定文件(示例见 examples/demo)。
-# 所有读取都走 load_cfg(): 改配置不用重启 webapp。
-CFG_MAIN = os.path.join(ROOT, "channels.json")
-CFG_LOCAL = os.environ.get("MDOCR_CHANNELS") or os.path.join(ROOT, "channels.local.json")
-CFG_FILE = CFG_MAIN
-
-
-def _read_json(fp):
-    """读 json, 失败返回 {} (配置文件缺失/写坏都不该让 pipeline 起不来)。"""
-    try:
-        with io.open(fp, encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
-        return {}
-
-
-def _deep_merge(base, over):
-    """按段/键递归合并: 本地覆盖只写想改的键, 其余继承基线。"""
-    out = dict(base or {})
-    for k, v in (over or {}).items():
-        if isinstance(v, dict) and isinstance(out.get(k), dict):
-            out[k] = _deep_merge(out[k], v)
-        else:
-            out[k] = v
-    return out
-
-
-def load_cfg():
-    """当前生效的渠道配置。每次调用重读磁盘: 改标定/token 不必重启服务。"""
-    cfg = _read_json(CFG_FILE)
-    if os.path.abspath(CFG_LOCAL) != os.path.abspath(CFG_FILE):
-        cfg = _deep_merge(cfg, _read_json(CFG_LOCAL))
-    for sec, env in (("mineru_api", "MINERU_API_TOKEN"), ("paddle_api", "PADDLE_API_TOKEN")):
-        v = os.environ.get(env)
-        if v:
-            cfg.setdefault(sec, {})["token"] = v
-    return cfg
-
-
-def ssl_ctx(meta=None):
-    """默认走系统证书校验; 自签名/证书链不完整的实例在该渠道段配 "insecure_tls": true。"""
-    import ssl
-    if (meta or {}).get("insecure_tls"):
-        return ssl._create_unverified_context()
-    return ssl.create_default_context()
-
-
-CFG = load_cfg()  # 模块级快照仅供 import 时打印/自检, 运行期一律走 load_cfg()
+CFG = None  # 惰性: 首次访问经 ensure_cfg() 按三层合并读入；main() 的 --channels 可改 CFG_FP
 
 DPI = 150
 NS = {"Section-header":"sec","Text":"txt","Footnote":"ftn","Picture":"pic","Caption":"cap",
@@ -147,11 +94,16 @@ def flatten_content(c):
     return "" if c is None else str(c)
 
 def cal(key, dw=1654.0, dh=2339.0):
-    # 每次调用重读 channels.json: 改标定不用重启服务(模块级 CFG 是缓存, 曾因此踩坑)
-    cfg = load_cfg()
-    c = cfg.get(key, {})
-    return (float(c.get("src_w", dw)), float(c.get("src_h", dh)),
-            float(c.get("x_off", 0)), float(c.get("y_off", 0)))
+    # 每次调用重读配置(三层合并): 改标定/token 不用重启服务, 也不需要重启进程
+    try:
+        cfg = load_cfg()
+    except Exception:
+        cfg = {}
+    c = cfg.get(key) or {}
+    sw, sh = c.get("src_w"), c.get("src_h")
+    if sw is None or sh is None:  # identity: 显式 null = 引擎坐标原样当页图像素用(demo/CI 用, 免标定)
+        sw, sh = dw, dh
+    return (float(sw), float(sh), float(c.get("x_off", 0) or 0), float(c.get("y_off", 0) or 0))
 
 def mineru_calib_key(src):
     """MinerU 标定键的显式来源判定(替代旧的"按目录 basename 猜"):
@@ -304,9 +256,12 @@ def adapt_mineru(path, sizes, cfg_key="mineru"):
     log("   mineru 选中运行目录: %s (%s)" % (cands[0][2], "非OCR" if cands[0][0] == 0 else "OCR"))
     cl = json.loads(io.open(f0, encoding="utf-8").read())
     SW, SH, XO, YO = cal(cfg_key, 1241.0, 1754.0)
-    _c = load_cfg().get(cfg_key, {})
-    if "src_w" not in _c:
-        log("   ⚠ mineru 标定段[%s]缺 src_w/src_h, 退回 1241x1754 零偏移, 框将错位!" % cfg_key)
+    try:
+        _cfg = load_cfg()
+        if "src_w" not in _cfg.get(cfg_key, {}):
+            log("   ⚠ mineru 标定段[%s]缺 src_w/src_h, 退回 1241x1754 零偏移, 框将错位!" % cfg_key)
+    except Exception:
+        pass
     # 注: 曾试在代码内按文档暗像素剖面自标定, x 轴相关景观多峰不可靠(±40% 离群), 已删除;
     # 现统一走 cal(), 标定随页图宽高等比缩放, 跨页面几何(含非 A4/横排)已验证稳定。
     per_page = {}
@@ -340,7 +295,17 @@ def adapt_mineru(path, sizes, cfg_key="mineru"):
                     blk["cap"] = "\n".join(caps)
             lst.append(blk)
         per_page[pi] = lst
+    _tag_img(per_page, extra_prefixes)  # img 相对路径补"实际适配源目录"前缀, 调用方据此指到真正存在的文件
     return per_page
+
+def _tag_img(per_page, prefixes):
+    prefix = prefixes[0] or "raw/mineru/"  # None = out 外来源(inbox 导出), 走 preserve_raw 归档位
+    """块内 img 目前是引擎目录内相对路径; 查看器/合并器要的是相对 out/<doc>/ 的路径。
+    前缀由调用方按"实际适配源目录 basename"给出(_api 缓存 vs inbox 归档不同), 不再全局硬编码 raw/<ch>/。"""
+    for lst in per_page.values():
+        for b in lst:
+            if b.get("img"):
+                b["img"] = prefix + b["img"]
 
 def _salvage_blocks(raw):
     """从损坏的 JSON 文本里抢救完整的块对象(正则容错, 跳过截断的尾部)"""
@@ -393,6 +358,7 @@ def adapt_page_jsons(path, sizes, cfg_key):
         j = _load_page_json(os.path.join(path, files[pi]))
         blocks = j if isinstance(j, list) else []
         box_list = [(b.get("bbox") or [0, 0, 0, 0]) for b in blocks]
+        # 逐页判归一化: 全文档只要混入一页归一化坐标, 统一按页判, 避免像素页把该页框放大上千倍
         is_norm = bool(box_list) and max((max(v for v in bb) for bb in box_list), default=0) <= 1.5
         lst = []
         for bb, b in zip(box_list, blocks):
@@ -615,9 +581,22 @@ def _blk_html(t):
     e = re.sub(r"\*(.+?)\*", r"<i>\1</i>", e)
     return e.replace("\n", "<br/>").replace("\ufffd", '<span class="bad">\ufffd</span>')
 
+_SYM_FOLD = {
+    u'“': u'"', u'”': u'"', u'‘': u"'", u'’': u"'",      # 弯引号->直引号(仅比较口径)
+    u'․': u'.', u'·': u'.', u'⋅': u'.',                     # 韩文一点杠/中点->句点
+    u'‐': u'-', u'‑': u'-', u'–': u'-', u'—': u'-', u'―': u'-', u'−': u'-',  # 破折/连接号族+数学minus
+    u'…': u'...', u'⋯': u'...',                             # 省略号族
+    u'，': u',', u'。': u'.', u'．': u'.', u'：': u':', u'；': u';', u'！': u'!', u'？': u'?',
+    u'（': u'(', u'）': u')', u'［': u'[', u'］': u']',
+}
+def _fold_sym(s):
+    """符号变体折叠: 只用于跨渠道"比较口径", 绝不改原始文本(忠实度评估须用原文, 两条口径物理分离)"""
+    return "".join(_SYM_FOLD.get(c, c) for c in (s or ""))
+
 def _gdice(a, b):
-    """跨渠道文本相似度: 去空白后的字符 bigram dice(抗单字 OCR 差异与空格分歧)"""
-    a = re.sub(r"\s+", "", a or "")[:80]; b = re.sub(r"\s+", "", b or "")[:80]
+    """跨渠道文本相似度: 符号折叠(比较口径) -> 去空白 -> 字符 bigram dice(抗单字 OCR 差异与空格分歧)。
+    隐患约定见 REVIEW §9.20: 不含上下标/NFKC; 上下标保留结构待 M2, 避免 x² 与 x2 被抹平。"""
+    a = re.sub(r"\s+", "", _fold_sym(a))[:80]; b = re.sub(r"\s+", "", _fold_sym(b))[:80]
     if len(a) < 2 or len(b) < 2: return 0.0
     A = set(a[i:i+2] for i in range(len(a)-1)); B = set(b[i:i+2] for i in range(len(b)-1))
     return 2.0*len(A & B)/(len(A)+len(B))
@@ -849,7 +828,13 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 .pane{position:relative}
 .eye{position:absolute;z-index:5;width:20px;height:20px;line-height:19px;text-align:center;background:rgba(31,41,55,.88);border:1.5px solid #fbbf24;border-radius:50%;cursor:pointer;font-size:11px;transform:translate(-50%,-50%);user-select:none}
 .eye:hover,.eye.pin{background:#fbbf24}
-.pmask{position:absolute;left:0;right:0;top:27px;bottom:0;background:rgba(17,24,39,.93);color:#e5e7eb;display:none;z-index:6;padding:10px 12px;font-size:12px;line-height:1.6;overflow:auto;text-align:left;pointer-events:none}
+.eye.lm{background:rgba(245,158,11,.92);border-color:#fef3c7}.eye.lm:hover,.eye.lm.pin{background:#f59e0b}
+.eye.ll{background:rgba(220,38,38,.92);border-color:#fecaca}.eye.ll:hover,.eye.ll.pin{background:#ef4444}
+.eye.lc{background:rgba(124,58,237,.92);border-color:#ddd6fe}.eye.lc:hover,.eye.lc.pin{background:#8b5cf6}
+.eye.lo{background:rgba(37,99,235,.92);border-color:#bfdbfe}.eye.lo:hover,.eye.lo.pin{background:#3b82f6}
+.r.um{fill:none;stroke:#111827;stroke-width:3;stroke-dasharray:10 5;opacity:.85;pointer-events:none}
+.r.umb{fill:none;stroke:#fff;stroke-width:6;opacity:.9;pointer-events:none}
+.pmask{position:absolute;left:0;right:0;top:27px;bottom:0;background:#111827;color:#e5e7eb;display:none;z-index:6;padding:10px 12px;font-size:12px;line-height:1.6;overflow:auto;text-align:left;pointer-events:none}
 .pmask h5{margin:0 0 6px;font-size:12px;color:#fff;border-bottom:1px solid #4b5563;padding-bottom:4px}
 .pmask table{border-collapse:collapse;width:100%;margin:4px 0}
 .pmask th,.pmask td{border:1px solid #4b5563;padding:2px 6px;text-align:left;font-weight:normal;font-size:11px;white-space:nowrap}
@@ -859,6 +844,12 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 .pmask .pv table{border-collapse:collapse;margin:2px 0;width:100%}
 .pmask .pv td,.pmask .pv th{border:1px solid #6b7280;padding:2px 5px;font-size:11px;color:#e5e7eb;font-weight:normal;text-align:left;white-space:normal}
 .pmask .pm{color:#fbbf24;margin:6px 0 2px}
+.pmask table.umt{margin:2px 0 6px}
+.pmask table.umt td{border:1px solid #374151;font-size:11px;white-space:normal;word-break:break-word}
+.pmask table.umt td:first-child{white-space:nowrap;color:#9ca3af;width:1%}
+.pv.dfx{font-family:Consolas,monospace;font-size:12px;line-height:1.7}
+.df.del{color:#f87171;text-decoration:line-through}
+.df.add{color:#34d399;font-weight:bold}
 .pmask .fl{color:#fbbf24;font-weight:bold;margin:6px 0 0}
 .pmask .miss{color:#f87171}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
@@ -901,11 +892,137 @@ document.addEventListener('click',function(e){var j=e.target.closest?e.target.cl
 </script>
 </body></html>"""
 
-def build_compare_viewer(out_fp, title, sizes, per_ch):
+def _dice_verdict(d):
+    """dice 值配色结论(深色遮罩底色上的可读色)。"""
+    if d >= 0.95:
+        return "<span style='color:#34d399'>%.2f 一致</span>" % d
+    if d >= 0.8:
+        return "<span style='color:#fbbf24'>%.2f 小分歧</span>" % d
+    return "<span style='color:#f87171'>%.2f 离群</span>" % d
+
+
+def _token_diff(main, ch):
+    """数字/西文词对比(语言无关裁决, 不懂韩文也能判读): 返回差异描述或 None。
+    剥离 HTML 标签(sub/sup 等)后取数字/西文词, 集合差集去重(计数差一般不影裁决)。"""
+    tok = lambda s: set(re.findall(r"[0-9]+(?:[.,][0-9]+)*|[A-Za-z]+",
+                                   _fold_sym(re.sub(r"<[^>]+>", " ", s or ""))))
+    a, b = tok(main), tok(ch)
+    if a == b:
+        return None
+    parts = []
+    if a - b:
+        parts.append("仅主读法有: " + " ".join(sorted(a - b)[:12]))
+    if b - a:
+        parts.append("仅本渠道有: " + " ".join(sorted(b - a)[:12]))
+    return " ｜ ".join(parts)
+
+
+def _char_diff(main, ch):
+    """主读法 vs 本渠道读法的逐字 diff(比较口径: 符号折叠+剥空白, 故剩余差异=真字符差异)。
+    返回 HTML: 一致部分原样, 主有本无标红删除线(漏), 本渠道多出/不同标绿(多/异)。
+    完全一致返回 None。"""
+    import difflib
+    a = re.sub(r"\s+", "", _fold_sym(main))
+    b = re.sub(r"\s+", "", _fold_sym(ch))
+    if not b or a == b:
+        return None
+    out = []
+    for op, i1, i2, j1, j2 in difflib.SequenceMatcher(None, a, b, autojunk=False).get_opcodes():
+        if op == "equal":
+            out.append(html.escape(a[i1:i2]))
+        elif op == "replace":
+            out.append('<span class="df del">%s</span><span class="df add">%s</span>'
+                       % (html.escape(a[i1:i2]), html.escape(b[j1:j2])))
+        elif op == "delete":
+            out.append('<span class="df del">%s</span>' % html.escape(a[i1:i2]))
+        else:
+            out.append('<span class="df add">%s</span>' % html.escape(b[j1:j2]))
+    s = "".join(out)
+    return s if len(s) <= 6000 else None  # 过长(表格html等)不回溯, 退回预览
+
+
+_UNI_CN = {"none": "一致", "read": "读法分歧", "split": "拆分分歧", "merge": "合并分歧",
+           "coverage": "覆盖缺失", "type": "类型分歧", "xpage": "跨页涉入"}
+
+def _unified_group_panes(u, chs):
+    """unified 对象的差异遮罩: ([原图栏总览, 各渠道栏...], 眼色级别)。
+    与 _cmp_group_masks 同构(4 pane 对齐 .pmask), 前端显隐/钉住逻辑零改动。"""
+    conf, div = u["confidence"], u["divergence"]
+    lvl = "lc" if div["kind"] == "coverage" else {"mid": "lm", "low": "ll"}.get(conf["level"], "lm")
+    rd = {r["ch"]: r for r in u["readings"]}
+    rows = []
+    for c in chs:
+        if c in u["members"]:
+            us = u["members"][c]
+            nch = sum(len(re.sub(r"\s+", "", m.get("text") or "")) for m in us)  # 非空白字符数(空格风格不干扰漏字判断)
+            mark = " ".join(rd[c]["flags"]) or "-"
+            rows.append("<tr><td><i class='dot %s'></i>%s</td><td>✓ %s×%d</td><td>%d</td><td>%s</td></tr>"
+                        % (_CMP_DOT[c], _CMP_CN[c], us[0]["cat"], len(us), nch, mark))
+        else:
+            rows.append("<tr class='miss'><td><i class='dot %s'></i>%s</td><td colspan=3>✗ 未识别此区域</td></tr>"
+                        % (_CMP_DOT[c], _CMP_CN[c]))
+    pane0 = ("<h5>统一对象 %s ｜ %s · %s · %s</h5><table><tr><th>渠道</th><th>在场</th><th>字符</th><th>标记</th></tr>%s</table>"
+             "<p class='fl'>分歧 <b>%s</b>: %s</p><p class='fl'>置信依据: %s</p>%s"
+             % (u["uid"], u["type"], conf["level"], _UNI_CN.get(div["kind"], div["kind"]), "".join(rows),
+                div["kind"], html.escape(div.get("detail", "")), html.escape(conf.get("basis", "")),
+                ('<p class="pm">主读法:</p>%s' % _cmp_preview(u.get("main_text") or "")) if u.get("main_text") else ""))
+    panes = [pane0]
+    for c in chs:
+        head = "<h5>%s 视角</h5>" % _CMP_CN[c]
+        if c not in u["members"]:
+            panes.append(head + "<p class='miss'>✗ 本渠道未识别到此区域（另两家有）→ coverage 分歧，"
+                                "待人工确认是漏检还是别家误检</p>")
+            continue
+        r = rd.get(c) or {}
+        filled = (r.get("text") or "").strip()
+        show_pv = (not filled) or (r.get("dice", 1.0) < 0.95) or bool(r.get("flags"))
+        if not filled:
+            verdict = "空文本块"
+        else:
+            verdict = "dice " + _dice_verdict(r.get("dice", 0.0))
+        # 成员块列表(split/merge 时尤其关键: 各家切成几块、每块什么是人工要看的证据)
+        mrows = []
+        for m in u["members"][c]:
+            mt = (m.get("text") or "").strip()
+            mrows.append("<tr><td>%s</td><td class=t>%s</td></tr>" % (
+                m.get("cat", "?"),
+                html.escape((re.sub(r"\s+", " ", mt)[:60]) if mt else ("（空）" if m.get("cat") != "Picture" else "（图区）"))))
+        body = "<p>%s ｜ %s</p><table class=umt>%s</table>" % (
+            verdict,
+            ("flags: " + " ".join(r.get("flags") or [])) if r.get("flags") else "无标记",
+            "".join(mrows))
+        # 自动修复读法(渠道内缺陷已机械修复: 溢出裁剪/组内去重; 原文留档成员表)
+        if r.get("text_fixed"):
+            body += ("<p class='pm'>✅ 自动修复读法（溢出裁剪/组内去重，确认后可代替原文使用；原样见成员表）:</p>%s"
+                     % _cmp_preview(r["text_fixed"]))
+        # 数字/西文词对比(语言无关): 不懂韩文也能裁决的差异
+        td = _token_diff(u.get("main_text") or "", r.get("text") or "") if filled else None
+        if td:
+            body += "<p class='pm'>数字/西文词对比（不懂韩文也能裁决）: %s</p>" % html.escape(td)
+        # 逐字 diff(用户核心诉求: 渠道间字符差异/错漏的直接视图)优先于文本预览
+        dfx = _char_diff(u.get("main_text") or "", r.get("text") or "") if filled else None
+        if dfx:
+            body += ("<p class='pm'>与主读法逐字 diff（口径: 符号折叠+去空白；"
+                     "<span class='df del'>红删=主有本无(漏)</span>／<span class='df add'>绿增=本渠道多/异</span>）:</p>"
+                     "<div class='pv dfx'>%s</div>") % dfx
+        elif show_pv:
+            body += _cmp_preview(r.get("text") or "")
+        caps = [m.get("cap") for m in u["members"][c] if m.get("cap")]
+        if caps:
+            body += "<p class='pm'>题注: %s</p>" % html.escape("\n".join(caps)[:120])
+        panes.append(head + body)
+    return panes, lvl
+
+
+def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pages=None, unified_driven=False):
     """1:3 对照查看器: 每页 左原图(叠全部块框) + 右三栏各渠道块列表。
     per_ch = {"mineru": per_page|md字符串|None, ...}; 块 id 带渠道前缀, 同渠道内 rect<->文本联动, 无跨渠道联动。
-    原文栏有差异/问题的区域标小眼睛👁: 悬停/钉住时四栏各浮出一层遮罩,
-    原图栏遮罩=三渠道总览表, 各渠道栏遮罩=该渠道视角的差异分析。"""
+    src_dirs = {ch: raw 目录 basename} 供引擎抽取图按实际来源目录引用(不再硬编码 raw/<ch>/, API 文档源是 <ch>_api)。
+    unified_pages = {页号0起: [unified对象...]} 存在时, 👁差异标注与遮罩改由 unify 归一化层驱动:
+    review=true 的对象出眼(眼色按置信分级: mid=琥珀 low=红 coverage=紫), 遮罩=统一对象视角(分歧类型/置信依据/各家读法dice),
+    原图栏叠加共识几何虚线框。
+    unified_driven=False(老产物/--no-unify)时走旧的临时聚组逻辑; 为 True 时旧的差异眼一律不出——
+    两套判据叠加会把归一化层判定无分歧的块又点亮一批, 复检队列被人为放大。"""
     n = len(sizes)
     nav = "".join('<a href="#p%d">%d</a>' % (i, i + 1) for i in range(n))
     secs, data, groups_json = [], {}, {}
@@ -935,7 +1052,8 @@ def build_compare_viewer(out_fp, title, sizes, per_ch):
                     elif bid == first_ffd: anchor = ' id="ffd_%s"' % bid
                     cls = "blk %s%s" % (ch, " emp" if is_emp else "")
                     rb.append('<div class="%s" data-b="%s"%s><span class="tag">%s</span>%s</div>'
-                              % (cls, bid, anchor, _tag(b), _blk_text(b, "raw/%s/" % ch, ("pages/page_%d.jpg" % p, (W, H)))))
+                              % (cls, bid, anchor, _tag(b), _blk_text(b, "raw/%s/" % (src_dirs or {}).get(ch, ch),
+                                                                 ("pages/page_%d.jpg" % p, (W, H)))))
                     box = b["box"]
                     rcls = NS.get(b["cat"], "txt") + (" emp" if is_emp else "")
                     rects.append('<rect data-b="%s" class="r %s" x="%s" y="%s" width="%s" height="%s"/>' % (
@@ -947,37 +1065,61 @@ def build_compare_viewer(out_fp, title, sizes, per_ch):
                 col_html[ch] = '<div class="none">无产物</div>'
             else:
                 col_html[ch] = '<div class="none">该渠道此页无结构化输出</div>'
-        # —— 跨渠道分组: 有差异/问题的区域在原文栏标小眼睛, 悬停时四栏浮遮罩(差异分析) ——
-        groups = []
-        for ch in chs:
-            for i, b in by_ch[ch]:
-                if not b.get("box"):
-                    continue
-                for g in groups:
-                    c0, i0, b0 = g[0]
-                    if b0.get("box") and (_iou(b["box"], b0["box"]) >= 0.3
-                                          or _gdice(b.get("text"), b0.get("text")) >= 0.5
-                                          or _cin(b["box"], b0["box"])):
-                        g.append((ch, i, b))
-                        break
-                else:
-                    groups.append([(ch, i, b)])
         eyes = []
-        for gi, g in enumerate(groups):
-            # 结构性组(页眉/页脚/页码)不算差异标注, 不出眼睛(避免一页一堆噪音按钮)
-            if all(b.get("cat") in ("Page-header", "Page-footer", "Page-number") for c, i, b in g):
-                continue
-            panes, interesting, anchor = _cmp_group_masks(g, chs)
-            if not interesting:
-                continue
-            gid = "G%d_%d" % (p, gi)
-            groups_json[gid] = {"panes": panes}
-            eyes.append('<div class="eye" data-g="%s" style="left:%.2f%%;top:%.2f%%" title="悬停/点击：四栏差异分析遮罩">👁</div>'
-                        % (gid, (anchor[0] + anchor[2]) / 2.0 / W * 100, (anchor[1] + anchor[3]) / 2.0 / H * 100))
-        img_cell = ('<div class="pane"><div class="ptitle src">原文件（区块联动 · 👁=差异分析）</div>'
+        if unified_driven:
+            # —— unified 模式: 眼/遮罩由归一化层驱动(review=true 才出眼), 原图叠加共识几何框 ——
+            for ui, u in enumerate(unified_pages.get(p) or []):
+                sev = min((r["dice"] for r in u["readings"] if (r["text"] or "").strip()), default=1.0)
+                hint = ""
+                if not u.get("review"):
+                    if sev >= 0.5:
+                        continue
+                    hint = " · 某家读法严重异常(dice=%.2f)" % sev  # 信息提示眼: high 语义不变, 但异常读法要让人能看见
+                panes, lvl = _unified_group_panes(u, chs)
+                if hint:
+                    lvl = "lo"
+                gid = u["uid"]  # 与 unified\page_N.json 的 uid 一致(列表已按阅读序重排, 勿用 enumerate 序号)
+                groups_json[gid] = {"panes": panes}
+                bx = u["box"]
+                rw, rh = max(2, bx[2] - bx[0]), max(2, bx[3] - bx[1])
+                rects.append('<rect class="r umb" x="%s" y="%s" width="%s" height="%s"/>'
+                             % (bx[0], bx[1], rw, rh))  # 白色衬底让共识框在深色块区/白底都可见
+                rects.append('<rect class="r um" x="%s" y="%s" width="%s" height="%s"/>' % (bx[0], bx[1], rw, rh))
+                eyes.append('<div class="eye %s" data-g="%s" style="left:%.2f%%;top:%.2f%%" title="%s · %s">👁</div>'
+                            % (lvl, gid, (bx[0] + bx[2]) / 2.0 / W * 100, (bx[1] + bx[3]) / 2.0 / H * 100,
+                               u["confidence"]["level"], u["divergence"]["kind"] + hint))
+        else:
+            # —— 跨渠道分组: 有差异/问题的区域在原文栏标小眼睛, 悬停时四栏浮遮罩(差异分析) ——
+            groups = []
+            for ch in chs:
+                for i, b in by_ch[ch]:
+                    if not b.get("box"):
+                        continue
+                    for g in groups:
+                        c0, i0, b0 = g[0]
+                        if b0.get("box") and (_iou(b["box"], b0["box"]) >= 0.3
+                                              or _gdice(b.get("text"), b0.get("text")) >= 0.5
+                                              or _cin(b["box"], b0["box"])):
+                            g.append((ch, i, b))
+                            break
+                    else:
+                        groups.append([(ch, i, b)])
+            for gi, g in enumerate(groups):
+                # 结构性组(页眉/页脚/页码)不算差异标注, 不出眼睛(避免一页一堆噪音按钮)
+                if all(b.get("cat") in ("Page-header", "Page-footer", "Page-number") for c, i, b in g):
+                    continue
+                panes, interesting, anchor = _cmp_group_masks(g, chs)
+                if not interesting:
+                    continue
+                gid = "G%d_%d" % (p, gi)
+                groups_json[gid] = {"panes": panes}
+                eyes.append('<div class="eye" data-g="%s" style="left:%.2f%%;top:%.2f%%" title="悬停/点击：四栏差异分析遮罩">👁</div>'
+                            % (gid, (anchor[0] + anchor[2]) / 2.0 / W * 100, (anchor[1] + anchor[3]) / 2.0 / H * 100))
+        img_cell = ('<div class="pane"><div class="ptitle src">原文件（区块联动 · 👁=%s）</div>'
                     '<div class="imgw"><img src="pages/page_%d.jpg"/><svg viewBox="0 0 %d %d" preserveAspectRatio="none">%s</svg>%s</div>'
                     '<div class="pmask"></div></div>'
-                    % (p, W, H, "".join(rects), "".join(eyes)))
+                    % ("unified 复检项(虚线=共识框)" if unified_pages is not None else "差异分析",
+                       p, W, H, "".join(rects), "".join(eyes)))
         ch_cells = "".join('<div class="pane"><div class="ptitle %s">%s</div>%s<div class="pmask"></div></div>'
                            % (ch, {"mineru": "MinerU", "dots": "dots.ocr", "paddle": "PaddleOCR"}[ch], col_html[ch]) for ch in chs)
         flag = ""
@@ -1022,7 +1164,7 @@ def scan_inbox(doc=None):
 
 def try_auto(pdf, work):
     outs = {}
-    for ch, meta in load_cfg().get("auto", {}).items():
+    for ch, meta in CFG.get("auto", {}).items():
         cmd_t = meta.get("cmd")
         if not cmd_t: continue
         exe = cmd_t.split()[0]
@@ -1036,9 +1178,19 @@ def try_auto(pdf, work):
         else: log("渠道[%s] 失败: %s" % (ch, r.stderr[-300:]))
     return outs
 
+def _out_rel(src, out):
+    """src 在 out 内(_api 缓存目录) -> "raw/<basename>/"; src 在 out 外(inbox 等) -> 用 preserve_raw 的归档位 "raw/<ch>/"。
+    与 merge_out/viewer 同一判定, 三处不再各写一份。"""
+    if os.path.abspath(src).startswith(os.path.abspath(out) + os.sep):
+        return "raw/%s/" % os.path.basename(os.path.normpath(src))
+    return None
+
 def preserve_raw(src, rawd):
     """把渠道源目录/文件原样复制到 out/<doc>/raw/<渠道>/(不解析, 仅归档)。
-    API 获取时 src 本身就是 out/<doc>/raw/<渠道>_api, 复制结果即孪生目录(冗余但被 merge_out 依赖)。"""
+    src 本身已是 raw/<渠道>_api(API 缓存目录)时跳过孪生复制——全读者(merge_out/analyze/caption_audit)
+    均有 _api 兜底, 不再产生双份; 只有 out 之外的真实外部来源(inbox 导出等)才归档复制。"""
+    if os.path.abspath(src) == os.path.abspath(rawd + "_api"):
+        return sum(len(fs) for _, _, fs in os.walk(src))
     os.makedirs(rawd, exist_ok=True)
     if os.path.isdir(src):
         shutil.copytree(src, rawd, dirs_exist_ok=True)
@@ -1049,13 +1201,16 @@ def preserve_raw(src, rawd):
 def fetch_paddle_api(pdf_path, out_dir):
     """PaddleOCR 云端 API: 提交->轮询->转换。产物: page_N.json(归一化块)+page_N.md+api_result.jsonl。
     需 channels.json 配置 "paddle_api": {"token": "...", "model": "PaddleOCR-VL"}。返回产物目录或 None。"""
-    cfg = load_cfg()
+    try:
+        cfg = load_cfg()
+    except Exception:
+        return None
     meta = cfg.get("paddle_api") or {}
     token = meta.get("token")
     if not token:
         return None
     import ssl, urllib.request
-    ctx = ssl_ctx(meta)  # 默认走系统证书校验; 旧版无条件 unverified, 现按渠道开关
+    ctx = ssl._create_unverified_context()  # 服务端证书链缺AKI, 严格校验不过(浏览器宽松可通过)
     base = meta.get("base", "https://paddleocr.aistudio-app.com")
     model = meta.get("model", "PaddleOCR-VL")
     max_wait = int(meta.get("timeout", 900))
@@ -1078,27 +1233,39 @@ def fetch_paddle_api(pdf_path, out_dir):
     job = resp["data"]["jobId"]
     log("   paddle job %s 已提交, 轮询中..." % job)
     import time as _t
-    spent = 0
+    run_cap = int(meta.get("run_timeout", 300))     # 仅"解析中(running)"累计上限
+    queue_cap = int(meta.get("queue_timeout", 7200))  # 排队总兜底( generous, 正常远不会触到)
+    run_spent = 0.0
+    last_state = None
     last_net = 0.0
-    while spent < max_wait:
-        _t.sleep(5); spent += 5
+    t0 = _t.time()
+    while True:
+        _t.sleep(5)
         try:
             st = http(urllib.request.Request(base + "/api/v2/ocr/jobs/" + job, headers={"Authorization": "Bearer " + token}), 30)["data"]
         except Exception as e:
-            # 网络抖动不杀渠道: 稀疏日志后继续轮询, 总时长仍受 max_wait 约束
+            # 网络抖动不杀渠道: 稀疏日志后继续轮询, 解析计时只认 running 状态
             if _t.time() - last_net > 60:
                 last_net = _t.time()
                 log("   paddle 状态查询网络错误(重试中): %s" % e)
             continue
-        prog = st.get("extractProgress") or {}
-        log("   paddle %s %s/%s页" % (st.get("state"), prog.get("extractedPages"), prog.get("totalPages")))
-        if st.get("state") == "done":
+        state = st.get("state")
+        if state != last_state:
+            log("   paddle 状态 -> %s" % state)
+            last_state = state
+        if state == "running":
+            run_spent += 5
+            prog = st.get("extractProgress") or {}
+            log("   paddle running %s/%s页 (累计 %ds/%ds)" % (prog.get("extractedPages"), prog.get("totalPages"), run_spent, run_cap))
+            if run_spent > run_cap:
+                raise RuntimeError("paddle 解析超时(running>%ds, 排队时间不计)" % run_cap)
+        if state == "done":
             url = st["resultUrl"]["jsonUrl"]
             break
-        if st.get("state") == "failed":
+        if state == "failed":
             raise RuntimeError("解析失败: %s" % st.get("errorMsg"))
-    else:
-        raise RuntimeError("轮询超时")
+        if _t.time() - t0 > queue_cap:
+            raise RuntimeError("排队总超时(>%ds): 服务端一直没开始解析" % queue_cap)
 
     raw = _net_retry("paddle 结果下载", lambda: urllib.request.urlopen(urllib.request.Request(url), timeout=180, context=ctx).read())
     os.makedirs(out_dir, exist_ok=True)
@@ -1126,14 +1293,17 @@ def fetch_paddle_api(pdf_path, out_dir):
 
 def fetch_dots_api(pdf_path, out_dir):
     """dots.ocr 云端实例(小红书 Gradio5): /config 拉组件态 -> /upload -> fn1 预热 -> fn0 解析prompt -> fn6 推理 -> 同会话下载结果 zip。
-    产物: page_N.json(按 zip 内该页 jpg 尺寸归一化, 免标定) + page_N.md/jpg + api_result.zip。
+    产物: page_N.json(按 zip 内该页 jpg 尺寸归一化, 免标定) + page_N.md/jpg(api_result.zip 仅 keep_api_zip=true 时保留)。
     需 channels.json 配置 "dots_api": {"base","model","prompt",...}。返回产物目录或 None。"""
-    cfg = load_cfg()
+    try:
+        cfg = load_cfg()
+    except Exception:
+        return None
     meta = cfg.get("dots_api") or {}
     if not meta.get("enabled", True):
         return None
     import ssl, time as _t, http.cookiejar, urllib.request
-    ctx = ssl_ctx(meta)  # 同上: 默认校验, 自签名实例配 "insecure_tls": true
+    ctx = ssl._create_unverified_context()  # 与 paddle_api 同款: 证书链不完整, 浏览器宽松可通过
     cj = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj), urllib.request.HTTPSHandler(context=ctx))
     base = meta.get("base", "https://dotsocr.xiaohongshu.com").rstrip("/")
@@ -1229,7 +1399,8 @@ def fetch_dots_api(pdf_path, out_dir):
     raw = _net_retry("dots 结果下载", lambda: opener.open(urllib.request.Request(zip_url if zip_url.startswith("http") else base + zip_url),
                       timeout=300).read())  # 同会话 cookie 才能下载
     os.makedirs(out_dir, exist_ok=True)
-    io.open(os.path.join(out_dir, "api_result.zip"), "wb").write(raw)
+    if cfg.get("keep_api_zip"):  # 默认 false 不落盘: 适配器只读解压产物, zip 无读取方(2026-10-30 全量清理验证)
+        io.open(os.path.join(out_dir, "api_result.zip"), "wb").write(raw)
 
     # 5) 解压 + 按页归一化(bbox / 该页 jpg 实际尺寸, 同 paddle 方案免标定)
     import zipfile
@@ -1267,15 +1438,18 @@ def fetch_dots_api(pdf_path, out_dir):
 
 def fetch_mineru_api(pdf_path, out_dir):
     """MinerU 云端 API(file-urls/batch 签名上传): 申请上传URL -> http.client 裸PUT(OSS验签不容额外头) -> 轮询batch -> 下载zip解压。
-    产物: 标准 MinerU 输出目录(content_list_v2.json 等) + api_result.zip。
+    产物: 标准 MinerU 输出目录(content_list_v2.json 等; api_result.zip 仅 keep_api_zip=true 时保留)。
     需 channels.json 配置 "mineru_api": {"token": "sk-...", ...}。返回产物目录或 None。"""
-    cfg = load_cfg()
+    try:
+        cfg = load_cfg()
+    except Exception:
+        return None
     meta = cfg.get("mineru_api") or {}
     token = meta.get("token")
     if not token:
         return None
     import ssl, time as _t, http.client, urllib.request
-    ctx = ssl_ctx(meta)  # 证书校验默认开启, 内网自签名实例可配 "insecure_tls": true
+    ctx = ssl._create_unverified_context()
     base = meta.get("base", "https://mineru.net").rstrip("/")
     max_wait = int(meta.get("timeout", 1800))
     AH = {"Authorization": "Bearer " + token}
@@ -1293,10 +1467,7 @@ def fetch_mineru_api(pdf_path, out_dir):
                "language": meta.get("language", "korean")}
     for k in ("enable_formula", "enable_table"):
         if k in meta:
-            v = meta[k]
-            if isinstance(v, str):  # 配置里写 "false" 时 bool("false") 仍是 True, 这里显式解析
-                v = v.strip().lower() not in ("", "0", "false", "no")
-            payload[k] = bool(v)
+            payload[k] = bool(meta[k])
     j = _net_retry("mineru 申请上传URL", lambda: http_json("POST", base + "/api/v4/file-urls/batch", payload))
     if j.get("code") != 0:
         raise RuntimeError("申请上传URL失败: %s" % j.get("msg"))
@@ -1312,12 +1483,15 @@ def fetch_mineru_api(pdf_path, out_dir):
         raise RuntimeError("OSS 上传失败 HTTP %d" % resp.status)
     log("   mineru 已上传, batch %s 解析中..." % batch_id)
 
-    # 3) 轮询批量结果(网络抖动不杀渠道: 稀疏日志后重试, 总时长仍受 max_wait 约束)
+    # 3) 轮询批量结果(网络抖动不杀渠道: 稀疏日志后重试; 仅"解析中(running)"计时, 排队/等待不计时)
     zip_url = None
-    t0 = _t.time()
+    t0 = _t.time()  # 排队总兜底( generous )
+    run_cap = int(meta.get("run_timeout", 300))      # 仅 running 状态的累计上限
+    queue_cap = int(meta.get("queue_timeout", 7200))
+    run_spent = 0.0
     wf0 = None
     last_net = 0.0
-    while _t.time() - t0 < max_wait:
+    while _t.time() - t0 < queue_cap:
         _t.sleep(6)
         try:
             d = http_json("GET", base + "/api/v4/extract-results/batch/" + batch_id, timeout=60).get("data") or {}
@@ -1331,6 +1505,10 @@ def fetch_mineru_api(pdf_path, out_dir):
         state = er.get("state")
         prog = er.get("extract_progress") or {}
         log("   mineru %s %s/%s页" % (state, prog.get("extracted_pages"), prog.get("total_pages")))
+        if state == "running":
+            run_spent += 6
+            if run_spent > run_cap:
+                raise RuntimeError("mineru 解析超时(running>%ds, 排队/等待时间不计)" % run_cap)
         if state == "waiting-file":
             if wf0 is None:
                 wf0 = _t.time()
@@ -1343,14 +1521,23 @@ def fetch_mineru_api(pdf_path, out_dir):
         if state == "failed":
             raise RuntimeError("mineru 解析失败: %s" % er.get("err_msg"))
     if not zip_url:
-        raise RuntimeError("mineru 轮询超时")
+        raise RuntimeError("mineru 排队总超时(>%ds)" % queue_cap)
 
     # 4) 下载 + 解压(标准 MinerU 输出, adapt_mineru 直接可用)
     raw = _net_retry("mineru 结果下载", lambda: urllib.request.urlopen(urllib.request.Request(zip_url), timeout=600, context=ctx).read())
     os.makedirs(out_dir, exist_ok=True)
-    io.open(os.path.join(out_dir, "api_result.zip"), "wb").write(raw)
+    if cfg.get("keep_api_zip"):  # 默认 false 不落盘: 适配器只读解压产物, zip 无读取方(2026-10-30 全量清理验证)
+        io.open(os.path.join(out_dir, "api_result.zip"), "wb").write(raw)
     import zipfile
     zf = zipfile.ZipFile(io.BytesIO(raw))
+    # 解压前清空旧内容: 不清理时, 服务端 batch 复用会叠加旧 uuid run 子目录,
+    # 可能冒出同名异内容的 content_list_v2.json 让 adapt_mineru 选错 run(2026-10-30 13563525 实况)
+    for old in os.listdir(out_dir):
+        p = os.path.join(out_dir, old)
+        if os.path.isdir(p):
+            shutil.rmtree(p)
+        else:
+            os.remove(p)
     for n in zf.namelist():
         if ".." in n:
             continue
@@ -1364,15 +1551,20 @@ def main(argv=None):
     ap.add_argument("pdf")
     ap.add_argument("--mineru"); ap.add_argument("--dots"); ap.add_argument("--paddle")
     ap.add_argument("--out")
-    ap.add_argument("--channels", default=None, help="渠道配置文件(默认仓库内 channels.json; 示例见 examples/demo)")
+    ap.add_argument("--channels", help="备用配置路径: 覆盖模块级 CFG(离线 demo/CI 用, 不叠加 local 与环境变量)")
+    ap.add_argument("--no-unify", action="store_true", help="不跑归一化层(unify.py), 只出单渠道+1:3 对照")
+    ap.add_argument("--no-merge", action="store_true", help="不出跨渠道合并产物 merged\page_N.json / merged.json / merged.md")
     a = ap.parse_args(argv)
-    if a.channels:  # 指定别处配置(如 examples/demo/channels.json), 基线整体替换
-        global CFG_FILE, CFG
-        CFG_FILE = os.path.abspath(a.channels)
-        CFG = load_cfg()
+    global CFG, CFG_FP
+    CFG = ensure_cfg()   # 惰性配置入位(模块导入时已不再读盘)
+    if a.channels:  # 显式 --channels: 全配置读取改走该文件(demo/CI 用), 不叠加 channels.local.json 与环境变量
+        CFG_FP = os.path.abspath(a.channels)
+        CFG = load_cfg(a.channels, use_env=False, use_local=False)
     doc = re.sub(r"\.pdf$", "", os.path.basename(a.pdf), flags=re.I)
     doc = re.sub(r"[\s]*[（(]\d+[)）]$", "", doc).strip()  # 归一化" (1)"类复制后缀, 防 inbox 匹配失败
     out = a.out or os.path.join(ROOT, "out", doc)
+    _start_ms = int(time.time() * 1000)
+    t0 = _start_ms / 1000.0  # 供工作台判定"这次真的跑出了新产物"(留 ~2s 时钟粒度余量)
     pages_dir = os.path.join(out, "pages")
     os.makedirs(out, exist_ok=True)
 
@@ -1391,7 +1583,21 @@ def main(argv=None):
 
     # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: CDP 驱动本地 App 与云端 API 互不阻塞
     from concurrent.futures import ThreadPoolExecutor
+    def _mineru_cdp():
+        try:
+            import mineru_drive
+            mu_dir = mineru_drive.drive(a.pdf)   # CDP 驱动桌面版: 启动->上传->等解析
+            if mu_dir and os.path.isdir(mu_dir):
+                log("② 渠道[mineru] 经 CDP 驱动 App 获取 -> %s" % mu_dir)
+                SRC_KIND["mineru"] = "CDP"
+                return mu_dir
+        except Exception as e:
+            log("② mineru CDP 驱动失败(可手动跑 App 走归仓): %s" % e)
+        return None
     def _resolve_mineru():
+        if not (CFG.get("mineru_api") or {}).get("enabled", True):  # 配置关掉 API 时直落 CDP, 不再先打一次必然失败的请求
+            SRC_KIND["mineru"] = "API禁用(转CDP)"
+            return _mineru_cdp()
         cached = os.path.join(out, "raw", "mineru_api")
         if any(x.endswith("_content_list_v2.json") for _, _, fs in os.walk(cached) for x in fs):
             log("② 渠道[mineru] 复用缓存: %s" % cached)   # 强制重跑请删除 raw\mineru_api
@@ -1405,17 +1611,10 @@ def main(argv=None):
                 return api_dir
         except Exception as e:
             log("② mineru 云端 API 失败, 转 CDP 驱动: %s" % e)
-        try:
-            import mineru_drive
-            mu_dir = mineru_drive.drive(a.pdf)   # CDP 驱动桌面版: 启动->上传->等解析
-            if mu_dir and os.path.isdir(mu_dir):
-                log("② 渠道[mineru] 经 CDP 驱动 App 获取 -> %s" % mu_dir)
-                SRC_KIND["mineru"] = "CDP"
-                return mu_dir
-        except Exception as e:
-            log("② mineru CDP 驱动失败(可手动跑 App 走归仓): %s" % e)
-        return None
+        return _mineru_cdp()
     def _resolve_dots():
+        if not (CFG.get("dots_api") or {}).get("enabled", True):
+            return None
         cached = os.path.join(out, "raw", "dots_api")
         if os.path.exists(os.path.join(cached, "page_0.json")):
             log("② 渠道[dots] 复用缓存: %s" % cached)   # 复用已有 API 结果; 强制重跑请删除 raw\dots_api
@@ -1431,6 +1630,8 @@ def main(argv=None):
             log("② dots 云端 API 失败: %s" % e)
         return None
     def _resolve_paddle():
+        if not (CFG.get("paddle_api") or {}).get("enabled", True):
+            return None
         cached = os.path.join(out, "raw", "paddle_api")
         if os.path.exists(os.path.join(cached, "page_0.json")):
             log("② 渠道[paddle] 复用缓存: %s" % cached)  # 复用已有 API 结果, 省配额; 强制重跑请删除 raw\paddle_api
@@ -1446,8 +1647,7 @@ def main(argv=None):
             log("② paddle 云端 API 失败: %s" % e)
         return None
 
-    import time as _time
-    _t_fetch = _time.time()
+    _t_fetch = time.time()
     with ThreadPoolExecutor(max_workers=3) as ex:
         futs = {}
         if not chans.get("mineru"):
@@ -1460,11 +1660,12 @@ def main(argv=None):
             v = f.result()
             if v:
                 chans[k] = v
-    log("② 三路并行获取结束, 共 %.1fs (墙钟)" % (_time.time() - _t_fetch))
+    log("② 三路并行获取结束, 共 %.1fs (墙钟)" % (time.time() - _t_fetch))
     log("② 渠道来源汇总: " + " ｜ ".join("%s=%s" % (k, SRC_KIND.get(k, "无")) for k in ("mineru", "dots", "paddle")))
 
     jobs = [
-        ("mineru", "MinerU（本地·非OCR）",  lambda s: adapt_mineru(s, sizes, mineru_calib_key(s))),
+        ("mineru", "MinerU（本地·非OCR）",  lambda s: adapt_mineru(s, sizes, mineru_calib_key(s),
+                                                  (_out_rel(s, out),))),
         ("dots",   "dots.ocr（小红书）",    lambda s: adapt_dots(s, sizes)),
         ("paddle", "PaddleOCR-VL-1.6（在线）", lambda s: adapt_paddle(s, sizes)),
     ]
@@ -1484,8 +1685,9 @@ def main(argv=None):
                 # 标定键按"实际来源类型"显式确定并落盘标记(写入 out 内的源目录与孪生目录), 不再靠调用路径猜
                 mu_key = "mineru_api" if str(SRC_KIND.get(key, "")).startswith("API") else "mineru"
                 if os.path.abspath(src).startswith(os.path.abspath(out) + os.sep):
-                    write_calib_marker(src, mu_key)
-                write_calib_marker(os.path.join(out, "raw", key), mu_key)
+                    write_calib_marker(src, mu_key)  # API 缓存目录(孪生已停建, 标记落源目录)
+                else:
+                    write_calib_marker(os.path.join(out, "raw", key), mu_key)  # 桌面版等外部来源: 标记落归档目录
             res = fn(src)
             per_ch[key] = res
             if res is None:
@@ -1522,11 +1724,53 @@ def main(argv=None):
         else:
             build_viewer(vw, "%s ｜ %s" % (doc, title), sizes, per_page=res,
                           calib_note=("%s -> %s" % (key, mineru_calib_key(src))) if key == "mineru" else None,
-                          img_prefix="raw/%s/" % key)
+                          # img 前缀: out 内源(_api 缓存)=basename(src); out 外来源(inbox 等)=归档目录 raw/<ch>(preserve_raw 归仓位)
+                          img_prefix=_out_rel(src, out) or ("raw/%s/" % key))
 
     cmp_fp = os.path.join(out, "viewer_compare.html")
     if any(v is not None for v in per_ch.values()):
-        nc = build_compare_viewer(cmp_fp, "%s ｜ 1:3 渠道对照" % doc, sizes, per_ch)
+        udir = os.path.join(out, "unified")
+        # 跨渠道合并产物: 复用 merge_out 的 merge_doc(与独立 CLI 同一实现, 不再要求手工另跑)
+        if not a.no_merge:
+            try:
+                import merge_out
+                info = merge_out.merge_doc(doc, out, sizes=sizes, in_memory=per_ch)
+                log("④ 合并产物: merged\\page_N.json x%d + merged.json + merged.md (%d 块)" % (info["pages"], info["blocks"]))
+            except Exception as e:
+                log("④ 合并产物失败(不阻断查看器): %s" % e)
+        # 归一化层: 必须"本次"重算。旧版有 unified 目录就直接读 = 随时序错配的陈旧产物(改代码/换文档后 👁 永远看旧结果)
+        if not a.no_unify:
+            try:
+                import unify
+                ustat = unify.unify_doc(doc, out)
+                log("④ 归一化层: %s" % (ustat if isinstance(ustat, str) else json.dumps(ustat, ensure_ascii=False)[:400]))
+            except Exception as e:
+                log("④ 归一化层失败(👁 退回临时聚组): %s" % e)
+        if os.path.isdir(udir):
+            # 本轮没有产出 unified(失败/--no-unify), 但目录里还有上一轮的页文件: 再读进来就是陈旧数据。
+            # 这里显式清场, 只认本次写出的一 _unified_summary.json 的时间戳。
+            try:
+                if not os.path.exists(os.path.join(udir, "_unified_summary.json")) or \
+                        os.path.getmtime(os.path.join(udir, "_unified_summary.json")) < t0:
+                    shutil.rmtree(udir)
+                    log("④ 归一化层无本次产物, 已清掉陈旧 unified/ 目录")
+            except Exception as e:
+                log("④ 清理陈旧 unified/ 失败: %s" % e)
+        upages = None
+        unified_driven = False
+        if os.path.isdir(udir):  # 本轮 unify 成功才有 unified 产物 -> 👁 改由 unified 层驱动(仅 review=true 出眼)
+            upages = {}
+            for f in os.listdir(udir):
+                m = re.match(r"page_(\d+)\.json$", f)
+                if m:
+                    upages[int(m.group(1))] = json.load(
+                        io.open(os.path.join(udir, f), encoding="utf-8")).get("unified", [])
+            unified_driven = True
+        nc = build_compare_viewer(cmp_fp, "%s ｜ 1:3 渠道对照" % doc, sizes, per_ch,
+                                  {k: (os.path.basename(os.path.normpath(v))
+                                       if os.path.abspath(v).startswith(os.path.abspath(out) + os.sep) else k)
+                                     for k, v in chans.items() if v},
+                                  unified_pages=upages, unified_driven=unified_driven)
         log("④ 1:3 对照查看器: %d 块 -> %s" % (nc, cmp_fp))
     elif os.path.exists(cmp_fp):
         os.remove(cmp_fp)  # 本轮全失败则清掉旧对照, 防残留
@@ -1547,7 +1791,64 @@ th{background:#eef2ff}a{color:#2563eb}</style></head><body>
                      "<th>三合一</th>" if os.path.exists(cmp_fp) else "", rows)
     io.open(os.path.join(out, "index.html"), "w", encoding="utf-8").write(idx)
     log("⑤ 完成 ->", out)
+    log("   _elapsed_ms=%d" % (int(time.time() * 1000) - _start_ms))  # 工作台据此判定成功(不看旧 index 的 mtime)
     for r in report: log("   %s | %s | 块 %s | 韩文 %s | FFFD %s | 源文件 %s" % (r[0], r[1], r[2], r[3], r[4], r[6]))
+
+
+
+# ---------------- 配置分层: channels.json(入库, 无密钥) -> channels.local.json(不入库) -> 环境变量 ----------------
+LOCAL_CFG = os.path.join(ROOT, "channels.local.json")   # 本机覆盖层(不入库); 兼容旧名 CFG_LOCAL
+CFG_LOCAL = LOCAL_CFG
+CFG_FP = os.path.join(ROOT, "channels.json")   # main(--channels) 可改指向
+ENV_KEYS = {("mineru_api", "token"): "MINERU_API_TOKEN", ("paddle_api", "token"): "PADDLE_API_TOKEN"}
+_ENV_CACHE = {}
+
+
+def _apply_env(cfg):
+    """③ 环境变量层: cfg[sec][k] = os.environ[ENV_KEYS[(sec,k)]], 只在变量非空时覆盖。"""
+    import os as _os
+    for (sec, k), env in ENV_KEYS.items():
+        v = _os.environ.get(env)
+        if v:
+            cfg.setdefault(sec, {})[k] = v
+    return cfg
+
+
+def load_cfg(fp=None, use_env=True, use_local=True):
+    """三层合并读取: channels.json -> channels.local.json(逐段浅合并, 覆盖同名键) -> 环境变量。
+    每次调用都重读, 改标定/token 即生效, 不重启进程。
+    fp 显式给出(命令行 --channels / webapp 指定)时视为最终配置: 不再叠加 local 与环境变量,
+    避免"离线 demo 意外读到本机真实 token"。"""
+    explicit = (fp is not None) or (not use_local)
+    fp = fp or globals().get("CFG_FP") or os.path.join(ROOT, "channels.json")
+    base = {}
+    try:
+        base = json.load(io.open(fp, encoding="utf-8"))
+    except Exception as e:
+        log("配置读取失败 %s: %s" % (fp, e))
+        return {}
+    if explicit:
+        return base
+    lp = LOCAL_CFG if fp == os.path.join(ROOT, "channels.json") else os.path.splitext(fp)[0] + ".local.json"
+    if os.path.exists(lp):
+        try:
+            loc = json.load(io.open(lp, encoding="utf-8"))
+            for sec, v in loc.items():
+                if isinstance(v, dict) and isinstance(base.get(sec), dict):
+                    base[sec].update(v)
+                else:
+                    base[sec] = v
+        except Exception as e:
+            log("本地覆盖配置读取失败 %s: %s" % (lp, e))
+    return _apply_env(base) if use_env else base
+
+
+def ensure_cfg():
+    """模块级 CFG 的惰性初始化/刷新: 旧的"导入时读一次"会让改 channels.json 后的进程一直用旧值。"""
+    global CFG
+    if CFG is None:
+        CFG = load_cfg()
+    return CFG
 
 if __name__ == "__main__":
     main()
