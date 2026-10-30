@@ -1,0 +1,39 @@
+{
+ "doc": "13625974",
+ "pages": 11,
+ "generated": "2026-10-30 16:24",
+ "metrics": {
+  "coverage": 1.0,
+  "one_to_one": 0.8977,
+  "orphan_rate": 0.0,
+  "raw_blocks": 610,
+  "groups": 176
+ },
+ "levels": {
+  "high": 150,
+  "mid": 19,
+  "low": 7
+ },
+ "kinds": {
+  "none": 153,
+  "split": 13,
+  "type": 4,
+  "xpage": 6
+ },
+ "ch_defects": {
+  "mineru": {
+   "离群读法": 4,
+   "跨页并入": 2
+  },
+  "dots": {
+   "离群读法": 15
+  },
+  "paddle": {
+   "跨页并入": 5,
+   "离群读法": 2,
+   "文本溢出": 2,
+   "疑似重复识读": 1
+  }
+ },
+ "orphans": []
+}
