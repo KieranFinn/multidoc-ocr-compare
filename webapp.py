@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """拖拽式三渠道解析对比工作台(纯标准库, 零依赖)
-用法: python webapp.py  -> 自动打开 http://127.0.0.1:8765(端口被占则顺延到 8774)
-把 PDF 拖进页面即自动: 上传 -> 跑 pipeline -> 页内出结果, 结果永久留在 out/<文档名>/。
-渠道产物约定: 丢进 inbox/, 命名 <文档名>__mineru / <文档名>__dots / <文档名>__paddle(.md)
-界面右上角"渠道配置"改的 token/模型/超时写入 channels.local.json(不入库), 下一个文档生效。
+用法: python webapp.py  → 自动打开 http://127.0.0.1:8765(端口被占则顺延到 8774)
+把 PDF 拖入页面即自动: 上传 → 跑 pipeline → 页内出结果。
+渠道产物约定: 解析完后丢进 inbox\，命名 <文档名>__mineru / <文档名>__dots / <文档名>__paddle.md
 """
 import os, re, io, json, threading, time, webbrowser, functools, sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -15,27 +14,29 @@ OUT = os.path.join(ROOT, "out")
 INBOX_MINERU_ROOT = os.path.join(ROOT, "inbox")
 os.makedirs(UP, exist_ok=True)
 JOBS = {}          # job_id -> {state, log[], doc, err}
-UPLOAD_SEEN = {}   # fp -> mtime: 拖拽上传已直接起任务, 告给 watch_uploads 免得同一个文件跑两遍
 JOB_LOCK = threading.Lock()
 RUN_LOCK = threading.Lock()  # 批处理串行锁: 同时丢多个 PDF 按顺序逐个解析
 MIME = {".html": "text/html; charset=utf-8", ".jpg": "image/jpeg", ".png": "image/png",
         ".json": "application/json", ".md": "text/plain; charset=utf-8", ".css": "text/css", ".js": "text/javascript"}
 import shutil
+
+CFG_FP = os.path.join(ROOT, "channels.json")
 API_SECTIONS = ("paddle_api", "mineru_api", "dots_api")  # web 界面允许改的渠道 API 配置段
 
 def _load_cfg():
-    """当前生效配置 = channels.json 基线 + channels.local.json 覆盖 + 环境变量(见 pipeline.load_cfg)。"""
-    import pipeline
-    return pipeline.load_cfg()
+    try:
+        return json.load(io.open(CFG_FP, encoding="utf-8"))
+    except Exception:
+        return {}
 
 def _save_cfg(updates):
     """合并 web 端提交的 API 配置(仅白名单段、忽略 _ 前缀键), 写入 channels.local.json。
 
-    写本地覆盖而非入库的 channels.json: token 等隐私值不进版本库, 且只落改动过的键;
-    基线里的标定/模型名仍继承 channels.json。原子替换, 避免写一半把配置读空。
+    写本地覆盖而非入库的 channels.json: token 等隐私值不进版本库(.gitignore 已忽略 channels.local.json),
+    且只落改动过的键, 基线里的标定/模型名仍继承 channels.json。原子替换, 避免写一半把配置读空。
     """
     import pipeline
-    path = pipeline.CFG_LOCAL
+    path = pipeline.LOCAL_CFG
     base = _load_cfg()
     try:
         cfg = json.load(io.open(path, encoding="utf-8")) if os.path.exists(path) else {}
@@ -53,7 +54,7 @@ def _save_cfg(updates):
                 continue  # 不存在的键不存空串(前端占位符空值会污染配置, 如 base="" 会让 API 地址变相对路径)
             try:
                 if isinstance(old, bool):
-                    v = bool(v)
+                    v = bool(v) if isinstance(v, bool) else str(v).lower() in ("1", "true", "yes", "on")
                 elif isinstance(old, int) and not isinstance(old, bool):
                     v = int(v)
                 else:
@@ -64,7 +65,8 @@ def _save_cfg(updates):
     tmp = path + ".tmp"
     io.open(tmp, "w", encoding="utf-8").write(json.dumps(cfg, ensure_ascii=False, indent=1))
     os.replace(tmp, path)
-    return {s: _load_cfg().get(s, {}) for s in API_SECTIONS}
+    return {x: _load_cfg().get(x, {}) for x in API_SECTIONS}
+
 
 def run_pipeline(job, pdf_path):
     import pipeline
@@ -74,25 +76,37 @@ def run_pipeline(job, pdf_path):
         JOBS[job]["log"].append(line)
         JOBS[job]["logline"] = line[:90]
         print("  [解析] %s" % line)  # 同步打到控制台, 黑窗口可见
-    JOBS[job]["state"] = "排队中"    # 批处理串行: 多文件逐个跑; 日志重定向必须在锁内, 否则排队任务会截获运行中任务的日志
-    with RUN_LOCK:
-        JOBS[job]["state"] = "运行中"
-        old = pipeline.log
-        pipeline.log = _log
-        try:
-            argv = [pdf_path]
-            doc = re.sub(r"\.pdf$", "", os.path.basename(pdf_path), flags=re.I)
-            JOBS[job]["doc"] = doc
-            t0 = time.time()
-            pipeline.main(argv)
-            idx = os.path.join(OUT, doc, "index.html")   # 只认本次跑出来的 index: 上一轮残留的旧文件不能算成功
-            ok = os.path.exists(idx) and os.path.getmtime(idx) >= t0 - 2
-            JOBS[job]["state"] = "done" if ok else "error"
-        except Exception as e:
-            JOBS[job]["state"] = "error"; JOBS[job]["err"] = str(e)
-            JOBS[job]["log"].append("ERROR: %s" % e)
-        finally:
-            pipeline.log = old
+
+    try:
+        JOBS[job]["state"] = "排队中"    # 批处理串行: 多文件逐个跑; 日志重定向必须在锁内, 否则排队任务会截获运行中任务的日志
+        with RUN_LOCK:
+            JOBS[job]["state"] = "运行中"
+            old = pipeline.log
+            pipeline.log = _log
+            try:
+                argv = [pdf_path]
+                doc = re.sub(r"\.pdf$", "", os.path.basename(pdf_path), flags=re.I)
+                JOBS[job]["doc"] = doc
+                t0 = time.time()
+                pipeline.main(argv)
+                idx = os.path.join(OUT, doc, "index.html")   # 只认本次跑出来的 index: 上一轮残留的旧文件不能算成功
+                ok = os.path.exists(idx) and os.path.getmtime(idx) >= t0 - 2
+                JOBS[job]["state"] = "done" if ok else "error"
+            except Exception as e:
+                JOBS[job]["state"] = "error"; JOBS[job]["err"] = str(e)
+                JOBS[job]["log"].append("ERROR: %s" % e)
+            finally:
+                pipeline.log = old
+    except BaseException as e:  # SystemExit/KeyboardInterrupt 等不是 Exception 的抬走
+        JOBS[job]["state"] = "error"
+        JOBS[job]["err"] = JOBS[job].get("err") or "任务异常终止: %s" % e
+        raise
+    finally:
+        # 兜底: 任何没走到 done/error 的路径(含被抬走的线程)都不许把任务永远挂在"运行中"
+        if JOBS[job]["state"] not in ("done", "error"):
+            JOBS[job]["state"] = "error"
+            JOBS[job]["err"] = JOBS[job].get("err") or "任务异常终止"
+
 
 PAGE = u"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <title>三渠道解析对比工作台</title>
@@ -138,7 +152,7 @@ header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12p
 </div>
 <div id="cfgpanel">
  <h3>渠道 API 配置</h3>
- <p class="tip" style="margin:0">写入 channels.local.json（不入版本库），下个文档自动生效（pipeline 每次调用都会重读）。</p>
+ <p class="tip" style="margin:0">写入 channels.json，下个文档自动生效（pipeline 每次调用都会重读）。</p>
  <div id="cfgform"></div>
  <div id="cfgmsg"></div>
  <div class="acts"><button id="closecfg">取消</button><button id="savecfg">保存</button></div>
@@ -175,11 +189,9 @@ class H(BaseHTTPRequestHandler):
         if self.path.startswith("/api/config"):
             return self._send(200, json.dumps({s: _load_cfg().get(s, {}) for s in API_SECTIONS}, ensure_ascii=False), "application/json")
         if self.path.startswith("/out/"):
-            rel = unquote(self.path[len("/out/"):].split("?")[0])   # 中文文档名在 URL 里是 %XX 编码
-            rel = rel.replace("\\", "/").lstrip("/")
-            root = os.path.abspath(OUT)
-            fp = os.path.abspath(os.path.join(root, rel))
-            if not (fp == root or fp.startswith(root + os.sep)):   # 越界(../ 或绝对路径)一律拒绝
+            rel = unquote(self.path[len("/out/"):].split("?")[0])  # 中文文档名/文件名在 URL 里是 %XX 编码, 不解码必然 404
+            fp = os.path.abspath(os.path.join(OUT, rel.lstrip("/").replace("/", os.sep)))
+            if not (fp == OUT or fp.startswith(OUT + os.sep)):   # 解析后越界即拒(比删 ".." 子串可靠: 前者挡不住编码形式)
                 return self._send(403, "forbidden")
             if os.path.isfile(fp):
                 ext = os.path.splitext(fp)[1].lower()
@@ -220,10 +232,6 @@ class H(BaseHTTPRequestHandler):
         doc0 = re.sub(r"[\s]*[（(]\d+[)）]$", "", doc0).strip()
         with JOB_LOCK:
             JOBS[job] = {"state": "running", "log": [], "doc": doc0, "err": "", "logline": ""}
-        try:
-            UPLOAD_SEEN[fp] = os.path.getmtime(fp)
-        except OSError:
-            pass
         threading.Thread(target=run_pipeline, args=(job, fp), daemon=True).start()
         self._send(200, json.dumps({"job": job}), "application/json")
 
@@ -332,9 +340,6 @@ def watch_uploads():
             fp = os.path.join(UP, f)
             mt = mtime(fp)
             if mt <= 0: continue
-            if UPLOAD_SEEN.pop(fp, None) == mt:   # 拖拽上传已起过任务, 这里只登记不重跑
-                seen[fp] = mt
-                continue
             if seen.get(fp) == mt:
                 if fp not in skip_logged:
                     skip_logged.add(fp)
