@@ -31,8 +31,13 @@ for doc_dir in sorted(glob.glob("out/*")):
     doc = os.path.basename(doc_dir)
     if not os.path.isdir(doc_dir) or doc.startswith("_"):
         continue
-    if not os.path.isdir(os.path.join(doc_dir, "raw", "mineru")):
-        continue
+    mu_dir = os.path.join(doc_dir, "raw", "mineru")
+    if not os.path.isdir(mu_dir):  # API 来源的文档无桌面版孪生目录时回退 _api(与 merge_out/analyze 同口径)
+        alt = os.path.join(doc_dir, "raw", "mineru_api")
+        if os.path.isdir(alt):
+            mu_dir = alt
+        else:
+            continue
     sizes = [Image.open(p).size for p in sorted(glob.glob(os.path.join(doc_dir, "pages", "page_*.jpg")))]
     mu = pipeline.adapt_mineru(os.path.join(doc_dir, "raw", "mineru"), sizes,
                                pipeline.mineru_calib_key(os.path.join(doc_dir, "raw", "mineru"))) or {}
