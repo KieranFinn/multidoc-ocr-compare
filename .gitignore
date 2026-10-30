@@ -1,0 +1,21 @@
+# 运行产物(体积大, 且含你自己的文档内容)
+out/
+uploads/
+inbox/
+examples/demo/
+*.log
+
+# 本地私有配置: token 等隐私值放这里, 不入库
+channels.local.json
+
+# 运行期状态
+__pycache__/
+*.pyc
+_state_mineru.json
+_server.lock
+
+# 编辑器/系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
