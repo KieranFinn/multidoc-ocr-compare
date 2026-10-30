@@ -59,21 +59,28 @@ either the document (all three engines agree on the oddity) or a single engine.
 | `viewer_<channel>.html` | one engine: page image + its boxes, hover/click to link block and text |
 | `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover |
 | `merged/` (+ `merged.md`) | per-page merged blocks with provenance, built by `merge_out.py` |
-| `_analysis_report.html` / `_analysis_summary.csv` | cross-document metrics + attribution, built by `analyze.py` |
+| `unified/` | merge groups across engines + `_unified_summary.json` (coverage, one_to_one, orphan_rate), built by `unify.py` |
+| `_analysis_report.html` / `_analysis_summary.csv` | cross-document metrics + attribution, built by `analyze.py` (run separately) |
 
 ## Try it offline (no account, no network)
 
 ```bash
 pip install -r requirements.txt
-python examples/make_demo.py          # synthesises examples/demo/: 2-page PDF + mock engine output
-python pipeline.py examples/demo/demo.pdf \
-    --mineru examples/demo/mineru --dots examples/demo/dots --paddle examples/demo/paddle \
-    --channels examples/demo/channels.json
-# open out/demo/index.html
+python examples/make_demo.py            # writes examples/demo/: a synthetic PDF + three mock engine outputs
+python pipeline.py examples/demo/samples/demo_kr.pdf \
+    --mineru examples/demo/inbox/demo_kr__mineru \
+    --dots   examples/demo/inbox/demo_kr__dots \
+    --paddle examples/demo/inbox/demo_kr__paddle \
+    --channels examples/demo/channels.json \
+    --out examples/demo/out
+python -m http.server -d examples/demo/out/demo_kr   # then open /index.html
 ```
 
-The demo is a *synthetic* two-page document (Latin text) plus three mock adapter payloads; it exercises
-render -> adapt -> viewers end to end and contains no third-party material.
+`--channels` swaps the whole config for `examples/demo/channels.json`, which has **identity
+calibration** (`src_w/src_h: null` — engine coordinates already *are* page pixels) and every cloud
+channel disabled. The demo document is synthetic Korean text with three deliberate disagreements
+(an outlier reading, an empty block, a missing page number) so the viewers and the unified pass have
+something to show. Nothing third-party, no token, no network. CI runs exactly this.
 
 ## Run it on your own PDFs
 
@@ -129,6 +136,7 @@ instead of calling anything.
 pipeline.py        render -> fetch -> adapt -> viewers -> index
 webapp.py app.js   drag & drop workbench (stdlib HTTP server + channel config panel)
 merge_out.py       per-page merge across channels
+unify.py           cross-engine grouping -> unified/ + summary metrics
 analyze.py         cross-document metrics + attribution report
 regress.py         reference-entry quality checks (truncation, authors, page joins)
 caption_audit.py   figure / table caption audit
