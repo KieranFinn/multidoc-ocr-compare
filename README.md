@@ -28,12 +28,17 @@ A real run is checked into the repo — [`examples/13625974/`](examples/13625974
 journal article (창의정보문화연구 2023, DOI `10.32823/jcic.9.4.202311.347`) processed by all three
 engines.
 
-| View | Link |
-| --- | --- |
-| Overview + metrics | [examples/13625974/index.html](examples/13625974/index.html) |
-| 1:3 comparison viewer (4 columns, hover to link boxes and text) | [viewer_compare.html](examples/13625974/viewer_compare.html) |
-| Single-channel viewers | [MinerU](examples/13625974/viewer_mineru.html) · [dots.ocr](examples/13625974/viewer_dots.html) · [PaddleOCR-VL](examples/13625974/viewer_paddle.html) |
-| Merged text | [merged.md](examples/13625974/merged.md) |
+| View | Rendered page | Source |
+| --- | --- | --- |
+| Overview + metrics | [open it rendered](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/index.html) | [index.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/index.html) |
+| 1:3 comparison viewer (4 columns, hover to link boxes and text) | [open it rendered](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_compare.html) | [viewer_compare.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/viewer_compare.html) |
+| Single-channel viewers | [MinerU](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_mineru.html) · [dots.ocr](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_dots.html) · [PaddleOCR-VL](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_paddle.html) | [viewer_mineru.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/viewer_mineru.html) |
+| Merged text | — | [merged.md](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/merged.md) |
+
+> Why the extra column: GitHub renders `.html` files **as source code**, so a plain repo link can never
+> show the viewer. The "rendered" links point at the same folder served as static files. If they are not
+> live yet, enable Pages once (Settings → Pages → Deploy from a branch → `main` / `/`), or just clone
+> the repo and open the file locally.
 
 What that run shows on 11 pages:
 
@@ -48,8 +53,8 @@ splitting granularity is not text quality. The unified pass reports 610 raw bloc
 groups, `one_to_one` 0.898, `coverage` 1.0, `orphan_rate` 0.0, and attributes every disagreement to
 either the document (all three engines agree on the oddity) or a single engine.
 
-> GitHub shows HTML as source only. To click through the viewers, clone the repo and open
-> `examples/13625974/index.html` in a browser, or serve it: `python -m http.server -d examples/13625974`.
+> Prefer locally? Clone the repo and open `examples/13625974/index.html`, or serve it:
+> `python -m http.server -d examples/13625974`.
 
 ## What you get
 
