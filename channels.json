@@ -61,5 +61,14 @@
   "prompt": "prompt_layout_all_en",
   "timeout": 1800,
   "_note": "dots.ocr 云端 Gradio5 实例(小红书): /config拉组件态 -> /upload -> fn1预热 -> fn0解析prompt文本 -> fn6推理 -> 同会话下载结果zip。产物 page_N.json 按页 jpg 尺寸归一化(免标定)。prompt 可换 prompt_ocr/prompt_general 等; 站点失效时 enabled:false 或改 base。"
+ },
+ "llm": {
+  "enabled": false,
+  "_note": "M5④LLM 兜底: 只对正则失败/低置信字段提问; endpoint 为 OpenAI 兼容 chat.completions; api_key 从环境变量读(不落盘)",
+  "endpoint": "",
+  "model": "",
+  "api_key_env": "KCI_LLM_KEY",
+  "temperature": 0,
+  "max_fields_per_call": 8
  }
 }
