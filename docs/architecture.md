@@ -94,6 +94,26 @@ out/<文档名>/
   `_unified_summary.json` 的 mtime 与本次启动时刻比对, 过期即`rmtree` 并记日志, 避免查看器
   读到上一轮的归一化结论。
 
+## 元数据层(可选, 在 unify 之后)
+
+`metadata.py` 不在 `pipeline.main` 的六步里: 它是**独立的一次事后收敛**, 只消费 `merged/` 与 `unified/`,
+把"三家都读到了什么"整理成字段级结论, 写出 `metadata.json` + `_metadata_report.html`。
+
+```
+unify.py  ->  out/<doc>/unified/page_N.json
+metadata.py --stage m3     跨页拼接(四信号全满足才拼), 结果写回 unified/page_N.json
+           --stage refs     ①参考文献条目
+           --stage front    ②标题 / 作者 / 机构(韩 + 罗马拼音)
+           --stage abs      ③韩文摘要 + 英文摘要
+           --stage llm      ④只对正则失败/低置信字段提问(默认关闭, 密钥走环境变量)
+           --stage report   落 metadata.json + _metadata_report.html
+           --viewer         用现有 merged/unified 重建 viewer_compare.html
+```
+
+顺序是硬约束: `--stage m3` 把标记写进 `unified/`, 而重跑 `pipeline.py` 会重跑 `unify` 把它们冲掉。
+实现放在 `metapy/`(`common` 共享阈值与工具, `m3` / `refs` / `front` / `abs` / `llmrep` 各一层),
+`metadata.py` 只是 CLI 入口; 它不改 `pipeline.py` / `merge_out.py` / `unify.py` 的任何行为。
+
 ## 并发
 
 - `pipeline.main` 用 `ThreadPoolExecutor(max_workers=3)` 并行取三渠道(网络等待为主, GIL 不碍事)。
