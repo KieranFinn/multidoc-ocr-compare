@@ -61,6 +61,7 @@
 | `viewer_compare.html` | 1:3 对照: 每页四栏(原图 + 三渠道), 渠道分色, 悬停显现框 |
 | `merged/` + `merged.md` | 逐页合并 + 每块来源(merge_out.py) |
 | `unified/` | 跨引擎归并组 + `_unified_summary.json`(coverage / one_to_one / orphan_rate), 由 `unify.py` 产出 |
+| `metadata.json` + `_metadata_report.html` | 结构化字段(标题/作者/机构/摘要/关键词/参考文献条目), 每字段带置信度与页码锚点, 由 `metadata.py` 产出 |
 | `_analysis_report.html` / `_analysis_summary.csv` | 跨文档指标与归因(`analyze.py`, 单独运行) |
 
 ## 离线跑通(不需要账号, 不联网)
@@ -80,6 +81,33 @@ python -m http.server -d examples/demo/out/demo_kr   # 然后打开 /index.html
 `--channels` 把整份配置换成 `examples/demo/channels.json`: 标定是 **identity**(`src_w/src_h: null`,
 引擎坐标即页图像素), 三个云端渠道全部禁用。demo 文档是合成的韩文, 刻意埋了三处分歧(离群读法、
 空块、缺页码), 让查看器与归一化层都有东西可看。不含第三方语料、不需要 token、不联网。CI 跑的就是这条命令。
+
+## 结构化元数据(可选, 在 unify 之后跑)
+
+上面的对照链路回答"**谁读成了什么**"; `metadata.py` 把留下的证据整理成**可引用的字段** —— 标题(韩/英)、
+作者、机构、摘要、关键词、参考文献条目, 每个字段带置信度, 并能点回 1:3 查看器的对应页。
+
+```bash
+python unify.py <文档>                     # 产出 out/<文档>/unified/
+python metadata.py <文档> --stage m3       # 跨页拼接: 把被分页切断的段落接回去
+python metadata.py <文档> --stage refs     # 参考文献条目 -> [{作者, 年, 题名, 卷, 期, 页}]
+python metadata.py <文档> --stage front    # 标题 / 作者 / 机构(韩文 + 罗马拼音)
+python metadata.py <文档> --stage abs      # 韩文摘要 + 英文摘要
+python metadata.py <文档> --stage report   # -> out/<文档>/metadata.json + _metadata_report.html
+```
+
+**先规则, 后模型。** 每个字段都由确定性启发式解析(双栏文献区用左边缘最大空隙判定、上标集合化匹配机构脚注、
+逐条目自识别 `[n]` / `N.` / 作者-出版年三种风格)。可选的 LLM 轮(`--stage llm`)只对**正则失败或低置信**的
+字段提问, 不会改写高置信结果; 默认关闭(`channels.json` 里 `llm.enabled: false`), 密钥从环境变量
+`KCI_LLM_KEY` 读, 不落盘。
+
+```bash
+python metadata.py <文档> --viewer         # 用磁盘上现有的 merged/ + unified/ 重建 viewer_compare.html
+```
+
+> `--stage m3` 会写回 `unified/page_N.json`。**重跑 `pipeline.py` 会重跑 unify 并冲掉这些标记**, 所以顺序是:
+> pipeline → metadata(m3 → refs → front → abs → report)。`--viewer` 就是为这个循环准备的: 只重画查看器,
+> 不碰下面的数据。
 
 ## 跑自己的文档
 
@@ -128,6 +156,7 @@ pipeline.py        渲染 -> 获取 -> 适配 -> 查看器 -> 总览
 webapp.py app.js   拖拽式工作台(标准库 HTTP 服务 + 渠道参数面板)
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ 与指标摘要
+metadata.py        元数据字段层 -> metadata.json 与报告(实现体在 metapy/)
 analyze.py         跨文档指标 + 归因报告
 regress.py         参考文献质量检查(截断/作者/跨页拼接)
 caption_audit.py   图表标题审计
@@ -135,6 +164,7 @@ mineru_drive.py    MinerU 桌面版 CDP 驱动(兜底)
 channels.json      标定与模型默认值(不含密钥)
 examples/          make_demo.py -> 离线 demo; 13625974/ -> 真实产物示例
 docs/              架构 / 标定 / 渠道配置
+metapy/            元数据层实现(common / m3 / refs / front / abs / llmrep)
 ```
 
 ## 许可
