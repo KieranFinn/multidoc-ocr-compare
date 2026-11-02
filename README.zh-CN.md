@@ -26,12 +26,16 @@
 仓库里放了一份**真实跑出来的**产物 —— [`examples/13625974/`](examples/13625974/): 一篇 11 页的韩文期刊论文
 (창의정보문화연구 2023, DOI `10.32823/jcic.9.4.202311.347`), 三个引擎全部跑过。
 
-| 查看 | 链接 |
-| --- | --- |
-| 总览 + 指标 | [examples/13625974/index.html](examples/13625974/index.html) |
-| 1:3 对照查看器(四栏, 悬停联动框与文本) | [viewer_compare.html](examples/13625974/viewer_compare.html) |
-| 单渠道查看器 | [MinerU](examples/13625974/viewer_mineru.html) · [dots.ocr](examples/13625974/viewer_dots.html) · [PaddleOCR-VL](examples/13625974/viewer_paddle.html) |
-| 合并文本 | [merged.md](examples/13625974/merged.md) |
+| 查看 | 渲染好的页面 | 源码 |
+| --- | --- | --- |
+| 总览 + 指标 | [直接打开](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/index.html) | [index.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/index.html) |
+| 1:3 对照查看器(四栏, 悬停联动框与文本) | [直接打开](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_compare.html) | [viewer_compare.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/viewer_compare.html) |
+| 单渠道查看器 | [MinerU](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_mineru.html) · [dots.ocr](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_dots.html) · [PaddleOCR-VL](https://kieranfinn.github.io/multidoc-ocr-compare/examples/13625974/viewer_paddle.html) | [viewer_mineru.html](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/viewer_mineru.html) |
+| 合并文本 | — | [merged.md](https://github.com/KieranFinn/multidoc-ocr-compare/blob/main/examples/13625974/merged.md) |
+
+> 为什么多一列: **GitHub 渲染 `.html` 时只显示源码**, 所以任何普通仓库链接都不可能直接看到查看器。
+> "直接打开"用的是同一份文件的静态托管地址; 若还没生效, 去 Settings → Pages 选一次
+> Deploy from a branch → `main` / `/` 即可, 或者干脆克隆仓库本地打开。
 
 这一份跑出来是什么样:
 
@@ -45,8 +49,8 @@
 610 个原始块 → 176 个逻辑块, `one_to_one` 0.898, `coverage` 1.0, `orphan_rate` 0.0;
 每一处分歧都归因到"文档本身"(三家都认为这里怪)或"某一渠道"(只有一家错)。
 
-> GitHub 只会把 HTML 当源码显示。要看可点的查看器, 请克隆仓库后用浏览器打开
-> `examples/13625974/index.html`, 或起个静态服务: `python -m http.server -d examples/13625974`。
+> 想在本地看: 克隆仓库后用浏览器打开 `examples/13625974/index.html`, 或起个静态服务:
+> `python -m http.server -d examples/13625974`。
 
 ## 产出
 
