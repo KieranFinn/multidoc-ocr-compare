@@ -65,6 +65,7 @@ either the document (all three engines agree on the oddity) or a single engine.
 | `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover |
 | `merged/` (+ `merged.md`) | per-page merged blocks with provenance, built by `merge_out.py` |
 | `unified/` | merge groups across engines + `_unified_summary.json` (coverage, one_to_one, orphan_rate), built by `unify.py` |
+| `metadata.json` + `_metadata_report.html` | structured fields (title, authors, affiliation, abstract, keywords, reference entries) with per-field confidence + page anchors, built by `metadata.py` |
 | `_analysis_report.html` / `_analysis_summary.csv` | cross-document metrics + attribution, built by `analyze.py` (run separately) |
 
 ## Try it offline (no account, no network)
@@ -86,6 +87,36 @@ calibration** (`src_w/src_h: null` — engine coordinates already *are* page pix
 channel disabled. The demo document is synthetic Korean text with three deliberate disagreements
 (an outlier reading, an empty block, a missing page number) so the viewers and the unified pass have
 something to show. Nothing third-party, no token, no network. CI runs exactly this.
+
+## Structured metadata (optional, runs after `unify`)
+
+The comparison chain above tells you *who read what*. `metadata.py` turns the surviving evidence into
+*citable fields* — title (Korean + English), authors, affiliations, abstract, keywords, and reference
+entries — each with a confidence level and a page anchor back into the 1:3 viewer.
+
+```bash
+python unify.py <doc>                      # produces out/<doc>/unified/
+python metadata.py <doc> --stage m3        # cross-page join: glue a paragraph split by the page break
+python metadata.py <doc> --stage refs      # reference entries -> a list of {authors, year, title, vol, no, pages}
+python metadata.py <doc> --stage front     # title / authors / affiliations (Korean + romanised)
+python metadata.py <doc> --stage abs       # Korean + English abstracts
+python metadata.py <doc> --stage report    # -> out/<doc>/metadata.json + _metadata_report.html
+```
+
+Rules first, model second. Every field is parsed by deterministic heuristics (layout gaps for the
+two-column reference block, superscript-set matching for author footnotes, per-entry style detection
+for `[n]` / `N.` / author-year). An optional LLM pass (`--stage llm`) only *asks about fields the
+regexes failed or scored low*; it never rewrites a high-confidence value. It is off by default
+(`llm.enabled: false` in `channels.json`) and reads its key from the `KCI_LLM_KEY` environment
+variable — no secret is ever written to disk.
+
+```bash
+python metadata.py <doc> --viewer          # rebuild viewer_compare.html from existing merged/ + unified/
+```
+
+> `--stage m3` writes back into `unified/page_N.json`. Re-running `pipeline.py` re-runs `unify` and
+> throws those markers away, so the order is: pipeline → metadata (m3 → refs → front → abs → report).
+> `--viewer` exists for exactly this loop: it redraws the viewer without touching the data underneath.
 
 ## Run it on your own PDFs
 
@@ -142,6 +173,7 @@ pipeline.py        render -> fetch -> adapt -> viewers -> index
 webapp.py app.js   drag & drop workbench (stdlib HTTP server + channel config panel)
 merge_out.py       per-page merge across channels
 unify.py           cross-engine grouping -> unified/ + summary metrics
+metadata.py        structured metadata layer -> metadata.json + report (metapy/ package)
 analyze.py         cross-document metrics + attribution report
 regress.py         reference-entry quality checks (truncation, authors, page joins)
 caption_audit.py   figure / table caption audit
@@ -149,6 +181,7 @@ mineru_drive.py    CDP driver for the MinerU desktop app (fallback)
 channels.json      calibration + model defaults (no secrets)
 examples/          make_demo.py -> offline demo; 13625974/ -> real checked-in run
 docs/              architecture, calibration, channels
+metapy/            implementation of the metadata layer (common / m3 / refs / front / abs / llmrep)
 ```
 
 ## License
