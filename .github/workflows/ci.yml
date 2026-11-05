@@ -1,0 +1,87 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  compile:
+    name: compile + import (py ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Byte-compile every module (syntax gate)
+        run: python -m compileall -q .
+      - name: Import check (no service calls, no credentials)
+        run: |
+          python - <<PY
+          import pipeline, unify, merge_out, analyze, regress, caption_audit, mineru_drive
+          import metapy
+          from metapy import m3_doc, refs_doc, front_doc, abstract_doc, llm_apply, report_meta, rebuild_viewer
+          print("config layers:", sorted(pipeline.load_cfg()))
+          PY
+
+  demo:
+    # 离线冒烟: 合成 PDF + 三家 mock 产物 -> 全链路(适配/标定/合并/归一化/查看器)。
+    # 不需要 token、不联网。渲染栈用 pypdfium2 + Pillow(已在 requirements.txt)。
+    name: offline demo (py ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -r requirements.txt
+      - name: Generate demo inputs (synthetic PDF + 3 mock channel outputs)
+        run: |
+          python examples/make_demo.py
+          ls -R examples/demo | head -40
+      - name: Run pipeline end to end (identity calibration, no network)
+        run: |
+          set -x
+          python pipeline.py examples/demo/samples/demo_kr.pdf \
+            --mineru examples/demo/inbox/demo_kr__mineru \
+            --dots   examples/demo/inbox/demo_kr__dots \
+            --paddle examples/demo/inbox/demo_kr__paddle \
+            --channels examples/demo/channels.json \
+            --out examples/demo/out
+      - name: Assert artifacts exist
+        run: |
+          set -e
+          O=examples/demo/out/demo_kr
+          for f in index.html viewer_mineru.html viewer_dots.html viewer_paddle.html \
+                   viewer_compare.html merged.json merged.md merged/page_0.json \
+                   unified/page_0.json unified/_unified_summary.json pages/page_0.jpg; do
+            test -s "$O/$f" || { echo "MISSING $O/$f"; exit 1; }
+          done
+          echo "artifacts OK"
+      - name: Assert channel data survived (3 channels + per-channel blocks)
+        run: |
+          python - <<PY
+          import json
+          p = "examples/demo/out/demo_kr"
+          d = json.load(open(p + "/merged.json", encoding="utf-8"))
+          ch = d["channels"]
+          assert set(ch) == {"mineru", "dots", "paddle"}, ch
+          assert all(v["blocks"] > 0 for v in ch.values()), ch
+          u = json.load(open(p + "/unified/_unified_summary.json", encoding="utf-8"))
+          m = u["metrics"]
+          assert 0 < m["coverage"] <= 1 and m["groups"] > 0, m
+          print("channels:", ch, "| unified metrics:", m)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: demo-out-py${{ matrix.python }}
+          path: examples/demo/out
