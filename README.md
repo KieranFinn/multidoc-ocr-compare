@@ -103,9 +103,12 @@ python metadata.py <doc> --stage abs       # Korean + English abstracts
 python metadata.py <doc> --stage report    # -> out/<doc>/metadata.json + _metadata_report.html
 ```
 
-Rules first, model second. Every field is parsed by deterministic heuristics (layout gaps for the
-two-column reference block, superscript-set matching for author footnotes, per-entry style detection
-for `[n]` / `N.` / author-year). An optional LLM pass (`--stage llm`) only *asks about fields the
+Rules first, model second. Every field is parsed by deterministic heuristics (layout-class aware
+segmentation for Korean five-part citations and `In:` book chapters, superscript-set matching for
+author footnotes, per-entry style detection for `[n]` / `N.` / author-year). Product fields carry
+`layout` (citation-form class), `container_title` / `publisher` / `editor` (CSL-named; `source`
+remains the raw container string for back-compat — downstream should read `container_title` as the
+container, not `source`). An optional LLM pass (`--stage llm`) only *asks about fields the
 regexes failed or scored low*; it never rewrites a high-confidence value. It is off by default
 (`llm.enabled: false` in `channels.json`) and reads its key from the `KCI_LLM_KEY` environment
 variable — no secret is ever written to disk.
