@@ -118,10 +118,9 @@ python webapp.py                                      # 或: 拖拽式工作台 
 ```
 
 配置分三层(`channels.json` → `channels.local.json` → 环境变量), 详见
-[docs/channels.md](docs/channels.md); 标定方法见 [docs/calibration.md](docs/calibration.md);
-整体流程见 [docs/architecture.md](docs/architecture.md)。
+[docs/channels.md](docs/channels.md)。仓库里没有任何东西需要 token 就能跑起来。
 
-## 三个渠道
+### 三个渠道
 
 | 渠道 | 获取方式 | 坐标系 |
 | --- | --- | --- |
@@ -135,6 +134,7 @@ python webapp.py                                      # 或: 拖拽式工作台 
 
 - **坐标系是配置, 不是代码**: `src_w / src_h / x_off / y_off` 落在 channels.json, 每次调用重读,
   改标定不用重启; 横纵非等比必须分别缩放, 统一比例会让框在非 A4 页上歪。
+  标定方法见 [docs/calibration.md](docs/calibration.md)。
 - **标定键跟数据放一起**: 同一个 mineru 目录可能来自桌面版或云端 API(几何差约 1.6%),
   归档时写 `_calib_key` 标记, 查看器与合并器读同一份判定, 避免"同一批字节两套坐标"。
 - **缓存优先, 其次 API, 最后桌面版**: 重跑文档零成本; 强制重取就删掉对应的 `raw/<渠道>_api`。
