@@ -17,6 +17,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+      - name: Install runtime deps
+        run: pip install -r requirements.txt
       - name: Byte-compile every module (syntax gate)
         run: python -m compileall -q .
       - name: Import check (no service calls, no credentials)
@@ -50,6 +52,11 @@ jobs:
       - name: Run pipeline end to end (identity calibration, no network)
         run: |
           set -x
+          # 本地即调用的适配器逐个 import, 给后续 assert 的失败模式留可读的 Traceback
+          python - <<PY
+          import pipeline, unify
+          print("pipeline imports OK")
+          PY
           python pipeline.py examples/demo/samples/demo_kr.pdf \
             --mineru examples/demo/inbox/demo_kr__mineru \
             --dots   examples/demo/inbox/demo_kr__dots \
