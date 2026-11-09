@@ -4,13 +4,14 @@
 把 PDF 拖入页面即自动: 上传 → 跑 pipeline → 页内出结果。
 渠道产物约定: 解析完后丢进 inbox\，命名 <文档名>__mineru / <文档名>__dots / <文档名>__paddle.md
 """
-import os, re, io, json, threading, time, webbrowser, functools, sys
+import os, re, io, json, threading, time, webbrowser, sys, shutil
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 UP = os.path.join(ROOT, "uploads")
 OUT = os.path.join(ROOT, "out")
+OUT_LLM_TRIAL = os.path.join(ROOT, "out_llm_trial")   # 批次4d: LLM 真调/对比数据隔离目录(可整删重建, 不进 out/ 基线)
 INBOX_MINERU_ROOT = os.path.join(ROOT, "inbox")
 os.makedirs(UP, exist_ok=True)
 JOBS = {}          # job_id -> {state, log[], doc, err}
@@ -18,7 +19,6 @@ JOB_LOCK = threading.Lock()
 RUN_LOCK = threading.Lock()  # 批处理串行锁: 同时丢多个 PDF 按顺序逐个解析
 MIME = {".html": "text/html; charset=utf-8", ".jpg": "image/jpeg", ".png": "image/png",
         ".json": "application/json", ".md": "text/plain; charset=utf-8", ".css": "text/css", ".js": "text/javascript"}
-import shutil
 
 CFG_FP = os.path.join(ROOT, "channels.json")
 API_SECTIONS = ("paddle_api", "mineru_api", "dots_api")  # web 界面允许改的渠道 API 配置段
@@ -152,7 +152,7 @@ header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12p
 </div>
 <div id="cfgpanel">
  <h3>渠道 API 配置</h3>
- <p class="tip" style="margin:0">写入 channels.json，下个文档自动生效（pipeline 每次调用都会重读）。</p>
+ <p class="tip" style="margin:0">写入 channels.local.json，下个文档自动生效（pipeline 每次调用都会重读）。</p>
  <div id="cfgform"></div>
  <div id="cfgmsg"></div>
  <div class="acts"><button id="closecfg">取消</button><button id="savecfg">保存</button></div>
@@ -188,6 +188,40 @@ class H(BaseHTTPRequestHandler):
             return self._send(200, json.dumps({"state": j.get("state", "gone"), "log": j.get("log", [])[-60:], "doc": j.get("doc", ""), "err": j.get("err", "")}), "application/json")
         if self.path.startswith("/api/config"):
             return self._send(200, json.dumps({s: _load_cfg().get(s, {}) for s in API_SECTIONS}, ensure_ascii=False), "application/json")
+        if self.path.startswith("/api/ner_glossary"):   # 全局批注词典(审计页/词典页 live fetch)
+            fp = os.path.join(OUT_LLM_TRIAL, "ner_glossary.json")
+            if os.path.isfile(fp):
+                return self._send(200, io.open(fp, "rb").read(), "application/json")
+            return self._send(200, json.dumps({"entries": []}), "application/json")
+        if self.path.startswith("/api/ner_annotations"):   # 全部实体标注(审计页 live 覆盖内联快照)
+            try:
+                ann = {}
+                for doc in sorted(os.listdir(OUT_LLM_TRIAL)):
+                    fp = os.path.join(OUT_LLM_TRIAL, doc, "ner_llm.json")
+                    if not os.path.isfile(fp):
+                        continue
+                    d = json.load(io.open(fp, encoding="utf-8"))
+                    m = {}
+                    for i, e in enumerate(d.get("entities") or []):
+                        vd, cmt = e.get("verdict"), (e.get("comment") or "")
+                        if vd or cmt:
+                            m[str(i)] = {"verdict": vd, "comment": cmt}
+                    if m:
+                        ann[doc] = m
+                return self._send(200, json.dumps({"ann": ann}, ensure_ascii=False),
+                                  "application/json")
+            except Exception:
+                return self._send(200, json.dumps({"ann": {}}, ensure_ascii=False),
+                                  "application/json")
+        if self.path.startswith("/trial/"):   # NER 审计页等 trial 产物(static, 同 /out/ 越界守卫)
+            rel = unquote(self.path[len("/trial/"):].split("?")[0])
+            fp = os.path.abspath(os.path.join(OUT_LLM_TRIAL, rel.lstrip("/").replace("/", os.sep)))
+            if not (fp == OUT_LLM_TRIAL or fp.startswith(OUT_LLM_TRIAL + os.sep)):
+                return self._send(403, "forbidden")
+            if os.path.isfile(fp):
+                ext = os.path.splitext(fp)[1].lower()
+                return self._send(200, io.open(fp, "rb").read(), MIME.get(ext, "application/octet-stream"))
+            return self._send(404, "not found")
         if self.path.startswith("/out/"):
             rel = unquote(self.path[len("/out/"):].split("?")[0])  # 中文文档名/文件名在 URL 里是 %XX 编码, 不解码必然 404
             fp = os.path.abspath(os.path.join(OUT, rel.lstrip("/").replace("/", os.sep)))
@@ -199,6 +233,111 @@ class H(BaseHTTPRequestHandler):
             return self._send(404, "not found")
         self._send(404, "not found")
     def do_POST(self):
+        if self.path.startswith("/api/choice"):
+            n = int(self.headers.get("Content-Length", 0))
+            if n <= 0 or n > 64 * 1024:
+                return self._send(413, "bad request")
+            try:
+                q = re.search(r"doc=([^&]+)", self.path)
+                doc = unquote(q.group(1)) if q else ""
+                doc = re.sub(r"[^\w\-.一-鿿]+", "_", doc)   # 白名单过滤, 同 /upload 口径
+                body = json.loads(self.rfile.read(n).decode("utf-8"))
+                choices = body.get("choices") or []
+                if not isinstance(choices, list):
+                    raise ValueError("choices 必须是数组")
+                ddir = os.path.abspath(os.path.join(OUT_LLM_TRIAL, doc))
+                if not (ddir == OUT_LLM_TRIAL or ddir.startswith(OUT_LLM_TRIAL + os.sep)):
+                    return self._send(403, "forbidden")
+                os.makedirs(ddir, exist_ok=True)
+                payload = {"doc": doc, "updated": time.strftime("%Y-%m-%d %H:%M:%S"),
+                           "choices": choices}
+                with io.open(os.path.join(ddir, "_choice.json"), "w", encoding="utf-8") as f:
+                    f.write(json.dumps(payload, ensure_ascii=False, indent=1))
+                return self._send(200, json.dumps({"ok": 1}, ensure_ascii=False), "application/json")
+            except Exception as e:
+                return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
+                                  "application/json")
+        if self.path.startswith("/api/ner_note"):   # NER 审计标注回写: 直接改 ner_llm.json 实体的 verdict/comment 字段
+            n = int(self.headers.get("Content-Length", 0))
+            if n <= 0 or n > 64 * 1024:
+                return self._send(413, "bad request")
+            try:
+                body = json.loads(self.rfile.read(n).decode("utf-8"))
+                notes = body.get("notes") or []
+                if not isinstance(notes, list):
+                    raise ValueError("notes 必须是数组")
+                by_doc = {}
+                for x in notes:
+                    if not isinstance(x, dict):
+                        continue
+                    doc = re.sub(r"[^\w\-.一-鿿]+", "_", str(x.get("doc") or ""))
+                    idx = x.get("idx")
+                    if not doc or not isinstance(idx, int):
+                        continue
+                    vd = x.get("verdict")
+                    by_doc.setdefault(doc, {})[idx] = {
+                        "verdict": vd if vd in ("ok", "bad", "doubt") else None,
+                        "comment": str(x.get("comment") or "")}
+                saved = 0
+                for doc, patches in by_doc.items():
+                    ddir = os.path.abspath(os.path.join(OUT_LLM_TRIAL, doc))
+                    if not ddir.startswith(OUT_LLM_TRIAL + os.sep):
+                        return self._send(403, "forbidden")
+                    fp = os.path.join(ddir, "ner_llm.json")
+                    if not os.path.isfile(fp):
+                        continue
+                    d = json.load(io.open(fp, encoding="utf-8"))
+                    ents = d.get("entities") or []
+                    dirty = False
+                    for idx, patch in patches.items():
+                        if 0 <= idx < len(ents):
+                            ents[idx]["verdict"] = patch["verdict"]
+                            ents[idx]["comment"] = patch["comment"]
+                            dirty = True
+                    if dirty:
+                        with io.open(fp, "w", encoding="utf-8") as f:
+                            f.write(json.dumps(d, ensure_ascii=False, indent=1))
+                        saved += 1
+                new_terms = 0
+                try:   # 全局批注词典: 有批注的条目, 同 (kind, name_norm) 不存在则收录(只进不改)
+                    from metapy.ner import glossary_add
+                    for x in notes:
+                        if not isinstance(x, dict):
+                            continue
+                        cmt = (x.get("comment") or "").strip()
+                        if not cmt:
+                            continue
+                        _, created = glossary_add(OUT, x.get("kind") or "", x.get("name") or "",
+                                                  cmt, doc=x.get("doc"), uid=x.get("uid"))
+                        if created:
+                            new_terms += 1
+                except Exception:
+                    pass
+                return self._send(200, json.dumps({"ok": 1, "docs": saved,
+                                                   "glossary_new": new_terms}, ensure_ascii=False),
+                                  "application/json")
+            except Exception as e:
+                return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
+                                  "application/json")
+        if self.path.startswith("/api/ner_glossary"):   # 词典删除词条(词典页, 键=kind+name_norm)
+            n = int(self.headers.get("Content-Length", 0))
+            if n <= 0 or n > 64 * 1024:
+                return self._send(413, "bad request")
+            try:
+                from metapy.ner import load_glossary, save_glossary
+                body = json.loads(self.rfile.read(n).decode("utf-8"))
+                keys = body.get("delete") or []
+                g = load_glossary(OUT)
+                before = len(g.get("entries") or [])
+                g["entries"] = [e for e in g.get("entries") or []
+                                if (u"%s%s" % (e.get("kind"), e.get("name_norm"))) not in keys]
+                save_glossary(OUT, g)
+                return self._send(200, json.dumps(
+                    {"ok": 1, "removed": before - len(g["entries"])}, ensure_ascii=False),
+                    "application/json")
+            except Exception as e:
+                return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
+                                  "application/json")
         if self.path.startswith("/api/config"):
             n = int(self.headers.get("Content-Length", 0))
             if n <= 0 or n > 64 * 1024:
@@ -213,8 +352,7 @@ class H(BaseHTTPRequestHandler):
             return self._send(404, "not found")
         name = re.search(r"name=([^&]+)", self.path)
         name = name.group(1) if name else "upload.pdf"
-        from urllib.parse import unquote
-        name = unquote(name)  # 中文名经过 URL 编码, 先解码再做字符过滤
+        name = unquote(name)  # 中文名经过 URL 编码, 先解码再做字符过滤(模块头部已导入)
         name = re.sub(r"[^\w\-.一-鿿]+", "_", name) or "upload.pdf"
         if not name.lower().endswith(".pdf"): name += ".pdf"
         n = int(self.headers.get("Content-Length", 0))

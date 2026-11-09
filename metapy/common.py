@@ -1,31 +1,23 @@
-__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_frag_ok', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts']
-
 # -*- coding: utf-8 -*-
-r"""metadata.py 元数据字段层(M5 路线A) + 前置 M3 跨页拼接。
-只消费 out\<doc>\unified\ 与 merged\(不改 pipeline/merge_out/unify/regress 现有行为; 对 unified 页文件
-做 M3 后处理写回, 重跑 unify.py 后需重跑本脚本才能恢复 M3 标记)。
-M3 跨页拼接(unify 阶段④占位 cross_page{spans:false} 的落地):
-  页尾无终止标点的块与下页页首块, 信号全满足才拼: ① 页尾块无终止标点(多渠道佐证, 独立注记行豁免)
-  ② 栏位续接先验(末栏尾→下页首栏头; 非末栏尾→先查本页次栏头, 兼容则属栏内续接不跨页)
-  ③ 文本相似连续(粘入证据 | 边界dice | 片段头渠道一致, 拼接点语言错位一票否决)
-  ④ 页码/URL/页眉页脚行剔除; 栏外竖条(学会侧标)与文献尾注不作文本流。
-  形态: join=跨页拼接 / join_intra=栏间断点拼接(同机制内页版) / verify=页尾块经查证完整(消 xpage 误标)
-  / backfill=MinerU 粘入的下页段首从页脚型块剥离、回填下页空块或并入下页片段头。
-  确认后 cross_page{spans:true, pages:[n,n+1]}; 拼后文本重过 T1 消截断误报; 被吞并块标 role=head 不再单独出眼。
-用法: python metadata.py <doc> [<doc>...] [--out out] [--stage m3]
+r"""metapy 各 stage 共享的阈值、正则、文本折叠与 metadata/audit sidecar 工具。
+
+只提供共享实现，不承担 m3 跨页拼接流程；m3.py 与 unify.py 均为冻结文件。
+pipeline 的 _fold_sym/_gdice 在此 re-export，保持既有 `from .common import *` 调用契约。
 """
 
-import os, re, io, json, argparse, datetime, collections, html
+__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit']
 
-import pipeline
+import os, re, io, json, collections, datetime
 
-from pipeline import _gdice, _fold_sym
-
-import regress
+from pipeline import _fold_sym, _gdice
 
 import unify
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # metapy/ 之上即 pipeline/
+
+RAW_HEAD_LEN = 48          # 双渠道选择/回显的折叠 raw 锚长度
+NUMERIC_CITE_MIN = 3       # cspan 数字式引文开启所需的正文候选下限
+TITLE_READING_DICE = 0.8   # front 采用渠道题名读法/统计一致率的 dice 门槛
 
 TAIL_SOFT_LINES = 2.2   # 页尾软 zone: 栏内容底边容差(行高倍数; 页尾块常被引擎粘上页脚/页码拉长几何, 只作信息记录)
 
@@ -74,6 +66,24 @@ NEW_WORDS = re.compile(
 
 def _fold(s):
     return re.sub(r"\s+", "", _fold_sym(s or ""))
+
+# 批次3.5 异体折叠表(证据制, §54 归档): 全语料字符级伪差异扫描定表——
+# 显式等价类: 郷/鄕(§41 u35_12 原始动机), 硏/研·離/離·歷/歷/歴·鬪/鬥/闘(扫描实证);
+#  principled 扩展: CJK 兼容表意文字块(U+F900–FAFF)整体 NFKC 折——该块 Unicode 定义即"同字异体", 无损;
+#  刻意不折: 全量 NFKC(上下标/全角拉丁不折, 同 _gdice 隐患约定), 跨词形近(貊/貓), 跨脚本(의/の), 韩文音节 OCR 差异(곽/곡)。
+_HANZI_VARIANTS = {
+    u"郷": u"鄕", u"硏": u"研", u"離": u"離",
+    u"歷": u"歷", u"歴": u"歷",
+    u"鬪": u"鬥", u"闘": u"鬥",
+}
+import unicodedata as _ud
+_COMPAT_FOLD = {chr(c): _ud.normalize("NFKC", chr(c)) for c in range(0xF900, 0xFB00)}
+_VTRAN = {ord(k): v for k, v in {**_COMPAT_FOLD, **_HANZI_VARIANTS}.items()}
+
+def _foldv(s):
+    """异体折叠(匹配口径): _fold + 汉字异体表, 只用于 refs 互证/校验比对——
+    绝不改原始文本与产品字段(忠实度评估用原文, 比较口径折叠, 两条口径物理分离, 同 _fold_sym 纪律)。"""
+    return _fold(s).translate(_VTRAN)
 
 def _line_h(unified_list):
     """行高=P20 小高度分位(同 unify 口径, 中位数会被大段块推高)。"""
@@ -265,9 +275,9 @@ KW_VOL = re.compile(r"제\s*(\d+)\s*권")
 
 KW_NO = re.compile(r"제\s*(\d+)\s*호")
 
-PP_RE = re.compile(r"pp?\.\s*(\d+)\s*[-–]\s*(\d+)", re.I)
+PP_RE = re.compile(r"pp?\.?\s*(\d{1,4})\s*[-–~～]\s*(\d{1,4})\s*쪽?", re.I)
 
-PG_RANGE = re.compile(r"(?:^|[\s,(])((?:\d{1,4}))\s*[-–]\s*(\d{1,4})(?=[.,)\s]|$)")
+PG_RANGE = re.compile(r"(?:^|[\s,(])((?:\d{1,4}))\s*[-–~～]\s*(\d{1,4})(?=[.,)\s쪽]|$)")
 
 HONORIFIC = re.compile(
     u"(교수|부교수|조교수|연구원|박사|정회원|우수회원|특별회원|학회장|이사장|명예교수|객원교수)$")
@@ -325,7 +335,7 @@ HEAD_EXCLUDE = re.compile(u"^(차\\s*례|목\\s*차|요\\s*약|국문\\s*요약|
 
 SUP_LATEX = re.compile(r"\$\s*\^\{([^}]*)\}\s*\$")
 
-AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital)")
+AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital)")
 
 ROLE_WORDS = re.compile(u"(교신저자|제\\s*\\d+\\s*저자|공동저자|책임저자|선행\\s*연구)")
 
@@ -343,11 +353,52 @@ KW_LINE = re.compile(u"^(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어
 
 LV_COLOR = {"high": "#16a34a", "mid": "#d97706", "low": "#dc2626"}
 
-if __name__ == "__main__":
-    main()
+AUDIT_NAME = "metadata_audit.json"   # 诊断 sidecar(§38 分层输出): review_comment/ch_agree/basis/block_review/L1 校验/llm 队列——评审工具读它, 下游只拿 metadata.json
 
+def load_audit(doc_dir):
+    """读诊断 sidecar(metadata_audit.json); 不存在返回 {}(旧产物/未跑 refs 时报告端容忍)。"""
+    fp = os.path.join(doc_dir, AUDIT_NAME)
+    if os.path.exists(fp):
+        return json.load(io.open(fp, encoding="utf-8"))
+    return {}
+
+def save_audit(doc_dir, audit):
+    """写诊断 sidecar(带 generated 时间戳)。"""
+    audit["generated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    io.open(os.path.join(doc_dir, AUDIT_NAME), "w", encoding="utf-8").write(
+        json.dumps(audit, ensure_ascii=False, indent=1))
 
 def _hangul_ratio(t):
     h = len(re.findall(u"[가-힣]", t or ""))
     a = len(re.findall(r"[A-Za-z]", t or ""))
     return h / max(1.0, h + a)
+
+
+def _selftest():
+    import shutil
+    import tempfile
+
+    ok1 = _fold(" A \nB") == "AB"
+    ok2 = _foldv("郷 鄕 歷") == "鄕鄕歷"
+    cleaned, dropped = _clean_lines("34\nwww.kci.go.kr\n군사연구 211\n본문", (),
+                                    {_dh_core(_fold("군사연구 211"))})
+    ok3 = cleaned == "본문" and dropped == ["34", "www.kci.go.kr", "군사연구 211"]
+    tmp = tempfile.mkdtemp()
+    try:
+        save_audit(tmp, {"doc": "d", "references": []})
+        loaded = load_audit(tmp)
+        ok4 = loaded["doc"] == "d" and loaded["references"] == [] and bool(loaded.get("generated"))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    ok5 = (RAW_HEAD_LEN, NUMERIC_CITE_MIN, TITLE_READING_DICE) == (48, 3, 0.8)
+    ok6 = _hangul_ratio("한글 ABC") == 0.4
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6)
+    for i, ok in enumerate(oks, 1):
+        if not ok:
+            print("FAIL [common case %d]" % i)
+    print("common selftest: %d/6 PASS" % sum(oks))
+    return all(oks)
+
+
+if __name__ == "__main__":
+    raise SystemExit(0 if _selftest() else 1)

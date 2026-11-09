@@ -9,7 +9,8 @@ r"""unify 归一化层(M1 骨架): 只消费 adapt 产物(out\<doc>\merged\page_
   ① 渠道内归组(题注挂靠、段块续接, 滑窗邻域, 阈值行高自适应; 政策: 宁拆勿合)
   ② 跨渠道对齐(1:1: IoU+dice 贪心; 1:N: 包含匹配 + 大块可切分性检验; orphan -> coverage 分歧)
   ③ 共识与置信(机械规则阈值可调; HIGH=3/3+类型一致+dice>=0.95+无T1-T5; 政策: 宁送勿漏)
-  ④ 页边界跨页拼接(M3 实现, M1 只留 cross_page 占位字段)
+  ④跨页拼接的 cross_page{spans} 占位(M3 已由 metapy/m3.py 实现为 unified 后处理,
+    顺序: unify → metadata --stage m3 → --viewer; 重跑本脚本会冲掉 M3 标记)
 统一对象 schema:
   uid / page / box(共识几何=成员框逐坐标中位数) / type(共识类型=成员类型多数票)
   cross_page{spans} / members{ch:[unit...]} 可缺员 / readings[{ch,text,dice,flags}]
