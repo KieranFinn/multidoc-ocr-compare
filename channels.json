@@ -1,76 +1,76 @@
 {
- "keep_api_zip": false,
- "_keep_api_zip_note": "true=API 抓取时保留 api_result.zip 归档(每篇 4-12MB); 默认 false 不落盘——适配器只读解压产物, zip 无任何读取方(2026-10-30 清理验证)",
- "mineru": {
-  "src_w": 1034,
-  "src_h": 1012,
-  "x_off": 17.8,
-  "y_off": 12.3,
-  "_note": "桌面版 content_list_v2 的 bbox 空间各向异性; 换渲染设置后重跑校准。"
- },
- "mineru_api": {
-  "token": "sk-Thzu3gy3dKU1B5FjJve5AMtP94BjXBlFMYQApygObfnhErDk",
-  "run_timeout": 300,
-  "src_w": 1017,
-  "src_h": 1008,
-  "x_off": 13,
-  "y_off": 8,
-  "_calib_note": "API content_list_v2 的 bbox 空间(与桌面版 1034x1012 差~1.6%, 故单列); 偏移为150dpi页图像素",
-  "model_version": "vlm",
-  "language": "korean",
-  "is_ocr": false,
-  "timeout": 1800,
-  "_note": "MinerU 云端 API(file-urls/batch 签名上传 -> 裸PUT -> 轮询 -> zip)。渠道优先走 API, 失败转 CDP 桌面版; raw\\mineru_api 有 content_list_v2 则优先复用。token 失效(A0202)时更新。",
-  "enable_formula": "True",
-  "enable_table": "True",
-  "queue_timeout": 7200
- },
- "dots": {
-  "src_w": 1701,
-  "src_h": 2369,
-  "_note": "手动导出 page_N.json 的 bbox 像素空间。fetch_dots_api 产物已按页归一化(0-1), 免标定。",
-  "x_off": 14.6,
-  "y_off": 10.6
- },
- "paddle": {
-  "_note": "Paddle 渠道块坐标已归一化(0-1), 无需标定; 来源可为 API 转换产物/平台导出"
- },
- "auto": {
+  "keep_api_zip": false,
+  "_keep_api_zip_note": "true=API 抓取时保留 api_result.zip 归档(每篇 4-12MB); 默认 false 不落盘——适配器只读解压产物, zip 无任何读取方(2026-10-30 清理验证)",
   "mineru": {
-   "cmd": "",
-   "timeout": 1800,
-   "_note": "安装 MinerU CLI 后填写, 例如: mineru -p {pdf} -o {out}（非OCR开关以版本文档为准）。留空 = 走 CDP/API。"
+    "src_w": 1034,
+    "src_h": 1012,
+    "x_off": 17.8,
+    "y_off": 12.3,
+    "_note": "桌面版 content_list_v2 的 bbox 空间各向异性; 换渲染设置后重跑校准。"
+  },
+  "mineru_api": {
+    "token": "",
+    "run_timeout": 300,
+    "src_w": 1017,
+    "src_h": 1008,
+    "x_off": 13,
+    "y_off": 8,
+    "_calib_note": "API content_list_v2 的 bbox 空间(与桌面版 1034x1012 差~1.6%, 故单列); 偏移为150dpi页图像素",
+    "model_version": "vlm",
+    "language": "korean",
+    "is_ocr": false,
+    "timeout": 1800,
+    "_note": "MinerU 云端 API(file-urls/batch 签名上传 -> 裸PUT -> 轮询 -> zip)。渠道优先走 API, 失败转 CDP 桌面版; raw\\mineru_api 有 content_list_v2 则优先复用。token 失效(A0202)时更新。",
+    "enable_formula": "True",
+    "enable_table": "True",
+    "queue_timeout": 7200
   },
   "dots": {
-   "cmd": "",
-   "timeout": 1800,
-   "_note": "自部署 dots.ocr(ModelScope 有镜像)后填推理命令模板。"
+    "src_w": 1701,
+    "src_h": 2369,
+    "_note": "手动导出 page_N.json 的 bbox 像素空间。fetch_dots_api 产物已按页归一化(0-1), 免标定。",
+    "x_off": 14.6,
+    "y_off": 10.6
+  },
+  "paddle": {
+    "_note": "Paddle 渠道块坐标已归一化(0-1), 无需标定; 来源可为 API 转换产物/平台导出"
+  },
+  "auto": {
+    "mineru": {
+      "cmd": "",
+      "timeout": 1800,
+      "_note": "安装 MinerU CLI 后填写, 例如: mineru -p {pdf} -o {out}（非OCR开关以版本文档为准）。留空 = 走 CDP/API。"
+    },
+    "dots": {
+      "cmd": "",
+      "timeout": 1800,
+      "_note": "自部署 dots.ocr(ModelScope 有镜像)后填推理命令模板。"
+    }
+  },
+  "paddle_api": {
+    "token": "",
+    "run_timeout": 300,
+    "model": "PaddleOCR-VL",
+    "timeout": 900,
+    "_note": "PaddleOCR 云端 API(异步jobs)。inbox 有 <doc>__paddle 产物时优先用产物, 否则自动走API。token 失效(401)时更新此处。",
+    "queue_timeout": 7200
+  },
+  "dots_api": {
+    "base": "https://dotsocr.xiaohongshu.com",
+    "model": "dots.mocr",
+    "prompt": "prompt_layout_all_en",
+    "timeout": 1800,
+    "_note": "dots.ocr 云端 Gradio5 实例(小红书): /config拉组件态 -> /upload -> fn1预热 -> fn0解析prompt文本 -> fn6推理 -> 同会话下载结果zip。产物 page_N.json 按页 jpg 尺寸归一化(免标定)。prompt 可换 prompt_ocr/prompt_general 等; 站点失效时 enabled:false 或改 base。"
+  },
+  "llm": {
+    "enabled": false,
+    "_note": "M5④LLM 兜底: 只对正则失败/低置信字段提问; endpoint 为 OpenAI 兼容 chat.completions; api_key 从环境变量读(不落盘)",
+    "endpoint": "",
+    "model": "",
+    "api_key_env": "KCI_LLM_KEY",
+    "temperature": 0,
+    "max_fields_per_call": 8,
+    "ner_enabled": false,
+    "_ner_note": "--stage ner 开关(2026-11-09: 数据集/基金/软件改为本文关系+证据抽取, 旧产物已清除; 默认 false, 真跑用 _ner_run.py, key 从环境变量读)"
   }
- },
- "paddle_api": {
-  "token": "5c7c2a12c107af5ac0e0f5fe942d7a2f4df7fe8f",
-  "run_timeout": 300,
-  "model": "PaddleOCR-VL",
-  "timeout": 900,
-  "_note": "PaddleOCR 云端 API(异步jobs)。inbox 有 <doc>__paddle 产物时优先用产物, 否则自动走API。token 失效(401)时更新此处。",
-  "queue_timeout": 7200
- },
- "dots_api": {
-  "base": "https://dotsocr.xiaohongshu.com",
-  "model": "dots.mocr",
-  "prompt": "prompt_layout_all_en",
-  "timeout": 1800,
-  "_note": "dots.ocr 云端 Gradio5 实例(小红书): /config拉组件态 -> /upload -> fn1预热 -> fn0解析prompt文本 -> fn6推理 -> 同会话下载结果zip。产物 page_N.json 按页 jpg 尺寸归一化(免标定)。prompt 可换 prompt_ocr/prompt_general 等; 站点失效时 enabled:false 或改 base。"
- },
- "llm": {
-  "enabled": false,
-  "_note": "M5④LLM 兜底: 只对正则失败/低置信字段提问; endpoint 为 OpenAI 兼容 chat.completions; api_key 从环境变量读(不落盘)",
-  "endpoint": "https://api.deepseek.com/chat/completions",
-  "model": "deepseek-flash",
-  "api_key_env": "KCI_LLM_KEY",
-  "temperature": 0,
-  "max_fields_per_call": 8,
-  "ner_enabled": false,
-  "_ner_note": "--stage ner 开关(2026-11-09: 数据集/基金/软件改为本文关系+证据抽取, 旧产物已清除; 默认 false, 真跑用 _ner_run.py, key 从环境变量读)"
- }
 }
