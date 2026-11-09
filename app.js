@@ -1,7 +1,7 @@
 /* 三渠道解析对比工作台 前端 (与 webapp.py 配套, 由 /app.js 静态提供) */
 var dz = document.getElementById('drop'), f = document.getElementById('f'),
     log = document.getElementById('log'), jobsEl = document.getElementById('jobs'),
-    timer = null, selJob = '';
+    selJob = '';
 
 dz.onclick = function () { f.click() };
 dz.ondragover = function (e) { e.preventDefault(); dz.classList.add('over') };

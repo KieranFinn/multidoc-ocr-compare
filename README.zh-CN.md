@@ -58,29 +58,29 @@
 | --- | --- |
 | `out/<文档>/index.html` | 总览: 页数/块数/韩文字符/U+FFFD/各渠道产物来源 |
 | `viewer_<渠道>.html` | 单渠道: 页图 + 块框, 悬停/点击联动文本 |
-| `viewer_compare.html` | 1:3 对照: 每页四栏(原图 + 三渠道), 渠道分色, 悬停显现框 |
+| `viewer_compare.html` | 1:3 对照: 每页四栏(原图 + 三渠道), 渠道分色, 悬停显现框; 同段同句的多个引文合并为一行并保留全部高亮与回链; 文献/引文行悬停高亮源块并显示原图局部浮层 |
 | `merged/` + `merged.md` | 逐页合并 + 每块来源(merge_out.py) |
 | `unified/` | 跨引擎归并组 + `_unified_summary.json`(coverage / one_to_one / orphan_rate), 由 `unify.py` 产出 |
 | `metadata.json` + `_metadata_report.html` | 结构化字段(标题/作者/机构/摘要/关键词/参考文献条目), 每字段带置信度与页码锚点, 由 `metadata.py` 产出 |
-| `_analysis_report.html` / `_analysis_summary.csv` | 跨文档指标与归因(`analyze.py`, 单独运行) |
 
 ## 离线跑通(不需要账号, 不联网)
 
 ```bash
 pip install -r requirements.txt
-python examples/make_demo.py            # 生成 examples/demo/: 合成 PDF + 三份 mock 引擎产物
-python pipeline.py examples/demo/samples/demo_kr.pdf \
-    --mineru examples/demo/inbox/demo_kr__mineru \
-    --dots   examples/demo/inbox/demo_kr__dots \
-    --paddle examples/demo/inbox/demo_kr__paddle \
-    --channels examples/demo/channels.json \
-    --out examples/demo/out
-python -m http.server -d examples/demo/out/demo_kr   # 然后打开 /index.html
+python _attic/examples/make_demo.py  # 合成 PDF + 三份 mock 引擎产物
+python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
+    --mineru _attic/examples/demo/inbox/demo_kr__mineru \
+    --dots   _attic/examples/demo/inbox/demo_kr__dots \
+    --paddle _attic/examples/demo/inbox/demo_kr__paddle \
+    --channels _attic/examples/demo/channels.json \
+    --out _attic/examples/demo/out/demo_kr
+python -W error::ResourceWarning -m unittest -v test_pipeline.py
+python -m http.server -d _attic/examples/demo/out/demo_kr  # 然后打开 /index.html
 ```
 
-`--channels` 把整份配置换成 `examples/demo/channels.json`: 标定是 **identity**(`src_w/src_h: null`,
-引擎坐标即页图像素), 三个云端渠道全部禁用。demo 文档是合成的韩文, 刻意埋了三处分歧(离群读法、
-空块、缺页码), 让查看器与归一化层都有东西可看。不含第三方语料、不需要 token、不联网。CI 跑的就是这条命令。
+`--channels` 使用 `_attic/examples/demo/channels.json`：MinerU 显式声明实际 521×688 页图像素空间，
+dots/Paddle 使用归一化坐标，三个云端渠道全部禁用。合成文档刻意包含离群读法、空块和仅 Paddle
+检出的页码(一个预期 orphan)。CI 按此流程运行，不需要 token、不联网。
 
 ## 结构化元数据(可选, 在 unify 之后跑)
 
@@ -91,9 +91,12 @@ python -m http.server -d examples/demo/out/demo_kr   # 然后打开 /index.html
 python unify.py <文档>                     # 产出 out/<文档>/unified/
 python metadata.py <文档> --stage m3       # 跨页拼接: 把被分页切断的段落接回去
 python metadata.py <文档> --stage refs     # 参考文献条目 -> [{作者, 年, 题名, 卷, 期, 页}]
+python metadata.py <文档> --stage frefs    # 全部编号脚注(文献及说明) -> footnote_refs
 python metadata.py <文档> --stage front    # 标题 / 作者 / 机构(韩文 + 罗马拼音)
 python metadata.py <文档> --stage abs      # 韩文摘要 + 英文摘要
-python metadata.py <文档> --stage report   # -> out/<文档>/metadata.json + _metadata_report.html
+python metadata.py <文档> --stage issue    # 本篇期刊 / 年 / 卷 / 期 / 页 + 关键词
+python metadata.py <文档> --stage cspan    # 行内引文句
+python metadata.py <文档> --stage report   # -> _metadata_report.html
 ```
 
 **先规则, 后模型。** 每个字段都由确定性启发式解析(双栏文献区用左边缘最大空隙判定、上标集合化匹配机构脚注、
@@ -105,9 +108,10 @@ python metadata.py <文档> --stage report   # -> out/<文档>/metadata.json + _
 python metadata.py <文档> --viewer         # 用磁盘上现有的 merged/ + unified/ 重建 viewer_compare.html
 ```
 
-> `--stage m3` 会写回 `unified/page_N.json`。**重跑 `pipeline.py` 会重跑 unify 并冲掉这些标记**, 所以顺序是:
-> pipeline → metadata(m3 → refs → front → abs → report)。`--viewer` 就是为这个循环准备的: 只重画查看器,
-> 不碰下面的数据。
+> `--stage m3` 会写回 `unified/page_N.json`，重跑 unify 会冲掉这些标记。顺序为:
+> pipeline(含 unify) → metadata(m3 → refs → frefs → front → abs → issue → cspan → report)。
+> 独立 `unify.py` 仍可用于既有 merged 数据。unify 失败或禁用时，旧 unified 保留但不画入新查看器。
+> `--viewer` 只重画查看器，不碰下面的数据。
 
 ## 跑自己的文档
 
@@ -152,19 +156,23 @@ python webapp.py                                      # 或: 拖拽式工作台 
 ## 目录结构
 
 ```
-pipeline.py        渲染 -> 获取 -> 适配 -> 查看器 -> 总览
+pipeline.py        main 编排 + 旧 import 兼容 re-export
+pipeline_io.py     渲染 -> 获取 -> 归档 -> 标定 -> 适配
+viewer.py          单渠道/对照查看器 + md2html + 元数据面板
 webapp.py app.js   拖拽式工作台(标准库 HTTP 服务 + 渠道参数面板)
 merge_out.py       跨渠道逐页合并
-unify.py           跨引擎归并 -> unified/ 与指标摘要
-metadata.py        元数据字段层 -> metadata.json 与报告(实现体在 metapy/)
-analyze.py         跨文档指标 + 归因报告
+unify.py           跨引擎归并 -> unified/ 与指标摘要(冻结)
+metadata.py        元数据字段层 CLI(实现体在 metapy/)
 regress.py         参考文献质量检查(截断/作者/跨页拼接)
-caption_audit.py   图表标题审计
+test_pipeline.py   unified 新鲜度与数据保留回归
 mineru_drive.py    MinerU 桌面版 CDP 驱动(兜底)
+requirements.txt   既有渲染/CDP 运行依赖
 channels.json      标定与模型默认值(不含密钥)
-examples/          make_demo.py -> 离线 demo; 13625974/ -> 真实产物示例
-docs/              架构 / 标定 / 渠道配置
-metapy/            元数据层实现(common / m3 / refs / front / abs / llmrep)
+uploads/ inbox/    输入 PDF 与缓存/外部渠道产物
+out/               规则层正式产物; LLM/NER 数据仅入 out_llm_trial/
+_attic/            已归档分析/题注工具 + 离线 CI demo
+metapy/            common / m3(冻结) / issue / cspan / refs / front / abs /
+                   llmrep / dual / ner
 ```
 
 ## 许可

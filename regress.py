@@ -8,7 +8,7 @@ r"""五大基础问题回归检测(验收标准 v1.0 §5.1 的语言无关判据
 输出: out/_regress_report.html (按 文档×问题 定位到页, 供 viewer_compare 人工复核)
       控制台摘要。用法: python regress.py [--out out]
 """
-import os, re, io, json, argparse, html, glob
+import os, re, io, json, argparse, html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 REF_HEAD = re.compile(r"참고\s*문헌|인용\s*문헌|参考文献|References|REFERENCES|Bibliography|문헌", re.I)
@@ -53,7 +53,7 @@ def check_entry(e, box, ph):
     if box and ph and box[3] > 0.92 * ph and "T1" in flags:
         flags.append("T5")
     body = NUM_MARK.sub("", tail).lstrip()
-    if body.startswith((u",", u",", u"“", u"「", u"『", u"'")):
+    if body.startswith((u",", u"“", u"「", u"『", u"'")):
         flags.append("NOAUTHOR")
     if re.search(r"(^|\n)\s*\d{1,3}\s*(?=\n)", tail):
         flags.append("PGNO")
@@ -66,7 +66,7 @@ def glue_runs(s, minlen=7):
     return re.findall(u"[가-힣]{%d,}" % minlen, s or "")
 
 def doc_entries(doc_dir):
-    """从 merged.json 重建每渠道 页->块 列表(merged.json 块无 ch 分组但 channels 已分组)"""
+    """从 merged.json 的 page_data[].channels 重建 [(页码, 宽, 高, 渠道块表)]。"""
     mj = json.load(io.open(os.path.join(doc_dir, "merged.json"), encoding="utf-8"))
     pages = []  # [(page_no, w, h, {ch: [blk]}), ...]
     for pg in mj["page_data"]:

@@ -24,11 +24,13 @@ jobs:
       - name: Import check (no service calls, no credentials)
         run: |
           python - <<PY
-          import pipeline, unify, merge_out, analyze, regress, caption_audit, mineru_drive
+          import pipeline, pipeline_io, viewer, unify, merge_out, regress, mineru_drive
           import metapy
           from metapy import m3_doc, refs_doc, front_doc, abstract_doc, llm_apply, report_meta, rebuild_viewer
           print("config layers:", sorted(pipeline.load_cfg()))
           PY
+      - name: Unified data-safety regression
+        run: python -W error::ResourceWarning -m unittest -v test_pipeline.py
 
   demo:
     # 离线冒烟: 合成 PDF + 三家 mock 产物 -> 全链路(适配/标定/合并/归一化/查看器)。
@@ -47,9 +49,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate demo inputs (synthetic PDF + 3 mock channel outputs)
         run: |
-          python examples/make_demo.py
-          ls -R examples/demo | head -40
-      - name: Run pipeline end to end (identity calibration, no network)
+          python _attic/examples/make_demo.py
+          ls -R _attic/examples/demo | head -40
+      - name: Run pipeline end to end (known pixel calibration, no network)
         run: |
           set -x
           # 本地即调用的适配器逐个 import, 给后续 assert 的失败模式留可读的 Traceback
@@ -57,16 +59,16 @@ jobs:
           import pipeline, unify
           print("pipeline imports OK")
           PY
-          python pipeline.py examples/demo/samples/demo_kr.pdf \
-            --mineru examples/demo/inbox/demo_kr__mineru \
-            --dots   examples/demo/inbox/demo_kr__dots \
-            --paddle examples/demo/inbox/demo_kr__paddle \
-            --channels examples/demo/channels.json \
-            --out examples/demo/out
+          python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
+            --mineru _attic/examples/demo/inbox/demo_kr__mineru \
+            --dots   _attic/examples/demo/inbox/demo_kr__dots \
+            --paddle _attic/examples/demo/inbox/demo_kr__paddle \
+            --channels _attic/examples/demo/channels.json \
+            --out _attic/examples/demo/out/demo_kr
       - name: Assert artifacts exist
         run: |
           set -e
-          O=examples/demo/out/demo_kr
+          O=_attic/examples/demo/out/demo_kr
           for f in index.html viewer_mineru.html viewer_dots.html viewer_paddle.html \
                    viewer_compare.html merged.json merged.md merged/page_0.json \
                    unified/page_0.json unified/_unified_summary.json pages/page_0.jpg; do
@@ -77,18 +79,19 @@ jobs:
         run: |
           python - <<PY
           import json
-          p = "examples/demo/out/demo_kr"
+          p = "_attic/examples/demo/out/demo_kr"
           d = json.load(open(p + "/merged.json", encoding="utf-8"))
           ch = d["channels"]
           assert set(ch) == {"mineru", "dots", "paddle"}, ch
           assert all(v["blocks"] > 0 for v in ch.values()), ch
           u = json.load(open(p + "/unified/_unified_summary.json", encoding="utf-8"))
           m = u["metrics"]
-          assert 0 < m["coverage"] <= 1 and m["groups"] > 0, m
+          assert 0 < m["coverage"] < 1 and m["groups"] == 7, m
+          assert m["raw_blocks"] == 22 and len(u["orphans"]) == 1, u
           print("channels:", ch, "| unified metrics:", m)
           PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: demo-out-py${{ matrix.python }}
-          path: examples/demo/out
+          path: _attic/examples/demo/out

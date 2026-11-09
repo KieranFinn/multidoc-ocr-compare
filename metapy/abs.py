@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
-import os, re, io, json, datetime, collections, html
-import pipeline
-from pipeline import _gdice, _fold_sym
+import os, re, io, json, datetime
 import regress
-import unify
 from .common import *
 
 
@@ -49,7 +46,7 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                 if not s:
                     continue
                 if re.match(r"(?i)^abstract\s*[:：]", s):
-                    s = re.split(r"[:：]", s, 1)[1].strip()   # 'Abstract: …' 标签剥离
+                    s = re.split(r"[:：]", s, maxsplit=1)[1].strip()   # 'Abstract: …' 标签剥离
                     if not s:
                         continue
                 if skip_fold and _fold(s) == skip_fold:
@@ -67,7 +64,7 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                 if re.match(r"(?i)^abstract$", s):
                     stop = True   # 独行 Abstract 小标签(13625974 尾)
                     break
-                if re.match(u"^\\s*(참고\\s*문헌|인용\\s*문헌|参考文献|References|REFERENCES|Bibliography)\\s*$",
+                if re.match(r"^\s*(참고\s*문헌|인용\s*문헌|参考文献|References|REFERENCES|Bibliography)\s*$",
                             s, re.I):
                     stop = True   # 文献区头(行级全等; 摘要内 '선행문헌' 类词不误触)
                     break
@@ -144,7 +141,7 @@ def abstract_doc(doc, out_root):
                 break
         if found:
             blk, li = found
-            first_rest = re.split(u"[:：]", (blk["main_text"] or "").split("\n")[li], 1)
+            first_rest = re.split(r"[:：]", (blk["main_text"] or "").split("\n")[li], maxsplit=1)
             lines = [first_rest[1].strip()] if len(first_rest) > 1 and first_rest[1].strip() else []
             stop = False
             for ln in (blk["main_text"] or "").split("\n")[li + 1:]:
@@ -226,17 +223,14 @@ def abstract_doc(doc, out_root):
                         continue
                     if p == 0 and u["box"][1] < blk["box"][3] - 4 and u["uid"] != blk["uid"]:
                         continue
-                    if p == 0 and u["uid"] == blk["uid"]:
-                        seg = (u["main_text"] or "").split(chr(10))
-                    else:
-                        seg = (u["main_text"] or "").split(chr(10))
+                    seg = (u["main_text"] or "").split(chr(10))
                     for ln in seg:
                         s = ln.strip()
                         if not started:
                             if ABSTRACT_START.match(s):
                                 started = True
                                 if re.match(r"(?i)^abstract\s*[:：]", s):
-                                    s = re.split(r"[:：]", s, 1)[1].strip()
+                                    s = re.split(r"[:：]", s, maxsplit=1)[1].strip()
                                     if not s:
                                         continue
                             else:
@@ -304,6 +298,14 @@ def abstract_doc(doc, out_root):
         if v:
             cleaned, _ = _clean_lines(v, (), doc_heads)
             res[k]["value"] = cleaned.strip() or v
+    # §38 分层: confidence.basis → audit; 产品 confidence 只留 {level, source, uid_head}
+    abs_audit = {}
+    for k in ("abstract", "abstract_en"):
+        c = (res[k] or {}).get("confidence") or {}
+        abs_audit[k] = {"basis": c.get("basis")}
+        res[k]["confidence"] = {"level": c.get("level"), "source": c.get("source"),
+                                "uid_head": c.get("uid_head")}
+    meta.pop("tail_english_matter", None)   # 遗留诊断键清理(§38 已迁 audit)
     meta.update({"doc": doc,
                  "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
                  "abstract": res["abstract"], "abstract_en": res["abstract_en"],
@@ -312,14 +314,18 @@ def abstract_doc(doc, out_root):
         meta.setdefault("title_en", {})
         meta["title_en"].update({"value": tail_title_en["value"], "page": tail_title_en["page"],
                                  "box": tail_title_en["box"], "uid": tail_title_en["uid"],
-                                 "confidence": {"level": "mid", "basis": "尾页英文 matter 供给", "source": "tail_matter"}})
-        meta["tail_english_matter"] = {"title_en": tail_title_en, "roman_authors": tail_roman}
+                                 "confidence": {"level": "mid", "source": "tail_matter"}})
         if tail_roman and meta.get("authors"):
             ko_authors = [a for a in meta["authors"] if a.get("name")]
             if len(tail_roman) == len(ko_authors):
                 for a, r in zip(ko_authors, tail_roman):
                     a["roman"] = a.get("roman") or r
+        abs_audit["title_en"] = {"basis": "尾页英文 matter 供给"}
+        abs_audit["tail_english_matter"] = {"title_en": tail_title_en, "roman_authors": tail_roman}
     io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
+    audit = load_audit(doc_dir)
+    audit.update(dict({"doc": doc}, **abs_audit))
+    save_audit(doc_dir, audit)
     print("== ③ %s ==" % doc)
     for k in ("abstract", "abstract_en"):
         v = res[k]["value"]
@@ -331,3 +337,56 @@ def abstract_doc(doc, out_root):
     if tail_roman:
         print("  tail roman   : %s" % "; ".join(tail_roman))
     return meta
+
+
+def _selftest():
+    """离线冒烟: 摘要边界与英题下无头路径; 只写临时目录。"""
+    import hashlib
+    import shutil
+    import tempfile
+
+    head = {"uid": "h", "page": 1, "type": "Section-header", "box": [0, 10, 100, 20],
+            "main_text": "Abstract", "cross_page": {}}
+    body = {"uid": "b", "page": 1, "type": "Text", "box": [0, 30, 100, 50],
+            "main_text": "This study is complete.", "cross_page": {}}
+    kw = {"uid": "k", "page": 1, "type": "Text", "box": [0, 60, 100, 80],
+          "main_text": "Keywords: alpha, beta", "cross_page": {}}
+    text, uids = _collect_abstract({0: {"h": 1000, "unified": [head, body, kw]}}, [0], head,
+                                   max_pages=1)
+    ok1 = text == "This study is complete." and uids == ["b", "k"]
+
+    tmp = tempfile.mkdtemp()
+    try:
+        doc_dir = os.path.join(tmp, "d")
+        udir = os.path.join(doc_dir, "unified")
+        os.makedirs(udir)
+        title = {"uid": "t", "page": 1, "type": "Section-header", "box": [0, 100, 500, 140],
+                 "main_text": "English Title", "cross_page": {}}
+        block = {"uid": "b", "page": 1, "type": "Text", "box": [0, 160, 500, 220],
+                 "main_text": "Abstract: This study answers.\nKeywords: alpha, beta",
+                 "cross_page": {}}
+        page = {"w": 1000, "h": 1000, "unified": [title, block]}
+        page_fp = os.path.join(udir, "page_0.json")
+        io.open(page_fp, "w", encoding="utf-8").write(json.dumps(page, ensure_ascii=False))
+        before = hashlib.sha256(io.open(page_fp, "rb").read()).hexdigest()
+        io.open(os.path.join(doc_dir, "metadata.json"), "w", encoding="utf-8").write(json.dumps(
+            {"doc": "d", "title_en": {"value": "English Title", "page": 1, "uid": "t"}},
+            ensure_ascii=False))
+        meta = abstract_doc("d", tmp)
+        audit = load_audit(doc_dir)
+        ok2 = (meta["abstract_en"]["value"] == "This study answers."
+               and meta["abstract_en"]["confidence"]["uid_head"] == "t"
+               and meta["keywords_lines"] == ["Keywords: alpha, beta"]
+               and audit["abstract_en"]["basis"] == "英题下无 Abstract 头, 作者行下取至 Keywords"
+               and hashlib.sha256(io.open(page_fp, "rb").read()).hexdigest() == before)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    for i, ok in enumerate((ok1, ok2), 1):
+        if not ok:
+            print("FAIL [abs case %d]" % i)
+    print("abs selftest: %d/2 PASS" % (ok1 + ok2))
+    return ok1 and ok2
+
+
+if __name__ == "__main__":
+    raise SystemExit(0 if _selftest() else 1)

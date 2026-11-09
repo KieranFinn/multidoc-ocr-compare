@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, re, io, json, datetime, collections, html
-import pipeline
-from pipeline import _gdice, _fold_sym
-import regress
-import unify
+import os, re, io, json, datetime
 from .common import *
 
 
@@ -131,7 +127,6 @@ def front_doc(doc, out_root):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
     j0 = json.load(io.open(os.path.join(udir, "page_0.json"), encoding="utf-8"))
-    doc_heads = _doc_heads({0: j0}, [0]) if False else None
     # 标题
     t_ko = _pick_title(j0, True)
     t_en = _pick_title(j0, False)
@@ -252,7 +247,7 @@ def front_doc(doc, out_root):
         本即带空格的正确形态); 多行块按主读法首行的折叠长度截前缀(英题名+韩作者行同块形态)。"""
         mt = u["main_text"] or ""
         cands = [r["text"] for r in u["readings"]
-                 if (r.get("text") or "").strip() and _gdice(r["text"], mt) >= 0.8] or [mt]
+                 if (r.get("text") or "").strip() and _gdice(r["text"], mt) >= TITLE_READING_DICE] or [mt]
         best = max(cands, key=lambda t: t.count(" ") + t.count("\n") * 2)
         val = re.sub(r"\s*\n\s*", " ", best).strip()
         val = re.sub(r"^#+\s*", "", val)
@@ -281,7 +276,7 @@ def front_doc(doc, out_root):
         rs = [r for r in u["readings"] if (r.get("text") or "").strip()]
         if rs:
             mt = u["main_text"] or ""
-            ag = sum(1 for r in rs if _gdice(r["text"], mt) >= 0.8) / float(len(rs))
+            ag = sum(1 for r in rs if _gdice(r["text"], mt) >= TITLE_READING_DICE) / float(len(rs))
             if ag < 0.67:
                 lvl = "low"
             basis.append("渠道一致%.0f%%" % (ag * 100))
@@ -296,19 +291,29 @@ def front_doc(doc, out_root):
 
     meta_fp = os.path.join(doc_dir, "metadata.json")
     meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
+    meta.pop("front_notes", None)   # 遗留诊断键清理(§38 已迁 audit)
+    t_ko_c, t_en_c = _conf(t_ko), _conf(t_en)
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-        "title": dict({"value": _clean_title(_best_text(t_ko)) if t_ko else None},
-                      **_conf(t_ko)),
-        "title_en": dict({"value": _clean_title(_best_text(t_en)) if t_en else None},
-                         **_conf(t_en)),
+        # 产品: 五元组 + confidence{level, source}; basis 见 metadata_audit.json
+        "title": {"value": _clean_title(_best_text(t_ko)) if t_ko else None,
+                  "page": t_ko_c.get("page"), "box": t_ko_c.get("box"), "uid": t_ko_c.get("uid"),
+                  "confidence": {"level": t_ko_c["level"], "source": t_ko_c["source"]}},
+        "title_en": {"value": _clean_title(_best_text(t_en)) if t_en else None,
+                     "page": t_en_c.get("page"), "box": t_en_c.get("box"), "uid": t_en_c.get("uid"),
+                     "confidence": {"level": t_en_c["level"], "source": t_en_c["source"]}},
         "authors": authors,
         "affiliations": affils,
-        "front_notes": {"author_zone_lines": [s for s, _ in zone_lines],
-                        "affil_footnotes": affil_notes},
     })
     io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
+    audit = load_audit(doc_dir)
+    audit.update({"doc": doc,
+                  "title": {"basis": t_ko_c["basis"]},
+                  "title_en": {"basis": t_en_c["basis"]},
+                  "front_notes": {"author_zone_lines": [s for s, _ in zone_lines],
+                                  "affil_footnotes": affil_notes}})
+    save_audit(doc_dir, audit)
     print("== ② %s ==" % doc)
     print("  title    : %s" % ((meta["title"]["value"] or "")[:56]))
     print("  title_en : %s" % ((meta["title_en"]["value"] or "(未定位→③尾页检索)")[:56]))
@@ -319,3 +324,31 @@ def front_doc(doc, out_root):
     for v in affils:
         print("  affil    : %s" % v[:60])
     return meta
+
+
+def _selftest():
+    """纯函数自检: 作者标记/罗马拼音/机构粘连与标题评分。"""
+    marked = _parse_author_line(r"홍영식$^{1)}$", None, {})
+    ok1 = len(marked) == 1 and marked[0]["name"] == "홍영식" and marked[0]["markers"] == ["1)"]
+    roman = _parse_author_line("김진경(Kim Jin-Kyoung)", None, {})
+    ok2 = len(roman) == 1 and roman[0]["name"] == "김진경" \
+        and roman[0]["roman"] == "Kim Jin-Kyoung"
+    glued = _parse_author_line("홍영식서울교육대학교", None, {})
+    ok3 = len(glued) == 1 and glued[0]["name"] == "홍영식" \
+        and glued[0]["affiliation"] == "서울교육대학교"
+    header = {"uid": "h", "type": "Section-header", "main_text": "창의정보 문화연구의 방법론",
+              "box": [20, 200, 460, 240], "cross_page": {}}
+    text = {"uid": "t", "type": "Text", "main_text": "창의정보 문화연구의 방법론",
+            "box": [20, 260, 460, 300], "cross_page": {}}
+    picked = _pick_title({"h": 1000, "w": 500, "unified": [header, text]}, True)
+    ok4 = picked is header
+    oks = (ok1, ok2, ok3, ok4)
+    for i, ok in enumerate(oks, 1):
+        if not ok:
+            print("FAIL [front case %d]" % i)
+    print("front selftest: %d/4 PASS" % sum(oks))
+    return all(oks)
+
+
+if __name__ == "__main__":
+    raise SystemExit(0 if _selftest() else 1)

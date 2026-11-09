@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-import os, re, io, json, datetime, collections, html
+import os, re, io, json, datetime, collections
 import pipeline
-from pipeline import _gdice, _fold_sym
+from pipeline import _fold_sym
 import regress
 import unify
 from .common import *

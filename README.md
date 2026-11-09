@@ -62,31 +62,30 @@ either the document (all three engines agree on the oddity) or a single engine.
 | --- | --- |
 | `out/<doc>/index.html` | overview: pages, blocks, CJK char counts, U+FFFD count, source of each channel |
 | `viewer_<channel>.html` | one engine: page image + its boxes, hover/click to link block and text |
-| `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover |
+| `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover; repeated citations of the same sentence are grouped into one row with every highlight and reference link; reference/citation-row hover highlights its source block and shows a cropped original-page preview |
 | `merged/` (+ `merged.md`) | per-page merged blocks with provenance, built by `merge_out.py` |
 | `unified/` | merge groups across engines + `_unified_summary.json` (coverage, one_to_one, orphan_rate), built by `unify.py` |
 | `metadata.json` + `_metadata_report.html` | structured fields (title, authors, affiliation, abstract, keywords, reference entries) with per-field confidence + page anchors, built by `metadata.py` |
-| `_analysis_report.html` / `_analysis_summary.csv` | cross-document metrics + attribution, built by `analyze.py` (run separately) |
 
 ## Try it offline (no account, no network)
 
 ```bash
 pip install -r requirements.txt
-python examples/make_demo.py            # writes examples/demo/: a synthetic PDF + three mock engine outputs
-python pipeline.py examples/demo/samples/demo_kr.pdf \
-    --mineru examples/demo/inbox/demo_kr__mineru \
-    --dots   examples/demo/inbox/demo_kr__dots \
-    --paddle examples/demo/inbox/demo_kr__paddle \
-    --channels examples/demo/channels.json \
-    --out examples/demo/out
-python -m http.server -d examples/demo/out/demo_kr   # then open /index.html
+python _attic/examples/make_demo.py  # synthetic PDF + three mock engine outputs
+python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
+    --mineru _attic/examples/demo/inbox/demo_kr__mineru \
+    --dots   _attic/examples/demo/inbox/demo_kr__dots \
+    --paddle _attic/examples/demo/inbox/demo_kr__paddle \
+    --channels _attic/examples/demo/channels.json \
+    --out _attic/examples/demo/out/demo_kr
+python -W error::ResourceWarning -m unittest -v test_pipeline.py
+python -m http.server -d _attic/examples/demo/out/demo_kr  # then open /index.html
 ```
 
-`--channels` swaps the whole config for `examples/demo/channels.json`, which has **identity
-calibration** (`src_w/src_h: null` — engine coordinates already *are* page pixels) and every cloud
-channel disabled. The demo document is synthetic Korean text with three deliberate disagreements
-(an outlier reading, an empty block, a missing page number) so the viewers and the unified pass have
-something to show. Nothing third-party, no token, no network. CI runs exactly this.
+`--channels` swaps the whole config for `_attic/examples/demo/channels.json`: MinerU declares the
+actual 521×688 page-pixel space, dots/Paddle use normalized coordinates, and every cloud channel is
+disabled. The synthetic document deliberately includes an outlier reading, an empty block and a
+Paddle-only page number (one intentional orphan). CI runs this flow without tokens or network.
 
 ## Structured metadata (optional, runs after `unify`)
 
@@ -98,9 +97,12 @@ entries — each with a confidence level and a page anchor back into the 1:3 vie
 python unify.py <doc>                      # produces out/<doc>/unified/
 python metadata.py <doc> --stage m3        # cross-page join: glue a paragraph split by the page break
 python metadata.py <doc> --stage refs      # reference entries -> a list of {authors, year, title, vol, no, pages}
+python metadata.py <doc> --stage frefs     # all numbered footnotes (references and notes) -> footnote_refs
 python metadata.py <doc> --stage front     # title / authors / affiliations (Korean + romanised)
 python metadata.py <doc> --stage abs       # Korean + English abstracts
-python metadata.py <doc> --stage report    # -> out/<doc>/metadata.json + _metadata_report.html
+python metadata.py <doc> --stage issue     # journal / year / volume / issue / pages + keywords
+python metadata.py <doc> --stage cspan     # in-text citation sentences
+python metadata.py <doc> --stage report    # -> _metadata_report.html
 ```
 
 Rules first, model second. Every field is parsed by deterministic heuristics (layout-class aware
@@ -117,9 +119,11 @@ variable — no secret is ever written to disk.
 python metadata.py <doc> --viewer          # rebuild viewer_compare.html from existing merged/ + unified/
 ```
 
-> `--stage m3` writes back into `unified/page_N.json`. Re-running `pipeline.py` re-runs `unify` and
-> throws those markers away, so the order is: pipeline → metadata (m3 → refs → front → abs → report).
-> `--viewer` exists for exactly this loop: it redraws the viewer without touching the data underneath.
+> `--stage m3` writes back into `unified/page_N.json`; re-running unify throws those markers away.
+> The order is: pipeline (including unify) → metadata
+> (m3 → refs → frefs → front → abs → issue → cspan → report). Standalone `unify.py` remains available
+> for existing merged data. If unify fails or is disabled, old unified data is preserved but not drawn
+> into the new viewer. `--viewer` redraws only.
 
 ## Run it on your own PDFs
 
@@ -172,19 +176,23 @@ instead of calling anything.
 ## Repository layout
 
 ```
-pipeline.py        render -> fetch -> adapt -> viewers -> index
+pipeline.py        main orchestration + compatibility re-exports
+pipeline_io.py     render -> fetch -> archive -> calibrate -> adapt
+viewer.py          single/compare viewers + md2html + metadata panels
 webapp.py app.js   drag & drop workbench (stdlib HTTP server + channel config panel)
 merge_out.py       per-page merge across channels
-unify.py           cross-engine grouping -> unified/ + summary metrics
-metadata.py        structured metadata layer -> metadata.json + report (metapy/ package)
-analyze.py         cross-document metrics + attribution report
+unify.py           cross-engine grouping -> unified/ + summary metrics (frozen)
+metadata.py        structured metadata CLI (implementation in metapy/)
 regress.py         reference-entry quality checks (truncation, authors, page joins)
-caption_audit.py   figure / table caption audit
+test_pipeline.py   unified freshness and data-preservation regression tests
 mineru_drive.py    CDP driver for the MinerU desktop app (fallback)
+requirements.txt   existing render/CDP runtime dependencies
 channels.json      calibration + model defaults (no secrets)
-examples/          make_demo.py -> offline demo; 13625974/ -> real checked-in run
-docs/              architecture, calibration, channels
-metapy/            implementation of the metadata layer (common / m3 / refs / front / abs / llmrep)
+uploads/ inbox/    input PDFs + cached/external channel output
+out/               rule-based pipeline products; out_llm_trial/ holds LLM/NER data
+_attic/            archived analysis/caption tools + the offline CI demo
+metapy/            common / m3(frozen) / issue / cspan / refs / front / abs /
+                   llmrep / dual / ner
 ```
 
 ## License
