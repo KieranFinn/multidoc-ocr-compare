@@ -69,24 +69,25 @@
 | `merged/`（+`merged.md`） | 逐页合并块 + provenance，由 `merge_out.py` 产出 |
 | `unified/` | 跨引擎归并组 + `_unified_summary.json`（coverage、one_to_one、orphan_rate），由 `unify.py` 产出 |
 | `metadata.json` + `_metadata_report.html` | 结构化字段（题目、作者、单位、摘要、关键词、参考文献条目），每字段带置信度与页锚点，由 `metadata.py` 产出 |
+| `out_llm_trial/fds_extract/ner_lite/<doc>/` | 实体抽取（基金 / 软件 / 数据集）产物，由 `ner_lite.py` 写在 `out/` **之外**：`ner_lite.json`、`ner_lite_audit.json`、`_audit.html`；存在时会被 `viewer_compare.html` 读成一列 |
 | `metadata_audit.json` | 同一批阶段写出的诊断副文件（sidecar）：每字段的 basis/review 备注、参考文献样式、L1 校验（`ref_validation`）。它**不在** `metadata.json` 里，要读校验数据必须读这个文件 |
 
 ## 离线快速开始（无账号、无网络）
 
 ```bash
 pip install -r requirements.txt
-python make_demo.py                                    # 合成 PDF + 三渠道 mock 产物，生成到 examples/demo/
-python pipeline.py examples/demo/samples/demo_kr.pdf \
-    --mineru examples/demo/inbox/demo_kr__mineru \
-    --dots   examples/demo/inbox/demo_kr__dots \
-    --paddle examples/demo/inbox/demo_kr__paddle \
-    --channels examples/demo/channels.json \
-    --out examples/demo/out/demo_kr
+python _attic/examples/make_demo.py                    # 合成 PDF + 三渠道 mock 产物，生成到 _attic/examples/demo/
+python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
+    --mineru _attic/examples/demo/inbox/demo_kr__mineru \
+    --dots   _attic/examples/demo/inbox/demo_kr__dots \
+    --paddle _attic/examples/demo/inbox/demo_kr__paddle \
+    --channels _attic/examples/demo/channels.json \
+    --out _attic/examples/demo/out/demo_kr
 python -W error::ResourceWarning -m unittest -v test_pipeline.py
-python -m http.server -d examples/demo/out/demo_kr  # 然后打开 /index.html
+python -m http.server -d _attic/examples/demo/out/demo_kr  # 然后打开 /index.html
 ```
 
-`--channels` 把整份配置换成 `examples/demo/channels.json`：MinerU 声明真实的 521×688 页面像素空间，dots/Paddle 用归一化坐标，所有云渠道关闭。合成文档里刻意放了异常读数、空块和一个只在 Paddle 出现的页码（一个故意留下的孤儿块）。CI 在没有 token、没有网络的情况下跑这条链路。
+`--channels` 把整份配置换成 `_attic/examples/demo/channels.json`：MinerU 声明真实的 521×688 页面像素空间，dots/Paddle 用归一化坐标，所有云渠道关闭。合成文档里刻意放了异常读数、空块和一个只在 Paddle 出现的页码（一个故意留下的孤儿块）。CI 在没有 token、没有网络的情况下跑这条链路。
 
 > 单元测试守的是 unified 新旧判定 / 数据保全契约，以及查看器的引用与元数据渲染；它们**不**覆盖元数据启发式（文献切分、作者区、关键词面板）。后者靠和仓库里这份实例做 diff 来验证，见[状态与已知限制](#状态与已知限制)。
 
@@ -142,9 +143,10 @@ out/<doc>/viewer_compare.html   1:3 对照
 ```bash
 pip install -r requirements.txt      # test_pipeline 会 import pipeline -> pipeline_io -> pypdfium2/PIL
 python -W error::ResourceWarning -m unittest -v test_pipeline.py
+python ner_lite.py selfcheck         # 离线：7 个合成块 + mock 模型，不联网
 ```
 
-10 个用例，不联网、不需要 token。它们钉住两件事：改动合并层时最容易踩坑的契约（"过期的 `unified/` 留在盘上但绝不画进新查看器"），以及查看器的引用 / 元数据渲染。CI 在 Python 3.10 和 3.12 上都跑。
+11 个用例，不联网、不需要 token。它们钉住三件事：改动合并层时最容易踩坑的契约（"过期的 `unified/` 留在盘上但绝不画进新查看器"）、查看器的引用 / 元数据渲染，以及实体定位的不变量（折叠坐标映射、右向外延、跨块 segments、著录脚注批注）。`ner_lite.py selfcheck` 单独覆盖实体闸门自身的用例。CI 在 Python 3.10 和 3.12 上跑单测；`selfcheck` 目前**没有**进 CI。
 
 ## 配置
 
@@ -188,13 +190,36 @@ python metadata.py <doc> --viewer          # 用已有的 merged/ + unified/ 重
 
 > `--stage m3` 会回写 `unified/page_N.json`；重跑 unify 会把这些标记冲掉。顺序是：pipeline（它已经跑过 unify）→ metadata（m3 → refs → frefs → front → abs → issue → cspan → report）。如果 unify 失败或被禁用，旧的 unified 数据会留在盘上，但不会画进新查看器。`--viewer` 只重画。
 
+## 实体抽取（`ner_lite.py`，可选，在 unify 之后运行）
+
+上面的阶段恢复的是**书目字段**。`ner_lite.py` 恢复的是引用解析器不管的三类实体——**基金**（资助机构 / 项目 / 课题号）、**软件**、**数据集**——契约比常规 NER 管线窄得多：
+
+```bash
+# 端点/模型写进 channels.json 的 llm 段，密钥放环境变量 KCI_LLM_KEY（不落盘）
+python ner_lite.py selfcheck               # 离线闸门自检，不联网
+python ner_lite.py 13625974                # 单篇
+python ner_lite.py all                     # out/ 下所有带 unified/ 的文档
+```
+
+| 阶段 | 做什么 | 为什么 |
+| --- | --- | --- |
+| 提名 | 一句 prompt 覆盖三类开放词表，模型只回 `[{kind, name}]` | 不要 `uid`、不要关系、不要二次复核：模型写出的任何东西都不被当成坐标 |
+| 定位 | 名称折叠后（忽略空白/BOM/NFC）必须在该批文本里出现，否则该提名**被丢弃**（`anchor_miss`） | 模型可以编名字，但编不出「原文里出现」 |
+| 产出 | 值一律是**原文切片**，在整篇上枚举（跨块给 `segments`，取重叠更紧的块） | 每条都能用一句 `slice in block_text` 验 |
+| 批注 | 右向字面外延（版本号 / 括号课题号）标 `extended`；`multi_block`、`multi_occurrence`、`cross_block`、`mention_in_biblio_footnote` | 每个标记对应审阅者本来要手工问的一个问题 |
+
+这个闸门只结构性保证**一件事**：这条记录说的位置上确实出现了这个字符串。它**不**保证实体「属于那句话」（截断的名字只要是邻近读法的子串就照样通过），而**被丢掉的提名在产物里看不见**——引用计数前，先读 `ner_lite_audit.json` 里的 `dropped_anchor_miss` / `dropped_parse_fail` / `errors_network`。分批约 8,000 字符一次，切批不拆块；跨批缝的出现照样能定位，因为定位是**全篇搜索**，不是批内搜索。
+
+产物写在 `out_llm_trial/fds_extract/ner_lite/<doc>/`（`ner_lite.json`、`ner_lite_audit.json`、`_audit.html`）。`viewer_compare.html` 在文件存在时多画一列，不存在时安静地不画。
+
 ## 状态与已知限制
 
 - 研究与工程工具，不是托管服务。三个云渠道都是第三方服务：端点和请求格式随时可能变，它们的条款约束的是你。
 - `dots_api.base` 默认指向一个社区公共实例；万一它没了，请指向你自己的 Gradio 5 部署（或者用 `inbox/` 喂已有产物）。
 - **准确率并不均匀。** 文献条目与前置信息（题目/作者区）的启发式是在 13 篇韩中期刊语料上调的，并用仓库里这份实例做 diff 验证。已知弱点（都能在该语料上复现）：年份前只有句点的引文样式（"Author. 1999. Title."）、全汉字作者行、`N.` 式脚注标记、文献表最后一页与另一栏摘要同页、以及摘要没有可识别引导词时的题目/作者区越界。把 `metadata.json` 当高精度草稿用：引用前请检查每个字段的置信度（并对照 `viewer_compare.html`）。
+- **实体抽取是召回受限，不是精度受限。** 在 13 篇语料上，`ner_lite.py` 产出 57 条记录（数据集 35 / 软件 15 / 基金 7），61 条提名全部通过定位闸门，网络与解析零失败；但对人工核过的 `verified.json` 的召回并不齐：软件 6/7、基金 3/4（漏的是被拆成两条——机构与项目各成一条）、数据集 0/0（35 条全是误报，多为含「史」「報告書」的旧书与国际法院报告题名）。这 35 条仍然**每条都可验**——每个 `slice` 都逐字在原文里——这正是「定位到」和「抽对了」的区别。
 - 只有 MinerU 的桌面版兜底是 Windows 专属；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`start.bat` / `start.sh` 只是便捷包装。
-- 不包含在线服务测试（需要凭据和额度）。CI 会编译每个模块、跑单元测试和离线 demo。
+- 不包含在线服务测试（需要凭据和额度）。CI 会编译每个模块、跑单元测试和离线 demo；CI 不调用 LLM。
 
 ## 仓库结构
 
@@ -205,20 +230,22 @@ viewer.py          单渠道 / 对照查看器 + md2html + 元数据面板
 webapp.py app.js   拖拽工作台（stdlib HTTP 服务 + 渠道配置面板）
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
-metadata.py        结构化元数据 CLI（实现在 metapy/）
+metadata.py        结构化元数据 CLI（11 行壳；实现在 metapy/）
+ner_lite.py        实体抽取（基金 / 软件 / 数据集）：LLM 提名，代码定位
 regress.py         参考文献质量检查（截断、作者、页拼接）
-test_pipeline.py   unified 新旧判定与数据保全回归测试
+test_pipeline.py   unified 新旧判定、数据保全与查看器回归测试
 mineru_drive.py    MinerU 桌面版的 CDP 驱动（兜底）
-make_demo.py       生成 examples/demo/ —— 离线 demo 输入（CI 也用）
 requirements.txt   渲染 / CDP 运行时依赖
 channels.json      标定 + 模型默认值（无机密）
 channels.local.example.json   复制为 channels.local.json 后填自己的 token
 docs/              channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
-examples/          make_demo.py + demo/（合成离线 demo）· 13625974/（一份真实跑批产物）
+examples/          13625974/（一份真实跑批产物，首页链接）
 uploads/ inbox/    输入 PDF + 缓存/外部渠道产物（已 gitignore）
-out/               管线产物；out_llm_trial/ 放 LLM/NER 数据（已 gitignore）
-metapy/            common / m3(frozen) / issue / cspan / refs / front / abs /
-                   llmrep / dual / ner
+out/               管线产物；out_llm_trial/ 放实体抽取产物（已 gitignore）
+metapy/            __init__（CLI）· common / m3(frozen) / issue / cspan / refs / front / abs /
+                   llmrep / dual
+_attic/            归档代码：analyze.py · caption_audit.py · examples/（make_demo.py 与
+                   CI 用的合成离线 demo）· docs/ 旧副本
 ```
 
 ## 许可证
