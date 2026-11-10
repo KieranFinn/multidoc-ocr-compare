@@ -49,7 +49,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate demo inputs (synthetic PDF + 3 mock channel outputs)
         run: |
-          python make_demo.py
+          python examples/make_demo.py
           ls -R examples/demo | head -40
       - name: Run pipeline end to end (known pixel calibration, no network)
         run: |
