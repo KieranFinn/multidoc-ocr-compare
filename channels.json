@@ -70,7 +70,6 @@
   "api_key_env": "KCI_LLM_KEY",
   "temperature": 0,
   "max_fields_per_call": 8,
-  "ner_enabled": false,
-  "_ner_note": "--stage ner 开关(2026-11-09: 数据集/基金/软件改为本文关系+证据抽取, 旧产物已清除; 默认 false, 真跑用 _ner_run.py, key 从环境变量读)"
+  "_ner_lite_note": "实体抽取已换代(2026-11-10): 根目录 ner_lite.py(LLM 提名+程序定位, 三kind开放词表), 产物/审计落 out_llm_trial/fds_extract/ner_lite/, 经 viewer.py 回显进 viewer_compare.html; 旧 --stage ner/ner_audit 与批注词典已删"
  }
 }
