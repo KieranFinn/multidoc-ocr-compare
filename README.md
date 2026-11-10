@@ -82,24 +82,25 @@ either the document (all three engines agree on the oddity) or a single engine.
 | `merged/` (+ `merged.md`) | per-page merged blocks with provenance, built by `merge_out.py` |
 | `unified/` | merge groups across engines + `_unified_summary.json` (coverage, one_to_one, orphan_rate), built by `unify.py` |
 | `metadata.json` + `_metadata_report.html` | structured fields (title, authors, affiliation, abstract, keywords, reference entries) with per-field confidence + page anchors, built by `metadata.py` |
+| `out_llm_trial/fds_extract/ner_lite/<doc>/` | entity extraction (funding / software / dataset) written by `ner_lite.py` **outside** `out/`: `ner_lite.json`, `ner_lite_audit.json`, `_audit.html`; picked up by `viewer_compare.html` when present |
 | `metadata_audit.json` | diagnostic sidecar written by the same stages: per-field basis/review comments, reference style, L1 checks (`ref_validation`). **Not** part of `metadata.json` — readers that look for validation data must read this file |
 
 ## Quick start (offline, no account, no network)
 
 ```bash
 pip install -r requirements.txt
-python make_demo.py                                    # synthetic PDF + three mock engine outputs, into examples/demo/
-python pipeline.py examples/demo/samples/demo_kr.pdf \
-    --mineru examples/demo/inbox/demo_kr__mineru \
-    --dots   examples/demo/inbox/demo_kr__dots \
-    --paddle examples/demo/inbox/demo_kr__paddle \
-    --channels examples/demo/channels.json \
-    --out examples/demo/out/demo_kr
+python _attic/examples/make_demo.py                    # synthetic PDF + three mock engine outputs, into _attic/examples/demo/
+python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
+    --mineru _attic/examples/demo/inbox/demo_kr__mineru \
+    --dots   _attic/examples/demo/inbox/demo_kr__dots \
+    --paddle _attic/examples/demo/inbox/demo_kr__paddle \
+    --channels _attic/examples/demo/channels.json \
+    --out _attic/examples/demo/out/demo_kr
 python -W error::ResourceWarning -m unittest -v test_pipeline.py
-python -m http.server -d examples/demo/out/demo_kr  # then open /index.html
+python -m http.server -d _attic/examples/demo/out/demo_kr  # then open /index.html
 ```
 
-`--channels` swaps the whole config for `examples/demo/channels.json`: MinerU declares the actual
+`--channels` swaps the whole config for `_attic/examples/demo/channels.json`: MinerU declares the actual
 521×688 page-pixel space, dots/Paddle use normalized coordinates, and every cloud channel is disabled.
 The synthetic document deliberately includes an outlier reading, an empty block and a Paddle-only page
 number (one intentional orphan). CI runs this flow without tokens or network.
@@ -172,11 +173,14 @@ out/<doc>/viewer_compare.html   1:3 comparison
 ```bash
 pip install -r requirements.txt      # test_pipeline imports pipeline -> pipeline_io -> pypdfium2/PIL
 python -W error::ResourceWarning -m unittest -v test_pipeline.py
+python ner_lite.py selfcheck         # offline: 7 synthetic blocks + a mock model, no network
 ```
 
-10 cases, no network, no tokens. They pin the contract that matters most when editing the merge layer
-("a stale `unified/` is preserved on disk but never drawn") and the viewer's citation/metadata
-rendering. CI runs them on Python 3.10 and 3.12.
+11 cases, no network, no tokens. They pin the contract that matters most when editing the merge layer
+("a stale `unified/` is preserved on disk but never drawn"), the viewer's citation/metadata
+rendering, and the entity-locating invariants (folded-coordinate mapping, rightward extension,
+cross-block segments, biblio-footnote annotation). `ner_lite.py selfcheck` adds the entity gate's
+own cases. CI runs the unit tests on Python 3.10 and 3.12; `selfcheck` is not yet in CI.
 
 ## Configuration
 
@@ -246,6 +250,37 @@ python metadata.py <doc> --viewer          # rebuild viewer_compare.html from ex
 > (m3 → refs → frefs → front → abs → issue → cspan → report). If unify fails or is disabled, old
 > unified data is preserved on disk but not drawn into the new viewer. `--viewer` redraws only.
 
+## Entity extraction (`ner_lite.py`, optional, runs after unify)
+
+The metadata stages above recover *bibliographic* fields. `ner_lite.py` recovers the three entity
+types that citation parsers do not model — **funding** (funder / programme / grant id), **software**,
+and **dataset** — with a contract that is deliberately narrower than a classic NER pipeline:
+
+```bash
+# put endpoint/model into channels.json -> llm, and the key in KCI_LLM_KEY (never on disk)
+python ner_lite.py selfcheck               # offline gate check, no network
+python ner_lite.py 13625974                # one document
+python ner_lite.py all                     # every doc under out/ that has unified/
+```
+
+| Stage | What it does | Why |
+| --- | --- | --- |
+| Nominate | one prompt for three open-vocabulary kinds; the model returns only `[{kind, name}]` | no `uid`, no relation, no second pass — nothing the model writes is trusted as a coordinate |
+| Locate | the name is folded (whitespace/BOM/NFC-insensitive) and must appear in the batch text, otherwise the nomination is **dropped** (`anchor_miss`) | the model can hallucinate a name; it cannot make the string appear in the source |
+| Emit | the value is always the **original slice**, enumerated over the whole document (`segments` when an occurrence crosses a block, the tighter overlap wins) | every output can be verified with a bare `slice in block_text` |
+| Annotate | rightward literal extension (version number / parenthesised grant id) is marked `extended`; `multi_block`, `multi_occurrence`, `cross_block`, `mention_in_biblio_footnote` | each flag answers a question a reviewer would otherwise ask by hand |
+
+The gate is a structural guarantee of *one* thing: **the string occurs where the record says it does**. It
+is not a guarantee that the entity *belongs* to that sentence (a truncated name that is a substring of a
+neighbouring reading still passes), and a dropped nomination is invisible in the output — read
+`dropped_anchor_miss` / `dropped_parse_fail` / `errors_network` in `ner_lite_audit.json` before quoting
+counts. Batching is ~8,000 characters per call, batches never split a block, and an occurrence that spans
+a batch seam is still located — because location is a whole-document search, not a batch search.
+
+Outputs go to `out_llm_trial/fds_extract/ner_lite/<doc>/` (`ner_lite.json`, `ner_lite_audit.json`,
+`_audit.html`). `viewer_compare.html` shows them as an extra column when the file is present and simply
+omits the column when it is not.
+
 ## Status and limitations
 
 - Research / engineering tool, not a hosted service. The three cloud channels are third-party services:
@@ -260,10 +295,17 @@ python metadata.py <doc> --viewer          # rebuild viewer_compare.html from ex
   layouts where the abstract begins without a recognisable lead-in. Treat `metadata.json` as a
   high-precision draft: check the confidence level on each field (and cross-check against
   `viewer_compare.html`) before citing.
+- **Entity extraction is recall-limited, not precision-limited.** On the 13-document corpus `ner_lite.py`
+  returns 57 records (35 dataset / 15 software / 7 funding) with 61/61 nominations admitted and zero
+  network or parse failures — but its recovery against hand-checked `verified.json` is uneven: software
+  6/7, funding 3/4 (the miss is a split record: funder and programme land as two names instead of one),
+  dataset 0/0 (35 false positives, mostly titles of old books and ICC reports containing `史` / `報告書`).
+  Every one of the 35 dataset records is still *verifiable* — each `slice` is verbatim in the source —
+  which is exactly the difference between "located" and "correct".
 - Only the MinerU desktop fallback is Windows-specific; `pipeline.py`, `webapp.py`, `metadata.py`
   and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
 - No live-service tests are included (they would need credentials and quota). CI compiles every module,
-  runs the unit tests and the offline demo.
+  runs the unit tests and the offline demo; it does not call an LLM.
 
 ## Repository layout
 
@@ -274,20 +316,22 @@ viewer.py           single/compare viewers + md2html + metadata panels
 webapp.py app.js    drag & drop workbench (stdlib HTTP server + channel config panel)
 merge_out.py        per-page merge across channels
 unify.py            cross-engine grouping -> unified/ + summary metrics (frozen)
-metadata.py         structured metadata CLI (implementation in metapy/)
+metadata.py         structured metadata CLI (11-line shell; implementation lives in metapy/)
+ner_lite.py         entity extraction (funding / software / dataset): LLM nominates, code locates
 regress.py          reference-entry quality checks (truncation, authors, page joins)
-test_pipeline.py    unified freshness and data-preservation regression tests
+test_pipeline.py    unified freshness, data-preservation and viewer regression tests
 mineru_drive.py     CDP driver for the MinerU desktop app (fallback)
-make_demo.py        generates examples/demo/ -- the offline demo inputs (also used by CI)
 requirements.txt    render/CDP runtime dependencies
 channels.json       calibration + model defaults (no secrets)
 channels.local.example.json   copy to channels.local.json and fill in your tokens
 docs/               channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
-examples/           make_demo.py + demo/ (synthetic offline demo) · 13625974/ (one real run)
+examples/           13625974/ (one real run, linked from the front page)
 uploads/ inbox/     input PDFs + cached/external channel output (gitignored)
-out/                pipeline products; out_llm_trial/ holds LLM/NER data (gitignored)
-metapy/             common / m3(frozen) / issue / cspan / refs / front / abs /
-                   llmrep / dual / ner
+out/                pipeline products; out_llm_trial/ holds entity-extraction data (gitignored)
+metapy/             __init__ (the CLI) · common / m3(frozen) / issue / cspan / refs / front /
+                    abs / llmrep / dual
+_attic/             retired code, kept for reference: analyze.py · caption_audit.py ·
+                    examples/ (make_demo.py + the synthetic offline demo used by CI) · docs/ copies
 ```
 
 ## License
