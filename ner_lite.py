@@ -37,8 +37,15 @@ DST = os.path.join(os.path.dirname(HERE), "out_llm_trial", "fds_extract", "ner_l
 PADDLE_ONLY_DOCS = {"13564165": os.path.join(HERE, "..", "OCR", "13564165",
                                              "13564165.pdf_by_PaddleOCR-VL-1.5.json")}
 
-ALL_DOCS = sorted(d for d in os.listdir(OUT)
-                  if os.path.isdir(os.path.join(OUT, d, "unified")))          + [d for d in PADDLE_ONLY_DOCS if not os.path.isdir(os.path.join(OUT, d, "unified"))]
+def all_docs():
+    """out/ 下有 unified/ 的文档 + 无 unified 层但给了 paddle JSON 的散装文档。
+
+    惰性求值: 本模块要被 import(CI 的 import 冒烟 / 测试), 不能让"还没有 out/"成为导入错误。
+    """
+    have = ([d for d in os.listdir(OUT) if os.path.isdir(os.path.join(OUT, d, "unified"))]
+            if os.path.isdir(OUT) else [])
+    return sorted(have) + [d for d in PADDLE_ONLY_DOCS
+                           if not os.path.isdir(os.path.join(OUT, d, "unified"))]
 BATCH_CHARS = 8000
 KINDS = ("funding", "software", "dataset")
 
@@ -502,7 +509,7 @@ def selfcheck():
 def main(argv):
     if argv and argv[0] == "selfcheck":
         return selfcheck()
-    docs = ALL_DOCS if (argv and argv[0] == "all") else argv
+    docs = all_docs() if (argv and argv[0] == "all") else argv
     if not docs:
         print("usage: ner_lite.py selfcheck|<doc>...|all")
         return 1
