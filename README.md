@@ -2,7 +2,7 @@
 
 **[English](README.md) · [中文](README.zh-CN.md)**
 
-> 这是中英双语 README 的**英文版**。中文版见 [README.zh-CN.md](README.zh-CN.md)。
+> This is the **English** README. The Chinese version is [README.zh-CN.md](README.zh-CN.md).
 
 Run **several OCR / document-parsing engines on the same PDF**, put every block into one coordinate
 space, and look at them side by side — per page, per block, with the original scan behind them.
@@ -21,6 +21,22 @@ but silently disagrees with itself across pages. The point is not "which engine 
                      v                                v
          per-channel viewers + 1:3 compare        merged/ + metrics
 ```
+
+---
+
+## Where do I start?
+
+Pick the row that matches what you actually want; each row works on its own.
+
+| You want to… | Command | Needs an account? |
+| --- | --- | --- |
+| **see what the output looks like** | open [`examples/13625974/index.html`](examples/13625974/) after cloning — or click the rendered links below | no |
+| **check it runs on your machine** | [Quick start (offline)](#quick-start-offline-no-account-no-network) — synthetic PDF, mock engine outputs | no |
+| **run your own PDF** | [Run it on your own PDFs](#run-it-on-your-own-pdfss) — one engine is enough to start | only for the engines you enable |
+| **get the structured fields** (title / authors / references …) | [Structured metadata](#structured-metadata-optional-runs-after-unify) | no (rules first; LLM optional) |
+
+There is **no single setup step that has to succeed before anything else works** — you can start with
+zero credentials, add engines one at a time, and stop wherever the output is good enough.
 
 ## Live example
 
@@ -62,39 +78,145 @@ either the document (all three engines agree on the oddity) or a single engine.
 | --- | --- |
 | `out/<doc>/index.html` | overview: pages, blocks, CJK char counts, U+FFFD count, source of each channel |
 | `viewer_<channel>.html` | one engine: page image + its boxes, hover/click to link block and text |
-| `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover; repeated citations of the same sentence are grouped into one row with every highlight and reference link; reference/citation-row hover highlights its source block and shows a cropped original-page preview |
+| `viewer_compare.html` | the 1:3 view: four columns per page (image + three engines), colour-coded, boxes on hover; repeated citations of the same sentence are grouped into one row with every highlight and reference link; reference/footnote-row hover selects the matching member block where possible; citation-row hover uses its unified block; both show a cropped original-page preview; clicking a metadata row (overview or per-page band) scrolls to the page and flashes the source block on the original scan |
 | `merged/` (+ `merged.md`) | per-page merged blocks with provenance, built by `merge_out.py` |
 | `unified/` | merge groups across engines + `_unified_summary.json` (coverage, one_to_one, orphan_rate), built by `unify.py` |
 | `metadata.json` + `_metadata_report.html` | structured fields (title, authors, affiliation, abstract, keywords, reference entries) with per-field confidence + page anchors, built by `metadata.py` |
+| `metadata_audit.json` | diagnostic sidecar written by the same stages: per-field basis/review comments, reference style, L1 checks (`ref_validation`). **Not** part of `metadata.json` — readers that look for validation data must read this file |
 
-## Try it offline (no account, no network)
+## Quick start (offline, no account, no network)
 
 ```bash
 pip install -r requirements.txt
-python _attic/examples/make_demo.py  # synthetic PDF + three mock engine outputs
-python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
-    --mineru _attic/examples/demo/inbox/demo_kr__mineru \
-    --dots   _attic/examples/demo/inbox/demo_kr__dots \
-    --paddle _attic/examples/demo/inbox/demo_kr__paddle \
-    --channels _attic/examples/demo/channels.json \
-    --out _attic/examples/demo/out/demo_kr
+python make_demo.py                                    # synthetic PDF + three mock engine outputs, into examples/demo/
+python pipeline.py examples/demo/samples/demo_kr.pdf \
+    --mineru examples/demo/inbox/demo_kr__mineru \
+    --dots   examples/demo/inbox/demo_kr__dots \
+    --paddle examples/demo/inbox/demo_kr__paddle \
+    --channels examples/demo/channels.json \
+    --out examples/demo/out/demo_kr
 python -W error::ResourceWarning -m unittest -v test_pipeline.py
-python -m http.server -d _attic/examples/demo/out/demo_kr  # then open /index.html
+python -m http.server -d examples/demo/out/demo_kr  # then open /index.html
 ```
 
-`--channels` swaps the whole config for `_attic/examples/demo/channels.json`: MinerU declares the
-actual 521×688 page-pixel space, dots/Paddle use normalized coordinates, and every cloud channel is
-disabled. The synthetic document deliberately includes an outlier reading, an empty block and a
-Paddle-only page number (one intentional orphan). CI runs this flow without tokens or network.
+`--channels` swaps the whole config for `examples/demo/channels.json`: MinerU declares the actual
+521×688 page-pixel space, dots/Paddle use normalized coordinates, and every cloud channel is disabled.
+The synthetic document deliberately includes an outlier reading, an empty block and a Paddle-only page
+number (one intentional orphan). CI runs this flow without tokens or network.
 
-## Structured metadata (optional, runs after `unify`)
+> The unit tests cover the unified-freshness / data-preservation contract and the viewer's citation and
+> metadata rendering — they do **not** cover the metadata heuristics (reference segmentation, author
+> zone, keyword panel). Those are validated by diffing the checked-in example, see
+> [Status and limitations](#status-and-limitations).
 
-The comparison chain above tells you *who read what*. `metadata.py` turns the surviving evidence into
-*citable fields* — title (Korean + English), authors, affiliations, abstract, keywords, and reference
-entries — each with a confidence level and a page anchor back into the 1:3 viewer.
+## Run it on your own PDFs
+
+### Step 0 — can I run with only one engine?
+
+**Yes.** Every step below is per-channel: with one channel enabled you get `viewer_<channel>.html`
+plus the overview; the 1:3 viewer and `merged/` need two or more, and `unified/` (which the metadata
+layer reads) needs the engines to agree on at least some content. Channels you did not provide are
+labelled "not provided" in the report instead of failing the run.
+
+### Step 1 — pick the engines you actually have
+
+| Channel | What it needs | Account / cost | Notes |
+| --- | --- | --- | --- |
+| **dots.ocr** | a Gradio 5 endpoint; the default is the public Xiaohongshu instance `https://dotsocr.xiaohongshu.com` | **none — no token field** | the quickest way to get a first real run; override `dots_api.base` only if you self-host |
+| **PaddleOCR-VL** | `token` in `channels.local.json` | key from the AI Studio service (`paddleocr.aistudio-app.com`) | async job, normalized coordinates, no calibration |
+| **MinerU** | `token` in `channels.local.json` | key from mineru.net | batch signed upload; falls back to driving the desktop app over CDP (Windows) |
 
 ```bash
-python unify.py <doc>                      # produces out/<doc>/unified/
+cp channels.local.example.json channels.local.json   # fill in only the tokens you have; gitignored
+python pipeline.py mypaper.pdf                       # uses every channel that has a token (or a cache / inbox entry)
+python webapp.py                                     # or: drag & drop workbench at 127.0.0.1:8765
+```
+
+A channel with no token, no cache and nothing in `inbox/` is simply skipped — you do not have to
+disable it explicitly. Starting with `dots` alone (it needs no token) is the shortest path to a first
+real run; add `paddle` / `mineru` tokens later and the next document picks them up automatically.
+
+Full request flow per channel (endpoints, polling, quirks) is in
+[docs/channels.md](docs/channels.md); calibration is in [docs/calibration.md](docs/calibration.md).
+
+### Step 2 — or bring engine output you already have
+
+If you have already run an engine somewhere (its web UI, a previous batch, a colleague's export), you
+do **not** need any API key: drop the output into `inbox/` and the pipeline uses it instead of calling
+anything.
+
+```
+inbox/<doc>__<channel>/     <doc> = the PDF file name without .pdf
+```
+
+| Channel | What to put in the directory |
+| --- | --- |
+| `<doc>__mineru` | the directory the MinerU run produced, containing `*_content_list_v2.json` (and `layout.json` if you have it — it marks OCR vs non-OCR runs) |
+| `<doc>__dots` | per-page `page_0.json`, `page_1.json`, … (list of blocks with `bbox` + text) |
+| `<doc>__paddle` | per-page `page_N.json` as above, **or** a single Paddle JSON export `*.json` |
+
+Matching is **strict by document name**: the directory must start with `<doc>`, and a typo means
+"no channel found" rather than "use the closest one" (that cross-document fallback used to paint one
+document's blocks onto another). Without the suffix marker the pipeline also guesses by content
+(`*_content_list_v2.json` → mineru, `page_N.json` → dots), but the explicit suffix is always safer.
+
+### Step 3 — read the result
+
+```
+out/<doc>/index.html            start here
+out/<doc>/viewer_compare.html   1:3 comparison
+```
+
+## Tests
+
+```bash
+pip install -r requirements.txt      # test_pipeline imports pipeline -> pipeline_io -> pypdfium2/PIL
+python -W error::ResourceWarning -m unittest -v test_pipeline.py
+```
+
+10 cases, no network, no tokens. They pin the contract that matters most when editing the merge layer
+("a stale `unified/` is preserved on disk but never drawn") and the viewer's citation/metadata
+rendering. CI runs them on Python 3.10 and 3.12.
+
+## Configuration
+
+Three layers, later wins (shallow merge per section):
+
+1. `channels.json` — committed baseline: calibration, model names, timeouts, switches. **No tokens.**
+2. `channels.local.json` — your private overrides (gitignored). Write only the keys you change.
+3. env vars `MINERU_API_TOKEN` / `PADDLE_API_TOKEN` — override those two tokens (handy in CI).
+
+`python pipeline.py --channels <file>` replaces the baseline entirely and **stops consulting layers 2
+and 3**, so an offline/demo run can never pick up a real token from your machine. Every call re-reads
+the merged config, so editing calibration or a token takes effect on the next document without a
+restart. Details: [docs/channels.md](docs/channels.md).
+
+## Design notes (the parts that took the longest)
+
+- **One coordinate space, declared in config.** Every engine reports boxes in its own space, sometimes
+  anisotropic. The four numbers `src_w / src_h / x_off / y_off` are data, not code, and are re-read on
+  every call so you can re-calibrate without restarting the service. Recipe:
+  [docs/calibration.md](docs/calibration.md).
+- **Calibration key is written next to the data.** The same `mineru` folder may come from the desktop app
+  or the cloud API (about 1.6% different geometry). A marker file records which one, so the viewer and
+  the merger can never disagree about the same bytes.
+- **Cache-first, then API, then desktop.** Re-running a document is free; forcing a re-fetch means
+  deleting one cache directory (`out/<doc>/raw/<channel>_api`).
+- **Upstream weirdness is treated as upstream.** Truncated page JSON, double-encoded payloads, renamed
+  keys between engine versions: the adapters parse defensively and *say so in the log*, instead of
+  silently producing empty blocks.
+- **U+FFFD is a metric, not cosmetics.** It is counted per channel and surfaced in the overview, because
+  it is the cheapest text-integrity signal you get without ground truth.
+
+## Structured metadata (optional, runs after unify)
+
+The comparison chain above tells you *who read what*. `metadata.py` turns the surviving evidence into
+*citable fields* — title (Korean + English), authors, affiliations, abstract, bilingual
+keywords (`keywords` Korean / `keywords_en` English, each the first matching panel in page
+order), and reference entries — each with a confidence level and a page anchor back into the 1:3 viewer.
+
+```bash
+python unify.py <doc>                      # produces out/<doc>/unified/ (pipeline.py already does this; run it standalone for existing merged/ data)
 python metadata.py <doc> --stage m3        # cross-page join: glue a paragraph split by the page break
 python metadata.py <doc> --stage refs      # reference entries -> a list of {authors, year, title, vol, no, pages}
 python metadata.py <doc> --stage frefs     # all numbered footnotes (references and notes) -> footnote_refs
@@ -120,77 +242,51 @@ python metadata.py <doc> --viewer          # rebuild viewer_compare.html from ex
 ```
 
 > `--stage m3` writes back into `unified/page_N.json`; re-running unify throws those markers away.
-> The order is: pipeline (including unify) → metadata
-> (m3 → refs → frefs → front → abs → issue → cspan → report). Standalone `unify.py` remains available
-> for existing merged data. If unify fails or is disabled, old unified data is preserved but not drawn
-> into the new viewer. `--viewer` redraws only.
-
-## Run it on your own PDFs
-
-```bash
-cp channels.local.example.json channels.local.json   # fill in tokens; this file is gitignored
-python pipeline.py mypaper.pdf                        # fetch all three channels, build viewers
-python webapp.py                                      # or: drag & drop workbench at 127.0.0.1:8765
-```
-
-Channel configuration lives in three layers (`channels.json` -> `channels.local.json` -> env vars);
-see [docs/channels.md](docs/channels.md). Nothing in the repo needs a token to boot.
-
-### Channels
-
-| Channel | Acquisition | Coordinate space |
-| --- | --- | --- |
-| **MinerU** | batch upload API (signed OSS PUT); falls back to driving the desktop app over CDP | anisotropic pixel space, per-source calibration (`1034x1012` desktop, `1017x1008` API) |
-| **dots.ocr** | Gradio 5 instance: `/config` -> upload -> warm-up -> inference -> result zip | normalised 0-1 per page (no calibration) |
-| **PaddleOCR-VL** | async cloud jobs | normalised 0-1 per page (no calibration) |
-
-Already have engine output on disk? Drop it in `inbox/<doc>__<channel>/` and the pipeline uses it
-instead of calling anything.
-
-## Design notes (the parts that took the longest)
-
-- **One coordinate space, declared in config.** Every engine reports boxes in its own space, sometimes
-  anisotropic. The four numbers `src_w / src_h / x_off / y_off` are data, not code, and are re-read on
-  every call so you can re-calibrate without restarting the service. Recipe:
-  [docs/calibration.md](docs/calibration.md).
-- **Calibration key is written next to the data.** The same `mineru` folder may come from the desktop app
-  or the cloud API (about 1.6% different geometry). A marker file records which one, so the viewer and
-  the merger can never disagree about the same bytes.
-- **Cache-first, then API, then desktop.** Re-running a document is free; forcing a re-fetch means
-  deleting one cache directory.
-- **Upstream weirdness is treated as upstream.** Truncated page JSON, double-encoded payloads, renamed
-  keys between engine versions: the adapters parse defensively and *say so in the log*, instead of
-  silently producing empty blocks.
-- **U+FFFD is a metric, not cosmetics.** It is counted per channel and surfaced in the overview, because
-  it is the cheapest text-integrity signal you get without ground truth.
+> The order is: pipeline (which already runs unify) → metadata
+> (m3 → refs → frefs → front → abs → issue → cspan → report). If unify fails or is disabled, old
+> unified data is preserved on disk but not drawn into the new viewer. `--viewer` redraws only.
 
 ## Status and limitations
 
 - Research / engineering tool, not a hosted service. The three cloud channels are third-party services:
   their endpoints and request formats can change at any time, and their terms apply to you.
-- Only the MinerU desktop fallback is Windows-specific; the pipeline itself is platform-neutral.
-- The reference-entry checks in `regress.py` are Korean/Chinese-centric heuristics for scholarly PDFs.
-- No live-service tests are included (they would need credentials and quota). CI compiles every module
-  and runs the offline demo.
+- `dots_api.base` defaults to a public community instance; if it disappears, point it at your own
+  Gradio 5 deployment (or use `inbox/` with output you already have).
+- **Accuracy is not uniform.** The reference-entry and front-matter heuristics are tuned on a 13-document
+  Korean/Chinese journal corpus and were validated by diffing the checked-in example. Known weak spots
+  (all reproducible on that corpus) are: citation styles where the year is preceded only by a period
+  ("Author. 1999. Title."), all-Hanzi author lines, `N.`-style footnote markers, documents whose
+  reference list shares its last page with an abstract in the other column, and title/author zones on
+  layouts where the abstract begins without a recognisable lead-in. Treat `metadata.json` as a
+  high-precision draft: check the confidence level on each field (and cross-check against
+  `viewer_compare.html`) before citing.
+- Only the MinerU desktop fallback is Windows-specific; `pipeline.py`, `webapp.py`, `metadata.py`
+  and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
+- No live-service tests are included (they would need credentials and quota). CI compiles every module,
+  runs the unit tests and the offline demo.
 
 ## Repository layout
 
+Paths in this tree are relative to `KCI/pipeline/` (the working copy). The published repo
+`multidoc-ocr-compare` splits the same modules differently: `pipeline.py` carries the I/O layer
+itself, and `pipeline_io.py` / `viewer.py` / `test_pipeline.py` ship there as part of a later release.
+
 ```
-pipeline.py        main orchestration + compatibility re-exports
-pipeline_io.py     render -> fetch -> archive -> calibrate -> adapt
-viewer.py          single/compare viewers + md2html + metadata panels
+pipeline.py        render -> fetch -> archive -> calibrate -> adapt -> orchestrate
 webapp.py app.js   drag & drop workbench (stdlib HTTP server + channel config panel)
 merge_out.py       per-page merge across channels
 unify.py           cross-engine grouping -> unified/ + summary metrics (frozen)
 metadata.py        structured metadata CLI (implementation in metapy/)
 regress.py         reference-entry quality checks (truncation, authors, page joins)
-test_pipeline.py   unified freshness and data-preservation regression tests
 mineru_drive.py    CDP driver for the MinerU desktop app (fallback)
-requirements.txt   existing render/CDP runtime dependencies
+analyze.py         corpus-level metrics + cross-channel attribution report
+make_demo.py       generates examples/demo/ — the offline demo inputs (also used by CI)
+requirements.txt   render/CDP runtime dependencies
 channels.json      calibration + model defaults (no secrets)
-uploads/ inbox/    input PDFs + cached/external channel output
-out/               rule-based pipeline products; out_llm_trial/ holds LLM/NER data
-_attic/            archived analysis/caption tools + the offline CI demo
+docs/              channels.md · calibration.md · architecture.md
+examples/          demo/ (synthetic offline demo, generated) · 13625974/ (one real checked-in run)
+uploads/ inbox/    input PDFs + cached/external channel output (gitignored)
+out/               pipeline products; out_llm_trial/ holds LLM/NER data (gitignored)
 metapy/            common / m3(frozen) / issue / cspan / refs / front / abs /
                    llmrep / dual / ner
 ```
