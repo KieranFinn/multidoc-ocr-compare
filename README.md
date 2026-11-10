@@ -176,11 +176,11 @@ python -W error::ResourceWarning -m unittest -v test_pipeline.py
 python ner_lite.py selfcheck         # offline: 7 synthetic blocks + a mock model, no network
 ```
 
-11 cases, no network, no tokens. They pin the contract that matters most when editing the merge layer
+10 cases, no network, no tokens. They pin the contract that matters most when editing the merge layer
 ("a stale `unified/` is preserved on disk but never drawn"), the viewer's citation/metadata
 rendering, and the entity-locating invariants (folded-coordinate mapping, rightward extension,
 cross-block segments, biblio-footnote annotation). `ner_lite.py selfcheck` adds the entity gate's
-own cases. CI runs the unit tests on Python 3.10 and 3.12; `selfcheck` is not yet in CI.
+own cases. CI runs both on Python 3.10 and 3.12.
 
 ## Configuration
 
@@ -305,7 +305,7 @@ omits the column when it is not.
 - Only the MinerU desktop fallback is Windows-specific; `pipeline.py`, `webapp.py`, `metadata.py`
   and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
 - No live-service tests are included (they would need credentials and quota). CI compiles every module,
-  runs the unit tests and the offline demo; it does not call an LLM.
+  runs the unit tests, `ner_lite.py selfcheck` and the offline demo; it does not call an LLM.
 
 ## Repository layout
 
