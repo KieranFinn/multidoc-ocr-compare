@@ -6,20 +6,20 @@ r"""生成离线 demo 输入(examples/demo/), 供 CI 无 token、无网络地跑
   inbox/demo_kr__mineru/         demo_kr_content_list_v2.json + layout.json(_ocr_enable=false)
   inbox/demo_kr__dots/page_0.json
   inbox/demo_kr__paddle/page_0.json
-  channels.json                  标定 identity(src_w/src_h 为 null), token 为空, 三个 *_api.enabled=false
+  channels.json                  MinerU 显式源尺寸 521x688; dots/paddle 归一化; 云端全关
 
 三家 bbox 直接定义在 150dpi 页图像素空间(521x688); dots/paddle 落盘时除以页宽高归一化。
 所以 demo 数据自洽: 各家对同一句话的框几乎重合, 差异只体现在故意留的离群读法、
 一家缺一个块、一个空块、一家独有页码上。
 
-用法:
-  python make_demo.py
-  python pipeline.py examples/demo/samples/demo_kr.pdf --mineru examples/demo/inbox/demo_kr__mineru --dots examples/demo/inbox/demo_kr__dots --paddle examples/demo/inbox/demo_kr__paddle --channels examples/demo/channels.json --out examples/demo/out
+从管道根目录运行:
+  python examples/make_demo.py        # 等价: python make_demo.py
+  python pipeline.py examples/demo/samples/demo_kr.pdf --mineru examples/demo/inbox/demo_kr__mineru --dots examples/demo/inbox/demo_kr__dots --paddle examples/demo/inbox/demo_kr__paddle --channels examples/demo/channels.json --out examples/demo/out/demo_kr
 """
 import os, io, json
 
 HERE = os.path.dirname(os.path.abspath(__file__))      # 本脚本所在的 examples/
-ROOT = os.path.dirname(HERE)                          # 管道代码与 out/ 所在的仓库根
+ROOT = os.path.dirname(HERE)                          # 仅用于打印相对路径
 DEMO = os.path.join(HERE, "demo")                     # 生成的输入与产物都留在 examples/demo/
 PW, PH = 250, 330          # 页面尺寸 pt; 150dpi 渲染后为 521x688 px
 PW_PX, PH_PX = 521, 688
@@ -128,13 +128,13 @@ def layout_json():
 
 
 def dots_page():
-    """dots.ocr 导出: 顶层 list, 每项 category + bbox(0-1) + text。
+    """dots 已适配缓存: 顶层 list, 每项为规范 category + bbox(0-1) + text。
     故意: 某段把「병렬」读成「병열」(离群读法, dice 仍高); 不出页码。"""
     out = []
     for b in BLOCKS:
         if b.get("dots_skip"):
             continue
-        it = {"category": b["dots"], "bbox": norm_box(b),
+        it = {"category": b["cat"], "bbox": norm_box(b),
               "text": b.get("dots_override") or b["text"]}
         if b["cat"] == "Table":
             it["html"] = b["text"]
@@ -144,23 +144,22 @@ def dots_page():
 
 
 def paddle_page():
-    """Paddle 异步 jobs 形态: {parsing_res_list:[{block_label, block_content, block_bbox}]}。
-    故意: 页脚 block_content 为空(上游常见空块), 演示空块与跨渠道回填。"""
+    """Paddle 已适配缓存: 与 dots 相同的 list/category/bbox/text 契约。
+    故意: 页脚 text 为空(上游常见空块), 演示空块与跨渠道回填。"""
     res = []
     for b in BLOCKS:
         txt = "" if b.get("paddle_empty") else b["text"]
-        res.append({"block_label": b["paddle"], "block_content": txt,
-                    "block_bbox": norm_box(b)})
-    return {"parsing_res_list": res, "page_index": 0, "page_size": [PW_PX, PH_PX]}
+        res.append({"category": b["cat"], "bbox": norm_box(b), "text": txt})
+    return res
 
 
 def channels_json():
     return {
         "keep_api_zip": False,
-        "_note": "离线 demo 配置: 标定 identity(引擎坐标即 150dpi 页图像素), 无 token, 三个 *_api.enabled=false。由 make_demo.py 生成, 请勿手改。",
-        "mineru": {"src_w": None, "src_h": None, "x_off": 0, "y_off": 0,
-                   "_note": "null = identity(坐标已等于页图像素)"},
-        "mineru_api": {"token": "", "src_w": None, "src_h": None, "x_off": 0, "y_off": 0,
+        "_note": "离线 demo 配置: MinerU 源尺寸=实际页图像素(521x688), 无 token, 三个 *_api.enabled=false。由 make_demo.py 生成, 请勿手改。",
+        "mineru": {"src_w": PW_PX, "src_h": PH_PX, "x_off": 0, "y_off": 0,
+                   "_note": "显式源尺寸使 MinerU 页图像素坐标零缩放"},
+        "mineru_api": {"token": "", "src_w": PW_PX, "src_h": PH_PX, "x_off": 0, "y_off": 0,
                        "model_version": "vlm", "language": "korean", "is_ocr": False,
                        "timeout": 1800, "enabled": False},
         "dots": {"src_w": None, "src_h": None, "x_off": 0, "y_off": 0},
@@ -202,7 +201,8 @@ def main():
           "--mineru examples/demo/inbox/demo_kr__mineru "
           "--dots examples/demo/inbox/demo_kr__dots "
           "--paddle examples/demo/inbox/demo_kr__paddle "
-          "--channels examples/demo/channels.json --out examples/demo/out")
+          "--channels examples/demo/channels.json "
+          "--out examples/demo/out/demo_kr")
 
 
 if __name__ == "__main__":

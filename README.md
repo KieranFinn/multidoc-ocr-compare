@@ -267,27 +267,26 @@ python metadata.py <doc> --viewer          # rebuild viewer_compare.html from ex
 
 ## Repository layout
 
-Paths in this tree are relative to `KCI/pipeline/` (the working copy). The published repo
-`multidoc-ocr-compare` splits the same modules differently: `pipeline.py` carries the I/O layer
-itself, and `pipeline_io.py` / `viewer.py` / `test_pipeline.py` ship there as part of a later release.
-
 ```
-pipeline.py        render -> fetch -> archive -> calibrate -> adapt -> orchestrate
-webapp.py app.js   drag & drop workbench (stdlib HTTP server + channel config panel)
-merge_out.py       per-page merge across channels
-unify.py           cross-engine grouping -> unified/ + summary metrics (frozen)
-metadata.py        structured metadata CLI (implementation in metapy/)
-regress.py         reference-entry quality checks (truncation, authors, page joins)
-mineru_drive.py    CDP driver for the MinerU desktop app (fallback)
-analyze.py         corpus-level metrics + cross-channel attribution report
-make_demo.py       generates examples/demo/ — the offline demo inputs (also used by CI)
-requirements.txt   render/CDP runtime dependencies
-channels.json      calibration + model defaults (no secrets)
-docs/              channels.md · calibration.md · architecture.md
-examples/          demo/ (synthetic offline demo, generated) · 13625974/ (one real checked-in run)
-uploads/ inbox/    input PDFs + cached/external channel output (gitignored)
-out/               pipeline products; out_llm_trial/ holds LLM/NER data (gitignored)
-metapy/            common / m3(frozen) / issue / cspan / refs / front / abs /
+pipeline.py         main orchestration + compatibility re-exports
+pipeline_io.py      render -> fetch -> archive -> calibrate -> adapt
+viewer.py           single/compare viewers + md2html + metadata panels
+webapp.py app.js    drag & drop workbench (stdlib HTTP server + channel config panel)
+merge_out.py        per-page merge across channels
+unify.py            cross-engine grouping -> unified/ + summary metrics (frozen)
+metadata.py         structured metadata CLI (implementation in metapy/)
+regress.py          reference-entry quality checks (truncation, authors, page joins)
+test_pipeline.py    unified freshness and data-preservation regression tests
+mineru_drive.py     CDP driver for the MinerU desktop app (fallback)
+make_demo.py        generates examples/demo/ -- the offline demo inputs (also used by CI)
+requirements.txt    render/CDP runtime dependencies
+channels.json       calibration + model defaults (no secrets)
+channels.local.example.json   copy to channels.local.json and fill in your tokens
+docs/               channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
+examples/           make_demo.py + demo/ (synthetic offline demo) · 13625974/ (one real run)
+uploads/ inbox/     input PDFs + cached/external channel output (gitignored)
+out/                pipeline products; out_llm_trial/ holds LLM/NER data (gitignored)
+metapy/             common / m3(frozen) / issue / cspan / refs / front / abs /
                    llmrep / dual / ner
 ```
 

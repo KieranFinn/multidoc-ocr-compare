@@ -924,8 +924,60 @@ def selftest():
         n_ok += 1
     else:
         print("FAIL [repeat-resolution]")
-    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 3))
-    return n_ok == len(SELFTEST) + 3
+    with tempfile.TemporaryDirectory() as tmp:
+        text = "Barcelona, M. J., Holm, T. R., Schock, M. R., and George, G. K., 1989, Spatial gradients."
+        entries = [{"text": text, "page": 13}, {"text": "No matching entry", "page": 13}]
+        merged = {"page_data": [
+            {"page": 14, "channels": {"mineru": [{"text": text, "box": [1, 2, 3, 4]}]}}
+        ]}
+        io.open(os.path.join(tmp, "merged.json"), "w", encoding="utf-8").write(json.dumps(merged))
+        target = {"uid": "u13_2", "box": [1, 2, 3, 4], "review": False,
+                  "confidence": {"level": "high"}, "main_text": text, "members": {}}
+        changed = _reanchor_reference_entries(entries, tmp, {13: {"unified": [target]}})
+        if changed == 1 and entries[0]["page"] == 14 and entries[0]["uid"] == "u13_2" \
+                and entries[1]["page"] == 13:
+            n_ok += 1
+        else:
+            print("FAIL [reference-page-reanchor]")
+    # 脚注标记形态扩展(2026-11-09 用户拍板): 裸数字式(13563525) + 句点式(FI001004818_2002)
+    # + Page-footer 型脚注回退(u8_8 '17 김은혜…' dots 成员带号); 符号/年份行首不误切
+    if FN_CITE_X.match("2 이뭇별, 「글로컬」, 2020.") and FN_CITE_X.match("1. Ahn Byung-ook") \
+            and FN_CITE_X.match("3、 오세미나") \
+            and not FN_CITE_X.match("18 • Police Science Institute") \
+            and not FN_CITE_X.match("2020, 전북대 인문학연구소.") \
+            and not FN_CITE_X.match("2025년 9월 20일에 투고"):
+        n_ok += 1
+    else:
+        print("FAIL [fnote-marker-forms]")
+    with tempfile.TemporaryDirectory() as tmp:
+        udir = os.path.join(tmp, "dot_bare", "unified")
+        os.makedirs(udir)
+        def _fu(uid, ty, text, y):
+            return {"uid": uid, "type": ty, "main_text": text,
+                    "box": [10, y, 90, y + 24], "cross_page": {},
+                    "confidence": {"level": "high"}, "review": False, "readings": [],
+                    "members": {"dots": [{"text": text, "box": [10, y, 90, y + 24]}]}}
+        units = [
+            _fu("u0_1", "Footnote", u"2 이뭇별, 「글로컬」, 2020.\n3 문승렬, 「장수」, 2018.", 100),
+            _fu("u0_2", "Footnote", u"1. Ahn Byung-ook, “4 wol”, 1960.\n2. Yi Gap-yun, “Je 2”, 1961.", 200),
+            _fu("u0_3", "Page-footer", u"김은혜, 앞의 논문, 24쪽 참조.", 300),
+            _fu("u0_4", "Page-footer", u"www.kci.go.kr", 330),
+        ]
+        units[2]["members"]["dots"][0]["text"] = u"17 김은혜, 앞의 논문, 24쪽 참조."
+        io.open(os.path.join(udir, "page_0.json"), "w", encoding="utf-8").write(
+            json.dumps({"doc": "dot_bare", "page": 1, "w": 100, "h": 1000,
+                        "in_ref": False, "unified": units}, ensure_ascii=False))
+        got = frefs_doc("dot_bare", tmp)
+        nums = [(r["num"], r["uid"]) for r in got["footnote_refs"]]
+        raws = [r["raw"] for r in got["footnote_refs"]]
+        if nums == [("1", "u0_2"), ("2", "u0_1"), ("2", "u0_2"), ("3", "u0_1"), ("17", "u0_3")] \
+                and "www.kci" not in " ".join(raws) \
+                and all("김은혜" not in r or r.startswith("김은혜") for r in raws):
+            n_ok += 1
+        else:
+            print("FAIL [fnote-dot-bare-footer] %s" % (nums,))
+    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 6))
+    return n_ok == len(SELFTEST) + 6
 
 
 def _split_authors(auth, corp=False, latcorp=False):
@@ -1247,6 +1299,45 @@ def _grade_entry(f, agree, block_review=False, block_level="high", u0=None, issu
     return level, "; ".join(basis) or "三渠道一致·块级无分歧", "；".join(review) if review else None
 
 
+def _reanchor_reference_entries(entries, doc_dir, pdata):
+    merged_fp = os.path.join(doc_dir, "merged.json")
+    if not os.path.exists(merged_fp):
+        return 0
+    merged = json.load(io.open(merged_fp, encoding="utf-8"))
+    changed = 0
+    for e in entries:
+        anchor = _foldv((e.get("text") or "")[:RAW_HEAD_LEN])
+        if not anchor:
+            continue
+        hits = []
+        for pg in merged.get("page_data") or []:
+            for blocks in (pg.get("channels") or {}).values():
+                for b in blocks:
+                    if anchor in _foldv(b.get("text") or ""):
+                        hits.append(pg.get("page"))
+        hit_pages = sorted(set(h for h in hits if h is not None))
+        if len(hit_pages) != 1 or hit_pages[0] == e.get("page"):
+            continue
+        target_page = hit_pages[0]
+        page_data = pdata.get(target_page - 1) or {}
+        candidates = []
+        for u in page_data.get("unified") or []:
+            texts = [u.get("main_text") or ""]
+            for members in (u.get("members") or {}).values():
+                texts.extend(m.get("text") or "" for m in members)
+            if any(anchor in _foldv(t) for t in texts):
+                candidates.append(u)
+        if not candidates:
+            continue
+        best = min(candidates, key=lambda u: max(0, u["box"][2] - u["box"][0])
+                   * max(0, u["box"][3] - u["box"][1]))
+        e.update(page=target_page, uid=best["uid"], box=best["box"],
+                 block_review=best.get("review"),
+                 block_level=(best.get("confidence") or {}).get("level", "high"))
+        changed += 1
+    return changed
+
+
 def refs_doc(doc, out_root):
     """单篇①: 文献区定位(页级 in_ref + 条目模式过滤) → 条目切分(跨块缝合) → 字段抽取 → 校验。
     产出 out 中文档目录下 metadata.json 的 references 段 + 校验摘要。"""
@@ -1360,6 +1451,7 @@ def refs_doc(doc, out_root):
         if entries and n_none * 2 > len(entries):
             for i, e in enumerate(entries, 1):
                 e["num"] = i
+    _reanchor_reference_entries(entries, doc_dir, pdata)
     # 批次3(§45 M3 计数制): 同 uid 条目数≥3 → 该块各渠道 readings 只覆盖片段, 探针标 probe_suspect 不参分级
     uid_count = collections.Counter(e["uid"] for e in entries)
     # —— L3: 字段抽取 + 置信 ——
@@ -1465,7 +1557,11 @@ def _unwrap_tail_cite(t):
     return t
 
 
-FN_CITE_X = re.compile(r"^\s*((?:\(\d{1,2}\)|\d{1,2}\)|\[\d{1,3}\]|〔\d+〕))")
+FN_CITE_X = re.compile(
+    r"^\s*((?:\(\d{1,2}\)|\d{1,2}\)|\[\d{1,3}\]|〔\d+〕|"
+    r"\d{1,3}\s*[.、]|"                                  # N. / N、 句点式(FI001004818_2002 全篇实证)
+    r"\d{1,2}(?=\s+(?:[^\W\d_]|[「『“‘]))))")             # 裸数字式(13563525 上标号 OCR 成行首裸数字);
+# 裸数字分支要求数字后紧跟字母/开引号, 防 '18 • Police Science Institute'(•为符号)误切
 # 1.6: frefs 局部扩展正则(补 (N) 圆括号形态, 1892171 脚注22/23 串烧实证)——
 # 不动 common.FOOTNOTE_CITE(m3.py 三处共享, 动它=违反 D4 硬闸)
 
@@ -1491,12 +1587,15 @@ def _split_glued(t):
 def _fnote_collect(blocks, doc_heads=()):
     """Footnote 块[(p,col,u,t)] → 候选条目[{num,text,page,col,box,uid,block_review,block_level}]:
     行首引文标记(FOOTNOTE_CITE)切条, 一块可多条; 无标记段落并入前一条(1632041 续注散文
-    '조선시대에 이륟…' 实证), 跨块续并(条目归属头块 page/uid); 段首无条可并的散文丢弃。"""
+    '조선시대에 이륟…' 实证), 跨块续并(条目归属头块 page/uid); 段首无条可并的散文丢弃。
+    strict 块(Page-footer 型脚注回退)只收行首带标记的行, 不并散文——防页脚杂行(网址/日期)
+    污染上一条。"""
     entries, cur = [], None
     for b in blocks:
         t, _ = _clean_lines(b["t"], (), doc_heads)
         if not t or _is_running(t, doc_heads):
             continue
+        strict = bool(b.get("strict"))
         for ln in t.split("\n"):
             s = ln.strip()
             if not s:
@@ -1510,6 +1609,8 @@ def _fnote_collect(blocks, doc_heads=()):
                        "uid": b["u"]["uid"], "block_review": b["u"]["review"],
                        "block_level": b["u"]["confidence"]["level"]}
             else:
+                if strict:
+                    continue
                 if cur is not None:
                     cur["text"] += " " + s
     if cur:
@@ -1620,6 +1721,21 @@ def frefs_doc(doc, out_root):
     doc_heads = _doc_heads(pdata, pages)
     ref_pages = set(p for p in pages if pdata[p].get("in_ref"))
     blocks, colb = [], {}
+
+    def _footer_marked_text(u):
+        """Page-footer 型脚注回退: 渠道把部分页底脚注(上标号)判为 Page-footer(13563525 u8_8
+        '17 김은혜…' 实证, 主读法丢号但 dots 成员带号)。主读法有行首标记用主读法; 否则用
+        第一个带行首标记的成员读法。无标记返回 None(普通页脚不收)。"""
+        t = (u.get("main_text") or "")
+        if any(FN_CITE_X.match(ln.strip()) for ln in t.split("\n") if ln.strip()):
+            return t.strip()
+        for members in (u.get("members") or {}).values():
+            for m in members:
+                mt = (m.get("text") or "")
+                if any(FN_CITE_X.match(ln.strip()) for ln in mt.split("\n") if ln.strip()):
+                    return mt.strip()
+        return None
+
     for p in pages:
         if p in ref_pages:
             continue   # 收集范围=非 in_ref 页
@@ -1627,9 +1743,16 @@ def frefs_doc(doc, out_root):
         for u in j["unified"]:
             if u.get("cross_page", {}).get("role") == "head":
                 continue
-            if u["type"] != "Footnote":
-                continue
             t = (u["main_text"] or "").strip()
+            if u["type"] != "Footnote":
+                if u["type"] == "Page-footer":
+                    ft = _footer_marked_text(u)
+                    if ft:
+                        if p not in colb:
+                            colb[p] = _page_col_boundary(j)
+                        blocks.append({"p": p, "col": _col_of_b(u, colb[p], j["w"]),
+                                       "uid": u["uid"], "u": u, "t": ft, "strict": True})
+                continue
             if not t:
                 continue
             if p not in colb:

@@ -51,6 +51,21 @@ def texlite(s):
     return _tex_conv(s)
 
 
+_TEX_TAG = re.compile(r"&lt;(/?)(i|sup|sub)( class=\"fr\")?&gt;")
+_TEX_FRASL = re.compile(r"&amp;frasl;")
+
+
+def _texesc(s):
+    """metadata 带展示层消毒: texlite 轻量公式 → HTML 转义 → 放行 texlite 生成的白名单标签
+    (i.fr/sup/sub/&frasl;)。与 md2html 正文块同一转换口径(cspan 句/文献题名/摘要此前只转义
+    不渲染, 公式残留 LaTeX 源码); 未识别命令保留原样, 无公式特征时等价纯转义。"""
+    if not s:
+        return ""
+    h = html.escape(texlite(s), quote=False)
+    h = _TEX_TAG.sub(lambda m: "<%s%s%s>" % (m.group(1), m.group(2), m.group(3) or ""), h)
+    return _TEX_FRASL.sub("&frasl;", h)
+
+
 def md2html(md):
     def esc(s): return html.escape(s, quote=False)
     out, in_code, tbl = [], False, []
@@ -427,6 +442,7 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 .r.umb{fill:none;stroke:#fff;stroke-width:6;opacity:.9;pointer-events:none}
 .r.cite-target{fill:#fbbf24;fill-opacity:0;stroke:#f59e0b;stroke-width:4;stroke-opacity:0;opacity:0;pointer-events:none}
 .r.cite-target.cite-on{opacity:1;fill-opacity:.16;stroke-opacity:1}
+.r.flash{stroke:#f59e0b!important;stroke-width:6;fill:#fbbf24;fill-opacity:.25}   /* 点击跳转后原图块橙框闪烁 */
 #citepop{display:none;position:fixed;right:16px;bottom:16px;width:360px;max-width:80vw;background:#fff;border:2px solid #f59e0b;border-radius:8px;z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:8px;pointer-events:none}
 #citepoptitle{font-size:12px;font-weight:bold;color:#92400e;margin-bottom:5px}
 #citesvg{display:block;width:100%;height:auto;max-height:60vh;background:#fff}
@@ -460,9 +476,10 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 <script>
 var META=@@DATA@@, pinned=null;
 var GROUPS=@@GROUPS@@, gpin=null, ghide=null;
+var UBOX=@@UBOX@@;
 function act(id,on){var e=document.querySelectorAll('[data-b="'+id+'"]');for(var k=0;k<e.length;k++){if(on)e[k].classList.add('on');else e[k].classList.remove('on');}}
 function stat(id){var p=id.split('_');var el=document.getElementById('st_p'+p[1]);if(el&&META[id])el.textContent=' '+p[0]+' · 块 '+p[2]+' · '+META[id].cat+' · '+META[id].txt.replace(/\\s+/g,' ').slice(0,40);}
-function fillMasks(gid,sec){var g=GROUPS[gid];if(!g)return;var ms=sec.querySelectorAll('.pmask');
+function fillMasks(gid,sec){var g=GROUPS[gid];if(!g)return;var ms=sec.querySelectorAll('.pane:not(.meta) > .pmask');
  for(var k=0;k<ms.length&&k<g.panes.length;k++){ms[k].innerHTML=g.panes[k];ms[k].style.display='block';}}
 function hideAllMasks(){var ms=document.querySelectorAll('.pmask');for(var k=0;k<ms.length;k++)ms[k].style.display='none';
  document.querySelectorAll('.eye.pin').forEach(function(x){x.classList.remove('pin');});}
@@ -516,6 +533,34 @@ document.addEventListener('click',function(e){
 document.addEventListener('click',function(e){var j=e.target.closest?e.target.closest('.jump'):null;if(!j)return;e.preventDefault();
  var el=document.getElementById(j.dataset.t);if(!el)return;el.scrollIntoView({block:'center'});
  var id=el.dataset.b;act(id,true);setTimeout(function(){if(pinned!==id)act(id,false);},1600);});
+function flashAt(r){
+ var sec=r.closest('section');if(!sec)return;
+ sec.scrollIntoView({block:'center'});
+ var imgw=sec.querySelector('.imgw');
+ if(imgw){var y=parseFloat(r.getAttribute('y'))||0,h=parseFloat(r.getAttribute('height'))||0;
+  imgw.scrollTop=Math.max(0,y+h/2-imgw.clientHeight/2);}
+ r.classList.add('flash');
+ setTimeout(function(){r.classList.remove('flash');},1600);
+}
+function jumpToUid(uid){
+ var b=UBOX[uid];if(!b)return false;
+ var sec=document.getElementById('p'+b[0]);if(!sec)return false;
+ sec.scrollIntoView({block:'center'});
+ var imgw=sec.querySelector('.imgw');
+ if(imgw){
+  imgw.scrollTop=Math.max(0,(b[2]+b[4])/2-imgw.clientHeight/2);
+  var svg=imgw.querySelector('svg');
+  if(svg){
+   var rc=document.createElementNS('http://www.w3.org/2000/svg','rect');
+   rc.setAttribute('class','r umb flash');
+   rc.setAttribute('x',b[1]);rc.setAttribute('y',b[2]);
+   rc.setAttribute('width',Math.max(2,b[3]-b[1]));rc.setAttribute('height',Math.max(2,b[4]-b[2]));
+   svg.appendChild(rc);
+   setTimeout(function(){if(rc.parentNode)rc.parentNode.removeChild(rc);},1600);
+  }
+ }
+ return true;
+}
 document.addEventListener('click',function(e){
  var mf=e.target.closest?e.target.closest('.mf'):null;if(!mf)return;
  document.querySelectorAll('.mfdrawer').forEach(function(d){d.remove();});
@@ -528,6 +573,8 @@ document.addEventListener('click',function(e){
     if(mf.tagName==='TR'){var tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.appendChild(d);tr.appendChild(td);mf.parentNode.insertBefore(tr,mf.nextSibling);}
     else{mf.parentNode.insertBefore(d,mf.nextSibling);}}
    return;}
+  if(mf.dataset.e){var r1=document.querySelector('section rect.cite-target[data-e="'+mf.dataset.e+'"]');if(r1){flashAt(r1);return;}}
+  if(jumpToUid(mf.dataset.u))return;
   var rs=sec.querySelectorAll('rect[data-u="'+mf.dataset.u+'"]');
   rs.forEach(function(r){r.classList.add('on');r.classList.add('cite-on');
    setTimeout(function(){r.classList.remove('on');r.classList.remove('cite-on');},1600);});}});
@@ -754,9 +801,9 @@ def _meta_cell(meta, pno, audit=None, choices=None):
             inner = dot(0) + "<b>%s</b> " % lab
             if len(v) > 140:
                 inner += ('<details class="mfd"><summary>%s…(全文 %d 字)</summary>'
-                          '<div class="mft">%s</div></details>' % (esc(v[:140]), len(v), esc(v)))
+                          '<div class="mft">%s</div></details>' % (_texesc(v[:140]), len(v), _texesc(v)))
             else:
-                inner += esc(v)
+                inner += _texesc(v)
             grp.append(("摘要", row((f.get("confidence") or {}).get("level", "mid"),
                                     (f.get("confidence") or {}).get("uid_head"), inner)))
     # —— 文献(本页条目) + 脚注引文(本页, --stage frefs 独立键 footnote_refs) ——
@@ -795,12 +842,12 @@ def _meta_cell(meta, pno, audit=None, choices=None):
                 tip2 = html.escape(json.dumps(other, ensure_ascii=False)[:300], quote=True)
                 tags += '<span class="mftag" title="舍弃值: %s">%s</span>' % (tip2, disp)
             if r.get("title"):
-                ti_d = tags + esc(ti)
+                ti_d = tags + _texesc(ti)
             elif kind == "fref":
-                ti_d = tags + '<span class="mftag">脚注原文</span>' + esc(ti)
+                ti_d = tags + '<span class="mftag">脚注原文</span>' + _texesc(ti)
             else:
-                ti_d = tags + "<span style='color:#dc2626'>%s</span>" % esc(ti)
-            src_d = esc(r.get("source") or "")
+                ti_d = tags + "<span style='color:#dc2626'>%s</span>" % _texesc(ti)
+            src_d = _texesc(r.get("source") or "")
             rc = (au_map.get(r.get("uid")) or {}).get("review_comment")
             tip = html.escape(("%s | %s | %s | %s%s%s" % (au, r.get("year") or "?",
                                                       r.get("title") or "", r.get("source") or "",
@@ -854,9 +901,9 @@ def _meta_cell(meta, pno, audit=None, choices=None):
                     merged.append((a, b))
             out, cursor = [], 0
             for a, b in merged:
-                out.extend((esc(sent[cursor:a]), "<mark>", esc(sent[a:b]), "</mark>"))
+                out.extend((_texesc(sent[cursor:a]), "<mark>", _texesc(sent[a:b]), "</mark>"))
                 cursor = b
-            out.append(esc(sent[cursor:]))
+            out.append(_texesc(sent[cursor:]))
             return "".join(out)
         ref_by_idx = {i: r for i, r in enumerate(meta.get("references") or [])}
         kind_tag = {"narrative": u"名字+年", "parenthetical": u"括号", "numeric": u"数字"}
@@ -972,11 +1019,18 @@ def _meta_overview(meta, audit=None):
         if f.get("value") is not None:
             grp.append(("来源", row((f.get("confidence") or {}).get("level", "mid"), None,
                                      dot() + "<b>%s</b> %s" % (lab, esc(f["value"])))))
-    # —— 关键词 ——
+    # —— 关键词(韩/英双字段, 2026-11-09 用户拍板: 有双板的都提取) ——
+    # 行带 evidence uid(audit.issue.keywords.source*): 点击=跳到原文关键词行所在块并橙框闪烁。
+    kw_src = (((audit or {}).get("issue") or {}).get("keywords") or {})
     kws = meta.get("keywords") or []
     if kws:
-        grp.append(("关键词", row("mid", None,
+        grp.append(("关键词", row("mid", (kw_src.get("source") or {}).get("uid"),
                                   dot() + "<b>关键词 %d 个</b> " % len(kws) + esc(", ".join(kws)[:200]))))
+    kws_en = meta.get("keywords_en") or []
+    if kws_en:
+        grp.append(("关键词(英)", row("mid", (kw_src.get("source_en") or {}).get("uid"),
+                                      dot() + "<b>关键词(英) %d 个</b> " % len(kws_en)
+                                      + esc(", ".join(kws_en)[:200]))))
     # —— 摘要(折叠全文) ——
     for k, lab in (("abstract", u"摘要(韩)"), ("abstract_en", u"摘要(英)")):
         f = meta.get(k) or {}
@@ -987,9 +1041,9 @@ def _meta_overview(meta, audit=None):
                 inner += '<span class="mftag">证据在第 %d 页</span>' % f["page"]
             if len(v) > 140:
                 inner += ('<details class="mfd"><summary>%s…(全文 %d 字)</summary>'
-                          '<div class="mft">%s</div></details>' % (esc(v[:140]), len(v), esc(v)))
+                          '<div class="mft">%s</div></details>' % (_texesc(v[:140]), len(v), _texesc(v)))
             else:
-                inner += esc(v)
+                inner += _texesc(v)
             grp.append(("摘要", row((f.get("confidence") or {}).get("level", "mid"),
                                     (f.get("confidence") or {}).get("uid_head")
                                     if (f.get("page") or 1) == 1 else None, inner)))
@@ -1184,6 +1238,15 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
     v = v.replace("@@BODY@@", '<div class="wrap">%s</div>' % "\n".join(secs))
     v = v.replace("@@DATA@@", json.dumps(data, ensure_ascii=False))
     v = v.replace("@@GROUPS@@", json.dumps(groups_json, ensure_ascii=False))
+    # 全量块坐标表(0基页+框): metadata 条目点击跳转原文块的定位依据——含无眼/无框的
+    # 普通块(review=false 且读法健康时 umb/cite-target 都不画), 非 unified 模式为空表。
+    ubox = {}
+    if unified_pages is not None:
+        for p0 in sorted(unified_pages):
+            for u in unified_pages[p0] or []:
+                if u.get("uid") and u.get("box"):
+                    ubox[u["uid"]] = [p0] + list(u["box"])
+    v = v.replace("@@UBOX@@", json.dumps(ubox, ensure_ascii=False))
     with io.open(out_fp, "w", encoding="utf-8") as fh:
         fh.write(v)
     return len(data)
