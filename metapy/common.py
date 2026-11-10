@@ -349,7 +349,11 @@ ABS_INLINE_KO = re.compile(u"^(요\\s*약|국문\\s*요약|초\\s*록)\\s*[:：]
 
 ABS_HEAD_EN = re.compile(r"^(<\s*)?(Abstract|ABSTRACT)(\s*>)?$|^\(Abstract\)$")
 
-KW_LINE = re.compile(u"^(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어|Key\\s*words?|Keywords?|Keyword\\s*:|■\\s*중심|■\\s*Keyword)", re.I)
+KW_LINE = re.compile(u"^(?:[■◆]\\s*)?(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어|주제\\s*어|"
+                     u"Key\\s*words?|Keywords?|Keyword\\s*:)", re.I)
+# 2026-11-09: 增 주제어 与 ■/◆ 通用符号前缀(B3: FI001892171 '◆ 주제어(Key Words)' 实证);
+# group(1)=头词(不含符号前缀), issue 阶段按头词是否含 ASCII 字母区分韩/英组——改动需同步
+# abs.py(keywords_lines/摘要边界守卫)与 issue.py 自检
 
 LV_COLOR = {"high": "#16a34a", "mid": "#d97706", "low": "#dc2626"}
 

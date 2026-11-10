@@ -49,8 +49,8 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Generate demo inputs (synthetic PDF + 3 mock channel outputs)
         run: |
-          python _attic/examples/make_demo.py
-          ls -R _attic/examples/demo | head -40
+          python make_demo.py
+          ls -R examples/demo | head -40
       - name: Run pipeline end to end (known pixel calibration, no network)
         run: |
           set -x
@@ -59,16 +59,16 @@ jobs:
           import pipeline, unify
           print("pipeline imports OK")
           PY
-          python pipeline.py _attic/examples/demo/samples/demo_kr.pdf \
-            --mineru _attic/examples/demo/inbox/demo_kr__mineru \
-            --dots   _attic/examples/demo/inbox/demo_kr__dots \
-            --paddle _attic/examples/demo/inbox/demo_kr__paddle \
-            --channels _attic/examples/demo/channels.json \
-            --out _attic/examples/demo/out/demo_kr
+          python pipeline.py examples/demo/samples/demo_kr.pdf \
+            --mineru examples/demo/inbox/demo_kr__mineru \
+            --dots   examples/demo/inbox/demo_kr__dots \
+            --paddle examples/demo/inbox/demo_kr__paddle \
+            --channels examples/demo/channels.json \
+            --out examples/demo/out/demo_kr
       - name: Assert artifacts exist
         run: |
           set -e
-          O=_attic/examples/demo/out/demo_kr
+          O=examples/demo/out/demo_kr
           for f in index.html viewer_mineru.html viewer_dots.html viewer_paddle.html \
                    viewer_compare.html merged.json merged.md merged/page_0.json \
                    unified/page_0.json unified/_unified_summary.json pages/page_0.jpg; do
@@ -79,7 +79,7 @@ jobs:
         run: |
           python - <<PY
           import json
-          p = "_attic/examples/demo/out/demo_kr"
+          p = "examples/demo/out/demo_kr"
           d = json.load(open(p + "/merged.json", encoding="utf-8"))
           ch = d["channels"]
           assert set(ch) == {"mineru", "dots", "paddle"}, ch
@@ -94,4 +94,4 @@ jobs:
         if: always()
         with:
           name: demo-out-py${{ matrix.python }}
-          path: _attic/examples/demo/out
+          path: examples/demo/out

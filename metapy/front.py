@@ -70,7 +70,10 @@ def _parse_author_line(line, u, foot_affil):
             continue
         tk = re.sub(r"^(?:and|&)\s+", "", tk)
         mk = SUP_LATEX.findall(tk)
+        mk += re.findall(r"<sup>(.*?)</sup>", tk, flags=re.I)
         tk = SUP_LATEX.sub("", tk)
+        tk = re.sub(r"<sup>.*?</sup>", "", tk, flags=re.I)
+        tk = re.sub(r"</?sup>", "", tk, flags=re.I)
         tk = re.sub(r"(\*{1,4}|†|‡|§)+(?=$|[\s·•,.])", "", tk).strip(" ·•,․")
         role = None
         mrole = ROLE_WORDS.search(tk)
@@ -342,11 +345,14 @@ def _selftest():
             "box": [20, 260, 460, 300], "cross_page": {}}
     picked = _pick_title({"h": 1000, "w": 500, "unified": [header, text]}, True)
     ok4 = picked is header
-    oks = (ok1, ok2, ok3, ok4)
+    html_marked = _parse_author_line(u"신성환<sup>●</sup>", None, {})
+    ok5 = len(html_marked) == 1 and html_marked[0]["name"] == u"신성환" \
+        and html_marked[0]["markers"] == [u"●"]
+    oks = (ok1, ok2, ok3, ok4, ok5)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)
-    print("front selftest: %d/4 PASS" % sum(oks))
+    print("front selftest: %d/5 PASS" % sum(oks))
     return all(oks)
 
 

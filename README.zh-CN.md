@@ -198,22 +198,23 @@ python metadata.py <doc> --viewer          # 用已有的 merged/ + unified/ 重
 
 ## 仓库结构
 
-下面的路径相对于 `KCI/pipeline/`（当前工作副本）。已发布的仓库 `multidoc-ocr-compare` 对同一批模块的拆分不同：那里 `pipeline.py` 自带 I/O 层，`pipeline_io.py` / `viewer.py` / `test_pipeline.py` 随后续版本才进入仓库。
-
 ```
-pipeline.py        渲染 -> 抓取 -> 归档 -> 标定 -> 适配 -> 编排
+pipeline.py        主编排 + 兼容性 re-export
+pipeline_io.py     渲染 -> 抓取 -> 归档 -> 标定 -> 适配
+viewer.py          单渠道 / 对照查看器 + md2html + 元数据面板
 webapp.py app.js   拖拽工作台（stdlib HTTP 服务 + 渠道配置面板）
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
 metadata.py        结构化元数据 CLI（实现在 metapy/）
 regress.py         参考文献质量检查（截断、作者、页拼接）
+test_pipeline.py   unified 新旧判定与数据保全回归测试
 mineru_drive.py    MinerU 桌面版的 CDP 驱动（兜底）
-analyze.py         语料级指标 + 跨渠道归因报告
 make_demo.py       生成 examples/demo/ —— 离线 demo 输入（CI 也用）
 requirements.txt   渲染 / CDP 运行时依赖
 channels.json      标定 + 模型默认值（无机密）
-docs/              channels.md · calibration.md · architecture.md
-examples/          demo/（合成离线 demo，生成物）· 13625974/（一份真实跑批产物）
+channels.local.example.json   复制为 channels.local.json 后填自己的 token
+docs/              channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
+examples/          make_demo.py + demo/（合成离线 demo）· 13625974/（一份真实跑批产物）
 uploads/ inbox/    输入 PDF + 缓存/外部渠道产物（已 gitignore）
 out/               管线产物；out_llm_trial/ 放 LLM/NER 数据（已 gitignore）
 metapy/            common / m3(frozen) / issue / cspan / refs / front / abs /

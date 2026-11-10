@@ -124,6 +124,7 @@ class UnifiedSafetyTest(unittest.TestCase):
         self.assertIn('id="citesvg"', html)
         self.assertIn("cs.setAttribute('viewBox'", html)
         self.assertIn('class="cpbox"', html)
+        self.assertIn(".pane:not(.meta) > .pmask", html)
 
     def test_citation_sentences_are_grouped_without_losing_citations(self):
         sentence = "原文[1]与[2]"
@@ -187,6 +188,57 @@ class UnifiedSafetyTest(unittest.TestCase):
         self.assertNotIn('cite-target" data-u="u0_1" data-e=""', html)
         self.assertIn("mf.dataset.e", html)
         self.assertIn('rect.cite-target[data-e="', html)
+
+    def test_overview_click_jumps_to_source_block(self):
+        # 总览条目(含跨页关键词行)点击 → JS 跳转到原文块位置: scrollIntoView + 原图栏内定位 + 橙框闪烁
+        block = {"cat": "Text", "box": [10, 10, 90, 40], "text": "原文"}
+        def _u(p, uid, y):
+            return {"uid": uid, "page": p + 1, "type": "Text", "box": [10, y, 90, y + 40],
+                    "cross_page": {"spans": False}, "members": {"mineru": [block]},
+                    "readings": [{"ch": "mineru", "text": "原文", "dice": 1.0, "flags": []}],
+                    "main_text": "原文", "divergence": {"kind": "none", "detail": ""},
+                    "confidence": {"level": "high", "basis": ""}, "review": False}
+        unified_pages = {0: [_u(0, "u0_1", 10)], 1: [_u(1, "u1_1", 700)]}
+        meta = {"keywords": [u"가나다"], "keywords_en": ["alpha"]}
+        audit = {"issue": {"keywords": {"source": {"uid": "u1_1"},
+                                        "source_en": {"uid": "u0_1"}}}}
+        out = self.root / "jump_viewer.html"
+        viewer.build_compare_viewer(
+            str(out), "jump test", [(100, 100), (100, 100)],
+            {"mineru": {0: [block], 1: [block]}, "dots": None, "paddle": None},
+            unified_pages=unified_pages, unified_driven=True, meta=meta, audit=audit)
+        html = out.read_text(encoding="utf-8")
+        self.assertIn("function jumpToUid", html)
+        self.assertIn("function flashAt", html)
+        self.assertIn(".r.flash", html)
+        self.assertIn("var UBOX=", html)
+        self.assertIn("UBOX[uid]", html)
+        self.assertIn("createElementNS", html)
+        self.assertIn("imgw.scrollTop", html)
+        self.assertIn('class="mf mid" data-u="u1_1"', html)   # 关键词行(跨页)带证据 uid
+        self.assertIn('class="mf mid" data-u="u0_1"', html)   # 关键词(英)行带证据 uid
+
+    def test_metadata_band_renders_inline_math(self):
+        # cspan 句/文献题名/摘要此前只 HTML 转义, OCR 读出的行内公式($\approx/\frac/H_2O 式)
+        # 以 LaTeX 源码裸露; _texesc=texlite+转义+白名单标签放行, 与正文块同一转换口径。
+        sentence = u"광산배수(pH 7)는 $\\approx 660\\ mg\\ l^{-1}$ 이다"
+        panel = viewer._meta_cell({"citation_spans": [{"page": 1, "uid": "u0_1",
+                                                       "kind": "narrative", "sentence": sentence,
+                                                       "offset": [0, 4], "confidence": "exact",
+                                                       "linked_refs": []}]}, 1)
+        self.assertIn(u"≈", panel)
+        self.assertIn("<sup>-1</sup>", panel)
+        ref_panel = viewer._meta_cell({"references": [{"page": 1, "uid": "u0_1", "num": 1,
+                                                       "title": u"$\\frac{1}{2}$ 배수", "source": "",
+                                                       "confidence": {"level": "high"}}]}, 1)
+        self.assertIn('<i class="fr"><sup>1</sup>&frasl;<sub>2</sub></i>', ref_panel)
+        plain = viewer._meta_cell({"citation_spans": [{"page": 1, "uid": "u0_1",
+                                                       "kind": "narrative",
+                                                       "sentence": u"일반 문장 <tag> 그대로",
+                                                       "offset": [0, 4], "confidence": "exact",
+                                                       "linked_refs": []}]}, 1)
+        self.assertIn("&lt;tag&gt;", plain)   # 无公式特征时与纯转义等价
+        self.assertNotIn("<sub>", plain)
 
 
 if __name__ == "__main__":

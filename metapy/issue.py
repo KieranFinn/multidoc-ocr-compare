@@ -15,9 +15,11 @@ r"""本篇期刊/出版年/卷/期/页/关键词 (--stage issue): 页眉页脚+�
   (每页取 Page-number 行首数字, 无则行尾, 'Page N of M' 取 N, struct 行补齐, offset=号-页序号 众数回填首页)。
 ④ DOI 行进 audit  corroboration: \.(YYYY)\.(\d{1,3})\. → 年+卷; (\d{1,3})\.(\d{1,3})\.(YYYY)\d{0,2}\. → 卷+期+年。
 ⑤ 关键词: KW_LINE 组(同块续行; 有冒号取冒号后, 无冒号剥头词尾部/空白; 逗号/分号切分; 冒号前残留的
-  头词尾字如 '■ 중심어 :' 的 '어' 随冒号切掉), 页序首个非空组入 keywords[](尾页英文摘要组兜底,
-  2983265 实证); 原始行进 audit。
-产出: metadata.json 新字段 journal/journal_en/year/volume/issue/pages + keywords[];
+  头词尾字如 '■ 중심어 :' 的 '어' 随冒号切掉; 剥 '(Key Words)' 标签残留)。韩/英双字段(2026-11-09
+  用户拍板: 有韩英双板的都提取): 页序各取首个非空组, 韩文头词(키워드/중심어/핵심어/주요어/주제어,
+  含 ■/◆ 前缀)入 keywords[], 英文头词(Key words/Keywords)入 keywords_en[]; 与 abstract 双字段
+  对齐, 字段语言不再由版式先后决定; 原始行进 audit。
+产出: metadata.json 新字段 journal/journal_en/year/volume/issue/pages + keywords[] + keywords_en[];
       置信明细(候选/票数/依据)进 metadata_audit.json issue 段(§38 分层)。
 """
 import os, re, io, json, datetime, collections
@@ -314,6 +316,35 @@ def _derive_pages(page_values):
     return offset, offset + last_p, support, offset
 
 
+def _kw_parse(s, lines, i):
+    """单条 KW_LINE 行 → (en, items, raw) 或 None。en=头词含 ASCII 字母(英文组);
+    有冒号取冒号后, 无冒号剥头词尾部/空白; 剥 '(Key Words)' 式标签残留(B3);
+    同块续行(行尾逗/分号/· 未完结, ≤4 行, 遇头词/摘要头/목차行停); 逗号/分号切分。
+    items 长度>1、≤15; raw=命中行+续行原文(审计留痕)。"""
+    m = KW_LINE.match(s)
+    if not m:
+        return None
+    en = bool(re.search(r"[A-Za-z]", m.group(1) or ""))
+    rest = s[m.end():]
+    if ":" in rest or u"：" in rest:
+        rest = re.split(r"[:：]", rest, maxsplit=1)[1]
+    rest = re.sub(r"^\s*[(（]\s*Key\s*words?\s*[)）]\s*", "", rest, flags=re.I)
+    acc = rest.strip()
+    jj = i + 1
+    while (not acc or acc.endswith((",", u"，", ";", u"；", u"·"))) and \
+            jj < len(lines) and jj <= i + 4:
+        nxt = lines[jj].strip()
+        if KW_LINE.match(nxt) or ABS_HEAD_KO.match(nxt) or ABS_HEAD_EN.match(nxt) \
+                or re.match(r"^(요\s*약|서\s*론|Ⅰ\.|Abstract$)", nxt):
+            break
+        acc += " " + nxt
+        jj += 1
+    raw = [s] + [lines[k].strip() for k in range(i + 1, jj) if lines[k].strip()]
+    items = [x.strip().strip(".").strip() for x in _KW_SPLIT.split(acc)]
+    items = [x for x in items if x and len(x) > 1][:15]
+    return en, items, raw
+
+
 def issue_doc(doc, out_root):
     """单篇: 来源行收集 → extract() → 页码推断兜底 → metadata.json 新字段 + audit.issue。"""
     doc_dir = os.path.join(out_root, doc)
@@ -381,53 +412,48 @@ def issue_doc(doc, out_root):
             audit["pages_derived"] = {"first": first, "last": last, "offset": offset,
                                       "support": support,
                                       "per_page": {str(k): v for k, v in page_values.items()}}
-    # —— 关键词: 页序首个 KW_LINE 组(同块续行) ——
-    kws, kw_raw, kw_loc = [], [], None
+    # —— 关键词: 韩/英双字段(2026-11-09 用户拍板: 有韩英双板的都提取)——
+    # 页序各取首个 KW_LINE 组: 韩文头词(키워드/중심어/핵심어/주요어/주제어)→keywords[],
+    # 英文头词(Key words/Keywords)→keywords_en[]; 与 abstract/abstract_en 双字段对齐,
+    # 字段语言不再由版式先后决定(895567 英先页1→旧口径只收英; 13563525 韩先→只收韩)。
+    kws, kws_en, kw_raw, kw_raw_en = [], [], [], []
+    kw_loc = kw_loc_en = None
     for p in pages:
-        if kws:
+        if kws and kws_en:
             break
         j = pdata[p]
         blocks = [u for u in j["unified"] if (u["main_text"] or "").strip()]
         blocks.sort(key=lambda u: (u["box"][1], u["box"][0]))
         for u in blocks:
+            if kws and kws_en:
+                break
             lines = (u["main_text"] or "").split("\n")
             for i, ln in enumerate(lines):
-                s = ln.strip()
-                m = KW_LINE.match(s)
-                if not m:
+                got = _kw_parse(ln.strip(), lines, i)
+                if not got:
                     continue
-                rest = s[m.end():]
-                if ":" in rest or u"：" in rest:
-                    rest = re.split(r"[:：]", rest, maxsplit=1)[1]
-                acc = rest.strip()
-                jj = i + 1
-                while (not acc or acc.endswith((",", u"，", ";", u"；", u"·"))) and \
-                        jj < len(lines) and jj <= i + 4:
-                    nxt = lines[jj].strip()
-                    if KW_LINE.match(nxt) or ABS_HEAD_KO.match(nxt) or ABS_HEAD_EN.match(nxt) \
-                            or re.match(r"^(요\s*약|서\s*론|Ⅰ\.|Abstract$)", nxt):
-                        break
-                    acc += " " + nxt
-                    jj += 1
-                kw_raw = [s] + [lines[k].strip() for k in range(i + 1, jj) if lines[k].strip()]
-                items = [x.strip().strip(".").strip() for x in _KW_SPLIT.split(acc)]
-                items = [x for x in items if x and len(x) > 1][:15]
-                if items:
-                    kws = items
-                    kw_loc = {"page": p + 1, "uid": u["uid"]}
-                break
-            if kws:
-                break
+                en, items, raw = got
+                if not items:
+                    continue
+                if en:
+                    if kws_en:
+                        continue
+                    kws_en, kw_raw_en, kw_loc_en = items, raw, {"page": p + 1, "uid": u["uid"]}
+                else:
+                    if kws:
+                        continue
+                    kws, kw_raw, kw_loc = items, raw, {"page": p + 1, "uid": u["uid"]}
     # —— 落盘 ——
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
         "journal": res["journal"], "journal_en": res["journal_en"], "year": res["year"],
         "volume": res["volume"], "issue": res["issue"], "pages": res["pages"],
-        "keywords": kws,
+        "keywords": kws, "keywords_en": kws_en,
     })
     io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
-    audit["keywords"] = {"items": kws, "raw_lines": kw_raw, "source": kw_loc}
+    audit["keywords"] = {"items": kws, "items_en": kws_en, "raw_lines": kw_raw,
+                         "raw_lines_en": kw_raw_en, "source": kw_loc, "source_en": kw_loc_en}
     a = load_audit(doc_dir)
     a["issue"] = audit
     save_audit(doc_dir, a)
@@ -489,17 +515,20 @@ def _selftest():
     r = extract([(1, "u1", u"2 / 국제해양법연구 제9권 제1호 · 통권 제16호")], 2, set())
     ok9 = r["issue"]["value"] == 1 and r["volume"]["value"] == 9 \
         and r["_audit"]["tongkwan"][0]["value"] == 16
-    # 10) 关键词解析三式(含 '■ 중심어 :' 头词尾字随冒号切掉)
+    # 10) 关键词解析三式 + 韩英分组(含 '■ 중심어 :' 头词尾字随冒号切掉; ◆ 주제어(B3);
+    #     '(Key Words)' 标签残留剥除; 头词按是否含 ASCII 字母分英/韩)
     from .common import KW_LINE as _KL
     def _kw(s):
-        m = _KL.match(s)
-        rest = s[m.end():]
-        if ":" in rest or u"：" in rest:
-            rest = re.split(r"[:：]", rest, maxsplit=1)[1]
-        return [x.strip() for x in _KW_SPLIT.split(rest.strip()) if x.strip()]
+        got = _kw_parse(s.strip(), [s], 0)
+        return got[1] if got else None
     ok10 = _kw(u"핵심어\t 이성당, 군산, 글로컬라이제이션") == [u"이성당", u"군산", u"글로컬라이제이션"] \
         and _kw(u"■ 중심어 : 창의융합활동, 간이 온도계") == [u"창의융합활동", u"간이 온도계"] \
-        and _kw("Key Words: a, b") == ["a", "b"]
+        and _kw(u"◆ 주제어(Key Words) : 경찰공무원, 외상 후 스트레스장애") == [u"경찰공무원", u"외상 후 스트레스장애"] \
+        and _kw(u"주제어 : 성곽, 우수주") == [u"성곽", u"우수주"] \
+        and _kw("Key Words: alpha, beta") == ["alpha", "beta"] \
+        and _kw_parse("Keywords Lee Sung Dang, Gunsan", ["Keywords Lee Sung Dang, Gunsan"], 0)[0] is True \
+        and _kw_parse(u"핵심어 이성당, 군산", [u"핵심어 이성당, 군산"], 0)[0] is False \
+        and not _KL.match(u"◆ 관련법령은 다음과 같다")
     # 11) 页码推断: 'Page N of M' 取 N, 行首优先('34 4'→34), offset 众数回填首页
     ok11 = _pageno_of("Page 2 of 16") == 2 and _pageno_of(u"통합문법: 주제·초점과 시점 155") == 155 \
         and _pageno_of("34 4") == 34
@@ -532,14 +561,35 @@ def _selftest():
     ok15 = r["journal"]["value"] == u"국제해양법연구" \
         and r["journal_en"]["value"] == "The Korean Journal of the Law of the Sea" \
         and r["volume"]["value"] == 9 and r["issue"]["value"] == 1 and r["pages"]["value"] == "1-30"
+    # 16) issue_doc 级: 韩英双板同篇(英在页1/韩在页2)双字段各收——字段语言不再由版序决定
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        dd = os.path.join(tmp, "kwbi")
+        udir = os.path.join(dd, "unified")
+        os.makedirs(udir)
+        io.open(os.path.join(dd, "metadata.json"), "w", encoding="utf-8").write("{}")
+        def _pu(pno, uid, text):
+            return {"uid": uid, "page": pno, "type": "Text", "main_text": text,
+                    "box": [10, 100, 500, 200], "cross_page": {"spans": False},
+                    "readings": [], "confidence": {"level": "high"}, "review": False,
+                    "members": {}}
+        io.open(os.path.join(udir, "page_0.json"), "w", encoding="utf-8").write(json.dumps(
+            {"doc": "kwbi", "page": 1, "w": 1000, "h": 1500, "in_ref": False,
+             "unified": [_pu(1, "u0_0", "Key words : Mine Waters, Evaporite")]}, ensure_ascii=False))
+        io.open(os.path.join(udir, "page_1.json"), "w", encoding="utf-8").write(json.dumps(
+            {"doc": "kwbi", "page": 2, "w": 1000, "h": 1500, "in_ref": False,
+             "unified": [_pu(2, "u1_0", u"주요어 : 광산배수, 증발잔류광물")]}, ensure_ascii=False))
+        got = issue_doc("kwbi", tmp)
+        ok16 = bool(got) and got.get("keywords") == [u"광산배수", u"증발잔류광물"] \
+            and got.get("keywords_en") == ["Mine Waters", "Evaporite"]
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15), 1):
+                            ok14, ok15, ok16), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/15 PASS" % n_ok)
-    return n_ok == 15
+    print("issue selftest: %d/16 PASS" % n_ok)
+    return n_ok == 16
 
 
 if __name__ == "__main__":
