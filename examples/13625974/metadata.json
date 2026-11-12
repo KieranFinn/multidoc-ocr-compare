@@ -1,0 +1,1296 @@
+{
+ "doc": "13625974",
+ "generated": "2026-11-12 09:52",
+ "references": [
+  {
+   "num": 1,
+   "style": "bracketed",
+   "raw": "[1] Y. Kwak, “Research on the effects of Subject Matter Knowledge(SMK) on Pedagogical Content Knowledge(PCK) of secondary beginning science teachers in classroom teaching”, Journal of the Korean Association for Science Education, vol.29, no.6, pp.611-625. 2009. (in Korean)",
+   "page": 10,
+   "box": [
+    594.1,
+    384.6,
+    1034.4,
+    573.8
+   ],
+   "uid": "u9_4",
+   "authors": [
+    "Y. Kwak"
+   ],
+   "authors_raw": "Y. Kwak",
+   "et_al": false,
+   "year": "2009",
+   "title": "Research on the effects of Subject Matter Knowledge(SMK) on Pedagogical Content Knowledge(PCK) of secondary beginning science teachers in classroom teaching",
+   "source": "Journal of the Korean Association for Science Education",
+   "volume": "29",
+   "issue": "6",
+   "pages": "611-625",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 2,
+   "style": "bracketed",
+   "raw": "[2] J. Ahn, “Development Science Content Knowledge(SCK) of Elementary School Teacher for Scientific Inquiry-Based Instruction and Changes of Elementary School Teacher’s Professionalism”, Master’s Thesis, Daegu National University of Education, Daegu, Korea, 2017.",
+   "page": 10,
+   "box": [
+    594.1,
+    579.5,
+    1034.4,
+    767.3
+   ],
+   "uid": "u9_6",
+   "authors": [
+    "J. Ahn"
+   ],
+   "authors_raw": "J. Ahn",
+   "et_al": false,
+   "year": "2017",
+   "title": "Development Science Content Knowledge(SCK) of Elementary School Teacher for Scientific Inquiry-Based Instruction and Changes of Elementary School Teacher’s Professionalism",
+   "source": "Master’s Thesis, Daegu National University of Education, Daegu, Korea",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 3,
+   "style": "bracketed",
+   "raw": "[3] S. Ji and J. Park, “The Beginning Elementary School Teachers’ Difficulties to Suffer in the Science Classes from the Perspective of Content Knowledge and Teaching Method”, Journal of Science Education, vol.40, no.2, pp.116-130, 2016.",
+   "page": 10,
+   "box": [
+    594.1,
+    774.3,
+    1034.4,
+    929.6
+   ],
+   "uid": "u9_8",
+   "authors": [
+    "S. Ji",
+    "J. Park"
+   ],
+   "authors_raw": "S. Ji and J. Park",
+   "et_al": false,
+   "year": "2016",
+   "title": "The Beginning Elementary School Teachers’ Difficulties to Suffer in the Science Classes from the Perspective of Content Knowledge and Teaching Method",
+   "source": "Journal of Science Education",
+   "volume": "40",
+   "issue": "2",
+   "pages": "116-130",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 4,
+   "style": "bracketed",
+   "raw": "[4] J. Lim, S. Lee, I. Yang and Y. Lee, “Investigating Elementary School Teachers’ Internal Factors on Science Experiment Activity”, Journal of Korean Elementary Science Education, vol.29, no.1, pp.93-101, 2010.",
+   "page": 10,
+   "box": [
+    594.1,
+    934.9,
+    1034.4,
+    1089.8
+   ],
+   "uid": "u9_10",
+   "authors": [
+    "J. Lim",
+    "S. Lee",
+    "I. Yang",
+    "Y. Lee"
+   ],
+   "authors_raw": "J. Lim, S. Lee, I. Yang and Y. Lee",
+   "et_al": false,
+   "year": "2010",
+   "title": "Investigating Elementary School Teachers’ Internal Factors on Science Experiment Activity",
+   "source": "Journal of Korean Elementary Science Education",
+   "volume": "29",
+   "issue": "1",
+   "pages": "93-101",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 5,
+   "style": "bracketed",
+   "raw": "[5] Y. Kang, “Study about improvement of experiment of making portable thermometer on elementary school science textbook”, Master’s Thesis, Seoul National University of Education, Seoul, Korea, 2005.",
+   "page": 10,
+   "box": [
+    594.1,
+    1096.7,
+    1034.4,
+    1221.5
+   ],
+   "uid": "u9_12",
+   "authors": [
+    "Y. Kang"
+   ],
+   "authors_raw": "Y. Kang",
+   "et_al": false,
+   "year": "2005",
+   "title": "Study about improvement of experiment of making portable thermometer on elementary school science textbook",
+   "source": "Master’s Thesis, Seoul National University of Education, Seoul, Korea",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 6,
+   "style": "bracketed",
+   "raw": "[6] M. Yang and H. Yoon, “A study on Redesign and Utilization of A Convective Circulation Box for Observations of Land and Sea Breezes”, Journal of the Korean Earth Science Society, vol.31, no.3, pp.246-258, 2010.",
+   "page": 10,
+   "box": [
+    594.1,
+    1227.1,
+    1034.4,
+    1382.9
+   ],
+   "uid": "u9_14",
+   "authors": [
+    "M. Yang",
+    "H. Yoon"
+   ],
+   "authors_raw": "M. Yang and H. Yoon",
+   "et_al": false,
+   "year": "2010",
+   "title": "A study on Redesign and Utilization of A Convective Circulation Box for Observations of Land and Sea Breezes",
+   "source": "Journal of the Korean Earth Science Society",
+   "volume": "31",
+   "issue": "3",
+   "pages": "246-258",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 7,
+   "style": "bracketed",
+   "raw": "[7] Y. Kim, “An Elementary School Teacher’s Action Research to Develop Science Content Knowledge (SCK) of the ‘Various Gases’ Unit”, Master’s Thesis, Daegu National University of Education, Daegu, Korea, 2017",
+   "page": 10,
+   "box": [
+    125.0,
+    194.9,
+    1032.3,
+    1642.7
+   ],
+   "uid": "u9_15",
+   "authors": [
+    "Y. Kim"
+   ],
+   "authors_raw": "Y. Kim",
+   "et_al": false,
+   "year": "2017",
+   "title": "An Elementary School Teacher’s Action Research to Develop Science Content Knowledge (SCK) of the ‘Various Gases’ Unit",
+   "source": "Master’s Thesis, Daegu National University of Education, Daegu, Korea",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 8,
+   "style": "bracketed",
+   "raw": "[8] E. Na and K. Han., “Improvement of Material Domain Experiments for Science and Learning Guidance in Elementary School”, The Journal of Primary Education, vol.28, no.2, 2014.",
+   "page": 11,
+   "box": [
+    125.0,
+    194.9,
+    570.0,
+    447.9
+   ],
+   "uid": "u10_1",
+   "authors": [
+    "E. Na",
+    "K. Han"
+   ],
+   "authors_raw": "E. Na and K. Han",
+   "et_al": false,
+   "year": "2014",
+   "title": "Improvement of Material Domain Experiments for Science and Learning Guidance in Elementary School",
+   "source": "The Journal of Primary Education",
+   "volume": "28",
+   "issue": "2",
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 9,
+   "style": "bracketed",
+   "raw": "[9] S. Yeo, “Elementary Pre-service Teachers’ Understanding of the Burning and Extinguishing Processes of Candle”, The Journal of Education, vol.40, no.4, pp.149-169, 2014.",
+   "page": 11,
+   "box": [
+    125.0,
+    454.4,
+    568.7,
+    577.6
+   ],
+   "uid": "u10_5",
+   "authors": [
+    "S. Yeo"
+   ],
+   "authors_raw": "S. Yeo",
+   "et_al": false,
+   "year": "2014",
+   "title": "Elementary Pre-service Teachers’ Understanding of the Burning and Extinguishing Processes of Candle",
+   "source": "The Journal of Education",
+   "volume": "40",
+   "issue": "4",
+   "pages": "149-169",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 10,
+   "style": "bracketed",
+   "raw": "[10] Ministry of Education, Ministry of Education Notice No. 2015-74, Science and Curriculum, 2015.",
+   "page": 11,
+   "box": [
+    126.1,
+    583.6,
+    568.9,
+    643.0
+   ],
+   "uid": "u10_7",
+   "authors": [
+    "Ministry of Education"
+   ],
+   "authors_raw": "Ministry of Education",
+   "et_al": false,
+   "year": "2015",
+   "title": "Science and Curriculum",
+   "source": null,
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": "2015-74",
+   "grammar": "notice",
+   "layout": "notice",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 11,
+   "style": "bracketed",
+   "raw": "[11] I. Park etc., “Elementary school 6th grade science textbook”, Kumsung Publishing Co. Ltd., 2022.",
+   "page": 11,
+   "box": [
+    126.1,
+    648.3,
+    568.7,
+    707.7
+   ],
+   "uid": "u10_8",
+   "authors": [
+    "I. Park"
+   ],
+   "authors_raw": "I. Park etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "Kumsung Publishing Co. Ltd",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 12,
+   "style": "bracketed",
+   "raw": "[12] H. Cho etc., “Elementary school 6th grade science textbook”, Gimmyoung, 2022.",
+   "page": 11,
+   "box": [
+    126.1,
+    714.0,
+    568.7,
+    772.5
+   ],
+   "uid": "u10_10",
+   "authors": [
+    "H. Cho"
+   ],
+   "authors_raw": "H. Cho etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "Gimmyoung",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 13,
+   "style": "bracketed",
+   "raw": "[13] S. Chang etc., Elementary school 6th grade science textbook” DongA Publishing Co. Ltd., 2022.",
+   "page": 11,
+   "box": [
+    127.1,
+    778.4,
+    568.7,
+    837.9
+   ],
+   "uid": "u10_11",
+   "authors": [
+    "S. Chang"
+   ],
+   "authors_raw": "S. Chang etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "DongA Publishing Co. Ltd",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 14,
+   "style": "bracketed",
+   "raw": "[14] D. Shin etc., Elementary school 6th grade science textbook”, MIRAE N co., ltd., 2022.",
+   "page": 11,
+   "box": [
+    127.1,
+    843.2,
+    568.9,
+    901.6
+   ],
+   "uid": "u10_13",
+   "authors": [
+    "D. Shin"
+   ],
+   "authors_raw": "D. Shin etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "MIRAE N co., ltd",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 15,
+   "style": "bracketed",
+   "raw": "[15] S. Lee etc., Elementary school 6th grade science textbook”, Visang, 2022.",
+   "page": 11,
+   "box": [
+    127.1,
+    907.1,
+    568.9,
+    967.1
+   ],
+   "uid": "u10_15",
+   "authors": [
+    "S. Lee"
+   ],
+   "authors_raw": "S. Lee etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "Visang",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 16,
+   "style": "bracketed",
+   "raw": "[16] D. Hyeon etc., Elementary school 6th grade science textbook”, I-Scream Media Co., Ltd. 2022.",
+   "page": 11,
+   "box": [
+    127.1,
+    972.9,
+    568.9,
+    1031.5
+   ],
+   "uid": "u10_17",
+   "authors": [
+    "D. Hyeon"
+   ],
+   "authors_raw": "D. Hyeon etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "I-Scream Media Co., Ltd",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 17,
+   "style": "bracketed",
+   "raw": "[17] C. Kweon etc., Elementary school 6th grade science textbook”, JIHAKSA PUBLISHING CO. LTD., 2022.",
+   "page": 11,
+   "box": [
+    126.1,
+    1036.7,
+    568.9,
+    1126.7
+   ],
+   "uid": "u10_19",
+   "authors": [
+    "C. Kweon"
+   ],
+   "authors_raw": "C. Kweon etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "JIHAKSA PUBLISHING CO. LTD",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 18,
+   "style": "bracketed",
+   "raw": "[18] S. Lee etc., Elementary school 6th grade science textbook”, CHUNJAETEXTBOOK Co.,Ltd., 2022.",
+   "page": 11,
+   "box": [
+    126.1,
+    1131.9,
+    568.9,
+    1191.9
+   ],
+   "uid": "u10_21",
+   "authors": [
+    "S. Lee"
+   ],
+   "authors_raw": "S. Lee etc",
+   "et_al": true,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "CHUNJAETEXTBOOK Co.,Ltd",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 19,
+   "style": "bracketed",
+   "raw": "[19] Y. Shin, Elementary school 6th grade science textbook”, CHUNJAE EDUCATION INC. 2022.",
+   "page": 11,
+   "box": [
+    595.0,
+    194.9,
+    1034.4,
+    253.3
+   ],
+   "uid": "u10_2",
+   "authors": [
+    "Y. Shin"
+   ],
+   "authors_raw": "Y. Shin",
+   "et_al": false,
+   "year": "2022",
+   "title": "Elementary school 6th grade science textbook",
+   "source": "CHUNJAE EDUCATION INC",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "remnant_quote",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 20,
+   "style": "bracketed",
+   "raw": "[20] Y. Hong, “Comparative Analysis of Science Textbooks According to the 2015 Revised Curriculum for Future Creative Talent”, Journal of Creative Information Culture, vol.8, no.4, pp.281-290, 2022.",
+   "page": 11,
+   "box": [
+    594.0,
+    260.5,
+    1034.4,
+    382.5
+   ],
+   "uid": "u10_3",
+   "authors": [
+    "Y. Hong"
+   ],
+   "authors_raw": "Y. Hong",
+   "et_al": false,
+   "year": "2022",
+   "title": "Comparative Analysis of Science Textbooks According to the 2015 Revised Curriculum for Future Creative Talent",
+   "source": "Journal of Creative Information Culture",
+   "volume": "8",
+   "issue": "4",
+   "pages": "281-290",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 21,
+   "style": "bracketed",
+   "raw": "[21] H. Oh, “Analysis of Contents about Temperature and Heat in Science Textbooks of Elementary School according to the Changes of the National Curriculum”, Master's Thesis, Seoul National University of Education, Seoul, Korea, 2013.",
+   "page": 11,
+   "box": [
+    594.0,
+    389.9,
+    1034.4,
+    545.0
+   ],
+   "uid": "u10_4",
+   "authors": [
+    "H. Oh"
+   ],
+   "authors_raw": "H. Oh",
+   "et_al": false,
+   "year": "2013",
+   "title": "Analysis of Contents about Temperature and Heat in Science Textbooks of Elementary School according to the Changes of the National Curriculum",
+   "source": "Master's Thesis, Seoul National University of Education, Seoul, Korea",
+   "volume": null,
+   "issue": null,
+   "pages": null,
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": null,
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 22,
+   "style": "bracketed",
+   "raw": "[22] Y. Hong and I. Park, “Quantitative Analysis on Experiment of Making Handy Thermometers”, School Science Journal, vol.1, no.2, pp.103-109, 2007.",
+   "page": 11,
+   "box": [
+    595.0,
+    551.3,
+    1034.4,
+    643.0
+   ],
+   "uid": "u10_6",
+   "authors": [
+    "Y. Hong",
+    "I. Park"
+   ],
+   "authors_raw": "Y. Hong and I. Park",
+   "et_al": false,
+   "year": "2007",
+   "title": "Quantitative Analysis on Experiment of Making Handy Thermometers",
+   "source": "School Science Journal",
+   "volume": "1",
+   "issue": "2",
+   "pages": "103-109",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  {
+   "num": 23,
+   "style": "bracketed",
+   "raw": "[23] H. Lee, A. Kim and Y. Hong, “My Creative Thermometer’ Program for the Gifted in Elementary Science”, Curriculum pedagogy research, vol.14, no.3, pp.453-467, 2010.",
+   "page": 11,
+   "box": [
+    594.0,
+    648.3,
+    1034.4,
+    772.2
+   ],
+   "uid": "u10_9",
+   "authors": [
+    "H. Lee",
+    "A. Kim",
+    "Y. Hong"
+   ],
+   "authors_raw": "H. Lee, A. Kim and Y. Hong",
+   "et_al": false,
+   "year": "2010",
+   "title": "My Creative Thermometer’ Program for the Gifted in Elementary Science",
+   "source": "Curriculum pedagogy research",
+   "volume": "14",
+   "issue": "3",
+   "pages": "453-467",
+   "doi": null,
+   "lang": "en",
+   "notice_no": null,
+   "grammar": "quoted",
+   "layout": "en_journal",
+   "container_title": null,
+   "publisher": null,
+   "editor": null,
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  }
+ ],
+ "title": {
+  "value": "2015 교육과정에 따른 검정교과서의 창의융합활동에 제시된 간이 온도계 만들기의 개선 방안",
+  "page": 1,
+  "box": [
+   169.5,
+   249.1,
+   991.0,
+   332.5
+  ],
+  "uid": "u0_3",
+  "confidence": {
+   "level": "high",
+   "source": "regex"
+  }
+ },
+ "title_en": {
+  "value": "Improvement Plan for Making a Simple Thermometer Presented in the Creative Convergence Activity of the Certified Textbook According to the 2015 Curriculum",
+  "page": 1,
+  "box": [
+   127.5,
+   755.8,
+   1035.2,
+   881.0
+  ],
+  "uid": "u0_7",
+  "confidence": {
+   "level": "high",
+   "source": "regex"
+  }
+ },
+ "authors": [
+  {
+   "name": "홍영식",
+   "markers": [],
+   "affiliation": "서울교육대학교",
+   "role": null,
+   "roman": "Young-Sik Hong",
+   "uid": "u0_4",
+   "page": 1,
+   "box": [
+    155.7,
+    361.0,
+    1014.0,
+    679.5
+   ]
+  }
+ ],
+ "affiliations": [
+  "서울교육대학교",
+  "Seoul National University of Education"
+ ],
+ "abstract": {
+  "value": "본 연구에서는 2015개정교육과정에 따라 집필된 9종 검정 과학교과서의 ‘여러 가지 기체’단원 중에서‘창의융합차시’의 온도계 만들기 탐구 활동에 대한 개선 방안을 제시하였다.이전 차시의 내용을 바탕으로미래 인재 양성과 창의적 문제 해결 능력을 배양하기 위한 창의융합차시는 주로 온도 혹은 압력에 의한 부피변화를 이용한 온도계나 로켓 만들기로 제시된다.그 중 온도에 따른 부피 변화를 이용한 간이 온도계 제작은이전에 제기되었던 문제점 등이 개선되지 않은 채 제시되고 있었다.이에 예비교사들을 대상으로 야쿠르트병 간이온도계 등의 개선된 간이 온도계를 적용한 결과 플라스틱병 간이 온도계를 제외한 모든 간이 온도계에 대해 매우 향상된 결과를 나타내었다.이러한 창의융합차시 활동의 개선은 미래 과학자를 꿈꾸는 학생들에게 성공 경험을 제공함으로서 과학에 대한 자신감과 함께 창의적인 미래 인재 양성에 기여할 것이다.",
+  "page": 1,
+  "box": [
+   560.4,
+   426.3,
+   624.2,
+   451.6
+  ],
+  "confidence": {
+   "level": "high",
+   "source": "regex",
+   "uid_head": "u0_5"
+  }
+ },
+ "abstract_en": {
+  "value": "In this study, we compared and analyzed the exploratory activities of 'Creative Convergence Challenge' among the 'Various Gases' unit in 9 types of certified science textbooks written according to the 2015 revised curriculum and suggested improvement measures. Based on the content of the previous lesson, the creative convergence lesson to cultivate creative problem-solving skills is mainly presented as making a thermometer or rocket using volume changes due to temperature or pressure. Among them, the production of a simple thermometer using volume change according to temperature was presented without any improvement in the problems previously raised. Accordingly, as a result of applying improved simple thermometers such as the Yakult bottle simple thermometer to prospective teachers, improved results were shown for simple thermometers excluding the plastic bottle simple thermometer. Improvements in these creative convergence activities will contribute to nurturing creative future talent along with confidence in science by providing success experiences to students who dream of becoming future scientists.",
+  "page": 1,
+  "box": [
+   127.5,
+   755.8,
+   1035.2,
+   881.0
+  ],
+  "from_tail": false,
+  "confidence": {
+   "level": "mid",
+   "source": "regex",
+   "uid_head": "u0_7"
+  }
+ },
+ "keywords_lines": [
+  "■ 중심어 : 창의융합활동, 간이 온도계, 여러 가지 기체",
+  "■ Keyword : Creative Convergence Activity, Simple Thermometer, Various Gases"
+ ],
+ "footnote_refs": [],
+ "footnote_ref_validation": {
+  "entry_count": 0,
+  "per_page": {},
+  "per_page_detail": {}
+ },
+ "citation_spans": [
+  {
+   "page": 2,
+   "uid": "u1_2",
+   "kind": "numeric",
+   "sentence": "2009 개정 교육과정에서 도입된 5학년의 ‘날씨와 우리 생활’ 단원의 대류상자 실험도 지속적인 개선이 이루어졌지만 탐구활동이 어려움을 겪는 경우가 많았다[6].",
+   "raw": "2009 개정 교육과정에서 도입된 5학년의 ‘날씨와 우리 생활’ 단원의 대류상자 실험도 지속적인 개선이 이루어졌지만 탐구활동이 어려움을 겪는 경우가 많았다[6].",
+   "citation_text": "[6]",
+   "offset": [
+    86,
+    89
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 5,
+     "num": 6,
+     "uid": "u9_14"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 2,
+   "uid": "u1_3",
+   "kind": "parenthetical",
+   "sentence": "과학교육의 중요한 목표는 미래 창의 인재 양성을 위해 자연 현상과 사물에 대하여 호기심과 흥미를 가지고, 과학의 핵심 개념에 대한 이해와 탐구 능력의 함양을 통하여, 개인과 사회의 문제를 과학적이고 창의적으로 해결하기 위한 과학적 소양을 기르는 것이다(교육부, 2015).",
+   "raw": "과학교육의 중요한 목표는 미래 창의 인재 양성을 위해 자연 현상과 사물에 대하여 호기심과 흥미를 가지고, 과학의 핵심 개념에 대한 이해와 탐구 능력의 함양을 통하여, 개인과 사회의 문제를 과학적이고 창의적으로 해결하기 위한 과학적 소양을 기르는 것이다(교육부, 2015).",
+   "citation_text": "(교육부, 2015)",
+   "offset": [
+    140,
+    151
+   ],
+   "authors": [
+    "교육부"
+   ],
+   "year": "2015",
+   "linked_refs": [
+    {
+     "index": 9,
+     "num": 10,
+     "uid": "u10_7"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "partial"
+  },
+  {
+   "page": 2,
+   "uid": "u1_6",
+   "kind": "numeric",
+   "sentence": "특히 탐구활동의 수행 시 다양한 이유로 인해 발생하는 문제점은 교사와 학생들의 자신감 결여와 오개념을 형성하며 교사는 해당 실험을 기피하게 된다[4].",
+   "raw": "특히 탐구활동의 수행 시 다양한 이유로 인해 발생하는 문제점은 교사와 학생들의 자신감 결여와 오개념을 형성하며 교사는 해당 실험을 기피하게 된다[4].",
+   "citation_text": "[4]",
+   "offset": [
+    80,
+    83
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 3,
+     "num": 4,
+     "uid": "u9_10"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 2,
+   "uid": "u1_6",
+   "kind": "numeric",
+   "sentence": "예를 들어 제7차 교육과정의 3학년 ‘온도재기’ 단원에서 제시되었던 야쿠르트 병을 이용한 간이온도계 만들기는 학생들의 성공률이 14%에 불과했으며 이는 교사뿐만 아니라 과학 과목이 처음인 학생들에게 과학을 기피하는 요인이 되었다[5].",
+   "raw": "예를 들어 제7차 교육과정의 3학년 ‘온도재기’ 단원에서 제시되었던 야쿠르트 병을 이용한 간이온도계 만들기는 학생들의 성공률이 14%에 불과했으며 이는 교사뿐만 아니라 과학 과목이 처음인 학생들에게 과학을 기피하는 요인이 되었다[5].",
+   "citation_text": "[5]",
+   "offset": [
+    127,
+    130
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 4,
+     "num": 5,
+     "uid": "u9_12"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 2,
+   "uid": "u1_9",
+   "kind": "numeric",
+   "sentence": "다만 입자 개념은 중등교육과정에서 제시되기 때문에 입자수와 부피의 관계는 다루지 않는다[10].",
+   "raw": "다만 입자 개념은 중등교육과정에서 제시되기 때문에 입자수와 부피의 관계는 다루지 않는다[10].",
+   "citation_text": "[10]",
+   "offset": [
+    48,
+    52
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 9,
+     "num": 10,
+     "uid": "u10_7"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 3,
+   "uid": "u2_3",
+   "kind": "numeric",
+   "sentence": "H 교과서는 이산화 탄소를 발생시켜 로켓을 발사하는 과제로 교육과정에서는 입자수와 압력과의 상관성에 대해서는 배우지 않기 때문에 학생들의 이해에 어려움이 있을 수 있다[10].",
+   "raw": "H 교과서는 이산화 탄소를 발생시켜 로켓을 발사하는 과제로 교육과정에서는 입자수와 압력과의 상관성에 대해서는 배우지 않기 때문에 학생들의 이해에 어려움이 있을 수 있다[10].",
+   "citation_text": "[10]",
+   "offset": [
+    93,
+    97
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 9,
+     "num": 10,
+     "uid": "u10_7"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 3,
+   "uid": "u2_6",
+   "kind": "numeric",
+   "sentence": "<표 1>은 ‘여러 가지 기체’ 단원의 창의융합활동 차시에서 제시된 내용들을 물리적인 조건과 사용된 기체를 중심으로 분석한 결과를 나타낸다[20].",
+   "raw": "<표 1>은 ‘여러 가지 기체’ 단원의 창의융합활동 차시에서 제시된 내용들을 물리적인 조건과 사용된 기체를 중심으로 분석한 결과를 나타낸다[20].",
+   "citation_text": "[20]",
+   "offset": [
+    77,
+    81
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 19,
+     "num": 20,
+     "uid": "u10_3"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 4,
+   "uid": "u3_2",
+   "kind": "numeric",
+   "sentence": "수 있는 동기를 부여하는 것이라는 이현미[23]의 연구처럼 전 차시에서 학습한 내용을 근거로 새로운 형태의 온도계를 만들고 작동하는 것을 확인하는 과정에 의미가 있다고 할 수 있다.",
+   "raw": "수 있는 동기를 부여하는 것이라는 이현미[23]의 연구처럼 전 차시에서 학습한 내용을 근거로 새로운 형태의 온도계를 만들고 작동하는 것을 확인하는 과정에 의미가 있다고 할 수 있다.",
+   "citation_text": "[23]",
+   "offset": [
+    22,
+    26
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 22,
+     "num": 23,
+     "uid": "u10_9"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 4,
+   "uid": "u3_3",
+   "kind": "numeric",
+   "sentence": "간이 온도계 만들기는 제7차 교육과정의 3학년 1학기 ‘온도재기’ 단원에서 온도계의 작동 방식을 이해하기 위해 도입된 바 있다[21].",
+   "raw": "간이 온도계 만들기는 제7차 교육과정의 3학년 1학기 ‘온도재기’ 단원에서 온도계의 작동 방식을 이해하기 위해 도입된 바 있다[21].",
+   "citation_text": "[21]",
+   "offset": [
+    70,
+    74
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 20,
+     "num": 21,
+     "uid": "u10_4"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 4,
+   "uid": "u3_3",
+   "kind": "numeric",
+   "sentence": "그러나 수업에 적용한 결과 온도계가 작동하지 않는 경우가 86%에 이를 정도로 문제가 있었다[5].",
+   "raw": "그러나 수업에 적용한 결과 온도계가 작동하지 않는 경우가 86%에 이를 정도로 문제가 있었다[5].",
+   "citation_text": "[5]",
+   "offset": [
+    51,
+    54
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 4,
+     "num": 5,
+     "uid": "u9_12"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 4,
+   "uid": "u3_3",
+   "kind": "numeric",
+   "sentence": "이에 홍영식과 박일우[22]는 야쿠르트 병에 물을 4/5 정도 채우고, 고무찰흡 위에 바셀린을 바를 경우 간이 온도계가 대부분 정상 작동함을 확인하였다.",
+   "raw": "이에 홍영식과 박일우[22]는 야쿠르트 병에 물을 4/5 정도 채우고, 고무찰흡 위에 바셀린을 바를 경우 간이 온도계가 대부분 정상 작동함을 확인하였다.",
+   "citation_text": "[22]",
+   "offset": [
+    11,
+    15
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 21,
+     "num": 22,
+     "uid": "u10_6"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 4,
+   "uid": "u3_9",
+   "kind": "numeric",
+   "sentence": "탐색하기에서는 <그림 1>(a)와 같은 스포이트 갈릴레이 공기 온도계를 구현하였다[16].",
+   "raw": "탐색하기에서는 <그림 1>(a)와 같은 스포이트 갈릴레이 공기 온도계를 구현하였다[16].",
+   "citation_text": "[16]",
+   "offset": [
+    45,
+    49
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 15,
+     "num": 16,
+     "uid": "u10_17"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  },
+  {
+   "page": 6,
+   "uid": "u5_8",
+   "kind": "numeric",
+   "sentence": "본 연구에서는 홍영식과 박일우[22]가 제안한 야쿠르트 병 간이 온도계 만들기에서 고무찰흙 위에 바셀린을 바르는 대신에 일반 찰흙을 사용하여<그림 2> (a)의 야쿠르트 병 간이 온도계를 제작하였다.색소 탄 물은 야쿠르트 병의 4/5 지점까지 채웠다.",
+   "raw": "본 연구에서는 홍영식과 박일우[22]가 제안한 야쿠르트 병 간이 온도계 만들기에서 고무찰흙 위에 바셀린을 바르는 대신에 일반 찰흙을 사용하여<그림 2> (a)의 야쿠르트 병 간이 온도계를 제작하였다.색소 탄 물은 야쿠르트 병의 4/5 지점까지 채웠다.",
+   "citation_text": "[22]",
+   "offset": [
+    16,
+    20
+   ],
+   "authors": null,
+   "year": null,
+   "linked_refs": [
+    {
+     "index": 21,
+     "num": 22,
+     "uid": "u10_6"
+    }
+   ],
+   "n_candidates": 1,
+   "confidence": "exact"
+  }
+ ],
+ "journal": {
+  "value": "창의정보문화연구",
+  "uid": "u0_1",
+  "confidence": {
+   "level": "mid",
+   "source": "regex"
+  }
+ },
+ "journal_en": {
+  "value": null,
+  "uid": null,
+  "confidence": {
+   "level": "low",
+   "source": "regex"
+  }
+ },
+ "year": {
+  "value": 2023,
+  "uid": "u0_0",
+  "confidence": {
+   "level": "high",
+   "source": "regex"
+  }
+ },
+ "volume": {
+  "value": 9,
+  "uid": "u0_1",
+  "confidence": {
+   "level": "high",
+   "source": "regex"
+  }
+ },
+ "issue": {
+  "value": 4,
+  "uid": "u0_0",
+  "confidence": {
+   "level": "high",
+   "source": "regex"
+  }
+ },
+ "pages": {
+  "value": "347-357",
+  "uid": null,
+  "confidence": {
+   "level": "mid",
+   "source": "regex"
+  }
+ },
+ "keywords": [
+  "창의융합활동",
+  "간이 온도계",
+  "여러 가지 기체"
+ ],
+ "keywords_en": [
+  "Creative Convergence Activity",
+  "Simple Thermometer",
+  "Various Gases"
+ ]
+}
