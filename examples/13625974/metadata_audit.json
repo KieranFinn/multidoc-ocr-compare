@@ -1,0 +1,792 @@
+{
+ "doc": "13625974",
+ "references": [
+  {
+   "num": 1,
+   "uid": "u9_4",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 2,
+   "uid": "u9_6",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 3,
+   "uid": "u9_8",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 4,
+   "uid": "u9_10",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 5,
+   "uid": "u9_12",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 6,
+   "uid": "u9_14",
+   "page": 10,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 7,
+   "uid": "u9_15",
+   "page": 10,
+   "block_review": true,
+   "basis": "块级mid继承",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": "跨页拼接块(块级依据: T4命中; 异粒度; T1/T3/T5待GT; split: 无可识别[n]分段(行数/文本量比检验 M2 细化))；字段一致"
+  },
+  {
+   "num": 8,
+   "uid": "u10_1",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 9,
+   "uid": "u10_5",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 10,
+   "uid": "u10_7",
+   "page": 11,
+   "block_review": false,
+   "basis": "政府公告型著录(Notice No. 规则)",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": "校验: 公告型著录"
+  },
+  {
+   "num": 11,
+   "uid": "u10_8",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 12,
+   "uid": "u10_10",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 13,
+   "uid": "u10_11",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 14,
+   "uid": "u10_13",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 15,
+   "uid": "u10_15",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 16,
+   "uid": "u10_17",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 17,
+   "uid": "u10_19",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 18,
+   "uid": "u10_21",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 19,
+   "uid": "u10_2",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 20,
+   "uid": "u10_3",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 21,
+   "uid": "u10_4",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 22,
+   "uid": "u10_6",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  },
+  {
+   "num": 23,
+   "uid": "u10_9",
+   "page": 11,
+   "block_review": false,
+   "basis": "三渠道一致·块级无分歧",
+   "ch_agree": {
+    "year": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "title": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    },
+    "authors": {
+     "agree": 1.0,
+     "missing": [],
+     "variant": {}
+    }
+   },
+   "pos_alarm": null,
+   "review_comment": null
+  }
+ ],
+ "ref_validation": {
+  "year_bad": [],
+  "pages_bad": [],
+  "entry_count": 23,
+  "grammar_dist": {
+   "quoted": 15,
+   "notice": 1,
+   "remnant_quote": 7
+  },
+  "layout_dist": {
+   "en_journal": 11,
+   "null": 11,
+   "notice": 1
+  },
+  "num_sequence": {
+   "runs": [
+    {
+     "min": 1,
+     "max": 23,
+     "gaps": [],
+     "dups": [],
+     "count": 23
+    }
+   ],
+   "ok": true
+  },
+  "num_missing": []
+ },
+ "ref_style": "bracketed",
+ "generated": "2026-11-12 09:52",
+ "title": {
+  "basis": "渠道一致100%"
+ },
+ "title_en": {
+  "basis": "渠道一致100%"
+ },
+ "front_notes": {
+  "author_zone_lines": [
+   "홍영식서울교육대학교",
+   "Young-Sik Hong",
+   "Seoul National University of Education"
+  ],
+  "affil_footnotes": {
+   "*": "이 연구는 2023년도 서울교육대학교 교내 연구비에 의해 연구되었음"
+  }
+ },
+ "abstract": {
+  "basis": "界限干净"
+ },
+ "abstract_en": {
+  "basis": "英题下无 Abstract 头, 作者行下取至 Keywords"
+ },
+ "llm": {
+  "doc": "13625974",
+  "pending": [
+   {
+    "kind": "ref",
+    "index": 9,
+    "field": "source",
+    "raw": "[10] Ministry of Education, Ministry of Education Notice No. 2015-74, Science and Curriculum, 2015.",
+    "uid": "u10_7",
+    "page": 11
+   }
+  ],
+  "called": 0,
+  "applied": 0,
+  "suggested": 0,
+  "suggested_kinds": {},
+  "rejected": 0,
+  "suggestion": [],
+  "enabled": false
+ },
+ "footnote_refs": [],
+ "cspan": {
+  "entry_count": 13,
+  "num_mode": {
+   "on": true,
+   "n_num": 17,
+   "n_fn": 0,
+   "ambiguous": false
+  },
+  "kind_dist": {
+   "numeric": 12,
+   "parenthetical": 1
+  },
+  "conf_dist": {
+   "exact": 12,
+   "partial": 1
+  },
+  "cross_page_blocks": 7
+ },
+ "issue": {
+  "journal_candidates": {
+   "창의정보문화연구": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    9
+   ]
+  },
+  "journal_en_candidates": {},
+  "year_candidates": {
+   "2023": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    9
+   ]
+  },
+  "volume_candidates": {
+   "kwan:9": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    9
+   ],
+   "vol:9": [
+    0
+   ]
+  },
+  "issue_candidates": {
+   "4": [
+    0,
+    1,
+    3,
+    5,
+    7,
+    9
+   ]
+  },
+  "pages_candidates": {},
+  "tongkwan": [],
+  "bmc_article_no": [],
+  "pages_derived": {
+   "first": 347,
+   "last": 357,
+   "offset": 347,
+   "support": 11,
+   "per_page": {
+    "0": 347,
+    "1": 348,
+    "2": 349,
+    "3": 350,
+    "4": 351,
+    "5": 352,
+    "6": 353,
+    "7": 354,
+    "8": 355,
+    "9": 356,
+    "10": 357
+   }
+  },
+  "keywords": {
+   "items": [
+    "창의융합활동",
+    "간이 온도계",
+    "여러 가지 기체"
+   ],
+   "items_en": [
+    "Creative Convergence Activity",
+    "Simple Thermometer",
+    "Various Gases"
+   ],
+   "raw_lines": [
+    "■ 중심어 : 창의융합활동, 간이 온도계, 여러 가지 기체"
+   ],
+   "raw_lines_en": [
+    "■ Keyword : Creative Convergence Activity, Simple Thermometer, Various Gases"
+   ],
+   "source": {
+    "page": 1,
+    "uid": "u0_6"
+   },
+   "source_en": {
+    "page": 1,
+    "uid": "u0_9"
+   }
+  }
+ },
+ "ref_yield_guard": {
+  "state": "PASS"
+ },
+ "ref_coverage_guard": []
+}
