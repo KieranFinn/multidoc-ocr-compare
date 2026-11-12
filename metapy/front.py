@@ -46,6 +46,23 @@ def _pick_title(j, want_hangul):
             best, bs = u, score
     return best
 
+_AFFIL_TAIL = re.compile(
+    u"(?:초빙교수|겸임교수|명예교수|전임교수|부교수|조교수|교수|강사|선임연구원|책임연구원|"
+    u"전문연구원|연구원|박사후연구원|대학원생|박사과정|석사과정|(?<=과)\\s*대학원)\\s*$")
+
+
+def _strip_affil_tail(s):
+    """机构行尾职位/学籍词循环剥离; 剥完必须仍命中机构词表, 防误伤'한국교육연구원'这类机构名。
+    (2026-11-12: '우송대학교 한국어교육원 초빙교수'→'우송대학교 한국어교육원' 实证)"""
+    s = (s or "").strip()
+    s = re.sub(u"[\\(（]\\s*[\\)）]", "", s)   # 角色词剥除后的空括号残留
+    while True:
+        ns = _AFFIL_TAIL.sub("", s).rstrip(" ,·•")
+        if ns == s or not AFFIL_HEAD.search(ns):
+            return s
+        s = ns
+
+
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
     + 括号内罗马拼音硬锚 + OCR 粘连名(홍영식서울교육대학교)按机构词表切开。
@@ -173,11 +190,11 @@ def front_doc(doc, out_root):
     zone_lines = _zone(t_ko)
     if t_en is not None:
         zone_lines += [z for z in _zone(t_en) if z not in zone_lines]
-    affil_notes = {}      # marker -> affiliation(来自脚注)
+    affil_notes = {}      # marker -> affiliation(来自脚注/页脚——13563525 实证机构在 Page-footer)
     for u in j0["unified"]:
         if u.get("cross_page", {}).get("role"):
             continue
-        if u["type"] != "Footnote":
+        if u["type"] not in ("Footnote", "Page-footer"):
             continue
         for ln in (u["main_text"] or "").split("\n"):
             m = MARKER_LINE.match(ln.strip())
@@ -189,7 +206,7 @@ def front_doc(doc, out_root):
     for s, u in zone_lines:
         if (re.fullmatch(u"[\\(（].+[\\)）]", s) and AFFIL_HEAD.search(s)) or \
            (_hangul_ratio(s) < 0.2 and AFFIL_HEAD.search(s) and "," not in s):
-            affils_zone.append(re.sub(ROLE_WORDS, "", s).strip("() ").strip())
+            affils_zone.append(_strip_affil_tail(re.sub(ROLE_WORDS, "", s).strip("() ").strip()))
             continue
         if len(_fold(s)) > 80 and not re.search(u"[·•]", s):
             # 长行无作者分隔符 → 更像正文/摘要, 仅取首段尝试
@@ -205,7 +222,7 @@ def front_doc(doc, out_root):
                 p["roman_source"] = True   # 英题下作者区=罗马拼音来源, 事后链接到韩文作者
         authors.extend(parsed)
         if not parsed and AFFIL_HEAD.search(s):
-            affils_zone.append(re.sub(ROLE_WORDS, "", s).strip("() ").strip())
+            affils_zone.append(_strip_affil_tail(re.sub(ROLE_WORDS, "", s).strip("() ").strip()))
     # 机构脚注配对(上标集合→机构) + 罗马拼音锚/序链接
     def _norm_roman(s):
         return re.sub(r"[^a-z]", "", (s or "").lower())
@@ -217,10 +234,19 @@ def front_doc(doc, out_root):
                 nk0 = nk.rstrip(")")
                 if nk0 == key or (key.isdigit() and nk0 == key) or (nk0 == "*" and key == "*"):
                     mrole = ROLE_WORDS.search(nv)
-                    a["affiliation"] = a["affiliation"] or ROLE_WORDS.sub("", nv).strip(" ,·•")
+                    a["affiliation"] = a["affiliation"] or _strip_affil_tail(
+                        ROLE_WORDS.sub("", nv).strip(" ,·•"))
                     a["role"] = a["role"] or (mrole.group(1) if mrole else None)
-        if a["affiliation"] is None and affils_zone:
+        if not a["affiliation"] and affils_zone:
             a["affiliation"] = affils_zone[0]
+    # ●● 脚注序位配对(2026-11-12, 13563527/13563528 实证): 作者带 */无标, 机构脚注带 ●/●●,
+    # 标记互配失败时按序位一一配对(第 N 个未绑定作者 ↔ 第 N 条未绑定机构脚注行)。
+    _bound = {(a["affiliation"] or "") for a in authors}
+    _unbound_notes = [nv for nv in affil_notes.values() if nv not in _bound]
+    for a, nv in zip([a for a in authors if not a["affiliation"]], _unbound_notes):
+        mrole = ROLE_WORDS.search(nv)
+        a["affiliation"] = _strip_affil_tail(ROLE_WORDS.sub("", nv).strip(" ,·•"))
+        a["role"] = a["role"] or (mrole.group(1) if mrole else None)
     roman_pool = [a for a in authors if a.get("roman_source")]
     ko_authors = [a for a in authors if not a.get("roman_source")]
     if roman_pool and ko_authors:

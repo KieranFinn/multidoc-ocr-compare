@@ -2,13 +2,18 @@
 # -*- coding: utf-8 -*-
 """ner_lite.py — LLM 提名 + 程序定位的最小抽取器(不走 metapy.ner)。
 
-契约(2026-11-10 定稿, 五轮 review 后):
+契约(2026-11-10 定稿, 五轮 review 后; 2026-11-12 增失败不覆盖与 org):
+  实体类: funding(资助机构/项目) / software(软件) / dataset(数据集) /
+        org(作者机构, 提示词按"与作者相连的署名行"口径提名, 不设页码护栏——
+        英文署名可能在末页英文摘要处, 13563525 实证);
+  同名去重: org 与具体类完全同名时让位(防"한국연구재단"两类双记);
   入口: 一句 prompt, 模型只回 [{kind, name}] —— 无 uid / relation / 复核;
   定位: 折叠匹配只是入场测试; 产出一律为原文切片(裸 in 可验);
         位置 = 全文枚举(跨块给 segments, 主块取重叠大者);
         右向字面外延(版本号/括号课题号)打 extended;
   出口: 产物 ner_lite.json + 审计 ner_lite_audit.json + _audit.html;
-        批注闭合词典 GLOSSARY + lint(非法立即拒, 纪律对自己元数据执行)。
+        批注闭合词典 GLOSSARY + lint(非法立即拒, 纪律对自己元数据执行);
+        失败不覆盖: 全批次网络错误且零产出时保留上次有效产物(审计照落并标 kept_previous_product)。
 
 用法:
   python ner_lite.py selfcheck     # mock 自检, 不触网
@@ -23,6 +28,8 @@ import os
 import re
 import ssl
 import sys
+import time
+import urllib.error
 
 HERE = os.path.dirname(os.path.abspath(__file__))     # pipeline/
 if HERE not in sys.path:
@@ -32,7 +39,7 @@ from metapy.common import _foldv                        # 折叠口径与管线�
 from metapy.llmrep import _json_objs
 
 OUT = os.path.join(HERE, "out")
-DST = os.path.join(os.path.dirname(HERE), "out_llm_trial", "fds_extract", "ner_lite")
+DST = os.path.join(HERE, "out_llm_trial", "fds_extract", "ner_lite")
 # 无 unified 层的散装文档: paddle 原始 JSON(相对 pipeline/)
 PADDLE_ONLY_DOCS = {"13564165": os.path.join(HERE, "..", "OCR", "13564165",
                                              "13564165.pdf_by_PaddleOCR-VL-1.5.json")}
@@ -47,14 +54,16 @@ def all_docs():
     return sorted(have) + [d for d in PADDLE_ONLY_DOCS
                            if not os.path.isdir(os.path.join(OUT, d, "unified"))]
 BATCH_CHARS = 8000
-KINDS = ("funding", "software", "dataset")
+KINDS = ("funding", "software", "dataset", "org")
 
 PROMPT_SYS = u"你是文献实体提名器。只输出 JSON。"
 PROMPT_BODY = (u"아래 텍스트에서 연구 지원(펀딩)의 기관·사업·과제명, 연구에 사용된 소프트웨어명, "
-               u"과학 데이터셋·자료집명을 모두 찾아라.\n"
+               u"과학 데이터셋·자료집명, 그리고 저자의 소속 기관명(저자와 연결된 소속 표기만: "
+               u"예: '● 서울대학교 국어국문학과 교수' 같은 소속 행; 본문 중 임의로 언급된 기관은 제외)을 모두 찾아라.\n"
                u"규칙: 원문에 있는 명칭만; 원문을 그대로 복사(한 글자도 바꾸거나 고치지 말 것); "
+               u"펀딩 과제명에 포함된 기관은 funding으로만 제출(동일 명칭을 org로 중복 제출 금지); "
                u"없으면 빈 배열; 설명·번호·코드블록 금지.\n"
-               u"출력 형식: [{\"kind\":\"funding|software|dataset\",\"name\":\"...\"}]\n\n[텍스트]\n")
+               u"출력 형식: [{\"kind\":\"funding|software|dataset|org\",\"name\":\"...\"}]\n\n[텍스트]\n")
 
 # 批注词典 v1(闭合, 追加制): lint 断言产物中的批注/枚举值全部来自本表
 GLOSSARY = {
@@ -229,18 +238,91 @@ def _ssl_ctx():
     return ctx
 
 
-def call_llm(cfg, prompt):
+def iter_channels(cfg):
+    """llm 配置 → 渠道列表(有序, 故障转移)。新风格 llm.channels 优先; 旧风格 endpoint/model 单渠道兜底。"""
+    chans = cfg.get("channels")
+    if chans:
+        return [dict(c) for c in chans]
+    return [{"label": cfg.get("model") or "default",
+             "endpoint": cfg.get("endpoint"),
+             "model": cfg.get("model"),
+             "api_key_env": cfg.get("api_key_env")}]
+
+
+def _env_key(name):
+    """按 api_key_env 取 key。Windows 用户变量存注册表, 新设的变量对已在运行的进程不可见
+    (2026-11-12 KCI_ZJLAB_KEY 实证)——环境缺省时回读 HKCU\\Environment, 免重启进程。"""
+    v = os.environ.get(name or "")
+    if v or os.name != "nt" or not name:
+        return v
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment") as k:
+            v, _ = winreg.QueryValueEx(k, name)
+    except OSError:
+        return None
+    return v or None
+
+
+def _post(channel, prompt):
+    """单次渠道调用。仅 https 走 _ssl_ctx(本机证书库); http(如内网 MaaS)直接发。"""
     import urllib.request
-    body = json.dumps({"model": cfg.get("model"),
-                       "temperature": float(cfg.get("temperature") or 0),
+    key = channel.get("api_key") or _env_key(channel.get("api_key_env"))
+    if not key:
+        raise RuntimeError("channel %s: 无 api_key" % channel.get("label"))
+    body = json.dumps({"model": channel.get("model"),
+                       "temperature": float(channel.get("temperature") or 0),
                        "messages": [{"role": "system", "content": PROMPT_SYS},
                                     {"role": "user", "content": prompt}]}).encode("utf-8")
-    req = urllib.request.Request(cfg["endpoint"], data=body, headers={
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + os.environ.get("KCI_LLM_KEY", "")})
-    with urllib.request.urlopen(req, timeout=180, context=_ssl_ctx()) as resp:
+    req = urllib.request.Request(channel["endpoint"], data=body, headers={
+        "Content-Type": "application/json", "Authorization": "Bearer " + key})
+    kw = {"timeout": 180}
+    if str(channel.get("endpoint") or "").startswith("https"):
+        kw["context"] = _ssl_ctx()
+    with urllib.request.urlopen(req, **kw) as resp:
         out = json.loads(resp.read().decode("utf-8"))
     return out["choices"][0]["message"]["content"]
+
+
+_RETRY_WAIT = {429: 15, 408: 5, 425: 10}   # 限流类错误: 同渠道退避重试(防 MaaS RPM 瞬时顶穿)
+_RETRY_TIMES = 2
+_LAST_CHANNEL = [None]   # call_llm 成功渠道(审计溯源)
+
+
+def call_llm(cfg, prompt, post=None):
+    """按渠道顺序调用。429/5xx 类先同渠道退避重试(限流瞬时), 再转移; 401/403/400 立即转移/抛; 全灭抛最后一个错。"""
+    post = post or _post
+    last = None
+    for ch in iter_channels(cfg):
+        for i in range(1 + _RETRY_TIMES):
+            try:
+                r = post(ch, prompt)
+                _LAST_CHANNEL[0] = ch.get("label")
+                return r
+            except urllib.error.HTTPError as e:
+                last = e
+                if e.code in (401, 403, 400):
+                    break          # 鉴权/请求错误: 重试无意义, 直接下一渠道
+                if e.code in _RETRY_WAIT and i < _RETRY_TIMES:
+                    time.sleep(_RETRY_WAIT.get(e.code, 10))
+                    continue
+                break
+            except Exception as e:
+                last = e
+                break              # 传输层错误: 下一渠道
+    raise last
+
+
+def make_model(cfg, post=None):
+    """pipeline 接线用: 可调用模型 + .model_name/.last_channel(审计记渠道)。"""
+    def model(prompt, _c=None):
+        text = call_llm(cfg, prompt, post=post)
+        model.last_channel = _LAST_CHANNEL[0]
+        return text
+    model.model_name = (iter_channels(cfg)[0].get("model") if iter_channels(cfg)
+                        else cfg.get("model"))
+    model.last_channel = None
+    return model
 
 
 # ---------- 主流程 ----------
@@ -261,6 +343,8 @@ def run_doc(doc, model, cfg=None, echo=print, blocks=None):
 
     nominations = []
     n_err_net = 0
+    echo(u"  ner_lite 共 %d 批, 逐批调用 %s …" % (
+        len(batches), getattr(model, "model_name", "?")))
     for bi, idxs in enumerate(batches):
         btxt = "\n\n".join(blocks[i]["text"] for i in idxs)
         bf_start = tbl.ranges[idxs[0]][0]
@@ -268,9 +352,10 @@ def run_doc(doc, model, cfg=None, echo=print, blocks=None):
         batch_folded = tbl.folded[bf_start:bf_end]
         try:
             resp = model(PROMPT_BODY + btxt, cfg)
+            echo(u"  batch %d/%d 已返回 (%d 字符)" % (bi + 1, len(batches), len(resp or u"")))
         except Exception as e:
             n_err_net += 1
-            echo(u"  batch %d 网络错误: %s" % (bi, str(e)[:100]))
+            echo(u"  batch %d/%d 网络错误: %s" % (bi + 1, len(batches), str(e)[:100]))
             continue
         items, ok = parse_nominations(resp)
         if not ok:
@@ -353,12 +438,27 @@ def run_doc(doc, model, cfg=None, echo=print, blocks=None):
 
     for r in records.values():
         r.pop("_seen", None)
-    recs = sorted(records.values(), key=lambda r: (r["kind"], r["name_model"]))
+    # 同名跨类去重: org 与 funding/software/dataset 完全同名时 org 让位(泛型回退),
+    # 防"한국연구재단"同一字符串两类双记(prompt 已禁, 代码兜底)
+    n_dedup_org = 0
+    by_name = {}
+    for r in records.values():
+        by_name.setdefault(_foldv(r["name_model"]), []).append(r)
+    for nf, rs in by_name.items():
+        if not nf or len(rs) < 2 or not any(x["kind"] == "org" for x in rs):
+            continue
+        for x in [x for x in rs if x["kind"] == "org"]:
+            records.pop((x["kind"], x["name_model"]), None)
+            n_dedup_org += 1
+    recs = sorted((r for r in records.values() if r["locations"]),
+                  key=lambda r: (r["kind"], r["name_model"]))
     n_admit = sum(1 for n in nominations if n["verdict"] == "admitted")
     audit = {"doc": doc, "model": getattr(model, "model_name", None),
+             "channel": getattr(model, "last_channel", None),
              "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
              "counts": {"blocks": len(blocks), "batches": len(batches),
                         "nominations": len(nominations), "admitted": n_admit,
+                        "dedup_org": n_dedup_org,
                         "dropped_anchor_miss": sum(1 for n in nominations if n.get("drop_reason") == "anchor_miss"),
                         "dropped_parse_fail": sum(1 for n in nominations if n.get("drop_reason") == "parse_fail"),
                         "errors_network": n_err_net,
@@ -395,8 +495,15 @@ def write_outputs(doc, product, audit):
     d = os.path.join(DST, doc)
     if not os.path.isdir(d):
         os.makedirs(d)
-    io.open(os.path.join(d, "ner_lite.json"), "w", encoding="utf-8").write(
-        json.dumps(product, ensure_ascii=False, indent=1))
+    fp = os.path.join(d, "ner_lite.json")
+    # 失败不覆盖(2026-11-12): 全部批次网络错误且零产出时, 保留上次有效产物——
+    # 重跑失败不许把已有实体抹空; 审计照常落(留痕), 并标记 kept_previous_product。
+    # 注意区分"真·零实体"(errors_network=0): 那是合法结果, 正常写空。
+    if audit["counts"]["errors_network"] > 0 and not product["records"] and os.path.exists(fp):
+        audit["kept_previous_product"] = True
+    else:
+        io.open(fp, "w", encoding="utf-8").write(
+            json.dumps(product, ensure_ascii=False, indent=1))
     io.open(os.path.join(d, "ner_lite_audit.json"), "w", encoding="utf-8").write(
         json.dumps(audit, ensure_ascii=False, indent=1))
     io.open(os.path.join(d, "_audit.html"), "w", encoding="utf-8").write(render_html(audit))
@@ -450,6 +557,8 @@ def selfcheck():
         {"uid": "u4", "page": 3, "type": "Footnote", "text": u"30) Arbuckle, AMOS manuel, SPSS Inc., 1997, p.201."},
         {"uid": "u5", "page": 3, "type": "Text", "text": u"이 논문은 서울교육대학교 교내 연구비로 연구되었다."},
         {"uid": "u6", "page": 4, "type": "Text", "text": u"보조 분석에 SPSS 를, 또 SPSS 를 사용하였다."},  # 块内两次
+        {"uid": "u7", "page": 1, "type": "Footnote", "text": u"● 한국교육개발원 초빙연구원(제1저자)"},   # 作者机构(第1页)
+        {"uid": "u8", "page": 4, "type": "Text", "text": u"비교 대상은 서울대학교 연구팀이다."},        # 随机提及(非作者机构)
     ]
     noms = [{"kind": "software", "name": "SPSS 21.0"},
             {"kind": "software", "name": "QuantumX"},            # 幻觉 → anchor_miss
@@ -457,7 +566,9 @@ def selfcheck():
             {"kind": "funding", "name": u"성신여자대학교 교내연구비(2012-2-11-016)"},  # 跨缝
             {"kind": "funding", "name": u"서울교육대학교 교내 연구비"},
             {"kind": "software", "name": "SPSS 21.0"},           # 重复提名 → 去重
-            {"kind": "software", "name": "AMOS manuel"}]         # 仅著录脚注 → 批注
+            {"kind": "software", "name": "AMOS manuel"},         # 仅著录脚注 → 批注
+            {"kind": "org", "name": u"한국교육개발원"},           # 作者机构(u7 第1页) → 收
+            {"kind": "org", "name": u"서울대학교"}]              # 仅第4页随机提及 → page 护栏切掉
     model = MockModel([json.dumps(noms, ensure_ascii=False)])
     product, audit = run_doc("mockdoc", model, echo=lambda s: None, blocks=blocks)
 
@@ -487,6 +598,12 @@ def selfcheck():
     # 6) 著录脚注批注: 全部定位在著录脚注
     r4 = recs[("software", "AMOS manuel")]
     assert "mention_in_biblio_footnote" in r4["annotations"], r4["annotations"]
+    # 6b) org=作者机构: 提示词语境判断, 不设页码护栏(13563525 实证: 英文署名在末页英文摘要处,
+    #     page=1 硬切误杀); 定位按全篇枚举
+    r5 = recs[("org", u"한국교육개발원")]
+    assert {s["page"] for loc in r5["locations"] for s in loc["segments"]} == {1}
+    r5b = recs[("org", u"서울대학교")]
+    assert {s["page"] for loc in r5b["locations"] for s in loc["segments"]} == {4}
     # 7) 不变量: 每个单块切片裸 in 原文
     for rec in product["records"]:
         for loc in rec["locations"]:
@@ -496,12 +613,68 @@ def selfcheck():
     # 8) 单测: parse_fail / 外延 / 折叠映射
     assert parse_nominations("garbage")[1] is False
     assert parse_nominations('[{"kind":"software","name":"X"}]')[0][0]["name"] == "X"
+    assert not _env_key("__ner_lite_no_such_var__")
     assert extend_slice(u"SPSS 26.0을 사용", 4) == (9, True)
     assert extend_slice(u"SPSS 로 분석", 4) == (4, False)
     f, kept = fold_with_map(u"AB CD")
     assert f == "ABCD" and kept == [0, 1, 3, 4]
     assert is_biblio_footnote(u"30) Arbuckle, AMOS manuel, SPSS Inc., 1997, p.201.")
     assert not is_biblio_footnote(u"* 이 논문은 한국연구재단의 지원을 받았다(NRF-2023).")
+    # 9) 双渠道故障转移: ch1 挂 → 自动落 ch2, 审计渠道标记正确
+    _cfg2 = {"channels": [
+        {"label": "ch1", "endpoint": "http://x", "model": "m1", "api_key": "k"},
+        {"label": "ch2", "endpoint": "http://y", "model": "m2", "api_key": "k"}]}
+    def _post_fail_first(ch, prompt):
+        if ch["label"] == "ch1":
+            raise IOError("boom")
+        return "[{\"kind\":\"software\",\"name\":\"Y\"}]"
+    _m = make_model(_cfg2, post=_post_fail_first)
+    assert _m("p") == "[{\"kind\":\"software\",\"name\":\"Y\"}]"
+    assert _m.last_channel == "ch2"
+    def _post_all_fail(ch, prompt):
+        raise IOError("down")
+    try:
+        make_model(_cfg2, post=_post_all_fail)("p")
+        raise AssertionError("all-fail should raise")
+    except IOError:
+        pass
+    # 10) 429 退避: 同渠道 429 一次后重试成功, 不转移
+    import urllib.error as _ue
+    _calls = {"n": 0}
+    def _post_429_once(ch, prompt):
+        _calls["n"] += 1
+        if _calls["n"] == 1:
+            raise _ue.HTTPError(ch["endpoint"], 429, "rate", {}, None)
+        return "ok"
+    import ner_lite as _NL2
+    _orig_sleep = _NL2.time.sleep
+    _NL2.time.sleep = lambda s: None   # 自检不真等
+    try:
+        assert call_llm({"channels": _cfg2["channels"][:1]}, "p", post=_post_429_once) == "ok"
+        assert _LAST_CHANNEL[0] == "ch1"
+    finally:
+        _NL2.time.sleep = _orig_sleep
+    # 11) 失败不覆盖: 全批网络错误+零产出 -> 保留旧产物(审计标 kept_previous_product);
+    #     无错误的零产出 = 合法结果, 照写空
+    import tempfile
+    import shutil as _sh
+    import ner_lite as _NL
+    _tmp = tempfile.mkdtemp()
+    _old_dst, _NL.DST = _NL.DST, _tmp
+    try:
+        _NL.write_outputs("keepdoc", {"doc": "keepdoc", "records": [{"kind": "org", "name": "X"}]},
+                          {"doc": "keepdoc", "counts": {"errors_network": 0}, "nominations": []})
+        _fail_a = {"doc": "keepdoc", "counts": {"errors_network": 2}, "nominations": []}
+        _NL.write_outputs("keepdoc", {"doc": "keepdoc", "records": []}, _fail_a)
+        _kept = json.load(io.open(os.path.join(_tmp, "keepdoc", "ner_lite.json"), encoding="utf-8"))
+        assert _kept["records"] and _fail_a.get("kept_previous_product") is True
+        _ok_a = {"doc": "keepdoc", "counts": {"errors_network": 0}, "nominations": []}
+        _NL.write_outputs("keepdoc", {"doc": "keepdoc", "records": []}, _ok_a)
+        _emptied = json.load(io.open(os.path.join(_tmp, "keepdoc", "ner_lite.json"), encoding="utf-8"))
+        assert _emptied["records"] == [] and "kept_previous_product" not in _ok_a
+    finally:
+        _NL.DST = _old_dst
+        _sh.rmtree(_tmp, ignore_errors=True)
     print("selfcheck OK:", json.dumps(audit["counts"], ensure_ascii=False))
     return 0
 
@@ -513,9 +686,8 @@ def main(argv):
     if not docs:
         print("usage: ner_lite.py selfcheck|<doc>...|all")
         return 1
-    cfg = json.load(io.open(os.path.join(ROOT, "channels.json"), encoding="utf-8")).get("llm") or {}
-    model = lambda prompt, _cfg=None: call_llm(cfg, prompt)
-    model.model_name = cfg.get("model")
+    cfg = json.load(io.open(os.path.join(HERE, "channels.json"), encoding="utf-8")).get("llm") or {}
+    model = make_model(cfg)
     for doc in docs:
         product, audit = run_doc(doc, model)
         d = write_outputs(doc, product, audit)

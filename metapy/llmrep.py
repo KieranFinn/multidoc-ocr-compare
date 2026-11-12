@@ -356,6 +356,19 @@ def report_meta(docs, out_root):
                               LV_COLOR.get(lv, "#333"), lv, link, conf.get("source", "-"), basis_show))
         # L1/L2 指标
         val = aud.get("ref_validation") or {}
+        # 零产出守卫/阶段覆盖守卫: audit 缺(refs 未跑/早退旧产物)时从 refs.guards_for_doc 独立重算
+        g = aud.get("ref_yield_guard") or {}
+        gcov = aud.get("ref_coverage_guard")
+        if not g or gcov is None:
+            try:
+                from .refs import guards_for_doc
+                gg = guards_for_doc(os.path.join(out_root, doc)) or {}
+                g = g or (gg.get("yield") or {})
+                if gcov is None:
+                    gcov = gg.get("coverage") or []
+            except Exception:
+                gcov = gcov or []
+        gstate = g.get("state")
         seq = val.get("num_sequence") or {}
         l1 = []
         l1.append(("编号连续", "PASS" if seq.get("ok") else "FAIL: %s" % seq, seq.get("ok")))
@@ -363,10 +376,20 @@ def report_meta(docs, out_root):
                    not val.get("year_bad")))
         l1.append(("页码起止合法", "PASS" if not val.get("pages_bad") else "BAD:%s" % val["pages_bad"],
                    not val.get("pages_bad")))
-        l1.append(("条目数", str(val.get("entry_count", "-")), True))
-        for name, st, ok in l1:
+        # 条目数颜色由守卫定(用户核实: 旧版第三参数写死 True, 0 条与一切正常同显绿色)
+        l1.append(("条目数", str(val.get("entry_count", "-")) if val else "refs 未运行",
+                   (gstate == "PASS") if gstate else None))
+        if gstate:
+            gtxt = gstate + ((" · " + g["reason"]) if g.get("reason") else "")
+            gcol = {"PASS": "#16a34a", "AMBER": "#d97706"}.get(gstate, "#dc2626")
+            l1.append(("零产出守卫", gtxt, gstate == "PASS", gcol))
+        if gcov:
+            l1.append(("阶段覆盖守卫", "漏页:%s" % gcov, False))
+        for item in l1:
+            name, st, ok = item[:3]
+            col = item[3] if len(item) > 3 else ("#16a34a" if ok else ("#6b7280" if ok is None else "#dc2626"))
             val_rows.append("<tr><td>%s</td><td>%s</td><td style='color:%s;font-weight:bold'>%s</td></tr>" % (
-                _esc(doc), name, "#16a34a" if ok else "#dc2626", _esc(st)))
+                _esc(doc), name, col, _esc(st)))
     # L2 表(ch_agree {field: {agree,...}} 取 agree 值; 批次6 后 13 篇 audit 全为新结构, 旧扁平兼容已删)
     l2_rows = []
     for doc, num, ca in agree_rows:

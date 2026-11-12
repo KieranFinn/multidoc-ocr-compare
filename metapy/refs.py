@@ -976,8 +976,31 @@ def selftest():
             n_ok += 1
         else:
             print("FAIL [fnote-dot-bare-footer] %s" % (nums,))
-    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 6))
-    return n_ok == len(SELFTEST) + 6
+    # 零产出守卫三态 + 阶段覆盖守卫(2026-11-10 用户定稿: 存在性判据, 不做条数估算)
+    def _pgu(units, in_ref=False):
+        return {"w": 1000, "h": 1000, "in_ref": in_ref, "unified": units}
+    def _uu(uid, ty, text, y=0):
+        return {"uid": uid, "type": ty, "main_text": text, "box": [10, y, 500, y + 30]}
+    _long = u"김철수. 1999. Title words here. " * 3   # fold≈90 ≥ ENTRY_MIN_LEN
+    _head = _uu("h", "Section-header", u"참고문헌")
+    _blocks = [_uu("b%d" % i, "Text", _long, i * 40) for i in range(25)]
+    _g1 = _yield_guard({0: _pgu([_head])}, [0], [], 0)                       # 节头在/in_ref 空 → RED
+    _g2 = _yield_guard({0: _pgu(_blocks[:5], True)}, [0], [0], 0)            # 5 长块/0 条 → RED
+    _g3 = _yield_guard({0: _pgu(_blocks, True)}, [0], [0], 1)                # 25 块/1 条 → AMBER
+    _g4 = _yield_guard({0: _pgu(_blocks[:3], True)}, [0], [0], 1)            # 少块正常产出 → PASS
+    _blocks100 = [_uu("c%d" % i, "Text", _long, i) for i in range(100)]
+    _g5 = _yield_guard({0: _pgu(_blocks100, True)}, [0], [0], 10)           # 中产出不误报 AMBER
+    _cov = _coverage_guard({"references": [], "footnote_refs": []},
+                           {0: _pgu([_uu("f1", "Footnote", u"1) 김철수, 「제」, 2000."),
+                                     _uu("f2", "Footnote", u"2) 이박사, 『서』, 2001.")])}, [0])
+    if _g1["state"] == "RED" and _g2["state"] == "RED" and _g3["state"] == "AMBER" \
+            and _g4["state"] == "PASS" and _g5["state"] == "PASS" and _cov == [1]:
+        n_ok += 1
+    else:
+        print("FAIL [yield-coverage-guard] %s %s %s %s %s cov=%s"
+              % (_g1["state"], _g2["state"], _g3["state"], _g4["state"], _g5["state"], _cov))
+    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 7))
+    return n_ok == len(SELFTEST) + 7
 
 
 def _split_authors(auth, corp=False, latcorp=False):
@@ -1338,6 +1361,100 @@ def _reanchor_reference_entries(entries, doc_dir, pdata):
     return changed
 
 
+def _yield_guard(pdata, pages, ref_pages, entry_count):
+    """零产出守卫(2026-11-10 用户定稿): 三态 PASS/RED/AMBER。判据只用统一层存在性信号
+    (节头块/in_ref 页/长文本块计数), 不做条数估算——朴素行首计数方差大(13625974/1632041
+    会得到 0 的反向假警报), 会杀死守卫可信度。RED=节头在而 in_ref 全空(定位失败)或
+    有 in_ref 页且长文本块≥3 却 0 条目; AMBER=长文本块≥10 且产出<5%(已知形态可解释)。"""
+    head_pages = [p for p in pages
+                  if any(u["type"] == "Section-header"
+                         and regress.REF_HEAD.search((u.get("main_text") or "").split("\n")[0] or "")
+                         for u in pdata[p]["unified"])]
+    long_blocks = sum(1 for p in ref_pages for u in pdata[p]["unified"]
+                      if u["type"] in CONTENT_TYPES
+                      and len(_fold(u.get("main_text") or "")) >= ENTRY_MIN_LEN)
+    if not ref_pages and head_pages:
+        return {"state": "RED",
+                "reason": u"文献节头在页 %s 但 in_ref=0 页(unify 栏判定疑似漏标, 双栏同页摘要形态)" % [p + 1 for p in head_pages[:4]]}
+    if ref_pages and entry_count == 0 and long_blocks >= 3:
+        return {"state": "RED",
+                "reason": u"%d 个 in_ref 页含 %d 个长文本块但 0 条目(体例未覆盖或准入闸全拒)" % (len(ref_pages), long_blocks)}
+    if ref_pages and long_blocks >= 10 and 0 < entry_count * 20 < long_blocks:
+        return {"state": "AMBER",
+                "reason": u"%d 页 in_ref / %d 长文本块仅 %d 条(%.1f%%, <5%%, 句点年份等已知形态可解释)" % (
+                    len(ref_pages), long_blocks, entry_count, 100.0 * entry_count / long_blocks)}
+    return {"state": "PASS"}
+
+
+def _coverage_guard(m, pdata, pages):
+    """阶段互斥空档守卫: 含文献样证据的页(Footnote 带行首编号 或 Text 行首像文献, 同页≥2 处)
+    必须被 references∪footnote_refs 的条目页覆盖; 漏页 RED——refs/frefs 两阶段同时失明
+    (如整页 in_ref 的脚注 refs 只按页收、frefs 跳过 in_ref 页, 双不合格且都不报警)的唯一暴露口。"""
+    covered = {e.get("page") for e in (m.get("references") or [])} \
+        | {e.get("page") for e in (m.get("footnote_refs") or [])}
+    gaps = []
+    for p in pages:
+        ev = 0
+        for u in pdata[p]["unified"]:
+            t = (u.get("main_text") or "").strip()
+            if not t:
+                continue
+            first = t.split("\n")[0].strip()
+            # 只认带行首编号的 Footnote 块: Text 的 _looks_cike 判据会把摘要页(3275609
+            # p28 国语摘要)误报成文献页——守卫被判错一次, 操作者学会无视就白做。
+            if u["type"] == "Footnote" and FN_CITE_X.match(first):
+                ev += 1
+        if ev >= 2 and (p + 1) not in covered:
+            gaps.append(p + 1)
+    return gaps
+
+
+def ref_pages_extended(pdata, pages, head_fallback=True):
+    """文献区页(扩展口径, 2026-11-10): in_ref 页 ∪ 起点前导节头页(只扩不缩);
+    head_fallback(默认开)=全无 in_ref 时取最后一个 REF_HEAD 节头页起所有页
+    (13563525 双栏同页摘要形态, unify 冻结无法在归一层修)。
+    调用方: NER 输入过滤/guards_for_doc 用全口径; refs_doc 传 head_fallback=False——
+    无 in_ref 时的节头页回退是 A4 修复(改抽取产物), 未拍板前不启用; 三处共用本函数,
+    差异只剩这一个显式开关, 杜绝 refs.py:1722/1362 式两集合悄悄分叉。
+    frefs 收集仍用纯 in_ref(改动会影响既有产物, 刻意不同步)。"""
+    ref_pages = [p for p in pages if pdata[p].get("in_ref")]
+    if ref_pages:
+        p0 = min(ref_pages) - 1
+        if p0 >= 0 and any(u["type"] == "Section-header"
+                           and regress.REF_HEAD.search((u.get("main_text") or "").split("\n")[0] or "")
+                           for u in pdata[p0]["unified"]):
+            ref_pages = sorted(set(ref_pages) | set(range(p0, max(ref_pages) + 1)))
+        return ref_pages
+    if not head_fallback:
+        return []
+    heads = [p for p in pages if any(u["type"] == "Section-header"
+             and regress.REF_HEAD.search((u.get("main_text") or "").split("\n")[0] or "")
+             for u in pdata[p]["unified"])]
+    return list(range(heads[-1], pages[-1] + 1)) if heads else []
+
+
+def guards_for_doc(doc_dir):
+    """报告侧独立重算(refs 阶段未跑/早退也有结论): 读 unified+metadata 返回
+    {"yield":..., "coverage":[...]}; 无 unified 返回 None。"""
+    udir = os.path.join(doc_dir, "unified")
+    if not os.path.isdir(udir):
+        return None
+    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
+                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
+    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
+             for p in pages}
+    m = {}
+    meta_fp = os.path.join(doc_dir, "metadata.json")
+    if os.path.exists(meta_fp):
+        m = json.load(io.open(meta_fp, encoding="utf-8"))
+    # 与 refs_doc 同口径(head_fallback=False): 守卫衡量的是 refs 阶段视角——无 in_ref 时
+    # 节头页回退(A4 修复)未启用, 该形态应报 RED-1 定位失败而非把扩展页误当文献区;
+    # 全口径扩展页集合是 NER 输入过滤的事, 不进守卫。
+    ref_pages = ref_pages_extended(pdata, pages, head_fallback=False)
+    return {"yield": _yield_guard(pdata, pages, ref_pages, len(m.get("references") or [])),
+            "coverage": _coverage_guard(m, pdata, pages)}
+
+
 def refs_doc(doc, out_root):
     """单篇①: 文献区定位(页级 in_ref + 条目模式过滤) → 条目切分(跨块缝合) → 字段抽取 → 校验。
     产出 out 中文档目录下 metadata.json 的 references 段 + 校验摘要。"""
@@ -1351,19 +1468,17 @@ def refs_doc(doc, out_root):
     pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
              for p in pages}
     doc_heads = _doc_heads(pdata, pages)
-    # —— L1: 文献区= in_ref 页(复用 regress.ref_region 口径); 起始页的 참고문헌 头定位 ——
-    ref_pages = [p for p in pages if pdata[p].get("in_ref")]
+    # —— L1: 文献区定位统一走 ref_pages_extended(head_fallback=False: 无 in_ref 时的节头页
+    # 回退是 A4 修复未拍板, 仍早退); 起始页的 참고문헌 头定位 ——
+    ref_pages = ref_pages_extended(pdata, pages, head_fallback=False)
     if not ref_pages:
-        print("== ① %s == 无文献区" % doc)
+        # 零产出守卫写在早退之前(用户核实: 旧代码此路径不写 ref_validation, 报告"条目数 -"
+        # 被 llmrep 第三参数写死 True 渲成绿色, 0 条与一切正常长得一样——静默失败最糟形态)
+        audit = load_audit(doc_dir)
+        audit.update({"doc": doc, "ref_yield_guard": _yield_guard(pdata, pages, ref_pages, 0)})
+        save_audit(doc_dir, audit)
+        print("== ① %s == 无文献区 守卫=%s" % (doc, audit["ref_yield_guard"]["state"]))
         return None
-    # unify in_ref 起点晚一页实证(1892171 p28: '참고문헌'+'I. 국남문헌' 头页 in_ref=False——unify.ref_region
-    # 取'最后一个 REF_HEAD 命中页'为起点, 两小节头都含 '문헌' → 起点落到 'Ⅱ. 외국문헌' 页, 首页 7 条全丢):
-    # refs 本地回退——in_ref 起点前一页有 REF_HEAD 节头 → 自该头页并入(只扩不缩, 不动 unify 标记, 免重跑 M3)
-    p0 = min(ref_pages) - 1
-    if p0 >= 0 and any(u["type"] == "Section-header"
-                       and regress.REF_HEAD.search((u["main_text"] or "").split("\n")[0] or "")
-                       for u in pdata[p0]["unified"]):
-        ref_pages = sorted(set(ref_pages) | set(range(p0, max(ref_pages) + 1)))
 
     def _in_ref_region(u, p):
         """块属于文献区: 页 in_ref, 或跨页块(tail)的页首段落在 in_ref 页(M3 拼条目前溢的文献块)。"""
@@ -1538,7 +1653,9 @@ def refs_doc(doc, out_root):
     # 诊断层双写: review_comment/ch_agree/basis/block_review/L1 校验/风格 → metadata_audit.json(评审工具读, 下游不消费)
     audit = load_audit(doc_dir)
     audit.update({"doc": doc, "references": audits,
-                  "ref_validation": val, "ref_style": style})
+                  "ref_validation": val, "ref_style": style,
+                  "ref_yield_guard": _yield_guard(pdata, pages, ref_pages, len(refs)),
+                  "ref_coverage_guard": _coverage_guard(meta, pdata, pages)})
     save_audit(doc_dir, audit)
     lv = collections.Counter(r["confidence"]["level"] for r in refs)
     print("== ① %s == 风格=%s 条目=%d 置信=%s 编号=%s" % (
@@ -1560,8 +1677,8 @@ def _unwrap_tail_cite(t):
 FN_CITE_X = re.compile(
     r"^\s*((?:\(\d{1,2}\)|\d{1,2}\)|\[\d{1,3}\]|〔\d+〕|"
     r"\d{1,3}\s*[.、]|"                                  # N. / N、 句点式(FI001004818_2002 全篇实证)
-    r"\d{1,2}(?=\s+(?:[^\W\d_]|[「『“‘]))))")             # 裸数字式(13563525 上标号 OCR 成行首裸数字);
-# 裸数字分支要求数字后紧跟字母/开引号, 防 '18 • Police Science Institute'(•为符号)误切
+    r"\d{1,2}(?=\s+(?:[^\W\d_]|[「『“‘]|\d+[가-힣]))))")  # 裸数字式; 次 token 可为 3호 等数字页期号
+# 裸数字分支要求数字后紧跟字母/开引号/数字页期号, 防 '18 • Police Science Institute'(•为符号)误切
 # 1.6: frefs 局部扩展正则(补 (N) 圆括号形态, 1892171 脚注22/23 串烧实证)——
 # 不动 common.FOOTNOTE_CITE(m3.py 三处共享, 动它=违反 D4 硬闸)
 
@@ -1600,11 +1717,13 @@ def _fnote_collect(blocks, doc_heads=()):
             s = ln.strip()
             if not s:
                 continue
-            mh = FN_CITE_X.match(s)
+            plain = _plain_inline(s)
+            mh = FN_CITE_X.match(plain)
             if mh:
                 if cur:
                     entries.append(cur)
-                cur = {"text": s[mh.end():].strip(), "num": re.sub(r"\D", "", mh.group(1)),
+                raw = s[mh.end():].strip() if s.startswith(mh.group(1)) else plain[mh.end():].strip()
+                cur = {"text": raw, "num": re.sub(r"\D", "", mh.group(1)),
                        "page": b["p"] + 1, "col": b["col"], "box": b["u"]["box"],
                        "uid": b["u"]["uid"], "block_review": b["u"]["review"],
                        "block_level": b["u"]["confidence"]["level"]}
@@ -1612,10 +1731,46 @@ def _fnote_collect(blocks, doc_heads=()):
                 if strict:
                     continue
                 if cur is not None:
-                    cur["text"] += " " + s
+                    if b["p"] + 1 > cur["page"] and _complete(cur["text"]):
+                        entries.append(cur)
+                        cur = None
+                    else:
+                        opened = sum(cur["text"].count(q) for q in "「『")
+                        closed = sum(cur["text"].count(q) for q in "」』")
+                        cur["text"] += ("" if opened > closed else " ") + s
     if cur:
         entries.append(cur)
     return entries
+
+
+def _fnote_dedup(kept, umap):
+    """同页同号去重(2026-11-11): coverage 孤儿块与他块成员交叠时, 同一脚注在两个块里各出
+    一条(13563527 p2 脚注4=u1_7/u1_9 实证, out/ 4/16 篇中招)——按渠道支持数/文本洁净度
+    (内联标签·FFFD·dup_covered 标记)/句读完整度/折叠长度择优留一, 其余丢弃并留档供
+    audit footnote_dups; 无同号组时原样返回。"""
+    def _score(e):
+        u = umap.get(e["uid"]) or {}
+        t = e["text"] or ""
+        garbage = len(re.findall(r"</?(?:sub|sup|i|b|em|span)>", t, flags=re.I)) + t.count("\ufffd")
+        if u.get("dup_covered"):
+            garbage += 2
+        return (len(u.get("readings") or []), -garbage, _complete(t), len(_fold(t)))
+    by_pgnum = collections.defaultdict(list)
+    for e in kept:
+        by_pgnum[(e["page"], str(e["num"]))].append(e)
+    drop_ids, dropped = set(), []
+    for (page, num), group in sorted(by_pgnum.items()):
+        if len(group) < 2:
+            continue
+        winner = max(group, key=_score)   # 并列取先见者(max 遇并列返回首个)
+        for e in group:
+            if e is winner:
+                continue
+            drop_ids.add(id(e))
+            dropped.append({"page": page, "num": num, "kept_uid": winner["uid"],
+                            "dropped_uid": e["uid"],
+                            "dropped_head": re.sub(r"\s+", " ", (e["text"] or ""))[:60]})
+    return ([e for e in kept if id(e) not in drop_ids], dropped) if dropped else (kept, [])
 
 
 _REPEAT_REF = re.compile(
@@ -1706,7 +1861,8 @@ def _resolve_repeat_reference(t, f, previous):
 def frefs_doc(doc, out_root):
     """单篇⑤: 全部编号脚注抽取(--stage frefs)。产物独立键 footnote_refs + footnote_ref_validation,
     不混 references[]; 只依赖 unified, 与 refs 阶段顺序无关。流水: 非 in_ref 页 Footnote 块
-    → 行首标记切条(无标记段并入前条) → 全部保留(文献/说明/术语/图源/访问日期)
+    → 混合块只取 Footnote 成员 → 行首标记切条(无标记段按完成度续并) → 同页同号去重
+    (_fnote_dedup, 覆盖孤儿块双块重影, 丢弃留痕 audit footnote_dups) → 全部保留(文献/说明/术语/图源/访问日期)
     → 书目字段抽取+重复引文解析+校验+置信(_extract_fields/_validate_fields/_grade_entry 复用)。
     编号=脚注号(每页重启, 无连续性校验意义), 校验只记 per-page 计数。"""
     doc_dir = os.path.join(out_root, doc)
@@ -1736,6 +1892,22 @@ def frefs_doc(doc, out_root):
                     return mt.strip()
         return None
 
+    def _mixed_footnote_text(u):
+        members = u.get("members") or {}
+        cats = {m.get("cat") for units in members.values() for m in units}
+        if "Text" not in cats or "Footnote" not in cats:
+            return (u.get("main_text") or "").strip()
+        candidates = []
+        for units in members.values():
+            parts = [(m.get("text") or "").strip() for m in units if m.get("cat") == "Footnote"]
+            parts = [t for t in parts if t]
+            if not parts:
+                continue
+            text = "\n".join(parts)
+            marks = sum(bool(FN_CITE_X.match(line.strip())) for line in text.split("\n") if line.strip())
+            candidates.append((marks, len(parts), len(text), text))
+        return max(candidates, default=(0, 0, 0, ""))[-1].strip()
+
     for p in pages:
         if p in ref_pages:
             continue   # 收集范围=非 in_ref 页
@@ -1743,7 +1915,7 @@ def frefs_doc(doc, out_root):
         for u in j["unified"]:
             if u.get("cross_page", {}).get("role") == "head":
                 continue
-            t = (u["main_text"] or "").strip()
+            t = _mixed_footnote_text(u)
             if u["type"] != "Footnote":
                 if u["type"] == "Page-footer":
                     ft = _footer_marked_text(u)
@@ -1761,17 +1933,21 @@ def frefs_doc(doc, out_root):
                            "uid": u["uid"], "u": u, "t": t})
     entries = _fnote_collect(sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])),
                              doc_heads)
-    kept = []
+    kept, seen = [], set()
     for e in entries:
-        e["text"] = _unwrap_tail_cite(e["text"])
+        key = (e["page"], e["uid"], e["num"])
+        if key in seen:
+            continue
+        seen.add(key)
         kept.append(e)
     kept.sort(key=lambda e: (e["page"], int(e["num"]) if str(e["num"]).isdigit() else 0))
-    # 批次3: frefs 同 uid 计数(§45 M3 '3:三块脚注' 同口径)——≥3 条探针标 probe_suspect
-    uid_count = collections.Counter(e["uid"] for e in kept)
     umap = {}
     for p in pages:
         for u in pdata[p]["unified"]:
             umap[u["uid"]] = u
+    kept, fdups = _fnote_dedup(kept, umap)
+    # 批次3: frefs 同 uid 计数(§45 M3 '3:三块脚注' 同口径)——≥3 条探针标 probe_suspect
+    uid_count = collections.Counter(e["uid"] for e in kept)
     frefs, faudits = [], []
     for e in kept:
         if _fref_has_biblio_evidence(e["text"]):
@@ -1816,20 +1992,34 @@ def frefs_doc(doc, out_root):
     coll_pages = collections.defaultdict(list)
     for e in frefs:
         coll_pages[e["page"]].append(str(e["num"]))
+    dup_drop_pages = collections.defaultdict(list)
+    for d in fdups:
+        dup_drop_pages[d["page"]].append(str(d["num"]))
 
     def _srt(ns):
+        return sorted(ns, key=lambda x: int(x) if x.isdigit() else 0)
+
+    def _srt_uniq(ns):
         return sorted(set(ns), key=lambda x: int(x) if x.isdigit() else 0)
 
-    fval["per_page_detail"] = {str(p): {"markers": _srt(mk_pages.get(p, [])),
-                                        "collected": _srt(coll_pages.get(p, []))}
-                               for p in sorted(set(mk_pages) | set(coll_pages))}
+    detail = {}
+    for p in sorted(set(mk_pages) | set(coll_pages)):
+        cell = {"markers": _srt_uniq(mk_pages.get(p, [])),
+                "collected": _srt(coll_pages.get(p, []))}   # 不去重: 残留同号重复须可见
+        if dup_drop_pages.get(p):
+            cell["dup_dropped"] = _srt_uniq(dup_drop_pages[p])   # 去重动作留痕(诊断)
+        detail[str(p)] = cell
+    fval["per_page_detail"] = detail
+    # 残盾: 去重后仍同页同号(理论上不发生)——显式报警, 不再被 set 口径掩盖
+    residual = collections.Counter((e["page"], str(e["num"])) for e in frefs)
+    fval["dup_alarm"] = sorted("p%d#%s" % k for k, c in residual.items() if c > 1)
     meta_fp = os.path.join(doc_dir, "metadata.json")
     meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
     meta.update({"doc": doc, "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
                  "footnote_refs": frefs, "footnote_ref_validation": fval})
     io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
     audit = load_audit(doc_dir)
-    audit.update({"doc": doc, "footnote_refs": faudits})
+    audit.update({"doc": doc, "footnote_refs": faudits, "footnote_dups": fdups})
     save_audit(doc_dir, audit)
     lv = collections.Counter(r["confidence"]["level"] for r in frefs)
     print("== ⑤ %s == 编号脚注=%d 置信=%s 分页=%s" % (doc, len(frefs), dict(lv), fval["per_page"]))

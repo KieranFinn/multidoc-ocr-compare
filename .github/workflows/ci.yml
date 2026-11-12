@@ -56,21 +56,6 @@ jobs:
       - name: Generate demo inputs (synthetic PDF + 3 mock channel outputs)
         run: |
           python _attic/examples/make_demo.py
-          mkdir -p _attic/examples/demo/samples
-          # make_demo 只在有源 PDF 时才拷贝样例; 这里补一份最小的源 PDF,
-          # 让 demo 真正走"渲染页图"这条链, 而不是靠本地遗留的演示文件。
-          python - <<PY
-          import pathlib
-          p = pathlib.Path("_attic/examples/demo/samples/demo_kr.pdf")
-          if not p.is_file():
-              p.write_bytes(b"%PDF-1.4\n1 0 obj<</Type/Catalog/Pages 2 0 R>>endobj\n"
-                            b"2 0 obj<</Type/Pages/Kids[3 0 R]/Count 1>>endobj\n"
-                            b"3 0 obj<</Type/Page/Parent 2 0 R/MediaBox[0 0 595 842]>>endobj\n"
-                            b"trailer<</Root 1 0 R>>\n%%EOF\n")
-              print("wrote placeholder source PDF")
-          else:
-              print("source PDF present:", p.stat().st_size, "bytes")
-          PY
           ls -R _attic/examples/demo | head -40
       - name: Run pipeline end to end (known pixel calibration, no network)
         run: |

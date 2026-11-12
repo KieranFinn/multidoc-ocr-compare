@@ -227,7 +227,7 @@ python ner_lite.py all                     # out/ 下所有带 unified/ 的文�
 pipeline.py        主编排 + 兼容性 re-export
 pipeline_io.py     渲染 -> 抓取 -> 归档 -> 标定 -> 适配
 viewer.py          单渠道 / 对照查看器 + md2html + 元数据面板
-webapp.py app.js   拖拽工作台（stdlib HTTP 服务 + 渠道配置面板）
+webapp.py app.js dashboard.css   拖拽工作台（任务总览 + 管道/渠道状态 + 渠道配置面板）
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
 metadata.py        结构化元数据 CLI（11 行壳；实现在 metapy/）
