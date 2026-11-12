@@ -736,3 +736,250 @@ accepted / (accepted + rejected)，分母含 schema 拒收（两者都是"送审
 - test_pipeline 10/10（新增 test_metadata_band_renders_inline_math：$\approx/l^{-1}$ → ≈ 与 <sup>、$\frac{1}{2}$ → <i class="fr"> 白名单放行、纯文本等价纯转义无标签残留）。
 - 13 篇 viewer 全重建。浏览器实测 895567 印刷页 339 引文句带：McCarty 句 `≈ 660mg l⁻¹`、`107CaCO₃ l⁻¹`(下标3)、`H₂O`、`1106.71 ~ 1150.70cm⁻¹` 等全部渲染(见截图)，与用户抓出的裸露形态对比确认修复。检查标签已关闭。
 - 未联网(轻量转换零依赖, 非 KaTeX/MathJax)、未调用 LLM、未提交 git；unify/m3 冻结未动。
+
+
+---
+
+## 2026-11-10 ｜ 点击跳转冲突修复：同页不拉走视口(C2) + 来源行接 uid(G3)（用户拍板实施）
+
+### C2：同页点击不再 scrollIntoView
+- 症状：本页横带中块无复查眼的行，点击后 jumpToUid 把整节 scrollIntoView 居中，用户正看横带却被拉走。
+- 修复：`flashAt(r,noScroll)`/`jumpToUid(uid,curSec)` 增加同节参数——目标 section 与点击行所在 section 相同时跳过整节滚动，只在原图 SVG 注入橙框闪烁；跨页行为不变。data-e 成员框分支同样处理。
+
+### G3：来源行（期刊/期刊(英)/年/卷/期/页）接入证据 uid
+- `metapy/issue.py`：投票计数器 `_add` 改存 (page, uid)，`_vote`/首页优先判定/audit 候选页表同步适配（audit 仍只出页表）；extract 胜出字段回填 `uid`=_uid0(胜出值首个命中行)——卷取 권>Vol>집 优胜组的锚，页码推断兜底(pages_derived)无来源行则 uid=None（行不可跳，与旧行为一致）。
+- `viewer.py`：总览来源行 `row(level, f.get("uid"), ...)`，有锚即可点击跳转（含跨页，如 FI001004818_2002 年=2002 锚在页 2 页眉块 u1_1）。
+- 产物字段变化：metadata.json 六来源字段 dict 增 `uid` 键（值/置信不变；无锚为 None）。用户已拍板。
+
+### 验证
+- issue 自检 16/16（case 3 增 uid 回填断言：권 组优胜锚=u2）；test_pipeline 10/10（jump 测试扩展：来源行带 uid 行 HTML、同节不滚动 JS 契约 `if(sec!==curSec)`）；全部模块自检通过。
+- 13 篇临时 issue 回归：仅六来源字段 +uid，值与置信逐项不变；正式 13 篇 issue 重跑 + 报告 + 13 篇 viewer 全重建。
+- 浏览器实测：FI001004818_2002 总览"年"行点击 → 跳到第 2 页（印刷页 88）KOREA JOURNAL 页眉块橙框闪烁；895567 第 9 页引文句行点击 → 视口留在横带（钉抽屉路径视口不动）；C2 无眼同页分支由单测契约覆盖。
+- 剩余已知项（未动，待拍板）：G1 总览跨页题录行 `_p1_uid` 剥 uid（UBOX 时代可放开）；C1 同页有眼行点击仍走钉抽屉不闪框；G2/G4 机构与计数行无单块锚。
+- 未联网、未调用 LLM、未提交 git；unify/m3 冻结未动。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ G1：总览跨页题录/摘要行放开 uid（用户拍板实施）
+
+- 背景：`_meta_overview._p1_uid()` 是钉-only 时代设计（"跨页 uid 在首页 section 无眼无框，点了没反应，不如不给"），剥掉跨页题录/摘要行的 data-u。UBOX 全量坐标表上线后该前提失效。
+- 改动：`viewer.py` `_p1_uid` 直接 `return f.get("uid")`；摘要行同步去掉"仅 page==1 给 uid_head"的内联条件。行为分派不变：同页有眼→钉抽屉，跨页→jumpToUid。
+- 验证：test_pipeline 10/10（jump 测试增跨页标题行带 uid 断言）；13 篇 viewer 全重建。未联网、未提交 git。
+
+### 附带发现（未修，待拍板）：13563525 韩英摘要双空白
+- 现象：abstract=None、abstract_en 定位到页 10 u9_3 但 value 空（该篇页 1 有 국문요약、页 10 有英文 Abstract，均非"确实无此内容"）。其余篇的空摘要核对过属正常（无该版式）。
+- 根因①（英文）：`_collect_abstract` 的 REF_HEAD 边界无 y 守卫——页 10 左栏 '참고문헌' 头(y=161)在 Abstract 头(y=179)**上方**，先于正文触发 return 空；且该页为双栏（左文献/右英文摘要），即便修 y 守卫，左栏小节头 '1. 단행본 및 논문'(y=214) 仍会被 generic 节头边界截停——单栏 y 边界在双栏版式下天然失效（与 A4 unify.ref_region 不判栏同源）。
+- 根因②（韩文）：MinerU 把 `**국문요약** 본고는…`（markdown 加粗头+正文同块）读成一个 Text 块；ABS_HEAD_KO 只认独立 Section-header 且 ^…$ 严格匹配，ABS_INLINE_KO 要求冒号——两种形态都不匹配 → 整段丢失。
+- 修复方向：英文=收集器按栏过滤（与头块同栏+下方）+ 剥作者/机构行（u9_7 块内 'Shin, Seong-Hwan | Chung-Ang University |' 前缀）；韩文=ABS 头支持 `**국문요약**`/`**요약**` 无冒号加粗头形态。两处均动 abs.py 抽取口径，待用户拍板后单独立项修。
+
+
+---
+
+## 2026-11-10 ｜ 点击=跳转/悬停=遮罩交互定稿(C1) + 同页状态栏提示 + 13563525 双摘要漏抽修复（用户拍板实施）
+
+### 交互定稿（用户口径：点击总览/横带条目=跳转到原图块位置；悬停=触发遮罩）
+- `viewer.py` 点击处理器移除"同页有眼→钉抽屉"分支（mfdrawer 机制随之退役）：点击统一走 成员框闪烁(data-e) → jumpToUid(UBOX) → 旧兜底；同页不滚动，只在原图 SVG 闪橙框，并在该页状态栏写提示"源块在本页原图栏 · uid（上方橙框闪烁处）"(`hintSame`)。
+- 悬停：mouseover 对 `.mf[data-u]` 且 GROUPS 有遮罩数据的行直接 `fillMasks`（与眼按钮同机制），mouseout 延迟隐藏；👁 按钮点击钉选保留。
+- 浏览器实测（13563525）：点总览"标题"→ 不再开抽屉，状态栏出现提示，视口不动；摘要修复后总览同时展示 摘要(韩) 570 字 / 摘要(英) 956 字。
+
+### 13563525 双摘要漏抽修复（`metapy/abs.py`）
+- 根因①英文：尾页双栏（左文献/右摘要）下 `_collect_abstract` 无栏感知——左栏 '참고문헌' 头(y=161)在 Abstract 头(y=179)上方即触发 REF_HEAD 停止返回空；左栏小节头也不截停不混入的诉求无法满足。
+- 修复：头页确有双栏(_page_col_boundary 非 None)时只收与头块同栏的 Section-header/Text 块；REF_HEAD 停止补 y 守卫；skip_fold 命中的英文题名复写头由"不截停但混行"改为整块跳过；首内容行剥 '|' 分隔的作者/机构前缀（短罗马名 ≤40 全字符或含 University/Department 等机构词才剥，遇正文长句即停）。
+- 根因②韩文：MinerU 将 `**국문요약** 본고는…`（markdown 加粗头+正文同块、无冒号）读成一个 Text 块，ABS_HEAD_KO（独立节头^…$）与 ABS_INLINE_KO（须冒号）均不匹配 → 整段丢失。修复：新增 `_ABS_BOLD_KO` 形态（`**요약/국문요약/초록**` 可选冒号），剥头取余行、遇 KW/头形态即停；该形态不跨页续接（防吞次页正文，内联冒号形态保留原续接行为）。
+- 自检：abs 2→4/4（新增双栏尾页收集用例与加粗头用例；夹具补 CONTENT_TYPES 块满足栏判定）。
+- 13 篇临时 abs→issue 回归：仅两篇变化——13563525 abstract 0→570 / abstract_en 0→956（首尾句完整、无题名/文献行泄漏）；FI002632491_2020 abstract_en 3732→3691 = 剔除了旧产物混入的一条参考文献行（에리히 노이만…），属净修正。其余 11 篇逐项不变。正式 13 篇 abs→issue 重跑 + 报告 + 13 篇 viewer 全重建。
+- 未联网、未调用 LLM、未提交 git；unify/m3 冻结未动。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 点击关闭悬停遮罩（用户抓出的交互叠加残留）
+
+- 现象：鼠标移向 metadata 行时 mouseover 先浮出遮罩（"悬停=遮罩"），随后点击只做跳转闪框，但悬停浮出的遮罩未关闭且鼠标仍在行上 → 用户看到"点击打开了遮罩"。
+- 修复：`viewer.py` mf 点击处理器起始处 `clearTimeout(ghide); hideAllMasks();`（gpin 仍清零）——点击=关闭遮罩+跳转，遮罩只归悬停/👁 钉选管。
+- 浏览器实测（13563525）：悬停"作者"行→遮罩浮出；点击→遮罩关闭、状态栏提示"源块在本页原图栏 · u0_5"、视口不动。test_pipeline 10/10；13 篇 viewer 重建。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 悬停遮罩加意图延迟，治总览扫行乱闪（用户抓出）
+
+- 现象：鼠标在总览/横带上扫过时每行经 mouseover 即点亮四栏遮罩再被 250ms 隐藏，满屏乱闪——点击钉选、悬停遮罩、点击跳转三个功能三次叠加，mouseover 无防抖。
+- 修复：`viewer.py` 悬停遮罩加 350ms 意图延迟（mfh 定时器）：快速扫过不触发，停留才浮出；mouseout/点击/悬停眼按钮均取消挂起的 mfh。点击行的关闭遮罩逻辑不变。
+- 浏览器实测（13563525）：停留"作者"行 350ms 后遮罩正常浮出（统一对象 u0_5 面板）。test_pipeline 10/10；13 篇 viewer 重建。检查标签已关闭。
+- 状态归属现状（单一职责）：悬停→浮出(延迟)；点击行→关闭遮罩+跳转闪框+状态栏提示；👁 点击→钉选；移开→250ms 隐藏。
+
+
+---
+
+## 2026-11-10 ｜ 撤销行悬停遮罩（用户纠正：遮罩只归眼睛管）
+
+- 回顾：本轮先给 metadata 行加了 mouseover 浮遮罩（误解"鼠标移上去才触发遮罩"的归属），又因扫行乱闪加 350ms 延迟——两次都偏离用户口径。
+- 用户定稿口径：metadata 行（总览/横带）**悬停无任何反应**；遮罩只归 👁 悬停（即时）与 👁 点击钉选。
+- 改动：`viewer.py` 删除行悬停遮罩分支与 mfh 延迟机制（mouseover/mouseout 恢复为 眼→fillMasks / data-b 联动 两分支）；行点击仍=关闭遮罩+跳转闪框+状态栏提示。
+- test_pipeline 10/10；13 篇 viewer 重建。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 点击定位升级为"块中心对齐视口正中"（用户拍板）
+
+- 用户口径：点击后目标块应显示在当前屏幕正中央；此前"同页不滚动"的妥协（C2）取消。
+- 改动：`viewer.py` JS 新增 `centerBlock(sec,fracY)`（section 顶对齐后按块在原图内的纵向比例 scrollBy 至视口正中）；`flashAt`/`jumpToUid` 统一走该定位（含跨页与 data-e 成员框路径）；状态栏提示改为"源块位置已居中 · uid"。
+- 验证：test_pipeline 10/10（断言更新为 centerBlock/window.scrollBy 契约）；13 篇 viewer 重建；浏览器实测点"作者"行 → 视口滚动至作者块居中的位置。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 点击定位滚动动画化（用户拍板）
+
+- `centerBlock` 改为单次 `window.scrollTo({top, behavior:'smooth'})`（原生缓动，先算文档绝对目标值再滚动，避免两段滚动叠加）；顶栏"跳页"链接 scrollIntoView 同步加 smooth。
+- test_pipeline 10/10（断言 scrollTo/平滑契约）；13 篇 viewer 重建。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 点击定位高亮通道收敛（用户拍板，冗余点 1）
+
+- 收敛前核实：两条活通道（data-e→flashAt、uid→jumpToUid 注入 rect）本就共用 `.flash` 类+1.6s+`centerBlock` 居中；旧式 `rs.forEach` 闪 `on+cite-on` 兜底在统一/非统一模式下均不可达且 `'on'` 对 rect 无 CSS 效果，纯死通道。
+- 删除：mf 点击尾部旧兜底分支、`mfdrawer` 清理行及其死 CSS（6 条规则）、`jumpToUid` 死参 `curSec`。
+- 保留的有意双视觉：hover 持续描边 `cite-on`（跟鼠标）vs 点击瞬时点闪 `.flash`（1.6s）——语义不同非冗余。
+- 验证：test_pipeline 10/10（点击契约断言更新为 `.flash` 通道）；13 篇 viewer 重建，部署文件 grep 零残留。行为无变化。
+
+
+---
+
+## 2026-11-10 ｜ 冗余点 2/3 收敛 + 共识虚线框默认隐藏（用户拍板）
+
+### 冗余点 2：双钉选状态合并
+- `gpin`(unified 眼钉选) 并入 `pinned`(唯一钉选)——gid `uX_Y` 与渠道块 id `ch_p_i` 命名空间不重叠可安全共存；showPinned/scheduleHide/眼点击/行点击全部改走单一变量，切换钉选类型时先清旧视觉(眼钉→hideAllMasks, 渠道钉→act off)；补回"点空白解除眼钉"语义。
+### 冗余点 3：metadata 行渲染双份收敛
+- `_meta_overview`/`_meta_cell` 的两套 `row()/dot()` 闭包抽为模块级 `_mf_row()/_mf_dot()`（语义取较干净的"uid 为空不输出 data-u"版），两函数只传数据。
+### 共识虚线框默认隐（用户指出碍读）
+- `.r.um/.r.umb`(unified 复查块共识几何框) 由常显(opacity .85/.9)改默认 0 + 过渡；`fillMasks`(悬停/钉👁) 点亮该组 umb+um 的 `.on`，`hideAllMasks` 统一熄灭；"块框叠加"诊断按钮仍全显；`.flash` 补 `opacity:1` 保持闪橙框独立可见；栏标题改"悬停👁=遮罩+共识框"。
+- 验证：test_pipeline 10/10；13 篇 viewer 重建；浏览器实测默认态原图无框、悬停眼遮罩+框同现。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 全部叠加框线宽压至最细（用户拍板）
+
+- 7 条 stroke-width 规则统一下调（SVG 均带 vector-effect:non-scaling-stroke，线宽≈屏幕像素）：基础块框 2.4→1.2（hover 态 3.2→2）、共识虚线框 3→1.2、白衬底 6→2.5、证据成员框 4→1.5、点击闪框 6→2.5、citepop 裁切框 8→3。
+- test_pipeline 10/10；13 篇 viewer 重建；浏览器实测点击定位/滚动行为不变。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 冗余项全清（用户拍板）：共享 JS 内核抽取 + GROUPS/UBOX 并表 + 小项
+
+### 1. 事件内核双份 → `_JS_CORE` 单一来源
+- `VIEWER_TMPL`(单渠道) 与 `COMPARE_TMPL` 原各持一份 `act/stat/data-b 悬停钉选/跳页` 事件代码（上轮 smooth 滚动靠 replace_all 命中 2 处=分叉隐患）。现抽为模块级 `_JS_CORE` 常量，两模板经 `@@CORE@@` 注入；单渠道侧补 `scheduleHide/hideAllMasks/showPinned` 空桩（其 mouseover 引用统一层函数，无眼元素不会走到）。单渠道查看器顺带获得与对照版一致的状态栏格式（ch · 块 idx）。
+- `build_viewer` 冒烟验证：占位全替换、内核/桩在位。磁盘上旧单渠道 viewer 待下次 pipeline 全量时自然刷新（行为等价，非缺陷）。
+### 2. GROUPS 并入 UBOX（前端两张 uid 表→一张）
+- `UBOX={uid:{box,panes?}}`：box=全块几何（点击定位），panes=复查组遮罩（原 GROUPS）；`fillMasks/jumpToUid` 改读合并表；模板删 `@@GROUPS@@`。部署文件实测 `"u0_5": {"box": [...], "panes": [...]}`。
+### 3. 小项
+- `esc` 双 lambda → 模块级 `_esc()`；`_p1_uid()` 一行包装器内联删除；`hintSame` 改名 `hintCentered`（文案早已是"已居中"）。
+- 验证：test_pipeline 10/10；13 篇 viewer_compare 重建、占位零残留；build_viewer 冒烟通过。行为无变化。检查标签已关闭。
+
+
+---
+
+## 2026-11-10 ｜ 静默失败守卫落地（用户定稿方案）：零产出守卫 A + 阶段覆盖守卫 B
+
+### 设计定稿（采纳用户纠正，否决漏抽量估算）
+- 否决"独立通道对账"：regress 与 refs 共用 REF_HEAD/split_entries 定位（只换输入源），当不了 oracle；朴素行首计数在 13625974/1632041 上得 0 的反向假警报会杀死守卫可信度（用户实测方差数据支持）。
+- 守卫 A（零产出而证据非零，三态）：判据只用统一层存在性信号——①RED 文献节头在页 X 但 in_ref=0 页（unify 栏判定漏标形态）；②RED 有 in_ref 页且长文本块≥3 却 0 条目；③AMBER 长文本块≥10 且产出<5%（已知形态可解释）。写在 refs_doc 早退分支之前（修复用户指出的"早退不写 ref_validation、llmrep 条目数第三参数写死 True 渲绿"的静默路径）；audit 缺省时 llmrep 从 `refs.guards_for_doc` 独立重算（refs 未跑也有结论）；报告"条目数"颜色改由守卫决定，AMBER 专用琥珀色。
+- 守卫 B（阶段互斥空档）：同页≥2 个带行首编号的 Footnote 块却不在 references∪footnote_refs 任一条目页 → RED。判据曾含 Text `_looks_cike`，在 3275609 p28（国语摘要页）误报——按"守卫被判错一次就会被无视"原则收紧为只认带编号 Footnote（该页真实缺口已由守卫 A 的 AMBER 覆盖）。
+
+### 验证
+- refs 49/49（新增守卫三态+覆盖用例）；llmrep 12/12；test_pipeline 10/10。
+- 13 篇临时回归：metadata 逐项不变；守卫实测——13563525 RED、FI002542944 RED、FI001536751/FI002309666 AMBER，其余 9 篇 PASS，零假警报。
+- 正式 13 篇 refs 重跑（写 guard 入 audit）+ 报告重建：9 绿 / 2 琥珀 / 2 红上屏。未联网、未调用 LLM、未提交 git；unify/m3 冻结未动。
+
+
+---
+
+## 2026-11-10 ｜ NER 真实运行前六连修（用户 review 定稿，第 1 条拍板 uid 锚定）
+
+### 1. evidence_span 取消，改回 uid 锚定（用户拍板）
+- 用户核实 prompt 与闸门里 evidence_span 仍在生效（11-05 为省 token 砍抄句未贯彻）：模型被要求抄整句，抄错一字即被 `evidence_not_found` 误拒，识别实际正确却按错误标准计损。
+- 落地：`_SYS_PROMPT` 删证据契约（示例同步去 evidence_span 字段）；`_match_evidence` 删除，六类统一走 `_match_anchor`（核心字段折叠后须在该 uid 块原文，命中词记 matched）；不确定候选口径改为"给最可能合法 relation + needs_context=true"（relation=null 直接拒）。成本口径随之回到 11-05 锚定版。
+
+### 2. relation_invalid 移到复核之前
+- 原顺序 needs_context 先截走候选，relation=null 白烧一次复核调用后落 context_unresolved，relation_invalid 不可达（用户代码级指正）。现关系合法性最先判定，非法立即拒。
+
+### 3. 数据级去重
+- process() 增加 (kind, uid, 折叠主标识) 集合：重复进 rejected 记 `duplicate`（重复率可观测）；accepted.total 不再虚高；批注继承键不再两条共享一份 verdict。自检断言 duplicate 理由。
+
+### 4. context_unresolved 显式计数 + 自检
+- stats 增 `context_unresolved`；自检新增复核仍不确定→拒绝路径用例（修复用户指出的 mock 把 join 当 join(generator) 的写法 bug——`"\n".join(单字符串)` 逐字符插换行致空响应）。
+
+### 5. 长块批处理自检
+- 新增 13000 字单块用例：独占一批不截断（真实数据 FI002542944 已有 4269 字块接近 12k 边界，旧自检从未覆盖该分支）。
+
+### 6. 文献著录不进 NER 输入
+- `refs.ref_pages_extended`（in_ref ∪ 前导节头页；全无 in_ref 时末个节头页起——13563525 双栏同页摘要形态；frefs 收集仍用纯 in_ref，不影响产物）；`ner._fnote_biblio` 排除枚举式与单条著录 Footnote（行带编号+合法年/op.cit.+引号或来源线索；内容注与基金声明不误伤）。
+- 实测 13 篇收集量 1343→1185 块（-11.8%）/ 362,781→336,885 字符（-7.1%）：13563525 文献页整块剔除（-17 块）、FI001004818 的 MLA 文献脚注 22→8 块（余者为作者简介与续行碎片）。
+
+### 验证与未做
+- 全部模块自检通过（ner 10/10 含新契约/去重/unresolved/长块/著录排除断言）；test_pipeline 10/10；TASK_NER.md 现行状态同步。
+- 未真实跑 LLM（待用户授权，建议先 2 篇样本看 name 命中率/context_unresolved 比例/重复率）；产物层零改动（refs.py 仅加 helper，collect_blocks 只被 NER 消费）。
+
+
+---
+
+## 2026-11-10 ｜ NER/守卫二轮修正（用户 review 六条）
+
+1. **ref_pages_extended 收敛三调用方**：refs_doc 与 guards_for_doc 原先各自内联 in_ref 集合（缺前导节头回退，refs.py:1722/1362 式分叉隐患复发）。现两处均调 `ref_pages_extended`；函数加 `head_fallback` 开关——NER 用全口径；refs_doc 传 False 保留"无 in_ref 早退"（节头页回退=A4 修复，未拍板不启用）；guards_for_doc 传 False 与 refs_doc 同视角（全口径会把 13563525 的扩展页误当文献区，RED-1 定位失败被洗成 RED-2）。refs_doc 内旧内联回退删除。
+2. **AMBER 带上界信息**：reason 写明实际比例（如 "31 长文本块仅 1 条(3.2%)"）；自检增 100 块/10 条中产用例防误报。
+3. **span_hit_rate → accept_rate**：evidence_span 已删，旧名残留会误导为证据命中率；分母本就混五种拒收理由，拒绝分桶(rejected dict)已是诊断入口。
+4. **_match_anchor 主标识强制**：funder/name 必须命中块原文，grant_id/code/url/version 仅辅助——"version=26.0 单独放行"堵死；matched 恒=主标识。单字符名(如 R)的宽泛性留审计页人工兜，锚层不再放宽。
+5. **复核窗口跨页澄清**：collect_blocks 返回跨页扁平列表，i 首块时 i-1 即上一页末块，本就跨页——加注释说明，无需改码。
+6. **errors 分类**：每条 error 带 etype=network（重试可救）/format（空响应/finish_reason/类型非法，重试无意义）；stats 增 errors_network/errors_format。自检补网络错误用例。
+
+验证：全模块自检通过（ner 10/10 含弱锚/网络错误断言、refs 49/49 含中产用例）、test_pipeline 10/10；13 篇守卫状态与已部署报告一致（RED×2/AMBER×2 带比例/PASS×9）。产物层无改动。检查标签已关闭。
+
+---
+
+## 2026-11-10 ｜ ner_lite 全面取代旧 NER + 实体回显 viewer_compare（用户拍板）
+
+### 决定
+- ner_lite（LLM 提名+程序定位，三 kind 开放词表，切片裸 in 不变量）取代旧六类 NER，成为实体抽取唯一入口。
+- RULES 增第 6/7 条：实体渲染层可进 out/（viewer_compare.html），本体仍留 out_llm_trial；11-10 验证动作产物留 out_llm_trial/fds_extract/。
+- 旧代码/文档删除：metapy/ner.py、metapy/_ner_current_backup.py、_ner_run.py、TASK_NER.md；webapp 4 个 NER API 端点（ner_glossary×2/ner_annotations/ner_note）；metapy/__init__ 的 ner 导入/choices/分发；metadata.py 文档串；channels.json ner_enabled→_ner_lite_note；README(双语) 布局行。
+- ner_lite.py 收编至管线根目录（去 fds_scan 依赖：内联 paddle 加载器，文档清单由 out/ 扫描+散装映射派生；产物默认 out_llm_trial/fds_extract/ner_lite/）。
+- viewer.py：build_compare_viewer 自加载 out_llm_trial 的 ner_lite 产物，per-page "ner_lite 实体"面板（kind 徽标+名称+原文切片+批注，行点击=定位闪块），文件缺失零影响。
+
+### 验证
+- ner_lite selfcheck 10 断言全绿；真实文档加载（unified+paddle）OK；13 篇 viewer_compare 重建后逐篇 grep 实体面板；test_pipeline 10/10；各 metapy 自检。
+
+### 验证补记（当日完成）
+- test_pipeline 10/10；metapy 自检 refs/llmrep/cspan/issue/abs/front 全绿；ner_lite selfcheck 绿；全模块 compile OK。
+- 12/13 篇 viewer_compare 重建且实体面板落盘（grep "ner_lite 实体" 计数 = 各篇含实体页数；FI001004818/FI002632491 零提名故 0，正确）；13564165 无 unified/merged（从未入管线），无 viewer_compare 可接，实体仍看其 _audit.html。
+- 删除 out_llm_trial/fds_extract/ner_lite.py 旧副本（收编后根目录 ner_lite.py 为唯一入口）。
+- 补(当日): 实体另入 metadata 总览横带(第 1 页, 按 kind 聚合 ×n 定位数, 点击跨页定位闪块); 曾误删 `ch_cells += _meta_cell(...)` 一行致 test_overview_click_jumps_to_source_block 红, 已恢复, 10/10 复绿; 12 篇重建三层(实体总览+实体页带+元数据页带)齐。
+- 补(当日): 实体行样式对齐总览带语法("粗体中文字段名+普通值", 撤彩色 kind chip 与其 CSS); 批注中文化为 mftag; test_pipeline 10/10, 12 篇重建, ek 芯片零残留。
+- 补(11-11): 总览带一致性修正(用户拍板): 关键词韩英并一行(英走 mftag), "摘要(韩)"改"摘要"(韩语默认无后缀, 仅英语加(英)); test_pipeline 断言随合并更新, 10/10; 12 篇重建。
+- 补(11-11): 关键词组结构改"统一组头+双行"(照摘要组样式, 韩英两行各带证据 uid); 用户问询的既有标签释义: "证据在第N页"=跨页跳转提示, "(全文N字)"=摘要折叠展开, ×n/批注=实体定位数与消费提示。
+
+---
+
+## 2026-11-11 ｜ 后链全自动接线：放一篇 PDF 产出全部产物（用户要求）
+
+### 内容
+pipeline.main per-doc 尾部新增"⑥ 后链"（index.html 生成前）：元数据 7 阶段(m3→refs→frefs→front→abs→issue→cspan, 全本地启发式) → ner_lite(LLM 提名+程序定位, 产物落 out_llm_trial/fds_extract/ner_lite/) → rebuild_viewer 终版对照查看器(元数据带+实体面板)。每步 try/except 记日志不阻断；webapp 拖入走同一 main。开关 channels.json `llm.ner_lite_auto`(默认 true)+ `KCI_LLM_KEY`；关开关或缺 key 则 ner_lite 跳过、其余照跑。
+- 补(11-11 验证): 端到端重跑 uploads/13625974.pdf 全链 5.7s 通过(引擎走缓存): merge→unify→compare→元数据7阶段(<1s)→ner_lite(1批, 提名1/2准入)→rebuild_viewer(元数据带+实体面板)→index。修复收编时引入的 DST 路径差一级 bug(产物误写 KCI/out_llm_trial, 已归并回 pipeline/out_llm_trial 并删残渣); test_pipeline 10/10。
+- 补(11-11): ner_lite 双渠道故障转移落地: channels.json llm.channels[zjlab-maas(DeepSeek-V4.1-Flash, http内网, key 走环境变量 KCI_ZJLAB_KEY 不落盘) → deepseek-official(兜底)]; 429/5xx 同渠道退避重试(15s×2)再转移, 401/403 直接转移; 审计增 channel 溯源; selfcheck 补转移/退避断言。
+- 注意: 用户旧 deepseek 官方 key 于当日失效(401), 渠道保留待换新 key。
+
+
+---
+
+## 2026-11-11 ｜ 工作台改为结构化总览看板（用户要求）
+
+- 信息架构：任务列表与任务详情分栏；总览保留任务总数、运行、完成、部分异常、失败五项；详情集中展示整体进度、7 个管道环节、3 个解析渠道及结果入口。
+- 状态管理：webapp 新增 `PIPELINE_STAGES`，每个任务维护 `stages` 并随现有日志事件推进；`/status?job=all` 输出结构化环节状态。渠道仍独立维护 waiting/running/done/warning/error，结束后补 skipped，运行中渠道用活动进度条，整体进度按已结束环节计算。
+- 日志退出主视图：删除终端式日志框、logline 和逐条 warnings 渲染；前端只显示归纳后的异常与处理建议，例如多个 401 批次合并为一条实体抽取授权异常。上传反馈改为短时 toast。
+- 样式独立到 dashboard.css；保留拖拽上传、目录监视、API 配置与结果查看器入口。unify/m3 未动。
+- 验证：`python -m unittest test_pipeline.py` 12/12；`python -m py_compile webapp.py` 通过；浏览器以临时结构化任务实测总览、步骤条、渠道卡、进度与异常摘要，修复旧 header 白字覆盖新顶栏的冲突。未调用在线解析或 LLM。
