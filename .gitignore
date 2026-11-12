@@ -19,3 +19,7 @@ _server.lock
 .idea/
 .DS_Store
 Thumbs.db
+
+gui_runs.jsonl
+*.bak
+*.bak2
