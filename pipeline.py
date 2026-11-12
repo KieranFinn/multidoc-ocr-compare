@@ -330,6 +330,44 @@ def main(argv=None):
     elif os.path.exists(cmp_fp):
         os.remove(cmp_fp)  # 本轮全失败则清掉旧对照, 防残留
 
+    # ⑥ 后链(2026-11-11 接线): 元数据阶段链 → ner_lite → 终版对照查看器(带元数据带+实体面板)。
+    # 放一篇新 PDF 即全自动产出全部产物; webapp 拖入走同一 main, 一处接线两端生效。
+    # 各步失败只记日志不阻断; ner_lite 烧 LLM token, 开关 channels.json llm.ner_lite_auto(默认开)+KCI_LLM_KEY。
+    _out_root = os.path.dirname(os.path.abspath(out))
+    try:
+        from metapy import (m3_doc, refs_doc, frefs_doc, front_doc,
+                            abstract_doc, issue_doc, cspan_doc)
+        for _name, _fn in ((u"m3", m3_doc), (u"refs", refs_doc), (u"frefs", frefs_doc),
+                           (u"front", front_doc), (u"abs", abstract_doc),
+                           (u"issue", issue_doc), (u"cspan", cspan_doc)):
+            try:
+                _fn(doc, _out_root)
+                log(u"⑥ 元数据 %s 完成" % _name)
+            except Exception as e:
+                log(u"⑥ 元数据 %s 失败(不阻断): %s" % (_name, str(e)[:120]))
+    except Exception as e:
+        log(u"⑥ 元数据链导入失败(不阻断): %s" % str(e)[:120])
+    _llm_cfg = (load_cfg().get("llm") or {})
+    if _llm_cfg.get("ner_lite_auto", True) and os.environ.get("KCI_LLM_KEY"):
+        try:
+            import ner_lite as _nl
+            _model = _nl.make_model(_llm_cfg)
+            _product, _audit = _nl.run_doc(doc, _model, echo=lambda s: log(u"  ner_lite| %s" % s))
+            _nl.write_outputs(doc, _product, _audit)
+            log(u"⑥ ner_lite: 提名 %d 准入 %d 记录 %d" % (
+                _audit["counts"]["nominations"], _audit["counts"]["admitted"],
+                _audit["counts"]["records"]))
+        except Exception as e:
+            log(u"⑥ ner_lite 失败(不阻断): %s" % str(e)[:150])
+    else:
+        log(u"⑥ ner_lite 跳过(ner_lite_auto 关或 KCI_LLM_KEY 缺)")
+    try:
+        from metapy.llmrep import rebuild_viewer
+        rebuild_viewer(doc, _out_root)
+        log(u"⑥ 终版对照查看器已重建(元数据带+实体面板)")
+    except Exception as e:
+        log(u"⑥ 终版查看器重建失败(不阻断): %s" % str(e)[:120])
+
     rows = "\n".join(
         "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % r
         for r in report)

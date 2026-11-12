@@ -168,16 +168,16 @@ def _vote(cand_pages, first_page0):
     """众数: (winner, support_pages_sorted)。并列取先出现页小者。"""
     if not cand_pages:
         return None, []
-    best = max(sorted(cand_pages), key=lambda v: (len(cand_pages[v]), -min(cand_pages[v])))
-    return best, sorted(cand_pages[best])
+    best = max(sorted(cand_pages), key=lambda v: (len(cand_pages[v]), -min(cand_pages[v])[0]))
+    return best, sorted(p for p, _ in cand_pages[best])
 
 
-def _add(cand_pages, value, page):
+def _add(cand_pages, value, page, uid=None):
     if value is None:
         return
     cand_pages.setdefault(value, [])
-    if page not in cand_pages[value]:
-        cand_pages[value].append(page)
+    if page not in [p for p, _ in cand_pages[value]]:
+        cand_pages[value].append((page, uid))
 
 
 def extract(source, n_pages, excluded_folds):
@@ -194,67 +194,67 @@ def extract(source, n_pages, excluded_folds):
         if got:
             ko, en = got
             if ko and _fold(ko) not in excluded_folds and 2 <= len(_fold(ko)) <= 50:
-                _add(journal, ko, page)
+                _add(journal, ko, page, uid)
                 if en:
-                    _add(journal_en, en, page)
+                    _add(journal_en, en, page, uid)
             elif en and _fold(en) not in excluded_folds and 2 <= len(_fold(en)) <= 80:
-                _add(journal_en, en, page)
+                _add(journal_en, en, page, uid)
         # 年(刊头信号守卫 + 数字/连字符夹住排除)
         if _Y_GUARD.search(s):
             for m in _YEAR.finditer(s):
                 y = int(m.group(1))
                 if y in YEAR_OK:
-                    _add(year, y, page)
+                    _add(year, y, page, uid)
         # 卷(三组)/期(통권 旁路)
         for m in _KWAN.finditer(s):
-            _add(vol_kwan, int(m.group(1)), page)
+            _add(vol_kwan, int(m.group(1)), page, uid)
         for m in _JIP.finditer(s):
-            _add(vol_jip, int(m.group(1)), page)
+            _add(vol_jip, int(m.group(1)), page, uid)
         for m in _VOLEN.finditer(s):
-            _add(vol_vol, int(m.group(1)), page)
+            _add(vol_vol, int(m.group(1)), page, uid)
         for m in _HO.finditer(s):
             if "통권" in s[max(0, m.start() - 3):m.start()]:
                 continue
             v = int(m.group(1))
             if 1 <= v <= 999:
-                _add(issue, v, page)
+                _add(issue, v, page, uid)
         for m in _NOEN.finditer(s):
-            _add(issue, int(m.group(1)), page)
+            _add(issue, int(m.group(1)), page, uid)
         for m in _TONGKWAN.finditer(s):
             tongkwan.append({"value": int(m.group(1)), "page": page})
         # BMC (연도) 권:문号
         for m in _BMC.finditer(s):
             if int(m.group(2)) < 999:
-                _add(vol_vol, int(m.group(2)), page)
-            _add(year, int(m.group(1)), page)
+                _add(vol_vol, int(m.group(2)), page, uid)
+            _add(year, int(m.group(1)), page, uid)
             bmc_art.append({"value": int(m.group(3)), "page": page})
         # 页
         for m in _PP.finditer(s):
             a, b = int(m.group(1)), int(m.group(2))
             if a < b and b < 9999:
-                _add(pages_pp, (a, b), page)
+                _add(pages_pp, (a, b), page, uid)
         for m in _BARE_RANGE.finditer(s):
             a, b = int(m.group(1)), int(m.group(2))
             if a < b and a < 999 and b < 999:
-                _add(pages_bare, (a, b), page)
+                _add(pages_bare, (a, b), page, uid)
         # DOI corroboration
         if _DOI.search(s):
             for m in _DOI_YV.finditer(s):
-                _add(year, int(m.group(1)), page)
-                _add(vol_vol, int(m.group(2)), page)
+                _add(year, int(m.group(1)), page, uid)
+                _add(vol_vol, int(m.group(2)), page, uid)
             for m in _DOI_VIY.finditer(s):
-                _add(vol_vol, int(m.group(1)), page)
-                _add(issue, int(m.group(2)), page)
-                _add(year, int(m.group(3)), page)
+                _add(vol_vol, int(m.group(1)), page, uid)
+                _add(issue, int(m.group(2)), page, uid)
+                _add(year, int(m.group(3)), page, uid)
     # —— 定 winners ——
     # 刊名: 首页行(阅读序首个) > 全语料投票; ko/en 各自独立定(纯英文刊名 BMC 型无 ko 字段)
-    p0list = [v for v, ps in journal.items() if 0 in ps]
+    p0list = [v for v, ps in journal.items() if any(p == 0 for p, _ in ps)]
     if p0list:
         j_w = p0list[0]
         j_sup = [0]
     else:
         j_w, j_sup = _vote(journal, 0)
-    p0en = [v for v, ps in journal_en.items() if 0 in ps]
+    p0en = [v for v, ps in journal_en.items() if any(p == 0 for p, _ in ps)]
     if p0en:
         j_en_w = p0en[0]
         j_en_sup = [0]
@@ -264,36 +264,55 @@ def extract(source, n_pages, excluded_folds):
     def _lvl(sup):
         return "high" if len(sup) >= 2 else ("mid" if sup else "low")
 
+    def _uid0(cand, winner):
+        """胜出值首个命中行的 unified uid(来源行锚): viewer 来源行点击跳转原文块用。
+        页码推断兜底(pages_derived)无来源行, uid=None。"""
+        if not cand or winner is None or winner not in cand:
+            return None
+        first = cand[winner][0]
+        return first[1] if isinstance(first, tuple) else None
+
     y_w, y_sup = _vote(year, 0)
     vol_w, vol_sup = None, []
+    vol_grp = None
     for grp in (vol_kwan, vol_vol, vol_jip):   # 권 > Vol > 집
         if grp:
             vol_w, vol_sup = _vote(grp, 0)
+            vol_grp = grp
             break
     i_w, i_sup = _vote(issue, 0)
     pg_w, pg_sup = None, []
+    pg_grp = None
     if pages_pp:
         pg_w, pg_sup = _vote(pages_pp, 0)
+        pg_grp = pages_pp
     elif pages_bare:
         pg_w, pg_sup = _vote(pages_bare, 0)
+        pg_grp = pages_bare
     res = {
-        "journal": {"value": j_w, "confidence": {"level": _lvl(j_sup), "source": "regex"}},
-        "journal_en": {"value": j_en_w, "confidence": {"level": _lvl(j_en_sup), "source": "regex"}},
-        "year": {"value": y_w, "confidence": {"level": _lvl(y_sup), "source": "regex"}},
-        "volume": {"value": vol_w, "confidence": {"level": _lvl(vol_sup), "source": "regex"}},
-        "issue": {"value": i_w, "confidence": {"level": _lvl(i_sup), "source": "regex"}},
+        "journal": {"value": j_w, "uid": _uid0(journal, j_w),
+                    "confidence": {"level": _lvl(j_sup), "source": "regex"}},
+        "journal_en": {"value": j_en_w, "uid": _uid0(journal_en, j_en_w),
+                       "confidence": {"level": _lvl(j_en_sup), "source": "regex"}},
+        "year": {"value": y_w, "uid": _uid0(year, y_w),
+                 "confidence": {"level": _lvl(y_sup), "source": "regex"}},
+        "volume": {"value": vol_w, "uid": _uid0(vol_grp, vol_w),
+                   "confidence": {"level": _lvl(vol_sup), "source": "regex"}},
+        "issue": {"value": i_w, "uid": _uid0(issue, i_w),
+                  "confidence": {"level": _lvl(i_sup), "source": "regex"}},
         "pages": {"value": ("%d-%d" % pg_w) if pg_w else None,
+                  "uid": _uid0(pg_grp, pg_w),
                   "confidence": {"level": _lvl(pg_sup), "source": "regex"}},
     }
-    audit = {"journal_candidates": {k: sorted(v) for k, v in journal.items()},
-             "journal_en_candidates": {k: sorted(v) for k, v in journal_en.items()},
-             "year_candidates": {str(k): sorted(v) for k, v in year.items()},
+    audit = {"journal_candidates": {k: sorted(p for p, _ in v) for k, v in journal.items()},
+             "journal_en_candidates": {k: sorted(p for p, _ in v) for k, v in journal_en.items()},
+             "year_candidates": {str(k): sorted(p for p, _ in v) for k, v in year.items()},
              "volume_candidates": dict(
-                 [("kwan:%d" % k, sorted(v)) for k, v in vol_kwan.items()]
-                 + [("vol:%d" % k, sorted(v)) for k, v in vol_vol.items()]
-                 + [("jip:%d" % k, sorted(v)) for k, v in vol_jip.items()]),
-             "issue_candidates": {str(k): sorted(v) for k, v in issue.items()},
-             "pages_candidates": {"%d-%d" % k: sorted(v) for k, v in
+                 [("kwan:%d" % k, sorted(p for p, _ in v)) for k, v in vol_kwan.items()]
+                 + [("vol:%d" % k, sorted(p for p, _ in v)) for k, v in vol_vol.items()]
+                 + [("jip:%d" % k, sorted(p for p, _ in v)) for k, v in vol_jip.items()]),
+             "issue_candidates": {str(k): sorted(p for p, _ in v) for k, v in issue.items()},
+             "pages_candidates": {"%d-%d" % k: sorted(p for p, _ in v) for k, v in
                                   dict(list(pages_pp.items()) + list(pages_bare.items())).items()},
              "tongkwan": tongkwan, "bmc_article_no": bmc_art}
     if pg_w is None:
@@ -485,7 +504,9 @@ def _selftest():
     ok3 = r["journal"]["value"] == u"한국음악치료학회지" \
         and r["journal_en"]["value"] == "Korean Journal of Music Therapy" \
         and r["year"]["value"] == 2007 and r["volume"]["value"] == 9 \
-        and r["issue"]["value"] == 2 and r["pages"]["value"] == "1-16"
+        and r["issue"]["value"] == 2 and r["pages"]["value"] == "1-16" \
+        and r["journal"]["uid"] == "u0" and r["year"]["uid"] == "u0" \
+        and r["volume"]["uid"] == "u2" and r["pages"]["uid"] == "u0"   # 来源行 uid 回填(권>Vol,锚=胜出行)
     # 4) et al. 剥离 + BMC 卷:文号(期不出)
     r = extract([(0, "u0", "Hong et al. Journal of Ecology and Environment (2019) 43:44")] * 2, 2, set())
     ok4 = r["journal_en"]["value"] == "Journal of Ecology and Environment" \

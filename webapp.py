@@ -22,6 +22,17 @@ MIME = {".html": "text/html; charset=utf-8", ".jpg": "image/jpeg", ".png": "imag
 
 CFG_FP = os.path.join(ROOT, "channels.json")
 API_SECTIONS = ("paddle_api", "mineru_api", "dots_api")  # web 界面允许改的渠道 API 配置段
+PIPELINE_STAGES = (
+    ("render", "页图准备"),
+    ("acquire", "渠道解析"),
+    ("adapt", "结果适配"),
+    ("unify", "合并归一化"),
+    ("metadata", "元数据提取"),
+    ("entities", "实体抽取"),
+    ("publish", "结果发布"),
+)
+CHANNEL_KEYS = ("mineru", "dots", "paddle", "metadata", "ner_lite")
+
 
 def _load_cfg():
     try:
@@ -68,19 +79,186 @@ def _save_cfg(updates):
     return {x: _load_cfg().get(x, {}) for x in API_SECTIONS}
 
 
+def _new_job(job, doc, rescue=""):
+    now = time.time()
+    JOBS[job] = {
+        "state": "排队中", "log": [], "doc": doc, "err": "", "logline": "",
+        "stage": "等待调度", "created_at": now, "updated_at": now,
+        "started_at": None, "finished_at": None, "warnings": [], "rescue": rescue,
+        "channels": {k: "waiting" for k in CHANNEL_KEYS},
+        "channel_err": {k: "" for k in CHANNEL_KEYS},
+        "stages": {k: "waiting" for k, _label in PIPELINE_STAGES},
+    }
+
+
+def _active_job_id(doc):
+    for job_id, j in JOBS.items():
+        if j.get("doc") == doc and j.get("state") in ("运行中", "排队中"):
+            return job_id
+    return None
+
+
+def _create_job_if_absent(job, doc, rescue=""):
+    with JOB_LOCK:
+        if _active_job_id(doc):
+            return False
+        _new_job(job, doc, rescue=rescue)
+        return True
+
+
+def _set_stage(j, key, state):
+    current = j["stages"].get(key, "waiting")
+    if current == "error" and state in ("running", "done"):
+        return
+    j["stages"][key] = state
+
+
+def _settle_stages(j, ok):
+    channels = j["channels"]
+    for ch in ("mineru", "dots", "paddle"):
+        if channels[ch] == "waiting":
+            channels[ch] = "skipped"
+    if any(channels[ch] == "error" for ch in ("mineru", "dots", "paddle")):
+        _set_stage(j, "acquire", "error")
+    elif any(channels[ch] == "warning" for ch in ("mineru", "dots", "paddle")):
+        _set_stage(j, "acquire", "warning")
+    elif all(channels[ch] == "done" for ch in ("mineru", "dots", "paddle")):
+        # 瞬时失败行(API 失败转 CDP 等)会把 acquire 粘成 error, 三渠道最终齐全时复位
+        j["stages"]["acquire"] = "done"
+    for key, channel in (("metadata", "metadata"), ("entities", "ner_lite")):
+        if channels[channel] == "error":
+            _set_stage(j, key, "error")
+        elif channels[channel] == "done":
+            _set_stage(j, key, "done")
+        elif channels[channel] == "waiting":
+            channels[channel] = "skipped"
+            _set_stage(j, key, "skipped")
+    for key, _label in PIPELINE_STAGES:
+        if j["stages"][key] == "waiting":
+            j["stages"][key] = "skipped"
+        elif j["stages"][key] == "running":
+            j["stages"][key] = "done" if ok else "error"
+
+
+def _reconcile_channels(j):
+    """终态按文件系统校准渠道状态: 日志行只反映过程, raw 产物落地才算真 done;
+    没等到终态行的渠道按产物有无归 done/skipped(补跑/重试场景日志可能不全)。"""
+    raw = os.path.join(OUT, j.get("doc") or "", "raw")
+    for ch in ("mineru", "dots", "paddle"):
+        if j["channels"].get(ch) in ("done", "error", "warning"):
+            continue
+        if os.path.isdir(os.path.join(raw, ch)) or os.path.isdir(os.path.join(raw, ch + "_api")):
+            j["channels"][ch] = "done"
+        else:
+            j["channels"][ch] = "skipped"
+
+
+def _public_job(job_id, j):
+    now = time.time()
+    start = j.get("started_at") or j.get("created_at") or now
+    end = j.get("finished_at") or now
+    return {"id": job_id, "state": j.get("state", ""), "doc": j.get("doc", ""),
+            "stage": j.get("stage", ""), "logline": j.get("logline", ""),
+            "err": j.get("err", ""), "warnings": j.get("warnings", [])[-10:],
+            "channels": j.get("channels", {}), "channel_err": j.get("channel_err", {}),
+            "stages": j.get("stages", {}),
+            "created_at": j.get("created_at"), "started_at": j.get("started_at"),
+            "updated_at": j.get("updated_at"), "finished_at": j.get("finished_at"),
+            "elapsed": max(0, int(end - start)), "rescue": j.get("rescue", "")}
+
+
 def run_pipeline(job, pdf_path):
     import pipeline
 
     def _log(*a):
         line = " ".join(str(x) for x in a)
-        JOBS[job]["log"].append(line)
-        JOBS[job]["logline"] = line[:90]
+        with JOB_LOCK:
+            j = JOBS[job]
+            j["log"].append(line)
+            j["logline"] = line[:160]
+            j["updated_at"] = time.time()
+            if "① " in line:
+                j["stage"] = "渲染页图"
+                _set_stage(j, "render", "error" if "失败" in line else "running")
+            elif "② " in line:
+                j["stage"] = "获取三渠道"
+                _set_stage(j, "render", "done")
+                # "API 失败, 转 CDP" 类回退行不是终态失败(后面还有成功行), 只标 running
+                if "失败" in line and not any(x in line for x in ("转", "可手动")):
+                    _set_stage(j, "acquire", "error")
+                else:
+                    _set_stage(j, "acquire", "running")
+            elif "③ " in line:
+                j["stage"] = "适配渠道结果"
+                _set_stage(j, "acquire", "done")
+                _set_stage(j, "adapt", "error" if "失败" in line else "running")
+            elif "④ " in line:
+                j["stage"] = "合并与归一化"
+                _set_stage(j, "adapt", "done")
+                if "失败" in line:
+                    _set_stage(j, "unify", "error")
+                elif "对照查看器" in line:
+                    _set_stage(j, "unify", "done")
+                else:
+                    _set_stage(j, "unify", "running")
+            elif "⑤ 完成" in line:
+                j["stage"] = "发布结果"
+                _set_stage(j, "publish", "done")
+            elif "⑥ 元数据" in line:
+                j["stage"] = "提取元数据"
+                _set_stage(j, "unify", "done")
+                if "失败" in line:
+                    j["channels"]["metadata"] = "error"
+                    _set_stage(j, "metadata", "error")
+                elif "完成" in line and j["channels"]["metadata"] != "error":
+                    j["channels"]["metadata"] = "done"
+                    _set_stage(j, "metadata", "done")
+                elif j["channels"]["metadata"] != "error":
+                    j["channels"]["metadata"] = "running"
+                    _set_stage(j, "metadata", "running")
+            elif "ner_lite" in line:
+                j["stage"] = "实体抽取"
+                if "网络错误" in line or "失败" in line:
+                    j["channels"]["ner_lite"] = "error"
+                    _set_stage(j, "entities", "error")
+                elif ("提名" in line or "跳过" in line) and j["channels"]["ner_lite"] != "error":
+                    j["channels"]["ner_lite"] = "done"
+                    _set_stage(j, "entities", "done")
+                elif j["channels"]["ner_lite"] != "error":
+                    j["channels"]["ner_lite"] = "running"
+                    _set_stage(j, "entities", "running")
+            elif "⑥ 终版" in line:
+                j["stage"] = "发布结果"
+                _set_stage(j, "publish", "error" if "失败" in line else "running")
+            for ch in ("mineru", "dots", "paddle"):
+                if ("渠道[%s]" % ch) in line or line.strip().startswith(ch + " "):
+                    if "失败" in line or "页数不匹配" in line or "无输入" in line:
+                        j["channels"][ch] = "error"
+                        j["channel_err"][ch] = line[:160]
+                    elif "API 完成" in line or "经" in line or "复用缓存" in line or "从 inbox" in line:
+                        j["channels"][ch] = "done"
+                        if "失败" not in line:
+                            j["channel_err"][ch] = ""
+                    elif any(x in line for x in ("已上传", "已提交", "pending", "running", "等待中", "处理渠道")):
+                        j["channels"][ch] = "running"
+            if "JSON 损坏" in line:
+                j["channels"]["dots"] = "warning"
+                j["channel_err"]["dots"] = line[:160]
+            if any(x in line for x in ("失败", "网络错误", "JSON 损坏", "页数不匹配", "疑似上游漏页")):
+                if line not in j["warnings"]:
+                    j["warnings"].append(line)
         print("  [解析] %s" % line)  # 同步打到控制台, 黑窗口可见
 
     try:
-        JOBS[job]["state"] = "排队中"    # 批处理串行: 多文件逐个跑; 日志重定向必须在锁内, 否则排队任务会截获运行中任务的日志
+        with JOB_LOCK:
+            JOBS[job]["state"] = "排队中"
+            JOBS[job]["stage"] = "等待调度"
         with RUN_LOCK:
-            JOBS[job]["state"] = "运行中"
+            with JOB_LOCK:
+                JOBS[job]["state"] = "运行中"
+                JOBS[job]["stage"] = "启动管线"
+                JOBS[job]["started_at"] = time.time()
+                JOBS[job]["updated_at"] = time.time()
             old = pipeline.log
             pipeline.log = _log
             try:
@@ -91,10 +269,16 @@ def run_pipeline(job, pdf_path):
                 pipeline.main(argv)
                 idx = os.path.join(OUT, doc, "index.html")   # 只认本次跑出来的 index: 上一轮残留的旧文件不能算成功
                 ok = os.path.exists(idx) and os.path.getmtime(idx) >= t0 - 2
-                JOBS[job]["state"] = "done" if ok else "error"
+                with JOB_LOCK:
+                    JOBS[job]["state"] = ("degraded" if JOBS[job]["warnings"] else "done") if ok else "error"
+                    JOBS[job]["stage"] = "已完成" if ok else "未生成本次总览"
+                    JOBS[job]["finished_at"] = time.time()
             except Exception as e:
-                JOBS[job]["state"] = "error"; JOBS[job]["err"] = str(e)
-                JOBS[job]["log"].append("ERROR: %s" % e)
+                with JOB_LOCK:
+                    JOBS[job]["state"] = "error"; JOBS[job]["err"] = str(e)
+                    JOBS[job]["log"].append("ERROR: %s" % e)
+                    JOBS[job]["logline"] = "ERROR: %s" % e
+                    JOBS[job]["finished_at"] = time.time()
             finally:
                 pipeline.log = old
     except BaseException as e:  # SystemExit/KeyboardInterrupt 等不是 Exception 的抬走
@@ -103,9 +287,12 @@ def run_pipeline(job, pdf_path):
         raise
     finally:
         # 兜底: 任何没走到 done/error 的路径(含被抬走的线程)都不许把任务永远挂在"运行中"
-        if JOBS[job]["state"] not in ("done", "error"):
+        if JOBS[job]["state"] not in ("done", "degraded", "error"):
             JOBS[job]["state"] = "error"
             JOBS[job]["err"] = JOBS[job].get("err") or "任务异常终止"
+        _reconcile_channels(JOBS[job])
+        _settle_stages(JOBS[job], JOBS[job]["state"] in ("done", "degraded"))
+        JOBS[job]["finished_at"] = JOBS[job].get("finished_at") or time.time()
 
 
 PAGE = u"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
@@ -114,19 +301,26 @@ PAGE = u"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 body{font-family:"Microsoft YaHei";margin:0;background:#f4f5f7;color:#222}
 header{background:#1f2937;color:#fff;padding:14px 22px}
 header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12px}
-.wrap{max-width:1100px;margin:24px auto;padding:0 16px}
-#drop{border:3px dashed #93c5fd;border-radius:14px;background:#fff;padding:70px 20px;text-align:center;color:#6b7280;transition:.15s}
+.wrap{max-width:1180px;margin:24px auto;padding:0 16px}
+#drop{border:2px dashed #93c5fd;border-radius:12px;background:#fff;padding:30px 20px;text-align:center;color:#6b7280;transition:.15s;cursor:pointer}
 #drop.over{border-color:#2563eb;background:#eff6ff;transform:scale(1.01)}
 #drop b{color:#2563eb;font-size:18px}
-#log{background:#111827;color:#a7f3d0;font:12px/1.7 Consolas,monospace;border-radius:10px;padding:12px 16px;margin-top:18px;min-height:60px;white-space:pre-wrap;display:none}
-#jobs{display:none;margin-top:16px}
-#jobs .jrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:8px 12px;margin:6px 0;cursor:pointer;font-size:13px}
-#jobs .jrow:hover{border-color:#2563eb}
-#jobs .jrow.cur{outline:2px solid #93c5fd}
-#jobs .st{font-size:11px;border-radius:6px;padding:2px 8px;color:#fff;white-space:nowrap}
-#jobs .st.run{background:#2563eb}#jobs .st.que{background:#9ca3af}#jobs .st.ok{background:#059669}#jobs .st.err{background:#dc2626}
-#jobs .jlog{font-size:12px;color:#6b7280;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#jobs a{margin-left:6px;color:#2563eb;text-decoration:none;display:none}
+.boardtitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 10px}
+.boardtitle h2{font-size:18px;margin:0}
+#boardstatus{font-size:12px;color:#6b7280}#boardstatus.online{color:#059669}#boardstatus.offline{color:#dc2626}
+#summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
+.metric{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.metric span{font-size:12px;color:#6b7280}.metric b{font-size:22px}.metric .run{color:#2563eb}.metric .ok{color:#059669}.metric .warn{color:#d97706}.metric .err{color:#dc2626}
+#log{background:#111827;color:#a7f3d0;font:12px/1.7 Consolas,monospace;border-radius:10px;padding:12px 16px;margin-top:18px;min-height:60px;max-height:420px;overflow:auto;white-space:pre-wrap;display:none}
+#jobs{margin-top:12px}
+#jobs .jrow{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:13px 15px;margin:10px 0;cursor:pointer;font-size:13px}
+#jobs .jrow:hover{border-color:#2563eb}#jobs .jrow.cur{border-color:#2563eb;box-shadow:0 0 0 2px #dbeafe}
+.jhead{display:flex;align-items:center;gap:10px}.jhead b{font-size:15px}.stage{color:#4b5563}.elapsed{margin-left:auto;color:#6b7280;font-size:12px}
+.st{font-size:11px;border-radius:6px;padding:3px 9px;color:#fff;white-space:nowrap}.st.run{background:#2563eb}.st.que{background:#9ca3af}.st.ok{background:#059669}.st.warn{background:#d97706}.st.err{background:#dc2626}
+.channels{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 8px}.channel{font-size:11px;border-radius:5px;padding:3px 8px;background:#f3f4f6;color:#6b7280}.channel.run{background:#dbeafe;color:#1d4ed8}.channel.ok{background:#d1fae5;color:#047857}.channel.warn{background:#fef3c7;color:#b45309}.channel.err{background:#fee2e2;color:#b91c1c}
+.jlog{font-size:12px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.jfoot{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#9ca3af}
+#jobs a{margin-left:12px;color:#2563eb;text-decoration:none}.warnings{margin-top:10px;border-left:3px solid #d97706;background:#fffbeb;padding:8px 10px;color:#92400e;font-size:12px;line-height:1.6}.warnings div{white-space:pre-wrap}
+.empty{background:#fff;border:1px dashed #d1d5db;border-radius:10px;padding:28px;text-align:center;color:#9ca3af;font-size:13px}
 .tip{font-size:12px;color:#9ca3af;margin-top:10px}
 #cfgbtn{float:right;background:#374151;color:#e5e7eb;border:1px solid #4b5563;border-radius:8px;padding:6px 14px;cursor:pointer;font-size:13px}
 #cfgbtn:hover{background:#4b5563}
@@ -142,14 +336,20 @@ header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12p
 #cfgpanel .acts button{flex:1;border:0;border-radius:8px;padding:9px 0;cursor:pointer;font-size:14px}
 #savecfg{background:#2563eb;color:#fff}#closecfg{background:#e5e7eb}
 #cfgmsg{font-size:12px;color:#059669;min-height:16px}
-</style></head><body>
-<header><button id="cfgbtn">⚙ 渠道 API 配置</button><b>三渠道解析对比工作台</b><span>拖入 PDF（或把 PDF 复制到 uploads 文件夹）→ 自动解析 → 生成对比查看器 ｜ 渠道产物放 inbox\，命名 &lt;文档名&gt;__渠道</span></header>
+@media(max-width:760px){#summary{grid-template-columns:repeat(2,1fr)}.jhead{flex-wrap:wrap}.elapsed{margin-left:0}.links{display:block;margin-top:6px}header span{display:none}}
+</style><link rel="stylesheet" href="/dashboard.css"></head><body>
+<header class="topbar"><div class="brand"><div class="logo">KCI</div><div><b>三渠道解析对比工作台</b><small>PDF 解析、归一化与元数据流水线</small></div></div><button id="cfgbtn">渠道 API 配置</button></header>
 <div class="wrap">
-<div id="drop"><b>把 PDF 拖到这里</b><br><br>或点击选择文件<input id="f" type="file" accept="application/pdf" style="display:none"></div>
-<div id="jobs"></div>
-<div id="log"></div>
-<p class="tip">上传的 PDF 保存在 pipeline\\uploads\\；结果在 pipeline\\out\\&lt;文档名&gt;\\。渠道产物未到齐的渠道会在报告中标注"未提供"。</p>
+<div id="drop"><div class="pdf-icon">PDF</div><div class="upload-copy"><b>拖入 PDF 开始解析</b><span>也可以点击选择文件，或复制到 uploads 文件夹</span></div><span class="upload-action">选择 PDF →</span><input id="f" type="file" accept="application/pdf" style="display:none"></div>
+<div class="boardtitle"><div><h2>任务总览</h2><p>集中查看任务进度、管道环节和渠道运行状态</p></div><span id="boardstatus">正在连接后台...</span></div>
+<div id="summary"></div>
+<div class="workspace">
+ <aside class="panel"><div class="panel-head"><h3>任务列表</h3><span id="jobcount">0 个任务</span></div><div id="jobs"><div class="empty">正在读取任务...</div></div></aside>
+ <section class="panel" id="detail"><div class="detail-empty">选择任务后查看管道状态</div></section>
 </div>
+<p class="tip">每 1.5 秒自动刷新 · 仅展示由本工作台启动的任务 · 解析结果保存在 out / 文档名</p>
+</div>
+<div id="toast" class="toast" role="status"></div>
 <div id="cfgpanel">
  <h3>渠道 API 配置</h3>
  <p class="tip" style="margin:0">写入 channels.local.json，下个文档自动生效（pipeline 每次调用都会重读）。</p>
@@ -174,45 +374,26 @@ class H(BaseHTTPRequestHandler):
             if os.path.isfile(fp):
                 return self._send(200, io.open(fp, "rb").read(), "text/javascript; charset=utf-8")
             return self._send(404, "not found")
+        if self.path.startswith("/dashboard.css"):
+            fp = os.path.join(ROOT, "dashboard.css")
+            if os.path.isfile(fp):
+                return self._send(200, io.open(fp, "rb").read(), "text/css; charset=utf-8")
+            return self._send(404, "not found")
         if self.path.startswith("/status"):
-            q = re.search(r"job=(\w+)", self.path)
+            q = re.search(r"job=([\w-]+)", self.path)
             job = q.group(1) if q else ""
-            if job == "all":  # 批处理任务总览
-                return self._send(200, json.dumps({"all": [
-                    {"id": k, "state": j.get("state", ""), "doc": j.get("doc", ""),
-                     "logline": (j.get("log") or [""])[-1][:90]}
-                    for k, j in JOBS.items()][-30:]}, ensure_ascii=False), "application/json")
-            if job == "latest":
-                job = list(JOBS.keys())[-1] if JOBS else ""  # 任意方式触发的任务都能在页面看到
-            j = JOBS.get(job, {})
-            return self._send(200, json.dumps({"state": j.get("state", "gone"), "log": j.get("log", [])[-60:], "doc": j.get("doc", ""), "err": j.get("err", "")}), "application/json")
+            with JOB_LOCK:
+                if job == "all":  # 批处理任务总览
+                    items = [_public_job(k, j) for k, j in JOBS.items()][-30:]
+                    return self._send(200, json.dumps({"all": items, "server_time": time.time()}, ensure_ascii=False), "application/json")
+                if job == "latest":
+                    job = list(JOBS.keys())[-1] if JOBS else ""  # 任意方式触发的任务都能在页面看到
+                j = JOBS.get(job)
+                data = _public_job(job, j) if j else {"state": "gone", "log": [], "doc": "", "err": ""}
+                data["log"] = list(j.get("log", [])[-100:]) if j else []
+            return self._send(200, json.dumps(data, ensure_ascii=False), "application/json")
         if self.path.startswith("/api/config"):
             return self._send(200, json.dumps({s: _load_cfg().get(s, {}) for s in API_SECTIONS}, ensure_ascii=False), "application/json")
-        if self.path.startswith("/api/ner_glossary"):   # 全局批注词典(审计页/词典页 live fetch)
-            fp = os.path.join(OUT_LLM_TRIAL, "ner_glossary.json")
-            if os.path.isfile(fp):
-                return self._send(200, io.open(fp, "rb").read(), "application/json")
-            return self._send(200, json.dumps({"entries": []}), "application/json")
-        if self.path.startswith("/api/ner_annotations"):   # 全部实体标注(审计页 live 覆盖内联快照)
-            try:
-                ann = {}
-                for doc in sorted(os.listdir(OUT_LLM_TRIAL)):
-                    fp = os.path.join(OUT_LLM_TRIAL, doc, "ner_llm.json")
-                    if not os.path.isfile(fp):
-                        continue
-                    d = json.load(io.open(fp, encoding="utf-8"))
-                    m = {}
-                    for i, e in enumerate(d.get("entities") or []):
-                        vd, cmt = e.get("verdict"), (e.get("comment") or "")
-                        if vd or cmt:
-                            m[str(i)] = {"verdict": vd, "comment": cmt}
-                    if m:
-                        ann[doc] = m
-                return self._send(200, json.dumps({"ann": ann}, ensure_ascii=False),
-                                  "application/json")
-            except Exception:
-                return self._send(200, json.dumps({"ann": {}}, ensure_ascii=False),
-                                  "application/json")
         if self.path.startswith("/trial/"):   # NER 审计页等 trial 产物(static, 同 /out/ 越界守卫)
             rel = unquote(self.path[len("/trial/"):].split("?")[0])
             fp = os.path.abspath(os.path.join(OUT_LLM_TRIAL, rel.lstrip("/").replace("/", os.sep)))
@@ -257,87 +438,40 @@ class H(BaseHTTPRequestHandler):
             except Exception as e:
                 return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
                                   "application/json")
-        if self.path.startswith("/api/ner_note"):   # NER 审计标注回写: 直接改 ner_llm.json 实体的 verdict/comment 字段
-            n = int(self.headers.get("Content-Length", 0))
-            if n <= 0 or n > 64 * 1024:
-                return self._send(413, "bad request")
-            try:
-                body = json.loads(self.rfile.read(n).decode("utf-8"))
-                notes = body.get("notes") or []
-                if not isinstance(notes, list):
-                    raise ValueError("notes 必须是数组")
-                by_doc = {}
-                for x in notes:
-                    if not isinstance(x, dict):
-                        continue
-                    doc = re.sub(r"[^\w\-.一-鿿]+", "_", str(x.get("doc") or ""))
-                    idx = x.get("idx")
-                    if not doc or not isinstance(idx, int):
-                        continue
-                    vd = x.get("verdict")
-                    by_doc.setdefault(doc, {})[idx] = {
-                        "verdict": vd if vd in ("ok", "bad", "doubt") else None,
-                        "comment": str(x.get("comment") or "")}
-                saved = 0
-                for doc, patches in by_doc.items():
-                    ddir = os.path.abspath(os.path.join(OUT_LLM_TRIAL, doc))
-                    if not ddir.startswith(OUT_LLM_TRIAL + os.sep):
-                        return self._send(403, "forbidden")
-                    fp = os.path.join(ddir, "ner_llm.json")
-                    if not os.path.isfile(fp):
-                        continue
-                    d = json.load(io.open(fp, encoding="utf-8"))
-                    ents = d.get("entities") or []
-                    dirty = False
-                    for idx, patch in patches.items():
-                        if 0 <= idx < len(ents):
-                            ents[idx]["verdict"] = patch["verdict"]
-                            ents[idx]["comment"] = patch["comment"]
-                            dirty = True
-                    if dirty:
-                        with io.open(fp, "w", encoding="utf-8") as f:
-                            f.write(json.dumps(d, ensure_ascii=False, indent=1))
-                        saved += 1
-                new_terms = 0
-                try:   # 全局批注词典: 有批注的条目, 同 (kind, name_norm) 不存在则收录(只进不改)
-                    from metapy.ner import glossary_add
-                    for x in notes:
-                        if not isinstance(x, dict):
-                            continue
-                        cmt = (x.get("comment") or "").strip()
-                        if not cmt:
-                            continue
-                        _, created = glossary_add(OUT, x.get("kind") or "", x.get("name") or "",
-                                                  cmt, doc=x.get("doc"), uid=x.get("uid"))
-                        if created:
-                            new_terms += 1
-                except Exception:
-                    pass
-                return self._send(200, json.dumps({"ok": 1, "docs": saved,
-                                                   "glossary_new": new_terms}, ensure_ascii=False),
-                                  "application/json")
-            except Exception as e:
-                return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
-                                  "application/json")
-        if self.path.startswith("/api/ner_glossary"):   # 词典删除词条(词典页, 键=kind+name_norm)
-            n = int(self.headers.get("Content-Length", 0))
-            if n <= 0 or n > 64 * 1024:
-                return self._send(413, "bad request")
-            try:
-                from metapy.ner import load_glossary, save_glossary
-                body = json.loads(self.rfile.read(n).decode("utf-8"))
-                keys = body.get("delete") or []
-                g = load_glossary(OUT)
-                before = len(g.get("entries") or [])
-                g["entries"] = [e for e in g.get("entries") or []
-                                if (u"%s%s" % (e.get("kind"), e.get("name_norm"))) not in keys]
-                save_glossary(OUT, g)
                 return self._send(200, json.dumps(
                     {"ok": 1, "removed": before - len(g["entries"])}, ensure_ascii=False),
                     "application/json")
             except Exception as e:
                 return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
                                   "application/json")
+        if self.path.startswith("/api/retry"):
+            q = re.search(r"doc=([^&]+)", self.path)
+            chm = re.search(r"ch=(mineru|dots|paddle)", self.path)
+            if not q or not chm:
+                return self._send(400, json.dumps({"ok": 0, "err": "参数缺失(doc/ch)"},
+                                                  ensure_ascii=False), "application/json")
+            doc = re.sub(r"[^\w\-.一-鿿]+", "_", unquote(q.group(1)))
+            ch = chm.group(1)
+            pdf = os.path.join(UP, doc + ".pdf")
+            if not os.path.isfile(pdf):
+                return self._send(404, json.dumps(
+                    {"ok": 0, "err": "uploads 里找不到 %s.pdf，无法重试" % doc}, ensure_ascii=False),
+                    "application/json")
+            # 清该渠道全部缓存(API 缓存+归档目录)强制重取; 其余渠道缓存秒回, 下游全链自动重跑
+            for sub in (ch, ch + "_api"):
+                d = os.path.join(OUT, doc, "raw", sub)
+                if os.path.isdir(d):
+                    shutil.rmtree(d, ignore_errors=True)
+            jid = "retry-%x" % int(time.time() * 1000)
+            if not _create_job_if_absent(jid, doc, rescue="retry:" + ch):
+                with JOB_LOCK:
+                    existing = _active_job_id(doc)
+                return self._send(200, json.dumps(
+                    {"ok": 1, "job": existing, "dedup": True}, ensure_ascii=False), "application/json")
+            print("[retry] %s 渠道 %s 缓存已清, 重跑补齐(其余渠道走缓存)" % (doc, ch))
+            threading.Thread(target=run_pipeline, args=(jid, pdf), daemon=True).start()
+            return self._send(200, json.dumps({"ok": 1, "job": jid}, ensure_ascii=False),
+                              "application/json")
         if self.path.startswith("/api/config"):
             n = int(self.headers.get("Content-Length", 0))
             if n <= 0 or n > 64 * 1024:
@@ -368,8 +502,10 @@ class H(BaseHTTPRequestHandler):
         job = "%x" % int(time.time() * 1000)
         doc0 = re.sub(r"\.pdf$", "", name, flags=re.I)
         doc0 = re.sub(r"[\s]*[（(]\d+[)）]$", "", doc0).strip()
-        with JOB_LOCK:
-            JOBS[job] = {"state": "running", "log": [], "doc": doc0, "err": "", "logline": ""}
+        if not _create_job_if_absent(job, doc0):
+            with JOB_LOCK:
+                existing = _active_job_id(doc0)
+            return self._send(200, json.dumps({"job": existing, "dedup": True}), "application/json")
         threading.Thread(target=run_pipeline, args=(job, fp), daemon=True).start()
         self._send(200, json.dumps({"job": job}), "application/json")
 
@@ -447,9 +583,8 @@ def rescue_scan():
         if RUN_LOCK.locked():
             return  # 有任务在跑, 下一轮再补
         jid = "rescue-%x" % int(time.time() * 1000)
-        with JOB_LOCK:
-            JOBS[jid] = {"state": "running", "log": [], "doc": d,
-                         "err": "", "logline": "", "rescue": ",".join(miss)}
+        if not _create_job_if_absent(jid, d, rescue=",".join(miss)):
+            continue
         print("[rescue] %s 缺渠道(%s), 自动重跑补齐" % (d, "/".join(miss)))
         threading.Thread(target=_rescue_run, args=(jid, pdf, d), daemon=True).start()
         return
@@ -488,8 +623,9 @@ def watch_uploads():
             if mtime(fp) != mt: continue
             seen[fp] = mt
             jid = "%x" % int(time.time() * 1000)
-            with JOB_LOCK:
-                JOBS[jid] = {"state": "running", "log": [], "doc": re.sub(r"[\s]*[（(]\d+[)）]$", "", re.sub(r"\.pdf$", "", f, flags=re.I)).strip(), "err": "", "logline": ""}
+            doc = re.sub(r"[\s]*[（(]\d+[)）]$", "", re.sub(r"\.pdf$", "", f, flags=re.I)).strip()
+            if not _create_job_if_absent(jid, doc):
+                continue
             print("[watch] 检测到新文件:", f)
             threading.Thread(target=run_pipeline, args=(jid, fp), daemon=True).start()
 

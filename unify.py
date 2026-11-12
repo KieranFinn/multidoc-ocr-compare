@@ -410,6 +410,33 @@ def make_unified(g, pno, W, H, in_ref, uid, h_line=None):
 
 # ---------- 文档级 ----------
 
+def _mark_dup_covered(unified):
+    """coverage 孤儿块回扫(2026-11-11): 单渠道孤儿的文本若已出现于另一 unified 块的成员
+    文本(折叠前缀包含), 说明两块检的是同一内容(13563527 u1_9 vs u1_7.dots 成员实证)——
+    标 dup_covered 供下游(refs 阶段去重择优/viewer 出眼)识别抑制, 不合并、不删块(留证)。"""
+    def _fx(t):
+        t = re.sub(r"</?(?:sub|sup|i|b|em|span)>", "", t or "", flags=re.I)
+        return re.sub(r"\s+", "", _fold_sym(t))
+    for u in unified:
+        if u.get("divergence", {}).get("kind") != "coverage":
+            continue
+        pf = _fx(u.get("main_text"))
+        if len(pf) < 12:
+            continue
+        anchor = pf[:20]
+        for v in unified:
+            if v is u:
+                continue
+            hay = "".join(_fx(m.get("text"))
+                          for ms in (v.get("members") or {}).values() for m in ms)
+            hit = anchor in hay if len(pf) >= 20 else pf in hay
+            if hit:
+                u["dup_covered"] = True
+                u["divergence"]["detail"] = (u["divergence"].get("detail") or "") \
+                    + "; 内容已被 %s 成员覆盖" % v["uid"]
+                break
+
+
 def ref_region(doc_dir, n):
     """参考文献区页范围(任一渠道最后一个 참고문헌 类 Section-header 起, 至 Abstract/초록 止)。"""
     ref_from = None
@@ -489,6 +516,7 @@ def unify_doc(doc, out_root):
             else:
                 stats["mapped_blocks"] += n_blk
         unified.sort(key=lambda u: (round(u["box"][1] / 18.0), u["box"][0]))
+        _mark_dup_covered(unified)
         io.open(os.path.join(udir, "page_%d.json" % p), "w", encoding="utf-8").write(json.dumps({
             "doc": doc, "page": p + 1, "w": j0["w"], "h": H, "in_ref": in_ref,
             "unified": unified}, ensure_ascii=False))

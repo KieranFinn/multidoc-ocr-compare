@@ -3,28 +3,47 @@ import os, re, io, json, datetime
 import regress
 from .common import *
 
+# markdown 加粗 요약 头(13563525 '**국문요약** 본고는…' 同块, 无冒号——ABS_INLINE_KO 要求冒号,
+# ABS_HEAD_KO 只认独立节头, 两不沾则整段丢失)
+_ABS_BOLD_KO = re.compile(u"^\\*{1,2}\\s*(요\\s*약|국문\\s*요약|초\\s*록)\\s*\\*{1,2}\\s*[:：]?")
+
 
 def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
     """从头块之下收集摘要正文(跨页续接, 遇 Keywords 行/新节头/文献区 即止)。
     跨栏块按行取: 若块首在头上方, 只取 ABSTRACT_START 之后的行(13625974 作者行同块形态)。
-    skip_fold: 折叠全等的节头视为英文题名的尾页复写(1892171/1632041 形态), 跳过不停。"""
+    skip_fold: 折叠全等的节头视为英文题名的尾页复写(1892171/1632041 形态), 整块跳过不截停。
+    双栏感知(2026-11-10, 13563525 尾页左文献/右英文摘要实证): 头页确为双栏时只收与头块
+    同栏的块——左栏文献区头/小节头既不截停也不混入; REF_HEAD 停止加 y 守卫(只停头下方)。
+    首内容行剥 '|' 分隔的作者/机构前缀(u9_7 'Shin, Seong-Hwan | Chung-Ang University |
+    This study…' 实证): 前段为短罗马名(≤40 全字符)或含机构关键词才剥, 遇正文长句即停。"""
     out_lines = []
     uids = []
     start_p = head_u["page"] - 1
     H = pdata[start_p]["h"]
     limit_bottom = head_u["box"][3] + 0.62 * H
+    boundary0 = _page_col_boundary(pdata[start_p])
+    head_col = _col_of_b(head_u, boundary0, pdata[start_p]["w"])
+    stripped0 = False
     for p in range(start_p, min(len(pages), start_p + max_pages)):
         j = pdata[p]
+        boundary = boundary0 if p == start_p else _page_col_boundary(j)
+        if boundary is not None and boundary0 is None:
+            boundary = None   # 续页栏判定与头页不一致时保守按单栏(只首启用栏过滤)
         for u in j["unified"]:
             if u.get("cross_page", {}).get("role") == "head":
                 continue
             if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
                 continue
+            if boundary is not None and u["type"] in ("Section-header", "Text") \
+                    and _col_of_b(u, boundary, j["w"]) != head_col:
+                continue   # 双栏: 非头块同栏的块整体跳过
             if u["type"] == "Section-header" and u["uid"] != head_u["uid"] \
-                    and u["box"][1] >= head_u["box"][3] - 2 \
-                    and not (skip_fold and _fold((u["main_text"] or "").split("\n")[0]) == skip_fold):
+                    and u["box"][1] >= head_u["box"][3] - 2:
+                if skip_fold and _fold((u["main_text"] or "").split("\n")[0]) == skip_fold:
+                    continue   # 英文题名复写头: 整块跳过
                 return "\n".join(out_lines).strip(), uids   # 区内新节头=界(先判停, 其行不入摘要)
-            if u["type"] == "Section-header" and regress.REF_HEAD.search(u["main_text"] or ""):
+            if u["type"] == "Section-header" and regress.REF_HEAD.search(u["main_text"] or "") \
+                    and u["box"][1] >= head_u["box"][3] - 2:
                 return "\n".join(out_lines).strip(), uids
             y1, y3 = u["box"][1], u["box"][3]
             lines = (u["main_text"] or "").split("\n")
@@ -45,6 +64,26 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                 s = ln.strip()
                 if not s:
                     continue
+                if not stripped0 and "|" in s:
+                    segs = [x.strip() for x in s.split("|")]
+                    dropped = False
+                    while segs:
+                        sg = segs[0]
+                        if not sg:
+                            segs.pop(0)
+                            continue
+                        if (len(sg) <= 40 and re.match(r"^[A-Z][A-Za-z .\-',]+$", sg)) or \
+                            re.search(r"University|Univ\b|Department|Institute|College|School|"
+                                      r"Association|Academy|Research|Laboratory|Corporation", sg):
+                            segs.pop(0)
+                            dropped = True
+                            continue
+                        break
+                    stripped0 = True
+                    if dropped:
+                        s = " | ".join(segs).strip()
+                        if not s:
+                            continue
                 if re.match(r"(?i)^abstract\s*[:：]", s):
                     s = re.split(r"[:：]", s, maxsplit=1)[1].strip()   # 'Abstract: …' 标签剥离
                     if not s:
@@ -126,7 +165,10 @@ def abstract_doc(doc, out_root):
                            "confidence": _conf(h_ko, uids)}
     else:
         # 内联头形态(895567 '요 앵 : …' 与 Key words 同块): 定位行后收集
+        # 2026-11-10 增 markdown 加粗头形态(13563525 '**국문요약** 본고는…' 同块实证,
+        # 无冒号): 剥头取余行; 该形态正文同块收全, 不跨页续接(防吞次页正文)。
         found = None
+        bold = False
         for u in pdata[0]["unified"]:
             if u.get("cross_page", {}).get("role"):
                 continue
@@ -137,43 +179,52 @@ def abstract_doc(doc, out_root):
                 if ABS_INLINE_KO.match(ln.strip()):
                     found = (u, i)
                     break
+                if _ABS_BOLD_KO.match(ln.strip()):
+                    found = (u, i)
+                    bold = True
+                    break
             if found:
                 break
         if found:
             blk, li = found
-            first_rest = re.split(r"[:：]", (blk["main_text"] or "").split("\n")[li], maxsplit=1)
-            lines = [first_rest[1].strip()] if len(first_rest) > 1 and first_rest[1].strip() else []
-            stop = False
+            if bold:
+                rest = _ABS_BOLD_KO.sub("", (blk["main_text"] or "").split("\n")[li]).strip()
+                lines = [rest] if rest else []
+                basis = u"markdown 加粗 요약 头同块"
+            else:
+                first_rest = re.split(r"[:：]", (blk["main_text"] or "").split("\n")[li], maxsplit=1)
+                lines = [first_rest[1].strip()] if len(first_rest) > 1 and first_rest[1].strip() else []
+                basis = u"内联 요약 头(与Key words同块)"
             for ln in (blk["main_text"] or "").split("\n")[li + 1:]:
                 s = ln.strip()
                 if not s:
                     continue
-                if KW_LINE.match(s) or ABS_INLINE_KO.match(s):
-                    stop = True
+                if KW_LINE.match(s) or ABS_INLINE_KO.match(s) or _ABS_BOLD_KO.match(s):
                     break
                 lines.append(s)
-            stop = False
-            for p in range(1, min(3, len(pages))):
-                for u in pdata[p]["unified"]:
-                    if u.get("cross_page", {}).get("role"):
-                        continue
-                    if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
-                        continue
-                    if u["type"] == "Section-header":
-                        stop = True
-                        break
-                    for ln in (u["main_text"] or "").split("\n"):
-                        if KW_LINE.match(ln.strip()) or ABS_INLINE_KO.match(ln.strip()):
+            if not bold:
+                stop = False
+                for p in range(1, min(3, len(pages))):
+                    for u in pdata[p]["unified"]:
+                        if u.get("cross_page", {}).get("role"):
+                            continue
+                        if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
+                            continue
+                        if u["type"] == "Section-header":
                             stop = True
                             break
-                        lines.append(ln.strip())
+                        for ln in (u["main_text"] or "").split("\n"):
+                            if KW_LINE.match(ln.strip()) or ABS_INLINE_KO.match(ln.strip()):
+                                stop = True
+                                break
+                            lines.append(ln.strip())
+                        if stop:
+                            break
                     if stop:
                         break
-                if stop:
-                    break
             res["abstract"] = {"value": "\n".join(l for l in lines if l).strip() or None,
                                "page": 1, "box": blk["box"],
-                               "confidence": {"level": "mid", "basis": "内联 요약 头(与Key words同块)",
+                               "confidence": {"level": "mid", "basis": basis,
                                               "source": "regex", "uid_head": blk["uid"]}}
         else:
             res["abstract"] = {"value": None, "confidence": _conf(None, [])}
@@ -351,7 +402,7 @@ def _selftest():
             "main_text": "This study is complete.", "cross_page": {}}
     kw = {"uid": "k", "page": 1, "type": "Text", "box": [0, 60, 100, 80],
           "main_text": "Keywords: alpha, beta", "cross_page": {}}
-    text, uids = _collect_abstract({0: {"h": 1000, "unified": [head, body, kw]}}, [0], head,
+    text, uids = _collect_abstract({0: {"w": 1000, "h": 1000, "unified": [head, body, kw]}}, [0], head,
                                    max_pages=1)
     ok1 = text == "This study is complete." and uids == ["b", "k"]
 
@@ -381,11 +432,48 @@ def _selftest():
                and hashlib.sha256(io.open(page_fp, "rb").read()).hexdigest() == before)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
-    for i, ok in enumerate((ok1, ok2), 1):
+    # 3) 双栏尾页(13563525 实证): 左栏文献区头/小节头不截停不混入; 英文题名复写头整块跳过;
+    #    首行 '|' 作者/机构前缀剥除
+    head2 = {"uid": "h2", "page": 10, "type": "Section-header", "box": [700, 179, 1100, 209],
+             "main_text": "Abstract", "cross_page": {}}
+    refhead = {"uid": "r", "page": 10, "type": "Section-header", "box": [60, 161, 620, 191],
+               "main_text": u"참고문헌", "cross_page": {}}
+    subhead = {"uid": "s", "page": 10, "type": "Section-header", "box": [60, 214, 620, 244],
+               "main_text": u"1. 단행본 및 논문", "cross_page": {}}
+    ten = {"uid": "tn", "page": 10, "type": "Section-header", "box": [700, 216, 1100, 246],
+           "main_text": "A Glocal Cultural History of Bakery", "cross_page": {}}
+    abody = {"uid": "ab", "page": 10, "type": "Text", "box": [700, 314, 1100, 500],
+             "main_text": "Shin, Seong-Hwan | Chung-Ang University | This study reinterprets "
+                          "the cultural history.\nSecond line of abstract.",
+             "cross_page": {}}
+    refbody = {"uid": "rb", "page": 10, "type": "Text", "box": [60, 250, 620, 400],
+               "main_text": u"김성수, 「두 개의」, 2013.", "cross_page": {}}
+    refbody2 = {"uid": "rb2", "page": 10, "type": "Text", "box": [60, 410, 620, 500],
+                "main_text": u"김은혜, 「새만금」, 2012.", "cross_page": {}}
+    refbody3 = {"uid": "rb3", "page": 10, "type": "Text", "box": [60, 510, 620, 600],
+                "main_text": u"문승렬, 「장수」, 2018.", "cross_page": {}}
+    atext2 = {"uid": "at2", "page": 10, "type": "Text", "box": [700, 510, 1100, 620],
+              "main_text": "Third line.", "cross_page": {}}
+    pdata2 = {9: {"w": 1241, "h": 1754,
+                  "unified": [refhead, head2, subhead, ten, abody, atext2, refbody, refbody2, refbody3]}}
+    text2, uids2 = _collect_abstract(pdata2, list(range(10)), head2, skip_fold=_fold(
+        "A Glocal Cultural History of Bakery"))
+    ok3 = text2 == ("This study reinterprets the cultural history.\nSecond line of abstract."
+                    "\nThird line.") and uids2 == ["ab", "at2"]
+    # 4) 韩文 markdown 加粗头同块(13563525 '**국문요약** 본고는…'): 剥头取余行, 遇 핵심어 止
+    mb = {"uid": "mk", "page": 1, "type": "Text", "box": [10, 300, 900, 500],
+          "main_text": u"**국문요약** 본고는 군산 이성당의 80년을 통해 외래의 표준이 지역의 "
+                       u"현실과 만나 정착하는 양상을 추적했다.\n핵심어\t 이성당, 군산",
+          "cross_page": {}}
+    found_line = _ABS_BOLD_KO.match(u"**국문요약** 본고는")
+    ok4 = bool(found_line) and \
+        _ABS_BOLD_KO.sub("", u"**국문요약** 본고는 군산").strip() == u"본고는 군산" and \
+        not _ABS_BOLD_KO.match(u"**관련법령** 본문")
+    for i, ok in enumerate((ok1, ok2, ok3, ok4), 1):
         if not ok:
             print("FAIL [abs case %d]" % i)
-    print("abs selftest: %d/2 PASS" % (ok1 + ok2))
-    return ok1 and ok2
+    print("abs selftest: %d/4 PASS" % (ok1 + ok2 + ok3 + ok4))
+    return ok1 and ok2 and ok3 and ok4
 
 
 if __name__ == "__main__":

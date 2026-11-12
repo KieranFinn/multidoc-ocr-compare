@@ -511,7 +511,7 @@ def preserve_raw(src, rawd):
 
 def fetch_paddle_api(pdf_path, out_dir):
     """PaddleOCR 云端 API: 提交->轮询->转换。产物: page_N.json(归一化块)+page_N.md+api_result.jsonl。
-    需 channels.json 配置 "paddle_api": {"token": "...", "model": "PaddleOCR-VL"}。返回产物目录或 None。"""
+    需 channels.json 配置 "paddle_api": {"token": "...", "model": "PaddleOCR-VL-1.6"}。返回产物目录或 None。"""
     try:
         cfg = load_cfg()
     except Exception:
@@ -523,7 +523,7 @@ def fetch_paddle_api(pdf_path, out_dir):
     import ssl, urllib.request
     ctx = ssl._create_unverified_context()  # 服务端证书链缺AKI, 严格校验不过(浏览器宽松可通过)
     base = meta.get("base", "https://paddleocr.aistudio-app.com")
-    model = meta.get("model", "PaddleOCR-VL")
+    model = meta.get("model", "PaddleOCR-VL-1.6")
     max_wait = int(meta.get("timeout", 900))
 
     def http(req, timeout=60):

@@ -100,6 +100,32 @@ def md2html(md):
     flush()
     return "\n".join(out).replace("\ufffd", '<span class="bad">�</span>')
 
+_JS_CORE = r"""
+var META=@@DATA@@, pinned=null;
+function act(id,on){var e=document.querySelectorAll('[data-b="'+id+'"]');for(var k=0;k<e.length;k++){if(on)e[k].classList.add('on');else e[k].classList.remove('on');}}
+function stat(id){var p=id.split('_');var el=document.getElementById('st_p'+p[1]);if(el&&META[id])el.textContent=' '+p[0]+' · 块 '+p[2]+' · '+META[id].cat+' · '+META[id].txt.replace(/\s+/g,' ').slice(0,40);}
+document.addEventListener('mouseover',function(e){
+ var eye=e.target.closest?e.target.closest('.eye'):null;
+ if(eye){clearTimeout(ghide);fillMasks(eye.dataset.g,eye.closest('section'));return;}
+ scheduleHide();
+ var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,true);stat(t.dataset.b);});
+document.addEventListener('mouseout',function(e){
+ var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,false);});
+document.addEventListener('click',function(e){
+ var eye=e.target.closest?e.target.closest('.eye'):null;
+ if(eye){act(pinned,false);pinned=(pinned===eye.dataset.g)?null:eye.dataset.g;
+  if(pinned)showPinned();else hideAllMasks();return;}
+ var t=e.target.closest?e.target.closest('[data-b]'):null;
+ if(pinned&&(!t||t.dataset.b!==pinned)){act(pinned,false);
+  if(document.querySelector('.eye[data-g="'+pinned+'"]'))hideAllMasks();pinned=null;}
+ if(!t)return;
+ pinned=t.dataset.b;act(pinned,true);stat(pinned);});
+document.addEventListener('click',function(e){var j=e.target.closest?e.target.closest('.jump'):null;if(!j)return;e.preventDefault();
+ var el=document.getElementById(j.dataset.t);if(!el)return;el.scrollIntoView({block:'center',behavior:'smooth'});
+ var id=el.dataset.b;act(id,true);setTimeout(function(){if(pinned!==id)act(id,false);},1600);});
+"""
+
+
 VIEWER_TMPL = u"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <title>@@TITLE@@</title>
 <style>
@@ -117,7 +143,7 @@ section{margin:20px 0}h2{font-size:15px;color:#374151;border-left:4px solid #256
 .imgw{position:relative}
 .imgw img{width:100%;display:block}
 .imgw svg{position:absolute;left:0;top:0;width:100%;height:100%}
-.r{fill-opacity:.14;stroke-width:2.4;stroke-opacity:.9;cursor:pointer;vector-effect:non-scaling-stroke}
+.r{fill-opacity:.14;stroke-width:1.2,stroke-opacity:.9;cursor:pointer;vector-effect:non-scaling-stroke}
 .r.txt{fill:#6b7280;stroke:#6b7280}.r.sec{fill:#2563eb;stroke:#2563eb}
 .r.ftn{fill:#d97706;stroke:#d97706}.r.pic{fill:#7c3aed;stroke:#7c3aed}
 .r.cap{fill:#0891b2;stroke:#0891b2}.r.hd,.r.ft,.r.pn{fill:none;stroke:#dc2626;stroke-dasharray:5 3}
@@ -145,31 +171,26 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 </header>
 @@BODY@@
 <script>
-var META=@@DATA@@, pinned=null;
-function act(id,on){var e=document.querySelectorAll('[data-b="'+id+'"]');for(var k=0;k<e.length;k++){if(on)e[k].classList.add('on');else e[k].classList.remove('on');}}
-function stat(id){var p=id.split('_')[0];var el=document.getElementById('st_p'+p);if(el&&META[id])el.textContent=' 块 '+id.split('_')[1]+' · '+META[id].cat+' · '+META[id].txt.replace(/\\s+/g,' ').slice(0,40);}
-document.addEventListener('mouseover',function(e){var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,true);stat(t.dataset.b);});
-document.addEventListener('mouseout',function(e){var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,false);});
-document.addEventListener('click',function(e){var t=e.target.closest?e.target.closest('[data-b]'):null;if(pinned){act(pinned,false);if(!t){pinned=null;return;}}if(t){pinned=t.dataset.b;act(pinned,true);stat(pinned);}});
-document.addEventListener('click',function(e){var j=e.target.closest?e.target.closest('.jump'):null;if(!j)return;e.preventDefault();
- var el=document.getElementById(j.dataset.t);if(!el)return;el.scrollIntoView({block:'center'});
- var id=el.dataset.b;act(id,true);setTimeout(function(){if(pinned!==id)act(id,false);},1600);});
+@@CORE@@
+function scheduleHide(){}
+function hideAllMasks(){}
+function showPinned(){}
 </script>
 </body></html>"""
 
 _TAB_BAD = re.compile(r"</?(script|style|iframe|object|embed|form|button|a|link|meta)\b[^>]*>", re.I)
 _TAB_ON = re.compile(r"\son\w+\s*=\s*(\"[^\"]*\"|'[^']*'|[^\s>]+)", re.I)
 
-_BLK_TAG_OK = re.compile(r"&lt;(/?(?:sub|sup|b|i)(?:\s+class=\"fr\")?\s*/?)&gt;")
+_BLK_TAG_OK = re.compile(r"&lt;(/?(?:sub|sup|b|i|dive)(?:\s+class=\"fr\")?\s*/?)&gt;", re.I)
 
 def _blk_html(t):
-    """正文块展示层: texlite 转行内公式 -> 全转义消毒 -> 白名单标签(sub/sup/b/i/br)放行 -> md 强调/换行。
-    源文本自带的 <sub>/<sup>(MinerU/Paddle 已有 HTML)借此按原意渲染, 其余标签一律转义显示。"""
+    """正文块展示层: texlite 转行内公式 -> 全转义消毒 -> 白名单标签(sub/sup/b/i/dive/br)放行 -> md 强调/换行。
+    源文本自带的 <sub>/<sup>/<DIVE>(MinerU/Paddle 已有 HTML)借此按原意渲染, 其余标签一律转义显示。"""
     e = html.escape(texlite(t), quote=False)
     e = _BLK_TAG_OK.sub(r"<\1>", e)
     e = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", e)
     e = re.sub(r"\*(.+?)\*", r"<i>\1</i>", e)
-    return e.replace("\n", "<br/>").replace("\ufffd", '<span class="bad">\ufffd</span>')
+    return e.replace("&amp;frasl;", "&frasl;").replace("\n", "<br/>").replace("\ufffd", '<span class="bad">\ufffd</span>')
 
 
 _CMP_DOT = {"mineru": "m", "dots": "d", "paddle": "p"}
@@ -347,7 +368,7 @@ def build_viewer(out_fp, title, sizes, per_page=None, md_text=None, calib_note=N
         body_html = '<div class="wrap">%s</div>' % "\n".join(secs)
     else:
         body_html = '<div class="fullmd">%s</div>' % md2html(md_text)
-    v = VIEWER_TMPL.replace("@@TITLE@@", title).replace("@@NAV@@", nav)
+    v = VIEWER_TMPL.replace("@@CORE@@", _JS_CORE).replace("@@TITLE@@", title).replace("@@NAV@@", nav)
     v = v.replace("@@LAYBTN@@", "")
     v = v.replace("@@BODY@@", body_html).replace("@@DATA@@", json.dumps(data, ensure_ascii=False))
     if calib_note:
@@ -377,16 +398,11 @@ body.boxov .imgw .r.umb,body.boxov .imgw .r.um{opacity:1}   /* 裁决1(§47): LA
 .mfh{font-size:11px;color:#6b7280;font-weight:bold;margin:6px 0 3px;border-top:1px solid #e5e7eb;padding-top:5px}
 .mfg:first-child .mfh{border-top:none;margin-top:0;padding-top:0}
 .mf{padding:3px 6px;margin:2px 0;border-radius:5px;cursor:pointer;background:#fafafa;border-left:3px solid #e5e7eb}
-.mfdrawer{background:#f8fafc;border:1px solid #cbd5e1;border-radius:6px;padding:6px 8px;font-size:11px;line-height:1.55;max-height:300px;overflow:auto}
-.mfdrawer .mfpane{border-bottom:1px dashed #e2e8f0;padding:3px 0}
-.mfdrawer .mfpane:last-child{border-bottom:0}
-.mfdrawer h5{margin:2px 0;font-size:11px;color:#334155}
-.mfdrawer table{width:100%;font-size:11px}
-.mfdrawer p{margin:2px 0}
 .mf:hover{background:#fef9c3}
 .mf .md{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
 .mf.high{border-left-color:#16a34a}.mf.mid{border-left-color:#d97706}.mf.low{border-left-color:#dc2626}
 .mf.high .md{background:#16a34a}.mf.mid .md{background:#d97706}.mf.low .md{background:#dc2626}
+.mf .esl{color:#6b7280;font-size:11px}
 .mf .lk{color:#2563eb;font-size:11px;margin-left:6px}
 .mft{font-size:12px;line-height:1.6;color:#374151;word-break:break-word}
 .mf table{border-collapse:collapse;width:100%;font-size:11px;table-layout:fixed}
@@ -394,6 +410,7 @@ body.boxov .imgw .r.umb,body.boxov .imgw .r.um{opacity:1}   /* 裁决1(§47): LA
 .mf td.cnum{white-space:nowrap;width:26px}
 .mfg table{border-collapse:collapse;width:100%;font-size:11px;table-layout:fixed}
 .mfg table.refs td{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;word-break:normal}
+.mfg table.refs td.rawtext{white-space:pre-wrap;overflow:visible;word-break:break-word}
 .mfg table.cspt td{white-space:normal;word-break:break-word}   /* 引文句句子换行, 引文高亮不再被裁掉 */
 .mftag{display:inline-block;font-size:9px;color:#6b7280;border:1px solid #e5e7eb;border-radius:3px;padding:0 3px;margin-right:4px;vertical-align:1px}
 .mf tr:hover{background:#fef9c3}
@@ -412,7 +429,7 @@ details.mfd summary{cursor:pointer;color:#6b7280;font-size:11px}
 .r.ftn{fill:#d97706;stroke:#d97706}.r.pic{fill:#7c3aed;stroke:#7c3aed}
 .r.cap{fill:#0891b2;stroke:#0891b2}.r.hd,.r.ft,.r.pn{fill:none;stroke:#dc2626;stroke-dasharray:5 3}
 .r.tbl{fill:#059669;stroke:#059669}.r.fm{fill:#db2777;stroke:#db2777}
-.r.on{opacity:1;fill-opacity:.38;stroke-opacity:1;stroke-width:3.2}
+.r.on{opacity:1;fill-opacity:.38;stroke-opacity:1;stroke-width:2}
 .txt{padding:8px 10px;max-height:640px;overflow:auto;font-size:13px;line-height:1.75}
 .blk table{border-collapse:collapse;margin:4px 0;font-size:12px}.blk td,.blk th{border:1px solid #d1d5db;padding:2px 6px}
 .blk{border-left:4px solid #e5e7eb;padding:4px 8px;margin:4px 0;border-radius:0 6px 6px 0;cursor:pointer;background:#fafafa}
@@ -438,15 +455,18 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 .eye.ll{background:rgba(220,38,38,.92);border-color:#fecaca}.eye.ll:hover,.eye.ll.pin{background:#ef4444}
 .eye.lc{background:rgba(124,58,237,.92);border-color:#ddd6fe}.eye.lc:hover,.eye.lc.pin{background:#8b5cf6}
 .eye.lo{background:rgba(37,99,235,.92);border-color:#bfdbfe}.eye.lo:hover,.eye.lo.pin{background:#3b82f6}
-.r.um{fill:none;stroke:#111827;stroke-width:3;stroke-dasharray:10 5;opacity:.85;pointer-events:none}
-.r.umb{fill:none;stroke:#fff;stroke-width:6;opacity:.9;pointer-events:none}
-.r.cite-target{fill:#fbbf24;fill-opacity:0;stroke:#f59e0b;stroke-width:4;stroke-opacity:0;opacity:0;pointer-events:none}
+.r.um{fill:none;stroke:#111827;stroke-width:1.2;stroke-dasharray:10 5;opacity:0;transition:opacity .15s;pointer-events:none}
+.r.um.on{opacity:.85}   /* 2026-11-10 共识虚线框默认隐, 随遮罩(悬停/钉👁)点亮, 不再常显压扫描图 */
+.r.umb{fill:none;stroke:#fff;stroke-width:2.5;opacity:0;transition:opacity .15s;pointer-events:none}
+.r.umb.on{opacity:.9}
+.r.umb.flash,.r.um.flash{opacity:1}   /* 闪橙框独立于显隐态 */
+.r.cite-target{fill:#fbbf24;fill-opacity:0;stroke:#f59e0b;stroke-width:1.5;stroke-opacity:0;opacity:0;pointer-events:none}
 .r.cite-target.cite-on{opacity:1;fill-opacity:.16;stroke-opacity:1}
-.r.flash{stroke:#f59e0b!important;stroke-width:6;fill:#fbbf24;fill-opacity:.25}   /* 点击跳转后原图块橙框闪烁 */
+.r.flash{stroke:#f59e0b!important;stroke-width:2.5;fill:#fbbf24;fill-opacity:.25;opacity:1}   /* 点击跳转后原图块橙框闪烁 */
 #citepop{display:none;position:fixed;right:16px;bottom:16px;width:360px;max-width:80vw;background:#fff;border:2px solid #f59e0b;border-radius:8px;z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:8px;pointer-events:none}
 #citepoptitle{font-size:12px;font-weight:bold;color:#92400e;margin-bottom:5px}
 #citesvg{display:block;width:100%;height:auto;max-height:60vh;background:#fff}
-#citesvg .cpbox{fill:#fbbf24;fill-opacity:.18;stroke:#f59e0b;stroke-width:8;vector-effect:non-scaling-stroke}
+#citesvg .cpbox{fill:#fbbf24;fill-opacity:.18;stroke:#f59e0b;stroke-width:3;vector-effect:non-scaling-stroke}
 .pmask{position:absolute;left:0;right:0;top:27px;bottom:0;background:#111827;color:#e5e7eb;display:none;z-index:6;padding:10px 12px;font-size:12px;line-height:1.6;overflow:auto;text-align:left;pointer-events:none}
 .pmask h5{margin:0 0 6px;font-size:12px;color:#fff;border-bottom:1px solid #4b5563;padding-bottom:4px}
 .pmask table{border-collapse:collapse;width:100%;margin:4px 0}
@@ -474,19 +494,22 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 </header>
 @@BODY@@
 <script>
-var META=@@DATA@@, pinned=null;
-var GROUPS=@@GROUPS@@, gpin=null, ghide=null;
-var UBOX=@@UBOX@@;
-function act(id,on){var e=document.querySelectorAll('[data-b="'+id+'"]');for(var k=0;k<e.length;k++){if(on)e[k].classList.add('on');else e[k].classList.remove('on');}}
-function stat(id){var p=id.split('_');var el=document.getElementById('st_p'+p[1]);if(el&&META[id])el.textContent=' '+p[0]+' · 块 '+p[2]+' · '+META[id].cat+' · '+META[id].txt.replace(/\\s+/g,' ').slice(0,40);}
-function fillMasks(gid,sec){var g=GROUPS[gid];if(!g)return;var ms=sec.querySelectorAll('.pane:not(.meta) > .pmask');
- for(var k=0;k<ms.length&&k<g.panes.length;k++){ms[k].innerHTML=g.panes[k];ms[k].style.display='block';}}
+@@CORE@@
+var UBOX=@@UBOX@@, ghide=null;
+
+function fillMasks(gid,sec){var u=UBOX[gid];if(!u||!u.panes)return;var panes=u.panes;
+ var ms=sec.querySelectorAll('.pane:not(.meta) > .pmask');
+ for(var k=0;k<ms.length&&k<panes.length;k++){ms[k].innerHTML=panes[k];ms[k].style.display='block';}
+ var umb=sec.querySelector('rect.umb[data-u="'+gid+'"]');
+ if(umb){umb.classList.add('on');var um=umb.nextElementSibling;
+  if(um&&(um.getAttribute('class')||'').split(' ').indexOf('um')>=0)um.classList.add('on');}}
 function hideAllMasks(){var ms=document.querySelectorAll('.pmask');for(var k=0;k<ms.length;k++)ms[k].style.display='none';
- document.querySelectorAll('.eye.pin').forEach(function(x){x.classList.remove('pin');});}
-function showPinned(){if(!gpin)return;hideAllMasks();var eye=document.querySelector('.eye[data-g="'+gpin+'"]');
- if(eye){fillMasks(gpin,eye.closest('section'));eye.classList.add('pin');}}
+ document.querySelectorAll('.eye.pin').forEach(function(x){x.classList.remove('pin');});
+ document.querySelectorAll('rect.um.on,rect.umb.on').forEach(function(r){r.classList.remove('on');});}
+function showPinned(){if(!pinned)return;hideAllMasks();var eye=document.querySelector('.eye[data-g="'+pinned+'"]');
+ if(eye){fillMasks(pinned,eye.closest('section'));eye.classList.add('pin');}}
 function scheduleHide(){if(ghide)clearTimeout(ghide);
- ghide=setTimeout(function(){if(gpin)showPinned();else hideAllMasks();},250);}
+ ghide=setTimeout(function(){if(pinned&&document.querySelector('.eye[data-g="'+pinned+'"]'))showPinned();else hideAllMasks();},250);}
 function citeHover(mf,on){
  var sec=mf.closest('section');
  var target=mf.dataset.e ? 'rect.cite-target[data-e="'+mf.dataset.e+'"]' : 'rect.cite-target[data-u="'+mf.dataset.u+'"]';
@@ -517,67 +540,56 @@ document.addEventListener('mouseout',function(e){
  var mf=e.target.closest?e.target.closest('.refs .mf[data-u]'):null;
  if(mf&&(!e.relatedTarget||!mf.contains(e.relatedTarget)))citeHover(mf,false);
 });
-document.addEventListener('mouseover',function(e){
- var eye=e.target.closest?e.target.closest('.eye'):null;
- if(eye){clearTimeout(ghide);fillMasks(eye.dataset.g,eye.closest('section'));return;}
- scheduleHide();
- var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,true);stat(t.dataset.b);});
-document.addEventListener('mouseout',function(e){
- var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,false);});
-document.addEventListener('click',function(e){
- var eye=e.target.closest?e.target.closest('.eye'):null;
- if(eye){gpin=(gpin===eye.dataset.g)?null:eye.dataset.g;
-  if(gpin)showPinned();else hideAllMasks();return;}
- if(gpin){gpin=null;hideAllMasks();}
- var t=e.target.closest?e.target.closest('[data-b]'):null;if(pinned){act(pinned,false);if(!t){pinned=null;return;}}if(t){pinned=t.dataset.b;act(pinned,true);stat(pinned);}});
-document.addEventListener('click',function(e){var j=e.target.closest?e.target.closest('.jump'):null;if(!j)return;e.preventDefault();
- var el=document.getElementById(j.dataset.t);if(!el)return;el.scrollIntoView({block:'center'});
- var id=el.dataset.b;act(id,true);setTimeout(function(){if(pinned!==id)act(id,false);},1600);});
+function centerBlock(sec,fracY){
+ if(!sec)return;
+ var imgw=sec.querySelector('.imgw');if(!imgw)return;
+ var rc=imgw.getBoundingClientRect();
+ if(rc.height<=0)return;
+ var top=rc.top+window.pageYOffset+fracY*rc.height-window.innerHeight/2;
+ window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
+}
+function _fracY(svg,y,h){
+ var H=(svg&&svg.viewBox&&svg.viewBox.baseVal&&svg.viewBox.baseVal.height)||0;
+ return H?(y+h/2)/H:0.3;
+}
 function flashAt(r){
  var sec=r.closest('section');if(!sec)return;
- sec.scrollIntoView({block:'center'});
- var imgw=sec.querySelector('.imgw');
- if(imgw){var y=parseFloat(r.getAttribute('y'))||0,h=parseFloat(r.getAttribute('height'))||0;
-  imgw.scrollTop=Math.max(0,y+h/2-imgw.clientHeight/2);}
+ centerBlock(sec,_fracY(r.ownerSVGElement,parseFloat(r.getAttribute('y'))||0,
+                         parseFloat(r.getAttribute('height'))||0));
  r.classList.add('flash');
  setTimeout(function(){r.classList.remove('flash');},1600);
 }
 function jumpToUid(uid){
- var b=UBOX[uid];if(!b)return false;
- var sec=document.getElementById('p'+b[0]);if(!sec)return false;
- sec.scrollIntoView({block:'center'});
+ var u=UBOX[uid];if(!u||!u.box)return false;
+ var bx=u.box;
+ var sec=document.getElementById('p'+bx[0]);if(!sec)return false;
  var imgw=sec.querySelector('.imgw');
- if(imgw){
-  imgw.scrollTop=Math.max(0,(b[2]+b[4])/2-imgw.clientHeight/2);
-  var svg=imgw.querySelector('svg');
-  if(svg){
-   var rc=document.createElementNS('http://www.w3.org/2000/svg','rect');
-   rc.setAttribute('class','r umb flash');
-   rc.setAttribute('x',b[1]);rc.setAttribute('y',b[2]);
-   rc.setAttribute('width',Math.max(2,b[3]-b[1]));rc.setAttribute('height',Math.max(2,b[4]-b[2]));
-   svg.appendChild(rc);
-   setTimeout(function(){if(rc.parentNode)rc.parentNode.removeChild(rc);},1600);
-  }
+ var svg=imgw?imgw.querySelector('svg'):null;
+ centerBlock(sec,_fracY(svg,bx[2],bx[4]-bx[2]));
+ if(svg){
+  var rc=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  rc.setAttribute('class','r umb flash');
+  rc.setAttribute('x',bx[1]);rc.setAttribute('y',bx[2]);
+  rc.setAttribute('width',Math.max(2,bx[3]-bx[1]));rc.setAttribute('height',Math.max(2,bx[4]-bx[2]));
+  svg.appendChild(rc);
+  setTimeout(function(){if(rc.parentNode)rc.parentNode.removeChild(rc);},1600);
  }
  return true;
 }
 document.addEventListener('click',function(e){
  var mf=e.target.closest?e.target.closest('.mf'):null;if(!mf)return;
- document.querySelectorAll('.mfdrawer').forEach(function(d){d.remove();});
- if(mf.dataset.u){var sec=mf.closest('section');
-  var eye=sec.querySelector('.eye[data-g="'+mf.dataset.u+'"]');
-  if(eye){gpin=(gpin===mf.dataset.u)?null:mf.dataset.u;if(gpin)showPinned();else hideAllMasks();
-   if(gpin){var g=GROUPS[mf.dataset.u],d=document.createElement('div');d.className='mfdrawer';
-    d.innerHTML=(g&&g.panes)?g.panes.map(function(p){return '<div class="mfpane">'+p+'</div>';}).join('')
-                            :'无遮罩数据(该 unified 对象未出眼); 行色条/悬浮 tooltip 仍有效';
-    if(mf.tagName==='TR'){var tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.appendChild(d);tr.appendChild(td);mf.parentNode.insertBefore(tr,mf.nextSibling);}
-    else{mf.parentNode.insertBefore(d,mf.nextSibling);}}
-   return;}
-  if(mf.dataset.e){var r1=document.querySelector('section rect.cite-target[data-e="'+mf.dataset.e+'"]');if(r1){flashAt(r1);return;}}
-  if(jumpToUid(mf.dataset.u))return;
-  var rs=sec.querySelectorAll('rect[data-u="'+mf.dataset.u+'"]');
-  rs.forEach(function(r){r.classList.add('on');r.classList.add('cite-on');
-   setTimeout(function(){r.classList.remove('on');r.classList.remove('cite-on');},1600);});}});
+ act(pinned,false);pinned=null;
+ clearTimeout(ghide);
+ hideAllMasks();
+ var sec=mf.closest('section');
+ if(mf.dataset.e){var r1=document.querySelector('section rect.cite-target[data-e="'+mf.dataset.e+'"]');if(r1){flashAt(r1);hintCentered(sec,mf.dataset.u);return;}}
+ if(mf.dataset.u&&jumpToUid(mf.dataset.u))hintCentered(sec,mf.dataset.u);
+});
+function hintCentered(sec,uid){
+ if(!sec||!uid)return;
+ var st=document.getElementById('st_'+sec.id);
+ if(st) st.textContent=' 源块位置已居中 · '+uid+'（橙框闪烁处）';
+}
 var lb=document.getElementById('laybtn');
 if(lb){lb.onclick=function(){document.body.classList.toggle('boxov');lb.classList.toggle('on');};
  if(location.hash==='#meta'){document.body.classList.add('boxov');lb.classList.add('on');}}
@@ -708,6 +720,21 @@ def _unified_group_panes(u, chs):
 
 
 
+def _esc(s):
+    """metadata 面板展示转义(总览/横带共用)。"""
+    return html.escape(str(s if s is not None else ""), quote=False)
+
+
+def _mf_row(lv, uid, inner):
+    """metadata 行(总览/本页横带共用, 2026-11-10 收敛双份闭包): 置信色条 + 可选证据 uid 锚。"""
+    u = ' data-u="%s"' % html.escape(str(uid), quote=True) if uid else ""
+    return '<div class="mf %s"%s>%s</div>' % (lv, u, inner)
+
+
+def _mf_dot():
+    return '<i class="md"></i>'
+
+
 def _evidence_key(kind, item):
     text = item.get("raw") or item.get("sentence") or item.get("title") or ""
     return hashlib.sha256((kind + "\0" + text).encode("utf-8")).hexdigest()[:16]
@@ -754,14 +781,7 @@ def _meta_cell(meta, pno, audit=None, choices=None):
         return ""
     grp = []
 
-    def row(lv, uid, inner):
-        return ('<div class="mf %s" data-u="%s">%s</div>'
-                % (lv, html.escape(str(uid or ""), quote=True), inner))
-
-    def dot(lv):
-        return '<i class="md"></i>'
-
-    esc = lambda s: html.escape(str(s if s is not None else ""), quote=False)
+    esc = _esc
     # 批次4d 双渠道选择映射(raw_head 优先, uid/index 兜底)
     ch_by_rh, ch_by_uid, ch_by_idx = {}, {}, {}
     for c in (choices or []):
@@ -771,12 +791,12 @@ def _meta_cell(meta, pno, audit=None, choices=None):
     # —— 题录 ——
     t = meta.get("title") or {}
     if t.get("value") and (t.get("page") or 1) == pno:
-        grp.append(("题录", row((t.get("confidence") or {}).get("level", "mid"), t.get("uid"),
-                                 dot(0) + "<b>标题</b> " + esc(t["value"][:90]))))
+        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), t.get("uid"),
+                                 _mf_dot() + "<b>标题</b> " + esc(t["value"][:90]))))
     te = meta.get("title_en") or {}
     if te.get("value") and (te.get("page") or 1) == pno:
-        grp.append(("题录", row((te.get("confidence") or {}).get("level", "mid"), te.get("uid"),
-                                 dot(0) + "<b>标题(英)</b> " + esc(te["value"][:90]))))
+        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), te.get("uid"),
+                                 _mf_dot() + "<b>标题(英)</b> " + esc(te["value"][:90]))))
     aus = [a for a in (meta.get("authors") or []) if (a.get("page") or 1) == pno]
     if aus:
         rows = []
@@ -788,23 +808,23 @@ def _meta_cell(meta, pno, audit=None, choices=None):
                 nm += " [%s]" % a["role"]
             af = a.get("affiliation") or ""
             rows.append("<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc(af[:40])))
-        grp.append(("题录", row("mid", aus[0].get("uid"),
-                                 dot(0) + "<b>作者</b><table>%s</table>" % "".join(rows))))
+        grp.append(("题录", _mf_row("mid", aus[0].get("uid"),
+                                 _mf_dot() + "<b>作者</b><table>%s</table>" % "".join(rows))))
     affs = meta.get("affiliations") or []
     if pno == 1 and affs:
-        grp.append(("题录", row("mid", None, dot(0) + "<b>机构</b> " + esc(" / ".join(affs)[:110]))))
+        grp.append(("题录", _mf_row("mid", None, _mf_dot() + "<b>机构</b> " + esc(" / ".join(affs)[:110]))))
     # —— 摘要 ——
-    for k, lab in (("abstract", "摘要(韩)"), ("abstract_en", "摘要(英)")):
+    for k, lab in (("abstract", "摘要"), ("abstract_en", "摘要(英)")):
         f = meta.get(k) or {}
         if f.get("value") and (f.get("page") or 1) == pno:
             v = f["value"]
-            inner = dot(0) + "<b>%s</b> " % lab
+            inner = _mf_dot() + "<b>%s</b> " % lab
             if len(v) > 140:
                 inner += ('<details class="mfd"><summary>%s…(全文 %d 字)</summary>'
                           '<div class="mft">%s</div></details>' % (_texesc(v[:140]), len(v), _texesc(v)))
             else:
                 inner += _texesc(v)
-            grp.append(("摘要", row((f.get("confidence") or {}).get("level", "mid"),
+            grp.append(("摘要", _mf_row((f.get("confidence") or {}).get("level", "mid"),
                                     (f.get("confidence") or {}).get("uid_head"), inner)))
     # —— 文献(本页条目) + 脚注引文(本页, --stage frefs 独立键 footnote_refs) ——
     def _raw_head(s):
@@ -868,6 +888,20 @@ def _meta_cell(meta, pno, audit=None, choices=None):
     cspt_head = ('<table class="refs cspt"><colgroup><col style="width:52px">'
                  '<col style="width:20%"><col style="width:46px"><col>'
                  '<col style="width:26%"></colgroup>')
+    def _raw_rows(items, kind):
+        rows = []
+        for item in items:
+            text = item.get("raw") or (item.get("title") if kind == "ref" else "") or "(无原文)"
+            tip = re.sub(r"</?(?:sub|sup|b|i|dive)\b[^>]*>", "", text, flags=re.I)
+            lv = (item.get("confidence") or {}).get("level", "low")
+            rows.append('<tr class="mf %s" data-u="%s" data-e="%s" title="%s"><td class="cnum">'
+                        '<i class="md"></i>#%s</td><td colspan="4" class="rawtext">'
+                        '<span class="mftag">原文</span>%s</td></tr>'
+                        % (lv, html.escape(str(item.get("uid") or ""), quote=True),
+                           _evidence_key(kind, item), html.escape(tip[:400], quote=True),
+                           item.get("num") if item.get("num") is not None else "-", _blk_html(text)))
+        return rows
+
     refs = [r for r in (meta.get("references") or []) if r.get("page") == pno]
     if refs:
         val = (audit or {}).get("ref_validation") or {}
@@ -877,13 +911,14 @@ def _meta_cell(meta, pno, audit=None, choices=None):
             badge = '<span class="mbadge %s">编号连续%s</span>' % ("ok" if seq_ok else "bad",
                                                                     "✓" if seq_ok else "✗")
         grp.append(("文献%s" % badge,
-                    dot(0) + '<b>本页文献 %d 条</b>' % len(refs)
-                    + tbl_head + "".join(_ref_rows(refs, au_by_uid, "ref")) + "</table>"))
+                    _mf_dot() + '<b>本页文献 %d 条(原文)</b>' % len(refs)
+                    + tbl_head + "".join(_raw_rows(refs, "ref")) + "</table>"))
+
     fnrefs = [r for r in (meta.get("footnote_refs") or []) if r.get("page") == pno]
     if fnrefs:
         grp.append(("脚注",
-                    dot(0) + '<b>本页脚注 %d 条(frefs)</b>' % len(fnrefs)
-                    + tbl_head + "".join(_ref_rows(fnrefs, au_by_uid, "fref")) + "</table>"))
+                    _mf_dot() + '<b>本页脚注 %d 条(原文)</b>' % len(fnrefs)
+                    + tbl_head + "".join(_raw_rows(fnrefs, "fref")) + "</table>"))
     # —— 行内引文句(--stage cspan): 同段同句合并展示; 引文高亮+对号徽标; hover=原图块框 ——
     cspans = [s for s in (meta.get("citation_spans") or []) if s.get("page") == pno]
     if cspans:
@@ -940,7 +975,7 @@ def _meta_cell(meta, pno, audit=None, choices=None):
         units = ('<span class="mftag">%d 处引文</span>' % len(cspans)
                  if len(groups) != len(cspans) else "")
         grp.append(("引文句",
-                    dot(0) + '<b>本页引文句 %d 条(cspan)</b>' % len(groups) + units
+                    _mf_dot() + '<b>本页引文句 %d 条</b>' % len(groups) + units
                     + cspt_head + "".join(crows) + "</table>"))
     if not grp:
         return ""
@@ -955,21 +990,14 @@ def _meta_cell(meta, pno, audit=None, choices=None):
            '<div class="mfw">%s</div><div class="pmask"></div></div>' % "".join(out)
 
 
-def _meta_overview(meta, audit=None):
+def _meta_overview(meta, audit=None, ents=None):
     """metadata 总览横带(只挂第 1 页 section): 全部抽取字段一览——题录/来源(期刊年卷期页)/关键词/
     摘要(折叠全文)/三类大列表计数(refs/frefs/cspan 全库分布+徽标, 不展开, 明细在每页横带)。
     有 uid 的字段行保留 data-u, 点击=钉第 1 页该块证据(与每页横带同一机制)。"""
     import collections
     if not meta:
         return ""
-    esc = lambda s: html.escape(str(s if s is not None else ""), quote=False)
-
-    def row(lv, uid, inner):
-        u = ' data-u="%s"' % html.escape(str(uid), quote=True) if uid else ""
-        return '<div class="mf %s"%s>%s</div>' % (lv, u, inner)
-
-    def dot():
-        return '<i class="md"></i>'
+    esc = _esc
 
     def dist_text(cnt):
         return " / ".join("%s %d" % (k, cnt[k]) for k in ("high", "mid", "low") if cnt.get(k))
@@ -980,22 +1008,17 @@ def _meta_overview(meta, audit=None):
 
     grp = []
     # —— 题录 ——
-    def _p1_uid(f):
-        """字段 evidence 在第 1 页才给 data-u(点击钉证据); 否则 None——跨页 uid 在首页
-        section 里无对应眼/共识框, 点了没反应, 不如不给。"""
-        return f.get("uid") if (f.get("page") or 1) == 1 else None
-
     def _pg_hint(f):
         return "" if (f.get("page") or 1) == 1 else '<span class="mftag">证据在第 %d 页</span>' % f["page"]
 
     t = meta.get("title") or {}
     if t.get("value"):
-        grp.append(("题录", row((t.get("confidence") or {}).get("level", "mid"), _p1_uid(t),
-                                 dot() + "<b>标题</b> " + _pg_hint(t) + esc(t["value"][:120]))))
+        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), t.get("uid"),
+                                 _mf_dot() + "<b>标题</b> " + _pg_hint(t) + esc(t["value"][:120]))))
     te = meta.get("title_en") or {}
     if te.get("value"):
-        grp.append(("题录", row((te.get("confidence") or {}).get("level", "mid"), _p1_uid(te),
-                                 dot() + "<b>标题(英)</b> " + _pg_hint(te) + esc(te["value"][:120]))))
+        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), te.get("uid"),
+                                 _mf_dot() + "<b>标题(英)</b> " + _pg_hint(te) + esc(te["value"][:120]))))
     aus = meta.get("authors") or []
     if aus:
         trs = []
@@ -1006,37 +1029,39 @@ def _meta_overview(meta, audit=None):
             if a.get("role"):
                 nm += " [%s]" % a["role"]
             trs.append("<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc((a.get("affiliation") or "")[:48])))
-        grp.append(("题录", row("mid", aus[0].get("uid"),
-                                 dot() + "<b>作者 %d 人</b><table>%s</table>" % (len(aus), "".join(trs)))))
+        grp.append(("题录", _mf_row("mid", aus[0].get("uid"),
+                                 _mf_dot() + "<b>作者 %d 人</b><table>%s</table>" % (len(aus), "".join(trs)))))
     affs = meta.get("affiliations") or []
     if affs:
-        grp.append(("题录", row("mid", None, dot() + "<b>机构 %d 个</b> " % len(affs)
+        grp.append(("题录", _mf_row("mid", None, _mf_dot() + "<b>机构 %d 个</b> " % len(affs)
                                  + esc(" / ".join(affs)[:160]))))
     # —— 来源(--stage issue: 本篇期刊/年/卷/期/页) ——
     for k, lab in (("journal", u"期刊"), ("journal_en", u"期刊(英)"), ("year", u"年"),
                    ("volume", u"卷"), ("issue", u"期"), ("pages", u"页")):
         f = meta.get(k) or {}
         if f.get("value") is not None:
-            grp.append(("来源", row((f.get("confidence") or {}).get("level", "mid"), None,
-                                     dot() + "<b>%s</b> %s" % (lab, esc(f["value"])))))
+            # 行带来源行 uid(issue 阶段 _uid0 回填; 页码推断兜底无锚则 None 不可跳)
+            grp.append(("来源", _mf_row((f.get("confidence") or {}).get("level", "mid"),
+                                    f.get("uid"),
+                                    _mf_dot() + "<b>%s</b> %s" % (lab, esc(f["value"])))))
     # —— 关键词(韩/英双字段, 2026-11-09 用户拍板: 有双板的都提取) ——
     # 行带 evidence uid(audit.issue.keywords.source*): 点击=跳到原文关键词行所在块并橙框闪烁。
     kw_src = (((audit or {}).get("issue") or {}).get("keywords") or {})
     kws = meta.get("keywords") or []
     if kws:
-        grp.append(("关键词", row("mid", (kw_src.get("source") or {}).get("uid"),
-                                  dot() + "<b>关键词 %d 个</b> " % len(kws) + esc(", ".join(kws)[:200]))))
+        grp.append(("关键词", _mf_row("mid", (kw_src.get("source") or {}).get("uid"),
+                                  _mf_dot() + "<b>关键词 %d 个</b> " % len(kws) + esc(", ".join(kws)[:200]))))
     kws_en = meta.get("keywords_en") or []
     if kws_en:
-        grp.append(("关键词(英)", row("mid", (kw_src.get("source_en") or {}).get("uid"),
-                                      dot() + "<b>关键词(英) %d 个</b> " % len(kws_en)
-                                      + esc(", ".join(kws_en)[:200]))))
+        grp.append(("关键词", _mf_row("mid", (kw_src.get("source_en") or {}).get("uid"),
+                                  _mf_dot() + "<b>关键词(英) %d 个</b> " % len(kws_en)
+                                  + esc(", ".join(kws_en)[:200]))))
     # —— 摘要(折叠全文) ——
-    for k, lab in (("abstract", u"摘要(韩)"), ("abstract_en", u"摘要(英)")):
+    for k, lab in (("abstract", u"摘要"), ("abstract_en", u"摘要(英)")):
         f = meta.get(k) or {}
         if f.get("value"):
             v = f["value"]
-            inner = dot() + "<b>%s</b> " % lab
+            inner = _mf_dot() + "<b>%s</b> " % lab
             if (f.get("page") or 1) != 1:
                 inner += '<span class="mftag">证据在第 %d 页</span>' % f["page"]
             if len(v) > 140:
@@ -1044,9 +1069,8 @@ def _meta_overview(meta, audit=None):
                           '<div class="mft">%s</div></details>' % (_texesc(v[:140]), len(v), _texesc(v)))
             else:
                 inner += _texesc(v)
-            grp.append(("摘要", row((f.get("confidence") or {}).get("level", "mid"),
-                                    (f.get("confidence") or {}).get("uid_head")
-                                    if (f.get("page") or 1) == 1 else None, inner)))
+            grp.append(("摘要", _mf_row((f.get("confidence") or {}).get("level", "mid"),
+                                    (f.get("confidence") or {}).get("uid_head"), inner)))
     # —— 三类大列表: 全库计数 + 分布(明细在每页横带) ——
     refs = meta.get("references") or []
     if refs:
@@ -1055,14 +1079,14 @@ def _meta_overview(meta, audit=None):
         badge = ('<span class="mbadge %s">编号连续%s</span>' % ("ok" if seq_ok else "bad",
                                                                  u"✓" if seq_ok else u"✗")) if seq_ok is not None else ""
         cnt = collections.Counter((r.get("confidence") or {}).get("level") for r in refs)
-        grp.append(("文献", row("mid", None,
-                                 dot() + "<b>参考文献 %d 条</b>%s %s · %s" % (
+        grp.append(("文献", _mf_row("mid", None,
+                                 _mf_dot() + "<b>参考文献 %d 条</b>%s %s · %s" % (
                                      len(refs), badge, dist_text(cnt), page_span(refs)))))
     fnrefs = meta.get("footnote_refs") or []
     if fnrefs:
         cnt = collections.Counter((r.get("confidence") or {}).get("level") for r in fnrefs)
-        grp.append(("文献", row("mid", None,
-                                 dot() + "<b>脚注 %d 条</b>(frefs) %s · %s" % (
+        grp.append(("文献", _mf_row("mid", None,
+                                 _mf_dot() + "<b>脚注 %d 条</b> %s · %s" % (
                                      len(fnrefs), dist_text(cnt), page_span(fnrefs)))))
     cspans = meta.get("citation_spans") or []
     if cspans:
@@ -1074,9 +1098,26 @@ def _meta_overview(meta, audit=None):
                            for k, n in ck.most_common())
         sentence_count = len(_cspan_sentence_groups(cspans))
         unit_count = " · %d 处引文" % len(cspans) if sentence_count != len(cspans) else ""
-        grp.append(("引文句", row("mid", None,
-                                   dot() + "<b>引文句 %d 条</b>(cspan)%s 对号 %s · %s · %s" % (
+        grp.append(("引文句", _mf_row("mid", None,
+                                   _mf_dot() + "<b>引文句 %d 条</b>%s 对号 %s · %s · %s" % (
                                        sentence_count, unit_count, dist_text(cc), kinds, page_span(cspans)))))
+    if ents:
+        seen = {}
+        for pg in sorted(ents):
+            for uid in sorted(ents[pg], key=str):
+                for it in ents[pg][uid]:
+                    k = (it["kind"], it["name"])
+                    if k in seen:
+                        seen[k]["n"] += 1
+                    else:
+                        seen[k] = {"it": it, "uid": uid, "n": 1}
+        for (kind, name), v in sorted(seen.items(), key=lambda kv: (kv[0][0], str(kv[0][1]))):
+            it = v["it"]
+            ann = u"".join('<span class="mftag">%s</span>' % _ANN_ZH.get(a, _esc(a))
+                           for a in it["ann"])
+            inner = (_mf_dot() + "<b>%s</b> %s <span class=\"esl\">×%d</span>%s"
+                     % (_NER_KIND_ZH.get(kind, _esc(kind)), _esc(name), v["n"], ann))
+            grp.append((u"实体", _mf_row("mid", v["uid"], inner)))
     if not grp:
         return ""
     out, last = [], None
@@ -1091,6 +1132,54 @@ def _meta_overview(meta, audit=None):
 
 
 
+_NER_KIND_ZH = {"funding": u"基金", "software": u"软件", "dataset": u"数据集", "org": u"机构"}
+_ANN_ZH = {"multi_block": u"多块", "multi_occurrence": u"块内多次", "extended": u"已外延",
+           "cross_block": u"跨块", "mention_in_biblio_footnote": u"著录脚注提及"}
+
+
+def _load_ner_lite(out_fp):
+    """ner_lite 实体(2026-11-10 换代, RULES §6): 读 out_llm_trial 产物, 索引 {page1基: {uid: [条目]}}。
+    文件缺失/损坏 = 无实体(None), viewer 行为不变。"""
+    doc_dir = os.path.dirname(os.path.abspath(out_fp))
+    fp = os.path.join(os.path.dirname(os.path.dirname(doc_dir)), "out_llm_trial",
+                      "fds_extract", "ner_lite", os.path.basename(doc_dir), "ner_lite.json")
+    if not os.path.isfile(fp):
+        return None
+    try:
+        recs = json.load(io.open(fp, encoding="utf-8")).get("records") or []
+    except Exception:
+        return None
+    idx = {}
+    for r in recs:
+        for loc in r.get("locations") or []:
+            for s in loc.get("segments") or []:
+                if not s.get("uid"):
+                    continue
+                idx.setdefault(s.get("page"), {}).setdefault(s["uid"], []).append({
+                    "kind": r.get("kind"), "name": r.get("name_model"),
+                    "slice": s.get("slice"), "ann": r.get("annotations") or []})
+    return idx or None
+
+
+def _entity_cell(by_uid):
+    """ner_lite 实体面板: kind 徽标 + 名称 + 原文切片 + 批注; 行点击沿用 .mf[data-u] 定位闪块。"""
+    if not by_uid:
+        return ""
+    rows = []
+    for uid, items in sorted(by_uid.items(), key=lambda kv: str(kv[0])):
+        for it in items:
+            ann = u"".join('<span class="mftag">%s</span>' % _ANN_ZH.get(a, _esc(a))
+                           for a in it["ann"])
+            inner = ("<b>%s</b> %s <span class=\"esl\">%s</span>%s"
+                     % (_NER_KIND_ZH.get(it["kind"], _esc(it["kind"])),
+                        _esc(it["name"]), _esc((it["slice"] or u"")[:80]), ann))
+            rows.append(_mf_row("mid", uid, _mf_dot() + inner))
+    if not rows:
+        return ""
+    return (u'<div class="pane meta ent"><div class="ptitle src">ner_lite 实体'
+            u'（本页 · 点击行=定位源块）</div>%s</div>' % u"".join(rows))
+
+
 def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pages=None, unified_driven=False, meta=None, audit=None, choices=None):
     """1:3 对照查看器: 每页 左原图(叠全部块框) + 右三栏各渠道块列表。
     per_ch = {"mineru": per_page|md字符串|None, ...}; 块 id 带渠道前缀, 同渠道内 rect<->文本联动, 无跨渠道联动。
@@ -1103,6 +1192,7 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
     n = len(sizes)
     nav = "".join('<a href="#p%d">%d</a>' % (i, i + 1) for i in range(n))
     secs, data, groups_json = [], {}, {}
+    ents = _load_ner_lite(out_fp)   # ner_lite 实体(可缺省): per-page 面板, 点击行=定位闪块
     chs = ("mineru", "dots", "paddle")
     for p in range(n):
         W, H = sizes[p]
@@ -1217,15 +1307,16 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
         img_cell = ('<div class="pane"><div class="ptitle src">原文件（区块联动 · 👁=%s）</div>'
                     '<div class="imgw"><img src="pages/page_%d.jpg"/><svg viewBox="0 0 %d %d" preserveAspectRatio="none">%s</svg>%s</div>'
                     '<div class="pmask"></div></div>'
-                    % ("unified 复检项(虚线=共识框)" if unified_pages is not None else "差异分析",
+                    % ("unified 复检项(悬停👁=遮罩+共识框)" if unified_pages is not None else "差异分析",
                        p, W, H, "".join(rects), "".join(eyes)))
         ch_cells = "".join('<div class="pane ch"><div class="ptitle %s">%s</div>%s<div class="pmask"></div></div>'
                            % (ch, {"mineru": "MinerU", "dots": "dots.ocr", "paddle": "PaddleOCR"}[ch], col_html[ch]) for ch in chs)
         ov_cell = ""
         if meta is not None:
             if p == 0:
-                ov_cell = _meta_overview(meta, audit) or ""   # 页面开头: 第 1 页网格首行, 先于原图/渠道栏
+                ov_cell = _meta_overview(meta, audit, ents) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
             ch_cells += _meta_cell(meta, p + 1, audit, choices) or ""
+        ch_cells += _entity_cell((ents or {}).get(p + 1)) or ""
         flag = ""
         if nffd:
             flag += ' <a class="bad jump" data-t="ffd_%s" title="跳到本页首个含错误字符的块">FFFD×%d</a>' % (first_ffd, nffd)
@@ -1233,19 +1324,22 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
             flag += ' <a class="empf jump" data-t="emp_%s" title="跳到本页首个空块">空块×%d</a>' % (first_emp, nemp)
         secs.append('<section id="p%d"><h2>第 %d 页%s <span class="stat" id="st_p%d"></span></h2><div class="grid">%s%s%s</div></section>' % (p, p + 1, flag, p, ov_cell, img_cell, ch_cells))
     v = COMPARE_TMPL.replace("@@TITLE@@", title).replace("@@NAV@@", nav)
+    v = v.replace("@@CORE@@", _JS_CORE)
     v = v.replace("@@LAYBTN@@", ('<button id="laybtn" title="块边界诊断: 叠加显示全部统一对象框(只读叠加, 不切换布局)">'
                                  "块框叠加</button>") if meta is not None else "")
     v = v.replace("@@BODY@@", '<div class="wrap">%s</div>' % "\n".join(secs))
     v = v.replace("@@DATA@@", json.dumps(data, ensure_ascii=False))
-    v = v.replace("@@GROUPS@@", json.dumps(groups_json, ensure_ascii=False))
-    # 全量块坐标表(0基页+框): metadata 条目点击跳转原文块的定位依据——含无眼/无框的
-    # 普通块(review=false 且读法健康时 umb/cite-target 都不画), 非 unified 模式为空表。
+    # 全量块坐标表 {uid: {box, panes?}}: metadata 条目点击跳转定位(box)+复查组遮罩(panes) 并一张表,
+    # 含无眼/无框的普通块(review=false 且读法健康时 umb/cite-target 都不画), 非 unified 模式仅空表。
     ubox = {}
     if unified_pages is not None:
         for p0 in sorted(unified_pages):
             for u in unified_pages[p0] or []:
                 if u.get("uid") and u.get("box"):
-                    ubox[u["uid"]] = [p0] + list(u["box"])
+                    ubox[u["uid"]] = {"box": [p0] + list(u["box"])}
+    for gid, g in groups_json.items():
+        ubox.setdefault(gid, {"box": None})
+        ubox[gid]["panes"] = g["panes"]
     v = v.replace("@@UBOX@@", json.dumps(ubox, ensure_ascii=False))
     with io.open(out_fp, "w", encoding="utf-8") as fh:
         fh.write(v)

@@ -341,7 +341,7 @@ ROLE_WORDS = re.compile(u"(교신저자|제\\s*\\d+\\s*저자|공동저자|책�
 
 DEGREE = re.compile(u"\\((?:문학|이학|교육|법학|정치|경제|역사)?박사\\)")
 
-MARKER_LINE = re.compile(u"^(\\*{1,4}|\\d{1,2}\\)|†|‡|§)\\s*(.+)$", re.S)
+MARKER_LINE = re.compile(u"^(\\*{1,4}|●{1,4}|○{1,4}|\\d{1,2}\\)|†|‡|§)\\s*(.+)$", re.S)
 
 ABS_HEAD_KO = re.compile(u"^(요\\s*약|·?국문\\s*요약|국문\\s*요약|초\\s*록)$")
 

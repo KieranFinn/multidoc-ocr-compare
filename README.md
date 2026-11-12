@@ -313,7 +313,7 @@ omits the column when it is not.
 pipeline.py         main orchestration + compatibility re-exports
 pipeline_io.py      render -> fetch -> archive -> calibrate -> adapt
 viewer.py           single/compare viewers + md2html + metadata panels
-webapp.py app.js    drag & drop workbench (stdlib HTTP server + channel config panel)
+webapp.py app.js dashboard.css   drag & drop workbench (job overview + pipeline/channel status + config panel)
 merge_out.py        per-page merge across channels
 unify.py            cross-engine grouping -> unified/ + summary metrics (frozen)
 metadata.py         structured metadata CLI (11-line shell; implementation lives in metapy/)
