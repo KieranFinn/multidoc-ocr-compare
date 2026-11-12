@@ -109,6 +109,7 @@ python -m http.server -d _attic/examples/demo/out/demo_kr  # 然后打开 /index
 cp channels.local.example.json channels.local.json   # 只填你有的 token，该文件已被 gitignore
 python pipeline.py mypaper.pdf                       # 用上所有有 token（或有缓存 / inbox 产物）的渠道
 python webapp.py                                     # 或者开拖拽工作台：127.0.0.1:8765
+python gui.py                                        # 桌面工作台（tkinter，零依赖，Windows 可双击 启动GUI.bat）
 ```
 
 没有 token、没有缓存、`inbox/` 里也没产物的渠道会被**直接跳过**，不需要显式禁用。先只开 `dots`（它不要 token）是拿到第一次真实运行的最短路径；之后补上 `paddle` / `mineru` 的 token，下一篇文档就会自动用上。
@@ -227,7 +228,8 @@ python ner_lite.py all                     # out/ 下所有带 unified/ 的文�
 pipeline.py        主编排 + 兼容性 re-export
 pipeline_io.py     渲染 -> 抓取 -> 归档 -> 标定 -> 适配
 viewer.py          单渠道 / 对照查看器 + md2html + 元数据面板
-webapp.py app.js dashboard.css   拖拽工作台（任务总览 + 管道/渠道状态 + 渠道配置面板）
+webapp.py app.js dashboard.css   浏览器拖拽工作台（任务总览 + 管道/渠道状态 + 渠道配置面板）
+gui.py 启动GUI.bat  桌面工作台（tkinter，零依赖）：状态从 out/ 派生、历史追加到 gui_runs.jsonl
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
 metadata.py        结构化元数据 CLI（11 行壳；实现在 metapy/）
