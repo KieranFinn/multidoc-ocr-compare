@@ -281,18 +281,92 @@ Outputs go to `out_llm_trial/fds_extract/ner_lite/<doc>/` (`ner_lite.json`, `ner
 `_audit.html`). `viewer_compare.html` shows them as an extra column when the file is present and simply
 omits the column when it is not.
 
+## Stage-level reruns (`stages.py`)
+
+Changing one heuristic upstream should not cost a full OCR run. `stages.py` splits the chain into 15
+stages, each written to depend only on artifacts already on disk, so any subset can be re-run:
+
+```bash
+python stages.py list 13563525        # stage table + what this document can currently run
+python stages.py 13563525 refs,front  # rerun just two metadata stages (seconds)
+python stages.py 13563525 all         # whole chain (same effect as pipeline.main)
+```
+
+| Group | Stages |
+| --- | --- |
+| ① 取数 | `render` (PDF→pages), `acquire` (API/cache/CDP→raw/), `adapt` (raw/→per-channel viewers) |
+| ② 归一 | `merge` (→merged/), `unify` (→unified/) |
+| ③ 元数据 | `m3`, `refs`, `frefs`, `front`, `abs`, `issue`, `cspan` |
+| ④ 实体/呈现 | `ner`, `viewer` (rebuild viewer_compare.html), `index` (rebuild index.html) |
+
+Dependencies are declared per stage and checked before running (`pages`, `raw`, `merged`, `unified`,
+`metadata`): a stage whose upstream artifact is missing is refused with the missing item named, not
+silently skipped. A failing stage stops the rest of the subset. `pipeline.fetch_channels()` and
+`pipeline.write_index()` are shared by `main()` and `stages.py` — one implementation, two entry points.
+
+The desktop workbench puts this behind **one key with two hit zones**: clicking **一键重跑** (anywhere but
+the right-hand `▾`) runs whatever is currently ticked in its stage menu — identical to the menu's own
+"执行选中阶段" — and the `▾` opens that menu (presets / per-group checkboxes). A separate
+**快速重跑(跳NER)** runs the same chain minus `ner`; it exists so a rerun does not re-bill the LLM.
+Stages you did not tick are never run on your behalf — coupled stages are reported, not silently pulled in.
+
+The **QC** column asks one question only: are the required items there? That is title, keywords,
+abstract, authors, affiliation, journal, year, volume, issue, pages, body text and references — plus
+*citation spans or footnotes, either one*. Any miss turns the row red and the cell names what is
+missing (`✘ 2 项 机构/参考文献`). Field confidence is not judged, and the three optional entity kinds
+(dataset / funding / software) never affect the colour. "机构" uses the same three sources as the viewer's
+checklist (`affiliations`, `authors[].affiliation`, or an `org` entity from `ner_lite`); "正文" uses the
+viewer's threshold too (≥500 characters of unified Text/Footnote main text).
+
+That column answers one half of the question. It cannot see a field that is **populated but wrong** — a
+body paragraph in `title`, `['초점','주제','초점']` in `authors`, `Oxford University Press, 2012` in
+`affiliations` all read as green. `metapy/audit_value.py` covers the other half: it judges whether the
+value can stand up, using shape priors (an author name is not a phrase), origin priors (a title never
+closes a sentence), cross-field consistency (an author name cut from the title shows up as a title
+defect) and corpus outliers (a 197-character title against a 15–60 character norm). 31 rules, each
+carrying the document that produced it, each with a positive fixture that must fire and a legitimate
+fixture that must stay silent:
+
+```bash
+python -m metapy.audit_value              # whole corpus, bad + warn only
+python -m metapy.audit_value <doc> --all  # one document, including notes
+python -m metapy.audit_value --selftest   # 14 fixtures, run after every rule change
+python -m metapy.audit_value --html out/_value_audit.html
+```
+
+Current state on the 23-document workspace: `{'ok': 21, 'note': 2}`, no `bad` and no `warn`. The two
+notes are legitimate values (`강원대학교` alongside `강원대학교 경영회계학부`; five co-authors sharing
+one lab), which is why they are notes rather than warnings — a check that cries wolf gets muted.
+
+When the front-matter zone alone misses an affiliation, `metapy/front.py` widens its *input* rather than
+loosening the field: it re-reads the three channels' raw lines (`common.channel_lines()`, backed by
+`merged.json`) and scans only page 1 plus any page carrying an `Author details` / `Authors'
+affiliations` heading — the BMC / SpringerOpen layout, where units sit on the last page and carry LaTeX
+superscripts such as `$ ^{1} $`. Every candidate line must then pass a shape guard (`_looks_affil()`):
+it needs a genuine institutional tail (대학교 / 학과 / 연구소 / University / Institute / …), and must not
+be a running sentence (본고는…, …일환으로…), a publisher (… Press), a paper title, or anything with three
+or more commas. A single line that packs several units is split and each segment re-checked. All of this
+lives inside the `front` stage and never consults `ner_lite`, so recovering an affiliation costs no LLM
+call — on the 23-document workspace every affiliation resolves from `metadata.affiliations` itself, and
+`KCI_FI002542944` has no `ner_lite` product at all yet still reports one.
+
 ## Status and limitations
 
 - Research / engineering tool, not a hosted service. The three cloud channels are third-party services:
   their endpoints and request formats can change at any time, and their terms apply to you.
 - `dots_api.base` defaults to a public community instance; if it disappears, point it at your own
   Gradio 5 deployment (or use `inbox/` with output you already have).
-- **Accuracy is not uniform.** The reference-entry and front-matter heuristics are tuned on a 13-document
-  Korean/Chinese journal corpus and were validated by diffing the checked-in example. Known weak spots
-  (all reproducible on that corpus) are: citation styles where the year is preceded only by a period
-  ("Author. 1999. Title."), all-Hanzi author lines, `N.`-style footnote markers, documents whose
-  reference list shares its last page with an abstract in the other column, and title/author zones on
-  layouts where the abstract begins without a recognisable lead-in. Treat `metadata.json` as a
+- **Accuracy is not uniform, and the residual failures are gaps in the source, not in the parser.** The
+  reference-entry and front-matter heuristics are tuned on the 23-document Korean / English / Chinese
+  journal corpus under `out/`, with the QC column as the acceptance test: 20 of the 23 currently pass every
+  required field. The three that do not are each missing the field in the article itself, confirmed page
+  image by page image — `KCI_FI001004818_2002` has no keywords block, no abstract and no volume statement;
+  `KCI_FI001536751_2000` prints only a title and an author on its front page, and only references plus a
+  correspondence address on its last; `KCI_FI002542944` uses BMC numbering, where `(2019) 43:44` means
+  volume 43 plus article 44 and the journal carries no issue number at all. Filling any of those would mean
+  inventing values. Weak spots that earlier releases listed — all-Hanzi author lines, an abstract with no
+  recognisable lead-in, a reference list sharing its last page with a column of abstract — are now covered
+  by the channel fallback described above rather than by one-off patches. Treat `metadata.json` as a
   high-precision draft: check the confidence level on each field (and cross-check against
   `viewer_compare.html`) before citing.
 - **Entity extraction is recall-limited, not precision-limited.** On the 13-document corpus `ner_lite.py`
@@ -315,6 +389,7 @@ pipeline_io.py      render -> fetch -> archive -> calibrate -> adapt
 viewer.py           single/compare viewers + md2html + metadata panels
 webapp.py app.js dashboard.css   browser drag & drop workbench (job overview + pipeline/channel status + config panel)
 gui.py              desktop workbench (tkinter, zero deps): state derived from out/, history appended to gui_runs.jsonl
+stages.py           15 stages as independently re-runnable units (dependency-checked) + CLI; drives the GUI rerun menu
 merge_out.py        per-page merge across channels
 unify.py            cross-engine grouping -> unified/ + summary metrics (frozen)
 metadata.py         structured metadata CLI (11-line shell; implementation lives in metapy/)

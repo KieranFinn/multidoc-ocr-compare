@@ -457,7 +457,9 @@ def ref_region(doc_dir, n):
         j = json.load(io.open(fp, encoding="utf-8"))
         for b in j["merged"]:
             if b.get("cat") == "Section-header" and regress.ABSTRACT_HEAD.search(b.get("text") or ""):
-                return ref_from, p
+                # Abstract 与文献头同页(尾页左文献/右摘要形态, 13563529 实证): 该页仍计入
+                # 文献区——ref_to==ref_from 会把区间塌成空集; 页内文献/摘要分栏由 refs/abs 栏逻辑切
+                return ref_from, max(p, ref_from + 1)
     return ref_from, n
 
 

@@ -117,6 +117,132 @@ def _load_fresh_unified(udir, t0):
     return upages, True
 
 
+def fetch_channels(doc, pdf, out, chans_in, echo=None):
+    """② 渠道获取(独立可跑, stages.py 与 main 共用一份实现)。
+
+    返回 (chans, SRC_KIND)。chans_in 里已给的渠道(命令行/inbox 指定)原样保留不再获取;
+    其余走 API/缓存/CDP 兜底。产物只落 out/raw/<ch>(_api), 无 PDF 就无法重取。
+    """
+    log_ = echo or log
+    chans = dict(chans_in)
+    SRC_KIND = {k: "命令行参数" for k, v in chans.items() if v}  # 渠道来源标注, 末尾汇总一目了然
+    found = scan_inbox(doc)
+    for k, v in chans.items():
+        if not v and k in found:
+            chans[k] = found[k]; SRC_KIND[k] = "inbox"
+            log_("② 渠道[%s] 从 inbox 识别: %s" % (k, found[k]))
+    for k, v in try_auto(pdf, out).items():
+        if v and not chans.get(k):
+            chans[k] = v; SRC_KIND[k] = "auto命令"
+
+    # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: CDP 驱动本地 App 与云端 API 互不阻塞
+    from concurrent.futures import ThreadPoolExecutor
+    def _mineru_cdp():
+        try:
+            import mineru_drive
+            mu_dir = mineru_drive.drive(pdf)   # CDP 驱动桌面版: 启动->上传->等解析
+            if mu_dir and os.path.isdir(mu_dir):
+                log_("② 渠道[mineru] 经 CDP 驱动 App 获取 -> %s" % mu_dir)
+                SRC_KIND["mineru"] = "CDP"
+                return mu_dir
+        except Exception as e:
+            log_("② mineru CDP 驱动失败(可手动跑 App 走归仓): %s" % e)
+        return None
+    def _resolve_mineru():
+        if not (CFG.get("mineru_api") or {}).get("enabled", True):  # 配置关掉 API 时直落 CDP, 不再先打一次必然失败的请求
+            SRC_KIND["mineru"] = "API禁用(转CDP)"
+            return _mineru_cdp()
+        cached = os.path.join(out, "raw", "mineru_api")
+        if any(x.endswith("_content_list_v2.json") for _, _, fs in os.walk(cached) for x in fs):
+            log_("② 渠道[mineru] 复用缓存: %s" % cached)   # 强制重跑请删除 raw\mineru_api
+            SRC_KIND["mineru"] = "API缓存"
+            return cached
+        try:
+            api_dir = fetch_mineru_api(pdf, cached)
+            if api_dir:
+                log_("② 渠道[mineru] 经云端 API 获取 -> %s" % api_dir)
+                SRC_KIND["mineru"] = "API新获取"
+                return api_dir
+        except Exception as e:
+            log_("② mineru 云端 API 失败, 转 CDP 驱动: %s" % e)
+        return _mineru_cdp()
+    def _resolve_dots():
+        if not (CFG.get("dots_api") or {}).get("enabled", True):
+            return None
+        cached = os.path.join(out, "raw", "dots_api")
+        if os.path.exists(os.path.join(cached, "page_0.json")):
+            log_("② 渠道[dots] 复用缓存: %s" % cached)   # 复用已有 API 结果; 强制重跑请删除 raw\dots_api
+            SRC_KIND["dots"] = "API缓存"
+            return cached
+        try:
+            api_dir = fetch_dots_api(pdf, cached)
+            if api_dir:
+                log_("② 渠道[dots] 经云端 API 获取 -> %s" % api_dir)
+                SRC_KIND["dots"] = "API新获取"
+                return api_dir
+        except Exception as e:
+            log_("② dots 云端 API 失败: %s" % e)
+        return None
+    def _resolve_paddle():
+        if not (CFG.get("paddle_api") or {}).get("enabled", True):
+            return None
+        cached = os.path.join(out, "raw", "paddle_api")
+        if os.path.exists(os.path.join(cached, "page_0.json")):
+            log_("② 渠道[paddle] 复用缓存: %s" % cached)  # 复用已有 API 结果, 省配额; 强制重跑请删除 raw\paddle_api
+            SRC_KIND["paddle"] = "API缓存"
+            return cached
+        try:
+            api_dir = fetch_paddle_api(pdf, cached)
+            if api_dir:
+                log_("② 渠道[paddle] 经云端 API 获取 -> %s" % api_dir)
+                SRC_KIND["paddle"] = "API新获取"
+                return api_dir
+        except Exception as e:
+            log_("② paddle 云端 API 失败: %s" % e)
+        return None
+
+    _t_fetch = time.time()
+    with ThreadPoolExecutor(max_workers=3) as ex:
+        futs = {}
+        if not chans.get("mineru"):
+            futs["mineru"] = ex.submit(_resolve_mineru)
+        if not chans.get("dots"):
+            futs["dots"] = ex.submit(_resolve_dots)
+        if not chans.get("paddle"):
+            futs["paddle"] = ex.submit(_resolve_paddle)
+        for k, f in futs.items():
+            v = f.result()
+            if v:
+                chans[k] = v
+    log_("② 三路并行获取结束, 共 %.1fs (墙钟)" % (time.time() - _t_fetch))
+    log_("② 渠道来源汇总: " + " ｜ ".join("%s=%s" % (k, SRC_KIND.get(k, "无")) for k in ("mineru", "dots", "paddle")))
+    return chans, SRC_KIND
+
+
+def write_index(doc, out, report, cmp_fp, sizes, pdf_name):
+    """⑤ 结果总览 index.html(独立可跑: 数据来自 report, 由调用方给)。
+
+    report 每行 = (渠道标题, 状态, 块数, 韩文字符, U+FFFD, 查看器, 保留源文件数)。
+    """
+    rows = "\n".join(
+        "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % r
+        for r in report)
+    cmp_cell = '<td><a href="viewer_compare.html">1:3 对照</a></td>' if os.path.exists(cmp_fp) else "<td>-</td>"
+    rows = rows.replace("</tr>", cmp_cell + "</tr>")
+    idx = """<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>%s 三渠道对比</title>
+<style>body{font-family:"Microsoft YaHei";max-width:1080px;margin:40px auto;background:#f4f5f7;padding:0 16px}
+h1{font-size:20px}table{border-collapse:collapse;background:#fff;width:100%%}td,th{border:1px solid #e5e7eb;padding:8px 12px;font-size:14px}
+th{background:#eef2ff}a{color:#2563eb}</style></head><body>
+<h1>%s — 三渠道解析对比</h1><p>生成时间: %s ｜ 页数: %d ｜ 原文件: %s ｜ 各渠道源文件(md/json)保留在 raw\\ 子目录</p>
+<table><tr><th>渠道</th><th>状态</th><th>块数</th><th>韩文字符</th><th>U+FFFD</th><th>查看器</th><th>保留源文件数</th>%s</tr>%s</table>
+<p>查看器内悬停/点击区块，左右两栏同步高亮；md 模式渠道无块级联动。<a href="viewer_compare.html">→ 打开 1:3 对照查看器</a></p>
+</body></html>""" % (doc, doc, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), len(sizes), pdf_name,
+                     "<th>三合一</th>" if os.path.exists(cmp_fp) else "", rows)
+    with io.open(os.path.join(out, "index.html"), "w", encoding="utf-8") as fh:
+        fh.write(idx)
+    return os.path.join(out, "index.html")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("pdf")
@@ -144,98 +270,8 @@ def main(argv=None):
 
     sizes = render_pages(a.pdf, pages_dir)
 
-    chans = {"mineru": a.mineru, "dots": a.dots, "paddle": a.paddle}
-    SRC_KIND = {k: "命令行参数" for k, v in chans.items() if v}  # 渠道来源标注, 末尾汇总一目了然
-    found = scan_inbox(doc)
-    for k, v in chans.items():
-        if not v and k in found:
-            chans[k] = found[k]; SRC_KIND[k] = "inbox"
-            log("② 渠道[%s] 从 inbox 识别: %s" % (k, found[k]))
-    for k, v in try_auto(a.pdf, out).items():
-        if v and not chans.get(k):
-            chans[k] = v; SRC_KIND[k] = "auto命令"
-
-    # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: CDP 驱动本地 App 与云端 API 互不阻塞
-    from concurrent.futures import ThreadPoolExecutor
-    def _mineru_cdp():
-        try:
-            import mineru_drive
-            mu_dir = mineru_drive.drive(a.pdf)   # CDP 驱动桌面版: 启动->上传->等解析
-            if mu_dir and os.path.isdir(mu_dir):
-                log("② 渠道[mineru] 经 CDP 驱动 App 获取 -> %s" % mu_dir)
-                SRC_KIND["mineru"] = "CDP"
-                return mu_dir
-        except Exception as e:
-            log("② mineru CDP 驱动失败(可手动跑 App 走归仓): %s" % e)
-        return None
-    def _resolve_mineru():
-        if not (CFG.get("mineru_api") or {}).get("enabled", True):  # 配置关掉 API 时直落 CDP, 不再先打一次必然失败的请求
-            SRC_KIND["mineru"] = "API禁用(转CDP)"
-            return _mineru_cdp()
-        cached = os.path.join(out, "raw", "mineru_api")
-        if any(x.endswith("_content_list_v2.json") for _, _, fs in os.walk(cached) for x in fs):
-            log("② 渠道[mineru] 复用缓存: %s" % cached)   # 强制重跑请删除 raw\mineru_api
-            SRC_KIND["mineru"] = "API缓存"
-            return cached
-        try:
-            api_dir = fetch_mineru_api(a.pdf, cached)
-            if api_dir:
-                log("② 渠道[mineru] 经云端 API 获取 -> %s" % api_dir)
-                SRC_KIND["mineru"] = "API新获取"
-                return api_dir
-        except Exception as e:
-            log("② mineru 云端 API 失败, 转 CDP 驱动: %s" % e)
-        return _mineru_cdp()
-    def _resolve_dots():
-        if not (CFG.get("dots_api") or {}).get("enabled", True):
-            return None
-        cached = os.path.join(out, "raw", "dots_api")
-        if os.path.exists(os.path.join(cached, "page_0.json")):
-            log("② 渠道[dots] 复用缓存: %s" % cached)   # 复用已有 API 结果; 强制重跑请删除 raw\dots_api
-            SRC_KIND["dots"] = "API缓存"
-            return cached
-        try:
-            api_dir = fetch_dots_api(a.pdf, cached)
-            if api_dir:
-                log("② 渠道[dots] 经云端 API 获取 -> %s" % api_dir)
-                SRC_KIND["dots"] = "API新获取"
-                return api_dir
-        except Exception as e:
-            log("② dots 云端 API 失败: %s" % e)
-        return None
-    def _resolve_paddle():
-        if not (CFG.get("paddle_api") or {}).get("enabled", True):
-            return None
-        cached = os.path.join(out, "raw", "paddle_api")
-        if os.path.exists(os.path.join(cached, "page_0.json")):
-            log("② 渠道[paddle] 复用缓存: %s" % cached)  # 复用已有 API 结果, 省配额; 强制重跑请删除 raw\paddle_api
-            SRC_KIND["paddle"] = "API缓存"
-            return cached
-        try:
-            api_dir = fetch_paddle_api(a.pdf, cached)
-            if api_dir:
-                log("② 渠道[paddle] 经云端 API 获取 -> %s" % api_dir)
-                SRC_KIND["paddle"] = "API新获取"
-                return api_dir
-        except Exception as e:
-            log("② paddle 云端 API 失败: %s" % e)
-        return None
-
-    _t_fetch = time.time()
-    with ThreadPoolExecutor(max_workers=3) as ex:
-        futs = {}
-        if not chans.get("mineru"):
-            futs["mineru"] = ex.submit(_resolve_mineru)
-        if not chans.get("dots"):
-            futs["dots"] = ex.submit(_resolve_dots)
-        if not chans.get("paddle"):
-            futs["paddle"] = ex.submit(_resolve_paddle)
-        for k, f in futs.items():
-            v = f.result()
-            if v:
-                chans[k] = v
-    log("② 三路并行获取结束, 共 %.1fs (墙钟)" % (time.time() - _t_fetch))
-    log("② 渠道来源汇总: " + " ｜ ".join("%s=%s" % (k, SRC_KIND.get(k, "无")) for k in ("mineru", "dots", "paddle")))
+    chans, SRC_KIND = fetch_channels(doc, a.pdf, out,
+                                     {"mineru": a.mineru, "dots": a.dots, "paddle": a.paddle})
 
     jobs = [
         ("mineru", "MinerU（本地·非OCR）",  lambda s: adapt_mineru(s, sizes, mineru_calib_key(s),
@@ -321,11 +357,20 @@ def main(argv=None):
             except Exception as e:
                 log("④ 归一化层失败(👁 退回临时聚组): %s" % e)
         upages, unified_driven = _load_fresh_unified(udir, t0)
+        # ④ 中间查看器也带 metadata: 本轮 ⑥ 尚未跑, 挂盘上上一轮的总览——重跑中途刷新页面不再"总览消失"
+        meta4 = None
+        mfp4 = os.path.join(out, "metadata.json")
+        if os.path.exists(mfp4):
+            try:
+                meta4 = json.load(io.open(mfp4, encoding="utf-8"))
+            except Exception:
+                meta4 = None
         nc = build_compare_viewer(cmp_fp, "%s ｜ 1:3 渠道对照" % doc, sizes, per_ch,
                                   {k: (os.path.basename(os.path.normpath(v))
                                        if os.path.abspath(v).startswith(os.path.abspath(out) + os.sep) else k)
                                      for k, v in chans.items() if v},
-                                  unified_pages=upages, unified_driven=unified_driven)
+                                  unified_pages=upages, unified_driven=unified_driven,
+                                  meta=meta4)
         log("④ 1:3 对照查看器: %d 块 -> %s" % (nc, cmp_fp))
     elif os.path.exists(cmp_fp):
         os.remove(cmp_fp)  # 本轮全失败则清掉旧对照, 防残留
@@ -348,7 +393,9 @@ def main(argv=None):
     except Exception as e:
         log(u"⑥ 元数据链导入失败(不阻断): %s" % str(e)[:120])
     _llm_cfg = (load_cfg().get("llm") or {})
-    if _llm_cfg.get("ner_lite_auto", True) and os.environ.get("KCI_LLM_KEY"):
+    # KCI_SKIP_NER=1: 本次调用跳过 ner 阶段(GUI "快速重跑" 用; 元数据/查看器照出, 只是不烧 LLM)
+    if _llm_cfg.get("ner_lite_auto", True) and os.environ.get("KCI_LLM_KEY") \
+            and not os.environ.get("KCI_SKIP_NER"):
         try:
             import ner_lite as _nl
             _model = _nl.make_model(_llm_cfg)
@@ -360,7 +407,7 @@ def main(argv=None):
         except Exception as e:
             log(u"⑥ ner_lite 失败(不阻断): %s" % str(e)[:150])
     else:
-        log(u"⑥ ner_lite 跳过(ner_lite_auto 关或 KCI_LLM_KEY 缺)")
+        log(u"⑥ ner_lite 跳过(ner_lite_auto 关 / KCI_LLM_KEY 缺 / 本次跳 NER)")
     try:
         from metapy.llmrep import rebuild_viewer
         rebuild_viewer(doc, _out_root)
@@ -368,22 +415,7 @@ def main(argv=None):
     except Exception as e:
         log(u"⑥ 终版查看器重建失败(不阻断): %s" % str(e)[:120])
 
-    rows = "\n".join(
-        "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % r
-        for r in report)
-    cmp_cell = '<td><a href="viewer_compare.html">1:3 对照</a></td>' if os.path.exists(cmp_fp) else "<td>-</td>"
-    rows = rows.replace("</tr>", cmp_cell + "</tr>")
-    idx = """<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><title>%s 三渠道对比</title>
-<style>body{font-family:"Microsoft YaHei";max-width:1080px;margin:40px auto;background:#f4f5f7;padding:0 16px}
-h1{font-size:20px}table{border-collapse:collapse;background:#fff;width:100%%}td,th{border:1px solid #e5e7eb;padding:8px 12px;font-size:14px}
-th{background:#eef2ff}a{color:#2563eb}</style></head><body>
-<h1>%s — 三渠道解析对比</h1><p>生成时间: %s ｜ 页数: %d ｜ 原文件: %s ｜ 各渠道源文件(md/json)保留在 raw\\ 子目录</p>
-<table><tr><th>渠道</th><th>状态</th><th>块数</th><th>韩文字符</th><th>U+FFFD</th><th>查看器</th><th>保留源文件数</th>%s</tr>%s</table>
-<p>查看器内悬停/点击区块，左右两栏同步高亮；md 模式渠道无块级联动。<a href="viewer_compare.html">→ 打开 1:3 对照查看器</a></p>
-</body></html>""" % (doc, doc, datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), len(sizes), os.path.basename(a.pdf),
-                     "<th>三合一</th>" if os.path.exists(cmp_fp) else "", rows)
-    with io.open(os.path.join(out, "index.html"), "w", encoding="utf-8") as fh:
-        fh.write(idx)
+    write_index(doc, out, report, cmp_fp, sizes, os.path.basename(a.pdf))
     log("⑤ 完成 ->", out)
     log("   _elapsed_ms=%d" % (int(time.time() * 1000) - _start_ms))  # 工作台据此判定成功(不看旧 index 的 mtime)
     for r in report: log("   %s | %s | 块 %s | 韩文 %s | FFFD %s | 源文件 %s" % (r[0], r[1], r[2], r[3], r[4], r[6]))

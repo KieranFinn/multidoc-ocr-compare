@@ -1472,14 +1472,34 @@ def refs_doc(doc, out_root):
     # 回退是 A4 修复未拍板, 仍早退); 起始页的 참고문헌 头定位 ——
     ref_pages = ref_pages_extended(pdata, pages, head_fallback=False)
     if not ref_pages:
-        # 零产出守卫写在早退之前(用户核实: 旧代码此路径不写 ref_validation, 报告"条目数 -"
-        # 被 llmrep 第三参数写死 True 渲成绿色, 0 条与一切正常长得一样——静默失败最糟形态)
+        # —— 脚注即参考文献体例(2002 英文人文期刊实证: KCI_FI001004818_2002) ——
+        # 这类论文没有独立文献表, 40 条编号脚注本身就是著录条目。现有 frefs 只把它们
+        # 写进 footnote_refs, references 永远为空。这里正面识别该体例: 从中挑出具备
+        # 著录证据(年份/页码/出版社/卷期)的脚注, 同时作为参考文献条目落盘。
+        frefs_doc(doc, out_root)
+        mfp = os.path.join(doc_dir, "metadata.json")
+        m = json.load(io.open(mfp, encoding="utf-8")) if os.path.exists(mfp) else {}
+        notes = m.get("footnote_refs") or []
+        biblio = [x for x in notes if _fref_has_biblio_evidence(x.get("raw") or "")]
+        if biblio:
+            refs = [{"num": x.get("num"), "style": "footnote", "raw": x.get("raw"),
+                     "page": x.get("page"), "box": x.get("box"), "uid": x.get("uid"),
+                     "authors": x.get("authors") or [], "authors_raw": x.get("authors_raw"),
+                     "et_al": False, "year": x.get("year"), "title": x.get("title"),
+                     "source": x.get("source"), "volume": None, "issue": None,
+                     "pages": None, "doi": None, "lang": "en",
+                     "confidence": {"level": "mid", "source": "footnote_biblio"}}
+                    for x in biblio]
+            m.update({"doc": doc, "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                      "references": refs})
+            io.open(mfp, "w", encoding="utf-8").write(json.dumps(m, ensure_ascii=False, indent=1))
         audit = load_audit(doc_dir)
-        audit.update({"doc": doc, "ref_yield_guard": _yield_guard(pdata, pages, ref_pages, 0)})
+        audit.update({"doc": doc, "ref_yield_guard": _yield_guard(pdata, pages, ref_pages, len(biblio)),
+                      "footnote_biblio": len(biblio)})
         save_audit(doc_dir, audit)
-        print("== ① %s == 无文献区 守卫=%s" % (doc, audit["ref_yield_guard"]["state"]))
-        return None
-
+        print("== ① %s == 无文献区(脚注体例 %d 条) 守卫=%s" % (
+            doc, len(biblio), audit["ref_yield_guard"]["state"]))
+        return m
     def _in_ref_region(u, p):
         """块属于文献区: 页 in_ref, 或跨页块(tail)的页首段落在 in_ref 页(M3 拼条目前溢的文献块)。"""
         if p in ref_pages:
@@ -1560,6 +1580,28 @@ def refs_doc(doc, out_root):
                                  r"Journal|학술|Inc\.|Book|[A-Za-z]{4,}", e["text"])):
                 continue
         entries.append(e)
+    # —— 拉丁/SpringerOpen 参考文献体例(2026-11-12 全覆盖) ——
+    # 条目形如 "Lee CB. Coloured flora ... 2003b." / "Hattori T. ... 1992;42(3):215-30."
+    # AY_HEAD 只认 "(YYYY)" / ", YYYY" 型作者-年头, 这套"姓 + 缩写 + 句点 + 年份在尾部"
+    # 的形态会被准入闸整批拒掉(2542944 实证: 3 个 in_ref 页 18 长块 0 条目)。
+    # 只在既有准入结果为 0 时启用: in_ref 页的块按换行切条, 作者缩写头 + 年份/卷期证据准入。
+    if not entries and style == "authoryear":
+        _LAT_HEAD = re.compile(
+            r"^[A-Z][a-zA-Z'\-]{1,18}(?:\s+[A-Z]{1,4}[a-z]?)?(?:[.,]\s|"
+            r",\s*[A-Z][a-zA-Z'\-]{1,18}\s+[A-Z]{1,4}[a-z]?)")
+        _LAT_YEAR = re.compile(r"(?:19|20)\d{2}|;\s*\d{1,3}\s*[:(]")
+        for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
+            if b["p"] not in ref_pages:
+                continue
+            for ln in b["t"].split("\n"):
+                s = ln.strip()
+                if len(_fold(s)) < ENTRY_MIN_LEN or not _LAT_HEAD.match(s) \
+                        or not _LAT_YEAR.search(s):
+                    continue
+                entries.append({"num": None, "text": s, "page": b["p"] + 1, "col": b["col"],
+                                "box": b["u"]["box"], "uid": b["uid"],
+                                "block_review": b["u"]["review"],
+                                "block_level": b["u"]["confidence"]["level"]})
     # —— 批次2: num 恢复(895567 41 条全 null 实测)——numbered 且 num 过半为空 → 按序重编 1..N(验收: int 连续) ——
     if style == "numbered":
         n_none = sum(1 for e in entries if e["num"] is None)

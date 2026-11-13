@@ -101,19 +101,35 @@ def md2html(md):
     return "\n".join(out).replace("\ufffd", '<span class="bad">�</span>')
 
 _JS_CORE = r"""
-var META=@@DATA@@, pinned=null;
+var META=@@DATA@@, pinned=null, hoverGid=null, hoverBid=null;
 function act(id,on){var e=document.querySelectorAll('[data-b="'+id+'"]');for(var k=0;k<e.length;k++){if(on)e[k].classList.add('on');else e[k].classList.remove('on');}}
 function stat(id){var p=id.split('_');var el=document.getElementById('st_p'+p[1]);if(el&&META[id])el.textContent=' '+p[0]+' · 块 '+p[2]+' · '+META[id].cat+' · '+META[id].txt.replace(/\s+/g,' ').slice(0,40);}
 document.addEventListener('mouseover',function(e){
  var eye=e.target.closest?e.target.closest('.eye'):null;
- if(eye){clearTimeout(ghide);fillMasks(eye.dataset.g,eye.closest('section'));return;}
- scheduleHide();
- var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,true);stat(t.dataset.b);});
+ if(eye){
+  if(e.relatedTarget&&eye.contains(e.relatedTarget))return;   /* 眼睛内部移动不算重入 */
+  clearTimeout(ghide);ghide=null;
+  var g=eye.dataset.g;
+  if(hoverGid!==g){hoverGid=g;fillMasks(g,eye.closest('section'));}  /* 同一只眼不重复重绘四个遮罩 */
+  return;
+ }
+ var t=e.target.closest?e.target.closest('[data-b]'):null;
+ if(!t||t.dataset.b===pinned||t.dataset.b===hoverBid)return;
+ hoverBid=t.dataset.b;act(t.dataset.b,true);stat(t.dataset.b);});
 document.addEventListener('mouseout',function(e){
- var t=e.target.closest?e.target.closest('[data-b]'):null;if(!t||t.dataset.b===pinned)return;act(t.dataset.b,false);});
+ var eye=e.target.closest?e.target.closest('.eye'):null;
+ if(eye){
+  if(e.relatedTarget&&eye.contains(e.relatedTarget))return;
+  var toEye=e.relatedTarget&&e.relatedTarget.closest?e.relatedTarget.closest('.eye'):null;
+  if(!toEye){hoverGid=null;scheduleHide();}   /* 只在真的离开眼睛时排一次隐藏, 不在每次移动时重置 */
+ }
+ var t=e.target.closest?e.target.closest('[data-b]'):null;
+ if(t&&t.dataset.b!==pinned&&(!e.relatedTarget||!t.contains(e.relatedTarget))){
+  act(t.dataset.b,false);if(hoverBid===t.dataset.b)hoverBid=null;}});
 document.addEventListener('click',function(e){
  var eye=e.target.closest?e.target.closest('.eye'):null;
  if(eye){act(pinned,false);pinned=(pinned===eye.dataset.g)?null:eye.dataset.g;
+  hoverGid=null;   /* 钉住/取消后重新悬停同一只眼必须能重新重绘遮罩 */
   if(pinned)showPinned();else hideAllMasks();return;}
  var t=e.target.closest?e.target.closest('[data-b]'):null;
  if(pinned&&(!t||t.dataset.b!==pinned)){act(pinned,false);
@@ -172,6 +188,7 @@ svg.picr{width:100%;height:auto;display:block;border:1px solid #e5e7eb;border-ra
 @@BODY@@
 <script>
 @@CORE@@
+var ghide=null;   /* _JS_CORE 的 clearTimeout(ghide) 在这里也要有定义 */
 function scheduleHide(){}
 function hideAllMasks(){}
 function showPinned(){}
@@ -413,6 +430,9 @@ body.boxov .imgw .r.umb,body.boxov .imgw .r.um{opacity:1}   /* 裁决1(§47): LA
 .mfg table.refs td.rawtext{white-space:pre-wrap;overflow:visible;word-break:break-word}
 .mfg table.cspt td{white-space:normal;word-break:break-word}   /* 引文句句子换行, 引文高亮不再被裁掉 */
 .mftag{display:inline-block;font-size:9px;color:#6b7280;border:1px solid #e5e7eb;border-radius:3px;padding:0 3px;margin-right:4px;vertical-align:1px}
+.ck{display:inline-block;border-radius:5px;padding:1px 7px;margin:2px 3px 2px 0;font-size:11px;font-weight:600}
+.ck.ok{background:#e4f6ef;color:#087b5c}.ck.no{background:#fdebec;color:#bd353d}
+.ckg{font-size:10px;color:#9aa6b8;margin:0 2px 0 10px;font-weight:700}
 .mf tr:hover{background:#fef9c3}
 details.mfd summary{cursor:pointer;color:#6b7280;font-size:11px}
 .mbadge{font-size:10px;border-radius:3px;padding:0 4px;margin-left:6px}
@@ -509,7 +529,10 @@ function hideAllMasks(){var ms=document.querySelectorAll('.pmask');for(var k=0;k
 function showPinned(){if(!pinned)return;hideAllMasks();var eye=document.querySelector('.eye[data-g="'+pinned+'"]');
  if(eye){fillMasks(pinned,eye.closest('section'));eye.classList.add('pin');}}
 function scheduleHide(){if(ghide)clearTimeout(ghide);
- ghide=setTimeout(function(){if(pinned&&document.querySelector('.eye[data-g="'+pinned+'"]'))showPinned();else hideAllMasks();},250);}
+ /* 只由"真正离开眼睛"触发一次, 不再由每次 mouseover 重置; 80ms 仅用于允许跨到相邻眼睛,
+    旧版 250ms + 每次移动重置 = 指针一动就永远不收, 表现为移开有明显延迟。*/
+ ghide=setTimeout(function(){ghide=null;
+  if(pinned&&document.querySelector('.eye[data-g="'+pinned+'"]'))showPinned();else hideAllMasks();},80);}
 function citeHover(mf,on){
  var sec=mf.closest('section');
  var target=mf.dataset.e ? 'rect.cite-target[data-e="'+mf.dataset.e+'"]' : 'rect.cite-target[data-u="'+mf.dataset.u+'"]';
@@ -532,13 +555,16 @@ function citeHover(mf,on){
  document.getElementById('citepoptitle').textContent='原图块定位 · '+mf.dataset.u;
  pop.style.display='block';
 }
+var citeKey=null;   /* 同一行内移动不重复重建原图弹层 */
 document.addEventListener('mouseover',function(e){
  var mf=e.target.closest?e.target.closest('.refs .mf[data-u]'):null;
- if(mf)citeHover(mf,true);
+ if(!mf)return;
+ var k=mf.dataset.e||mf.dataset.u;
+ if(k!==citeKey){citeKey=k;citeHover(mf,true);}
 });
 document.addEventListener('mouseout',function(e){
  var mf=e.target.closest?e.target.closest('.refs .mf[data-u]'):null;
- if(mf&&(!e.relatedTarget||!mf.contains(e.relatedTarget)))citeHover(mf,false);
+ if(mf&&(!e.relatedTarget||!mf.contains(e.relatedTarget))){citeKey=null;citeHover(mf,false);}
 });
 function centerBlock(sec,fracY){
  if(!sec)return;
@@ -660,7 +686,7 @@ def _unified_group_panes(u, chs):
         if c in u["members"]:
             us = u["members"][c]
             nch = sum(len(re.sub(r"\s+", "", m.get("text") or "")) for m in us)  # 非空白字符数(空格风格不干扰漏字判断)
-            mark = " ".join(rd[c]["flags"]) or "-"
+            mark = " ".join(rd.get(c, {}).get("flags", [])) or "-"   # .get 兜底: unified 被并发写撕裂时(13563526 实证)不许崩整页
             rows.append("<tr><td><i class='dot %s'></i>%s</td><td>✓ %s×%d</td><td>%d</td><td>%s</td></tr>"
                         % (_CMP_DOT[c], _CMP_CN[c], us[0]["cat"], len(us), nch, mark))
         else:
@@ -990,9 +1016,10 @@ def _meta_cell(meta, pno, audit=None, choices=None):
            '<div class="mfw">%s</div><div class="pmask"></div></div>' % "".join(out)
 
 
-def _meta_overview(meta, audit=None, ents=None):
-    """metadata 总览横带(只挂第 1 页 section): 全部抽取字段一览——题录/来源(期刊年卷期页)/关键词/
-    摘要(折叠全文)/三类大列表计数(refs/frefs/cspan 全库分布+徽标, 不展开, 明细在每页横带)。
+def _meta_overview(meta, audit=None, ents=None, body_chars=0):
+    """metadata 总览横带(只挂第 1 页 section): 实体清单(16 项✓/✗) + 全部抽取字段一览——题录/
+    来源(期刊年卷期页)/关键词/摘要(折叠全文)/三类大列表计数(refs/frefs/cspan 全库分布+徽标,
+    不展开, 明细在每页横带)。body_chars=unified 正文总字符(实体清单"正文"项判据)。
     有 uid 的字段行保留 data-u, 点击=钉第 1 页该块证据(与每页横带同一机制)。"""
     import collections
     if not meta:
@@ -1007,6 +1034,44 @@ def _meta_overview(meta, audit=None, ents=None):
         return "第 %d-%d 页" % (ps[0], ps[-1]) if ps else ""
 
     grp = []
+    # —— 实体清单(2026-11-12): 分组一眼看全抽出/未抽——题录/来源/内容/引证/文献/实体;
+    #    脚注与引文句是正文页内引证(期刊中多互斥, 同篇只用一种), 同归"引证"组;
+    #    参考文献=文末文献列表, 独立"文献"组。字段类取 metadata, 实体类取 ner 产物 ——
+    def _has(v):
+        return bool(v and str(v).strip())
+    _kinds = {}
+    for _pg in (ents or {}).values():
+        for _items in _pg.values():
+            for _it in _items:
+                _kinds[_it["kind"]] = _kinds.get(_it["kind"], 0) + 1
+    _grp_checks = [
+        ("题录", [("标题", _has((meta.get("title") or {}).get("value"))),
+                  ("作者", bool(meta.get("authors"))),
+                  ("机构", bool(meta.get("affiliations")) or _kinds.get("org", 0) > 0
+                   or any(str((a.get("affiliation") or "")).strip()
+                          for a in (meta.get("authors") or []) if isinstance(a, dict)))]),
+        ("来源", [("期刊", _has((meta.get("journal") or {}).get("value"))),
+                  ("出版年", _has((meta.get("year") or {}).get("value"))),
+                  ("卷", _has((meta.get("volume") or {}).get("value"))),
+                  ("期", _has((meta.get("issue") or {}).get("value"))),
+                  ("页码", _has((meta.get("pages") or {}).get("value")))]),
+        ("内容", [("关键词", bool(meta.get("keywords") or meta.get("keywords_lines"))),
+                  ("摘要", _has((meta.get("abstract") or {}).get("value"))),
+                  ("正文", body_chars >= 500)]),
+        ("引证", [("脚注", bool(meta.get("footnote_refs"))),
+                  ("引文句", bool(meta.get("citation_spans")))]),
+        ("文献", [("参考文献", bool(meta.get("references")))]),
+        ("实体", [("基金", _kinds.get("funding", 0) > 0),
+                  ("研究软件", _kinds.get("software", 0) > 0),
+                  ("科学数据集", _kinds.get("dataset", 0) > 0)]),
+    ]
+    _cells = ""
+    for _gname, _items in _grp_checks:
+        _cells += '<span class="ckg">%s</span>' % _gname
+        _cells += "".join('<span class="ck %s">%s %s</span>'
+                          % ("ok" if ok else "no", "✓" if ok else "✗", name)
+                          for name, ok in _items)
+    grp.append(("实体清单", _mf_row("mid", None, _mf_dot() + "<b>实体清单</b> " + _cells)))
     # —— 题录 ——
     def _pg_hint(f):
         return "" if (f.get("page") or 1) == 1 else '<span class="mftag">证据在第 %d 页</span>' % f["page"]
@@ -1314,7 +1379,11 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
         ov_cell = ""
         if meta is not None:
             if p == 0:
-                ov_cell = _meta_overview(meta, audit, ents) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
+                # 实体清单"正文"项判据: unified 全篇 Text/Footnote 主读法总字符
+                _body = sum(len((u.get("main_text") or "").strip())
+                            for _us in (unified_pages or {}).values() for u in _us
+                            if u.get("type") in ("Text", "Footnote"))
+                ov_cell = _meta_overview(meta, audit, ents, _body) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
             ch_cells += _meta_cell(meta, p + 1, audit, choices) or ""
         ch_cells += _entity_cell((ents or {}).get(p + 1)) or ""
         flag = ""
