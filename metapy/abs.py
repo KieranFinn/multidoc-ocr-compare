@@ -6,6 +6,20 @@ from .common import *
 # markdown 加粗 요약 头(13563525 '**국문요약** 본고는…' 同块, 无冒号——ABS_INLINE_KO 要求冒号,
 # ABS_HEAD_KO 只认独立节头, 两不沾则整段丢失)
 _ABS_BOLD_KO = re.compile(u"^\\*{1,2}\\s*(요\\s*약|국문\\s*요약|초\\s*록)\\s*\\*{1,2}\\s*[:：]?")
+# plain 요약 头(13563528 '국문요약  본 연구는…' 同块: 无星号无冒号——主读法选中不带星号的渠道
+# 读法时 BOLD 形态够不着; main_text 选边翻转即丢摘要, 2026-11-12 实证)
+_ABS_PLAIN_KO = re.compile(u"^(?:·?국문\\s*요약|요\\s*약|초\\s*록)\\s+(?=\\S)")
+# 括号 요약 头(FI2983265 '【한글요약】' 独立行后接正文)
+_ABS_BRACKET_KO = re.compile(u"^【\\s*(?:한글\\s*요약|국문\\s*요약|요\\s*약|초\\s*록)\\s*】\\s*[:：]?")
+# 全篇/三渠道摘要头(2026-11-12 体例全覆盖): 老式韩文期刊把 <국문초록> / (국문초록) 放在
+# 文末(FI1632041 p31), SpringerOpen 把 Abstract 单独成块, unified 归并时这些低频块会被
+# 并入邻块或整块丢弃, 而 merged.json 的三渠道原文仍在。只在首页/既有形态都没抓到时启用。
+_ABS_ANY = re.compile(
+    u"^\\s*(?:[*#]{0,2}\\s*)?[<(【〈\\[]?\\s*"
+    u"(?:국문\\s*초록|국문\\s*요약|한글\\s*요약|요\\s*약|초\\s*록|Abstract|ABSTRACT|Summary|SUMMARY)"
+    u"\\s*[>)】〉\\]]?\\s*[:：.]?\\s*(.*)$", re.I)
+_ABS_STOP = re.compile(u"^(?:참고\\s*문헌|Reference|References|Bibliography|목\\s*차|차\\s*례|"
+                       u"I{1,3}\\.|^\\d+\\.\\s)", re.I)
 
 
 def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
@@ -18,6 +32,19 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
     This study…' 实证): 前段为短罗马名(≤40 全字符)或含机构关键词才剥, 遇正文长句即停。"""
     out_lines = []
     uids = []
+
+    def _fin():
+        # 尾页形态(13563529): 题名复写/题名续段带作者行可能压在 Abstract 头下, 正文从
+        # ABSTRACT_START 行才开始——裁掉起始非正文行; 无起始行形态时原样保留(不回归旧形态)
+        lines = out_lines
+        if skip_fold and lines:
+            for i, s in enumerate(lines):
+                if ABSTRACT_START.match(s):
+                    if i:
+                        lines = lines[i:]
+                    break
+        return "\n".join(lines).strip(), uids
+
     start_p = head_u["page"] - 1
     H = pdata[start_p]["h"]
     limit_bottom = head_u["box"][3] + 0.62 * H
@@ -39,16 +66,20 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                 continue   # 双栏: 非头块同栏的块整体跳过
             if u["type"] == "Section-header" and u["uid"] != head_u["uid"] \
                     and u["box"][1] >= head_u["box"][3] - 2:
-                if skip_fold and _fold((u["main_text"] or "").split("\n")[0]) == skip_fold:
-                    continue   # 英文题名复写头: 整块跳过
-                return "\n".join(out_lines).strip(), uids   # 区内新节头=界(先判停, 其行不入摘要)
+                f0 = _fold((u["main_text"] or "").split("\n")[0])
+                if skip_fold and len(f0) >= 15 and \
+                        (skip_fold.startswith(f0) or f0.startswith(skip_fold)):
+                    continue   # 英文题名复写头(可能断行只带前段, 13563529 u9_5 实证): 整块跳过
+                return _fin()   # 区内新节头=界(先判停, 其行不入摘要)
             if u["type"] == "Section-header" and regress.REF_HEAD.search(u["main_text"] or "") \
                     and u["box"][1] >= head_u["box"][3] - 2:
-                return "\n".join(out_lines).strip(), uids
+                return _fin()
             y1, y3 = u["box"][1], u["box"][3]
             lines = (u["main_text"] or "").split("\n")
             take = []
-            if p == start_p and y1 < head_u["box"][3] - 2 and y3 > head_u["box"][3]:
+            if p == start_p and u["uid"] == head_u["uid"]:
+                take = lines[1:]   # 头在块内首行(13563529 u0_6 '국문요약\n본 연구는…'): 取头行之后
+            elif p == start_p and y1 < head_u["box"][3] - 2 and y3 > head_u["box"][3]:
                 started = False
                 for ln in lines:
                     if ABSTRACT_START.match(ln.strip()):
@@ -111,8 +142,8 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
             if take and u["uid"] not in uids:
                 uids.append(u["uid"])
             if stop:
-                return "\n".join(out_lines).strip(), uids
-    return "\n".join(out_lines).strip(), uids
+                return _fin()
+    return _fin()
 
 def abstract_doc(doc, out_root):
     """单篇③: 韩英双摘要定位(首页优先, 英文摘要缺则检索尾页文献区后残余区域——regress
@@ -167,8 +198,8 @@ def abstract_doc(doc, out_root):
         # 内联头形态(895567 '요 앵 : …' 与 Key words 同块): 定位行后收集
         # 2026-11-10 增 markdown 加粗头形态(13563525 '**국문요약** 본고는…' 同块实证,
         # 无冒号): 剥头取余行; 该形态正文同块收全, 不跨页续接(防吞次页正文)。
-        found = None
-        bold = False
+        # 2026-11-12 增 plain 头(13563528 主读法无星号)与括号头(FI2983265 '【한글요약】')两形态。
+        found, kind = None, None
         for u in pdata[0]["unified"]:
             if u.get("cross_page", {}).get("role"):
                 continue
@@ -176,33 +207,46 @@ def abstract_doc(doc, out_root):
                 continue
             lns = (u["main_text"] or "").split("\n")
             for i, ln in enumerate(lns):
-                if ABS_INLINE_KO.match(ln.strip()):
-                    found = (u, i)
+                s = ln.strip()
+                if ABS_INLINE_KO.match(s):
+                    found, kind = (u, i), "inline"
                     break
-                if _ABS_BOLD_KO.match(ln.strip()):
-                    found = (u, i)
-                    bold = True
+                if _ABS_BOLD_KO.match(s):
+                    found, kind = (u, i), "bold"
+                    break
+                if _ABS_BRACKET_KO.match(s):
+                    found, kind = (u, i), "bracket"
+                    break
+                if _ABS_PLAIN_KO.match(s) and \
+                        len(_ABS_PLAIN_KO.sub("", s).strip()) >= 10:
+                    found, kind = (u, i), "plain"
                     break
             if found:
                 break
         if found:
             blk, li = found
-            if bold:
-                rest = _ABS_BOLD_KO.sub("", (blk["main_text"] or "").split("\n")[li]).strip()
+            line0 = (blk["main_text"] or "").split("\n")[li]
+            if kind in ("bold", "bracket", "plain"):
+                pat = {"bold": _ABS_BOLD_KO, "bracket": _ABS_BRACKET_KO,
+                       "plain": _ABS_PLAIN_KO}[kind]
+                rest = pat.sub("", line0).strip()
                 lines = [rest] if rest else []
-                basis = u"markdown 加粗 요약 头同块"
+                basis = {"bold": u"markdown 加粗 요약 头同块",
+                         "bracket": u"括号 요약 头(【한글요약】)",
+                         "plain": u"plain 요약 头同块(无星号无冒号)"}[kind]
             else:
-                first_rest = re.split(r"[:：]", (blk["main_text"] or "").split("\n")[li], maxsplit=1)
+                first_rest = re.split(r"[:：]", line0, maxsplit=1)
                 lines = [first_rest[1].strip()] if len(first_rest) > 1 and first_rest[1].strip() else []
                 basis = u"内联 요약 头(与Key words同块)"
             for ln in (blk["main_text"] or "").split("\n")[li + 1:]:
                 s = ln.strip()
                 if not s:
                     continue
-                if KW_LINE.match(s) or ABS_INLINE_KO.match(s) or _ABS_BOLD_KO.match(s):
+                if KW_LINE.match(s) or ABS_INLINE_KO.match(s) or _ABS_BOLD_KO.match(s) \
+                        or _ABS_BRACKET_KO.match(s):
                     break
                 lines.append(s)
-            if not bold:
+            if kind == "inline":   # 仅内联形态跨页续接; 同块形态收全即止(防吞次页正文)
                 stop = False
                 for p in range(1, min(3, len(pages))):
                     for u in pdata[p]["unified"]:
@@ -227,7 +271,86 @@ def abstract_doc(doc, out_root):
                                "confidence": {"level": "mid", "basis": basis,
                                               "source": "regex", "uid_head": blk["uid"]}}
         else:
-            res["abstract"] = {"value": None, "confidence": _conf(None, [])}
+            # 无头摘要(13563530 '본고는…' 紧跟作者区无任何标记): 取首个内容起始行块, 遇关键词/节头 止
+            _op = re.compile(u"^(?:본\\s*연구|본고는|본\\s*논문|이\\s*연구|이\\s*논문)")
+            lines, started, done, box0 = [], False, False, None
+            for u in pdata[0]["unified"]:
+                if done:
+                    break
+                if u.get("cross_page", {}).get("role"):
+                    continue
+                if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
+                    continue
+                if started and u["type"] == "Section-header":
+                    break
+                for ln in (u["main_text"] or "").split("\n"):
+                    s = ln.strip()
+                    if not s:
+                        continue
+                    if not started:
+                        if _op.match(s):
+                            started, box0 = True, u["box"]
+                        else:
+                            continue
+                    if KW_LINE.match(s):
+                        done = True
+                        break
+                    lines.append(s)
+            res["abstract"] = {"value": "\n".join(lines).strip() or None,
+                               "page": 1, "box": box0,
+                               "confidence": {"level": "low", "basis": u"无头 요약(内容起始行)",
+                                              "source": "regex", "uid_head": None}}
+    # —— 体例兜底: 摘要头在渠道原文/末页。按渠道保序检索, 同块余行 + 后续块收正文,
+    #     遇关键词/文献/节头即止; 只在本轮所有既有形态都未产出摘要时启用。
+    if not (res.get("abstract") or {}).get("value"):
+        streams = {}
+        for p, ch, t in channel_lines(doc_dir):
+            streams.setdefault(ch, []).append((p, t))
+        best = None
+        for ch, seq in streams.items():
+            for idx, (p, t) in enumerate(seq):
+                lns = t.split("\n")
+                for li, ln in enumerate(lns):
+                    mm = _ABS_ANY.match(ln.strip())
+                    if not mm or len(ln.strip()) > 45:
+                        continue
+                    parts = []
+                    body = mm.group(1).strip()
+                    if len(body) >= 60:
+                        parts.append(body)
+                    for s2 in lns[li + 1:]:
+                        s2 = s2.strip()
+                        if not s2:
+                            continue
+                        if KW_LINE.match(s2) or _ABS_ANY.match(s2) or _ABS_STOP.match(s2):
+                            break
+                        parts.append(s2)
+                    if sum(len(x) for x in parts) < 60:
+                        for _p2, t2 in seq[idx + 1:idx + 7]:
+                            s2 = t2.strip()
+                            if not s2:
+                                continue
+                            head = s2.split("\n")[0].strip()
+                            if KW_LINE.match(head) or _ABS_ANY.match(head) or _ABS_STOP.match(head):
+                                break
+                            parts.append(s2)
+                            if sum(len(x) for x in parts) > 3000:
+                                break
+                    txt = "\n".join(parts).strip()
+                    if len(txt) >= 60:
+                        best = (txt, p, ch)
+                        break
+                if best:
+                    break
+            if best:
+                break
+        if best:
+            res["abstract"] = {"value": best[0], "page": best[1], "box": None,
+                               "confidence": {"level": "mid",
+                                              "basis": u"三渠道摘要头(全篇检索:%s)" % best[2],
+                                              "source": "channel_fallback", "uid_head": None}}
+            res["_channel_fallback_abstract"] = {"channel": best[2], "page": best[1],
+                                                 "head": best[0][:60]}
     # —— 英摘要: 首页 → 全文档倒序检索(英文摘要可能位于文末参考文献区之后/之内——
     #    regress ref_region 遇 Abstract 截断已证明此形态; 1892171 '< ABSTRACT >' 在文献区尾) ——
     h_en = _find_head(ABS_HEAD_EN, [0])
@@ -305,6 +428,70 @@ def abstract_doc(doc, out_root):
                                       "confidence": {"level": "mid",
                                                      "basis": "英题下无 Abstract 头, 作者行下取至 Keywords",
                                                      "source": "regex", "uid_head": blk["uid"]}}
+    # —— 末页英文 matter 的另一种形态: 有英文题名节头但没有 'Abstract' 头 ——
+    #    2309666_2017 实证: p34 'The Roles of …' + 'Kim, Ji Hwan | The Chinese …' 跨两页, 末页 Key Words。
+    #    只在英文摘要仍为空时启用。
+    if not (res.get("abstract_en") or {}).get("value"):
+        for p in range(len(pages) - 1, max(len(pages) - 5, -1), -1):
+            cand = [u for u in pdata[p]["unified"]
+                    if u["type"] == "Section-header"
+                    and not u.get("cross_page", {}).get("role")
+                    and len(_fold(u["main_text"] or "")) >= 15
+                    and _hangul_ratio(u["main_text"] or "") < 0.2
+                    and not HEAD_EXCLUDE.match((u["main_text"] or "").strip())
+                    and not KW_LINE.match((u["main_text"] or "").strip())]
+            got = None
+            for hb in cand:
+                lines, uids, started, stop = [], [hb["uid"]], False, False
+                for q in (p, p + 1):
+                    if q >= len(pages):
+                        break
+                    for u in sorted(pdata[q]["unified"], key=lambda x: x["box"][1]):
+                        if u.get("cross_page", {}).get("role"):
+                            continue
+                        if u["type"] in ("Page-header", "Page-footer", "Page-number"):
+                            continue
+                        if q == p and u["box"][1] < hb["box"][3] - 4:
+                            continue
+                        for ln in (u["main_text"] or "").split("\n"):
+                            s = ln.strip()
+                            if not s:
+                                continue
+                            if KW_LINE.match(s):
+                                stop = True
+                                break
+                            if not started:
+                                if _hangul_ratio(s) > 0.2 or len(_fold(s)) < 25:
+                                    continue     # 跳过英文作者行/短行
+                                if _fold(s) == _fold((hb["main_text"] or "").strip()):
+                                    continue
+                                started = True
+                            if u["type"] != "Footnote":
+                                lines.append(s)
+                                uids.append(u["uid"])
+                        if stop:
+                            break
+                    if stop:
+                        break
+                txt = "\n".join(lines).strip()
+                if started and len(_fold(txt)) >= 120:
+                    got = {"value": txt, "page": p + 1, "box": hb["box"], "from_tail": True,
+                           "confidence": {"level": "mid",
+                                          "basis": "末页英文题名节头 + 英文正文(至 Key Words)",
+                                          "source": "regex", "uid_head": hb["uid"]}}
+                    break
+            if got:
+                res["abstract_en"] = got
+                break
+    # 主摘要回退: 只有英文摘要的论文(英文期刊/末页英文 matter), abstract 直接采用英文摘要——
+    # 「摘要」这一必抽项的语义是"本文有无摘要", 不分语种。
+    if not (res.get("abstract") or {}).get("value") \
+            and (res.get("abstract_en") or {}).get("value"):
+        _a = dict(res["abstract_en"])
+        _c = dict(_a.get("confidence") or {})
+        _c["fallback_from"] = "abstract_en"
+        _a["confidence"] = _c
+        res["abstract"] = _a
     if "abstract_en" not in res:
         res["abstract_en"] = {"value": None, "from_tail": False, "confidence": _conf(None, [])}
     # —— 尾页英文 matter 顺带: title_en 兜底 + 罗马化作者 ——
@@ -469,11 +656,15 @@ def _selftest():
     ok4 = bool(found_line) and \
         _ABS_BOLD_KO.sub("", u"**국문요약** 본고는 군산").strip() == u"본고는 군산" and \
         not _ABS_BOLD_KO.match(u"**관련법령** 본문")
-    for i, ok in enumerate((ok1, ok2, ok3, ok4), 1):
+    # 5) plain 요약 头(13563528 '국문요약  본 연구는…' 无星号无冒号): 剥头取余行;
+    #    '요약 하자'类短内容误伤由调用侧 ≥10 字闸拦(正则层不拦)
+    ok5 = bool(_ABS_PLAIN_KO.match(u"국문요약  본 연구는 대전")) and \
+        _ABS_PLAIN_KO.sub("", u"국문요약  본 연구는 대전").strip() == u"본 연구는 대전"
+    for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5), 1):
         if not ok:
             print("FAIL [abs case %d]" % i)
-    print("abs selftest: %d/4 PASS" % (ok1 + ok2 + ok3 + ok4))
-    return ok1 and ok2 and ok3 and ok4
+    print("abs selftest: %d/5 PASS" % (ok1 + ok2 + ok3 + ok4 + ok5))
+    return ok1 and ok2 and ok3 and ok4 and ok5
 
 
 if __name__ == "__main__":

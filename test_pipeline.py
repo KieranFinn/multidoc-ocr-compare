@@ -153,6 +153,27 @@ class UnifiedSafetyTest(unittest.TestCase):
         overview = viewer._meta_overview(meta)
         self.assertIn("引文句 2 条</b> · 3 处引文", overview)
 
+    def test_meta_overview_entity_checklist(self):
+        meta = {
+            "title": {"value": "제목"}, "keywords": ["k1"],
+            "abstract": {"value": "요약 본문"},
+            "authors": [{"name": "홍길동", "affiliation": "서울대학교"}],
+            "affiliations": ["서울대학교"],
+            "journal": {"value": "학술지"}, "year": {"value": "2025"},
+            "references": [{"page": 2}], "citation_spans": [{"page": 1}],
+        }
+        ents = {1: {"u0_1": [{"kind": "funding", "name": "NRF", "slice": "", "ann": []},
+                             {"kind": "dataset", "name": "CORPUS", "slice": "", "ann": []}]}}
+        band = viewer._meta_overview(meta, ents=ents, body_chars=900)
+        self.assertIn("实体清单", band)
+        for g in ("题录", "来源", "内容", "引证", "文献", "实体"):
+            self.assertIn('<span class="ckg">%s</span>' % g, band, g)
+        for ok_item in ("标题", "关键词", "摘要", "作者", "机构", "期刊", "出版年",
+                        "正文", "参考文献", "引文句", "科学数据集", "基金"):
+            self.assertIn('<span class="ck ok">✓ %s</span>' % ok_item, band, ok_item)
+        for no_item in ("卷", "期", "页码", "研究软件", "脚注"):
+            self.assertIn('<span class="ck no">✗ %s</span>' % no_item, band, no_item)
+
     def test_footnote_shows_only_raw_text_without_biblio_fields(self):
         meta = {"footnote_refs": [{"page": 1, "uid": "u0_1", "num": "36",
                                    "raw": "산성의 위치와 복원 경위를 설명한다.", "title": "조선소설사",

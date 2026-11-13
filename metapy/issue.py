@@ -38,7 +38,10 @@ _NOEN = re.compile(r"(?<![A-Za-z])No\.?\s*(\d{1,4})", re.I)
 _PP = re.compile(r"pp?\.?\s*(\d{1,4})\s*[-–~～]\s*(\d{1,4})")
 _BARE_RANGE = re.compile(r"(?:^|[\s,(（])(\d{1,4})\s*[-–~～]\s*(\d{1,4})(?=[.,)\s쪽]|$)")
 _BMC = re.compile(r"\(\s*((?:19|20)\d{2})\s*\)\s*(\d{1,3}):(\d{1,4})")
+# 연도.호 点分形态(13563525 页眉 '2025.10'): 年前点后号, 点两侧都不许再贴数字
+_YDOT = re.compile(r"(?<![\d.])((?:19|20)\d{2})\.(\d{1,2})(?!\d)")
 _PAGE_OF = re.compile(r"Page\s+(\d{1,4})\s+of\s+\d{1,4}", re.I)
+_SEASON = re.compile(r"\b(AUTUMN|SPRING|SUMMER|WINTER|FALL)\b", re.I)
 _DOI = re.compile(r"10\.\d{4,}/[^\s\"”’]+", re.I)
 _DOI_YV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.")
 _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
@@ -186,6 +189,8 @@ def extract(source, n_pages, excluded_folds):
     n_pages: 物理页数。返回结果 dict(含 audit 段)。"""
     journal, journal_en = {}, {}
     year, vol_kwan, vol_vol, vol_jip, issue, pages_pp, pages_bare = {}, {}, {}, {}, {}, {}, {}
+    issue_jip = {}   # 제N집 老式连续页码期刊: 无 권/호 时"第N集"就是期号(最低优先级候选组)
+    issue_season = {}  # 季刊页眉 'KOREA JOURNAL / AUTUMN 2002': 季节词本身即期次标识
     tongkwan, bmc_art = [], []
     for page, uid, s in source:
         if len(_fold(s)) > 130:
@@ -209,7 +214,12 @@ def extract(source, n_pages, excluded_folds):
         for m in _KWAN.finditer(s):
             _add(vol_kwan, int(m.group(1)), page, uid)
         for m in _JIP.finditer(s):
-            _add(vol_jip, int(m.group(1)), page, uid)
+            v = int(m.group(1))
+            _add(vol_jip, v, page, uid)
+            # 「제N집 / N집」是连续页码期刊的唯一期次标识。它同时进卷组(既有口径)与期组,
+            # 期组只在 제N호/No.N 等主候选全空时启用, 否则老期刊的"期"永远为 null。
+            if 1 <= v <= 999:
+                _add(issue_jip, v, page, uid)
         for m in _VOLEN.finditer(s):
             _add(vol_vol, int(m.group(1)), page, uid)
         for m in _HO.finditer(s):
@@ -219,7 +229,13 @@ def extract(source, n_pages, excluded_folds):
             if 1 <= v <= 999:
                 _add(issue, v, page, uid)
         for m in _NOEN.finditer(s):
-            _add(issue, int(m.group(1)), page, uid)
+            v = int(m.group(1))
+            if 1 <= v <= 999:        # 脚注里的 "I.D. No. 715579" 不是期号(2002 英文期刊实证)
+                _add(issue, v, page, uid)
+        if _YEAR.search(s):          # 季刊: 同一行有年份 + 季节词 → 该季节即本期
+            ms = _SEASON.search(s)
+            if ms:
+                _add(issue_season, ms.group(1).upper(), page, uid)
         for m in _TONGKWAN.finditer(s):
             tongkwan.append({"value": int(m.group(1)), "page": page})
         # BMC (연도) 권:문号
@@ -228,6 +244,13 @@ def extract(source, n_pages, excluded_folds):
                 _add(vol_vol, int(m.group(2)), page, uid)
             _add(year, int(m.group(1)), page, uid)
             bmc_art.append({"value": int(m.group(3)), "page": page})
+        # 연도.호 形态(13563525 页眉 '… | 20 | 2025.10' 实证: 年.期点分, 年已收, 期漏收);
+        # DOI 行豁免(10.23073/igll.2025.20.013 里的 2025.20 是卷不是期)
+        if not _DOI.search(s):
+            for m in _YDOT.finditer(s):
+                y0, i0 = int(m.group(1)), int(m.group(2))
+                if y0 in YEAR_OK and 1 <= i0 <= 99:
+                    _add(issue, i0, page, uid)
         # 页
         for m in _PP.finditer(s):
             a, b = int(m.group(1)), int(m.group(2))
@@ -260,6 +283,11 @@ def extract(source, n_pages, excluded_folds):
         j_en_sup = [0]
     else:
         j_en_w, j_en_sup = _vote(journal_en, 0)
+    # 纯英文期刊(2002 KOREA JOURNAL / 2019 SpringerOpen 实证): _jname_from_line 只把它
+    # 投进 journal_en, 但 metadata 的 journal 才是主字段(查看器/质检都认它)。
+    # 仅在韩文刊名完全没候选时回退, 已有韩文刊名的篇不受影响。
+    if j_w is None and j_en_w:
+        j_w, j_sup = j_en_w, j_en_sup
 
     def _lvl(sup):
         return "high" if len(sup) >= 2 else ("mid" if sup else "low")
@@ -281,6 +309,13 @@ def extract(source, n_pages, excluded_folds):
             vol_grp = grp
             break
     i_w, i_sup = _vote(issue, 0)
+    i_grp = issue
+    if not issue and issue_jip:
+        i_grp = issue_jip
+        i_w, i_sup = _vote(issue_jip, 0)
+    elif not issue and issue_season:
+        i_grp = issue_season
+        i_w, i_sup = _vote(issue_season, 0)
     pg_w, pg_sup = None, []
     pg_grp = None
     if pages_pp:
@@ -298,7 +333,7 @@ def extract(source, n_pages, excluded_folds):
                  "confidence": {"level": _lvl(y_sup), "source": "regex"}},
         "volume": {"value": vol_w, "uid": _uid0(vol_grp, vol_w),
                    "confidence": {"level": _lvl(vol_sup), "source": "regex"}},
-        "issue": {"value": i_w, "uid": _uid0(issue, i_w),
+        "issue": {"value": i_w, "uid": _uid0(i_grp, i_w),
                   "confidence": {"level": _lvl(i_sup), "source": "regex"}},
         "pages": {"value": ("%d-%d" % pg_w) if pg_w else None,
                   "uid": _uid0(pg_grp, pg_w),
@@ -312,6 +347,7 @@ def extract(source, n_pages, excluded_folds):
                  + [("vol:%d" % k, sorted(p for p, _ in v)) for k, v in vol_vol.items()]
                  + [("jip:%d" % k, sorted(p for p, _ in v)) for k, v in vol_jip.items()]),
              "issue_candidates": {str(k): sorted(p for p, _ in v) for k, v in issue.items()},
+             "issue_jip_candidates": {str(k): sorted(p for p, _ in v) for k, v in issue_jip.items()},
              "pages_candidates": {"%d-%d" % k: sorted(p for p, _ in v) for k, v in
                                   dict(list(pages_pp.items()) + list(pages_bare.items())).items()},
              "tongkwan": tongkwan, "bmc_article_no": bmc_art}
@@ -418,7 +454,57 @@ def issue_doc(doc, out_root):
         if a.get("name"):
             excluded.add(_fold(a["name"]))
     res = extract(source, len(pages), excluded)
+    # —— 体例全覆盖: unified 归并会丢页眉/题录行(老式 제N집 期刊、英文期刊、SpringerOpen 实证),
+    #     merged.json 三渠道仍保留逐块原文。仅在既有判据某字段为空时, 用原始读法跑同一套
+    #     extract() 规则补该字段——不是改结果、不是绕过校验, 是给同一规则更完整的输入。
+    ch_filled = {}
+    ch_lines = channel_lines(doc_dir)
+    if ch_lines and any(res[k]["value"] is None for k in
+                        ("journal", "journal_en", "year", "volume", "issue", "pages")):
+        # 每页最前几行=页眉区。正文里的编号脚注("I.D. No. 715579")不进题录投票,
+        # 否则会把档案编号当成期号(2002 KOREA JOURNAL 实证, 已修)。
+        by_page = {}
+        for p, ch, t in ch_lines:
+            by_page.setdefault(p, []).append(t)
+        src2 = []
+        for p, texts in by_page.items():
+            for t in texts[:4]:
+                for ln in t.split("\n"):
+                    ln = ln.strip()
+                    if not ln or len(_fold(ln)) > 130:
+                        continue
+                    if re.search(r"\b(?:I\.?D\.?|Subject|RG\s*\d|Entry\s*\d|Fig\.?|Table|©|"
+                                 r"Copyright|Abstract|Keywords)\b", ln, re.I):
+                        continue
+                    src2.append((p - 1, None, ln))
+        res2 = extract(src2, len(pages), excluded)
+
+        def _ok_val(k, v):
+            if v is None:
+                return False
+            if k in ("issue", "volume"):
+                return isinstance(v, int) and 1 <= v <= 999
+            if k == "year":
+                return isinstance(v, int) and v in YEAR_OK
+            if k in ("journal", "journal_en"):
+                s = str(v)
+                if not (4 <= len(_fold(s)) <= 50) or re.search(r"[,;|]|et\s+al", s, re.I):
+                    return False
+                if re.fullmatch(r"[A-Za-z]{1,4}", s):      # 正文缩写('SSP')/人名('Iida')不是刊名
+                    return False
+                return bool(re.search(r"(Journal|Review|Quarterly|Bulletin|Annals|Proceedings|"
+                                      r"Studies|Research|Letters|학회|학술|연구|논문|문화|사학|"
+                                      r"철학|법학|음악|문학|언어|교육|과학|論|學|誌|志)", s, re.I)
+                            or re.search(u"[가-힣一-龥]", s) or s.isupper())
+            return True   # pages
+
+        for k in ("journal", "journal_en", "year", "volume", "issue", "pages"):
+            if res[k]["value"] is None and _ok_val(k, res2[k]["value"]):
+                res[k] = {"value": res2[k]["value"], "uid": None,
+                          "confidence": {"level": "mid", "source": "channel_fallback"}}
+                ch_filled[k] = res2[k]["value"]
     audit = res.pop("_audit")
+    audit["channel_fallback"] = ch_filled
     res.pop("_internal")
     # —— 页: pp/裸区间无 → 页码推断 ——
     if res["pages"]["value"] is None:
@@ -462,6 +548,25 @@ def issue_doc(doc, out_root):
                     if kws:
                         continue
                     kws, kw_raw, kw_loc = items, raw, {"page": p + 1, "uid": u["uid"]}
+    # 关键词渠道兜底: 老式期刊把 주제어/핵심어 行放在正文里, unified 归并成 Text 块后
+    # KW_LINE(要求行首头词)抓不到; 只在 keywords[] 仍为空时, 从三渠道原文按行内头词补。
+    if not kws:
+        _KW_ANY = re.compile(u"(?:주제\\s*어|핵심\\s*어|키\\s*워드|중심\\s*어|주요\\s*어|Key\\s*words?|Keywords?)", re.I)
+        for p, ch, t in ch_lines:
+            for ln in t.split("\n"):
+                mm = _KW_ANY.search(ln)
+                if not mm:
+                    continue
+                rest = ln[mm.end():].lstrip(u" 】〉>）)]：:·.-*")
+                items = [x.strip() for x in re.split(u"[,，;；·]", rest) if x.strip()]
+                if 2 <= len(items) <= 15 and max(len(x) for x in items) < 60:
+                    kws, kw_raw, kw_loc = items, [ln.strip()], {"page": p, "uid": None}
+                    break
+            if kws:
+                break
+        if kws:
+            audit["keywords_channel_fallback"] = {"items": kws, "raw_lines": kw_raw,
+                                                  "source": kw_loc}
     # —— 落盘 ——
     meta.update({
         "doc": doc,
@@ -603,14 +708,21 @@ def _selftest():
         got = issue_doc("kwbi", tmp)
         ok16 = bool(got) and got.get("keywords") == [u"광산배수", u"증발잔류광물"] \
             and got.get("keywords_en") == ["Mine Waters", "Evaporite"]
+    # 17) 연도.호 点分(13563525 页眉 '… | 20 | 2025.10'): 期=10; 无点 '202510' 不收(case7 口径不变);
+    #     DOI 行豁免('igll.2025.20.013' 的 2025.20 是卷号不是期)
+    r = extract([(0, "u0", u"글로컬 어문학 문화 연구 | International Journal of Glocal Language "
+                          u"and Literary Studies | 20 | 2025.10")], 1, set())
+    r2 = extract([(0, "u0", "https://doi.org/10.23073/igll.2025.20.013")], 1, set())
+    ok17 = r["issue"]["value"] == 10 and r["year"]["value"] == 2025 \
+        and r2["issue"]["value"] is None
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15, ok16), 1):
+                            ok14, ok15, ok16, ok17), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/16 PASS" % n_ok)
-    return n_ok == 16
+    print("issue selftest: %d/17 PASS" % n_ok)
+    return n_ok == 17
 
 
 if __name__ == "__main__":

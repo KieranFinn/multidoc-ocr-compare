@@ -213,11 +213,49 @@ python ner_lite.py all                     # out/ 下所有带 unified/ 的文�
 
 产物写在 `out_llm_trial/fds_extract/ner_lite/<doc>/`（`ner_lite.json`、`ner_lite_audit.json`、`_audit.html`）。`viewer_compare.html` 在文件存在时多画一列，不存在时安静地不画。
 
+## 按阶段重跑（`stages.py`）
+
+改一条上游判据不该赔上一次全链 OCR。`stages.py` 把链路拆成 15 个阶段，每个阶段只依赖磁盘上已有的产物，因此可以任意勾选子集重跑：
+
+```bash
+python stages.py list 13563525        # 阶段表 + 该文档当前哪些能跑
+python stages.py 13563525 refs,front  # 只重跑两段元数据(秒级)
+python stages.py 13563525 all         # 全链(与 pipeline.main 等效)
+```
+
+| 分组 | 阶段 |
+| --- | --- |
+| ① 取数 | `render`(PDF→pages)、`acquire`(API/缓存/CDP→raw/)、`adapt`(raw/→单渠道查看器) |
+| ② 归一 | `merge`(→merged/)、`unify`(→unified/) |
+| ③ 元数据 | `m3`、`refs`、`frefs`、`front`、`abs`、`issue`、`cspan` |
+| ④ 实体/呈现 | `ner`、`viewer`(重建 viewer_compare.html)、`index`(重建 index.html) |
+
+依赖逐阶段声明并在执行前校验（`pages`/`raw`/`merged`/`unified`/`metadata`）：上游产物缺失的阶段会被拒绝并写明缺什么，不做静默跳过；某段失败即停止后续。`pipeline.fetch_channels()` 与 `pipeline.write_index()` 由 `main()` 与 `stages.py` 共用，一份实现两个入口。
+
+桌面工作台把它收进**一个键的两个热区**：点「一键重跑」主体（右端 `▾` 以外）＝执行菜单里当前勾选的阶段，与菜单里的「执行选中阶段」完全等价；点 `▾` 才展开菜单（预设 / 按组勾选）。「快速重跑(跳NER)」是另一个独立键，跑同样的链但跳过 `ner`——它存在的目的就是不重复调 LLM。没勾选的阶段绝不会替你跑，耦合只提示、不偷偷带上。
+
+**质检**列只问一件事：必抽项在不在。清单是标题、关键词、摘要、作者、机构、期刊、出版年、卷、期、页码、正文、参考文献，外加**引文句与脚注二存一**。缺任意一项即整行报红，并在单元格里写出缺了哪几项（`✘ 2 项 机构/参考文献`）。字段置信度不参与判定，三类可选实体（科学数据集 / 基金 / 研究软件）也不影响颜色。
+
+这一列只管一半。它看不见**抽到了但抽错**的字段——正文段落躺在 `title` 里、`['초점','주제','초점']` 躺在 `authors` 里、`Oxford University Press, 2012` 躺在 `affiliations` 里，质检一律显示绿色。另一半由 `metapy/audit_value.py` 负责：判的是"这个值立不立得住"，用四类判据——形态先验（人名不是短语）、来源先验（题名不结句）、跨字段一致（从题名切下来的名字会以题名缺陷的形式暴露）、语料离群（197 字的题名对照 15–60 字的常态）。31 条规则，每条都带着逼出它的那篇文档，每条都配一个"必须报"的正例和一个"必须不报"的合法夹逼例：
+
+```bash
+python -m metapy.audit_value              # 全库, 只报 bad + warn
+python -m metapy.audit_value <doc> --all  # 单篇, 连 note 一起
+python -m metapy.audit_value --selftest   # 14 个夹逼例, 改规则后必跑
+python -m metapy.audit_value --html out/_value_audit.html
+```
+
+23 篇工作区当前状态：`{'ok': 21, 'note': 2}`，无 `bad` 无 `warn`。两条 note 都是合法值（`강원대학교` 与 `강원대학교 경영회계학부` 并列；五位作者同属一个研究室），所以只给 note 不给 warn——会乱叫的检查最终会被静音。
+
+「机构」与查看器清单同口径：`affiliations`、`authors[].affiliation` 或 `ner_lite` 的 `org` 实体三者任一有即算有；「正文」也用查看器的阈值（unified 中 Text/Footnote 主读法总字符 ≥ 500）。
+
+前置信息区认不出机构时，`metapy/front.py` 放宽的是**输入**、不是字段口径：它回头读三渠道原始行（`common.channel_lines()`，底层是 `merged.json`），但只扫首页、以及带 `Author details` / `Authors' affiliations` 题头的那一页——BMC / SpringerOpen 体例把单位放在末页，行内带上标 `$ ^{1} $`。候选行还必须过一道形态守卫（`_looks_affil()`）：要有真正的机构尾巴（대학교 / 학과 / 연구소 / University / Institute …），且不能是连续行文（본고는…、…일환으로…）、不能是出版社（… Press）、不能是论文题名、逗号也不得 ≥3 个。一行塞了多个单位的会被逐段切开再验。这一整套都在 `front` 段内完成、从不读 `ner_lite`，因此补一个机构**不产生任何 LLM 调用**：23 篇工作区里全部机构都由 `metadata.affiliations` 自身得出，`KCI_FI002542944` 甚至没有 `ner_lite` 产物也照样有机构。
+
 ## 状态与已知限制
 
 - 研究与工程工具，不是托管服务。三个云渠道都是第三方服务：端点和请求格式随时可能变，它们的条款约束的是你。
 - `dots_api.base` 默认指向一个社区公共实例；万一它没了，请指向你自己的 Gradio 5 部署（或者用 `inbox/` 喂已有产物）。
-- **准确率并不均匀。** 文献条目与前置信息（题目/作者区）的启发式是在 13 篇韩中期刊语料上调的，并用仓库里这份实例做 diff 验证。已知弱点（都能在该语料上复现）：年份前只有句点的引文样式（"Author. 1999. Title."）、全汉字作者行、`N.` 式脚注标记、文献表最后一页与另一栏摘要同页、以及摘要没有可识别引导词时的题目/作者区越界。把 `metadata.json` 当高精度草稿用：引用前请检查每个字段的置信度（并对照 `viewer_compare.html`）。
+- **准确率并不均匀，且残余失败是原文缺字段，不是解析器缺能力。** 文献条目与前置信息（题目/作者区）的启发式是在 `out/` 下 23 篇韩 / 英 / 中期刊语料上调的，验收标准就是工作台的质检列：当前 23 篇里 20 篇必抽项全通过。剩下 3 篇是文章本身就没有该字段，已逐张页图核对——`KCI_FI001004818_2002` 无关键词栏、无摘要、无卷号表述；`KCI_FI001536751_2000` 首页只有题名与作者，末页只有参考文献加通信地址；`KCI_FI002542944` 用 BMC 编号 `(2019) 43:44`，即卷 43 + 文章号 44，该刊不设期号。要补只能靠臆造。早前版本列过的弱点——全汉字作者行、摘要无可识别引导词、文献表末页与另一栏摘要同页——现已由上面的渠道兜底覆盖，而不是逐个打补丁。把 `metadata.json` 当高精度草稿用：引用前请检查每个字段的置信度（并对照 `viewer_compare.html`）。
 - **实体抽取是召回受限，不是精度受限。** 在 13 篇语料上，`ner_lite.py` 产出 57 条记录（数据集 35 / 软件 15 / 基金 7），61 条提名全部通过定位闸门，网络与解析零失败；但对人工核过的 `verified.json` 的召回并不齐：软件 6/7、基金 3/4（漏的是被拆成两条——机构与项目各成一条）、数据集 0/0（35 条全是误报，多为含「史」「報告書」的旧书与国际法院报告题名）。这 35 条仍然**每条都可验**——每个 `slice` 都逐字在原文里——这正是「定位到」和「抽对了」的区别。
 - 只有 MinerU 的桌面版兜底是 Windows 专属；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`start.bat` / `start.sh` 只是便捷包装。
 - 不包含在线服务测试（需要凭据和额度）。CI 会编译每个模块、跑单元测试、`ner_lite.py selfcheck` 和离线 demo；CI 不调用 LLM。

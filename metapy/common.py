@@ -5,7 +5,7 @@ r"""metapy 各 stage 共享的阈值、正则、文本折叠与 metadata/audit s
 pipeline 的 _fold_sym/_gdice 在此 re-export，保持既有 `from .common import *` 调用契约。
 """
 
-__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit']
+__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit', 'channel_lines']
 
 import os, re, io, json, collections, datetime
 
@@ -358,6 +358,40 @@ KW_LINE = re.compile(u"^(?:[■◆]\\s*)?(키\\s*워드|중심\\s*어|핵심\\s*
 LV_COLOR = {"high": "#16a34a", "mid": "#d97706", "low": "#dc2626"}
 
 AUDIT_NAME = "metadata_audit.json"   # 诊断 sidecar(§38 分层输出): review_comment/ch_agree/basis/block_review/L1 校验/llm 队列——评审工具读它, 下游只拿 metadata.json
+
+def channel_lines(doc_dir):
+    """三渠道原始读法行(2026-11-12 体例全覆盖用)。
+
+    unified/ 是"每区域挑一家读法"的共识层, 归并时会把页眉/摘要头/作者行等低频块
+    合并或丢弃(老式韩文期刊、英文期刊、SpringerOpen 实证)。但 merged.json 里保留了
+    mineru/dots/paddle 三家的逐块原文。各抽取器在自身判据未命中时, 用这里读回的
+    原始读法做第二遍判据——这是抽取规则的一部分, 不是事后补数据。
+
+    返回 [(page1基, ch, text)], 按页序→渠道序→块序; 已按折叠值去重(三渠道同文只留一条),
+    去重保留首次出现的渠道作为证据来源。
+    """
+    fp = os.path.join(doc_dir, "merged.json")
+    if not os.path.isfile(fp):
+        return []
+    try:
+        mj = json.load(io.open(fp, encoding="utf-8"))
+    except Exception:
+        return []
+    out, seen = [], set()
+    for pg in mj.get("page_data") or []:
+        p = int(pg.get("page") or 0)
+        for ch in ("mineru", "dots", "paddle"):
+            for b in (pg.get("channels") or {}).get(ch) or []:
+                t = (b.get("text") or "").strip()
+                if not t:
+                    continue
+                k = _fold(t)
+                if k in seen:
+                    continue
+                seen.add(k)
+                out.append((p, ch, t))
+    return out
+
 
 def load_audit(doc_dir):
     """读诊断 sidecar(metadata_audit.json); 不存在返回 {}(旧产物/未跑 refs 时报告端容忍)。"""
