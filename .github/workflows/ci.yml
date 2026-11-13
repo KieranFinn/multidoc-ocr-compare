@@ -33,7 +33,13 @@ jobs:
           print("config layers:", sorted(pipeline.load_cfg()))
           PY
       - name: Unified data-safety regression
-        run: python -W error::ResourceWarning -m unittest -v test_pipeline.py
+        run: |
+          # 有 xvfb 就真跑 GUI 用例(工作台建表/日志); 没有则测试内部自行跳过无显示器的那一例
+          if command -v xvfb-run >/dev/null 2>&1; then
+            xvfb-run -a python -W error::ResourceWarning -m unittest -v test_pipeline.py
+          else
+            python -W error::ResourceWarning -m unittest -v test_pipeline.py
+          fi
       - name: Entity gate selfcheck (offline mock model, no network)
         run: |
           # 合成块 + MockModel: 锚定/外延/跨块/著录脚注/去重的契约, 不调用任何 API。
