@@ -18,6 +18,7 @@
   python stages.py <doc> refs,front            # 只跑后链两段
   python stages.py <doc> all                   # 全链
   python stages.py <doc> all --pdf uploads/x.pdf
+  python stages.py --batch a,b,c all --workers 5   # 5 篇并发(一篇一子进程)
 """
 import io
 import json
@@ -120,7 +121,7 @@ def _st_adapt(ctx):
         if pp is None and md is None:
             continue
         vw = os.path.join(out, "viewer_%s.html" % ch)
-        title = "%s ｜ %s" % (ctx["doc"], {"mineru": "MinerU（本地·非OCR）",
+        title = "%s ｜ %s" % (ctx["doc"], {"mineru": "MinerU（云端 API·非OCR）",
                                           "dots": "dots.ocr（小红书）",
                                           "paddle": "PaddleOCR-VL-1.6（在线）"}[ch])
         if md is not None:
@@ -213,7 +214,7 @@ def _st_index(ctx):
                 per_ch[ch]["hang"] += len(re.findall(r"[\uac00-\ud7a3]", t))
                 per_ch[ch]["fffd"] += t.count("\ufffd")
     report = []
-    titles = {"mineru": "MinerU（本地·非OCR）", "dots": "dots.ocr（小红书）",
+    titles = {"mineru": "MinerU（云端 API·非OCR）", "dots": "dots.ocr（小红书）",
               "paddle": "PaddleOCR-VL-1.6（在线）"}
     for ch in CH:
         d = per_ch[ch]
@@ -235,7 +236,7 @@ def _st_index(ctx):
 STAGES = [
     # id, 分组, 名称, 说明, 依赖产物, 需 PDF
     ("render",  "① 取数", "页图渲染",     "PDF → pages/page_N.jpg",        (), True),
-    ("acquire", "① 取数", "渠道获取",     "API/缓存/CDP 取三渠道原始产物",   (), True),
+    ("acquire", "① 取数", "渠道获取",     "API/缓存/inbox 取三渠道原始产物",  (), True),
     ("adapt",   "① 取数", "渠道适配",     "raw/ → 单渠道查看器",            ("pages", "raw"), False),
     ("merge",   "② 归一", "跨渠道合并",   "merged/ + merged.json + .md",   ("pages", "raw"), False),
     ("unify",   "② 归一", "归一化层",     "merged/ → unified/",            ("merged",), False),
@@ -254,6 +255,13 @@ STAGES = [
 BY_ID = {s[0]: s for s in STAGES}
 ORDER = [s[0] for s in STAGES]
 META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan")
+
+
+def _stage_missing(sid, dd, have, pdf=None):
+    miss = [ARTIFACT_ZH[r] for r in BY_ID[sid][4] if not have.get(r)]
+    if BY_ID[sid][5] and not pdf:
+        miss.append("uploads/%s.pdf" % os.path.basename(dd))
+    return miss
 
 # 阶段 id -> metapy 入口函数名。不能靠 "<id>_doc" 拼: abs 的入口是 abstract_doc
 # (2026-11-12 实跑踩过: 全链跑到 abs 抛 module 'metapy' has no attribute 'abs_doc')。
@@ -305,14 +313,9 @@ def availability(doc, out_root=None):
     have = {k: bool(f(dd)) for k, f in ARTIFACTS.items()}
     res = {}
     for sid, _g, _l, _h, req, need_pdf in STAGES:
-        miss = [ARTIFACT_ZH[r] for r in req if not have.get(r)]
-        if need_pdf:
-            pdf = _find_pdf(doc)
-            if not pdf:
-                miss.append("uploads/%s.pdf" % doc)
-            res[sid] = (not miss, miss, pdf)
-        else:
-            res[sid] = (not miss, miss, None)
+        pdf = _find_pdf(doc) if need_pdf else None
+        miss = _stage_missing(sid, dd, have, pdf)
+        res[sid] = (not miss, miss, pdf)
     return res
 
 
@@ -325,7 +328,7 @@ def _find_pdf(doc):
 
 
 def plan(ids, doc, out_root=None):
-    """(按序 id 列表, 错误列表)。缺依赖的阶段不进执行列表, 逐个报缺什么。"""
+    """当前产物快照下的 (按序 id 列表, 错误列表)，供菜单和命令行预览。"""
     avail = availability(doc, out_root)
     bad_meta = [i for i in ids if i not in BY_ID]
     ordered = [i for i in ORDER if i in set(ids)]
@@ -344,27 +347,37 @@ def run(doc, ids, pdf=None, out_root=None, log=print):
     """按序执行所选阶段。返回 {"doc","results","ok"}。
 
     results[stage] = {"ok":bool, "skipped":bool, "msg":str, "elapsed":int}
-    任一阶段失败即停(skipped 标余下)——链式阶段在下游跑等于用坏输入产出坏产物。
+    每段执行前重新检查依赖，因此本阶段新生成的产物可供下一段立即使用。
+    任一阶段缺依赖或失败即停(skipped 标余下)——链式阶段在下游跑等于用坏输入产出坏产物。
     """
     out_root = out_root or OUT
     dd = doc_dir_of(doc, out_root)
     _check_registry()
-    todo, errs = plan(ids, doc, out_root)
+    ids = list(ids)
+    todo = [i for i in ORDER if i in set(ids)]
+    unknown = [i for i in ids if i not in BY_ID]
     results = {}
-    for e in errs:
-        log("[阶段] 跳过 " + e)
-    if not todo:
+    if unknown:
+        for sid in unknown:
+            log("[阶段] 拒绝 未知阶段: " + sid)
         return {"doc": doc, "results": results, "ok": False,
-                "error": "无可执行阶段: " + ("; ".join(errs) or "未选择")}
-    avail = availability(doc, out_root)
+                "error": "未知阶段: " + ", ".join(unknown)}
+    if not todo:
+        return {"doc": doc, "results": results, "ok": False, "error": "无可执行阶段: 未选择"}
     pdf = pdf or _find_pdf(doc)
     ctx = {"doc": doc, "doc_dir": dd, "out_root": out_root, "pdf": pdf,
            "log": log, "sizes": _sizes(dd) if ARTIFACTS["pages"](dd) else []}
-    for sid in todo:
-        if BY_ID[sid][5] and not pdf:                 # 需 PDF 但没找到
-            results[sid] = {"ok": False, "skipped": False, "elapsed": 0,
-                            "msg": "缺 PDF 源文件"}
-            return {"doc": doc, "results": results, "ok": False, "error": "缺 PDF: %s" % doc}
+    for pos, sid in enumerate(todo):
+        have = {k: bool(f(dd)) for k, f in ARTIFACTS.items()}
+        miss = _stage_missing(sid, dd, have, pdf)
+        if miss:
+            error = "%s(%s): 缺 %s" % (sid, BY_ID[sid][2], "、".join(miss))
+            log("[阶段] 拒绝 " + error)
+            results[sid] = {"ok": False, "skipped": False, "elapsed": 0, "msg": error}
+            for rest in todo[pos + 1:]:
+                results[rest] = {"ok": False, "skipped": True, "elapsed": 0,
+                                 "msg": "上游 %s 缺依赖" % sid}
+            return {"doc": doc, "results": results, "ok": False, "error": error}
         t0 = time.time()
         log("[阶段] %s %s …" % (sid, BY_ID[sid][2]))
         ctx.pop("warn", None)
@@ -380,16 +393,158 @@ def run(doc, ids, pdf=None, out_root=None, log=print):
             el = int(time.time() - t0)
             results[sid] = {"ok": False, "skipped": False, "msg": str(e)[:200], "elapsed": el}
             log("[阶段] %s 失败 %ds: %s" % (sid, el, str(e)[:160]))
-            for rest in todo[todo.index(sid) + 1:]:
+            for rest in todo[pos + 1:]:
                 results[rest] = {"ok": False, "skipped": True, "elapsed": 0,
                                  "msg": "上游 %s 失败" % sid}
             return {"doc": doc, "results": results, "ok": False, "error": str(e)[:200]}
     return {"doc": doc, "results": results, "ok": True}
 
 
+# ---------- 并发: 一篇一进程 ----------
+#
+# 为什么是进程而不是线程(2026-11-13):
+#   阶段里 CPU 密集段(refs 正则、unify 的 dice 矩阵、md2html)在 GIL 下线程并发等于没并发;
+#   更麻烦的是**全局污染**: pipeline.log 是模块级函数(被 GUI 猴补丁替换过), pipeline.CFG 是
+#   模块级配置 —— 多线程跑不同文档时日志会串台、配置会互相看见。进程隔离一次解决两件事,
+#   顺带让"改了抽取器代码不用重启 GUI"变成天然成立(每个子进程新 import)。
+#
+# 为什么必须带闸(见 crossproc.py):
+#   并发的代价不在本机, 在 LLM/渠道 API 这些共享且失败静默的外部资源上。
+
+
+def _child_entry(job, q, out_root):
+    """子进程体: 跑一篇。所有日志(含第三方 print)逐行经 q 回主进程。
+
+    必须模块顶层 —— Windows 用 spawn, 子进程要重新 import 本模块再反序列化入口。
+    """
+    import sys as _sys
+
+    doc = job["doc"]
+
+    def _emit(kind, payload):
+        """往主进程送一条消息。父进程已经退出时**必须丢弃而不是阻塞**:
+        队列底层是有界管道, 没人读时 put 会永远卡住 —— 那样 GUI 一关, 子进程就僵在这里,
+        产物永远停在一半。丢日志是可接受的, 卡死不是。"""
+        for _ in range(3):
+            try:
+                q.put((kind, doc, payload), timeout=5)
+                return True
+            except Exception:
+                pass
+        return False
+
+    class _W(io.TextIOBase):
+        def write(self, s):
+            for line in str(s).splitlines():
+                if line.strip():
+                    _emit("log", line)
+            return len(s)
+        def flush(self):
+            pass
+
+    _sys.stdout = _sys.stderr = _W()
+    try:
+        import pipeline
+        pipeline.log = lambda *a: _sys.stdout.write(
+            "[pipeline] " + " ".join(str(x) for x in a) + "\n")
+    except Exception:
+        pass
+    res = {"doc": doc, "results": {}, "ok": False, "error": ""}
+    try:
+        res = run(doc, job["ids"], pdf=job.get("pdf"), out_root=out_root,
+                  log=lambda s: _sys.stdout.write(str(s) + "\n"))
+    except BaseException as e:            # 子进程里任何异常都要变成结果, 不许静默消失
+        res = {"doc": doc, "results": {}, "ok": False,
+               "error": "%s: %s" % (type(e).__name__, str(e)[:200])}
+    _emit("done", res)
+
+
+def run_batch(jobs, workers=5, log=print, out_root=None):
+    """并发跑多篇(一篇一进程), 返回 {doc: result}。
+
+    jobs  = [{"doc":..., "ids":[...], "pdf":... or None}, ...]
+    workers 上限受 len(jobs) 约束; 任一子进程崩溃只影响它自己, 其余照跑(失败隔离)。
+    日志顺序即到达顺序(多篇交错), 每行带 [doc] 前缀 —— 并发下"哪篇在说什么"比"顺序好看"重要。
+    """
+    import multiprocessing as mp
+    from queue import Empty
+
+    out_root = out_root or OUT
+    jobs = list(jobs)
+    results = {}
+    if not jobs:
+        return results
+    workers = max(1, min(int(workers), len(jobs)))
+    ctx = mp.get_context("spawn")
+    q = ctx.Queue()
+    pending = list(jobs)
+    running = {}                       # doc -> Process
+    nlog = lambda d, s: log("[%s] %s" % (d, s) if workers > 1 else s)
+
+    def _start(job):
+        p = ctx.Process(target=_child_entry, args=(job, q, out_root), daemon=False)
+        p.start()
+        running[job["doc"]] = p
+
+    try:
+        while pending or running:
+            while pending and len(running) < workers:
+                _start(pending.pop(0))
+            got = None
+            try:
+                got = q.get(timeout=0.3)
+            except Empty:
+                pass
+            if got:
+                kind, doc, payload = got
+                if kind == "log":
+                    nlog(doc, payload)
+                else:
+                    results[doc] = payload
+            for doc, p in list(running.items()):
+                if not p.is_alive():
+                    p.join()
+                    if doc not in results:
+                        results[doc] = {"doc": doc, "results": {}, "ok": False,
+                                        "error": "子进程异常退出(exitcode=%s)" % p.exitcode}
+                    running.pop(doc)
+    finally:
+        for doc, p in running.items():   # Ctrl-C / 上层异常: 不留孤儿进程
+            try:
+                p.terminate()
+            except Exception:
+                pass
+    # 子进程可能在被 terminate 前已写 done 但主循环没读到, 补齐顺序
+    return {j["doc"]: results.get(j["doc"], {"doc": j["doc"], "results": {}, "ok": False,
+                                             "error": "无结果返回"}) for j in jobs}
+
+
+def run_one_child(job, log=print, out_root=None):
+    """单篇也走子进程(与批量同一实现): GUI 用它做并发的工作单元。"""
+    return run_batch([job], workers=1, log=log, out_root=out_root)[job["doc"]]
+
+
+def find_pdf(doc):
+    return _find_pdf(doc)
+
+
 # ---------- CLI ----------
 
 def _main(argv):
+    """唯一的命令行入口(2026-11-13 收口)。
+
+    历史上"跑一次"有 5 个命令: pipeline.py(全链) / stages.py(分段) / metadata.py(元数据) /
+    unify.py / merge_out.py。它们跑的是同一条链的不同切片, 用户得先记住"这次该用哪个"。
+    现在统一到本入口的子命令, 其余文件保留 CLI 只为向后兼容(且各自 import 本模块转发):
+
+        python stages.py list [doc]                 阶段表 + 该文档哪些能跑
+        python stages.py <doc> <stage[,stage...]>   跑阶段(旧语法, 保持不变)
+        python stages.py --batch a,b,c <stage|all> [--workers N]   多篇并发
+        python stages.py archive add|list|check|restore|export
+        python stages.py audit [doc] [--html f]     字段值后验
+        python stages.py serve                     起浏览器工作台
+        python stages.py ui                        起桌面工作台
+    """
     if not argv or argv[0] in ("list", "-l"):
         doc = argv[1] if len(argv) > 1 else None
         avail = availability(doc) if doc else {}
@@ -401,9 +556,86 @@ def _main(argv):
             print("%-8s %-10s %-14s %s%s" % (sid, group, label, hint, flag))
         if not doc:
             print("\n用法: python stages.py <doc> <stage[,stage...]|all> [--pdf x.pdf]")
+            print("      python stages.py --batch doc1,doc2,... <stage|all> [--workers 5]")
+            print("      python stages.py archive <add|list|check|restore|export> ...")
+            print("      python stages.py audit [doc] [--all] [--html 报告.html]")
+            print("      python stages.py serve | ui")
+            print("文档: 归档/后验/UI 都由本入口转派, 不必再记其它脚本名。")
             print("预设: " + "; ".join("%s=%s" % (n, ",".join(ids)) for n, ids in PRESETS))
         return 0
+
+    workers = 1
+    if "--workers" in argv:
+        i = argv.index("--workers")
+        try:
+            workers = max(1, int(argv[i + 1]))
+        except (IndexError, ValueError):
+            print("--workers 需要一个整数"); return 2
+        del argv[i:i + 2]
+
+    # 并发批量: 篇与篇之间互不依赖, 各写自己的 out/<doc>/, 因此可以同时跑。
+    # 单篇仍走原路径(同进程), 批量才起子进程 —— 不为一次跑一篇付进程启动开销。
+    if argv and argv[0] in ("--batch", "-b"):
+        if len(argv) < 2:
+            print("用法: python stages.py --batch doc1,doc2,... [all|阶段列表] [--workers 5]")
+            return 2
+        docs = [x for x in re.split(r"[,\s]+", argv[1]) if x]
+        spec = argv[2] if len(argv) > 2 and not str(argv[2]).startswith("-") else "all"
+        ids = ORDER if spec == "all" else [x.strip() for x in spec.split(",") if x.strip()]
+        import archive
+        jobs, skipped = [], []
+        for d in docs:
+            if archive.is_archived(d):
+                skipped.append("%s(已归档)" % d)
+                continue
+            jobs.append({"doc": d, "ids": ids, "pdf": _find_pdf(d)})
+        for s in skipped:
+            print("[批量] 跳过 %s" % s)
+        if not jobs:
+            print("[批量] 无可执行文档"); return 2
+        print("[批量] %d 篇 × %d 段 · 并发 %d" % (len(jobs), len(ids), min(workers, len(jobs))))
+        t0 = time.time()
+        res = run_batch(jobs, workers=workers, log=lambda s: print(s))
+        wall = time.time() - t0
+        seq = sum(sum(int(v.get("elapsed") or 0) for v in ((r.get("results") or {}).values()))
+                  for r in res.values())
+        print("\n===== 汇总: 墙钟 %.0fs · 各篇阶段耗时合计 %ds · 并发 %d =====" % (
+            wall, seq, min(workers, len(jobs))))
+        for j in jobs:
+            r = res.get(j["doc"]) or {}
+            st = (r.get("results") or {})
+            nok = sum(1 for v in st.values() if v.get("ok"))
+            print("%-24s %s  %d/%d 段%s" % (
+                j["doc"], "OK  " if r.get("ok") else "FAIL", nok, len(st),
+                ("  " + str(r.get("error"))[:80]) if r.get("error") else ""))
+        return 0 if all((res.get(j["doc"]) or {}).get("ok") for j in jobs) else 1
+
+    app = argv[0]
+    if app == "archive":
+        import archive
+        return archive._cli(argv[1:])
+    if app == "audit":
+        from metapy import audit_value
+        return audit_value._main(argv[1:])
+    if app in ("serve", "web"):
+        import subprocess, sys as _sys
+        return subprocess.call([_sys.executable,
+                                os.path.join(os.path.dirname(os.path.abspath(__file__)), "webapp.py")])
+    if app in ("ui", "gui"):
+        import subprocess, sys as _sys
+        return subprocess.call([_sys.executable,
+                                os.path.join(os.path.dirname(os.path.abspath(__file__)), "gui.py")])
+
     doc = argv[0]
+    # 已归档的文档不该再从命令行重跑: 产物在 archive/ 里, 再跑一遍会在 out/ 分裂出一份同名产物,
+    # 之后归档清单与工作台各有一份, 恢复时还会撞"目标已存在"。要重跑先 --restore。
+    import archive
+    if "--force" not in argv and archive.is_archived(doc):
+        print("拒绝: %s 已在归档中 (archive/%s)。\n"
+              "  恢复: python archive.py --restore %s\n"
+              "  或加 --force 强行重跑(会在 out/ 另生一份产物)"
+              % (doc, doc, doc))
+        return 2
     spec = argv[1] if len(argv) > 1 else "all"
     ids = ORDER if spec == "all" else [x.strip() for x in spec.split(",") if x.strip()]
     pdf = None

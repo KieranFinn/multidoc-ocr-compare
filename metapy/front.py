@@ -15,6 +15,16 @@ _FRONT_HEAD_RE = re.compile(
     u"서\\s*론|Ⅰ\\.|I\\.)", re.I)
 
 
+# 渠道兜底的三条行判据(2026-11-13 收口): 原先定义在 front_doc 的分支里, 每次调用都重新
+# 编译一遍; 提到模块级后同一次运行只编一次, 也便于和 _front_head/_non_affil 对照。
+# 题录型行(期刊名/DOI/卷期/页码范围/版权行), 不可能是题名或作者
+_NOT_TITLE = re.compile(
+    r"(Journal|DOI|doi\.org|www\.|Vol\.|No\.|pp\.|Abstract|Keywords?|"
+    r"RESEARCH|Open Access|©|https?://|^\s*Page\s+\d|^\s*\d+\s*[./)])", re.I)
+_KO_NAME_CORE = u"[가-힣](?:\\s*[가-힣]){1,4}"          # 2–5 字韩文姓名(允许姓名间空格)
+_NAME_KO = re.compile(u"^%s\\s*\\*{0,2}$" % _KO_NAME_CORE)
+_NAME_EN = re.compile(r"^[A-Z][a-zA-Z\-]+(?:\s+[A-Z][a-zA-Z\-]+){1,2}\s*\*{0,2}$")
+
 def _front_head(s):
     """该行是不是一个"区段头"(摘要/目录/正文开头)。"""
     s = (s or "").strip()
@@ -139,6 +149,23 @@ _AFF_ROLE_TAIL = re.compile(
     u"원장|실장|팀장|선임연구원|책임연구원|전문연구원|연구원|박사과정|석사과정|대학원생|전임|겸임|초빙)\\S*\\s*$")
 _AFF_EN_ROLE = re.compile(
     r"(?:instructor|professor|lecturer|researcher)\s+(?:of|at)\s+(?:the\s+)?(.+)$", re.I)
+
+# —— 前置区段头(2026-11-13 收口): 同一份"关键词/摘要/目录/文献头"词表此前在 front 里被
+#    手抄成 3 份——_FRONT_HEAD_RE(区段头判定)、机构兜底的两处行内排除(各 200 字符)。
+#    词表只留一处来源, 用途仍分开: _front_head() 判"这行是区段头", _non_affil() 判
+#    "这行不可能是机构署名"(多算文献头/网址/制表符)。
+_NON_AFFIL = re.compile(
+    u"^(?:[\\s\\*_#`>\\-–—·•]*)"
+    u"(?:차\\s*례|목\\s*차|目\\s*次|\\bContents\\b|"
+    u"요\\s*약|국문\\s*요약|국문\\s*초록|영문\\s*요약|영문\\s*초록|초\\s*록|"
+    u"Abstract|ABSTRACT|Key\\s*words?|Keywords?|키\\s*워드|주제\\s*어|중심\\s*어|핵심\\s*어|"
+    u"참\\s*고\\s*문\\s*헌|References?|Bibliography)", re.I)
+
+
+def _non_affil(s):
+    """该行是"前置区段头/文献头/网址", 不可能是机构署名。"""
+    s = (s or "").strip()
+    return bool(_NON_AFFIL.match(s)) or bool(re.search(r"doi\.org|https?://|\t", s, re.I))
 
 
 def _split_affils(s):
@@ -528,12 +555,6 @@ def front_doc(doc, out_root):
     ch_front = {}
     if not t_ko or not authors or not affils:
         p1 = [(ch, t) for (p, ch, t) in channel_lines(doc_dir) if p == 1]
-        p_all = [(ch, t) for (p, ch, t) in channel_lines(doc_dir)]
-        _NOT_TITLE = re.compile(
-            r"(Journal|DOI|doi\.org|www\.|Vol\.|No\.|pp\.|Abstract|Keywords?|"
-            r"RESEARCH|Open Access|©|https?://|^\s*Page\s+\d|^\s*\d+\s*[./)])", re.I)
-        _NAME_KO = re.compile(u"^[가-힣](?:\\s*[가-힣]){1,4}\\s*\\*{0,2}$")
-        _NAME_EN = re.compile(r"^[A-Z][a-zA-Z\-]+(?:\s+[A-Z][a-zA-Z\-]+){1,2}\s*\*{0,2}$")
         if not t_ko:
             for ch, t in p1:
                 for ln in t.split("\n"):
@@ -576,7 +597,7 @@ def front_doc(doc, out_root):
                         names = [s]
                     # 老式期刊把机构直接写在作者名后的括号里: '안효성(대구대 자유전공학부 조교수)'
                     if not names:
-                        mk = re.match(u"^([가-힣](?:\\s*[가-힣]){1,4})\\s*[(（]", s)
+                        mk = re.match(u"^(%s)\\s*[(（]" % _KO_NAME_CORE, s)
                         if mk:
                             names = [mk.group(1).replace(" ", "")]
                     if names:
@@ -610,8 +631,7 @@ def front_doc(doc, out_root):
                         continue
                     if not (AFFIL_HEAD.search(s) or _AFF_STRICT.search(s)):
                         continue
-                    if re.search(r"(핵심어|주제어|키워드|Keywords?|요약|초록|Abstract|차례|목차|"
-                                 r"참고문헌|References|Bibliography|doi\.org|http|\t)", s, re.I):
+                    if _non_affil(s):
                         continue
                     _hit = _split_affils(s)
                     if _hit:
@@ -647,8 +667,7 @@ def front_doc(doc, out_root):
                     continue
                 if not (AFFIL_HEAD.search(s2) or _AFF_STRICT.search(s2)):
                     continue
-                if re.search(r"(핵심어|주제어|키워드|Keywords?|요약|초록|Abstract|차례|목차|"
-                             r"참고문헌|References|Bibliography|doi\.org|http|\t)", s2, re.I):
+                if _non_affil(s2):
                     continue
                 _cand = _split_affils(s2)
                 if _cand and len(_cand) > _best:

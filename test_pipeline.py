@@ -9,6 +9,7 @@ from unittest import mock
 
 import merge_out
 import pipeline
+import stages
 import unify
 import viewer
 
@@ -376,6 +377,114 @@ class UnifiedSafetyTest(unittest.TestCase):
                                                        "linked_refs": []}]}, 1)
         self.assertIn("&lt;tag&gt;", plain)   # 无公式特征时与纯转义等价
         self.assertNotIn("<sub>", plain)
+
+
+class StageRunTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = pathlib.Path(self.tmp.name)
+        self.out_root = self.root / "out"
+        self.doc_dir = self.out_root / "paper"
+        self.doc_dir.mkdir(parents=True)
+        self.pdf = self.root / "paper.pdf"
+        self.pdf.write_bytes(b"pdf")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_first_run_rechecks_dependencies_and_executes_full_chain(self):
+        calls = []
+
+        def fake_runner(sid):
+            def run(ctx):
+                calls.append(sid)
+                if sid == "render":
+                    target = self.doc_dir / "pages" / "page_0.jpg"
+                elif sid == "acquire":
+                    target = self.doc_dir / "raw" / "mineru_api" / "result.json"
+                elif sid == "merge":
+                    target = self.doc_dir / "merged" / "page_0.json"
+                elif sid == "unify":
+                    target = self.doc_dir / "unified" / "page_0.json"
+                elif sid == "front":
+                    target = self.doc_dir / "metadata.json"
+                else:
+                    return sid
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text("{}", encoding="utf-8")
+                return sid
+            return run
+
+        runners = {sid: fake_runner(sid) for sid in stages.ORDER}
+        with mock.patch.dict(stages.RUNNERS, runners, clear=True), \
+                mock.patch.object(stages, "_check_registry"), \
+                mock.patch.object(stages, "_sizes", return_value=[]), \
+                mock.patch.object(stages, "_find_pdf", return_value=str(self.pdf)):
+            result = stages.run("paper", stages.ORDER, pdf=str(self.pdf),
+                                out_root=str(self.out_root), log=lambda _s: None)
+
+        self.assertTrue(result["ok"], result.get("error"))
+        self.assertEqual(calls, stages.ORDER)
+        self.assertEqual(list(result["results"]), stages.ORDER)
+
+    def test_missing_dependency_fails_instead_of_reporting_partial_success(self):
+        (self.doc_dir / "pages").mkdir()
+        (self.doc_dir / "pages" / "page_0.jpg").write_bytes(b"jpg")
+        index = mock.Mock(return_value="index")
+        with mock.patch.dict(stages.RUNNERS, {"viewer": mock.Mock(), "index": index}, clear=True), \
+                mock.patch.object(stages, "_check_registry"), \
+                mock.patch.object(stages, "_sizes", return_value=[(100, 100)]):
+            result = stages.run("paper", ["viewer", "index"], pdf=str(self.pdf),
+                                out_root=str(self.out_root), log=lambda _s: None)
+
+        self.assertFalse(result["ok"])
+        self.assertIn("merged", result["error"])
+        self.assertFalse(result["results"]["viewer"]["ok"])
+        self.assertTrue(result["results"]["index"]["skipped"])
+        index.assert_not_called()
+
+    def test_workbench_builds_document_table_and_log_on_startup(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+
+        doc = {"pdf": str(self.pdf), "state": "未跑", "done_at": None, "miss": [],
+               "ch": {ch: False for ch in gui.CH}}
+        app = gui.App()
+        try:
+            app.withdraw()
+            with mock.patch.object(gui, "scan_docs", return_value={"paper": doc}), \
+                    mock.patch.object(gui, "load_history", return_value={}), \
+                    mock.patch.object(gui, "webapp_alive", return_value=False):
+                app.refresh()
+            self.assertEqual(app.tree.get_children(), ("paper",))
+            self.assertTrue(app.logtxt.winfo_exists())
+            self.assertTrue(app.btn_rerun.winfo_exists())
+        finally:
+            app.destroy()
+
+    def test_workbench_does_not_call_index_without_metadata_complete(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+
+        uploads = self.root / "uploads"
+        uploads.mkdir()
+        (uploads / "paper.pdf").write_bytes(b"pdf")
+        (self.doc_dir / "index.html").write_text("ok", encoding="utf-8")
+        for ch in ("mineru", "dots", "paddle"):
+            raw = self.doc_dir / "raw" / ch
+            raw.mkdir(parents=True)
+            (raw / "result.json").write_text("{}", encoding="utf-8")
+
+        with mock.patch.object(gui, "UP", str(uploads)), \
+                mock.patch.object(gui, "OUT", str(self.out_root)), \
+                mock.patch.object(gui.archive, "archived_set", return_value=set()):
+            self.assertEqual(gui.scan_docs()["paper"]["state"], "未完成")
+            (self.doc_dir / "metadata.json").write_text("{}", encoding="utf-8")
+            self.assertEqual(gui.scan_docs()["paper"]["state"], "完成")
 
 
 class DashboardTest(unittest.TestCase):

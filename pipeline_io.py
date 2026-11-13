@@ -93,7 +93,8 @@ def cal(key, dw=1654.0, dh=2339.0):
 def mineru_calib_key(src):
     """MinerU 标定键的显式来源判定(替代旧的"按目录 basename 猜"):
     优先读 raw 目录里的 _calib_key 标记(获取/归仓时落盘, 随 preserve_raw 孪生复制),
-    退回目录名启发式(basename == "mineru_api" -> mineru_api), 最终默认 mineru(桌面版)。
+    退回目录名启发式(basename == "mineru_api" -> mineru_api), 最终默认 mineru(历史桌面版)。
+    桌面驱动已移除, 默认分支现在只服务 inbox 投放的旧桌面产物; 新产物一律 mineru_api。
     同一目录无论从 viewer 还是 merge_out 进, 得到的键一致。"""
     if src and os.path.isdir(src):
         mk = os.path.join(src, "_calib_key")
@@ -773,7 +774,7 @@ def fetch_mineru_api(pdf_path, out_dir):
         with urllib.request.urlopen(req, timeout=timeout, context=ctx) as r:
             return json.loads(r.read().decode())
 
-    # 1) 申请上传 URL(参数同官方文档; is_ocr 默认 false, 与桌面版非OCR对齐)
+    # 1) 申请上传 URL(参数同官方文档; is_ocr 默认 false, 即非OCR)
     finfo = {"name": os.path.basename(pdf_path), "is_ocr": bool(meta.get("is_ocr", False))}
     payload = {"files": [finfo], "model_version": meta.get("model_version", "pipeline"),
                "language": meta.get("language", "korean")}

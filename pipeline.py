@@ -6,6 +6,7 @@ pipeline_io.py 负责获取/归档/标定/适配，viewer.py 负责查看器与�
 """
 import os, re, io, json, argparse, datetime, time
 import pipeline_io as _io
+from docid import doc_of
 import viewer as _viewer
 
 ROOT = _io.ROOT
@@ -121,7 +122,11 @@ def fetch_channels(doc, pdf, out, chans_in, echo=None):
     """② 渠道获取(独立可跑, stages.py 与 main 共用一份实现)。
 
     返回 (chans, SRC_KIND)。chans_in 里已给的渠道(命令行/inbox 指定)原样保留不再获取;
-    其余走 API/缓存/CDP 兜底。产物只落 out/raw/<ch>(_api), 无 PDF 就无法重取。
+    其余走 API/缓存/inbox 兜底。产物只落 out/raw/<ch>(_api), 无 PDF 就无法重取。
+
+    MinerU 只走云端 API(2026-11-13 移除桌面版 CDP 驱动): API 失败就是这一路失败,
+    不再回落到驱动本地 App。理由见 README「渠道获取」——桌面驱动的成功依赖窗口焦点、
+    依赖 App 版本, 且失败方式是"卡住"而不是"报错", 与并发调度天然冲突。
     """
     log_ = echo or log
     chans = dict(chans_in)
@@ -135,23 +140,17 @@ def fetch_channels(doc, pdf, out, chans_in, echo=None):
         if v and not chans.get(k):
             chans[k] = v; SRC_KIND[k] = "auto命令"
 
-    # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: CDP 驱动本地 App 与云端 API 互不阻塞
+    # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: 三家 API 互不阻塞
     from concurrent.futures import ThreadPoolExecutor
-    def _mineru_cdp():
-        try:
-            import mineru_drive
-            mu_dir = mineru_drive.drive(pdf)   # CDP 驱动桌面版: 启动->上传->等解析
-            if mu_dir and os.path.isdir(mu_dir):
-                log_("② 渠道[mineru] 经 CDP 驱动 App 获取 -> %s" % mu_dir)
-                SRC_KIND["mineru"] = "CDP"
-                return mu_dir
-        except Exception as e:
-            log_("② mineru CDP 驱动失败(可手动跑 App 走归仓): %s" % e)
-        return None
+    # 篇级名额: 首跑要真的向三家服务端发起 OCR(分钟级轮询), 5 篇同时上就是 15 条长连接,
+    # 服务端限流时 dots/paddle 会静默变 None —— 产物里看不出少了渠道。
+    # 缓存命中时这一段秒过, 名额等于没有成本。KCI_API_PARALLEL 可调。
+    import crossproc as _xp
+    _api_n = int(os.environ.get("KCI_API_PARALLEL") or 3)
     def _resolve_mineru():
-        if not (CFG.get("mineru_api") or {}).get("enabled", True):  # 配置关掉 API 时直落 CDP, 不再先打一次必然失败的请求
-            SRC_KIND["mineru"] = "API禁用(转CDP)"
-            return _mineru_cdp()
+        if not (CFG.get("mineru_api") or {}).get("enabled", True):
+            SRC_KIND["mineru"] = "API禁用"
+            return None
         cached = os.path.join(out, "raw", "mineru_api")
         if any(x.endswith("_content_list_v2.json") for _, _, fs in os.walk(cached) for x in fs):
             log_("② 渠道[mineru] 复用缓存: %s" % cached)   # 强制重跑请删除 raw\mineru_api
@@ -164,8 +163,8 @@ def fetch_channels(doc, pdf, out, chans_in, echo=None):
                 SRC_KIND["mineru"] = "API新获取"
                 return api_dir
         except Exception as e:
-            log_("② mineru 云端 API 失败, 转 CDP 驱动: %s" % e)
-        return _mineru_cdp()
+            log_("② mineru 云端 API 失败(该路留空, 不回落桌面版): %s" % e)
+        return None
     def _resolve_dots():
         if not (CFG.get("dots_api") or {}).get("enabled", True):
             return None
@@ -202,18 +201,22 @@ def fetch_channels(doc, pdf, out, chans_in, echo=None):
         return None
 
     _t_fetch = time.time()
-    with ThreadPoolExecutor(max_workers=3) as ex:
-        futs = {}
-        if not chans.get("mineru"):
-            futs["mineru"] = ex.submit(_resolve_mineru)
-        if not chans.get("dots"):
-            futs["dots"] = ex.submit(_resolve_dots)
-        if not chans.get("paddle"):
-            futs["paddle"] = ex.submit(_resolve_paddle)
-        for k, f in futs.items():
-            v = f.result()
-            if v:
-                chans[k] = v
+    _slot = _xp.Slots("ocr_api", n=_api_n, ttl=3600, wait=3600)
+    with _slot:
+        if _slot.waited > 1:
+            log_("② 渠道获取排队 %.0fs (并发名额 %d 已满)" % (_slot.waited, _api_n))
+        with ThreadPoolExecutor(max_workers=3) as ex:
+            futs = {}
+            if not chans.get("mineru"):
+                futs["mineru"] = ex.submit(_resolve_mineru)
+            if not chans.get("dots"):
+                futs["dots"] = ex.submit(_resolve_dots)
+            if not chans.get("paddle"):
+                futs["paddle"] = ex.submit(_resolve_paddle)
+            for k, f in futs.items():
+                v = f.result()
+                if v:
+                    chans[k] = v
     log_("② 三路并行获取结束, 共 %.1fs (墙钟)" % (time.time() - _t_fetch))
     log_("② 渠道来源汇总: " + " ｜ ".join("%s=%s" % (k, SRC_KIND.get(k, "无")) for k in ("mineru", "dots", "paddle")))
     return chans, SRC_KIND
@@ -260,8 +263,7 @@ def main(argv=None):
         _io.CFG_FP = CFG_FP
         CFG = load_cfg(a.channels, use_env=False, use_local=False)
         _io.CFG = CFG
-    doc = re.sub(r"\.pdf$", "", os.path.basename(a.pdf), flags=re.I)
-    doc = re.sub(r"[\s]*[（(]\d+[)）]$", "", doc).strip()  # 归一化" (1)"类复制后缀, 防 inbox 匹配失败
+    doc = doc_of(a.pdf)     # "xxx (1).pdf" -> "xxx"; 归一化复制后缀, 防 inbox 匹配失败
     out = a.out or os.path.join(ROOT, "out", doc)
     _start_ms = int(time.time() * 1000)
     t0 = _start_ms / 1000.0  # 供工作台判定"这次真的跑出了新产物"(留 ~2s 时钟粒度余量)
@@ -274,7 +276,7 @@ def main(argv=None):
                                      {"mineru": a.mineru, "dots": a.dots, "paddle": a.paddle})
 
     jobs = [
-        ("mineru", "MinerU（本地·非OCR）",  lambda s: adapt_mineru(s, sizes, mineru_calib_key(s),
+        ("mineru", "MinerU（云端 API·非OCR）", lambda s: adapt_mineru(s, sizes, mineru_calib_key(s),
                                                   (_out_rel(s, out),))),
         ("dots",   "dots.ocr（小红书）",    lambda s: adapt_dots(s, sizes)),
         ("paddle", "PaddleOCR-VL-1.6（在线）", lambda s: adapt_paddle(s, sizes)),
@@ -292,12 +294,13 @@ def main(argv=None):
         try:
             nraw = preserve_raw(src, os.path.join(out, "raw", key))
             if key == "mineru":
-                # 标定键按"实际来源类型"显式确定并落盘标记(写入 out 内的源目录与孪生目录), 不再靠调用路径猜
+                # 标定键按"实际来源类型"显式确定并落盘标记(写入 out 内的源目录与孪生目录), 不再靠调用路径猜。
+                # 现在只有 API 来源会新产; 非 API 来源只剩 inbox 投放的历史桌面产物, 仍按 mineru 标定读取。
                 mu_key = "mineru_api" if str(SRC_KIND.get(key, "")).startswith("API") else "mineru"
                 if os.path.abspath(src).startswith(os.path.abspath(out) + os.sep):
                     write_calib_marker(src, mu_key)  # API 缓存目录(孪生已停建, 标记落源目录)
                 else:
-                    write_calib_marker(os.path.join(out, "raw", key), mu_key)  # 桌面版等外部来源: 标记落归档目录
+                    write_calib_marker(os.path.join(out, "raw", key), mu_key)  # inbox 等外部来源: 标记落归档目录
             res = fn(src)
             per_ch[key] = res
             if res is None:

@@ -8,11 +8,13 @@ import os, re, io, json, threading, time, webbrowser, sys, shutil
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
 
+import archive
+from docid import doc_of
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 UP = os.path.join(ROOT, "uploads")
 OUT = os.path.join(ROOT, "out")
 OUT_LLM_TRIAL = os.path.join(ROOT, "out_llm_trial")   # 批次4d: LLM 真调/对比数据隔离目录(可整删重建, 不进 out/ 基线)
-INBOX_MINERU_ROOT = os.path.join(ROOT, "inbox")
 os.makedirs(UP, exist_ok=True)
 JOBS = {}          # job_id -> {state, log[], doc, err}
 JOB_LOCK = threading.Lock()
@@ -123,7 +125,7 @@ def _settle_stages(j, ok):
     elif any(channels[ch] == "warning" for ch in ("mineru", "dots", "paddle")):
         _set_stage(j, "acquire", "warning")
     elif all(channels[ch] == "done" for ch in ("mineru", "dots", "paddle")):
-        # 瞬时失败行(API 失败转 CDP 等)会把 acquire 粘成 error, 三渠道最终齐全时复位
+        # 单渠道的瞬时失败行会把 acquire 粘成 error, 三渠道最终齐全时复位
         j["stages"]["acquire"] = "done"
     for key, channel in (("metadata", "metadata"), ("entities", "ner_lite")):
         if channels[channel] == "error":
@@ -183,7 +185,8 @@ def run_pipeline(job, pdf_path):
             elif "② " in line:
                 j["stage"] = "获取三渠道"
                 _set_stage(j, "render", "done")
-                # "API 失败, 转 CDP" 类回退行不是终态失败(后面还有成功行), 只标 running
+                # 渠道失败行: 桌面版 CDP 兜底已移除, 现在 "② ... 失败" 就是这一路真的没取到, 标红。
+                # 不中止 —— 另两家可能已成功, 三渠道最终齐全时上面那段会把 acquire 复位成 done。
                 if "失败" in line and not any(x in line for x in ("转", "可手动")):
                     _set_stage(j, "acquire", "error")
                 else:
@@ -493,60 +496,38 @@ class H(BaseHTTPRequestHandler):
         if n <= 0 or n > 200 * 1024 * 1024:
             return self._send(413, "file too large or empty")
         fp = os.path.join(UP, name)
-        with io.open(fp, "wb") as f:
+        # 先落 .part 再判重: 直接写目标名会在判出重复前就把 uploads 里已有的同名文件覆盖掉,
+        # 用户"试一下会不会重复"的动作本身就把原件换了。
+        tmp = fp + ".part"
+        with io.open(tmp, "wb") as f:
             left = n
             while left > 0:
                 chunk = self.rfile.read(min(1 << 20, left))
                 if not chunk: break
                 f.write(chunk); left -= len(chunk)
+        doc0 = doc_of(name)
+        try:
+            hits = archive.is_duplicate(tmp, name_hint=name)
+        except ValueError as e:
+            print("[upload] 归档索引损坏, 本次不判重:", e)
+            hits = []
+        if archive.is_archived(doc0) or hits:
+            try:
+                os.remove(tmp)
+            except OSError:
+                pass
+            why = "已归档" if archive.is_archived(doc0) else hits[0]["reason"]
+            return self._send(200, json.dumps(
+                {"dup": 1, "doc": doc0, "msg": "该文献已在归档中（%s），已跳过" % why},
+                ensure_ascii=False), "application/json")
+        os.replace(tmp, fp)
         job = "%x" % int(time.time() * 1000)
-        doc0 = re.sub(r"\.pdf$", "", name, flags=re.I)
-        doc0 = re.sub(r"[\s]*[（(]\d+[)）]$", "", doc0).strip()
         if not _create_job_if_absent(job, doc0):
             with JOB_LOCK:
                 existing = _active_job_id(doc0)
             return self._send(200, json.dumps({"job": existing, "dedup": True}), "application/json")
         threading.Thread(target=run_pipeline, args=(job, fp), daemon=True).start()
         self._send(200, json.dumps({"job": job}), "application/json")
-
-def watch_mineru():
-    """MinerU 产物归仓: 监视 App 输出目录, 完成的运行自动复制进 inbox 并把原PDF放回 uploads 触发全流程"""
-    import pipeline
-    land = (pipeline.load_cfg().get("desktop") or {}).get("landing") or os.path.join(os.path.expanduser("~"), "MinerU")
-    state_fp = os.path.join(ROOT, "_state_mineru.json")
-    seen = set(json.load(io.open(state_fp, encoding="utf-8")) if os.path.exists(state_fp) else [])
-    print("[watch] MinerU 产物归仓监视:", land)
-    while True:
-        time.sleep(5)
-        try:
-            names = os.listdir(land)
-        except OSError:
-            continue
-        for d in names:
-            if d in seen: continue
-            if not re.match(r".+\.pdf-[0-9a-fA-F-]{10,}$", d): continue
-            full = os.path.join(land, d)
-            if not os.path.isdir(full): continue
-            done = any(x.endswith("_content_list_v2.json") for x in os.listdir(full))
-            if not done: continue  # 解析还没跑完
-            doc = re.sub(r"[\s]*[（(]\d+[)）]$", "", d.split(".pdf-")[0]).strip()
-            try:
-                tgt = os.path.join(INBOX_MINERU_ROOT, doc + "__mineru", d)
-                os.makedirs(os.path.dirname(tgt), exist_ok=True)
-                shutil.copytree(full, tgt, dirs_exist_ok=True)
-                orig = [x for x in os.listdir(full) if x.endswith("_origin.pdf")]
-                if orig:
-                    updf = os.path.join(UP, doc + ".pdf")
-                    if not os.path.exists(updf):
-                        shutil.copy2(os.path.join(full, orig[0]), updf)
-                        print("[watch] MinerU 归仓: %s → inbox/%s__mineru, 原PDF已入 uploads" % (d, doc))
-                    else:
-                        print("[watch] MinerU 归仓: %s → inbox/%s__mineru (uploads 已有同文档)" % (d, doc))
-                seen.add(d)
-                json.dump(sorted(seen), io.open(state_fp, "w", encoding="utf-8"))
-            except Exception as e:
-                print("[watch] MinerU 归仓失败 %s: %s" % (d, e))
-
 
 def _rescue_run(job, pdf, doc):
     """补跑包装: 先跑 pipeline 补齐渠道, 再刷新该文档的 merged 合并产物(快照一致性)"""
@@ -599,11 +580,15 @@ def watch_uploads():
     for f in os.listdir(UP):  # 积压处理: 已产出且结果比PDF新的才算见过; 否则启动即补跑
         fp = os.path.join(UP, f)
         if not (f.lower().endswith(".pdf") and os.path.isfile(fp)): continue
-        d = re.sub(r"\.pdf$", "", f, flags=re.I)
-        d = re.sub(r"[\s]*[（(]\d+[)）]$", "", d).strip()
+        d = doc_of(f)
         idx = os.path.join(ROOT, "out", d, "index.html")
         if os.path.exists(idx) and os.path.getmtime(idx) >= mtime(fp):
             seen[fp] = mtime(fp)
+        elif archive.is_archived(d):
+            # 已归档: 产物已搬去 archive/, 上面那条"产物比 PDF 新"永不成立。
+            # 不在这里认下来, 启动即会把归档过的文档全部重跑一遍。
+            seen[fp] = mtime(fp)
+            print("[watch] 已归档, 跳过: %s" % f)
     print("[watch] 监视目录:", UP, "— 把 PDF 复制进来即可自动解析")
     while True:
         time.sleep(2)
@@ -623,7 +608,18 @@ def watch_uploads():
             if mtime(fp) != mt: continue
             seen[fp] = mt
             jid = "%x" % int(time.time() * 1000)
-            doc = re.sub(r"[\s]*[（(]\d+[)）]$", "", re.sub(r"\.pdf$", "", f, flags=re.I)).strip()
+            doc = doc_of(f)
+            # 归档判重(2026-11-13): 已确认过的文献重新下载一次, 不该白跑一遍 OCR + LLM。
+            # hash 命中=同一份文件, docid 命中=同名新版本, 两者都拦; 标题相似只提示不拦。
+            try:
+                hits = archive.is_duplicate(fp)
+            except ValueError as e:
+                print("[watch] 归档索引损坏, 本次不判重:", e)
+                hits = []
+            if archive.is_archived(doc) or hits:
+                why = ("已归档" if archive.is_archived(doc) else hits[0]["reason"])
+                print("[watch] 跳过重复(未归档处理): %s — %s" % (f, why))
+                continue
             if not _create_job_if_absent(jid, doc):
                 continue
             print("[watch] 检测到新文件:", f)
@@ -662,7 +658,6 @@ if __name__ == "__main__":
     print("  本窗口保持开着服务才运行; 关闭窗口 = 停止服务")
     print("=" * 60)
     threading.Thread(target=watch_uploads, daemon=True).start()
-    threading.Thread(target=watch_mineru, daemon=True).start()
     threading.Timer(5.0, rescue_scan).start()  # 启动即扫一遍: 上次会话渠道失败的文档自动补
     try:
         webbrowser.open(url)

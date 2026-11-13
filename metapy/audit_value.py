@@ -18,6 +18,10 @@
 每条规则带 `evidence` 字段写明它是被哪篇文档逼出来的。规则宁少勿滥:
 一条高精度规则的价值是"报了就得改", 低精度规则只会让人关掉这个检查。
 
+代码组织: 一个字段一个 `@checks` 函数, 函数内**一遍取值、顺序走完该字段的全部谓词**——
+同字段的 `names()`/`affils()`/`_fold()` 只算一次, 不再每条规则重扫一遍。
+码(code)仍逐条独立、严重度走 `SEV` 一张表, 所以诊断粒度、抑制粒度、报告口径都不变。
+
 用法:
     python -m metapy.audit_value                # 全库, 只报 bad/warn
     python -m metapy.audit_value 13563526       # 单篇
@@ -99,12 +103,13 @@ def _txt(v):
 class Ctx(object):
     """一篇文档的判据上下文。meta/corpus 可直接注入(自检用), 也可从磁盘加载(实跑用)。"""
 
-    def __init__(self, doc, out_root=OUT, meta=None, corpus=None, ner=None):
+    def __init__(self, doc, out_root=OUT, meta=None, corpus=None, ner=None, xch=None):
         self.doc = doc
         self.dd = os.path.join(out_root, doc) if (doc and out_root) else ""
         self._m = meta
         self._corpus = corpus
         self._ner = ner
+        self._xch = xch
         self._pages = None
 
     # -- 惰性资源 ---------------------------------------------------------
@@ -140,6 +145,21 @@ class Ctx(object):
                     parts.append(u.get("main_text") or "")
             self._corpus = "\n".join(parts)
         return self._corpus
+
+    @property
+    def xch(self):
+        """三渠道**原始**读法 {渠道: 全文}。
+
+        与 corpus 的区别是本判据存在的全部理由: `unified/` 是"每区域挑一家"的共识层,
+        挑错了就无从发现——13563530 的题名取 dots 的错读, unified 里就只有错读那一份。
+        原文只有一份却读了三遍, 三份读法互为校验, 这是唯一能抓到"单渠道读错"的账本。
+        """
+        if self._xch is None:
+            d = {}
+            for _p, ch, t in (channel_lines(self.dd) if self.dd else []):
+                d[ch] = (d.get(ch, "") + "\n" + t) if ch in d else t
+            self._xch = d
+        return self._xch
 
     @property
     def ner_orgs(self):
@@ -178,163 +198,147 @@ class Ctx(object):
 
 
 # ---------------------------------------------------------------------------
-# 规则注册
+# 登记: 码 → 严重度一张表 + 一个字段一个判据函数
 # ---------------------------------------------------------------------------
 
-RULES = []          # (code, field, sev, fn)
+SEV = {
+    # 标题
+    "V-TITLE-SENT": "bad", "V-TITLE-LONG": "warn",
+    "V-TITLE-IS-BODY": "bad", "V-TITLE-HEADER": "warn",
+    # 作者
+    "V-AUTH-SYM": "bad", "V-AUTH-SECNO": "bad", "V-AUTH-STOP": "bad",
+    "V-AUTH-INST": "bad", "V-AUTH-PHRASE": "bad", "V-AUTH-PUNCT": "warn",
+    "V-AUTH-DUP": "warn", "V-AUTH-ROMA-IN-TITLE": "bad",
+    "V-AUTH-IN-TITLE": "warn", "V-AUTH-SHARE-AFFIL": "note",
+    # 机构
+    "V-AFF-NOTAFF": "bad", "V-AFF-PRESS": "bad", "V-AFF-SENT": "bad",
+    "V-AFF-LONG": "warn", "V-AFF-IN-TITLE": "bad", "V-AFF-CONTAIN": "note",
+    "V-AFF-NER-DISJOINT": "note", "V-AFF-COUNT-VS-AUTH": "warn",
+    # 数值 / 区段
+    "V-YEAR-RANGE": "bad", "V-VOL-CTX": "warn", "V-ISS-CTX": "warn",
+    "V-PAGES-FMT": "warn", "V-PAGES-SPAN": "warn",
+    "V-KW-COUNT": "warn", "V-KW-SENT": "warn",
+    "V-ABS-PREFIX": "warn", "V-ABS-SHORT": "note",
+    # 跨渠道互校
+    "V-XCH-TYPO": "bad",
+}
+
+FIELD_CHECKS = []       # [(field, fn)]
 
 
-def rule(code, field, sev):
+def checks(field):
+    """登记一个字段的判据函数。函数内一遍取值, 顺序走完该字段的全部谓词。"""
     def deco(fn):
-        RULES.append((code, field, sev, fn))
+        FIELD_CHECKS.append((field, fn))
         return fn
     return deco
 
 
 def _f(code, value, msg, evidence=""):
-    return {"code": code, "value": value, "msg": msg, "evidence": evidence}
+    # 严重度随码走, 不再由登记处携带 —— 改级只动上面那张表
+    return {"code": code, "value": value, "msg": msg, "evidence": evidence,
+            "sev": SEV[code]}
 
 
 # ============================ ① 题名 =======================================
 
-@rule("V-TITLE-SENT", "标题", "bad")
-def _title_sent(c):
-    """题名不结句。1536751 实证: 整栏正文段被当题名(197 字, 以 '…취지이다.' 收尾)。"""
+@checks("标题")
+def _title(c):
+    """题名: 不结句 / 不超长 / 不是页眉 / 不整段来自正文块。"""
     t = _txt(c.val("title")).strip()
     if not t:
         return []
-    if _SENT.search(t) or len(re.findall(u"[다요음임]\\.\\s", t)) >= 1:
-        return [_f("V-TITLE-SENT", t[:60],
-                   "题名以句末终结词收尾/含句内句号, 更像正文段落",
-                   "1536751: 真题名 '통합문법: 주제·초점과 시점' 被正文段压过")]
-    return []
+    out = []
 
+    # 不结句 —— 1536751 实证: 整栏正文段被当题名(197 字, 以 '…취지이다.' 收尾)
+    if _SENT.search(t) or re.findall(u"[다요음임]\\.\\s", t):
+        out.append(_f("V-TITLE-SENT", t[:60],
+                      "题名以句末终结词收尾/含句内句号, 更像正文段落",
+                      "1536751: 真题名 '통합문법: 주제·초점과 시점' 被正文段压过"))
 
-@rule("V-TITLE-LONG", "标题", "warn")
-def _title_long(c):
-    """题名长度离群。语料内韩文题名普遍 15–60 折合字; 超 120 基本是段落。"""
-    t = _txt(c.val("title")).strip()
-    n = len(_fold(t))
-    if n > 120:
-        return [_f("V-TITLE-LONG", "%d 字" % n, "题名折合长度 %d > 120, 超常识区间" % n)]
-    return []
+    # 长度离群 —— 语料内韩文题名普遍 15–60 折合字; 超 120 基本是段落
+    f = _fold(t)
+    if len(f) > 120:
+        out.append(_f("V-TITLE-LONG", "%d 字" % len(f),
+                      "题名折合长度 %d > 120, 超常识区间" % len(f)))
 
-
-@rule("V-TITLE-IS-BODY", "标题", "bad")
-def _title_is_body(c):
-    """题名整段出现在某个正文块里(≥60 字重叠) —— 说明取的是正文而非题名。"""
-    t = _fold(_txt(c.val("title")))
-    if len(t) < 60:
-        return []
-    probe = t[:80]
-    for j in c.pages[:2]:
-        for u in j.get("unified") or []:
-            if u.get("type") not in ("Text", "List", "Table"):
-                continue
-            body = _fold(u.get("main_text") or "")
-            if len(body) >= 60 and (probe[:40] in body or body[:40] in t):
-                return [_f("V-TITLE-IS-BODY", probe[:50],
-                           "题名与正文块 %s 高度重叠(取到了正文)" % u.get("uid"),
-                           "1536751 实证")]
-    return []
-
-
-@rule("V-TITLE-HEADER", "标题", "warn")
-def _title_header(c):
-    """题名是 running 页眉(刊名+卷期+日期), 不是文章题名。"""
-    t = _txt(c.val("title")).strip()
-    if not t:
-        return []
+    # 是 running 页眉(刊名+卷期+日期)
     if re.search(u"(?:제?\\s*\\d+\\s*권|Vol\\.?\\s*\\d+|No\\.?\\s*\\d+|통권|\\|)", t) \
             and re.search(u"(?:19|20)\\d{2}", t):
-        return [_f("V-TITLE-HEADER", t[:70], "题名含卷期+年份且带竖线, 像页眉而非题名")]
-    return []
+        out.append(_f("V-TITLE-HEADER", t[:70], "题名含卷期+年份且带竖线, 像页眉而非题名"))
+
+    # 整段出现在某个正文块里(≥60 字重叠) —— 取到了正文而非题名
+    if len(f) >= 60:
+        probe = f[:80]
+        for j in c.pages[:2]:
+            for u in j.get("unified") or []:
+                if u.get("type") not in ("Text", "List", "Table"):
+                    continue
+                body = _fold(u.get("main_text") or "")
+                if len(body) >= 60 and (probe[:40] in body or body[:40] in f):
+                    out.append(_f("V-TITLE-IS-BODY", probe[:50],
+                                  "题名与正文块 %s 高度重叠(取到了正文)" % u.get("uid"),
+                                  "1536751 实证"))
+                    return out
+    return out
 
 
 # ============================ ② 作者 =======================================
 
-@rule("V-AUTH-SYM", "作者", "bad")
-def _auth_sym(c):
-    """作者名带前导符号。2632491 实证: '- 권여선'(副标题行首破折号被当人名)。"""
+@checks("作者")
+def _authors(c):
+    """作者: 一遍扫署名, 走完形态/来源/重复, 再走 roman 与机构绑定两条跨槽判据。"""
+    names, aus = c.names(), c.authors()
+    t = _fold(_txt(c.val("title")))
+    t_en = _fold(_txt(c.val("title_en")))
     out = []
-    for n in c.names():
+
+    for n in names:
+        # 前导破折号/尾随冒号 —— 2632491 实证: '- 권여선'(副标题行)被当署名
         if re.match(u"^[\\-–—•·*+]+\\s*", n) or re.search(u"[:;,]\\s*$", n):
             out.append(_f("V-AUTH-SYM", n, "作者名带前导/尾随符号",
                           "2632491: 副标题 '- 권여선, 은희경…' 被当署名"))
-    return out
-
-
-@rule("V-AUTH-SECNO", "作者", "bad")
-def _auth_secno(c):
-    """作者名是章节编号。13275609 实证: 目录条目 'Ⅰ. 서론' 混进作者。"""
-    return [_f("V-AUTH-SECNO", n, "作者名是章节编号/目录条目", "13275609: 'Ⅰ. 서론'")
-            for n in c.names() if _SECNO.match(n)]
-
-
-@rule("V-AUTH-STOP", "作者", "bad")
-def _auth_stop(c):
-    """作者名是区段词。1536751 实证: ['초점','주제','초점'] 来自正文 '주제·초점'。"""
-    return [_f("V-AUTH-STOP", n, "作者名是区段头/目录词", "1536751: 초점/주제")
-            for n in c.names() if _STOPWORD.match(n)]
-
-
-@rule("V-AUTH-INST", "作者", "bad")
-def _auth_inst(c):
-    """作者名里含机构词 —— 署名行与机构行混淆。"""
-    out = []
-    for n in c.names():
+        # 章节编号/目录条目 —— 13275609 实证: 'Ⅰ. 서론'
+        if _SECNO.match(n):
+            out.append(_f("V-AUTH-SECNO", n, "作者名是章节编号/目录条目",
+                          "13275609: 'Ⅰ. 서론'"))
+        # 区段词 —— 1536751 实证: ['초점','주제','초점'] 来自正文 '주제·초점'
+        if _STOPWORD.match(n):
+            out.append(_f("V-AUTH-STOP", n, "作者名是区段头/目录词",
+                          "1536751: 초점/주제"))
+        # 机构行被当署名
         if _INST_TAIL.search(n) or _INST_BAD.search(n):
             out.append(_f("V-AUTH-INST", n, "作者名含机构/出版社词, 机构行被当署名"))
-    return out
+        # 是题名的子串 —— 13563535 实证: 유씨삼대록/유숙기
+        # 只查 ≥5 折合字: 3 音节韩文名与题名撞词是正常现象(如作者 이상 + 题名 '이상 문학')
+        if len(t) >= 10 and len(_fold(n)) >= 5 and _fold(n) in t:
+            out.append(_f("V-AUTH-IN-TITLE", n, "作者名是题名的子串",
+                          "13563535: '유씨삼대록' 是题名首词"))
+        # 短语/长串, 非人名形态; 한글이름(漢字) 是体例, 两条都放行
+        if not _NAME_HANJA.match(n):
+            f = _fold(n)
+            if re.search(u"[가-힣]\\s+[가-힣]", n) or len(f) > 20 \
+                    or (_hangul_ratio(n) < 0.2 and len(n.split()) > 5):
+                out.append(_f("V-AUTH-PHRASE", n[:50], "作者名是短语/长串, 非人名形态"))
+            if _NAME_BAD_PUNCT.search(n):
+                out.append(_f("V-AUTH-PUNCT", n[:50], "作者名含标点, 像从长行里切坏的片段"))
 
+    # 同一作者重复 —— 切分把同一行的词切了两遍
+    cnt = collections.Counter(_fold(n) for n in names if n)
+    for k, v in cnt.items():
+        if v >= 2:
+            out.append(_f("V-AUTH-DUP", k, "同一作者出现 %d 次" % v))
 
-@rule("V-AUTH-PHRASE", "作者", "bad")
-def _auth_phrase(c):
-    """作者名是短语而非人名: 韩文名内含空格, 或折合长度 > 20, 或西文名 > 5 词。"""
-    out = []
-    for n in c.names():
-        if _NAME_HANJA.match(n):
-            continue
-        f = _fold(n)
-        if re.search(u"[가-힣]\\s+[가-힣]", n) or len(f) > 20 \
-                or (_hangul_ratio(n) < 0.2 and len(n.split()) > 5):
-            out.append(_f("V-AUTH-PHRASE", n[:50], "作者名是短语/长串, 非人名形态"))
-    return out
-
-
-@rule("V-AUTH-PUNCT", "作者", "warn")
-def _auth_punct(c):
-    """作者名含人名不会带的标点(한글이름(漢字) 体例除外)。"""
-    out = []
-    for n in c.names():
-        if _NAME_HANJA.match(n):
-            continue
-        if _NAME_BAD_PUNCT.search(n):
-            out.append(_f("V-AUTH-PUNCT", n[:50], "作者名含标点, 像从长行里切坏的片段"))
-    return out
-
-
-@rule("V-AUTH-DUP", "作者", "warn")
-def _auth_dup(c):
-    """同一作者重复出现 —— 说明切分把同一行的词切了两遍。"""
-    cnt = collections.Counter(_fold(n) for n in c.names() if n)
-    return [_f("V-AUTH-DUP", k, "同一作者出现 %d 次" % v) for k, v in cnt.items() if v >= 2]
-
-
-@rule("V-AUTH-ROMA-IN-TITLE", "作者", "bad")
-def _roma_in_title(c):
-    """roman 槽里放的是"英文题名"而不是人名。
-    13563535 实证: roman='Korean Old Novel Yussi-Samdaerok'(英题) 被当 이윤석 的罗马拼音。
-    人名罗马化在折叠后 ≤26 字符且 ≤3 词; 题名切片远长于此, 或带英文虚词, 或直接是 title_en。"""
-    t_en = _fold(_txt(c.val("title_en")))
-    out = []
-    for a in c.authors():
+    # roman 槽里放的是"英文题名"而不是人名 ——
+    # 13563535 实证: roman='Korean Old Novel Yussi-Samdaerok'(英题) 被当 이윤석 的罗马拼音。
+    # 人名罗马化在折叠后 ≤26 字符且 ≤3 词; 题名切片远长于此, 或带英文虚词, 或直接是 title_en。
+    for a in aus:
         raw = (a.get("roman") or "").strip()
         r = _fold(raw)
         if len(r) < 8:
             continue
         why = ""
-        if t_en and len(r) >= 8 and r in t_en:
+        if t_en and r in t_en:
             why = "roman 就是 title_en 的一部分"
         elif len(r) > 26 or len(raw.split()) > 3:
             why = "roman 折叠 %d 字/%d 词, 超出人名罗马化形态" % (len(r), len(raw.split()))
@@ -343,106 +347,73 @@ def _roma_in_title(c):
         if why:
             out.append(_f("V-AUTH-ROMA-IN-TITLE", raw, why,
                           "13563535: 'Korean Old Novel Yussi-Samdaerok'"))
-    return out
 
-
-@rule("V-AUTH-IN-TITLE", "作者", "warn")
-def _auth_in_title(c):
-    """作者名出现在题名里 —— 多半是从题名切下来的词。13563535 实证: 유씨삼대록/유숙기。
-    只查 ≥5 折合字的名字: 3 音节的韩文名与题名撞词是正常现象(如作者 이상 + 题名 '이상 문학')。"""
-    t = _fold(_txt(c.val("title")))
-    if len(t) < 10:
-        return []
-    out = []
-    for n in c.names():
-        f = _fold(n)
-        if len(f) >= 5 and f in t:
-            out.append(_f("V-AUTH-IN-TITLE", n, "作者名是题名的子串",
-                          "13563535: '유씨삼대록' 是题名首词"))
-    return out
-
-
-@rule("V-AUTH-SHARE-AFFIL", "作者", "note")
-def _auth_share_affil(c):
-    """多个作者共享同一 affiliation 且与 affiliations[] 完全一致 —— 常是"全部绑到第一条"的痕迹。"""
-    aff = [str(a.get("affiliation") or "").strip() for a in c.authors()]
+    # 多个作者共享同一 affiliation 且完全一致 —— 常是"全部绑到第一条"的痕迹
+    aff = [str(a.get("affiliation") or "").strip() for a in aus]
     aff = [x for x in aff if x]
     if len(aff) >= 3 and len(set(aff)) == 1:
-        return [_f("V-AUTH-SHARE-AFFIL", aff[0], "%d 位作者全部绑同一机构, 疑似序位兜底硬配" % len(aff))]
-    return []
+        out.append(_f("V-AUTH-SHARE-AFFIL", aff[0],
+                      "%d 位作者全部绑同一机构, 疑似序位兜底硬配" % len(aff)))
+    return out
 
 
 # ============================ ③ 机构 =======================================
 
-@rule("V-AFF-NOTAFF", "机构", "bad")
-def _aff_notaff(c):
-    """机构不含机构尾词。24 条眼检实证: 论文题名/摘要句被当机构。"""
+@checks("机构")
+def _affiliations(c):
+    """机构: 一遍扫每条机构, 再走包含关系、NER 互证、作者数对不上三条整体判据。"""
+    affs = c.affils()
+    t = _fold(_txt(c.val("title")))
     out = []
-    for a in c.affils():
+
+    for a in affs:
+        f = _fold(a)
+        # 认不出机构尾词 —— 24 条眼检实证: 论文题名/摘要句被当机构
         if not _INST_TAIL.search(a):
             out.append(_f("V-AFF-NOTAFF", a[:60], "机构里认不出机构尾词"))
-    return out
+        # 是出版社/项目名 —— 13563530 实证: 'Oxford University Press, 2012'
+        if _INST_BAD.search(a):
+            out.append(_f("V-AFF-PRESS", a[:60], "机构是出版社/项目名, 来自引文条目",
+                          "13563530: 'Oxford University Press, 2012'"))
+        # 是句子 —— 13563531/13563533 实证: 致谢句 '…일환으로' 被当机构
+        if _SENT.search(a):
+            out.append(_f("V-AFF-SENT", a[:60], "机构是完整句子(摘要/致谢句)",
+                          "13563531/13563533: 致谢句"))
+        # 长度离群 —— 机构署名普遍 6–60 字
+        if len(f) > 80:
+            out.append(_f("V-AFF-LONG", "%d 字" % len(f), "机构折合长度 > 80, 超常识区间"))
+        # 是题名的一部分 —— 13563526 实证: '관무불가침 세계관…'
+        if len(f) >= 8 and f in t:
+            out.append(_f("V-AFF-IN-TITLE", a[:50], "机构是题名的一部分",
+                          "13563526: '관무불가침 세계관…'"))
 
-
-@rule("V-AFF-PRESS", "机构", "bad")
-def _aff_press(c):
-    """机构是出版社/项目名。13563530 实证: 'Oxford University Press, 2012'。"""
-    return [_f("V-AFF-PRESS", a[:60], "机构是出版社/项目名, 来自引文条目")
-            for a in c.affils() if _INST_BAD.search(a)]
-
-
-@rule("V-AFF-SENT", "机构", "bad")
-def _aff_sent(c):
-    """机构是句子。13563531/13563533 实证: 致谢句 '…일환으로' 被当机构。"""
-    return [_f("V-AFF-SENT", a[:60], "机构是完整句子(摘要/致谢句)")
-            for a in c.affils() if _SENT.search(a)]
-
-
-@rule("V-AFF-LONG", "机构", "warn")
-def _aff_long(c):
-    """机构长度离群。机构署名普遍 6–60 字。"""
-    return [_f("V-AFF-LONG", "%d 字" % len(_fold(a)), "机构折合长度 > 80, 超常识区间")
-            for a in c.affils() if len(_fold(a)) > 80]
-
-
-@rule("V-AFF-IN-TITLE", "机构", "bad")
-def _aff_in_title(c):
-    """机构出现在题名里 —— 机构行抄的是题名。13563526 实证: '관무불가침 세계관…'。"""
-    t = _fold(_txt(c.val("title")))
-    return [_f("V-AFF-IN-TITLE", a[:50], "机构是题名的一部分")
-            for a in c.affils() if len(_fold(a)) >= 8 and _fold(a) in t]
-
-
-@rule("V-AFF-CONTAIN", "机构", "note")
-def _aff_contain(c):
-    """一条机构包含另一条 —— 冗余, 且通常是"长的那条被硬切"的痕迹。"""
-    aff = c.affils()
-    out = []
-    for i, a in enumerate(aff):
-        for j, b in enumerate(aff):
+    # 一条包含另一条 —— 冗余, 且通常是"长的那条被硬切"的痕迹
+    for i, a in enumerate(affs):
+        for j, b in enumerate(affs):
             if i != j and len(_fold(a)) > len(_fold(b)) and _fold(b) in _fold(a):
                 out.append(_f("V-AFF-CONTAIN", b, "被 %r 完全包含(冗余)" % a[:30]))
+
+    # 与 NER 的 org 实体零交集 —— 两个独立源都不认, 值得看一眼(非错, 只是提示)
+    orgs = [o for o in c.ner_orgs if len(_fold(o)) >= 4]
+    if orgs and affs:
+        blob = _fold(" ".join(affs))
+        hit = [o for o in orgs if any(w in blob for w in _fold(o).split()) and len(_fold(o)) >= 6]
+        if not hit:
+            out.append(_f("V-AFF-NER-DISJOINT", " / ".join(affs)[:50],
+                          "NER 认出 org 但与本篇机构无交集(两源互不印证)"))
+
+    # 作者数 > 机构数 且 无上标标记 —— 机构配对的序位兜底可能错
+    aus = c.authors()
+    if len(aus) >= 3 and len(affs) == 1 and not any(a.get("markers") for a in aus):
+        out.append(_f("V-AFF-COUNT-VS-AUTH", "%d 作者 / 1 机构" % len(aus),
+                      "多作者只配到一个机构且无上标标记, 疑似全部绑第一条"))
     return out
 
 
-@rule("V-AFF-NER-DISJOINT", "机构", "note")
-def _aff_ner_disjoint(c):
-    """与 NER 的 org 实体零交集 —— 两个独立源都不认, 值得看一眼(非错, 只是提示)。"""
-    orgs = [o for o in c.ner_orgs if len(_fold(o)) >= 4]
-    if not orgs or not c.affils():
-        return []
-    blob = _fold(" ".join(c.affils()))
-    hit = [o for o in orgs if any(w in blob for w in _fold(o).split()) and len(_fold(o)) >= 6]
-    if not hit:
-        return [_f("V-AFF-NER-DISJOINT", " / ".join(c.affils())[:50],
-                   "NER 认出 org 但与本篇机构无交集(两源互不印证)")]
-    return []
+# ============================ ④ 数值/区段 ==================================
 
-
-# ============================ ④ 数值/跨字段 ================================
-
-@rule("V-YEAR-RANGE", "出版年", "bad")
-def _year_range(c):
+@checks("出版年")
+def _year(c):
     v = _txt(c.val("year"))
     if not v:
         return []
@@ -468,8 +439,8 @@ def _num_in_margin(c, n):
     return False
 
 
-@rule("V-VOL-CTX", "卷", "warn")
-def _vol_ctx(c):
+@checks("卷")
+def _volume(c):
     """卷号必须在原文里站得住: 紧邻卷标记, 或出现在页眉页脚里。
     1004818 实证: 脚注引书 'vol. 3 of …' 会被当卷号 —— 那种情况页边无命中, 仍报。"""
     v = _txt(c.val("volume"))
@@ -483,8 +454,8 @@ def _vol_ctx(c):
     return [_f("V-VOL-CTX", v, "卷号 %s 既未紧邻卷标记, 也不在任何页眉页脚里" % n)]
 
 
-@rule("V-ISS-CTX", "期", "warn")
-def _iss_ctx(c):
+@checks("期")
+def _issue(c):
     """期号同卷号口径。
     1536751 实证: 全篇唯一 '203호' 是作者住址「3동 203호」; 1004818 的 'No. 715579' 是档案编号。"""
     v = _txt(c.val("issue"))
@@ -498,48 +469,37 @@ def _iss_ctx(c):
     return [_f("V-ISS-CTX", v, "期号 %s 既未紧邻期标记, 也不在任何页眉页脚里" % n)]
 
 
-@rule("V-PAGES-FMT", "页码", "warn")
-def _pages_fmt(c):
+@checks("页码")
+def _pages(c):
+    """页码: 形态 + 跨度与 PDF 实际页数是否矛盾(跨页上限按每页 2 栏放宽)。"""
     v = _txt(c.val("pages"))
-    if v and not _PAGES_OK.match(v):
-        return [_f("V-PAGES-FMT", v, "页码不是 'n' 或 'n-m' 形")]
-    return []
-
-
-@rule("V-PAGES-SPAN", "页码", "warn")
-def _pages_span(c):
-    """页码跨度与 PDF 实际页数矛盾(跨页上限按每页 2 栏放宽)。"""
-    v = _txt(c.val("pages"))
-    m = _PAGES_RANGE.match(v or "")
-    if not m:
-        return []
-    a, b = int(m.group(1)), int(m.group(2))
-    if a > b:
-        return [_f("V-PAGES-SPAN", v, "起始页 %d > 结束页 %d" % (a, b))]
-    npage = len(c.pages)
-    if npage and (b - a + 1) > npage * 2 + 2:
-        return [_f("V-PAGES-SPAN", v, "跨度 %d 页 > 文档实际 %d 页的 2 倍" % (b - a + 1, npage))]
-    return []
-
-
-@rule("V-KW-COUNT", "关键词", "warn")
-def _kw_count(c):
-    kw = _s(c.val("keywords"))
-    if not isinstance(kw, list):
-        return []
-    if len(kw) == 0:
-        return []
-    if len(kw) > 12:
-        return [_f("V-KW-COUNT", "%d 个" % len(kw), "关键词数 %d > 12, 可能把正文或摘要切碎收进来了" % len(kw))]
-    return []
-
-
-@rule("V-KW-SENT", "关键词", "warn")
-def _kw_sent(c):
-    kw = _s(c.val("keywords"))
-    if not isinstance(kw, list):
+    if not v:
         return []
     out = []
+    if not _PAGES_OK.match(v):
+        out.append(_f("V-PAGES-FMT", v, "页码不是 'n' 或 'n-m' 形"))
+    m = _PAGES_RANGE.match(v)
+    if m:
+        a, b = int(m.group(1)), int(m.group(2))
+        npage = len(c.pages)
+        if a > b:
+            out.append(_f("V-PAGES-SPAN", v, "起始页 %d > 结束页 %d" % (a, b)))
+        elif npage and (b - a + 1) > npage * 2 + 2:
+            out.append(_f("V-PAGES-SPAN", v,
+                          "跨度 %d 页 > 文档实际 %d 页的 2 倍" % (b - a + 1, npage)))
+    return out
+
+
+@checks("关键词")
+def _keywords(c):
+    """关键词: 数量离群 + 混进摘要切片。"""
+    kw = _s(c.val("keywords"))
+    if not isinstance(kw, list) or not kw:
+        return []
+    out = []
+    if len(kw) > 12:
+        out.append(_f("V-KW-COUNT", "%d 个" % len(kw),
+                      "关键词数 %d > 12, 可能把正文或摘要切碎收进来了" % len(kw)))
     for k in kw:
         s = str(k or "").strip()
         if len(_fold(s)) > 40 or re.search(u"(?:다|요)\\.\\s*$", s) \
@@ -548,40 +508,160 @@ def _kw_sent(c):
     return out
 
 
-@rule("V-ABS-PREFIX", "摘要", "warn")
-def _abs_prefix(c):
-    """摘要值里残留区段头 —— 说明摘要区起点判错, 头被一起吃进去了。"""
+@checks("摘要")
+def _abstract(c):
+    """摘要: 不以区段头残留开头 + 长度不像残句。
+    实测本库 21 篇摘要折合长度 min=350 / 中位=551, 低于 200 基本是残句。"""
     a = _txt(c.val("abstract")).strip()
     if not a:
         return []
+    out = []
     head = a[:24]
     if re.match(u"^[\\*\\s]*(?:국문\\s*초록|국문\\s*요약|영문\\s*초록|영문\\s*요약|초\\s*록|"
                 u"Abstract|ABSTRACT|요\\s*약)\\s*[*:：]?", head) or head.startswith("**"):
-        return [_f("V-ABS-PREFIX", head, "摘要以区段头残留开头")]
-    return []
-
-
-@rule("V-ABS-SHORT", "摘要", "note")
-def _abs_short(c):
-    """摘要过短。实测本库 21 篇摘要折合长度 min=350 / 中位=551, 低于 200 基本是残句。"""
-    a = _txt(c.val("abstract")).strip()
+        out.append(_f("V-ABS-PREFIX", head, "摘要以区段头残留开头"))
     n = len(_fold(a))
-    if a and n < 200:
-        return [_f("V-ABS-SHORT", "%d 字" % n, "摘要折合长度 %d < 200, 像残句而非摘要" % n)]
-    return []
+    if n < 200:
+        out.append(_f("V-ABS-SHORT", "%d 字" % n,
+                      "摘要折合长度 %d < 200, 像残句而非摘要" % n))
+    return out
 
 
-@rule("V-AFF-COUNT-VS-AUTH", "机构", "warn")
-def _aff_count(c):
-    """作者数 > 机构数 且 无上标标记 —— 机构配对的序位兜底可能错。"""
-    aus = c.authors()
-    aff = c.affils()
-    if len(aus) >= 3 and len(aff) == 1:
-        marked = sum(1 for a in aus if a.get("markers"))
-        if marked == 0:
-            return [_f("V-AFF-COUNT-VS-AUTH", "%d 作者 / 1 机构" % len(aus),
-                       "多作者只配到一个机构且无上标标记, 疑似全部绑第一条")]
-    return []
+# ============================ ⑤ 跨渠道互校 =================================
+
+# 只清真正的 HTML 标签。**不能**用通配 `<[^>]+>`——题名里的 <케이팝 데몬 헌터스>
+# 是书名号, 通配会把书名整体删掉, 于是"题名里的词在三渠道都找不到"这条判据失效
+# (2026-11-13 实测: 通配版全库 0 命中, 漏掉了唯一的真错字)。
+_XCH_TAG = re.compile(r"</?(?:sup|sub|i|b|em|strong|span|br|p|div|table|tr|td|th|u|small)\b[^>]*>",
+                      re.I)
+_XCH_SPLIT = re.compile(u"[\\s,;:·()\\[\\]{}<>\"'“”‘’「」『』《》〈〉、，。.!?/\\\\|~\\-–—]+")
+
+
+def _xch_tokens(s):
+    """短字段切实词。长度 <3 的不查。
+
+    阈值取 3 而不是 4: 韩文实词多数只有 2–3 个音节(고전/서사/케이팝), 取 4 会把
+    `케이팝` 本身滤掉, 判据就永远看不见它该抓的那条(2026-11-13 实测: len≥4 全库 0 命中)。
+    """
+    s = _XCH_TAG.sub(" ", s or "")
+    out = []
+    for t in _XCH_SPLIT.split(s):
+        if len(t) < 3 or not re.search(u"[가-힣A-Za-z]", t):
+            continue
+        out.append(t)
+    return out
+
+
+def _xch_near(tok, text, maxn=3):
+    """在 text 里找与 tok 等长、仅差 1 个字符的词——OCR 单字符混淆的形态。
+
+    纯大小写差异不算: `Evaporation`/`evaporation` 是两个渠道对同一词的大小写习惯,
+    不是错字(895567 实证: 报出来的是噪声)。
+    """
+    out = []
+    L = len(tok)
+    if L < 3:
+        return out
+    # 必须用与取 token 相同的分隔符。`\S+` 会把 `<케이팝` 连尖括号切成 4 个字,
+    # 长度对不上, 判据就永远看不见 13563530 那条(2026-11-13 实测)。
+    for w in _XCH_SPLIT.split(text or ""):
+        if len(w) != L or w == tok:
+            continue
+        d = [i for i in range(L) if w[i] != tok[i]]
+        if len(d) == 1 and w[d[0]].lower() != tok[d[0]].lower():
+            out.append(w)
+            if len(out) >= maxn:
+                break
+    return out
+
+
+def _xch_window(text, anchor, back=80, fwd=220):
+    """以 anchor 为锚裁一段窗口。
+
+    **必须按位置比，不能全篇搜**——2026-11-13 实证: `역사상 춘천의 군사적 거점과 가치`
+    这个题名，全篇搜会在参考文献书名 `한국역사와 문화` 里找到 `역사와`(差 1 字符),
+    于是把一个正确的题名报成错字。裁窗后只在同一处比，误配消失。
+    """
+    i = (text or "").find(anchor)
+    if i < 0:
+        return ""
+    return text[max(0, i - back): i + len(anchor) + fwd]
+
+
+# 韩文单字助词。末字只在这几个之间替换 = 语法变化(만들기의/만들기는), 不是错字。
+_HAN_TAIL = set(u"이가을를은는의에와과로도만")
+
+
+def _han_particle_only(a, b):
+    """两词仅末字不同、且两末字都是助词 → 判为助词替换, 不是错字。"""
+    if len(a) != len(b) or a == b:
+        return False
+    d = [i for i in range(len(a)) if a[i] != b[i]]
+    if len(d) != 1 or d[0] != len(a) - 1:
+        return False
+    return a[d[0]] in _HAN_TAIL and b[d[0]] in _HAN_TAIL
+
+
+@checks("跨渠道")
+def _xchannel(c):
+    """短字段的实词若只有一家这么读、另两家在同一位置读成仅差 1 字符的词 = 该家 OCR 读错。
+
+    2026-11-13 实证: 13563530 题名 `<케이팝 데몬 헌터스>` 的 케이팝 被 dots 读成 케이팔
+    (dots 12 次全错), 而 mineru 36 次、paddle 30 次全对; 字段值取的正是 dots 的错读。
+    该词 3 个韩文音节、全在字符集内、长度正常 —— 形态/来源/离群三类判据一条都报不出来,
+    只有"另外两家在同一位置怎么读"能发现它。
+
+    三道闸, 每道都是被误报打回来的:
+      ① 按锚点裁窗 —— 全篇搜会跨位置误配(역사상 撞上参考文献书名里的 역사와)
+      ② 另两家必须读成同一个词 —— 单家偶然近邻不算
+      ③ 末字助词替换不算 —— 만들기의/만들기는 是语法变化
+    摘要不走这条: 长文本空格丢失会让几乎每个词都只落单渠道(全库 58 例全是空格问题)。
+    """
+    xc = c.xch
+    if len(xc) < 3:                       # 三家全在才有"另两家"可依
+        return []
+    folded = dict((ch, _fold(t)) for ch, t in xc.items())
+    vals = [(u"题名", _txt(c.val("title"))), (u"题名(英)", _txt(c.val("title_en")))]
+    vals += [(u"作者", n) for n in c.names()]
+    vals += [(u"机构", a) for a in c.affils()]
+    for k, lab in (("journal", u"刊名"), ("publisher", u"出版者"),
+                   ("volume", u"卷"), ("issue", u"期"), ("pages", u"页码"), ("year", u"年")):
+        vals.append((lab, _txt(c.val(k))))
+
+    out, seen = [], set()
+    for lab, val in vals:
+        ts = _xch_tokens(val)
+        if not ts:
+            continue
+        sup = {}
+        for t in ts:
+            ft = _fold(t)
+            sup[t] = [ch for ch, s in folded.items() if ft in s] if ft else []
+        # 锚点 = 第一个三家都有的词, 用来在三个渠道里对齐同一位置
+        anchor = next((t for t in ts if len(sup[t]) >= 3), None) \
+            or next((t for t in ts if len(sup[t]) >= 2), None)
+        if not anchor:
+            continue
+        win = dict((ch, _xch_window(s, anchor)) for ch, s in xc.items())
+
+        for t in ts:
+            ft = _fold(t)
+            if not ft or (lab, ft) in seen or len(sup[t]) >= 2:
+                continue
+            seen.add((lab, ft))
+            cands = [set(_xch_near(t, win[ch])) for ch in xc if ch not in sup[t] and win[ch]]
+            if len(cands) < 2:
+                continue
+            common = set.intersection(*cands)
+            common = set(w for w in common if not _han_particle_only(t, w))
+            if not common:
+                continue
+            best = sorted(common, key=lambda w: -sum(1 for x in cands if w in x))[:2]
+            out.append(_f("V-XCH-TYPO", u"%s: %s" % (lab, t),
+                          u"%s 的「%s」只有 %s 这么读, 另两家在同一位置读作「%s」—— 单渠道 OCR 错字"
+                          % (lab, t, "/".join(sup[t]) or "无渠道", best[0]),
+                          u"13563530: dots 读 케이팔 / mineru·paddle 读 케이팝"))
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -592,22 +672,26 @@ SEV_ORDER = {"bad": 0, "warn": 1, "note": 2}
 
 
 def audit_doc(doc, out_root=OUT, min_sev="warn", ctx=None):
-    """对单篇跑全部规则。返回 {doc, findings, level}。"""
+    """对单篇跑全部字段判据。返回 {doc, findings, level}。"""
     c = ctx or Ctx(doc, out_root)
     if not c.m:
         return {"doc": doc, "findings": [], "level": "skip", "label": "无 metadata"}
     lim = SEV_ORDER.get(min_sev, 1)
     out = []
-    for code, field, sev, fn in RULES:
-        if SEV_ORDER[sev] > lim:
-            continue
+    for field, fn in FIELD_CHECKS:
         try:
             got = fn(c) or []
-        except Exception as e:                      # 一条规则崩了不能拖垮整篇
-            got = [{"code": code, "value": "", "msg": "规则异常: %s" % e, "evidence": ""}]
+        except Exception as e:                      # 一个字段崩了不能拖垮其余字段
+            got = [{"code": "V-FIELD-ERR", "sev": "warn", "value": "", "evidence": "",
+                    "msg": "%s判据异常: %s" % (field, e)}]
         for g in got:
-            g.update({"field": field, "sev": sev, "doc": doc})
-            out.append(g)
+            if SEV_ORDER.get(g["sev"], 2) > lim:    # 严重度随码走, 收集后再筛
+                continue
+            # 键序固定: 报告/JSON 的字段顺序不随登记方式变
+            out.append({"code": g["code"], "value": g["value"], "msg": g["msg"],
+                        "evidence": g.get("evidence", ""),
+                        "field": g.get("field") or field,
+                        "sev": g["sev"], "doc": doc})
     out.sort(key=lambda x: (SEV_ORDER[x["sev"]], x["code"]))
     level = "ok"
     if any(x["sev"] == "bad" for x in out):
@@ -787,6 +871,36 @@ def _selftest():
         "abstract": {"value": "요약."},
         "keywords": ["교육"]}, corpus="")
     chk("残句摘要", True, c, ["V-ABS-SHORT"], min_sev="note")
+
+    # ⑧ 三渠道互校: 13563530 原错值(dots 把 케이팝 读成 케이팔, 另两家全对)
+    ttl = u"디지털 시대의 고전 서사 교육과 <%s 데몬 헌터스>"
+    tail = u" 정보라미 부산대학교 점필재연구소"
+    chk("三渠道-单家错字", True,
+        Ctx("x1", None, meta={"title": {"value": ttl % u"케이팔"},
+                              "authors": [{"name": u"정보라미"}],
+                              "affiliations": [u"부산대학교 점필재연구소"]}, corpus="",
+            xch={"dots": ttl % u"케이팔" + tail, "mineru": ttl % u"케이팝" + tail,
+                 "paddle": ttl % u"케이팝" + tail}),
+        ["V-XCH-TYPO"])
+    # 三家一致 → 沉默(精度夹逼)
+    chk("三渠道-一致", False,
+        Ctx("x2", None, meta={"title": {"value": ttl % u"케이팝"},
+                              "authors": [{"name": u"정보라미"}],
+                              "affiliations": [u"부산대학교 점필재연구소"]}, corpus="",
+            xch={"dots": ttl % u"케이팝" + tail, "mineru": ttl % u"케이팝" + tail,
+                 "paddle": ttl % u"케이팝" + tail}), [])
+    # 末字助词替换(만들기의/만들기는)是语法变化, 不是错字
+    tp = u"간이 온도계 %s 개선 방안 연구"
+    chk("三渠道-助词替换", False,
+        Ctx("x3", None, meta={"title": {"value": tp % u"만들기의"}}, corpus="",
+            xch={"mineru": tp % u"만들기의", "dots": tp % u"만들기는",
+                 "paddle": tp % u"만들기로"}), [])
+    # 跨位置不得误配: 역사상 只在 minera, 而 dots 的 역사와 在参考文献书名里(不同位置)
+    chk("三渠道-跨位置", False,
+        Ctx("x4", None, meta={"title": {"value": u"역사상 춘천의 군사적 거점과 가치"}}, corpus="",
+            xch={"mineru": u"역사상 춘천의 군사적 거점과 가치 유재춘",
+                 "dots": u"춘천의 군사적 거점과 가치 <한국역사와 문화> 유재춘",
+                 "paddle": u"춘천의 군사적 거점과 가치 유재춘"}), [])
 
     print("audit_value selftest: %d/%d PASS" % (ok, ok + fail))
     return 0 if fail == 0 else 1

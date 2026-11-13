@@ -26,15 +26,14 @@
                  "prompt": "prompt_layout_all_en", "enabled": true,
                  "run_timeout": 300, "queue_timeout": 7200},
   "paddle_api": {"token": "", "enabled": true, "base": "https://paddleocr.aistudio-app.com",
-                 "model": "PaddleOCR-VL", "run_timeout": 300, "queue_timeout": 7200},
-  "desktop":    {"exe": "", "landing": "", "port": 9223, "kill_existing": false}
+                 "model": "PaddleOCR-VL", "run_timeout": 300, "queue_timeout": 7200}
 }
 ```
 
 要点:
 
-- `enabled`: 各 `*_api` 段默认 `true`。置 `false` 即跳过该云端渠道; mineru 置 `false` 时
-  直接落到 CDP 桌面版, 其余两家则视为"未提供"。
+- `enabled`: 各 `*_api` 段默认 `true`。置 `false` 即跳过该云端渠道, 该路视为"未提供"
+  (不再是回落到别的获取方式)。
 - `run_timeout` / `queue_timeout`: 单次推理与服务端排队各自的上限(秒)。`run_timeout` 只累计
   `running` 状态的时长, 排队久不会误杀。
 - `keep_api_zip`: 是否保留 dots 下载的 `api_result.zip`(默认 `false`)。
@@ -42,14 +41,15 @@
   页图像素), 这是离线 demo/CI 免标定的方式, 真实引擎请按 docs/calibration.md 填实测值。
 - `enable_formula/enable_table` 请写布尔值; 若写字符串, 代码会把 `"false"` 显式解析为假
   (`bool("false")` 在 Python 里是 `True`, 这是个容易踩的坑)。
-- `desktop.kill_existing`: 默认 `false`。打开后启动 CDP 前会结束同名 App 进程 ——
-  早期版本无条件 `taskkill /IM MinerU.exe /F`, 会连带杀掉用户自己的实例, 已改。
-- 桌面版路径也可由环境变量 `MINERU_EXE` / `MINERU_LANDING` / `MINERU_CDP_PORT` 提供
-  (`mineru_drive.py`), 优先于 `desktop` 段。
+
+**MinerU 只有云端 API 一种获取方式。** 早先的桌面版 CDP 驱动(`mineru_drive.py`、`desktop` 配置段、
+`MINERU_EXE`/`MINERU_LANDING`/`MINERU_CDP_PORT` 环境变量、webapp 的 App 输出目录监视)已于
+2026-11-13 全部移除: 那条路的成功依赖窗口焦点与 App 版本, 失败时表现为"卡住"而不是报错, 与并发
+调度天然冲突。历史 `raw/mineru` 目录仍按它自己的标定键读取, 不受影响。
 
 ## 每个渠道怎么拿产物
 
-优先级: **已有产物 → 云端 API(未禁用时) → (仅 mineru)CDP 桌面版兜底**。
+优先级: **已有产物 → 云端 API(未禁用时) → inbox 投放**。
 
 | 渠道 | 缓存目录 | 命中判据 | 上游要点 |
 | --- | --- | --- | --- |

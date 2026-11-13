@@ -328,6 +328,23 @@ def make_model(cfg, post=None):
 # ---------- 主流程 ----------
 
 def run_doc(doc, model, cfg=None, echo=print, blocks=None):
+    """对外入口 = 名额闸 + 实际抽取。
+
+    并发 5 篇时同一 key 会同时开 5 路模型调用, 限流命中后单批只记一条 nomination 就继续,
+    表现为"跑完了但少抽了"(静默失败)。名额默认 2(KCI_LLM_PARALLEL 可调)。
+    """
+    import crossproc
+    try:
+        n = max(1, int(os.environ.get("KCI_LLM_PARALLEL") or 2))
+    except ValueError:
+        n = 2
+    with crossproc.Slots("llm", n=n, ttl=3600, wait=3600) as s:
+        if s.waited > 1:
+            echo(u"  ner_lite 排队 %.0fs(LLM 并发名额 %d 已满)" % (s.waited, n))
+        return _run_doc(doc, model, cfg=cfg, echo=echo, blocks=blocks)
+
+
+def _run_doc(doc, model, cfg=None, echo=print, blocks=None):
     blocks = blocks if blocks is not None else load_blocks(doc)
     tbl = DocTable(blocks)
     # 分批(按原始字符预算, 块不拆)

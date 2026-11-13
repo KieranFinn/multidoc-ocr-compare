@@ -9,7 +9,7 @@
 它是为扫描版学术 PDF（韩 / 中 / 英）写的：这类文档单引擎输出*看着*没问题，却在跨页时悄悄自相矛盾。本项目要回答的不是"谁得分高"，而是**归因**——三个引擎在某页对不上时，到底是文档本身怪，还是某个引擎坏了。
 
 ```
- PDF --> 渲染 150 dpi 页图 --> 取三渠道产物（缓存 -> API -> 桌面版兜底）
+ PDF --> 渲染 150 dpi 页图 --> 取三渠道产物（缓存 -> API -> inbox 投放）
                                      |
                                      v
                            适配为 {page: [{cat, box, text}]}
@@ -33,6 +33,15 @@
 | **要结构化字段**（题目 / 作者 / 参考文献……） | [结构化元数据](#结构化元数据可选在-unify-之后运行) | 不需要（规则优先，LLM 可选） |
 
 **没有任何一步是"必须先把上一步跑通"的前置**：可以零凭据起步，一个一个渠道加，产物够用就停。
+
+## 入口只有两个
+
+| 你要做的事 | 用这个 | 说明 |
+| --- | --- | --- |
+| 看列表、重跑、质检、归档、起浏览器工作台 | 双击 `启动GUI.bat`（或 `python gui.py`） | 桌面工作台是唯一的 UI 入口；右上角「浏览器工作台」会在需要时把 webapp 拉起来，不必再分辨该双击哪个 bat |
+| 批量 / CI / 脚本化 | `python stages.py` | 唯一的命令行入口，见[按阶段重跑](#按阶段重跑stagespy)。归档、字段值后验、起 UI 都是它的子命令 |
+
+其余文件里的 `__main__` 都是**向后兼容的别名**，调用的是同一批函数，不需要记：`pipeline.py`（等价 `stages.py <doc> all`）、`metadata.py`（只剩 `llm`/`dual`/`report` 三个实验阶段）、`archive.py`（等价 `stages.py archive`）、`unify.py` / `merge_out.py`（单段调试）、`ner_lite.py`（含 CI 用的 `selfcheck`）、`regress.py`。
 
 ## 在线实例
 
@@ -103,7 +112,7 @@ python -m http.server -d _attic/examples/demo/out/demo_kr  # 然后打开 /index
 | --- | --- | --- | --- |
 | **dots.ocr** | 一个 Gradio 5 端点，默认用小红书公共实例 `https://dotsocr.xiaohongshu.com` | **不需要——没有 token 字段** | 拿到第一次真实运行最快的路；只有自建时才需要改 `dots_api.base` |
 | **PaddleOCR-VL** | `channels.local.json` 里的 `token` | AI Studio 服务（`paddleocr.aistudio-app.com`）申请的 key | 异步任务，归一化坐标，免标定 |
-| **MinerU** | `channels.local.json` 里的 `token` | mineru.net 申请的 key | batch 签名上传；兜底走 CDP 驱动桌面版（仅 Windows） |
+| **MinerU** | `channels.local.json` 里的 `token` | mineru.net 申请的 key | batch 签名上传；**唯一获取方式**（桌面版 CDP 驱动已移除） |
 
 ```bash
 cp channels.local.example.json channels.local.json   # 只填你有的 token，该文件已被 gitignore
@@ -162,8 +171,8 @@ python ner_lite.py selfcheck         # 离线：7 个合成块 + mock 模型，�
 ## 设计笔记（花了最久的部分）
 
 - **一个坐标空间，而且写在配置里。** 每个引擎用自己的一套框坐标，有时还是各向异性的。`src_w / src_h / x_off / y_off` 这四个数是数据不是代码，每次调用都重读，所以重标定不用重启服务。配方见 [docs/calibration.md](docs/calibration.md)。
-- **标定键跟着数据一起落盘。** 同一个 `mineru` 目录可能来自桌面版，也可能来自云端 API（几何差约 1.6%）。一个标记文件记下是哪一种，这样查看器与合并器永远不会对同一批字节各说各话。
-- **缓存优先，其次 API，最后桌面版。** 重跑一份文档是免费的；想强制重新拉取，删掉一个缓存目录即可（`out/<doc>/raw/<channel>_api`）。
+- **标定键跟着数据一起落盘。** `mineru` 目录可能来自历史桌面版，也可能来自现在的云端 API（几何差约 1.6%）。一个标记文件记下是哪一种，这样查看器与合并器永远不会对同一批字节各说各话。
+- **缓存优先，其次 API，最后 inbox 投放。** 重跑一份文档是免费的；想强制重新拉取，删掉一个缓存目录即可（`out/<doc>/raw/<channel>_api`）。
 - **上游的怪就是上游的怪。** 被截断的页 JSON、双重编码的负载、引擎版本间改过的键名：适配层防御性解析并把情况**写进日志**，而不是默默产出空块。
 - **U+FFFD 是指标，不是打扫卫生。** 按渠道计数并显示在总览里，因为它是没有真值（ground truth）时最便宜的文本完整性信号。
 
@@ -172,16 +181,18 @@ python ner_lite.py selfcheck         # 离线：7 个合成块 + mock 模型，�
 上面的对照链路告诉你**谁读到了什么**。`metadata.py` 把留下来的证据变成**可引用的字段**——题目（韩文 + 英文）、作者、单位、摘要、双语关键词（`keywords` 韩文 / `keywords_en` 英文，各取页序中第一个匹配到的面板），以及参考文献条目——每项都带置信度和一个能跳回 1:3 查看器的页锚点。
 
 ```bash
-python unify.py <doc>                      # 产出 out/<doc>/unified/（pipeline.py 自己就会跑；只有已有 merged/ 数据时才需要单独跑）
-python metadata.py <doc> --stage m3        # 跨页拼接：把被换页切断的段落接回来
-python metadata.py <doc> --stage refs      # 参考文献条目 -> {authors, year, title, vol, no, pages} 列表
-python metadata.py <doc> --stage frefs     # 所有编了号的脚注（文献与注释）-> footnote_refs
-python metadata.py <doc> --stage front     # 题目 / 作者 / 单位（韩文 + 罗马化）
-python metadata.py <doc> --stage abs       # 韩文 + 英文摘要
-python metadata.py <doc> --stage issue     # 刊名 / 年 / 卷 / 期 / 页 + 关键词
-python metadata.py <doc> --stage cspan     # 正文中的引用句
-python metadata.py <doc> --stage report    # -> _metadata_report.html
+python stages.py <doc> unify               # 产出 out/<doc>/unified/（pipeline.py 自己就会跑；只有已有 merged/ 数据时才需要单独跑）
+python stages.py <doc> m3                  # 跨页拼接：把被换页切断的段落接回来
+python stages.py <doc> refs                # 参考文献条目 -> {authors, year, title, vol, no, pages} 列表
+python stages.py <doc> frefs               # 所有编了号的脚注（文献与注释）-> footnote_refs
+python stages.py <doc> front               # 题目 / 作者 / 单位（韩文 + 罗马化）
+python stages.py <doc> abs                 # 韩文 + 英文摘要
+python stages.py <doc> issue               # 刊名 / 年 / 卷 / 期 / 页 + 关键词
+python stages.py <doc> cspan               # 正文中的引用句
+python metadata.py <doc> --stage report    # -> _metadata_report.html（report / llm / dual 只在兼容壳里）
 ```
+
+**跨页续注**：脚注排到下一页页首时，续段没有行首编号，会被并进上一条，不另立条目。条目用 `page` 记头页、`page_end` 记尾页（`page_end > page` 即跨页）；查看器在续页也会列出该条并标「续上页 pN」，续页的「本页脚注」不会显示成 0 条（`KCI_FI001004818_2002` 脚注 1 起于 p1「…Studies of April」，续于 p2 页首「Popular Struggle), in 4·19-wa…」）。全库 732 条脚注里有 13 条属此形态。
 
 规则优先，模型其次。每个字段都由确定性启发式解析（按版面类别切分的韩式五段引用与 `In:` 书章引用、上标集合匹配作者脚注、逐条目判断 `[n]` / `N.` / 作者-年份样式）。产品字段带 `layout`（引文形式类别）、`container_title` / `publisher` / `editor`（CSL 命名；`source` 保留原始容器字符串以向后兼容——下游应把 `container_title` 当容器读，而不是 `source`）。可选的 LLM 阶段（`--stage llm`）只**询问正则失败或低分的字段**，绝不改写高置信度的值。它默认关闭（`channels.json` 里 `llm.enabled: false`），密钥从环境变量 `KCI_LLM_KEY` 读取——任何机密都不写盘。
 
@@ -225,7 +236,7 @@ python stages.py 13563525 all         # 全链(与 pipeline.main 等效)
 
 | 分组 | 阶段 |
 | --- | --- |
-| ① 取数 | `render`(PDF→pages)、`acquire`(API/缓存/CDP→raw/)、`adapt`(raw/→单渠道查看器) |
+| ① 取数 | `render`(PDF→pages)、`acquire`(API/缓存/inbox→raw/)、`adapt`(raw/→单渠道查看器) |
 | ② 归一 | `merge`(→merged/)、`unify`(→unified/) |
 | ③ 元数据 | `m3`、`refs`、`frefs`、`front`、`abs`、`issue`、`cspan` |
 | ④ 实体/呈现 | `ner`、`viewer`(重建 viewer_compare.html)、`index`(重建 index.html) |
@@ -234,6 +245,22 @@ python stages.py 13563525 all         # 全链(与 pipeline.main 等效)
 
 桌面工作台把它收进**一个键的两个热区**：点「一键重跑」主体（右端 `▾` 以外）＝执行菜单里当前勾选的阶段，与菜单里的「执行选中阶段」完全等价；点 `▾` 才展开菜单（预设 / 按组勾选）。「快速重跑(跳NER)」是另一个独立键，跑同样的链但跳过 `ner`——它存在的目的就是不重复调 LLM。没勾选的阶段绝不会替你跑，耦合只提示、不偷偷带上。
 
+**并发**：多选提交后不是一篇一篇排队，默认 **5 篇同时跑**（顶栏「并发」可调 1–8），一篇一个子进程。能并发的前提是篇与篇之间**没有共享写**——每篇只写自己的 `out/<doc>/`，归档索引只读。真正的稀缺资源是三样外部服务，且它们失败时都**静默**，所以各自带闸（`crossproc.py`，跨进程名额）：
+
+| 资源 | 默认并行 | 不加闸的后果 |
+| --- | --- | --- |
+| LLM 实体抽取 | 2 路 | 限流后 `ner_lite` 单批只记一条 nomination 就继续 → “跑完了但少抽了” |
+| 渠道 OCR API（首跑） | 3 路 | dots/paddle 静默变 `None` → 产物里看不出少了渠道 |
+
+所以调大并发只是把排队挪到更里面一层，不会让这些额度变多。命令行做同一件事：
+
+```bash
+python stages.py --batch a,b,c all --workers 5      # 5 篇并发全链
+python stages.py --batch "$(ls out | grep -v '^_')" viewer,index --workers 5
+```
+
+实测（27 篇 `viewer,index`）：串行约 40s，并发 5 为 12.5s；5 篇中等文档串行 6.8s → 2.0s。
+
 **质检**列只问一件事：必抽项在不在。清单是标题、关键词、摘要、作者、机构、期刊、出版年、卷、期、页码、正文、参考文献，外加**引文句与脚注二存一**。缺任意一项即整行报红，并在单元格里写出缺了哪几项（`✘ 2 项 机构/参考文献`）。字段置信度不参与判定，三类可选实体（科学数据集 / 基金 / 研究软件）也不影响颜色。
 
 这一列只管一半。它看不见**抽到了但抽错**的字段——正文段落躺在 `title` 里、`['초점','주제','초점']` 躺在 `authors` 里、`Oxford University Press, 2012` 躺在 `affiliations` 里，质检一律显示绿色。另一半由 `metapy/audit_value.py` 负责：判的是"这个值立不立得住"，用四类判据——形态先验（人名不是短语）、来源先验（题名不结句）、跨字段一致（从题名切下来的名字会以题名缺陷的形式暴露）、语料离群（197 字的题名对照 15–60 字的常态）。31 条规则，每条都带着逼出它的那篇文档，每条都配一个"必须报"的正例和一个"必须不报"的合法夹逼例：
@@ -241,7 +268,7 @@ python stages.py 13563525 all         # 全链(与 pipeline.main 等效)
 ```bash
 python -m metapy.audit_value              # 全库, 只报 bad + warn
 python -m metapy.audit_value <doc> --all  # 单篇, 连 note 一起
-python -m metapy.audit_value --selftest   # 14 个夹逼例, 改规则后必跑
+python -m metapy.audit_value --selftest   # 18 个夹逼例, 改规则后必跑
 python -m metapy.audit_value --html out/_value_audit.html
 ```
 
@@ -251,13 +278,42 @@ python -m metapy.audit_value --html out/_value_audit.html
 
 前置信息区认不出机构时，`metapy/front.py` 放宽的是**输入**、不是字段口径：它回头读三渠道原始行（`common.channel_lines()`，底层是 `merged.json`），但只扫首页、以及带 `Author details` / `Authors' affiliations` 题头的那一页——BMC / SpringerOpen 体例把单位放在末页，行内带上标 `$ ^{1} $`。候选行还必须过一道形态守卫（`_looks_affil()`）：要有真正的机构尾巴（대학교 / 학과 / 연구소 / University / Institute …），且不能是连续行文（본고는…、…일환으로…）、不能是出版社（… Press）、不能是论文题名、逗号也不得 ≥3 个。一行塞了多个单位的会被逐段切开再验。这一整套都在 `front` 段内完成、从不读 `ner_lite`，因此补一个机构**不产生任何 LLM 调用**：23 篇工作区里全部机构都由 `metadata.affiliations` 自身得出，`KCI_FI002542944` 甚至没有 `ner_lite` 产物也照样有机构。
 
+## 归档（`archive.py`）
+
+核对过的文献不该继续占着工作台，更不该在你重新下载一次时白跑一遍 OCR + LLM。归档把 PDF 与 `out/<doc>/` 一起移到 `archive/<doc>/`，并在 `archive/index.json` 写一条**元数据快照**（题录、质检缺项、`sha256`、归档时间、批注）——快照而不是路径，是因为索引同时要当"这篇我核对过、题录是什么、缺哪几项"的唯一凭据。
+
+```bash
+python archive.py --add 13563525 13563526   # 归档
+python archive.py                           # 列出已归档
+python archive.py --check some.pdf          # 判重演练, 不动文件
+python archive.py --restore 13563525        # 搬回工作区
+python archive.py --export 已归档.md         # 导出清单(.md / .csv)
+python archive.py --selftest                # 30 个断言
+```
+
+桌面工作台：操作条「归档选中」对多选集生效，顶栏「已归档…」打开清单窗口（搜索、打开产物、恢复、导出）。归档只做一次确认、不逐篇问，但确认框会写清"其中 N 篇质检未通过"——归档后它们从工作台消失，缺项只剩清单里那一行。
+
+**判重三层，处置分级。** 送入处理前自动执行，`webapp.py` 的上传口与 `watch_uploads()` 两处都拦：
+
+| 判据 | 结论 | 处置 |
+| --- | --- | --- |
+| `sha256` 相同 | 同一份文件 | 硬拦 |
+| 归一化文件名相同、`sha256` 不同 | 同名的新版本 | 默认拦 |
+| 标题折叠相似 ≥ 0.90（或前缀占比 ≥ 70%） | 可能是同篇另一版 | 只提示 |
+
+第三层故意不拦：重新导出同一篇 KCI 文献时字节必变，而用户的意图可能正是换一份更清晰的 PDF 重跑。两个方向的代价不对称——误拦一篇新文章（以为程序坏了）远重于漏拦一次重复（多花几分钟）。
+
+有一处必须同时改：`watch_uploads()` 原先用"`out/<doc>/index.html` 存在且比 PDF 新"判断见过，产物搬走后这条永不成立，重启就会把归档过的文档全部重跑一遍。现在启动与轮询都多认一条"归档索引里有这个 doc 也算见过"。
+
+`archive/` 与 `out/` 同性质（含你自己的文档内容），一并在 `.gitignore` 里。换机器要带走判重记录的话，单独拷 `archive/index.json` 即可。
+
 ## 状态与已知限制
 
 - 研究与工程工具，不是托管服务。三个云渠道都是第三方服务：端点和请求格式随时可能变，它们的条款约束的是你。
 - `dots_api.base` 默认指向一个社区公共实例；万一它没了，请指向你自己的 Gradio 5 部署（或者用 `inbox/` 喂已有产物）。
 - **准确率并不均匀，且残余失败是原文缺字段，不是解析器缺能力。** 文献条目与前置信息（题目/作者区）的启发式是在 `out/` 下 23 篇韩 / 英 / 中期刊语料上调的，验收标准就是工作台的质检列：当前 23 篇里 20 篇必抽项全通过。剩下 3 篇是文章本身就没有该字段，已逐张页图核对——`KCI_FI001004818_2002` 无关键词栏、无摘要、无卷号表述；`KCI_FI001536751_2000` 首页只有题名与作者，末页只有参考文献加通信地址；`KCI_FI002542944` 用 BMC 编号 `(2019) 43:44`，即卷 43 + 文章号 44，该刊不设期号。要补只能靠臆造。早前版本列过的弱点——全汉字作者行、摘要无可识别引导词、文献表末页与另一栏摘要同页——现已由上面的渠道兜底覆盖，而不是逐个打补丁。把 `metadata.json` 当高精度草稿用：引用前请检查每个字段的置信度（并对照 `viewer_compare.html`）。
 - **实体抽取是召回受限，不是精度受限。** 在 13 篇语料上，`ner_lite.py` 产出 57 条记录（数据集 35 / 软件 15 / 基金 7），61 条提名全部通过定位闸门，网络与解析零失败；但对人工核过的 `verified.json` 的召回并不齐：软件 6/7、基金 3/4（漏的是被拆成两条——机构与项目各成一条）、数据集 0/0（35 条全是误报，多为含「史」「報告書」的旧书与国际法院报告题名）。这 35 条仍然**每条都可验**——每个 `slice` 都逐字在原文里——这正是「定位到」和「抽对了」的区别。
-- 只有 MinerU 的桌面版兜底是 Windows 专属；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`start.bat` / `start.sh` 只是便捷包装。
+- 全部渠道都走云端 API，没有平台专属路径；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`start.bat` / `start.sh` 只是便捷包装。
 - 不包含在线服务测试（需要凭据和额度）。CI 会编译每个模块、跑单元测试、`ner_lite.py selfcheck` 和离线 demo；CI 不调用 LLM。
 
 ## 仓库结构
@@ -268,20 +324,22 @@ pipeline_io.py     渲染 -> 抓取 -> 归档 -> 标定 -> 适配
 viewer.py          单渠道 / 对照查看器 + md2html + 元数据面板
 webapp.py app.js dashboard.css   浏览器拖拽工作台（任务总览 + 管道/渠道状态 + 渠道配置面板）
 gui.py 启动GUI.bat  桌面工作台（tkinter，零依赖）：状态从 out/ 派生、历史追加到 gui_runs.jsonl
+qc.py              质检口径（必抽项齐全性）：GUI / 归档 / CLI 共用一份判定
+archive.py         归档 + 三层判重（sha256 / 归一化文件名 / 标题相似）
 merge_out.py       跨渠道逐页合并
 unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
 metadata.py        结构化元数据 CLI（11 行壳；实现在 metapy/）
 ner_lite.py        实体抽取（基金 / 软件 / 数据集）：LLM 提名，代码定位
 regress.py         参考文献质量检查（截断、作者、页拼接）
 test_pipeline.py   unified 新旧判定、数据保全与查看器回归测试
-mineru_drive.py    MinerU 桌面版的 CDP 驱动（兜底）
-requirements.txt   渲染 / CDP 运行时依赖
+requirements.txt   渲染运行时依赖（站点包 + Pillow）
 channels.json      标定 + 模型默认值（无机密）
 channels.local.example.json   复制为 channels.local.json 后填自己的 token
 docs/              channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
 examples/          13625974/（一份真实跑批产物，首页链接）
 uploads/ inbox/    输入 PDF + 缓存/外部渠道产物（已 gitignore）
 out/               管线产物；out_llm_trial/ 放实体抽取产物（已 gitignore）
+archive/           已归档文献：<doc>/source.pdf + <doc>/out/ + index.json（已 gitignore）
 metapy/            __init__（CLI）· common / m3(frozen) / issue / cspan / refs / front / abs /
                    llmrep / dual
 _attic/            归档代码：analyze.py · caption_audit.py · examples/（make_demo.py 与

@@ -24,10 +24,12 @@ jobs:
       - name: Import check (no service calls, no credentials)
         run: |
           python - <<PY
-          import pipeline, pipeline_io, viewer, unify, merge_out, regress, mineru_drive
+          import pipeline, pipeline_io, viewer, unify, merge_out, regress
           import metadata, ner_lite
+          import stages, qc, archive, crossproc, docid
           import metapy
           from metapy import m3_doc, refs_doc, front_doc, abstract_doc, llm_apply, report_meta, rebuild_viewer
+          from metapy import audit_value, audit_invariant
           print("config layers:", sorted(pipeline.load_cfg()))
           PY
       - name: Unified data-safety regression

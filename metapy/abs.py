@@ -68,7 +68,8 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                     and u["box"][1] >= head_u["box"][3] - 2:
                 f0 = _fold((u["main_text"] or "").split("\n")[0])
                 if skip_fold and len(f0) >= 15 and \
-                        (skip_fold.startswith(f0) or f0.startswith(skip_fold)):
+                        (skip_fold.startswith(f0) or f0.startswith(skip_fold)
+                         or _gdice(f0, skip_fold) >= 0.9):   # dice 容差: 渠道大小写差(Seon/seon)曾致误停
                     continue   # 英文题名复写头(可能断行只带前段, 13563529 u9_5 实证): 整块跳过
                 return _fin()   # 区内新节头=界(先判停, 其行不入摘要)
             if u["type"] == "Section-header" and regress.REF_HEAD.search(u["main_text"] or "") \
@@ -119,8 +120,9 @@ def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
                     s = re.split(r"[:：]", s, maxsplit=1)[1].strip()   # 'Abstract: …' 标签剥离
                     if not s:
                         continue
-                if skip_fold and _fold(s) == skip_fold:
-                    continue   # 块内首行的题名复写
+                if skip_fold and (_fold(s) == skip_fold
+                                 or (len(_fold(s)) >= 15 and _gdice(_fold(s), skip_fold) >= 0.9)):
+                    continue   # 块内首行的题名复写(含渠道读法大小写差)
                 if re.match(r"^-\s*[A-Z][A-Za-z .\-']{3,40}\s*-$", s):
                     continue   # 尾页罗马拼音作者行(如 '- Yoo Jae Choon -')
                 if len(s) < 70 and re.match(r"^[A-Z]", s):
@@ -154,10 +156,7 @@ def abstract_doc(doc, out_root):
     if not os.path.isdir(udir):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     umap = {u["uid"]: u for p in pages for u in pdata[p]["unified"]}
 
     def _find_head(pat, page_list):
@@ -472,6 +471,11 @@ def abstract_doc(doc, out_root):
                         if stop:
                             break
                     if stop:
+                        break
+                for _i0, _s0 in enumerate(lines):   # 起始行裁剪: 作者/题名行不进摘要(13563526 兜底路径实证)
+                    if ABSTRACT_START.match(_s0):
+                        if _i0:
+                            lines = lines[_i0:]
                         break
                 txt = "\n".join(lines).strip()
                 if started and len(_fold(txt)) >= 120:

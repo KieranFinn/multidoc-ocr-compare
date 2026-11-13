@@ -999,8 +999,28 @@ def selftest():
     else:
         print("FAIL [yield-coverage-guard] %s %s %s %s %s cov=%s"
               % (_g1["state"], _g2["state"], _g3["state"], _g4["state"], _g5["state"], _cov))
-    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 7))
-    return n_ok == len(SELFTEST) + 7
+    # 跨渠道借号(2026-11-13, 13563538 #7/#9 实证): 四个夹逼例——能借的必须借到,
+    # 已收过的号/不连续的号/碎片 一律不借(宁可留缺口, 不许造重复与垃圾)。
+    _bt = u"장한업, 「20세기 상호문화 담론들에 대한 비교 고찰」, 『비교교육연구』28(3), 2018, 265~289쪽."
+    _wit = {4: [("mineru", "Footnote", [0, 0, 1, 1], _bt),
+                ("dots", "Footnote", [0, 0, 1, 1], u"7 " + _bt),
+                ("paddle", "Footnote", [0, 0, 1, 1], u"7 " + _bt)]}
+    _b1 = _borrow_num(_wit, 4, _bt, 6, {1, 2, 3, 4, 5, 6}) == 7          # 借到
+    _b2 = _borrow_num(_wit, 4, _bt, 6, {1, 2, 3, 4, 5, 6, 7}) is None    # 已收过 7
+    _b3 = _borrow_num(_wit, 4, _bt, 4, {1, 2, 3, 4}) is None             # 不连续(要 5 不是 7)
+    _b4 = _borrow_num(_wit, 4, u"2 화.", 6, {1, 2, 3, 4, 5, 6}) is None  # 碎片不借
+    _bt1 = u"박소정, 「확장하고 경합하는 K」, 『한국언론학보』66(4), 2022, 165쪽."
+    _w1 = {1: [("dots", "Footnote", [0, 0, 1, 1], u"1 " + _bt1)]}
+    _b5 = _borrow_num(_w1, 1, _bt1, None, set()) == 1                    # 首条完整 → 借
+    _tr = u"정선희, 「고전소설의 문화콘텐츠화를 위한 수업방안 연구」, 2017, 5~30쪽; 김수연, 「디"
+    _w2 = {1: [("dots", "Page-footer", [0, 0, 1, 1], u"1 " + _tr)]}
+    _b6 = _borrow_num(_w2, 1, _tr, None, set()) is None                  # 首条被截断 → 不借
+    if _b1 and _b2 and _b3 and _b4 and _b5 and _b6:
+        n_ok += 1
+    else:
+        print("FAIL [fnote-num-borrow] %s %s %s %s %s %s" % (_b1, _b2, _b3, _b4, _b5, _b6))
+    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 8))
+    return n_ok == len(SELFTEST) + 8
 
 
 def _split_authors(auth, corp=False, latcorp=False):
@@ -1439,10 +1459,7 @@ def guards_for_doc(doc_dir):
     udir = os.path.join(doc_dir, "unified")
     if not os.path.isdir(udir):
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     m = {}
     meta_fp = os.path.join(doc_dir, "metadata.json")
     if os.path.exists(meta_fp):
@@ -1463,10 +1480,7 @@ def refs_doc(doc, out_root):
     if not os.path.isdir(udir):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     doc_heads = _doc_heads(pdata, pages)
     # —— L1: 文献区定位统一走 ref_pages_extended(head_fallback=False: 无 in_ref 时的节头页
     # 回退是 A4 修复未拍板, 仍早退); 起始页的 참고문헌 头定位 ——
@@ -1717,10 +1731,16 @@ def _unwrap_tail_cite(t):
 
 
 FN_CITE_X = re.compile(
-    r"^\s*((?:\(\d{1,2}\)|\d{1,2}\)|\[\d{1,3}\]|〔\d+〕|"
+    r"^\s*((?:[(（]\d{1,2}[)）]|\d{1,2}[)）]|\[\d{1,3}\]|〔\d+〕|"
     r"\d{1,3}\s*[.、]|"                                  # N. / N、 句点式(FI001004818_2002 全篇实证)
-    r"\d{1,2}(?=\s+(?:[^\W\d_]|[「『“‘]|\d+[가-힣]))))")  # 裸数字式; 次 token 可为 3호 等数字页期号
-# 裸数字分支要求数字后紧跟字母/开引号/数字页期号, 防 '18 • Police Science Institute'(•为符号)误切
+    r"\d{1,2}(?=\s+(?:[^\W\d_]|[「『“‘〈《'\"‘“]|\d+[가-힣]|<))))")  # 裸数字式; 次 token 可为 3호 等数字页期号
+# 裸数字分支要求数字后紧跟字母/开引号/书名号/数字页期号, 防 '18 • Police Science Institute'(•为符号)误切
+# 1.8(2026-11-13): 括号位改字符类 [)）] / [(（], 认全角括号——中文学术文献普遍用 'N）'
+#   (2309666 全篇实证: #4/#22/#27/#50 全部栽在全角上, 与半角混排)。
+# 1.7(2026-11-13): 次 token 补 〈《 ' " 与 '<' —— 尖括号书名(<존维> 系 OCR 把〈〉转成<>)、
+#   引号起句、<sub> 标签残渣三种形态在行首裸数字后各挡掉一批真脚注(13563526 #4/#28/#58、
+#   13563527 #4/#17、13563529 #1/#11/#17/#18 实证, 全库 9 条)。只放行这几个开符号,
+#   '•'/'|'/'║'(页脚杂行、表格残渣)仍排除。
 # 1.6: frefs 局部扩展正则(补 (N) 圆括号形态, 1892171 脚注22/23 串烧实证)——
 # 不动 common.FOOTNOTE_CITE(m3.py 三处共享, 动它=违反 D4 硬闸)
 
@@ -1743,43 +1763,155 @@ def _split_glued(t):
     return segs if len(segs) >= 2 else None
 
 
-def _fnote_collect(blocks, doc_heads=()):
+def _inline_split(s, prev_num):
+    """行内串烧切分: 一行里连着写了两条以上脚注时按编号边界劈开。
+    '39) 윤노빈, 『신생철학』, 162~163 참고 40) 윤노빈, 『신생철학』, 164~165.'
+    → ['39) …참고', '40) …164~165.'](2983265 u18_6 实证: 39/40 同行, 40 被吞)。
+    只认"恰为前一条 +1"的号(39→40→41), 这条连续性守卫让正文列举项无法误切——
+    正文里的 '3) …' 只要不是上一条脚注号的+1 就不动。基准优先取本行行首编号(行首标记
+    带进来的 39 比上一块遗留的 last_num 权威), 否则取 prev_num; 都没有则原样返回。"""
+    base = prev_num
+    m0 = FN_CITE_X.match(s)
+    if m0:
+        d = re.sub(r"\D", "", m0.group(1))
+        if d.isdigit():
+            base = int(d)
+    if base is None:
+        return [s]
+    cuts, n = [], base
+    for m in re.finditer(r"(?<=\s)(\d{1,2})[)）]\s+\S", s):
+        v = int(m.group(1))
+        if v != n + 1:
+            continue
+        cuts.append(m.start())
+        n = v
+    if not cuts:
+        return [s]
+    segs, st = [], 0
+    for c in cuts:
+        segs.append(s[st:c].strip())
+        st = c
+    segs.append(s[st:].strip())
+    return [x for x in segs if x]
+
+
+_NUM_WIT_RATIO = 0.75   # 跨渠道借号: 去号后文本折叠相似度下限(13563538 实测 1.0; paddle 改标点后 ~0.78)
+
+
+def _borrow_num(wit, page, line, last_num, used):
+    """脚注块行首编号被某一家渠道读丢时, 向另两家借同一个视觉块读出的编号。
+
+    背景(13563538 实证): p4 的 #7 与 p6 的 #9, unified 选中的读法首行没有编号
+    ('장한업, 「20세기…'——mineru 把行首 '7 ' 丢了, dots/paddle 都读成 '7 '), 无编号段落
+    恰逢"上一条已收尾 + 换页"被当无主散文丢弃, 于是编号账本缺口, 对账器报 N-FN-GAP,
+    用户看到的就是"这条直接漏抽了"。
+
+    三道闸, 每道都能说清误报边界:
+    ① 只在 unified 首行没有引文标记时调用 —— 有编号的块走正常分支, 根本不进这里;
+    ② 另渠道同页块的**去号后文本**要跟本行高度重合(折叠相似度 ≥_NUM_WIT_RATIO 且前 30 字
+       互相包含)—— 挡掉"同页另一条脚注恰好带号";
+    ③ 借到的号必须恰为已收最后一条 +1, 且本篇还没收过该号 —— 挡掉重复编号(13563550 p2
+       的 u1_8 就属此列: #6 已被另一块收走, 这里若照借就会多出一条 #6)。
+    只借编号, 正文仍用 unified 读法, 不跨渠道拼正文。
+    """
+    if not wit:
+        return None
+    if last_num is None:
+        # 首条也借, 但要求"这段话是完整的"。首页脚注区常把 #1 和 #2 挤进同一个块并截断
+        # (13563530 p1 u0_14 = '1 정선희, …; 김수연·윤서연·오지원, 「디' —— #2 的作者串
+        # 挂在 #1 后面, 正文还断在 '「디'), 照借会把两条缝成一条; 收尾不完整的就不借。
+        # 完整首条是真漏抽(13563570 p1 '박소정, 「확장하고 경합하는 K…』…165쪽.' 实证)。
+        if not (_complete(line) or re.search(r"https?://\S+$", line)):
+            return None
+    want = (last_num or 0) + 1
+    fu = _fold(line)
+    if len(fu) < ENTRY_MIN_LEN:
+        return None      # 碎片不借(13563547 p4 '2 화.' 折叠仅 4 字: 同一位置还被读成页码 '9',
+                         # 正文已丢, 借来只会多一条垃圾)
+    got = set()
+    for ch, cat, box, t in wit.get(page) or []:
+        m = FN_CITE_X.match(t)
+        if not m:
+            continue
+        body = _fold(t[m.end():].strip())
+        if not body:
+            continue
+        ratio = min(len(fu), len(body)) / float(max(len(fu), len(body)))
+        if ratio < _NUM_WIT_RATIO:
+            continue
+        if body[:30] not in fu and fu[:30] not in body:
+            continue
+        d = re.sub(r"\D", "", m.group(1))
+        if d.isdigit():
+            got.add(int(d))
+    if len(got) != 1:
+        return None           # 无见证或两家读成不同号: 不猜
+    n = got.pop()
+    if n != want or n in used:
+        return None
+    return n
+
+
+def _fnote_collect(blocks, doc_heads=(), wit=None):
     """Footnote 块[(p,col,u,t)] → 候选条目[{num,text,page,col,box,uid,block_review,block_level}]:
     行首引文标记(FOOTNOTE_CITE)切条, 一块可多条; 无标记段落并入前一条(1632041 续注散文
-    '조선시대에 이륟…' 实证), 跨块续并(条目归属头块 page/uid); 段首无条可并的散文丢弃。
+    '조선시대에 이륟…' 实证), 跨块续并(条目归属头块 page/uid); 段首无条可并的散文丢弃——
+    **但先向另两家渠道借编号**(_borrow_num): 某家把行首 '7 ' 读丢、段落又恰好撞上
+    "上一条已收尾+换页"时, 旧逻辑直接丢弃, 表现为整条脚注漏抽(13563538 #7/#9)。
     strict 块(Page-footer 型脚注回退)只收行首带标记的行, 不并散文——防页脚杂行(网址/日期)
     污染上一条。"""
-    entries, cur = [], None
+    entries, cur, last_num = [], None, None
+    used = set()          # 已收编号(借号闸门: 不许借已收过的号)
     for b in blocks:
         t, _ = _clean_lines(b["t"], (), doc_heads)
         if not t or _is_running(t, doc_heads):
             continue
         strict = bool(b.get("strict"))
-        for ln in t.split("\n"):
-            s = ln.strip()
-            if not s:
-                continue
-            plain = _plain_inline(s)
-            mh = FN_CITE_X.match(plain)
-            if mh:
-                if cur:
-                    entries.append(cur)
-                raw = s[mh.end():].strip() if s.startswith(mh.group(1)) else plain[mh.end():].strip()
-                cur = {"text": raw, "num": re.sub(r"\D", "", mh.group(1)),
-                       "page": b["p"] + 1, "col": b["col"], "box": b["u"]["box"],
-                       "uid": b["u"]["uid"], "block_review": b["u"]["review"],
-                       "block_level": b["u"]["confidence"]["level"]}
-            else:
-                if strict:
-                    continue
-                if cur is not None:
-                    if b["p"] + 1 > cur["page"] and _complete(cur["text"]):
+        for ln in [x.strip() for x in t.split("\n") if x.strip()]:
+            for s in _inline_split(ln, last_num):
+                plain = _plain_inline(s)
+                mh = FN_CITE_X.match(plain)
+                if mh:
+                    if cur:
                         entries.append(cur)
-                        cur = None
-                    else:
-                        opened = sum(cur["text"].count(q) for q in "「『")
-                        closed = sum(cur["text"].count(q) for q in "」』")
-                        cur["text"] += ("" if opened > closed else " ") + s
+                    raw = s[mh.end():].strip() if s.startswith(mh.group(1)) else plain[mh.end():].strip()
+                    num = re.sub(r"\D", "", mh.group(1))
+                    if num.isdigit():
+                        last_num = int(num)
+                        used.add(last_num)
+                    cur = {"text": raw, "num": num,
+                           "page": b["p"] + 1, "col": b["col"], "box": b["u"]["box"],
+                           "uid": b["u"]["uid"], "block_review": b["u"]["review"],
+                           "block_level": b["u"]["confidence"]["level"]}
+                else:
+                    if strict:
+                        continue
+                    if cur is not None:
+                        if b["p"] + 1 > cur["page"] and _complete(cur["text"]):
+                            entries.append(cur)
+                            cur = None
+                        else:
+                            # 跨页续注(2026-11-13): 页底脚注排到下一页页首, 续段本身没有行首编号,
+                            # 条目归属头块(1004818 实证: 脚注1 起于 p1 '…Studies of April', 续于
+                            # p2 页首 'Popular Struggle), in 4·19-wa…')。只记头页会让"本页脚注"
+                            # 在续页显示 0 条, 看起来像漏抽——这里记下尾页, 供查看器按区间展示。
+                            if b["p"] + 1 > cur["page"]:
+                                cur["page_end"] = b["p"] + 1
+                            opened = sum(cur["text"].count(q) for q in "「『")
+                            closed = sum(cur["text"].count(q) for q in "」』")
+                            cur["text"] += ("" if opened > closed else " ") + s
+                            continue
+                    # 无编号、也没有可并的上一条: 先问另两家这个块到底有没有号(见 _borrow_num)。
+                    # 借到就照常立条, 借不到维持旧行为(丢弃)。
+                    bn = _borrow_num(wit, b["p"] + 1, plain, last_num, used)
+                    if bn is not None:
+                        last_num = bn
+                        used.add(bn)
+                        cur = {"text": s, "num": str(bn),
+                               "page": b["p"] + 1, "col": b["col"], "box": b["u"]["box"],
+                               "uid": b["u"]["uid"], "block_review": b["u"]["review"],
+                               "block_level": b["u"]["confidence"]["level"],
+                               "num_src": "chan_borrowed"}
     if cur:
         entries.append(cur)
     return entries
@@ -1912,10 +2044,7 @@ def frefs_doc(doc, out_root):
     if not os.path.isdir(udir):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     doc_heads = _doc_heads(pdata, pages)
     ref_pages = set(p for p in pages if pdata[p].get("in_ref"))
     blocks, colb = [], {}
@@ -1934,6 +2063,31 @@ def frefs_doc(doc, out_root):
                     return mt.strip()
         return None
 
+    def _pagenum_footnote_text(u):
+        """Page-number 型脚注回退: 渠道把整条页底脚注判成页码块(13563528 u4_13
+        '15 김춘동, 앞의 글, 208쪽.' 实证)。全库 323 个 Page-number 块里只有这一个带引文,
+        故闸放得很紧, 宁可漏也不放垃圾进来: 单行 + 行首编号 + 去号后 ≥10 字 + 句读收尾 +
+        无表格/页眉符号。'3. 단행본'(章节名)、'50 || …제70집'(运行时页眉)、'146 장석진'
+        (页眉)、'Page 2 of 16'、'- 8 -' 全部落闸外。"""
+        lines = [ln.strip() for ln in (u.get("main_text") or "").split("\n") if ln.strip()]
+        if len(lines) != 1:
+            return None
+        m = FN_CITE_X.match(lines[0])
+        if not m:
+            return None
+        body = lines[0][m.end():].strip()
+        if len(_fold(body)) < 10:
+            return None
+        # 句读收尾这条闸对"以网址结尾"的脚注不成立(网址后面不会有句点): 13563532 p6 的
+        # '13 교육부 누리집 참조. https://www.moe.go.kr/boardCnts' 就是这样被挡掉的, 而同页
+        # 前两条 #11/#12 落在 Footnote 块里照收, 于是编号账本缺 13。含 http 的行放行——
+        # 页脚杂行('- 8 -'、'50 || …제70집'、'Page 2 of 16')都不含 http, 仍在本闸之外。
+        if not re.search(u"[.。]\\s*$", body) and not re.search(r"https?://", body, re.I):
+            return None
+        if re.search(u"[|║]|<table|Page\\s*\\d+\\s*of", body):
+            return None
+        return lines[0]
+
     def _mixed_footnote_text(u):
         members = u.get("members") or {}
         cats = {m.get("cat") for units in members.values() for m in units}
@@ -1950,22 +2104,49 @@ def frefs_doc(doc, out_root):
             candidates.append((marks, len(parts), len(text), text))
         return max(candidates, default=(0, 0, 0, ""))[-1].strip()
 
+    # umap 要在块收集前建: 跨页头块要不要跳过, 取决于它 merged_into 的那个块的类型
+    umap = {}
+    for p in pages:
+        for u in pdata[p]["unified"]:
+            umap[u["uid"]] = u
+
     for p in pages:
         if p in ref_pages:
             continue   # 收集范围=非 in_ref 页
         j = pdata[p]
         for u in j["unified"]:
-            if u.get("cross_page", {}).get("role") == "head":
-                continue
+            cp = u.get("cross_page") or {}
+            if cp.get("role") == "head":
+                # 跨页合并的常规做法是跳过 head(内容已在承接块里, 收两遍会重复)。
+                # 但合并只搬文本、不搬类型: 脚注块被并进 Text 块后类型就丢了, 承接块进不了
+                # 下面的 Footnote 分支, 整块脚注蒸发(2632491 u2_4→u1_8(Text) 实证:
+                # 9)~12) 四条全丢; 3275609 u22_4→u22_3(Text) 同构)。
+                # 所以: 自身是 Footnote 且承接块不是 Footnote 时, 用 head 自己的文本收。
+                tgt = umap.get(cp.get("merged_into"))
+                if u["type"] != "Footnote" or (tgt or {}).get("type") == "Footnote":
+                    continue
             t = _mixed_footnote_text(u)
             if u["type"] != "Footnote":
-                if u["type"] == "Page-footer":
+                ft = None
+                # 块级归属(2026-11-13): 同页"正文段 + 页底脚注"被并成一个组时, 组类型按多数票
+                # 投成 Text(3 家都读 Text 的正文 + 2 家读 Footnote 的脚注), 脚注成员的文本就躺在
+                # 这个 Text 块里, 而下面只认 Footnote 型块 → 整条脚注蒸发(13563551 p2 #2/#4 实证:
+                # 混合块 u1_10/u1_12 里 mineru/paddle 的 Footnote 成员带 '2 ' '4 ')。
+                # 这里把"真混合块"(成员里 Text 与 Footnote 同时存在)的脚注成员文本当 strict 块收:
+                # strict 只取行首带编号的行, 不并散文, 所以正文段不会漏进来。
+                cats = {m.get("cat") for units in (u.get("members") or {}).values() for m in units}
+                if "Footnote" in cats and "Text" in cats and t \
+                        and any(FN_CITE_X.match(x.strip()) for x in t.split("\n") if x.strip()):
+                    ft = t
+                elif u["type"] == "Page-footer":
                     ft = _footer_marked_text(u)
-                    if ft:
-                        if p not in colb:
-                            colb[p] = _page_col_boundary(j)
-                        blocks.append({"p": p, "col": _col_of_b(u, colb[p], j["w"]),
-                                       "uid": u["uid"], "u": u, "t": ft, "strict": True})
+                elif u["type"] == "Page-number":
+                    ft = _pagenum_footnote_text(u)
+                if ft:
+                    if p not in colb:
+                        colb[p] = _page_col_boundary(j)
+                    blocks.append({"p": p, "col": _col_of_b(u, colb[p], j["w"]),
+                                   "uid": u["uid"], "u": u, "t": ft, "strict": True})
                 continue
             if not t:
                 continue
@@ -1974,7 +2155,7 @@ def frefs_doc(doc, out_root):
             blocks.append({"p": p, "col": _col_of_b(u, colb[p], j["w"]),
                            "uid": u["uid"], "u": u, "t": t})
     entries = _fnote_collect(sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])),
-                             doc_heads)
+                             doc_heads, channel_blocks(doc_dir))
     kept, seen = [], set()
     for e in entries:
         key = (e["page"], e["uid"], e["num"])
@@ -1983,10 +2164,6 @@ def frefs_doc(doc, out_root):
         seen.add(key)
         kept.append(e)
     kept.sort(key=lambda e: (e["page"], int(e["num"]) if str(e["num"]).isdigit() else 0))
-    umap = {}
-    for p in pages:
-        for u in pdata[p]["unified"]:
-            umap[u["uid"]] = u
     kept, fdups = _fnote_dedup(kept, umap)
     # 批次3: frefs 同 uid 计数(§45 M3 '3:三块脚注' 同口径)——≥3 条探针标 probe_suspect
     uid_count = collections.Counter(e["uid"] for e in kept)
@@ -2010,6 +2187,7 @@ def frefs_doc(doc, out_root):
             f, agree, e["block_review"], e["block_level"], umap.get(e["uid"]), issues)
         frefs.append({
             "num": e["num"], "raw": e["text"], "page": e["page"],
+            "page_end": e.get("page_end") or e["page"],
             "box": e["box"], "uid": e["uid"],
             "authors": f["authors"], "authors_raw": f["authors_raw"], "et_al": f.get("et_al"),
             "year": f["year"], "title": f["title"], "source": f["source"],
@@ -2026,10 +2204,13 @@ def frefs_doc(doc, out_root):
                         "review_comment": review_str})
     fval = {"entry_count": len(frefs),
             "per_page": dict(collections.Counter(e["page"] for e in frefs))}
+    # 跨渠道借号留痕: 这条编号不是 unified 读出来的, 是另两家在同一视觉块上读到的(见 _borrow_num)
+    fval["num_borrowed"] = [{"num": e["num"], "page": e["page"], "uid": e["uid"]}
+                            for e in kept if e.get("num_src")]
     # 1.11: 对账诊断——每页 脚注号全集(markers) vs 已收(collected), 缺口=未收(附录B reconciliation 原料)
     mk_pages = collections.defaultdict(list)
     for b in blocks:
-        for mm in re.finditer(r"(?m)^\s*(?:\((\d{1,2})\)|(\d{1,2})\)|\[(\d{1,3})\]|〔(\d+)〕)\s", b["t"]):
+        for mm in re.finditer(r"(?m)^\s*(?:[(（](\d{1,2})[)）]|(\d{1,2})[)）]|\[(\d{1,3})\]|〔(\d+)〕)\s", b["t"]):
             mk_pages[b["p"] + 1].append(next(g for g in mm.groups() if g))
     coll_pages = collections.defaultdict(list)
     for e in frefs:
@@ -2061,7 +2242,8 @@ def frefs_doc(doc, out_root):
                  "footnote_refs": frefs, "footnote_ref_validation": fval})
     io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
     audit = load_audit(doc_dir)
-    audit.update({"doc": doc, "footnote_refs": faudits, "footnote_dups": fdups})
+    audit.update({"doc": doc, "footnote_refs": faudits, "footnote_dups": fdups,
+                  "footnote_num_borrowed": fval["num_borrowed"]})
     save_audit(doc_dir, audit)
     lv = collections.Counter(r["confidence"]["level"] for r in frefs)
     print("== ⑤ %s == 编号脚注=%d 置信=%s 分页=%s" % (doc, len(frefs), dict(lv), fval["per_page"]))
