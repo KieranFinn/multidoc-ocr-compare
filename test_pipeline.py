@@ -451,7 +451,12 @@ class StageRunTest(unittest.TestCase):
 
         doc = {"pdf": str(self.pdf), "state": "未跑", "done_at": None, "miss": [],
                "ch": {ch: False for ch in gui.CH}}
-        app = gui.App()
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            # 无头环境(如 CI 未加 xvfb): tkinter 可导入但建不了窗口, 跳过而非判失败
+            self.skipTest("no display for Tk: %s" % exc)
         try:
             app.withdraw()
             with mock.patch.object(gui, "scan_docs", return_value={"paper": doc}), \
