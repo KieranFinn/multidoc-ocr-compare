@@ -5,7 +5,7 @@ r"""metapy 各 stage 共享的阈值、正则、文本折叠与 metadata/audit s
 pipeline 的 _fold_sym/_gdice 在此 re-export，保持既有 `from .common import *` 调用契约。
 """
 
-__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit', 'channel_lines']
+__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit', 'channel_blocks', 'channel_lines', 'page_indices', 'read_unified']
 
 import os, re, io, json, collections, datetime
 
@@ -359,6 +359,69 @@ LV_COLOR = {"high": "#16a34a", "mid": "#d97706", "low": "#dc2626"}
 
 AUDIT_NAME = "metadata_audit.json"   # 诊断 sidecar(§38 分层输出): review_comment/ch_agree/basis/block_review/L1 校验/llm 队列——评审工具读它, 下游只拿 metadata.json
 
+_PAGE_RE = re.compile(r"page_(\d+)\.json$")
+
+
+def page_indices(udir):
+    """unified/ 下的页号(int, 升序)。"""
+    if not os.path.isdir(udir):
+        return []
+    return sorted(int(m.group(1)) for m in (_PAGE_RE.match(f) for f in os.listdir(udir)) if m)
+
+
+def read_unified(udir):
+    """(pages, {page: 页 JSON}) —— unified 层标准读法, 缺目录返回 ([], {})。
+
+    同一段"列 page_N.json + 逐个 json.load"的样板此前在 m3/abs/cspan/issue/refs(×3) 各写一遍,
+    页号口径与失败行为靠人工保持一致; 收成一处, 改口径只改这里。
+    """
+    pages = page_indices(udir)
+    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
+             for p in pages}
+    return pages, pdata
+
+
+_CH_CACHE = {}   # (abs/mtime/size) -> channel_lines 的返回值; 只按文件状态失效
+_CB_CACHE = {}   # 同上, 给 channel_blocks
+
+
+def channel_blocks(doc_dir):
+    """三渠道逐块读法(带 cat/box), 按页分组: {page1: [(ch, cat, box, text)]}。
+
+    与 channel_lines 的分工: 那个是"去重后的行流"(三渠道同文只留一条), 够用来做行级兜底;
+    这个**不去重、保留 box**, 因为要判断"同一个视觉块, 几家读法分别是什么"——跨渠道借脚注
+    编号(refs._borrow_num)需要"另两家都读出了号"这种计数与同块定位。
+    只读, 按 (路径, mtime, size) 缓存。
+    """
+    fp = os.path.join(doc_dir, "merged.json")
+    if not os.path.isfile(fp):
+        return {}
+    try:
+        st = os.stat(fp)
+    except OSError:
+        return {}
+    ck = (os.path.abspath(fp), st.st_mtime, st.st_size)
+    hit = _CB_CACHE.get(ck)
+    if hit is not None:
+        return hit
+    try:
+        mj = json.load(io.open(fp, encoding="utf-8"))
+    except Exception:
+        return {}
+    out = {}
+    for pg in mj.get("page_data") or []:
+        p = int(pg.get("page") or 0)
+        for ch in ("mineru", "dots", "paddle"):
+            for b in (pg.get("channels") or {}).get(ch) or []:
+                t = (b.get("text") or "").strip()
+                if t:
+                    out.setdefault(p, []).append((ch, b.get("cat") or "", b.get("box") or [], t))
+    if len(_CB_CACHE) > 64:
+        _CB_CACHE.clear()
+    _CB_CACHE[ck] = out
+    return out
+
+
 def channel_lines(doc_dir):
     """三渠道原始读法行(2026-11-12 体例全覆盖用)。
 
@@ -368,11 +431,20 @@ def channel_lines(doc_dir):
     原始读法做第二遍判据——这是抽取规则的一部分, 不是事后补数据。
 
     返回 [(page1基, ch, text)], 按页序→渠道序→块序; 已按折叠值去重(三渠道同文只留一条),
-    去重保留首次出现的渠道作为证据来源。
+    去重保留首次出现的渠道作为证据来源。返回值按 (路径, mtime, size) 缓存且**只读**——
+    front 的机构兜底会连调 3 次, 无缓存时同一份 merged.json 要解析 3 遍。
     """
     fp = os.path.join(doc_dir, "merged.json")
     if not os.path.isfile(fp):
         return []
+    try:
+        st = os.stat(fp)
+    except OSError:
+        return []
+    ck = (os.path.abspath(fp), st.st_mtime, st.st_size)
+    hit = _CH_CACHE.get(ck)
+    if hit is not None:
+        return hit
     try:
         mj = json.load(io.open(fp, encoding="utf-8"))
     except Exception:
@@ -390,6 +462,9 @@ def channel_lines(doc_dir):
                     continue
                 seen.add(k)
                 out.append((p, ch, t))
+    if len(_CH_CACHE) > 64:      # 长跑批处理时防止无界增长
+        _CH_CACHE.clear()
+    _CH_CACHE[ck] = out
     return out
 
 

@@ -8,9 +8,5 @@
  },
  "dots_api": {
   "base": "https://your-dots-instance.example.com"
- },
- "desktop": {
-  "exe": "",
-  "landing": ""
  }
 }

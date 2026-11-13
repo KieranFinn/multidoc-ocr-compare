@@ -10,7 +10,7 @@ input.pdf
   │
   ├─② 获取(三路并行)      mineru / dots / paddle 各拿一份"引擎原生产物"
   │      缓存优先: out/<doc>/raw/<渠道>_api
-  │      缺失才调云端 API(enabled 为假则跳过 / mineru 转 CDP 桌面版)
+  │      缺失才调云端 API(enabled 为假则跳过)
   │
   ├─③ adapt_*()            统一中间表示 {页号: [{"cat","box","text","img"}]}
   │      box 一律换算到 150dpi 页图像素(见 docs/calibration.md)
@@ -70,17 +70,17 @@ out/<文档名>/
 - 强制重跑: 删掉对应 `raw/<渠道>_api` 目录。
 - `keep_api_zip`(默认 `false`): dots 拿到的 `api_result.zip` 是否留盘。关掉能省下整批未引用
   的页图与中间 JSON(实测单篇省 20 MB 量级), 排查上游导出问题时可临时打开。
-- `preserve_raw()` 只给"源目录不在 `out/<doc>/raw` 下"的情况(CDP 桌面版导出、inbox 投放)
+- `preserve_raw()` 只给"源目录不在 `out/<doc>/raw` 下"的情况(inbox 投放、命令行指定外部目录)
   复制归档副本; 源已是 `raw/<渠道>_api` 时直接跳过, 不再复制给自己。
 - `fetch_mineru_api` 解压前清空目标目录, 防止 batch 复用把多个 uuid 运行目录叠加在一起。
 
 ### 标定键的判定
 
-同一个 `raw/mineru` 目录, 可能来自桌面版(1034x1012 空间), 也可能来自云端 API(1017x1008 空间)。
-若靠目录名猜, 复制/改名就会让几何整体错位, 所以:
+MinerU 现在只从云端 API 产(1017x1008 空间), 但历史目录里存在桌面版产物(1034x1012 空间),
+而 `raw/mineru` 这个目录名在两种来源下都出现过。若靠目录名猜, 复制/改名就会让几何整体错位, 所以:
 
 1. 获取/归档时把实际来源写进 `raw/<渠道>_calib_key`(`write_calib_marker`);
-2. 读取时 `mineru_calib_key(src)` 先读该标记, 再退回目录名启发式, 最后默认桌面版;
+2. 读取时 `mineru_calib_key(src)` 先读该标记, 再退回目录名启发式, 最后默认 mineru(历史桌面版);
 3. 查看器、`merge_out.py`、`unify.py` 走同一函数 —— 同一份字节不会得到两套坐标。
 
 ## 失败语义
@@ -117,5 +117,8 @@ metadata.py --stage m3     跨页拼接(四信号全满足才拼), 结果写回 
 ## 并发
 
 - `pipeline.main` 用 `ThreadPoolExecutor(max_workers=3)` 并行取三渠道(网络等待为主, GIL 不碍事)。
-- `webapp.py` 用 `RUN_LOCK` 把多个文档串行化: 桌面版 App 只有一个任务槽, 并发会互相踢。
-- 归仓线程(`watch_mineru`)与上传线程共用 `_state_mineru.json`, 只在单进程内使用。
+- 多篇之间用 `stages.run_batch()` 一篇一子进程并发(默认 5 篇), 日志经 `mp.Queue` 回流主进程。
+  子进程隔离是必要的: `pipeline.log` / `pipeline.CFG` 是模块级全局, 多线程跑不同文档会串台。
+- 共享且失败静默的外部资源由 `crossproc.py` 的跨进程名额限流: LLM 2 路、渠道 API 3 路。
+- `webapp.py` 仍用 `RUN_LOCK` 串行: 它的阶段可视化依赖 `pipeline.main` 的 ①②③ 日志格式,
+  改成子进程需要先重做日志协议。

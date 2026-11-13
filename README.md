@@ -12,7 +12,7 @@ but silently disagrees with itself across pages. The point is not "which engine 
 **attribution** — when three engines disagree on a page, is the document weird or is one engine broken?
 
 ```
- PDF --> render 150 dpi pages --> fetch 3 engines (cache -> API -> desktop fallback)
+ PDF --> render 150 dpi pages --> fetch 3 engines (cache -> API -> inbox)
                                      |
                                      v
                            adapt to {page: [{cat, box, text}]}
@@ -37,6 +37,26 @@ Pick the row that matches what you actually want; each row works on its own.
 
 There is **no single setup step that has to succeed before anything else works** — you can start with
 zero credentials, add engines one at a time, and stop wherever the output is good enough.
+
+## Only two entry points
+
+| You want to… | Use | Notes |
+| --- | --- | --- |
+| browse the list, rerun, check QC, archive, or open the browser workbench | double-click `启动GUI.bat` (or `python gui.py`) | the desktop workbench is the only UI entry point; its `浏览器工作台` button starts the web app on demand, so you no longer have to pick between two `.bat` files |
+| batch runs, CI, scripting | `python stages.py` | the only command-line entry point, see [Stage-level reruns](#stage-level-reruns-stagespy). Archiving, field-value audit and launching either UI are subcommands of it |
+
+Every other `__main__` in the tree is a **backward-compatible alias** calling the same functions, so there
+is nothing to remember: `pipeline.py` (= `stages.py <doc> all`), `metadata.py` (only the experimental
+`llm`/`dual`/`report` stages), `archive.py` (= `stages.py archive`), `unify.py` / `merge_out.py`
+(single-stage debugging), `ner_lite.py` (plus the `selfcheck` CI runs), `regress.py`.
+
+**Concurrency.** Documents are independent (each writes only its own `out/<doc>/`), so several can run at
+once — the desktop workbench defaults to 5 in flight and exposes 1–8 in the top bar. One process per
+document, because the CPU-bound stages are GIL-bound and `pipeline.log` / `pipeline.CFG` are module-level
+state that threads would share. The scarce resources are external and fail *silently*, so each has a
+cross-process gate (`crossproc.py`): LLM extraction 2 slots (over the limit `ner_lite` just records one
+failed nomination and moves on → "ran, but extracted less") and OCR APIs 3 slots. Raising the concurrency
+only moves the queue inward. Same thing from the CLI: `python stages.py --batch a,b,c all --workers 5`.
 
 ## Live example
 
@@ -125,7 +145,7 @@ labelled "not provided" in the report instead of failing the run.
 | --- | --- | --- | --- |
 | **dots.ocr** | a Gradio 5 endpoint; the default is the public Xiaohongshu instance `https://dotsocr.xiaohongshu.com` | **none — no token field** | the quickest way to get a first real run; override `dots_api.base` only if you self-host |
 | **PaddleOCR-VL** | `token` in `channels.local.json` | key from the AI Studio service (`paddleocr.aistudio-app.com`) | async job, normalized coordinates, no calibration |
-| **MinerU** | `token` in `channels.local.json` | key from mineru.net | batch signed upload; falls back to driving the desktop app over CDP (Windows) |
+| **MinerU** | `token` in `channels.local.json` | key from mineru.net | batch signed upload; the **only** way to fetch it (desktop CDP driver removed) |
 
 ```bash
 cp channels.local.example.json channels.local.json   # fill in only the tokens you have; gitignored
@@ -201,10 +221,10 @@ restart. Details: [docs/channels.md](docs/channels.md).
   anisotropic. The four numbers `src_w / src_h / x_off / y_off` are data, not code, and are re-read on
   every call so you can re-calibrate without restarting the service. Recipe:
   [docs/calibration.md](docs/calibration.md).
-- **Calibration key is written next to the data.** The same `mineru` folder may come from the desktop app
-  or the cloud API (about 1.6% different geometry). A marker file records which one, so the viewer and
+- **Calibration key is written next to the data.** A `mineru` folder may come from the legacy desktop app
+  or today's cloud API (about 1.6% different geometry). A marker file records which one, so the viewer and
   the merger can never disagree about the same bytes.
-- **Cache-first, then API, then desktop.** Re-running a document is free; forcing a re-fetch means
+- **Cache-first, then API, then inbox.** Re-running a document is free; forcing a re-fetch means
   deleting one cache directory (`out/<doc>/raw/<channel>_api`).
 - **Upstream weirdness is treated as upstream.** Truncated page JSON, double-encoded payloads, renamed
   keys between engine versions: the adapters parse defensively and *say so in the log*, instead of
@@ -220,16 +240,24 @@ keywords (`keywords` Korean / `keywords_en` English, each the first matching pan
 order), and reference entries — each with a confidence level and a page anchor back into the 1:3 viewer.
 
 ```bash
-python unify.py <doc>                      # produces out/<doc>/unified/ (pipeline.py already does this; run it standalone for existing merged/ data)
-python metadata.py <doc> --stage m3        # cross-page join: glue a paragraph split by the page break
-python metadata.py <doc> --stage refs      # reference entries -> a list of {authors, year, title, vol, no, pages}
-python metadata.py <doc> --stage frefs     # all numbered footnotes (references and notes) -> footnote_refs
-python metadata.py <doc> --stage front     # title / authors / affiliations (Korean + romanised)
-python metadata.py <doc> --stage abs       # Korean + English abstracts
-python metadata.py <doc> --stage issue     # journal / year / volume / issue / pages + keywords
-python metadata.py <doc> --stage cspan     # in-text citation sentences
-python metadata.py <doc> --stage report    # -> _metadata_report.html
+python stages.py <doc> unify               # produces out/<doc>/unified/ (pipeline.py already does this; run it standalone for existing merged/ data)
+python stages.py <doc> m3                  # cross-page join: glue a paragraph split by the page break
+python stages.py <doc> refs                # reference entries -> a list of {authors, year, title, vol, no, pages}
+python stages.py <doc> frefs               # all numbered footnotes (references and notes) -> footnote_refs
+python stages.py <doc> front               # title / authors / affiliations (Korean + romanised)
+python stages.py <doc> abs                 # Korean + English abstracts
+python stages.py <doc> issue               # journal / year / volume / issue / pages + keywords
+python stages.py <doc> cspan               # in-text citation sentences
+python metadata.py <doc> --stage report    # -> _metadata_report.html (report / llm / dual live only in the compat shell)
 ```
+
+**Cross-page footnotes**: when a footnote runs off the bottom of a page, the continuation at the top of
+the next page carries no leading marker, so it is merged into the previous entry instead of becoming a
+new one. Entries record the head page in `page` and the tail page in `page_end` (`page_end > page` means
+it spans); the viewer lists such an entry on the continuation page too, tagged `续上页 pN`, so that page
+no longer reports zero footnotes (`KCI_FI001004818_2002` footnote 1 starts on p1 with "…Studies of
+April" and continues on p2 with "Popular Struggle), in 4·19-wa…"). 13 of the 732 footnotes in the
+corpus take this form.
 
 Rules first, model second. Every field is parsed by deterministic heuristics (layout-class aware
 segmentation for Korean five-part citations and `In:` book chapters, superscript-set matching for
@@ -294,7 +322,7 @@ python stages.py 13563525 all         # whole chain (same effect as pipeline.mai
 
 | Group | Stages |
 | --- | --- |
-| ① 取数 | `render` (PDF→pages), `acquire` (API/cache/CDP→raw/), `adapt` (raw/→per-channel viewers) |
+| ① 取数 | `render` (PDF→pages), `acquire` (API/cache/inbox→raw/), `adapt` (raw/→per-channel viewers) |
 | ② 归一 | `merge` (→merged/), `unify` (→unified/) |
 | ③ 元数据 | `m3`, `refs`, `frefs`, `front`, `abs`, `issue`, `cspan` |
 | ④ 实体/呈现 | `ner`, `viewer` (rebuild viewer_compare.html), `index` (rebuild index.html) |
@@ -350,6 +378,49 @@ lives inside the `front` stage and never consults `ner_lite`, so recovering an a
 call — on the 23-document workspace every affiliation resolves from `metadata.affiliations` itself, and
 `KCI_FI002542944` has no `ner_lite` product at all yet still reports one.
 
+## Archiving (`archive.py`)
+
+Documents you have already checked should not keep occupying the workbench, and re-downloading one should
+never cost another full OCR + LLM pass. Archiving moves the PDF and `out/<doc>/` together into
+`archive/<doc>/` and writes a **metadata snapshot** into `archive/index.json` (bibliographic fields, missing
+QC items, `sha256`, archive time, note). It is a snapshot rather than a path list because the index doubles
+as the only evidence of "this one was verified, here is what it said, here is what it lacks".
+
+```bash
+python archive.py --add 13563525 13563526   # archive
+python archive.py                           # list
+python archive.py --check some.pdf          # dry-run the duplicate check, moves nothing
+python archive.py --restore 13563525        # move back into the workspace
+python archive.py --export archived.md      # export the list (.md / .csv)
+python archive.py --selftest                # 30 assertions
+```
+
+In the desktop workbench, `归档选中` acts on the multi-selection and `已归档…` opens the archive window
+(search, open products, restore, export). Archiving asks once rather than per document, but the dialog states
+"其中 N 篇质检未通过" — once archived they leave the workbench, and the missing fields survive only as one
+row in that list.
+
+**Three duplicate checks, three different responses.** Run before anything enters the pipeline, in both the
+web upload handler and `watch_uploads()`:
+
+| Signal | Verdict | Response |
+| --- | --- | --- |
+| identical `sha256` | same file | block |
+| same normalised filename, different `sha256` | a re-downloaded version | block by default |
+| folded title similarity ≥ 0.90 (or a ≥ 70% prefix) | possibly another version of the same paper | warn only |
+
+The third tier deliberately does not block: re-exporting a KCI paper always changes the bytes, and the user's
+intent may well be "rerun with a cleaner PDF". The two failure modes are not symmetric — wrongly blocking a
+new paper (looks like a broken tool) costs far more than missing a duplicate (a few wasted minutes).
+
+One thing had to change alongside it: `watch_uploads()` used to decide it had "seen" a file when
+`out/<doc>/index.html` existed and was newer than the PDF. Once the products move away that test can never
+pass, so a restart would re-run every archived document. Both the startup sweep and the polling loop now also
+accept "this doc is in the archive index".
+
+`archive/` is in the same category as `out/` (it contains your documents) and is gitignored. Copy
+`archive/index.json` alone if you want the deduplication record on another machine.
+
 ## Status and limitations
 
 - Research / engineering tool, not a hosted service. The three cloud channels are third-party services:
@@ -376,8 +447,8 @@ call — on the 23-document workspace every affiliation resolves from `metadata.
   dataset 0/0 (35 false positives, mostly titles of old books and ICC reports containing `史` / `報告書`).
   Every one of the 35 dataset records is still *verifiable* — each `slice` is verbatim in the source —
   which is exactly the difference between "located" and "correct".
-- Only the MinerU desktop fallback is Windows-specific; `pipeline.py`, `webapp.py`, `metadata.py`
-  and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
+- Every channel goes through a cloud API, so there is no platform-specific path; `pipeline.py`,
+  `webapp.py`, `metadata.py` and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
 - No live-service tests are included (they would need credentials and quota). CI compiles every module,
   runs the unit tests, `ner_lite.py selfcheck` and the offline demo; it does not call an LLM.
 
@@ -390,20 +461,22 @@ viewer.py           single/compare viewers + md2html + metadata panels
 webapp.py app.js dashboard.css   browser drag & drop workbench (job overview + pipeline/channel status + config panel)
 gui.py              desktop workbench (tkinter, zero deps): state derived from out/, history appended to gui_runs.jsonl
 stages.py           15 stages as independently re-runnable units (dependency-checked) + CLI; drives the GUI rerun menu
+qc.py               QC definition (required-field presence), shared by GUI / archive / CLI
+archive.py          archiving + three-tier duplicate check (sha256 / normalised name / title similarity)
 merge_out.py        per-page merge across channels
 unify.py            cross-engine grouping -> unified/ + summary metrics (frozen)
 metadata.py         structured metadata CLI (11-line shell; implementation lives in metapy/)
 ner_lite.py         entity extraction (funding / software / dataset): LLM nominates, code locates
 regress.py          reference-entry quality checks (truncation, authors, page joins)
 test_pipeline.py    unified freshness, data-preservation and viewer regression tests
-mineru_drive.py     CDP driver for the MinerU desktop app (fallback)
-requirements.txt    render/CDP runtime dependencies
+requirements.txt    render runtime dependencies (pypdfium2 + Pillow)
 channels.json       calibration + model defaults (no secrets)
 channels.local.example.json   copy to channels.local.json and fill in your tokens
 docs/               channels.md · calibration.md · architecture.md · REVIEW.md · RULES.md
 examples/           13625974/ (one real run, linked from the front page)
 uploads/ inbox/     input PDFs + cached/external channel output (gitignored)
 out/                pipeline products; out_llm_trial/ holds entity-extraction data (gitignored)
+archive/            verified documents: <doc>/source.pdf + <doc>/out/ + index.json (gitignored)
 metapy/             __init__ (the CLI) · common / m3(frozen) / issue / cspan / refs / front /
                     abs / llmrep / dual
 _attic/             retired code, kept for reference: analyze.py · caption_audit.py ·

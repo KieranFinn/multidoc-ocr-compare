@@ -61,6 +61,24 @@ def _median(vals):
     return s[len(s) // 2] if s else 0.0
 
 
+# 行首"脚注号"判据(只给 _main_key 用)。刻意比 refs.FN_CITE_X 宽: 那边判"这条行是不是脚注条目",
+# 要卡次 token 形态; 这边只判"这段读法的开头有没有一个号", 判错的代价只是选了另一家读法,
+# 而那两家文本 dice≥0.95 —— 正文本来就一样。
+_FN_HEAD = re.compile(r"^\s*[(（\[]?\d{1,3}\s*[)）\].．、]?\s*(?=[^\d\s])")
+
+
+def _main_key(t, typ):
+    """互证对内部的主读法排序键: 脚注块"行首带号"优先, 其后才比空格质量。
+
+    为什么(2026-11-13, 13563538 p4 实证): 原来平手时 `min()` 按 CH 顺序取第一个, mineru 永远
+    赢——而那一块恰是 mineru 读丢了行首 '7 '。丢了号的脚注段落在下游是"无主散文", 按规则
+    丢弃, 整条脚注就漏抽了。结构信息(有没有号)在排序里根本不存在, 这才是根因。
+    只在"两家已互证是同一段话"(dice≥0.95)的对内启用, 离群读法进不了这个分支。
+    """
+    q = _space_quality(t)
+    return (0 if (typ == "Footnote" and _FN_HEAD.match((t or "").strip())) else 1, q[0], q[1])
+
+
 def _dice_dir(small, big):
     """方向包含相似度: 较短文本的 bigram 在较长文本(全文)中的命中率。
     1:N 包含匹配的文本判据(_gdice 只取前 80 字, 子块落在大块中后段时归零, 故需此方向版)。
@@ -252,8 +270,13 @@ def make_unified(g, pno, W, H, in_ref, uid, h_line=None):
     ch_cat = {}
     for c in present:
         cats = [u["cat"] for u in g[c]]
-        ch_cat[c] = max(set(cats), key=cats.count)
-    type_c = max(set(ch_cat.values()), key=list(ch_cat.values()).count)
+        # 平票必须可复现(2026-11-13): 原来写 max(set(cats), key=cats.count), 而 set 的遍历顺序
+        # 受 PYTHONHASHSEED 影响 —— 同一份 merged/ 在两个进程里能投出不同的类型。类型是下游
+        # 收不收这块的依据(Footnote→refs, Text→丢弃), 于是"重跑一次脚注就少几条"。实测
+        # 13563594 两个种子下 16 个块的 type 不一致。Counter.most_common 平票按首次出现,
+        # 即按渠道原顺序, 确定性。
+        ch_cat[c] = collections.Counter(cats).most_common(1)[0][0]
+    type_c = collections.Counter(ch_cat[c] for c in present).most_common(1)[0][0]
     # 成员文本(同渠道多单元换行拼接)与主读法:
     # 存在 >=0.95 互证对时在该对内取空格质量更好者(离群读法不可能当选); 否则全体候选中取空格质量最好者(留档)
     texts = {c: "\n".join((u["text"] or "").strip() for u in g[c] if (u["text"] or "").strip())
@@ -267,7 +290,9 @@ def make_unified(g, pno, W, H, in_ref, uid, h_line=None):
             if d0 > pair_best:
                 pair_best, pair = d0, (fc[x], fc[y])
     if pair and pair_best >= DICE_HIGH:
-        main_c = min(pair, key=lambda c: _space_quality(filled[c]))
+        # 对内排序: 脚注块行首带号优先, 再比空格质量(见 _main_key)。两家已互证同一段话,
+        # 差别只在"谁多读了行首编号"这种结构信息上, 不该由 CH 顺序(平手)决定。
+        main_c = min(pair, key=lambda c: _main_key(filled[c], type_c))
     else:
         main_c = min(filled, key=lambda c: _space_quality(filled[c])) if filled else None
     main_t = filled.get(main_c, "")

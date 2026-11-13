@@ -1,17 +1,17 @@
 {
  "keep_api_zip": false,
- "_note": "离线 demo 用配置: 标定为 identity(引擎导出坐标已等于页图像素), 不含 token。由 make_demo.py 生成, 不要手改。",
+ "_note": "离线 demo 配置: MinerU 源尺寸=实际页图像素(521x688), 无 token, 三个 *_api.enabled=false。由 make_demo.py 生成, 请勿手改。",
  "mineru": {
-  "src_w": null,
-  "src_h": null,
+  "src_w": 521,
+  "src_h": 688,
   "x_off": 0,
   "y_off": 0,
-  "_note": "identity: 按原样使用(桌面版真实标定见 channels.json)"
+  "_note": "显式源尺寸使 MinerU 页图像素坐标零缩放"
  },
  "mineru_api": {
   "token": "",
-  "src_w": null,
-  "src_h": null,
+  "src_w": 521,
+  "src_h": 688,
   "x_off": 0,
   "y_off": 0,
   "model_version": "vlm",

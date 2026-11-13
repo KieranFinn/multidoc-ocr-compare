@@ -43,8 +43,21 @@ _YDOT = re.compile(r"(?<![\d.])((?:19|20)\d{2})\.(\d{1,2})(?!\d)")
 _PAGE_OF = re.compile(r"Page\s+(\d{1,4})\s+of\s+\d{1,4}", re.I)
 _SEASON = re.compile(r"\b(AUTUMN|SPRING|SUMMER|WINTER|FALL)\b", re.I)
 _DOI = re.compile(r"10\.\d{4,}/[^\s\"”’]+", re.I)
+_ISSN = re.compile(r"ISSN\s*[\dXx]{4}[\s\-—]*[\dXx]{3,4}", re.I)
 _DOI_YV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.")
+# 期位留空的双点形态: 'riks.2025..19.001' / 'igll.2025..20.006'(23073 系出版社统一体例:
+# 年.期.卷.文号, 该刊不编期号时期位为空)。2025-11-13: 46 篇 한국연구 全部栽在双点上——
+# 原来的 _DOI_YV 要求年后面紧跟数字, 双点直接不匹配, 卷号白白丢掉。
+_DOI_YEV = re.compile(r"\.((?:19|20)\d{2})\.\.(\d{1,3})\.")
+# 同体例的**四段式**(期位有值): 'xxx.2025.10.20.001' = 年.期.卷.文号。
+# 与 _DOI_YV 的区别只在段数: 三段 '2025.20.006' 是 年.卷.文号, 四段才带期位。
+_DOI_YIV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.(\d{1,3})\.\d{1,4}")
 _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
+# 刊头竖线段体例: '한국연구 | THE JOURNAL OF KOREAN STUDIES | 19 | 202506'
+# 日期段 = yyyymm 或 yyyymmdd; 紧挨在日期前那一段纯数字就是卷号(글로컬 '| 20 | 202510' 同理)。
+_MAST_DATE = re.compile(r"^\d{6}(?:\d{2})?$")
+_CH_LINE_MAX = 60          # 渠道兜底只收"刊头/页脚那么短"的行(正文/脚注行一律长于它)
+_FN_ENTRY_HEAD = re.compile(r"^\s*[(（]?\d{1,3}\s*[)）.．、]\s*\S")   # 行首脚注编号
 # 刊名前缀截断: 最早出现的卷期/页码/括号年/BMC 卷:文号/季节词之前
 _BOUNDARY = re.compile(
     r"제\s*\d+\s*[권호]|제?\s*\d{1,4}\s*집|(?<![A-Za-z])Vol\.?\s*\d|(?<![A-Za-z])No\.?\s*\d|"
@@ -67,6 +80,23 @@ def _pageno_of(text):
     m = re.search(r"(?<![\d.])(\d{1,4})\s*$", s)
     if m:
         return int(m.group(1))
+    return None
+
+
+def _masthead_vol(s):
+    """刊头竖线段体例取卷: '… | 19 | 202506' → 19;'… | 20 | 2025.10' → 20;否则 None。
+
+    判据只有一条: 按 '|' 切段, 某段是纯数字(1..999)、**紧邻的下一段是 yyyymm[dd] 日期**。
+    竖线本身不是证据(表格/正文也有), "卷号紧跟出版年月"这个组合才是——23073 系两家刊
+    每页页眉都长这样, 而 '|' 段落里除卷号与日期外再无其它数字段。
+    """
+    if "|" not in (s or ""):
+        return None
+    segs = [x.strip() for x in s.split("|")]
+    for i in range(len(segs) - 1):
+        a, b = segs[i], segs[i + 1]
+        if a.isdigit() and 1 <= int(a) <= 999 and _MAST_DATE.match(b.replace(".", "").replace("-", "")):
+            return int(a)
     return None
 
 
@@ -188,7 +218,8 @@ def extract(source, n_pages, excluded_folds):
     source: [(page, uid, line)]; excluded_folds: 本篇标题/作者的折叠集合(守卫);
     n_pages: 物理页数。返回结果 dict(含 audit 段)。"""
     journal, journal_en = {}, {}
-    year, vol_kwan, vol_vol, vol_jip, issue, pages_pp, pages_bare = {}, {}, {}, {}, {}, {}, {}
+    year, year_strong = {}, {}      # year_strong: DOI/ISSN 行上的年份(出版社自带, 优先)
+    vol_kwan, vol_vol, vol_jip, issue, pages_pp, pages_bare = {}, {}, {}, {}, {}, {}
     issue_jip = {}   # 제N집 老式连续页码期刊: 无 권/호 时"第N集"就是期号(最低优先级候选组)
     issue_season = {}  # 季刊页眉 'KOREA JOURNAL / AUTUMN 2002': 季节词本身即期次标识
     tongkwan, bmc_art = [], []
@@ -210,6 +241,12 @@ def extract(source, n_pages, excluded_folds):
                 y = int(m.group(1))
                 if y in YEAR_OK:
                     _add(year, y, page, uid)
+                    if _DOI.search(s) or _ISSN.search(s):
+                        _add(year_strong, y, page, uid)   # 出版社自己的年, 不与被引文献的年份平票
+        # 刊头竖线段取卷(见 _masthead_vol): 无 'Vol.' 字样时这是唯一可用的卷号
+        mv = _masthead_vol(s)
+        if mv is not None:
+            _add(vol_vol, mv, page, uid)
         # 卷(三组)/期(통권 旁路)
         for m in _KWAN.finditer(s):
             _add(vol_kwan, int(m.group(1)), page, uid)
@@ -244,9 +281,11 @@ def extract(source, n_pages, excluded_folds):
                 _add(vol_vol, int(m.group(2)), page, uid)
             _add(year, int(m.group(1)), page, uid)
             bmc_art.append({"value": int(m.group(3)), "page": page})
-        # 연도.호 形态(13563525 页眉 '… | 20 | 2025.10' 实证: 年.期点分, 年已收, 期漏收);
-        # DOI 行豁免(10.23073/igll.2025.20.013 里的 2025.20 是卷不是期)
-        if not _DOI.search(s):
+        # 연도.호 形态: 只在同一行**另有 N호 标记**时才把点分后半当期号。
+        # 2025-11-13 修正(글로컬 16 篇实证): 页眉 '… | 20 | 2025.10' 里的 2025.10 是
+        # 出版年月(同一位置的单页印的是 '202510'), 把 10 当期号等于拿月份凑字段;
+        # 该刊 DOI 的期位本来就是空的(igll.2025..20.006), 即原文不编期号。
+        if not _DOI.search(s) and _HO.search(s):
             for m in _YDOT.finditer(s):
                 y0, i0 = int(m.group(1)), int(m.group(2))
                 if y0 in YEAR_OK and 1 <= i0 <= 99:
@@ -262,9 +301,22 @@ def extract(source, n_pages, excluded_folds):
                 _add(pages_bare, (a, b), page, uid)
         # DOI corroboration
         if _DOI.search(s):
-            for m in _DOI_YV.finditer(s):
+            got4 = list(_DOI_YIV.finditer(s))   # 期位有值: 年.期.卷.文号
+            for m in got4:
                 _add(year, int(m.group(1)), page, uid)
+                _add(year_strong, int(m.group(1)), page, uid)
+                _add(issue, int(m.group(2)), page, uid)
+                _add(vol_vol, int(m.group(3)), page, uid)
+            for m in _DOI_YEV.finditer(s):     # 期位留空的双点: 年..卷.
+                _add(year, int(m.group(1)), page, uid)
+                _add(year_strong, int(m.group(1)), page, uid)
                 _add(vol_vol, int(m.group(2)), page, uid)
+            if not got4:
+                # 四段式命中时不能再跑这条: '2025.10.20.001' 里的 '2025.10.' 会把**期**当卷
+                # 塞进 vol_vol, 与上面的 20 打平票。
+                for m in _DOI_YV.finditer(s):
+                    _add(year, int(m.group(1)), page, uid)
+                    _add(vol_vol, int(m.group(2)), page, uid)
             for m in _DOI_VIY.finditer(s):
                 _add(vol_vol, int(m.group(1)), page, uid)
                 _add(issue, int(m.group(2)), page, uid)
@@ -300,7 +352,12 @@ def extract(source, n_pages, excluded_folds):
         first = cand[winner][0]
         return first[1] if isinstance(first, tuple) else None
 
-    y_w, y_sup = _vote(year, 0)
+    # 年: DOI/ISSN 行上的年份是一等证据(出版社印的出版年), 有就只在它们之间投票。
+    # 否则首页脚注里的被引书年份会跟刊头年份平票, 而 _vote 平票取小者 → 抽成 1907(13563564 实证)。
+    if year_strong:
+        y_w, y_sup = _vote(year_strong, 0)
+    else:
+        y_w, y_sup = _vote(year, 0)
     vol_w, vol_sup = None, []
     vol_grp = None
     for grp in (vol_kwan, vol_vol, vol_jip):   # 권 > Vol > 집
@@ -324,6 +381,11 @@ def extract(source, n_pages, excluded_folds):
     elif pages_bare:
         pg_w, pg_sup = _vote(pages_bare, 0)
         pg_grp = pages_bare
+    # 结构上无期号(2026-11-13, 用户拍板 P1): 只认出版社自己的证据 —— DOI 期位留空
+    # (年..卷 / 年.卷.文号)。这类刊按通卷编号, 期号在原文结构里不存在, 不是抽取失败。
+    # 证据只写进 confidence.source, 由 qc 决定"期"要不要报缺; 值仍然是 None(不臆造)。
+    issue_volume_only = i_w is None and any(
+        _DOI_YEV.search(s) or _DOI_YV.search(s) for _, _, s in source)
     res = {
         "journal": {"value": j_w, "uid": _uid0(journal, j_w),
                     "confidence": {"level": _lvl(j_sup), "source": "regex"}},
@@ -334,7 +396,10 @@ def extract(source, n_pages, excluded_folds):
         "volume": {"value": vol_w, "uid": _uid0(vol_grp, vol_w),
                    "confidence": {"level": _lvl(vol_sup), "source": "regex"}},
         "issue": {"value": i_w, "uid": _uid0(i_grp, i_w),
-                  "confidence": {"level": _lvl(i_sup), "source": "regex"}},
+                  "confidence": ({"level": "high", "source": "volume_only",
+                                  "evidence": "DOI 期位留空(年..卷 / 年.卷.文号)"}
+                                 if issue_volume_only
+                                 else {"level": _lvl(i_sup), "source": "regex"})},
         "pages": {"value": ("%d-%d" % pg_w) if pg_w else None,
                   "uid": _uid0(pg_grp, pg_w),
                   "confidence": {"level": _lvl(pg_sup), "source": "regex"}},
@@ -342,6 +407,8 @@ def extract(source, n_pages, excluded_folds):
     audit = {"journal_candidates": {k: sorted(p for p, _ in v) for k, v in journal.items()},
              "journal_en_candidates": {k: sorted(p for p, _ in v) for k, v in journal_en.items()},
              "year_candidates": {str(k): sorted(p for p, _ in v) for k, v in year.items()},
+             "year_candidates_strong": {str(k): sorted(p for p, _ in v)
+                                        for k, v in year_strong.items()},
              "volume_candidates": dict(
                  [("kwan:%d" % k, sorted(p for p, _ in v)) for k, v in vol_kwan.items()]
                  + [("vol:%d" % k, sorted(p for p, _ in v)) for k, v in vol_vol.items()]
@@ -351,6 +418,8 @@ def extract(source, n_pages, excluded_folds):
              "pages_candidates": {"%d-%d" % k: sorted(p for p, _ in v) for k, v in
                                   dict(list(pages_pp.items()) + list(pages_bare.items())).items()},
              "tongkwan": tongkwan, "bmc_article_no": bmc_art}
+    if issue_volume_only:
+        audit["issue_note"] = "DOI 期位留空(年..卷 / 年.卷.文号), 原文不编期号"
     if pg_w is None:
         res["pages"]["confidence"]["level"] = "low"
     res["_audit"] = audit
@@ -358,8 +427,13 @@ def extract(source, n_pages, excluded_folds):
     return res
 
 
-def _derive_pages(page_values):
-    """页码推断: offset=印刷号-物理页序号 众数回填; 返回 (first, last, support, offset) 或 None。"""
+def _derive_pages(page_values, last_body=None):
+    """页码推断: offset=印刷号-物理页序号 众数回填; 返回 (first, last, support, offset) 或 None。
+
+    last_body: 最后一个**有正文块**的物理页序号。末尾只有水印的页(KCI 扫描件末页常见, 整页
+    仅 'www.kci.go.kr')不算文章内容页, 否则区间会多算 1 页(1892171 实证: 印刷页 1~33,
+    物理 34 页, 末页无正文)。缺省 None 时退回"到最后一个物理页"。
+    """
     offs = collections.Counter()
     for p, v in page_values.items():
         if v is not None:
@@ -368,6 +442,8 @@ def _derive_pages(page_values):
         return None
     offset, support = offs.most_common(1)[0]
     last_p = max(page_values)
+    if last_body is not None:
+        last_p = min(last_p, last_body)
     return offset, offset + last_p, support, offset
 
 
@@ -409,14 +485,15 @@ def issue_doc(doc, out_root):
         print("跳过 issue %s: 缺 unified/metadata" % doc)
         return None
     meta = json.load(io.open(meta_fp, encoding="utf-8"))
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     source = []
     page_values = {}
+    last_body = None      # 最后一个有正文块(非页眉/页脚/页码)的物理页, 供页码推断封顶
     for p in pages:
         j = pdata[p]
+        if any(u["type"] not in STRUCT_TYPES and (u["main_text"] or "").strip()
+               for u in j["unified"]):
+            last_body = p
         got = None
         for u in j["unified"]:
             if u["type"] == "Page-number":
@@ -454,15 +531,33 @@ def issue_doc(doc, out_root):
         if a.get("name"):
             excluded.add(_fold(a["name"]))
     res = extract(source, len(pages), excluded)
+    # —— 页: pp./裸区间无 → 页码推断。**必须在渠道兜底之前**: 全篇 Page-number 一致 offset
+    #    (2309666 是 35/35 页)是硬证据; 而兜底源把"每页前 4 块"当页眉区, 无页眉的页会拿下
+    #    正文句 —— 2309666 p16 '…20-30 둥 정도의 순익을 거둘 수 있었지만…' 是盈利数字, 被当成
+    #    页码范围, 正是它压掉了整篇一致的书页码(抽成 20-30, 实际 589-623)。先后搞反, 一句正文
+    #    数字就能盖掉账本。
+    derived = None
+    if res["pages"]["value"] is None:
+        derived = _derive_pages(page_values, last_body)
+        if derived:
+            first, last, support, offset = derived
+            res["pages"]["value"] = "%d-%d" % (first, last)
+            res["pages"]["confidence"] = {"level": "mid" if support >= 3 else "low",
+                                          "source": "regex"}
     # —— 体例全覆盖: unified 归并会丢页眉/题录行(老式 제N집 期刊、英文期刊、SpringerOpen 实证),
     #     merged.json 三渠道仍保留逐块原文。仅在既有判据某字段为空时, 用原始读法跑同一套
     #     extract() 规则补该字段——不是改结果、不是绕过校验, 是给同一规则更完整的输入。
     ch_filled = {}
     ch_lines = channel_lines(doc_dir)
     if ch_lines and any(res[k]["value"] is None for k in
-                        ("journal", "journal_en", "year", "volume", "issue", "pages")):
+                        ("journal", "journal_en", "volume", "issue", "pages")):
         # 每页最前几行=页眉区。正文里的编号脚注("I.D. No. 715579")不进题录投票,
         # 否则会把档案编号当成期号(2002 KOREA JOURNAL 实证, 已修)。
+        # 2026-11-13: 再加两道行级闸——① 折叠长度 ≤ _CH_LINE_MAX: 刊头/页脚行都很短,
+        #   而"每页前 4 块"在没有页眉的页上拿到的是正文段落(13563546 的期号 27 来自正文
+        #   ★'국가등록문화유산 제27호인 인민군사령부 막사…'——文物登记号); ② 行首是脚注编号
+        #   (1)/2./N、)的整行不进(13563579 把脚注里的书年份 2020/2021 当出版年, 与刊头
+        #   DOI 的 2024 平票后取小者)。
         by_page = {}
         for p, ch, t in ch_lines:
             by_page.setdefault(p, []).append(t)
@@ -471,7 +566,9 @@ def issue_doc(doc, out_root):
             for t in texts[:4]:
                 for ln in t.split("\n"):
                     ln = ln.strip()
-                    if not ln or len(_fold(ln)) > 130:
+                    if not ln or len(_fold(ln)) > _CH_LINE_MAX:
+                        continue
+                    if _FN_ENTRY_HEAD.match(ln):
                         continue
                     if re.search(r"\b(?:I\.?D\.?|Subject|RG\s*\d|Entry\s*\d|Fig\.?|Table|©|"
                                  r"Copyright|Abstract|Keywords)\b", ln, re.I):
@@ -498,7 +595,11 @@ def issue_doc(doc, out_root):
                             or re.search(u"[가-힣一-龥]", s) or s.isupper())
             return True   # pages
 
-        for k in ("journal", "journal_en", "year", "volume", "issue", "pages"):
+        # year 不在兜底范围(2026-11-13): 兜底源是"每页前 4 块", 参考条目与脚注在参考文献页
+        # 恰好也在前 4 块里, 而它们又短又带『』(过得了 _Y_GUARD), 于是出版年被引用年份顶掉
+        # —— 2309666 抽成 1957/1915(『中國棉紡織史稿』)、1632041 抽成 1999, 全错。年份一栏
+        # 只认 unified 源行 + DOI/ISSN 行, 宁可空。实测: 全库只有这 2 篇曾被兜底填 year。
+        for k in ("journal", "journal_en", "volume", "issue", "pages"):
             if res[k]["value"] is None and _ok_val(k, res2[k]["value"]):
                 res[k] = {"value": res2[k]["value"], "uid": None,
                           "confidence": {"level": "mid", "source": "channel_fallback"}}
@@ -506,17 +607,12 @@ def issue_doc(doc, out_root):
     audit = res.pop("_audit")
     audit["channel_fallback"] = ch_filled
     res.pop("_internal")
-    # —— 页: pp/裸区间无 → 页码推断 ——
-    if res["pages"]["value"] is None:
-        d = _derive_pages(page_values)
-        if d:
-            first, last, support, offset = d
-            res["pages"]["value"] = "%d-%d" % (first, last)
-            res["pages"]["confidence"] = {"level": "mid" if support >= 3 else "low",
-                                          "source": "regex"}
-            audit["pages_derived"] = {"first": first, "last": last, "offset": offset,
-                                      "support": support,
-                                      "per_page": {str(k): v for k, v in page_values.items()}}
+    if derived:
+        first, last, support, offset = derived
+        audit["pages_derived"] = {"first": first, "last": last, "offset": offset,
+                                  "support": support,
+                                  "per_page": {str(k): v for k, v in page_values.items()},
+                                  "last_body": last_body}
     # —— 关键词: 韩/英双字段(2026-11-09 用户拍板: 有韩英双板的都提取)——
     # 页序各取首个 KW_LINE 组: 韩文头词(키워드/중심어/핵심어/주요어/주제어)→keywords[],
     # 英文头词(Key words/Keywords)→keywords_en[]; 与 abstract/abstract_en 双字段对齐,
@@ -626,12 +722,14 @@ def _selftest():
                  2, ex_title)
     ok6 = r["year"]["value"] is None and r2["journal"]["value"] is None \
         and r2["year"]["value"] is None
-    # 7) '|' 行: ko/en 段拆分; '20'/'202510' 不出卷期
+    # 7) '|' 行: ko/en 段拆分; 日期前那段纯数字=卷(2026-11-13 改判, 见下), 日期本身不出期
+    #    旧断言是"20/202510 都不出卷期", 但 46 篇 한국연구 + 16 篇 글로컬 实证: 这段就是卷号,
+    #    与 DOI 第三段一致(riks.2025..19.001 / igll.2025..20.006), 而 DOI 期位是空的。
     r = extract([(0, "u0", "글로컬 어문학 문화 연구 | International Journal of Glocal Language "
                           "and Literary Studies | 20 | 202510")], 1, set())
     ok7 = r["journal"]["value"] == u"글로컬 어문학 문화 연구" \
         and r["journal_en"]["value"] == "International Journal of Glocal Language and Literary Studies" \
-        and r["volume"]["value"] is None and r["issue"]["value"] is None
+        and r["volume"]["value"] == 20 and r["issue"]["value"] is None
     # 8) DOI  corroboration 两式(dasein=年+卷, jcic=卷+期+年)
     r = extract([(0, "u0", "DOI 10.20974/dasein.2023.70.33")], 1, set())
     r2 = extract([(0, "u0", "http://www.doi.org/10.32823/jcic.9.4.202311.347")], 1, set())
@@ -708,21 +806,36 @@ def _selftest():
         got = issue_doc("kwbi", tmp)
         ok16 = bool(got) and got.get("keywords") == [u"광산배수", u"증발잔류광물"] \
             and got.get("keywords_en") == ["Mine Waters", "Evaporite"]
-    # 17) 연도.호 点分(13563525 页眉 '… | 20 | 2025.10'): 期=10; 无点 '202510' 不收(case7 口径不变);
-    #     DOI 行豁免('igll.2025.20.013' 的 2025.20 是卷号不是期)
+    # 17) 연도.호 点分: 只有同页还印着 N호 时才当期号。旧断言把 '… | 20 | 2025.10' 的 10 当期号,
+    #     2026-11-13 改判——同一位置单页印 '202510'(出版年月), DOI 期位 '2025..20.006' 是空的,
+    #     16 篇 글로컬 因此都多出一个假期号 10。
     r = extract([(0, "u0", u"글로컬 어문학 문화 연구 | International Journal of Glocal Language "
                           u"and Literary Studies | 20 | 2025.10")], 1, set())
     r2 = extract([(0, "u0", "https://doi.org/10.23073/igll.2025.20.013")], 1, set())
-    ok17 = r["issue"]["value"] == 10 and r["year"]["value"] == 2025 \
-        and r2["issue"]["value"] is None
+    r3 = extract([(0, "u0", u"한국연구 제19권 제3호 2025.10")], 1, set())
+    ok17 = r["issue"]["value"] is None and r["year"]["value"] == 2025 \
+        and r["volume"]["value"] == 20 \
+        and r2["issue"]["value"] is None and r3["issue"]["value"] == 3
+    # 18) DOI 四段式 年.期.卷.文号: 期位有值时必须把**期**认出来, 且不能把期当卷。
+    r = extract([(0, "u0", "https://doi.org/10.23073/riks.2025.3.19.007")], 1, set())
+    ok18 = r["issue"]["value"] == 3 and r["volume"]["value"] == 19 \
+        and r["year"]["value"] == 2025
+    # 19) 期位留空 → 值仍为 None, 但 confidence.source 标 volume_only(质检据此免报缺);
+    #     无 DOI 的同形行不得标(P1 的"证据不足仍报缺")。
+    r = extract([(0, "u0", "https://doi.org/10.23073/riks.2025..19.007")], 1, set())
+    r2 = extract([(0, "u0", u"한국연구 | THE JOURNAL OF KOREAN STUDIES | 19 | 202506")], 1, set())
+    ok19 = r["issue"]["value"] is None \
+        and r["issue"]["confidence"]["source"] == "volume_only" \
+        and r["volume"]["value"] == 19 \
+        and r2["issue"]["confidence"]["source"] == "regex"
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15, ok16, ok17), 1):
+                            ok14, ok15, ok16, ok17, ok18, ok19), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/17 PASS" % n_ok)
-    return n_ok == 17
+    print("issue selftest: %d/19 PASS" % n_ok)
+    return n_ok == 19
 
 
 if __name__ == "__main__":

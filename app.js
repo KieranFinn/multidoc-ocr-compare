@@ -24,7 +24,12 @@ function go(file) {
     toast('正在上传 ' + file.name);
     fetch('/upload?name=' + encodeURIComponent(file.name), { method: 'POST', body: file })
         .then(function (r) { if (!r.ok) throw new Error('upload failed'); return r.json() })
-        .then(function () { toast('上传完成，任务已进入解析队列'); tick(); f.value = ''; })
+        .then(function (b) {
+            f.value = '';
+            // 已归档命中: 后端不落盘、不建任务, 只回 dup; 不能报"已进入队列"骗人
+            if (b && b.dup) { toast(b.msg || '该文献已归档，已跳过', true); return; }
+            toast('上传完成，任务已进入解析队列'); tick();
+        })
         .catch(function () { toast('上传失败，请稍后重试', true); });
 }
 
@@ -165,11 +170,11 @@ setInterval(tick, 1500); tick();
 /* ---- 渠道 API 配置面板 ---- */
 var SCHEMA = [
     {
-        sec: 'mineru_api', label: 'MinerU 云端 API（优先；失败转 CDP 桌面版）', fields: [
+        sec: 'mineru_api', label: 'MinerU 云端 API（唯一获取方式）', fields: [
             { k: 'token', label: 'Token', ph: 'sk-...' },
             { k: 'model_version', label: '模型版本', sel: ['pipeline', 'vlm', 'MinerU-HTML'] },
             { k: 'language', label: '语言', ph: 'korean（韩文）/ ch（中英）' },
-            { k: 'is_ocr', label: '启用 OCR（默认关=非OCR，与桌面版一致）', bool: 1 },
+            { k: 'is_ocr', label: '启用 OCR（默认关=非OCR）', bool: 1 },
             { k: 'enable_formula', label: '公式识别', bool: 1 },
             { k: 'enable_table', label: '表格识别', bool: 1 },
             { k: 'timeout', label: '超时（秒）', num: 1 }

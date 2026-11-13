@@ -914,18 +914,22 @@ def _meta_cell(meta, pno, audit=None, choices=None):
     cspt_head = ('<table class="refs cspt"><colgroup><col style="width:52px">'
                  '<col style="width:20%"><col style="width:46px"><col>'
                  '<col style="width:26%"></colgroup>')
-    def _raw_rows(items, kind):
+    def _raw_rows(items, kind, cur_page=None):
         rows = []
         for item in items:
             text = item.get("raw") or (item.get("title") if kind == "ref" else "") or "(无原文)"
             tip = re.sub(r"</?(?:sub|sup|b|i|dive)\b[^>]*>", "", text, flags=re.I)
             lv = (item.get("confidence") or {}).get("level", "low")
+            cont = ""
+            if cur_page and item.get("page") and item["page"] < cur_page:
+                cont = '<span class="mftag">续上页 p%d</span>' % item["page"]
             rows.append('<tr class="mf %s" data-u="%s" data-e="%s" title="%s"><td class="cnum">'
                         '<i class="md"></i>#%s</td><td colspan="4" class="rawtext">'
-                        '<span class="mftag">原文</span>%s</td></tr>'
+                        '<span class="mftag">原文</span>%s%s</td></tr>'
                         % (lv, html.escape(str(item.get("uid") or ""), quote=True),
                            _evidence_key(kind, item), html.escape(tip[:400], quote=True),
-                           item.get("num") if item.get("num") is not None else "-", _blk_html(text)))
+                           item.get("num") if item.get("num") is not None else "-", cont,
+                           _blk_html(text)))
         return rows
 
     refs = [r for r in (meta.get("references") or []) if r.get("page") == pno]
@@ -940,11 +944,16 @@ def _meta_cell(meta, pno, audit=None, choices=None):
                     _mf_dot() + '<b>本页文献 %d 条(原文)</b>' % len(refs)
                     + tbl_head + "".join(_raw_rows(refs, "ref")) + "</table>"))
 
-    fnrefs = [r for r in (meta.get("footnote_refs") or []) if r.get("page") == pno]
+    # 跨页续注: 条目归属头页, 但尾页(page_end)也要看得到, 否则续页显示"0 条"像漏抽
+    fnrefs = [r for r in (meta.get("footnote_refs") or [])
+              if r.get("page") == pno
+              or (r.get("page") or 0) < pno <= (r.get("page_end") or r.get("page") or 0)]
     if fnrefs:
+        _cont = sum(1 for r in fnrefs if (r.get("page") or 0) < pno)
         grp.append(("脚注",
-                    _mf_dot() + '<b>本页脚注 %d 条(原文)</b>' % len(fnrefs)
-                    + tbl_head + "".join(_raw_rows(fnrefs, "fref")) + "</table>"))
+                    _mf_dot() + '<b>本页脚注 %d 条(原文)</b>%s' % (
+                        len(fnrefs), '（含续上页 %d 条）' % _cont if _cont else "")
+                    + tbl_head + "".join(_raw_rows(fnrefs, "fref", pno)) + "</table>"))
     # —— 行内引文句(--stage cspan): 同段同句合并展示; 引文高亮+对号徽标; hover=原图块框 ——
     cspans = [s for s in (meta.get("citation_spans") or []) if s.get("page") == pno]
     if cspans:

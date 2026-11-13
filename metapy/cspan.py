@@ -293,10 +293,7 @@ def cspan_doc(doc, out_root):
     if not refs:
         print("== cspan %s == 无 references[], 跳过(对号无目标)" % doc)
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
     ref_pages = set(_ref_pages(pdata, pages))
     ridx = _RefIndex(refs)
     # —— 数字式总开关: 正文分布决定, 与文献表格式解耦 ——

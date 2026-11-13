@@ -118,10 +118,7 @@ def m3_doc(doc, out_root):
     if not os.path.isdir(udir):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
-    pages = sorted(int(re.match(r"page_(\d+)\.json$", f).group(1))
-                   for f in os.listdir(udir) if re.match(r"page_\d+\.json$", f))
-    pdata = {p: json.load(io.open(os.path.join(udir, "page_%d.json" % p), encoding="utf-8"))
-             for p in pages}
+    pages, pdata = read_unified(udir)
 
     def metrics():
         xp = rev = 0

@@ -3,7 +3,11 @@ out/
 uploads/
 inbox/
 examples/demo/
+# 离线 demo 的合成 PDF 由 make_demo.py 现场生成, CI 每次重建
+_attic/examples/demo/samples/
 out_llm_trial/
+# 归档(已确认文献的原件+产物+索引), 与 out/ 同性质: 含文档内容, 不入库
+archive/
 *.log
 
 # 本地私有配置: token 等隐私值放这里, 不入库
@@ -15,6 +19,9 @@ __pycache__/
 _state_mineru.json
 _server.lock
 gui_runs.jsonl
+.gui_prefs.json
+# 跨进程名额(crossproc): 并发跑时占位用, 进程崩了会留残留, 不该入库
+.locks/
 
 # 编辑器/系统
 .vscode/
