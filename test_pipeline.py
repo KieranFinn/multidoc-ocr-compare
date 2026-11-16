@@ -3,12 +3,14 @@ import json
 import os
 import pathlib
 import tempfile
+import threading
 import time
 import unittest
 from unittest import mock
 
 import merge_out
 import pipeline
+import qc
 import stages
 import unify
 import viewer
@@ -469,6 +471,111 @@ class StageRunTest(unittest.TestCase):
         finally:
             app.destroy()
 
+    def test_refresh_defers_quality_checks_and_prioritizes_first_page(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        docs = {"doc%03d" % i: {"pdf": "doc.pdf", "state": "未完成", "done_at": None,
+                                "miss": [], "ch": {ch: True for ch in gui.CH}}
+                for i in range(40)}
+        try:
+            app.withdraw()
+            with mock.patch.object(gui, "scan_docs", return_value=docs), \
+                    mock.patch.object(gui, "load_history", return_value={}), \
+                    mock.patch.object(gui, "webapp_alive", return_value=False), \
+                    mock.patch.object(gui, "qc_of") as quality, \
+                    mock.patch.object(app, "_start_qc_loader") as loader:
+                app.refresh()
+            quality.assert_not_called()
+            loader.assert_called_once()
+            self.assertEqual(len(app.tree.get_children()), 40)
+            self.assertEqual(app.tree.item("doc000", "values")[1], "质检中")
+            self.assertEqual(app._qc_pending[:30], ["doc%03d" % i for i in range(30)])
+        finally:
+            app.destroy()
+
+    def test_retry_missing_uses_all_documents_not_only_selection(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        app.docs = {
+            "doc1": {"pdf": "doc1.pdf", "miss": ["dots"]},
+            "doc2": {"pdf": "doc2.pdf", "miss": []},
+            "doc3": {"pdf": None, "miss": ["paddle"]},
+            "doc4": {"pdf": "doc4.pdf", "miss": ["mineru"]},
+        }
+        try:
+            app.withdraw()
+            with mock.patch.object(app.runner, "submit", return_value=True) as submit, \
+                    mock.patch.object(gui.messagebox, "askokcancel", return_value=True) as confirm:
+                app._retry_missing()
+            self.assertEqual([c.args[0] for c in submit.call_args_list], ["doc1", "doc4"])
+            self.assertIn("dots", confirm.call_args.args[1])
+            self.assertIn("MinerU", confirm.call_args.args[1])
+            app._sync_buttons()
+            self.assertEqual(str(app.btn_retry.cget("state")), "normal")
+            self.assertEqual(app.btn_retry.cget("text"), "重试全部缺失渠道（2篇）")
+        finally:
+            app.destroy()
+
+    def test_search_filter_selection_and_conflict_banner(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        states = {"doc1": "完成", "doc2": "未完成", "doc3": "未跑", "doc4": "完成", "doc5": "完成"}
+        docs = {d: {"pdf": d + ".pdf", "state": state, "done_at": None, "miss": [],
+                    "ch": {ch: True for ch in gui.CH}} for d, state in states.items()}
+        try:
+            app.withdraw()
+            app.runner.running["doc5"] = ("测试", time.time())
+            with mock.patch.object(gui, "scan_docs", return_value=docs), \
+                    mock.patch.object(gui, "load_history", return_value={}), \
+                    mock.patch.object(gui, "webapp_alive", return_value=True), \
+                    mock.patch.object(app, "_start_qc_loader"):
+                app.refresh()
+            app._qc_results["doc4"] = {"label": "✘ 作者", "level": "bad", "issues": ["作者"]}
+            app.filter_var.set("运行中")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ("doc5",))
+            app.filter_var.set("异常")
+            app._apply_view()
+            self.assertEqual(set(app.tree.get_children()), {"doc2", "doc4"})
+            app.search_var.set("doc3")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ())
+            app.filter_var.set("全部")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ("doc3",))
+            app.search_var.set("")
+            app._apply_view()
+            app.tree.selection_set(app.tree.get_children())
+            app._sync_buttons()
+            self.assertEqual(app.btn_rerun.cget("text"), "一键重跑（5） ▾")
+            self.assertNotIn("doc1", app.sel_lbl.cget("text"))
+            app._clear_selection()
+            self.assertFalse(app.tree.selection())
+            self.assertIn("web", app.conflict_lbl.cget("text"))
+        finally:
+            app.destroy()
+
     def test_workbench_does_not_call_index_without_metadata_complete(self):
         try:
             import gui
@@ -490,6 +597,111 @@ class StageRunTest(unittest.TestCase):
             self.assertEqual(gui.scan_docs()["paper"]["state"], "未完成")
             (self.doc_dir / "metadata.json").write_text("{}", encoding="utf-8")
             self.assertEqual(gui.scan_docs()["paper"]["state"], "完成")
+
+
+class RunnerStopTest(unittest.TestCase):
+    def test_stop_cancels_only_queued_documents(self):
+        import gui
+        gate = threading.Event()
+        started = threading.Event()
+        calls = []
+        logs = []
+
+        def fake_run(job, log):
+            calls.append(job["doc"])
+            started.set()
+            gate.wait(3)
+            return {"ok": True, "results": {}, "error": ""}
+
+        with mock.patch.object(gui.stages, "run_one_child", side_effect=fake_run), \
+                mock.patch.object(gui, "append_history"):
+            runner = gui.Runner(logs.append, parallel=1)
+            self.assertTrue(runner.submit("doc1", "doc1.pdf", ["index"]))
+            self.assertTrue(started.wait(2))
+            runner.submit("doc2", "doc2.pdf", ["index"])
+            runner.submit("doc3", "doc3.pdf", ["index"])
+
+            running, cancelled = runner.stop_after_current()
+            self.assertEqual((running, cancelled), (1, 2))
+            self.assertFalse(runner.submit("doc4", "doc4.pdf", ["index"]))
+            self.assertTrue(runner.is_busy())
+            gate.set()
+            deadline = time.time() + 3
+            while runner.is_busy() and time.time() < deadline:
+                time.sleep(0.01)
+
+            self.assertFalse(runner.is_busy())
+            self.assertFalse(runner.is_stopping())
+            self.assertEqual(calls, ["doc1"])
+            self.assertNotIn("doc2", runner.queued)
+            self.assertNotIn("doc3", runner.queued)
+
+    def test_stage_timings_are_recorded_and_accumulated(self):
+        import gui
+        logs = []
+        result = {"ok": True, "error": "", "results": {
+            "acquire": {"ok": True, "elapsed": 12},
+            "ner": {"ok": True, "elapsed": 34},
+        }}
+        with mock.patch.object(gui.stages, "run_one_child", return_value=result), \
+                mock.patch.object(gui, "append_history") as history:
+            runner = gui.Runner(logs.append, parallel=1)
+            runner._run_one("doc1", "doc1.pdf", ["acquire", "ner"], (), "计时")
+            rec = history.call_args.args[0]
+            self.assertEqual(rec["ocr_s"], 12)
+            self.assertEqual(rec["llm_s"], 34)
+            self.assertEqual(rec["stage_elapsed"], {"acquire": 12, "ner": 34})
+            self.assertEqual(runner.timing_totals(), (12, 34))
+            self.assertIn("OCR 12s", logs[-1])
+            self.assertIn("LLM 34s", logs[-1])
+
+    def test_workbench_has_stop_button(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        try:
+            app.withdraw()
+            self.assertTrue(app.btn_stop.winfo_exists())
+            self.assertEqual(str(app.btn_stop.cget("state")), "disabled")
+            self.assertIn("channels", app.tree["columns"])
+            self.assertIn("timing", app.tree["columns"])
+        finally:
+            app.destroy()
+
+
+class QcLanguageTest(unittest.TestCase):
+    def test_body_language_detection(self):
+        cases = [
+            ("韩文", "이것은 한국어로 작성된 본문입니다. " * 20),
+            ("中文", "这是一段用于研究中国历史的中文正文。" * 20),
+            ("英文", "This is an English body for historical research. " * 20),
+            ("混合", "한국어 본문 中文正文 English body"),
+        ]
+        for expected, text in cases:
+            with self.subTest(expected=expected), tempfile.TemporaryDirectory() as tmp:
+                dd = pathlib.Path(tmp, "paper")
+                udir = dd / "unified"
+                udir.mkdir(parents=True)
+                (udir / "page_0.json").write_text(json.dumps({
+                    "in_ref": False,
+                    "unified": [{"type": "Text", "main_text": text, "cross_page": {}}],
+                }), encoding="utf-8")
+                (udir / "_unified_summary.json").write_text("{}", encoding="utf-8")
+                qc.clear_cache("paper")
+                self.assertEqual(qc.language_of("paper", str(dd)), expected)
+        qc.clear_cache("paper")
+
+    def test_workbench_qc_label_has_language_prefix(self):
+        import gui
+        self.assertEqual(gui.qc_display({"language": "中文", "label": "✘ 作者"}),
+                         "中文｜✘ 作者")
+        self.assertEqual(gui.qc_display({"language": "未知", "label": "-"}), "-")
 
 
 class DashboardTest(unittest.TestCase):

@@ -233,6 +233,34 @@ def _strip_affil_tail(s):
         s = ns
 
 
+_AUTHOR_BULLET_SUP = re.compile(r"(?:\$\s*)?\^\{([•●*]{1,4})\}(?:\s*\$)?")
+_BULLET_NOTE_LINE = re.compile(r"^([•●*]{1,4})\s*(.+)$")
+
+
+def _marker_key(s):
+    s = (s or "").strip().rstrip(")")
+    if s and all(c in "•●*" for c in s):
+        return "*" * len(s)
+    return s
+
+
+def _channel_affil_notes(u):
+    """主读法把多条机构注的标记都丢掉时，才从渠道读法补回标记。"""
+    lines = [ln.strip() for ln in (u.get("main_text") or "").split("\n")
+             if AFFIL_HEAD.search(ln)]
+    if len(lines) < 2 or any(_BULLET_NOTE_LINE.match(ln) for ln in lines):
+        return {}
+    out = {}
+    for r in u.get("readings") or []:
+        for ln in (r.get("text") or "").split("\n"):
+            m = _BULLET_NOTE_LINE.match(ln.strip())
+            if not m or not AFFIL_HEAD.search(m.group(2)):
+                continue
+            if _split_affils(m.group(2)):
+                out[_marker_key(m.group(1))] = m.group(2).strip()
+    return out
+
+
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
     + 括号内罗马拼音硬锚 + OCR 粘连名(홍영식서울교육대학교)按机构词表切开。
@@ -245,6 +273,7 @@ def _parse_author_line(line, u, foot_affil):
         return []
     en_line = _hangul_ratio(line) < 0.2
     line = DEGREE.sub("", line)
+    line = _AUTHOR_BULLET_SUP.sub(lambda m: "$^{%s}$" % ("*" * len(m.group(1))), line)
     line = line.strip(" ·•,․")
     if not line:
         return []
@@ -408,6 +437,7 @@ def front_doc(doc, out_root):
                 _got = _split_affils(ln)
                 if _got:
                     affil_notes.setdefault("", _got[0])
+        affil_notes.update(_channel_affil_notes(u))
     # 解析作者行(行内有 2-4 音节韩文名/罗马锚/上标残留 才算)
     authors = []
     affils_zone = []
@@ -444,7 +474,7 @@ def front_doc(doc, out_root):
             key = mk.strip().rstrip(")")
             for nk, nv in affil_notes.items():
                 nk0 = nk.rstrip(")")
-                if nk0 == key or (key.isdigit() and nk0 == key) or (nk0 == "*" and key == "*"):
+                if _marker_key(nk0) == _marker_key(key):
                     mrole = ROLE_WORDS.search(nv)
                     a["affiliation"] = a["affiliation"] or _strip_affil_tail(
                         ROLE_WORDS.sub("", nv).strip(" ,·•"))
@@ -740,11 +770,27 @@ def _selftest():
     ok6 = picked2 is sub_en and pli2 == 1
     ok7 = not _parse_author_line(u"영화 <존윅> 시리즈를 중심으로", None, {})
     ok8 = not _parse_author_line(u"A Case Study on the Original Model of Moo-hyup Novel", None, {})
-    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8)
+    bullet_authors = _parse_author_line(u"곽령(郭玲)  ^{••}  · 장석(張碩)  ^{•••}", None, {})
+    ok9 = len(bullet_authors) == 2 \
+        and [a["name"] for a in bullet_authors] == [u"곽령(郭玲)", u"장석(張碩)"] \
+        and [a["markers"] for a in bullet_authors] == [["**"], ["***"]]
+    note_block = {
+        "main_text": u"- 중국 연안대학교 외국어대학 조교수(제1저자)\n"
+                     u"- 중국 연안대학교 외국어대학 부교수(교신저자)",
+        "readings": [
+            {"ch": "mineru", "text": u"•• 중국 연안대학교 외국어대학 조교수(제1저자)"},
+            {"ch": "paddle", "text": u"● 중국 연안대학교 외국어대학 조교수(제1저자)\n"
+                                      u"●●● 중국 연안대학교 외국어대학 부교수(교신저자)"},
+        ],
+    }
+    notes = _channel_affil_notes(note_block)
+    ok10 = u"제1저자" in notes.get("**", "") \
+        and u"교신저자" in notes.get("***", "")
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)
-    print("front selftest: %d/8 PASS" % sum(oks))
+    print("front selftest: %d/10 PASS" % sum(oks))
     return all(oks)
 
 
