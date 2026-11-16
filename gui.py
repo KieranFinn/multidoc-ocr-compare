@@ -41,6 +41,34 @@ QC_REQUIRED, QC_ONE_OF = qc.QC_REQUIRED, qc.QC_ONE_OF
 QC_OPTIONAL = ("dataset", "funding", "software")   # 实体三类可选, 不参与报红
 
 
+def qc_display(qr):
+    lang = qr.get("language") or ""
+    return "%s｜%s" % (lang, qr["label"]) if lang and lang != "未知" else qr["label"]
+
+
+def fmt_duration(seconds):
+    if seconds is None:
+        return "-"
+    seconds = int(seconds)
+    if seconds < 60:
+        return "%ds" % seconds
+    if seconds < 3600:
+        return "%dm%02ds" % (seconds // 60, seconds % 60)
+    return "%dh%02dm" % (seconds // 3600, (seconds % 3600) // 60)
+
+
+def channel_display(d):
+    short = {"mineru": "M", "dots": "D", "paddle": "P"}
+    return " ".join("%s%s" % (short[c], "✔" if d["ch"][c] else "—") for c in CH)
+
+
+def timing_display(rec):
+    if not rec or ("ocr_s" not in rec and "llm_s" not in rec):
+        return "-"
+    return "OCR %s · LLM %s" % (fmt_duration(rec.get("ocr_s", 0)),
+                                fmt_duration(rec.get("llm_s", 0)))
+
+
 def _acquire_instance_sock(attempts=15, wait=0.3):
     """单实例: 独占本机端口即存活证明。bind 由内核原子完成, 无文件锁的 check-then-act 竞态窗。
     attempts>1: 一键重启时新老进程交接端口有空窗, 新进程重试等待(老进程退出即释放)。"""
@@ -209,11 +237,16 @@ class Runner(object):
 
     def __init__(self, log, parallel=None):
         self.log = log
-        self.q = queue.Queue()          # (doc, pdf, ids, clear_tuple, trigger)
+        self.q = queue.Queue()          # (doc, pdf, ids, clear_tuple, trigger, generation)
         self.running = {}               # doc -> (trigger, started): 并发下"当前在跑"是一个集合
         self.queued = set()             # 运行中+排队中的 doc(去重)
         self.parallel = int(parallel or DEFAULT_PARALLEL)   # 同时跑几篇(可在界面调)
         self.lock = threading.Lock()
+        self._generation = 0
+        self._stop_requested = False
+        self._stop_cancelled = 0
+        self._timing_ocr = 0
+        self._timing_llm = 0
         self._hist_lock = threading.Lock()   # gui_runs.jsonl 追加: 并发下多线程同时写会交错
         threading.Thread(target=self._loop, daemon=True).start()
 
@@ -223,13 +256,49 @@ class Runner(object):
 
     def submit(self, doc, pdf, ids, trigger="重跑", clear=()):
         with self.lock:
+            if self._stop_requested:
+                self.log("[停止] %s 未提交：正在等待当前任务跑完" % doc)
+                return False
             if doc in self.queued:
                 self.log("[队列] %s 已有任务在跑/排队, 跳过重复提交" % doc)
                 return False
             self.queued.add(doc)
-        self.q.put((doc, pdf, tuple(ids), tuple(clear), trigger))
+            self.q.put((doc, pdf, tuple(ids), tuple(clear), trigger, self._generation))
         self.log("[队列] %s 已加入 (%s · %d 段)" % (doc, trigger, len(ids)))
         return True
+
+    def stop_after_current(self):
+        """取消未启动任务；已启动任务正常跑完。返回 (运行中篇数, 取消排队篇数)。"""
+        with self.lock:
+            if self._stop_requested:
+                return len(self.running), self._stop_cancelled
+            self._stop_requested = True
+            self._generation += 1
+            self._stop_cancelled = 0
+        while True:
+            try:
+                doc, _pdf, _ids, _clear, _trigger, _generation = self.q.get_nowait()
+            except queue.Empty:
+                break
+            with self.lock:
+                self.queued.discard(doc)
+                self._stop_cancelled += 1
+            self.q.task_done()
+        with self.lock:
+            running = len(self.running)
+            cancelled = self._stop_cancelled
+            if not running:
+                self._stop_requested = False
+        self.log("[停止] 已取消排队 %d 篇；等待当前 %d 篇跑完" % (cancelled, running))
+        return running, cancelled
+
+    def is_stopping(self):
+        with self.lock:
+            return self._stop_requested
+
+    def timing_totals(self):
+        with self.lock:
+            return self._timing_ocr, self._timing_llm
 
     def set_parallel(self, n):
         """改并发数。只影响**之后**的调度: 已在跑的不动, 排队里的下一拍按新值放行。"""
@@ -249,7 +318,18 @@ class Runner(object):
         while True:
             while self._active_count() >= self.parallel:
                 time.sleep(0.15)
-            doc, pdf, ids, clear, trigger = self.q.get()
+            doc, pdf, ids, clear, trigger, generation = self.q.get()
+            with self.lock:
+                if generation != self._generation or self._stop_requested:
+                    self.queued.discard(doc)
+                    self._stop_cancelled += 1
+                    cancel = True
+                else:
+                    self.running[doc] = (trigger, time.time())
+                    cancel = False
+            if cancel:
+                self.q.task_done()
+                continue
             t = threading.Thread(target=self._task, args=(doc, pdf, ids, clear, trigger), daemon=True)
             t.start()
 
@@ -266,7 +346,12 @@ class Runner(object):
             with self.lock:
                 self.queued.discard(doc)
                 self.running.pop(doc, None)
+                stopped = self._stop_requested and not self.running and self.q.qsize() == 0
+                if stopped:
+                    self._stop_requested = False
             self.q.task_done()
+            if stopped:
+                self.log("[停止] 当前任务已跑完，可以重新提交")
 
     def _run_one(self, doc, pdf, ids, clear, trigger):
         for ch in clear:
@@ -275,8 +360,6 @@ class Runner(object):
                 if os.path.isdir(d):
                     shutil.rmtree(d, ignore_errors=True)
             self.log("[重取] %s 渠道 %s 缓存已清" % (doc, ch))
-        with self.lock:
-            self.running[doc] = (trigger, time.time())
         t0 = time.time()
 
         # 一篇一子进程: 子进程里 stdout/stderr 全部经 queue 回流, 所以这里只需给日志加篇名,
@@ -290,9 +373,17 @@ class Runner(object):
         except Exception as e:   # stages.run_one_child 内部已兜异常; 这里兜它自己(如进程起不来)
             res = {"ok": False, "results": {}, "error": str(e)[:200]}
         ok = bool(res.get("ok"))
+        stage_elapsed = {k: int(v.get("elapsed") or 0)
+                         for k, v in (res.get("results") or {}).items()}
+        ocr_s = stage_elapsed.get("acquire", 0)
+        llm_s = stage_elapsed.get("ner", 0)
+        with self.lock:
+            self._timing_ocr += ocr_s
+            self._timing_llm += llm_s
         rec = {"doc": doc, "trigger": trigger, "started": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(t0)),
                "elapsed_s": int(time.time() - t0), "ok": ok, "err": res.get("error") or None,
                "selected": list(ids), "parallel": self.parallel,
+               "ocr_s": ocr_s, "llm_s": llm_s, "stage_elapsed": stage_elapsed,
                "stages": {k: ("ok" if v.get("ok") else ("skip" if v.get("skipped") else "fail"))
                           for k, v in (res.get("results") or {}).items()},
                "channels": {c: _ch_done(doc, c) for c in CH}}
@@ -302,16 +393,18 @@ class Runner(object):
         # 元数据/NER 变了而没勾 viewer, 只在日志里提醒一句, 由人决定要不要补一段。
         if "viewer" not in ids and any(i in ids for i in stages.META_IDS + ("ner",)):
             self.log("[提示] %s 元数据/实体已变但未勾选「对照查看器」段, HTML 仍是上一版" % doc)
-        self.log("[完成] %s %s (耗时 %ds · %d 段)%s" % (
-            doc, "成功" if ok else "失败", rec["elapsed_s"], len(ids),
+        self.log("[完成] %s %s (总耗时 %ds · OCR %ds · LLM %ds · %d 段)%s" % (
+            doc, "成功" if ok else "失败", rec["elapsed_s"], ocr_s, llm_s, len(ids),
             (" · " + rec["err"]) if rec["err"] else ""))
-        with self.lock:
-            self.running.pop(doc, None)
 
     def status(self):
         with self.lock:
             docs = sorted(self.running)
+            stopping = self._stop_requested
+            cancelled = self._stop_cancelled
         n = self.q.qsize()
+        if stopping:
+            return "正在停止：等待当前 %d 篇跑完 · 已取消排队 %d 篇" % (len(docs), cancelled)
         if docs:
             head = ", ".join(docs[:3]) + (" …" if len(docs) > 3 else "")
             return "正在跑 %d/%d 篇 (并发 %d): %s · 排队 %d" % (
@@ -341,6 +434,11 @@ class App(tk.Tk):
         self.title("KCI 解析工作台")
         self.geometry("980x640")
         self.q = queue.Queue()
+        self._qc_queue = queue.Queue()
+        self._qc_results = {}
+        self._qc_generation = 0
+        self._qc_pending = []
+        self._qc_thread = None
         self._prefs = load_prefs()
         self.runner = Runner(self._log, parallel=self._prefs.get("parallel"))
         self._was_busy = False
@@ -348,7 +446,8 @@ class App(tk.Tk):
         self.protocol("WM_DELETE_WINDOW", self._on_close)
         self._build()
         self.after(100, self._drain)
-        self.after(500, self.refresh)
+        self.after(50, self._drain_qc)
+        self.after(50, self.refresh)
         self._log("就绪: 拖 PDF 到 uploads; Ctrl/Shift 多选可批量(默认 %d 篇并发, 顶栏可调)。"
                   "「一键重跑」= 执行勾选的阶段(主区) / 右端箭头选阶段; "
                   "「快速重跑(跳NER)」不烧 LLM。质检列只查必抽项齐全, 缺项报红。" % self.runner.parallel)
@@ -384,14 +483,13 @@ class App(tk.Tk):
 
         # 文档表(多选: Ctrl/Shift 批量, 操作按钮对选中集生效)
         wrap = ttk.Frame(mid)
-        cols = ("state", "qc", "mineru", "dots", "paddle", "done_at", "runs")
+        cols = ("state", "qc", "channels", "timing", "done_at", "runs")
         self.tree = ttk.Treeview(wrap, columns=cols, show="tree headings", height=12,
                                  selectmode="extended")
         self.tree.heading("#0", text="文档")
         for c, w, t in (("state", 70, "状态"), ("qc", 214, "质检 · 必抽项"),
-                        ("mineru", 58, "MinerU"), ("dots", 58, "dots"),
-                        ("paddle", 62, "Paddle"), ("done_at", 118, "上次完成"),
-                        ("runs", 86, "历史")):
+                        ("channels", 92, "渠道(M/D/P)"), ("timing", 178, "时间分析"),
+                        ("done_at", 118, "上次完成"), ("runs", 86, "历史")):
             self.tree.heading(c, text=t)
             self.tree.column(c, width=w, anchor="center")
         self.tree.column("#0", width=180)
@@ -425,7 +523,9 @@ class App(tk.Tk):
         self.btn_quick = ttk.Button(grp, text="快速重跑(跳NER)", command=self._rerun_fast)
         self.btn_quick.pack(side="left", padx=(4, 0))
         self.stage_menu = tk.Menu(self, tearoff=0, postcommand=self._build_stage_menu)
-        self.btn_retry = ttk.Button(act, text="重试缺失渠道", command=self._retry_missing)
+        self.btn_stop = ttk.Button(act, text="停止", command=self._stop_batch, state="disabled")
+        self.btn_stop.pack(side="left", padx=(0, 4))
+        self.btn_retry = ttk.Button(act, text="重试全部缺失渠道", command=self._retry_missing)
         self.btn_view = ttk.Button(act, text="对照查看器", command=self._open_viewer)
         self.btn_index = ttk.Button(act, text="结果总览", command=self._open_index)
         # 归档与"查看已归档"是两个独立键: 前者对选中集生效, 后者是全局清单(顶栏), 不合并
@@ -534,25 +634,70 @@ class App(tk.Tk):
         self.docs = scan_docs()
         self.hist = load_history()
         self._webapp_on = webapp_alive()
+        self._qc_generation += 1
+        self._qc_pending = sorted(self.docs)
         sels = [d for d in self._selected() if d in self.docs]   # 多选保留
         self.tree.delete(*self.tree.get_children())
         for doc, d in sorted(self.docs.items()):
             h = self.hist.get(doc, [])
             runs = "%d 次%s" % (len(h), "(末次失败)" if (h and not h[-1]["ok"]) else "")
-            # 变量名不用 qc: 会把模块 qc 遮蔽掉, 后面再想调 qc.clear_cache 就炸在这里
-            qr = qc_of(doc) if d["state"] != "未跑" else {"label": "-", "level": "", "issues": []}
-            tags = ("qc_bad",) if qr["level"] == "bad" else ()
+            qr = self._qc_results.get(doc)
+            if d["state"] == "未跑":
+                qr = {"label": "-", "level": "", "issues": []}
+            tags = ("qc_bad",) if qr and qr["level"] == "bad" else ()
             self.tree.insert("", "end", iid=doc, text=doc, tags=tags, values=(
                 d["state"],
-                qr["label"],
-                "✔" if d["ch"]["mineru"] else "—",
-                "✔" if d["ch"]["dots"] else "—",
-                "✔" if d["ch"]["paddle"] else "—",
+                qc_display(qr) if qr else "质检中",
+                channel_display(d),
+                timing_display(h[-1] if h else None),
                 time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
                 runs))
         if sels:
             self.tree.selection_set(sels)
         self._sync_buttons()
+        self._start_qc_loader()
+
+    def _start_qc_loader(self):
+        if not self._qc_pending or (self._qc_thread and self._qc_thread.is_alive()):
+            return
+        generation = self._qc_generation
+        pending = list(self._qc_pending)
+        self._qc_thread = threading.Thread(target=self._qc_load, args=(generation, pending), daemon=True)
+        self._qc_thread.start()
+
+    def _qc_load(self, generation, pending):
+        for doc in pending:
+            if generation != self._qc_generation:
+                self._qc_queue.put((generation, None, None))
+                return
+            state = (self.docs.get(doc) or {}).get("state")
+            qr = qc_of(doc) if state != "未跑" else {"label": "-", "level": "", "issues": []}
+            self._qc_queue.put((generation, doc, qr))
+        self._qc_queue.put((generation, None, None))
+
+    def _drain_qc(self):
+        restart = False
+        try:
+            for _ in range(30):
+                generation, doc, qr = self._qc_queue.get_nowait()
+                if generation != self._qc_generation:
+                    if doc is None:
+                        self._qc_thread = None
+                        restart = True
+                    continue
+                if doc is None:
+                    self._qc_pending = []
+                    continue
+                self._qc_results[doc] = qr
+                if doc in self.docs and self.tree.exists(doc):
+                    values = list(self.tree.item(doc, "values"))
+                    values[1] = qc_display(qr)
+                    self.tree.item(doc, values=values, tags=("qc_bad",) if qr["level"] == "bad" else ())
+        except queue.Empty:
+            pass
+        if restart:
+            self._start_qc_loader()
+        self.after(50, self._drain_qc)
 
     def _selected(self):
         return list(self.tree.selection())
@@ -561,13 +706,15 @@ class App(tk.Tk):
         docs = self._selected()
         has = bool(docs)
         runnable = any(self.docs.get(d, {}).get("pdf") for d in docs)
-        retryable = any(self.docs.get(d, {}).get("pdf") and self.docs[d]["miss"] for d in docs)
+        retryable = any(d.get("pdf") and d.get("miss") for d in self.docs.values())
         self.btn_rerun.configure(state="normal" if runnable else "disabled")
         self.btn_quick.configure(state="normal" if runnable else "disabled")
         self.btn_retry.configure(state="normal" if retryable else "disabled")
         self.btn_view.configure(state="normal" if has else "disabled")
         self.btn_index.configure(state="normal" if has else "disabled")
         self.btn_archive.configure(state="normal" if has else "disabled")
+        self.btn_stop.configure(state="normal" if self.runner.is_busy()
+                                and not self.runner.is_stopping() else "disabled")
         n = len(self._checked_stages()) if hasattr(self, "stage_vars") else 0
         if has:
             self.sel_lbl.configure(text="已选 %d 篇: %s ｜ 菜单勾选 %d 段" % (
@@ -576,6 +723,10 @@ class App(tk.Tk):
             self.sel_lbl.configure(text="未选中")
 
     # ---------- 动作(对选中集批量) ----------
+    def _stop_batch(self):
+        self.runner.stop_after_current()
+        self._sync_buttons()
+
     def _run_stages(self, ids, trigger=None):
         """按给定阶段子集批量提交(预设/自定义走同一入口)。"""
         ids = [i for i in stages.ORDER if i in set(ids)]   # 规范顺序 + 去重
@@ -612,7 +763,7 @@ class App(tk.Tk):
 
     def _retry_missing(self):
         n = 0
-        for doc in self._selected():
+        for doc in sorted(self.docs):
             d = self.docs.get(doc)
             if d and d["pdf"] and d["miss"]:
                 # 清掉缺失渠道的 raw/ 缓存后跑全链: 已有渠道走缓存, 只补缺失那路
@@ -802,6 +953,8 @@ class App(tk.Tk):
 
     def _tick_status(self):
         txt = self.runner.status()
+        ocr_total, llm_total = self.runner.timing_totals()
+        txt += " ｜ 启动累计 OCR %s · LLM %s" % (fmt_duration(ocr_total), fmt_duration(llm_total))
         if self._webapp_on:
             txt = "⚠ 检测到 web 服务(8765)也在运行, 勿与 GUI 同时解析同一篇 · " + txt
         self.status_lbl.configure(text=txt)
@@ -817,6 +970,7 @@ class App(tk.Tk):
             self.refresh()
         else:
             self._was_busy = busy
+        self._sync_buttons()
         self.after(1000, self._tick_status)
 
 

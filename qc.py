@@ -13,7 +13,7 @@ import json
 import os
 import re
 
-__all__ = ["QC_REQUIRED", "QC_ONE_OF", "qc_of", "body_ok", "clear_cache"]
+__all__ = ["QC_REQUIRED", "QC_ONE_OF", "qc_of", "body_ok", "language_of", "clear_cache"]
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "out")
@@ -25,7 +25,7 @@ QC_REQUIRED = [("title", "标题"), ("keywords", "关键词"), ("abstract", "摘
                ("pages", "页码"), ("references", "参考文献")]
 QC_ONE_OF = (("citation_spans", "引文句"), ("footnote_refs", "脚注"))   # 二存一即可
 
-_BODY_CACHE = {}     # doc -> (summary_mtime, 正文是否达标); unified 不常变, 别每次刷新重读几百个 page_*.json
+_BODY_CACHE = {}     # doc -> (summary_mtime, 正文是否达标, 正文主导语种)
 
 
 def clear_cache(doc=None):
@@ -35,13 +35,14 @@ def clear_cache(doc=None):
         _BODY_CACHE.pop(doc, None)
 
 
-def body_ok(doc, dd):
-    """与 viewer.py:1358 完全一致: unified 全篇 Text/Footnote 型块的 main_text 总字符 >= 500。"""
+def _body_stats(doc, dd):
+    """一次扫描同时计算正文达标和主导语种，判定口径与分别扫描保持一致。"""
     sp = os.path.join(dd, "unified", "_unified_summary.json")
     mt = os.path.getmtime(sp) if os.path.isfile(sp) else 0
     hit = _BODY_CACHE.get(doc)
     if hit and hit[0] == mt:
-        return hit[1]
+        return hit[1], hit[2]
+    counts = {"韩文": 0, "中文": 0, "英文": 0}
     total, udir = 0, os.path.join(dd, "unified")
     if os.path.isdir(udir):
         for f in os.listdir(udir):
@@ -54,13 +55,39 @@ def body_ok(doc, dd):
             for u in j.get("unified") or []:
                 if u.get("type") in ("Text", "Footnote"):
                     total += len((u.get("main_text") or "").strip())
+                if j.get("in_ref") or u.get("type") != "Text" \
+                        or (u.get("cross_page") or {}).get("role") == "head":
+                    continue
+                for ch in u.get("main_text") or "":
+                    if u"\uac00" <= ch <= u"\ud7a3":
+                        counts["韩文"] += 1
+                    elif ("\u3400" <= ch <= "\u4dbf" or "\u4e00" <= ch <= "\u9fff"
+                          or "\uf900" <= ch <= "\ufaff"):
+                        counts["中文"] += 1
+                    elif "A" <= ch <= "Z" or "a" <= ch <= "z":
+                        counts["英文"] += 1
+    lang = "未知"
+    n_chars = sum(counts.values())
+    if n_chars >= 20:
+        top = max(counts, key=counts.get)
+        lang = top if counts[top] / float(n_chars) >= 0.60 else "混合"
     ok = total >= 500
-    _BODY_CACHE[doc] = (mt, ok)
-    return ok
+    _BODY_CACHE[doc] = (mt, ok, lang)
+    return ok, lang
+
+
+def language_of(doc, dd):
+    """非参考文献页 Text 块的主导文字: 韩文/中文/英文/混合/未知。"""
+    return _body_stats(doc, dd)[1]
+
+
+def body_ok(doc, dd):
+    """与 viewer.py:1358 完全一致: unified 全篇 Text/Footnote 型块的 main_text 总字符 >= 500。"""
+    return _body_stats(doc, dd)[0]
 
 
 def qc_of(doc, out_dir=None, ner_root=None):
-    """质检: 必抽项是否齐全。返回 {issues: [中文缺项名], level: ""|"bad", label: "✔"|"✘ N 项 ..."}。
+    """质检: 必抽项是否齐全。返回 issues/level/label，并附仅用于展示的 language。
 
     out_dir / ner_root 可覆盖(归档预览时传 archive/<doc>/out 之类);
     缺省走工作区, 与 GUI 表格里那一列同一份实现。
@@ -68,6 +95,7 @@ def qc_of(doc, out_dir=None, ner_root=None):
     out_dir = out_dir or OUT
     ner_root = ner_root or NER_ROOT
     dd = os.path.join(out_dir, doc)
+    lang = language_of(doc, dd)
     miss = []
     mfp = os.path.join(dd, "metadata.json")
     m = {}
@@ -75,9 +103,11 @@ def qc_of(doc, out_dir=None, ner_root=None):
         try:
             m = json.load(io.open(mfp, encoding="utf-8")) or {}
         except Exception:
-            return {"issues": ["metadata.json 解析失败"], "level": "bad", "label": "\u2718 产物损坏"}
+            return {"issues": ["metadata.json 解析失败"], "level": "bad",
+                    "label": "\u2718 产物损坏", "language": lang}
     else:
-        return {"issues": ["无 metadata.json"], "level": "bad", "label": "\u2718 无元数据"}
+        return {"issues": ["无 metadata.json"], "level": "bad",
+                "label": "\u2718 无元数据", "language": lang}
 
     def _empty(v):
         if isinstance(v, dict):          # 单值字段形如 {"value":..., "confidence":...}
@@ -123,7 +153,7 @@ def qc_of(doc, out_dir=None, ner_root=None):
         miss.append("引文句/脚注")
 
     if not miss:
-        return {"issues": [], "level": "", "label": "\u2714"}
+        return {"issues": [], "level": "", "label": "\u2714", "language": lang}
     head = "/".join(miss[:4]) + ("…" if len(miss) > 4 else "")
     return {"issues": miss, "level": "bad",
-            "label": "\u2718 %d 项 %s" % (len(miss), head)}
+            "label": "\u2718 %d 项 %s" % (len(miss), head), "language": lang}
