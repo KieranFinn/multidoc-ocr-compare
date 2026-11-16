@@ -116,15 +116,16 @@ def webapp_alive():
 
 
 def _dir_has_files(d):
-    if not os.path.isdir(d):
+    try:
+        with os.scandir(d) as it:   # 迭代器必须关闭, 否则 Windows 拖住目录句柄
+            return any(True for _ in it)
+    except (FileNotFoundError, NotADirectoryError):
         return False
-    with os.scandir(d) as it:   # 迭代器必须关闭, 否则 Windows 拖住目录句柄
-        return any(True for _ in it)
 
 
 def _ch_done(doc, ch):
-    return (_dir_has_files(os.path.join(OUT, doc, "raw", ch))
-            or _dir_has_files(os.path.join(OUT, doc, "raw", ch + "_api")))
+    return (_dir_has_files(os.path.join(OUT, doc, "raw", ch + "_api"))
+            or _dir_has_files(os.path.join(OUT, doc, "raw", ch)))
 
 
 def scan_docs():
@@ -439,6 +440,7 @@ class App(tk.Tk):
         self._qc_generation = 0
         self._qc_pending = []
         self._qc_thread = None
+        self._running_view_key = None
         self._prefs = load_prefs()
         self.runner = Runner(self._log, parallel=self._prefs.get("parallel"))
         self._was_busy = False
@@ -487,6 +489,19 @@ class App(tk.Tk):
 
         # 文档表(多选: Ctrl/Shift 批量, 操作按钮对选中集生效)
         wrap = ttk.Frame(mid)
+        viewbar = ttk.Frame(wrap)
+        viewbar.pack(fill="x", pady=(0, 4))
+        ttk.Label(viewbar, text="文档 ID").pack(side="left")
+        self.search_var = tk.StringVar()
+        search = ttk.Entry(viewbar, textvariable=self.search_var, width=18)
+        search.pack(side="left", padx=(4, 12))
+        self.search_var.trace_add("write", lambda *_args: self._apply_view())
+        ttk.Label(viewbar, text="状态").pack(side="left")
+        self.filter_var = tk.StringVar(value="全部")
+        filter_box = ttk.Combobox(viewbar, textvariable=self.filter_var, width=8, state="readonly",
+                                  values=("全部", "运行中", "异常", "未跑", "完成"))
+        filter_box.pack(side="left", padx=4)
+        filter_box.bind("<<ComboboxSelected>>", lambda _ev: self._apply_view())
         cols = ("state", "qc", "channels", "timing", "done_at", "runs")
         self.tree = ttk.Treeview(wrap, columns=cols, show="tree headings", height=12,
                                  selectmode="extended")
@@ -499,6 +514,14 @@ class App(tk.Tk):
         self.tree.column("#0", width=180)
         self.tree.column("qc", anchor="w")   # 缺项名要能读, 左对齐; 其余列居中
         self.tree.tag_configure("qc_bad", foreground="#b03030")
+        self.tree.tag_configure("state_complete", foreground="#15803d")
+        self.tree.tag_configure("state_running", foreground="#1d4ed8")
+        self.tree.tag_configure("state_unrun", foreground="#6b7280")
+        self.tree.tag_configure("state_warn", foreground="#b45309")
+        style = ttk.Style(self)
+        style.configure("Treeview", rowheight=28)
+        style.map("Treeview", background=[("selected", "#dbeafe")],
+                  foreground=[("selected", "#111827")])
         self.tree.pack(side="left", fill="both", expand=True)
         sb = ttk.Scrollbar(wrap, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=sb.set)
@@ -537,13 +560,23 @@ class App(tk.Tk):
         for b in (self.btn_retry, self.btn_view, self.btn_index, self.btn_archive):
             b.pack(side="left", padx=4)
         self.sel_lbl = ttk.Label(act, text="未选中")
-        self.sel_lbl.pack(side="left", padx=12)
+        self.sel_lbl.pack(side="left", padx=(12, 4))
+        self.btn_clear_sel = ttk.Button(act, text="清除选择", command=self._clear_selection)
+        self.btn_clear_sel.pack(side="left", padx=4)
         mid.add(act, weight=0)
 
         # 日志
         logw = ttk.Frame(mid)
+        logbar = ttk.Frame(logw)
+        logbar.pack(fill="x")
+        self.log_follow_var = tk.BooleanVar(value=True)
+        ttk.Checkbutton(logbar, text="自动滚动", variable=self.log_follow_var).pack(side="left")
+        ttk.Button(logbar, text="清空视图", command=self._clear_log_view).pack(side="left", padx=8)
         self.logtxt = scrolledtext.ScrolledText(logw, height=10, state="disabled", font=("Consolas", 9))
         self.logtxt.pack(fill="both", expand=True)
+        self.logtxt.bind("<MouseWheel>", self._on_log_scroll)
+        self.logtxt.bind("<Button-4>", self._on_log_scroll)
+        self.logtxt.bind("<Button-5>", self._on_log_scroll)
         mid.add(logw, weight=2)
 
         self.after(1000, self._tick_status)
@@ -638,28 +671,73 @@ class App(tk.Tk):
         self.docs = scan_docs()
         self.hist = load_history()
         self._webapp_on = webapp_alive()
+        if self._webapp_on:
+            self.conflict_lbl.configure(text="警告：检测到 web 服务(8765)同时运行，请勿在两端解析同一篇文档")
+            self.conflict_lbl.pack(fill="x", padx=10, pady=(0, 4))
+        else:
+            self.conflict_lbl.pack_forget()
         self._qc_generation += 1
         self._qc_pending = sorted(self.docs)
-        sels = [d for d in self._selected() if d in self.docs]   # 多选保留
+        self._apply_view()
+        self._start_qc_loader()
+
+    def _display_state(self, doc):
+        if doc in self.runner.running:
+            return "运行中"
+        if doc in self.runner.queued:
+            return "排队"
+        h = self.hist.get(doc) or []
+        if h and not h[-1].get("ok"):
+            return "失败"
+        return self.docs[doc]["state"]
+
+    def _row_tag(self, doc, qr=None):
+        if qr and qr.get("level") == "bad":
+            return "qc_bad"
+        state = self._display_state(doc)
+        if state in ("运行中", "排队"):
+            return "state_running"
+        if state == "完成":
+            return "state_complete"
+        if state == "未跑":
+            return "state_unrun"
+        return "state_warn"
+
+    def _apply_view(self):
+        sels = set(self.tree.selection())
         self.tree.delete(*self.tree.get_children())
-        for doc, d in sorted(self.docs.items()):
+        query = self.search_var.get().strip().lower()
+        mode = self.filter_var.get()
+        for doc in sorted(self.docs):
+            if query and query not in doc.lower():
+                continue
+            state = self._display_state(doc)
+            qr = self._qc_results.get(doc)
+            if mode == "运行中" and state not in ("运行中", "排队"):
+                continue
+            if mode == "异常" and not (state in ("失败", "缺渠道", "未完成", "无PDF")
+                                       or (qr and qr.get("level") == "bad")):
+                continue
+            if mode == "未跑" and state != "未跑":
+                continue
+            if mode == "完成" and state != "完成":
+                continue
+            d = self.docs[doc]
             h = self.hist.get(doc, [])
             runs = "%d 次%s" % (len(h), "(末次失败)" if (h and not h[-1]["ok"]) else "")
-            qr = self._qc_results.get(doc)
             if d["state"] == "未跑":
                 qr = {"label": "-", "level": "", "issues": []}
-            tags = ("qc_bad",) if qr and qr["level"] == "bad" else ()
-            self.tree.insert("", "end", iid=doc, text=doc, tags=tags, values=(
-                d["state"],
+            self.tree.insert("", "end", iid=doc, text=doc, tags=(self._row_tag(doc, qr),), values=(
+                state,
                 qc_display(qr) if qr else "质检中",
                 channel_display(d),
                 timing_display(h[-1] if h else None),
                 time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
                 runs))
-        if sels:
-            self.tree.selection_set(sels)
+        visible = [d for d in sels if self.tree.exists(d)]
+        if visible:
+            self.tree.selection_set(visible)
         self._sync_buttons()
-        self._start_qc_loader()
 
     def _start_qc_loader(self):
         if not self._qc_pending or (self._qc_thread and self._qc_thread.is_alive()):
@@ -696,9 +774,11 @@ class App(tk.Tk):
                 if doc in self.docs and self.tree.exists(doc):
                     values = list(self.tree.item(doc, "values"))
                     values[1] = qc_display(qr)
-                    self.tree.item(doc, values=values, tags=("qc_bad",) if qr["level"] == "bad" else ())
+                    self.tree.item(doc, values=values, tags=(self._row_tag(doc, qr),))
         except queue.Empty:
             pass
+        if self.filter_var.get() == "异常":
+            self._apply_view()
         if restart:
             self._start_qc_loader()
         self.after(50, self._drain_qc)
@@ -710,23 +790,29 @@ class App(tk.Tk):
         docs = self._selected()
         has = bool(docs)
         runnable = any(self.docs.get(d, {}).get("pdf") for d in docs)
-        retryable = any(d.get("pdf") and d.get("miss") for d in self.docs.values())
-        self.btn_rerun.configure(state="normal" if runnable else "disabled")
+        retry_count = sum(bool(d.get("pdf") and d.get("miss")) for d in self.docs.values())
+        self.btn_rerun.configure(state="normal" if runnable else "disabled",
+                                 text="一键重跑（%d） ▾" % len(docs) if docs else "一键重跑 ▾")
         self.btn_quick.configure(state="normal" if runnable else "disabled")
-        self.btn_retry.configure(state="normal" if retryable else "disabled")
+        self.btn_retry.configure(state="normal" if retry_count else "disabled",
+                                 text="重试全部缺失渠道（%d篇）" % retry_count)
         self.btn_view.configure(state="normal" if has else "disabled")
         self.btn_index.configure(state="normal" if has else "disabled")
         self.btn_archive.configure(state="normal" if has else "disabled")
+        self.btn_clear_sel.configure(state="normal" if has else "disabled")
         self.btn_stop.configure(state="normal" if self.runner.is_busy()
                                 and not self.runner.is_stopping() else "disabled")
         n = len(self._checked_stages()) if hasattr(self, "stage_vars") else 0
         if has:
-            self.sel_lbl.configure(text="已选 %d 篇: %s ｜ 菜单勾选 %d 段" % (
-                len(docs), ", ".join(docs[:3]) + (" …" if len(docs) > 3 else ""), n))
+            self.sel_lbl.configure(text="已选 %d 篇 ｜ 菜单勾选 %d 段" % (len(docs), n))
         else:
             self.sel_lbl.configure(text="未选中")
 
     # ---------- 动作(对选中集批量) ----------
+    def _clear_selection(self):
+        self.tree.selection_remove(self.tree.selection())
+        self._sync_buttons()
+
     def _stop_batch(self):
         self.runner.stop_after_current()
         self._sync_buttons()
@@ -766,14 +852,22 @@ class App(tk.Tk):
         self._run_stages(ids, "快速重跑(跳NER)")
 
     def _retry_missing(self):
+        jobs = [(doc, self.docs[doc]) for doc in sorted(self.docs)
+                if self.docs[doc].get("pdf") and self.docs[doc].get("miss")]
+        if not jobs:
+            self._log("[批量] 当前没有缺失渠道的文档")
+            return
+        counts = {c: sum(c in d["miss"] for _doc, d in jobs) for c in CH}
+        msg = ("将重试 %d 篇文档的缺失渠道：\n\nMinerU %d 篇 ｜ dots %d 篇 ｜ Paddle %d 篇\n\n"
+               "只清除缺失渠道的 raw 缓存并重新调用 API；已有渠道继续复用。\n确定继续吗？"
+               % (len(jobs), counts["mineru"], counts["dots"], counts["paddle"]))
+        if not messagebox.askokcancel("确认重试全部缺失渠道", msg, parent=self):
+            return
         n = 0
-        for doc in sorted(self.docs):
-            d = self.docs.get(doc)
-            if d and d["pdf"] and d["miss"]:
-                # 清掉缺失渠道的 raw/ 缓存后跑全链: 已有渠道走缓存, 只补缺失那路
-                if self.runner.submit(doc, d["pdf"], stages.ORDER,
-                                      "重试缺失:" + "/".join(d["miss"]), clear=tuple(d["miss"])):
-                    n += 1
+        for doc, d in jobs:
+            if self.runner.submit(doc, d["pdf"], stages.ORDER,
+                                  "重试缺失:" + "/".join(d["miss"]), clear=tuple(d["miss"])):
+                n += 1
         if n:
             self._log("[批量] 重试缺失渠道已提交 %d 篇" % n)
 
@@ -937,6 +1031,17 @@ class App(tk.Tk):
     def _log(self, s):
         self.q.put(s)
 
+    def _on_log_scroll(self, _ev=None):
+        self.after_idle(self._sync_log_follow)
+
+    def _sync_log_follow(self):
+        self.log_follow_var.set(self.logtxt.yview()[1] >= 0.995)
+
+    def _clear_log_view(self):
+        self.logtxt.configure(state="normal")
+        self.logtxt.delete("1.0", "end")
+        self.logtxt.configure(state="disabled")
+
     def _drain(self):
         try:
             n = 0
@@ -949,7 +1054,8 @@ class App(tk.Tk):
                 tail = self.logtxt.index("end-1c")
                 if tail and int(tail.split(".")[0]) > 3000:
                     self.logtxt.delete("1.0", "2000.0")
-                self.logtxt.see("end")
+                if self.log_follow_var.get():
+                    self.logtxt.see("end")
                 self.logtxt.configure(state="disabled")
         except queue.Empty:
             pass
@@ -974,6 +1080,10 @@ class App(tk.Tk):
             self.refresh()
         else:
             self._was_busy = busy
+        running_key = (tuple(sorted(self.runner.running)), tuple(sorted(self.runner.queued)))
+        if running_key != self._running_view_key:
+            self._running_view_key = running_key
+            self._apply_view()
         self._sync_buttons()
         self.after(1000, self._tick_status)
 
