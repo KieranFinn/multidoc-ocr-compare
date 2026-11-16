@@ -573,6 +573,17 @@ class StageRunTest(unittest.TestCase):
             app._clear_selection()
             self.assertFalse(app.tree.selection())
             self.assertIn("web", app.conflict_lbl.cget("text"))
+            for i in range(100):
+                app._log("line %d" % i)
+            app._drain()
+            app.logtxt.yview_moveto(0)
+            app._sync_log_follow()
+            self.assertFalse(app.log_follow_var.get())
+            app.logtxt.yview_moveto(1)
+            app._sync_log_follow()
+            self.assertTrue(app.log_follow_var.get())
+            app._clear_log_view()
+            self.assertEqual(app.logtxt.get("1.0", "end-1c"), "")
         finally:
             app.destroy()
 
