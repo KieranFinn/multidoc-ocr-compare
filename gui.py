@@ -477,6 +477,10 @@ class App(tk.Tk):
         # 6 个按钮抢宽度(实测被压到 0 宽, 整条状态直接消失)。
         self.status_lbl = ttk.Label(self, text="", anchor="w")
         self.status_lbl.pack(side="bottom", fill="x", padx=12, pady=(0, 6))
+        self.conflict_lbl = tk.Label(self, text="", anchor="w", padx=8, pady=5,
+                                     bg="#fff4e5", fg="#b45309")
+        self.conflict_lbl.pack(fill="x", padx=10, pady=(0, 4))
+        self.conflict_lbl.pack_forget()
 
         mid = ttk.Panedwindow(self, orient="vertical")
         mid.pack(fill="both", expand=True, padx=10)
