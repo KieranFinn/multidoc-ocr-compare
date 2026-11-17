@@ -508,8 +508,8 @@ def lint_audit(audit, recs):
 
 # ---------- 输出 ----------
 
-def write_outputs(doc, product, audit):
-    d = os.path.join(DST, doc)
+def write_outputs(doc, product, audit, dst=None):
+    d = os.path.join(dst or DST, doc)
     if not os.path.isdir(d):
         os.makedirs(d)
     fp = os.path.join(d, "ner_lite.json")

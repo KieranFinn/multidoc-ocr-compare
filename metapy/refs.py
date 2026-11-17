@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os, re, io, json, datetime, collections
+import os, re, io, json, datetime, collections, unicodedata
 import regress
 from .common import *
 
@@ -61,6 +61,20 @@ def _detect_style(page_blocks):
         if re.search(r"(?m)^\s*\d{1,3}\s*[.、]\s", t):
             return "numbered"
     return "authoryear"
+
+_CJK_REF_TEXT = re.compile(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff가-힣]")
+_CJK_REF_EVIDENCE = re.compile(
+    r"(?:19|20)\d{2}|[《〈『「“”『』』]|篇|錄|經|書|史|紀|報|刊|出版社|檔|館|대학교|학회|저널|Press|Journal", re.I)
+
+
+def _cjk_ref_entry_like(text):
+    s = (text or "").strip()
+    if not (4 <= len(s) <= 2000) or not _CJK_REF_TEXT.search(s):
+        return False
+    if re.match(r"^(?:https?://|www\.)", s, re.I):
+        return False
+    return bool(_CJK_REF_EVIDENCE.search(s))
+
 
 def _looks_cite(etext):
     """条目像不像文献: 年份(合法)+引号题名; 或 卷期页/学会/出版社线索(裸年份不算)。"""
@@ -1616,6 +1630,54 @@ def refs_doc(doc, out_root):
                                 "box": b["u"]["box"], "uid": b["uid"],
                                 "block_review": b["u"]["review"],
                                 "block_level": b["u"]["confidence"]["level"]})
+    # —— 中韩混合/古籍文献体例: 仅在文献区且既有条目仍为 0 时按行兜底, 不覆盖已有条目。
+    if not entries and style == "authoryear":
+        for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
+            if b["p"] not in ref_pages:
+                continue
+            for ln in b["t"].split("\n"):
+                s = ln.strip()
+                if not _cjk_ref_entry_like(s):
+                    continue
+                entries.append({"num": None, "text": s, "page": b["p"] + 1, "col": b["col"],
+                                "box": b["u"]["box"], "uid": b["uid"],
+                                "block_review": b["u"]["review"],
+                                "block_level": b["u"]["confidence"]["level"]})
+    # 短横线项目符号文献: unified 漏块时从三渠道原始行补齐；仅在候选更多时替换。
+    bullet_entries = []
+    seen_bullets = []
+    bullet_streams = list(channel_lines(doc_dir))
+    has_dots_bullets = any(ch == "dots" and re.search(r"(?m)^\s*[-–—]\s+", t or "")
+                           for _p, ch, t in bullet_streams)
+    for p, _ch, text in bullet_streams:
+        if p - 1 not in ref_pages or (has_dots_bullets and _ch != "dots"):
+            continue
+        for ln in text.split("\n"):
+            s = re.sub(r"^\s*[-–—]\s+", "", ln).strip()
+            if ln.strip() == s or len(_fold(s)) < ENTRY_MIN_LEN or not YEAR_RE.search(s):
+                continue
+            normalized = "".join(c for c in unicodedata.normalize("NFKD", s)
+                                 if not unicodedata.combining(c))
+            key = re.sub(r"[\W_]+", "", normalized, flags=re.UNICODE).lower()
+            if not key or any(_gdice(key, old) >= 0.90 for old in seen_bullets):
+                continue
+            seen_bullets.append(key)
+            candidates = [b for b in blocks if b["p"] == p - 1]
+            anchor = next((b for b in candidates if key[:30] in _fold(b["t"])),
+                          candidates[0] if candidates else None)
+            if anchor:
+                bullet_entries.append({"num": None, "text": s, "page": p, "col": anchor["col"],
+                                       "box": anchor["u"]["box"], "uid": anchor["uid"],
+                                       "block_review": anchor["u"]["review"],
+                                       "block_level": anchor["u"]["confidence"]["level"],
+                                       "_channel": _ch})
+    preferred = [e for e in bullet_entries if e["_channel"] == "dots"]
+    if preferred:
+        bullet_entries = preferred
+    for e in bullet_entries:
+        e.pop("_channel", None)
+    if len(bullet_entries) > len(entries):
+        entries = bullet_entries
     # —— 批次2: num 恢复(895567 41 条全 null 实测)——numbered 且 num 过半为空 → 按序重编 1..N(验收: int 连续) ——
     if style == "numbered":
         n_none = sum(1 for e in entries if e["num"] is None)

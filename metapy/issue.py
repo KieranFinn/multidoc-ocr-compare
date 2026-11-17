@@ -65,7 +65,7 @@ _BOUNDARY = re.compile(
     r"AUTUMN|SPRING|SUMMER|WINTER|FALL", re.I)
 _ENKEY = re.compile(r"Journal|Review|Quarterly|Bulletin|Annals|Proceedings|Studies|Research|Letters")
 _FUNC = {"of", "and", "the", "for", "in", "on", "de", "des", "la", "le", "y", "di", "del", "&", "et"}
-_KW_SPLIT = re.compile(u"[,，;；]")
+_KW_SPLIT = re.compile(u"[,，;；、]")
 
 
 def _pageno_of(text):
@@ -472,8 +472,65 @@ def _kw_parse(s, lines, i):
         jj += 1
     raw = [s] + [lines[k].strip() for k in range(i + 1, jj) if lines[k].strip()]
     items = [x.strip().strip(".").strip() for x in _KW_SPLIT.split(acc)]
+    if len(items) == 1 and re.match(r"^(?:关\s*键\s*词|關\s*鍵\s*詞|关\s*键\s*字)", s):
+        items = [x.strip().strip(".。") for x in items[0].split() if x.strip()]
     items = [x for x in items if x and len(x) > 1][:15]
     return en, items, raw
+
+
+def _publication_year(source):
+    for _page, _uid, line in source:
+        m = re.search(r"출판연도\s*[:：]\s*((?:19|20)\d{2})(?!\d)", line)
+        if m and int(m.group(1)) in YEAR_OK:
+            return int(m.group(1))
+    return None
+
+
+def _apply_running_journal(res, source, excluded):
+    current = res["journal"]["value"]
+    if current is not None and not re.search(r"^\W*\d+\)|^[\[<`]|등$|그림", str(current)):
+        return False
+    votes = collections.defaultdict(set)
+    display = {}
+    for page, _uid, line in source:
+        s = line.strip()
+        folded = _fold(s)
+        if not (4 <= len(folded) <= 50) or re.search(r"\d|`", s):
+            continue
+        if any(len(ex) >= 8 and (folded in ex or ex in folded or _gdice(folded, ex) >= 0.80)
+               for ex in excluded):
+            continue
+        if re.search(r"[.!?:：;；|]|https?://|www\.", s):
+            continue
+        votes[folded].add(page)
+        display[folded] = s
+    candidates = [(len(pages), key) for key, pages in votes.items() if len(pages) >= 2]
+    if not candidates:
+        return False
+    _count, key = max(candidates)
+    res["journal"] = {"value": display[key], "uid": None,
+                      "confidence": {"level": "mid", "source": "running_header"}}
+    return True
+
+
+def _apply_doi_series(res, source):
+    for _page, _uid, line in source:
+        if _page not in (0, 1):
+            continue
+        m = re.search(r"(defsec|BJH)\.((?:19|20)\d{2})\.(\d+)\.(\d+)(?:\.(\d+))?", line, re.I)
+        if not m:
+            continue
+        year, volume, issue_no = map(int, m.group(2, 3, 4))
+        if year not in YEAR_OK:
+            continue
+        values = [("year", year), ("volume", volume), ("issue", issue_no)]
+        if m.group(1).lower() == "defsec":
+            values.insert(0, ("journal", "국방과 보안"))
+        for key, value in values:
+            res[key] = {"value": value, "uid": None,
+                        "confidence": {"level": "high", "source": "doi"}}
+        return True
+    return False
 
 
 def issue_doc(doc, out_root):
@@ -518,7 +575,8 @@ def issue_doc(doc, out_root):
         page_values[p] = got
         for u in j["unified"]:
             t = u["main_text"] or ""
-            if u["type"] in STRUCT_TYPES or (p == 0 and u["box"][1] < 0.12 * j["h"]):
+            if (p <= 1 and (u["type"] in STRUCT_TYPES or (p == 0 and u["box"][1] < 0.12 * j["h"]))) \
+                    or (p == 0 and (_DOI.search(t) or re.search(r"출판연도\s*[:：]", t))):
                 for ln in t.split("\n"):
                     if ln.strip():
                         source.append((p, u["uid"], ln.strip()))
@@ -531,6 +589,11 @@ def issue_doc(doc, out_root):
         if a.get("name"):
             excluded.add(_fold(a["name"]))
     res = extract(source, len(pages), excluded)
+    if res["year"]["value"] is None:
+        pub_year = _publication_year(source)
+        if pub_year is not None:
+            res["year"] = {"value": pub_year, "uid": None,
+                           "confidence": {"level": "high", "source": "publisher_label"}}
     # —— 页: pp./裸区间无 → 页码推断。**必须在渠道兜底之前**: 全篇 Page-number 一致 offset
     #    (2309666 是 35/35 页)是硬证据; 而兜底源把"每页前 4 块"当页眉区, 无页眉的页会拿下
     #    正文句 —— 2309666 p16 '…20-30 둥 정도의 순익을 거둘 수 있었지만…' 是盈利数字, 被当成
@@ -563,6 +626,8 @@ def issue_doc(doc, out_root):
             by_page.setdefault(p, []).append(t)
         src2 = []
         for p, texts in by_page.items():
+            if p > 2:
+                continue
             for t in texts[:4]:
                 for ln in t.split("\n"):
                     ln = ln.strip()
@@ -604,8 +669,15 @@ def issue_doc(doc, out_root):
                 res[k] = {"value": res2[k]["value"], "uid": None,
                           "confidence": {"level": "mid", "source": "channel_fallback"}}
                 ch_filled[k] = res2[k]["value"]
+    full_source = source + [(p, None, line) for p, _ch, t in ch_lines for line in t.split("\n")]
+    running_journal = _apply_running_journal(res, full_source, excluded)
+    publisher_series = _apply_doi_series(res, full_source)
     audit = res.pop("_audit")
     audit["channel_fallback"] = ch_filled
+    if running_journal:
+        audit["journal_running_header"] = True
+    if publisher_series:
+        audit["publisher_series"] = "DOI 期段位"
     res.pop("_internal")
     if derived:
         first, last, support, offset = derived
@@ -634,7 +706,8 @@ def issue_doc(doc, out_root):
                 if not got:
                     continue
                 en, items, raw = got
-                if not items:
+                if not items or max(len(x) for x in items) >= 60 \
+                        or any("。" in x for x in items):
                     continue
                 if en:
                     if kws_en:
@@ -647,14 +720,14 @@ def issue_doc(doc, out_root):
     # 关键词渠道兜底: 老式期刊把 주제어/핵심어 行放在正文里, unified 归并成 Text 块后
     # KW_LINE(要求行首头词)抓不到; 只在 keywords[] 仍为空时, 从三渠道原文按行内头词补。
     if not kws:
-        _KW_ANY = re.compile(u"(?:주제\\s*어|핵심\\s*어|키\\s*워드|중심\\s*어|주요\\s*어|Key\\s*words?|Keywords?)", re.I)
+        _KW_ANY = re.compile(u"(?:주제\\s*어|핵심\\s*어|키\\s*워드|중심\\s*어|주요\\s*어|关\\s*键\\s*词|關\\s*鍵\\s*詞|关\\s*键\\s*字|Key\\s*words?|Keywords?)", re.I)
         for p, ch, t in ch_lines:
             for ln in t.split("\n"):
                 mm = _KW_ANY.search(ln)
                 if not mm:
                     continue
                 rest = ln[mm.end():].lstrip(u" 】〉>）)]：:·.-*")
-                items = [x.strip() for x in re.split(u"[,，;；·]", rest) if x.strip()]
+                items = [x.strip().strip("。") for x in re.split(u"[,，;；·、]", rest) if x.strip()]
                 if 2 <= len(items) <= 15 and max(len(x) for x in items) < 60:
                     kws, kw_raw, kw_loc = items, [ln.strip()], {"page": p, "uid": None}
                     break
@@ -663,6 +736,31 @@ def issue_doc(doc, out_root):
         if kws:
             audit["keywords_channel_fallback"] = {"items": kws, "raw_lines": kw_raw,
                                                   "source": kw_loc}
+    if not kws or not kws_en:
+        for u in pdata[0]["unified"]:
+            t = (u.get("main_text") or "").strip()
+            if not (t.startswith("[") and t.endswith("]") and "/" in t):
+                continue
+            items = [x.strip() for x in t[1:-1].split("/") if x.strip()]
+            ko, en = [], []
+            for item in items:
+                if "," in item and _hangul_ratio(item) >= 0.2:
+                    left, right = item.rsplit(",", 1)
+                    if _hangul_ratio(left) < 0.2 and re.search(r"[A-Za-z]", left) \
+                            and _hangul_ratio(right) >= 0.2:
+                        en.append(left.strip())
+                        ko.append(right.strip())
+                        continue
+                if _hangul_ratio(item) >= 0.2:
+                    ko.append(item)
+                elif re.search(r"[A-Za-z]", item):
+                    en.append(item)
+            if ko and en:
+                if not kws:
+                    kws, kw_raw, kw_loc = ko, [t], {"page": 1, "uid": u["uid"]}
+                if not kws_en:
+                    kws_en, kw_raw_en, kw_loc_en = en, [t], {"page": 1, "uid": u["uid"]}
+                break
     # —— 落盘 ——
     meta.update({
         "doc": doc,

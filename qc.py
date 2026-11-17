@@ -86,6 +86,57 @@ def body_ok(doc, dd):
     return _body_stats(doc, dd)[0]
 
 
+def _book_review(dd):
+    fp = os.path.join(dd, "unified", "page_0.json")
+    if not os.path.isfile(fp):
+        return False
+    try:
+        with io.open(fp, encoding="utf-8") as fh:
+            blocks = json.load(fh).get("unified") or []
+    except Exception:
+        return False
+    text = "\n".join(u.get("main_text") or "" for u in blocks)
+    labels = (u"저자", u"출판사", u"출판연도", u"분량")
+    return all(re.search(r"(?m)^\s*%s\s*[:：]" % re.escape(x), text) for x in labels)
+
+
+def _non_regular_article(dd, m):
+    if not m.get("authors") or m.get("references") or m.get("footnote_refs") \
+            or m.get("citation_spans") or not body_ok(os.path.basename(dd), dd):
+        return False
+    texts = []
+    udir = os.path.join(dd, "unified")
+    for name in ("page_0.json", "merged.json"):
+        fp = os.path.join(dd, name) if name == "merged.json" else os.path.join(udir, name)
+        if not os.path.isfile(fp):
+            return False
+    for name in os.listdir(udir):
+        if not re.match(r"page_\d+\.json$", name):
+            continue
+        try:
+            with io.open(os.path.join(udir, name), encoding="utf-8") as fh:
+                j = json.load(fh)
+        except Exception:
+            return False
+        for u in j.get("unified") or []:
+            t = u.get("main_text") or ""
+            texts.append(t)
+            if u.get("type") == "Footnote" and re.match(r"^\s*\d{1,3}\s*[.)]", t):
+                return False
+    fp = os.path.join(dd, "merged.json")
+    try:
+        with io.open(fp, encoding="utf-8") as fh:
+            mj = json.load(fh)
+        for pg in mj.get("page_data") or []:
+            for blocks in (pg.get("channels") or {}).values():
+                texts.extend(b.get("text") or "" for b in blocks)
+    except Exception:
+        return False
+    section = re.compile(r"요\s*약|초\s*록|Abstract|Keywords?|주제\s*어|핵심\s*어|"
+                         r"참고\s*문헌|References|Bibliography", re.I)
+    return not any(section.search(t) for t in texts)
+
+
 def qc_of(doc, out_dir=None, ner_root=None):
     """质检: 必抽项是否齐全。返回 issues/level/label，并附仅用于展示的 language。
 
@@ -125,6 +176,11 @@ def qc_of(doc, out_dir=None, ner_root=None):
         it = m.get("issue")
         if isinstance(it, dict) and (it.get("confidence") or {}).get("source") == "volume_only":
             miss.remove("期")
+    # 书评没有论文摘要/关键词: 只在首页明确印出书籍四要素时结构性豁免。
+    if _book_review(dd):
+        for zh in ("关键词", "摘要"):
+            if zh in miss:
+                miss.remove(zh)
     # 关键词有两条通路(keywords 解析结果 / keywords_lines 原始行), 任一有即算有
     if "关键词" in miss and not _empty(m.get("keywords_lines")):
         miss.remove("关键词")
@@ -154,6 +210,8 @@ def qc_of(doc, out_dir=None, ner_root=None):
 
     if not miss:
         return {"issues": [], "level": "", "label": "\u2714", "language": lang}
+    if _non_regular_article(dd, m):
+        return {"issues": miss, "level": "nonregular", "label": "◇ 非正规论文", "language": lang}
     head = "/".join(miss[:4]) + ("…" if len(miss) > 4 else "")
     return {"issues": miss, "level": "bad",
             "label": "\u2718 %d 项 %s" % (len(miss), head), "language": lang}

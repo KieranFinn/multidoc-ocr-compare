@@ -15,8 +15,8 @@ _ABS_BRACKET_KO = re.compile(u"^【\\s*(?:한글\\s*요약|국문\\s*요약|요\
 # 文末(FI1632041 p31), SpringerOpen 把 Abstract 单独成块, unified 归并时这些低频块会被
 # 并入邻块或整块丢弃, 而 merged.json 的三渠道原文仍在。只在首页/既有形态都没抓到时启用。
 _ABS_ANY = re.compile(
-    u"^\\s*(?:[*#]{0,2}\\s*)?[<(【〈\\[]?\\s*"
-    u"(?:국문\\s*초록|국문\\s*요약|한글\\s*요약|요\\s*약|초\\s*록|Abstract|ABSTRACT|Summary|SUMMARY)"
+    u"^\\s*(?:[*#■◆]{0,2}\\s*)?[<(【〈\\[]?\\s*"
+    u"(?:국문\\s*초록|국문\\s*요약|한글\\s*요약|요\\s*약|초\\s*록|摘\\s*要|Abstract|ABSTRACT|Summary|SUMMARY)"
     u"\\s*[>)】〉\\]]?\\s*[:：.]?\\s*(.*)$", re.I)
 _ABS_STOP = re.compile(u"^(?:참고\\s*문헌|Reference|References|Bibliography|목\\s*차|차\\s*례|"
                        u"I{1,3}\\.|^\\d+\\.\\s)", re.I)
@@ -487,6 +487,20 @@ def abstract_doc(doc, out_root):
             if got:
                 res["abstract_en"] = got
                 break
+    if not (res.get("abstract_en") or {}).get("value"):
+        blocks = pdata[0]["unified"]
+        for i, u in enumerate(blocks):
+            t = (u.get("main_text") or "").strip()
+            if not (t.startswith("[") and t.endswith("]") and "/" in t) or i == 0:
+                continue
+            prev = blocks[i - 1]
+            txt = (prev.get("main_text") or "").strip()
+            if len(txt) >= 200 and _hangul_ratio(txt) < 0.2:
+                res["abstract_en"] = {"value": txt, "page": 1, "box": prev["box"],
+                                      "from_tail": False,
+                                      "confidence": {"level": "mid", "basis": "首页英文摘要+方括号双语关键词",
+                                                     "source": "regex", "uid_head": prev["uid"]}}
+                break
     # 主摘要回退: 只有英文摘要的论文(英文期刊/末页英文 matter), abstract 直接采用英文摘要——
     # 「摘要」这一必抽项的语义是"本文有无摘要", 不分语种。
     if not (res.get("abstract") or {}).get("value") \
@@ -515,9 +529,10 @@ def abstract_doc(doc, out_root):
             if not t:
                 continue
             first = t.split("\n")[0].strip()
-            if tail_title_en is None and (u["type"] == "Section-header" or _hangul_ratio(first) < 0.2) \
+            if tail_title_en is None and u["type"] == "Section-header" \
                and len(_fold(first)) >= 15 and not KW_LINE.match(first) \
-               and not ABS_HEAD_EN.match(first):
+               and not ABS_HEAD_EN.match(first) \
+               and not re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(first)):
                 tail_title_en = {"value": first, "page": hp + 1, "box": u["box"], "uid": u["uid"]}
             for ln in t.split("\n"):
                 m = re.match(r"^-\s*([A-Z][A-Za-z .\-']{3,40})\s*-$", ln.strip())
