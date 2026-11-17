@@ -198,7 +198,7 @@ def scan_docs(up=None, out_dir=None, ner_root=None, include_archived=True):
                      "done_at": done_at, "miss": miss, "ner": _ner_done(dd, ner_root)}
     # out/ 里有产物但 uploads 里 PDF 已没了的(清库残留), 也列出来只读展示
     if os.path.isdir(out_dir):
-        for d in sorted(os.listdir(OUT)):
+        for d in sorted(os.listdir(out_dir)):
             if d in docs or d.startswith("_") or d in done_docs:
                 continue
             if not os.path.isdir(os.path.join(out_dir, d)):
