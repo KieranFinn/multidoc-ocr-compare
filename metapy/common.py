@@ -265,7 +265,7 @@ NUM_MARK = re.compile(r"^\s*\[\s*(\d{1,3})\s*\]")
 LIST_MARK = re.compile(r"^\s*(\d{1,3})\s*[.、]\s")
 
 AY_HEAD = re.compile(
-    r"(?m)^(?=[A-Z가-힣])[^\n]{0,200}?(?:\((?:19|20)\d{2}[a-z]?|,\s*(?:19|20)\d{2}[a-z]?(?=[,.]))")
+    r"(?m)^(?=[A-Z가-힣])[^\n]{0,200}?(?:\((?:19|20)\d{2}[a-z]?|[,.]\s*(?:19|20)\d{2}[a-z]?(?=[,.]))")
 
 VOL_RE = re.compile(r"(?:vol\.?|V\.?)\s*(\d+)", re.I)
 
@@ -335,7 +335,7 @@ HEAD_EXCLUDE = re.compile(u"^(차\\s*례|목\\s*차|요\\s*약|국문\\s*요약|
 
 SUP_LATEX = re.compile(r"\$\s*\^\{([^}]*)\}\s*\$")
 
-AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital)")
+AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|국회방송|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital|Nunnery|KIDA|KAIST|CMU)")
 
 ROLE_WORDS = re.compile(u"(교신저자|제\\s*\\d+\\s*저자|공동저자|책임저자|선행\\s*연구)")
 
@@ -350,6 +350,7 @@ ABS_INLINE_KO = re.compile(u"^(요\\s*약|국문\\s*요약|초\\s*록)\\s*[:：]
 ABS_HEAD_EN = re.compile(r"^(<\s*)?(Abstract|ABSTRACT)(\s*>)?$|^\(Abstract\)$")
 
 KW_LINE = re.compile(u"^(?:[■◆]\\s*)?(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어|주제\\s*어|"
+                     u"关\\s*键\\s*词|關\\s*鍵\\s*詞|关\\s*键\\s*字|"
                      u"Key\\s*words?|Keywords?|Keyword\\s*:)", re.I)
 # 2026-11-09: 增 주제어 与 ■/◆ 通用符号前缀(B3: FI001892171 '◆ 주제어(Key Words)' 实证);
 # group(1)=头词(不含符号前缀), issue 阶段按头词是否含 ASCII 字母区分韩/英组——改动需同步

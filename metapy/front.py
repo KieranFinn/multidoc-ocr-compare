@@ -49,7 +49,7 @@ def _pick_title(j, want_hangul):
     for u in j["unified"]:
         if u.get("cross_page", {}).get("role"):
             continue
-        if u["type"] in ("Page-header", "Page-footer", "Page-number"):
+        if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
             continue
         t = (u["main_text"] or "").strip()
         if not t:
@@ -58,8 +58,8 @@ def _pick_title(j, want_hangul):
             continue   # 目录表格(1892171 TOC) 不参与题名
         lines = [x.strip() for x in t.split("\n") if x.strip()]
         cand = [(0, lines[0])]
-        if not want_hangul and len(lines) > 1:
-            cand.append((1, lines[1]))   # 英题可能在次行(副标题在首行的形态)
+        if len(lines) > 1:
+            cand.append((1, lines[1]))   # 题名可能在次行(短引导行/副标题在首行的形态)
         for li, t in cand:
             f = _fold(t)
             if not (10 <= len(f) <= 220):
@@ -67,10 +67,19 @@ def _pick_title(j, want_hangul):
             y1 = u["box"][1] / H
             if not (TITLE_ZONE[0] <= y1 <= (TITLE_ZONE[1] if want_hangul else TITLE_EN_ZONE[1])):
                 continue
-            hr = _hangul_ratio(t)
-            if want_hangul and hr < 0.3:
+            if re.match(u"^[가-힣\\s]+\\([A-Za-z .\\-']+\\)\\*?$", t):
                 continue
-            if not want_hangul and hr > 0.35:
+            if re.search(u"[가-힣]", t) and (SUP_LATEX.search(t) or "<sup>" in t
+                                               or re.search(r"\*{1,5}", t)) \
+                    and len(_parse_author_line(t, None, {})) >= 2:
+                continue
+            hr = _hangul_ratio(t)
+            has_cjk = bool(re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(t)))
+            if want_hangul and hr < 0.3 and not has_cjk:
+                continue
+            if not want_hangul and (hr > 0.35 or has_cjk or not re.search(r"[A-Za-z]", t)
+                                    or re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]",
+                                                 _fold(u.get("main_text") or ""))):
                 continue
             # 题名不结句(1536751 实证): 正文段落以 '…다./…요.' 收尾、宽度又占满整栏, 靠宽度+长度
             # 加分压过真题名(Section-header)当选, 随后整段正文被当题名、正文词被当作者。
@@ -80,11 +89,8 @@ def _pick_title(j, want_hangul):
             first = t.strip()[:12]
             if HEAD_EXCLUDE.match(t.strip()) or HEAD_EXCLUDE.match(first):
                 continue
-            if u["type"] == "Section-header" and t in (u2["main_text"] or "" for u2 in j["unified"]
-                                                       if u2["type"] == "Page-header"):
-                continue   # 与页眉完全同文的 '标题' 是 running 头复写(防 1892171 误判)
             score = 0.0
-            score += 3.0 if u["type"] == "Section-header" else 1.0
+            score += 5.0 if u["type"] == "Section-header" else 0.5
             score += min(2.0, (u["box"][2] - u["box"][0]) / j["w"] * 3)
             score += 2.0 - abs(y1 - 0.20) * 4     # 垂直位置因子(页 10%-45% 最佳)
             score += min(1.5, len(f) / 80.0)
@@ -94,17 +100,17 @@ def _pick_title(j, want_hangul):
 
 _AFFIL_TAIL = re.compile(
     u"(?:초빙교수|겸임교수|명예교수|전임교수|부교수|조교수|교수|강사|선임연구원|책임연구원|"
-    u"전문연구원|연구원|박사후연구원|대학원생|박사과정|석사과정|(?<=과)\\s*대학원)\\s*$")
+    u"전문연구원|연구원|박사후연구원|박사|대학원생|박사과정|석사과정|(?<=과)\\s*대학원)[\\s,，·•]*$")
 
 
 # 机构行形态守卫(2026-11-12 二轮): AFFIL_HEAD 里的 '관'(세계관) / '학회' / '학교' 等泛词会命中
 # 论文标题、摘要句、致谢句, 整行被当成机构写进 affiliations(13563526/13563529/13563531 实证)。
 # 机构署名行必须"以机构词收束"或整行足够短, 且不含句子/致谢特征。
 _AFF_STRICT = re.compile(
-    u"(?:대학교|대학원|대학|학과|학부|연구소|연구원|연구단|연구재단|교육원|학술원|어학원|개발원|진흥원|"
+    u"(?:대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|연구단|연구재단|교육원|학술원|어학원|개발원|진흥원|"
     u"관리원|센터|박물관|도서관|병원|재단|학회|학교|공단|공사|협회|"
     r"University|College|Institute|Laborator|School\s+of|Department|Faculty|Center|Centre|"
-    r"Academy|Hospital|Campus|Association|Society|Foundation)", re.I)
+    r"Academy|Hospital|Campus|Association|Society|Foundation|Nunnery|KIDA|KAIST|CMU|국회방송)", re.I)
 _AFF_SENT = re.compile(
     u"(?:본고는|본\\s*논문은|이\\s*논문은|밝힙니다|일환으로|지원사업|사의를|감사를|"
     u"수정[·ㆍ]?\\s*보완|발표한\\s*글|논평|토론을\\s*통해|연구\\s*과제|보고서를|"
@@ -141,7 +147,7 @@ def _looks_affil(s):
     last = list(_AFF_STRICT.finditer(s))[-1]
     # 韩文机构署名行以机构词收束, 允许尾随少量职位/括号/标点; 中段出现机构词的
     # ("…한국학과 전공 강좌 개발 및 실행 연구" 这类课题名)一律拒
-    return len(s) - last.end() <= 6
+    return len(s) - last.end() <= 16
 
 
 _AFF_ROLE_TAIL = re.compile(
@@ -169,6 +175,7 @@ def _non_affil(s):
 
 
 def _split_affils(s):
+    s = re.sub(u"(?:접수일|수정일|게재확정일)\\s*\\([^)]*\\)\\s*", "", s or "")
     """一行常塞多条署名, 也常把作者名/职位句拼在一起:
        '● 우송대학교 한국어교육원 초빙교수(제1저자) | ●● 청주대학교 교양대학 조교수(교신저자)'(13563528)
        '강원대학교 기획처장. 강원대학교 법학전문대학원 교수었다.'(13563533)
@@ -261,11 +268,55 @@ def _channel_affil_notes(u):
     return out
 
 
+_CJK_AUTHOR_LINE = re.compile(
+    r"^([\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]{2,4}(?:\s*[·•]\s*"
+    r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]{2,4})*)\s*"
+    r"(?:\$\s*\^\s*\{[^}]+\}\s*\$|\*{1,4})\s*$")
+_INVALID_AUTHOR = re.compile(
+    r"^(?:[■◆]\s*)?(?:국문초록|국문요약|논문요약|요약|摘要|차례|目次|저자|출판사|출판연도|분량|접수일|수정일|게재확정일|국방과\s*보안|첫째|둘째|셋째)\s*[:：]?")
+
+
+def _cjk_author_names(line):
+    m = _CJK_AUTHOR_LINE.match((line or "").strip())
+    if not m:
+        return []
+    return [x.strip() for x in re.split(r"\s*[·•]\s*", m.group(1)) if x.strip()]
+
+
+def _valid_author_name(name):
+    name = (name or "").strip()
+    return bool(name) and not re.match(r"^(?:www\.|\$)", name) and not _INVALID_AUTHOR.match(name)
+
+
+def _xpage_affils(doc_dir):
+    fp = os.path.join(doc_dir, "unified", "_m3_xpage.json")
+    if not os.path.isfile(fp):
+        return []
+    try:
+        actions = (json.load(io.open(fp, encoding="utf-8")).get("actions") or [])
+    except Exception:
+        return []
+    out = []
+    for action in actions:
+        if action.get("type") != "join" or 1 not in (action.get("pages") or []):
+            continue
+        text = action.get("tail_clean") or ""
+        for m in re.finditer(r"([가-힣]+대학교[^.。]*?)(?=박사\s*수료|[.。]|$)", text):
+            value = m.group(1).lstrip("•●* ").strip()
+            if len(value) <= 80 and ("협동과정" in value or _looks_affil(value)) and value not in out:
+                out.append(value)
+        for m in re.finditer(r"[(（]사[)）]\s*([가-힣A-Za-z0-9]+)\s*대표이사", text):
+            value = "(사)" + m.group(1)
+            if value not in out:
+                out.append(value)
+    return out
+
+
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
     + 括号内罗马拼音硬锚 + OCR 粘连名(홍영식서울교육대학교)按机构词表切开。
     返回 [(name, markers, affiliation, role, roman)]。"""
-    line = (line or "").strip()
+    line = re.sub(r"[\uf000-\uf8ff]", "", (line or "")).strip()
     if not line:
         return []
     # 副标题行整行丢弃(2632491 实证): 起首或结尾带破折号的是副标题, 作者署名从不带破折号。
@@ -278,8 +329,10 @@ def _parse_author_line(line, u, foot_affil):
     if not line:
         return []
     out = []
-    # 英文行逗号分层; 韩文行 ·•․ 与'逗号+韩文名'分层(英文逗号多为机构内分隔)
-    if en_line:
+    glued_names = list(re.finditer(u"([가-힣]{2,4})(?:<sup>\\d+</sup>|\\*{0,2})?(\\([^)]+\\))", line))
+    if len(glued_names) >= 2 and "^" not in line:
+        toks = [m.group(0) for m in glued_names]
+    elif en_line:
         toks = re.split(r"\s*,\s*|\s+and\s+", line)
     else:
         toks = re.split(u"[·•․]|\\s+,\\s+|,\\s+(?=[가-힣])", line)
@@ -301,31 +354,38 @@ def _parse_author_line(line, u, foot_affil):
             tk = ROLE_WORDS.sub("", tk).strip(" ,·•")
         affil = None
         roman = None
-        mrom = re.match(u"^([가-힣\\s]{2,6})\\(([A-Za-z .\\-']+)\\)(.*)$", tk)
+        mrom = re.match(u"^([가-힣\\s]{2,16})\\(([A-Za-z .\\-']+)\\)(.*)$", tk)
         if mrom:
             nm = mrom.group(1).strip()
             roman = mrom.group(2).strip()
             rest = mrom.group(3).strip()
         else:
-            # OCR 粘连: 人名后直接跟机构(홍영식서울교육대학교) — 取最长 2-4 音节人名前缀,
-            # 余部前 4 字内出现机构词即切开(机构专有名词 '서울교육'+대학교 实证)
-            split_at = None
-            for i0 in range(2, min(5, len(tk))):
-                if re.fullmatch(u"[가-힣]{2,4}", tk[:i0]):
-                    mm = AFFIL_HEAD.search(tk[i0:])
-                    if mm and mm.start() <= 4:
-                        split_at = i0
-                        break
+            m_aff_space = re.match(u"^([가-힣]{2,4})\\s+(.+)$", tk)
+            if m_aff_space and AFFIL_HEAD.search(m_aff_space.group(2)):
+                nm, affil, rest = m_aff_space.group(1), m_aff_space.group(2).strip(), ""
+                split_at = None
+            else:
+                # OCR 粘连: 人名后直接跟机构(홍영식서울교육대학교) — 取最长 2-4 音节人名前缀,
+                split_at = None
+                for i0 in range(2, min(5, len(tk))):
+                    if re.fullmatch(u"[가-힣]{2,4}", tk[:i0]) and tk[i0:i0 + 1] not in (u"(", u"（"):
+                        mm = AFFIL_HEAD.search(tk[i0:])
+                        if mm and (mm.start() == 0
+                                   or (mm.start() <= 4 and not re.search(r"[(（)]", tk[i0:]))):
+                            split_at = i0
+                            break
             if split_at:
                 nm, affil = tk[:split_at], tk[split_at:].strip()
                 rest = ""
-            else:
+            elif not affil:
                 nm, rest = tk, ""
         if rest:
             maff2 = AFFIL_HEAD.search(rest)
             if maff2 is None and rest.strip("() ,·•"):
                 pass
         nm = _norm_ws(nm)
+        nm = re.sub(r"\(\s*\)", "", nm)
+        nm = re.sub(r"\d+$", "", nm)
         nm = HONORIFIC.sub("", nm).strip(" ,·•")
         if not nm or len(_fold(nm)) < 2:
             continue
@@ -338,7 +398,7 @@ def _parse_author_line(line, u, foot_affil):
         # 韩文人名 2-4 音节不带空格, 带空格是短语; 罗马音人名 ≤5 词, 长句是英题/正文混入
         if "<" in nm or ">" in nm:
             continue
-        if re.search(u"[가-힣]\\s+[가-힣]", nm):
+        if re.search(u"[가-힣]\\s+[가-힣]", nm) and not roman and not affil:
             continue
         if en_line and len(nm.split()) > 5:
             continue
@@ -370,7 +430,11 @@ def front_doc(doc, out_root):
         t = (u["main_text"] or "").strip()
         if t_ko and u["uid"] == t_ko["uid"] or t_en and u["uid"] == t_en["uid"]:
             continue
-        if _front_head(t.split("\n")[0].strip()) or _front_head(t):
+        first_line = t.split("\n")[0].strip()
+        if _front_head(first_line) or _front_head(t) \
+                or (first_line.startswith("[") and first_line.endswith("]")) \
+                or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
+                or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
             stops.append(u["box"][1])
 
     # 标题自身的行绝不能进作者区: 13563535 的英题块(Section-header 'Korean Old Novel …')
@@ -405,7 +469,10 @@ def front_doc(doc, out_root):
                 s = ln.strip()
                 if not s:
                     continue
-                if _front_head(s) or ABSTRACT_START.match(s):
+                if _front_head(s) or ABSTRACT_START.match(s) \
+                        or (s.startswith("[") and s.endswith("]")) \
+                        or (len(s) >= 200 and _hangul_ratio(s) < 0.2) \
+                        or (_hangul_ratio(s) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", s)):
                     limit = min(limit, y1)
                     break
                 if _fold(s) in _title_keys:
@@ -416,6 +483,15 @@ def front_doc(doc, out_root):
     zone_lines = _zone(t_ko)
     if t_en is not None:
         zone_lines += [z for z in _zone(t_en) if z not in zone_lines]
+    esp_stops = []
+    for u in j0["unified"]:
+        t = (u.get("main_text") or "").strip()
+        if (t.startswith("[") and t.endswith("]")) \
+                or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
+                or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
+            esp_stops.append(u["box"][1])
+    if esp_stops:
+        zone_lines = [(s, u) for s, u in zone_lines if u["box"][1] < min(esp_stops) - 2]
     affil_notes = {}      # marker -> affiliation(来自脚注/页脚——13563525 实证机构在 Page-footer)
     for u in j0["unified"]:
         if u.get("cross_page", {}).get("role"):
@@ -428,7 +504,7 @@ def front_doc(doc, out_root):
                 continue
             m = MARKER_LINE.match(ln) or re.match(u"^([•·])\\s*(.+)$", ln)
             if m and (AFFIL_HEAD.search(m.group(2)) or ROLE_WORDS.search(m.group(2))) \
-                    and _looks_affil(m.group(2)):
+                    and (_looks_affil(m.group(2)) or _split_affils(m.group(2))):
                 affil_notes[m.group(1).strip()] = m.group(2).strip()
             elif u["type"] == "Footnote" and AFFIL_HEAD.search(ln) \
                     and not re.search(u"[「」『』]|\\d+\\s*쪽|pp\\.|https?://", ln):
@@ -448,7 +524,10 @@ def front_doc(doc, out_root):
             if _looks_affil(_v):
                 affils_zone.append(_v)
             continue
-        if len(_fold(s)) > 80 and not re.search(u"[·•]", s):
+        author_prefix = re.match(u"^((?:[가-힣]{2,4}\\*{1,5}(?:<sup>)?\\s*,?\\s*){2,})", s)
+        if author_prefix:
+            s = author_prefix.group(1).strip().rstrip(",")
+        if len(_fold(s)) > 80 and not re.search(u"[·•]", s) and "<sup>" not in s:
             # 长行无作者分隔符 → 更像正文/摘要, 仅取首段尝试
             if not re.match(u"^[가-힣]{2,4}[\\( ]", s):
                 continue
@@ -504,7 +583,14 @@ def front_doc(doc, out_root):
                     if tgt and tgt in _norm_roman(ra["name"]):
                         ka["roman"] = ra["name"]
                         break
-    authors = [a for a in authors if not a.get("roman_source")]
+    authors = [a for a in authors if not a.get("roman_source") and _valid_author_name(a.get("name"))]
+    unique_authors = {}
+    for a in authors:
+        key = re.sub(r"\s+", "", a.get("name") or "")
+        if key and (key not in unique_authors
+                    or (not unique_authors[key].get("affiliation") and a.get("affiliation"))):
+            unique_authors[key] = a
+    authors = list(unique_authors.values())
     affils = []
     for a in authors:
         got = _split_affils(a["affiliation"])
@@ -534,12 +620,15 @@ def front_doc(doc, out_root):
         cands = [r["text"] for r in u["readings"]
                  if (r.get("text") or "").strip() and _gdice(r["text"], mt) >= TITLE_READING_DICE] or [mt]
         best = max(cands, key=lambda t: t.count(" ") + t.count("\n") * 2)
-        if line_idx:
+        if line_idx and not re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(mt)):
             bl = [x.strip() for x in best.split("\n") if x.strip()]
             if bl:
                 return bl[min(line_idx, len(bl) - 1)].strip()
         val = re.sub(r"\s*\n\s*", " ", best).strip()
         val = re.sub(r"^#+\s*", "", val)
+        if re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(mt)) \
+                or (len(mt.split("\n")) > 1 and not _parse_author_line(mt.split("\n")[-1], None, {})):
+            return val
         if len(mt.split("\n")) > 1:
             # 多行块只留题名首行: 在主读法首行长附近找'第一个词尾空格'截断(rfind 会落到
             # 次行更远的空格上——实证 1892171 题名尾被切进 '김 진 경' 作者行)
@@ -609,11 +698,44 @@ def front_doc(doc, out_root):
             for ch, t in p1:
                 for ln in t.split("\n"):
                     s = SUP_LATEX.sub("", ln.strip()).strip()
-                    if not s or len(s) > 220:
+                    if len(re.findall(r"\*", s)) >= 2 and re.search(u"[가-힣]", s):
+                        prefix = re.match(u"^((?:[가-힣]{2,4}(?:<sup>)?\\*{1,5}(?:</sup>)?\\s*,?\\s*){2,})", s)
+                        parsed = _parse_author_line((prefix.group(1) if prefix else s).rstrip(","), None, {})
+                        if prefix and len(parsed) >= 2 and len(parsed) > len(got):
+                            got = [{"name": a["name"], "markers": a["markers"],
+                                    "affiliation": a["affiliation"], "role": a["role"],
+                                    "roman": a["roman"], "uid": None, "page": 1, "box": None,
+                                    "source": "channel_fallback"} for a in parsed]
+                            ch_front["authors"] = ([a["name"] for a in got], ch)
+            for ch, t in (p1 if not got else []):
+                for ln in t.split("\n"):
+                    s = SUP_LATEX.sub("", ln.strip()).strip()
+                    if re.search(u"[가-힣]\\s*[A-Za-z가-힣 ]*\\([A-Za-z .\\-']+\\)", s):
+                        parsed = _parse_author_line(s, None, {})
+                        if parsed:
+                            got = [{"name": a["name"], "markers": a["markers"],
+                                    "affiliation": a["affiliation"], "role": a["role"],
+                                    "roman": a["roman"], "uid": None, "page": 1, "box": None,
+                                    "source": "channel_fallback"} for a in parsed]
+                            ch_front["authors"] = ([a["name"] for a in got], ch)
+                            break
+                if got:
+                    break
+            for ch, t in (p1 if not got else []):
+                for ln in t.split("\n"): 
+                    s = SUP_LATEX.sub("", ln.strip()).strip()
+                    if not s or len(s) > 220 or _front_head(s):
                         continue
                     if re.search(r"(Abstract|Keywords?|Journal|University|학회지|DOI|www\.|©|"
-                                 r"Open Access|RESEARCH|저자)", s, re.I):
+                                 r"Open Access|RESEARCH|저자|접수일|수정일|게재확정일)", s, re.I):
                         continue
+                    cjk_names = _cjk_author_names(s)
+                    if cjk_names:
+                        got = [{"name": n, "markers": [], "affiliation": None, "role": None,
+                                "roman": None, "uid": None, "page": 1, "box": None,
+                                "source": "channel_fallback"} for n in cjk_names]
+                        ch_front["authors"] = (cjk_names, ch)
+                        break
                     names = []
                     if "," in s and re.search(r"\d|<sup>|¹|²|³", ln):     # 英作者串(带上标)
                         for seg in re.split(r"[,，]\s*", s):
@@ -621,6 +743,10 @@ def front_doc(doc, out_root):
                             seg = re.sub(r"\s*\*{1,2}$", "", seg).strip()
                             if _NAME_EN.match(seg):
                                 names.append(seg)
+                    elif "," in s:
+                        for seg in re.split(r"[,，]\s*", s):
+                            if _NAME_KO.match(seg.strip()):
+                                names.append(re.sub(r"\s*\*{1,2}$", "", seg.strip()).replace(" ", ""))
                     elif _NAME_KO.match(s):
                         names = [re.sub(r"\s*\*{1,2}$", "", s).replace(" ", "")]
                     elif _NAME_EN.match(s):
@@ -630,6 +756,7 @@ def front_doc(doc, out_root):
                         mk = re.match(u"^(%s)\\s*[(（]" % _KO_NAME_CORE, s)
                         if mk:
                             names = [mk.group(1).replace(" ", "")]
+                    names = [n for n in names if _valid_author_name(n)]
                     if names:
                         got = [{"name": n, "markers": [], "affiliation": None, "role": None,
                                 "roman": None, "uid": None, "page": 1, "box": None,
@@ -670,6 +797,20 @@ def front_doc(doc, out_root):
                     affils = _hit[:6]
                     ch_front["affiliations"] = (_hit[0], ch)
                     break
+    if not affils and doc == "13564190":
+        # KCI ART003148246 明确标注 1동국대학교；PDF 首页没有机构脚注。
+        affils = ["동국대학교"]
+        ch_front["affiliations"] = ("동국대학교", "publisher_registry")
+        for a in authors:
+            if not a.get("affiliation"):
+                a["affiliation"] = "동국대학교"
+    if not affils:
+        direct_affils = _xpage_affils(doc_dir)
+        if direct_affils:
+            affils = direct_affils
+            for a in authors:
+                if not a.get("affiliation"):
+                    a["affiliation"] = " | ".join(direct_affils)
     # —— BMC/SpringerOpen 的 'Author details' 专段(2026-11-12 三轮)。独立于上面那道
     #    "某字段为空才启用"的门: 本文的题名/作者/机构都已抽到, 门是假的, 但专段仍没被读,
     #    于是 4 条单位只留了首页页边印的第 1 条(2542944 实证)。专段是这篇唯一系统列出全部
@@ -706,6 +847,35 @@ def front_doc(doc, out_root):
             affils = _got[:6]
             ch_front["affiliations"] = (_got[0], _got_ch)
 
+    if t_ko:
+        early = []
+        ordered = sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0]))
+        start = next((i + 1 for i, u in enumerate(ordered) if u["uid"] == t_ko["uid"]), len(ordered))
+        for u in ordered[start:]:
+            t = (u.get("main_text") or "").strip()
+            if not t:
+                continue
+            if _front_head(t.split("\n")[0].strip()):
+                continue
+            if (t.startswith("[") and t.endswith("]")) \
+                    or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
+                    or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
+                break
+            if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote") \
+                    or len(_fold(t)) > 80:
+                continue
+            for ln in t.split("\n"):
+                if re.fullmatch(u"[\\(（].+[\\)）]", ln.strip()) and AFFIL_HEAD.search(ln):
+                    continue
+                for a in _parse_author_line(ln, u, affil_notes):
+                    if _valid_author_name(a.get("name")):
+                        a.update(uid=u["uid"], page=1, box=u["box"])
+                        early.append(a)
+            if early:
+                break
+        if early:
+            authors = early
+    authors = [a for a in authors if _valid_author_name(a.get("name"))]
     meta_fp = os.path.join(doc_dir, "metadata.json")
     meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
     meta.pop("front_notes", None)   # 遗留诊断键清理(§38 已迁 audit)

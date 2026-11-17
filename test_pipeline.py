@@ -522,8 +522,10 @@ class StageRunTest(unittest.TestCase):
                     mock.patch.object(gui.messagebox, "askokcancel", return_value=True) as confirm:
                 app._retry_missing()
             self.assertEqual([c.args[0] for c in submit.call_args_list], ["doc1", "doc4"])
+            self.assertTrue(all("ner" not in c.args[2] for c in submit.call_args_list))
             self.assertIn("dots", confirm.call_args.args[1])
             self.assertIn("MinerU", confirm.call_args.args[1])
+            self.assertIn("不执行 NER", confirm.call_args.args[1])
             app._sync_buttons()
             self.assertEqual(str(app.btn_retry.cget("state")), "normal")
             self.assertEqual(app.btn_retry.cget("text"), "重试全部缺失渠道（2篇）")
@@ -564,6 +566,7 @@ class StageRunTest(unittest.TestCase):
             app.filter_var.set("全部")
             app._apply_view()
             self.assertEqual(app.tree.get_children(), ("doc3",))
+            self.assertEqual(app.count_lbl.cget("text"), "文档 1 / 5 篇")
             app.search_var.set("")
             app._apply_view()
             app.tree.selection_set(app.tree.get_children())
@@ -572,6 +575,32 @@ class StageRunTest(unittest.TestCase):
             self.assertNotIn("doc1", app.sel_lbl.cget("text"))
             app._clear_selection()
             self.assertFalse(app.tree.selection())
+            app.docs["doc1"]["ner"] = True
+            app.filter_var.set("未跑NER")
+            app._apply_view()
+            self.assertEqual(len(app.tree.get_children()), 4)
+            self.assertNotIn("doc1", app.tree.get_children())
+            self.assertIn("ner", app.tree["columns"])
+            self.assertIn("language", app.tree["columns"])
+            app.filter_var.set("全部")
+            app._qc_results["doc1"] = {"language": "中文", "label": "✔", "level": "", "issues": []}
+            app.lang_filter_var.set("中文")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ("doc1",))
+            app.lang_filter_var.set("全部")
+            app.filter_var.set("未通过")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ("doc4",))
+            app._qc_results["doc1"] = {"language": "韩文", "label": "◇ 非正规论文",
+                                        "level": "nonregular", "issues": ["摘要"]}
+            app.filter_var.set("非正规")
+            app._apply_view()
+            self.assertEqual(app.tree.get_children(), ("doc1",))
+            self.assertEqual(str(app.tree.tag_configure("qc_nonregular", "foreground")), "#2563eb")
+            app.filter_var.set("异常")
+            app._apply_view()
+            self.assertNotIn("doc1", app.tree.get_children())
+            app.filter_var.set("全部")
             self.assertIn("web", app.conflict_lbl.cget("text"))
             for i in range(100):
                 app._log("line %d" % i)
@@ -618,7 +647,7 @@ class RunnerStopTest(unittest.TestCase):
         calls = []
         logs = []
 
-        def fake_run(job, log):
+        def fake_run(job, log, out_root=None):
             calls.append(job["doc"])
             started.set()
             gate.wait(3)
@@ -682,6 +711,14 @@ class RunnerStopTest(unittest.TestCase):
             self.assertEqual(str(app.btn_stop.cget("state")), "disabled")
             self.assertIn("channels", app.tree["columns"])
             self.assertIn("timing", app.tree["columns"])
+            self.assertTrue(app.tree_vscroll.winfo_exists())
+            self.assertEqual(str(app.tree.tag_configure("state_complete", "foreground")), "#000000")
+            app.deiconify()
+            app.geometry("800x640")
+            app.update()
+            self.assertTrue(app.tree_vscroll.winfo_ismapped())
+            self.assertLessEqual(app.tree_vscroll.winfo_x() + app.tree_vscroll.winfo_width(),
+                                 app.tree_vscroll.master.winfo_width())
         finally:
             app.destroy()
 
@@ -708,11 +745,232 @@ class QcLanguageTest(unittest.TestCase):
                 self.assertEqual(qc.language_of("paper", str(dd)), expected)
         qc.clear_cache("paper")
 
-    def test_workbench_qc_label_has_language_prefix(self):
+    def test_workbench_qc_label_does_not_mix_language(self):
         import gui
-        self.assertEqual(gui.qc_display({"language": "中文", "label": "✘ 作者"}),
-                         "中文｜✘ 作者")
+        self.assertEqual(gui.qc_display({"language": "中文", "label": "✘ 作者"}), "✘ 作者")
         self.assertEqual(gui.qc_display({"language": "未知", "label": "-"}), "-")
+
+
+class WorkspaceTest(unittest.TestCase):
+    def test_workspace_paths_and_safe_names(self):
+        import workspaces
+        with tempfile.TemporaryDirectory() as tmp:
+            main = workspaces.get_workspace(tmp, "main")
+            lab = workspaces.get_workspace(tmp, "rule-lab").ensure()
+            self.assertEqual(main.out, os.path.join(tmp, "out"))
+            self.assertNotEqual(main.out, lab.out)
+            self.assertNotEqual(main.ner_root, lab.ner_root)
+            self.assertIn("rule-lab", workspaces.list_workspaces(tmp))
+            with self.assertRaises(ValueError):
+                workspaces.get_workspace(tmp, "../bad")
+            custom = workspaces.custom_workspace(os.path.join(tmp, "任意的位置")).ensure()
+            self.assertEqual(custom.uploads, os.path.join(tmp, "任意的位置", "uploads"))
+            self.assertEqual(custom.out, os.path.join(tmp, "任意的位置", "out"))
+            self.assertIn("任意的位置", workspaces.list_workspaces(tmp, {"任意的位置": custom.root}))
+
+    def test_scan_and_switch_are_isolated(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        try:
+            app.withdraw()
+            with tempfile.TemporaryDirectory() as tmp:
+                ws = gui.workspaces.get_workspace(tmp, "rule-lab").ensure()
+                pathlib.Path(ws.uploads, "paper.pdf").write_bytes(b"pdf")
+                docs = gui.scan_docs(ws.uploads, ws.out, ws.ner_root, include_archived=False)
+                self.assertEqual(docs["paper"]["state"], "未跑")
+                self.assertEqual(docs["paper"]["pdf"], os.path.join(ws.uploads, "paper.pdf"))
+                self.assertNotEqual(ws.out, gui.OUT)
+                with mock.patch.object(gui.filedialog, "askdirectory", return_value=ws.root), \
+                        mock.patch.object(gui, "PREFS_FP", os.path.join(tmp, "prefs.json")):
+                    app._new_workspace()
+                self.assertEqual(app.workspace.root, ws.root)
+                self.assertEqual(app.runner.out_root, ws.out)
+        finally:
+            app.destroy()
+
+
+class WorkbenchNoteTest(unittest.TestCase):
+    def test_auto_note_marks_only_missing_evidence_fields(self):
+        import gui
+        self.assertEqual(gui.auto_note({"issues": ["出版年", "卷", "引文句/脚注"]}),
+                         "原文未见年卷期/DOI证据；原文未见文内引文/脚注证据")
+        self.assertEqual(gui.auto_note({"issues": ["作者"]}), "")
+
+    def test_user_note_persists_and_takes_precedence(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        try:
+            app.withdraw()
+            with tempfile.TemporaryDirectory() as tmp, mock.patch.object(
+                    gui, "NOTES_FP", os.path.join(tmp, "notes.json")):
+                app._notes = {}
+                app.workspace.notes = os.path.join(tmp, "notes.json")
+                app.docs = {"doc1": {"pdf": "doc1.pdf", "state": "完成", "done_at": None,
+                                      "miss": [], "ch": {ch: True for ch in gui.CH}}}
+                app._qc_results["doc1"] = {"label": "✘", "level": "bad", "issues": ["出版年"]}
+                app.hist = {}
+                app._save_note("doc1", "人工复核备注")
+                self.assertEqual(gui.load_notes(), {"doc1": "人工复核备注"})
+                app._apply_view()
+                self.assertIn("note", app.tree["columns"])
+                self.assertEqual(app.tree.item("doc1", "values")[8], "人工复核备注")
+                app._save_note("doc1", "")
+                self.assertEqual(app.tree.item("doc1", "values")[8], "")
+        finally:
+            app.destroy()
+
+
+class ExtractionFallbackTest(unittest.TestCase):
+    def test_cjk_author_line_requires_short_name_and_marker(self):
+        from metapy import front
+        self.assertEqual(front._cjk_author_names("李好 $ ^{*} $"), ["李好"])
+        self.assertEqual(front._cjk_author_names("董昕·杨泽宇 $ ^{*} $"), ["董昕", "杨泽宇"])
+        self.assertEqual(front._cjk_author_names("宋代驿壁诗的空间考察"), [])
+
+    def test_invalid_author_metadata_labels_are_rejected(self):
+        from metapy import front
+        self.assertFalse(front._valid_author_name("■ 국문초록"))
+        self.assertFalse(front._valid_author_name("저자: 금재원"))
+        self.assertFalse(front._valid_author_name("출판연도: 2023"))
+        self.assertTrue(front._valid_author_name("김진우"))
+
+    def test_xpage_affiliation_uses_prejoin_tail(self):
+        from metapy import front
+        with tempfile.TemporaryDirectory() as tmp:
+            udir = pathlib.Path(tmp, "unified")
+            udir.mkdir()
+            (udir / "_m3_xpage.json").write_text(json.dumps({"actions": [{
+                "type": "join", "pages": [1, 2],
+                "tail_clean": "• 부산대학교 예술대학 예술문화와영상매체협동과정 박사 수료. (사)하다 대표이사",
+            }]}), encoding="utf-8")
+            self.assertEqual(front._xpage_affils(tmp),
+                             ["부산대학교 예술대학 예술문화와영상매체협동과정", "(사)하다"])
+
+    def test_reference_fallback_accepts_cjk_and_classics_not_prose(self):
+        from metapy import refs
+        self.assertTrue(refs._cjk_ref_entry_like("김상욱. 2012, “중국 지방정부 부채”, 한국문화 32권."))
+        self.assertTrue(refs._cjk_ref_entry_like("書經 禹貢篇."))
+        self.assertTrue(refs._cjk_ref_entry_like("朝鮮總督府. 1932, 平壤府, 京城: 朝鮮總督府."))
+        self.assertFalse(refs._cjk_ref_entry_like("이 연구는 지방정부의 채무 구조를 분석한다."))
+
+    def test_publication_year_comes_only_from_explicit_label(self):
+        from metapy import issue
+        self.assertEqual(issue._publication_year([(0, "u0", "출판연도: 2023")]), 2023)
+        self.assertIsNone(issue._publication_year([(0, "u0", "김진우의 2023년 연구")]))
+
+    def test_chinese_keywords_support_punctuation_and_space_delimiters(self):
+        from metapy import issue
+        self.assertEqual(issue._kw_parse("关键词：驿壁诗，宋代、文学地理学", ["关键词：驿壁诗，宋代、文学地理学"], 0)[1],
+                         ["驿壁诗", "宋代", "文学地理学"])
+        self.assertEqual(issue._kw_parse("關鍵詞：基馬爾道路 民族資本主義 共產國際",
+                                         ["關鍵詞：基馬爾道路 民族資本主義 共產國際"], 0)[1],
+                         ["基馬爾道路", "民族資本主義", "共產國際"])
+
+    def test_authoryear_split_supports_dot_before_year(self):
+        from metapy import refs
+        text = "Hughes-Warrington, Marnie. 2013, Revisionist Histories. Routledge.\nKershaw, Ian. 1993, Working Towards the Führer. CEH."
+        self.assertEqual(len(refs._split_entries_block(text, "authoryear")), 2)
+
+    def test_non_regular_article_requires_no_citation_structure(self):
+        import qc
+        with tempfile.TemporaryDirectory() as tmp:
+            dd = pathlib.Path(tmp, "paper")
+            (dd / "unified").mkdir(parents=True)
+            body = "한국어 본문입니다. " * 100
+            for p in range(2):
+                (dd / "unified" / f"page_{p}.json").write_text(json.dumps({
+                    "unified": [{"type": "Text", "main_text": body}]}), encoding="utf-8")
+            (dd / "unified" / "_unified_summary.json").write_text("{}", encoding="utf-8")
+            (dd / "merged.json").write_text(json.dumps({"page_data": [{
+                "page": 1, "channels": {"mineru": [{"text": body}]}}]}), encoding="utf-8")
+            meta = {"authors": [{"name": "홍길동"}], "references": [],
+                    "footnote_refs": [], "citation_spans": []}
+            self.assertTrue(qc._non_regular_article(str(dd), meta))
+            (dd / "merged.json").write_text(json.dumps({"page_data": [{
+                "page": 1, "channels": {"mineru": [{"text": "참고문헌"}]}}]}), encoding="utf-8")
+            self.assertFalse(qc._non_regular_article(str(dd), meta))
+
+    def test_series_fields_come_only_from_doi(self):
+        from metapy import issue
+        res = {}
+        self.assertTrue(issue._apply_doi_series(
+            res, [(0, "u", "https://doi.org/10.23425/defsec.2025.7.1.364")]))
+        self.assertEqual((res["year"]["value"], res["volume"]["value"], res["issue"]["value"]),
+                         (2025, 7, 1))
+        dates_only = {}
+        self.assertFalse(issue._apply_doi_series(
+            dates_only, [(1, "u", "국방과 보안"), (0, "d", "게재확정일(2024년 12월 23일)")]))
+        self.assertFalse(issue._apply_doi_series(res, [(1, "u", "다른 학술지")]))
+        bjh = {}
+        self.assertTrue(issue._apply_doi_series(bjh, [(0, "u", "https://doi.org/10.33957/BJH.2025.14.4")]))
+        self.assertEqual((bjh["year"]["value"], bjh["volume"]["value"], bjh["issue"]["value"]),
+                         (2025, 14, 4))
+        self.assertNotIn("journal", bjh)
+
+    def test_roman_anchored_korean_name_allows_spaces(self):
+        from metapy import front
+        got = front._parse_author_line("촉니 린포체(Tsaoknyi Rinpoche)*", None, {})
+        self.assertEqual([a["name"] for a in got], ["촉니 린포체"])
+
+    def test_book_review_exemption_requires_all_book_labels(self):
+        import qc
+        with tempfile.TemporaryDirectory() as tmp:
+            udir = pathlib.Path(tmp, "paper", "unified")
+            udir.mkdir(parents=True)
+            blocks = [{"main_text": "저자: 금재원\n출판사: 진인진\n출판연도: 2023\n분량: 368쪽"}]
+            (udir / "page_0.json").write_text(json.dumps({"unified": blocks}), encoding="utf-8")
+            self.assertTrue(qc._book_review(str(udir.parent)))
+            blocks[0]["main_text"] = "저자: 금재원\n출판연도: 2023"
+            (udir / "page_0.json").write_text(json.dumps({"unified": blocks}), encoding="utf-8")
+            self.assertFalse(qc._book_review(str(udir.parent)))
+
+
+class ApiConfigTest(unittest.TestCase):
+    def test_gui_config_saves_to_local_override(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        try:
+            app.withdraw()
+            with tempfile.TemporaryDirectory() as tmp:
+                base = pathlib.Path(tmp, "channels.json")
+                local = pathlib.Path(tmp, "channels.local.json")
+                base.write_text(json.dumps({"paddle_api": {"token": "", "timeout": 900}}), encoding="utf-8")
+                import pipeline
+                import webapp
+                with mock.patch.object(pipeline, "LOCAL_CFG", str(local)), \
+                        mock.patch.object(webapp, "CFG_FP", str(base)), \
+                        mock.patch.object(gui.messagebox, "showinfo"):
+                    window = gui.ApiConfigWindow(app)
+                    window.vars["paddle_api"]["token"].set("secret")
+                    window.vars["paddle_api"]["timeout"].set("60")
+                    window._save()
+                with mock.patch.object(pipeline._io, "CFG_FP", str(base)):
+                    cfg = pipeline.load_cfg(use_env=False)
+                self.assertEqual(cfg["paddle_api"]["token"], "secret")
+                self.assertEqual(cfg["paddle_api"]["timeout"], 60)
+        finally:
+            app.destroy()
 
 
 class DashboardTest(unittest.TestCase):

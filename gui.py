@@ -22,12 +22,14 @@ from tkinter import filedialog, messagebox, scrolledtext, ttk
 import archive
 import qc
 import stages
+import workspaces
 from docid import doc_of
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 UP = os.path.join(ROOT, "uploads")
 OUT = os.path.join(ROOT, "out")
 HIST_FP = os.path.join(ROOT, "gui_runs.jsonl")
+NOTES_FP = os.path.join(ROOT, "gui_notes.json")
 SINGLE_PORT = 8790   # 单实例互斥端口: bind 由内核原子完成, 无文件锁的 check-then-act 竞态窗
 CH = ("mineru", "dots", "paddle")
 CH_ZH = {"mineru": "MinerU", "dots": "dots.ocr", "paddle": "PaddleOCR"}
@@ -42,8 +44,35 @@ QC_OPTIONAL = ("dataset", "funding", "software")   # 实体三类可选, 不参�
 
 
 def qc_display(qr):
-    lang = qr.get("language") or ""
-    return "%s｜%s" % (lang, qr["label"]) if lang and lang != "未知" else qr["label"]
+    return qr["label"]
+
+
+def load_notes(fp=None):
+    fp = fp or NOTES_FP
+    try:
+        with io.open(fp, encoding="utf-8") as fh:
+            data = json.load(fh)
+        return {str(k): str(v) for k, v in data.items() if str(v).strip()} if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def save_notes(notes, fp=None):
+    fp = fp or NOTES_FP
+    tmp = fp + ".tmp"
+    with io.open(tmp, "w", encoding="utf-8") as fh:
+        json.dump(notes, fh, ensure_ascii=False, indent=1, sort_keys=True)
+    os.replace(tmp, fp)
+
+
+def auto_note(qr):
+    issues = set((qr or {}).get("issues") or [])
+    notes = []
+    if issues & {"期刊", "出版年", "卷", "期"}:
+        notes.append("原文未见年卷期/DOI证据")
+    if "引文句/脚注" in issues:
+        notes.append("原文未见文内引文/脚注证据")
+    return "；".join(notes)
 
 
 def fmt_duration(seconds):
@@ -58,15 +87,14 @@ def fmt_duration(seconds):
 
 
 def channel_display(d):
-    short = {"mineru": "M", "dots": "D", "paddle": "P"}
-    return " ".join("%s%s" % (short[c], "✔" if d["ch"][c] else "—") for c in CH)
+    return " ".join("✔" if d["ch"][c] else "—" for c in CH)
 
 
 def timing_display(rec):
     if not rec or ("ocr_s" not in rec and "llm_s" not in rec):
         return "-"
-    return "OCR %s · LLM %s" % (fmt_duration(rec.get("ocr_s", 0)),
-                                fmt_duration(rec.get("llm_s", 0)))
+    return "%s : %s" % (fmt_duration(rec.get("ocr_s", 0)),
+                        fmt_duration(rec.get("llm_s", 0)))
 
 
 def _acquire_instance_sock(attempts=15, wait=0.3):
@@ -123,31 +151,39 @@ def _dir_has_files(d):
         return False
 
 
-def _ch_done(doc, ch):
-    return (_dir_has_files(os.path.join(OUT, doc, "raw", ch + "_api"))
-            or _dir_has_files(os.path.join(OUT, doc, "raw", ch)))
+def _ch_done(doc, ch, out_dir=None):
+    out_dir = out_dir or OUT
+    return (_dir_has_files(os.path.join(out_dir, doc, "raw", ch + "_api"))
+            or _dir_has_files(os.path.join(out_dir, doc, "raw", ch)))
 
 
-def scan_docs():
+def _ner_done(dd, ner_root=None):
+    return os.path.isfile(os.path.join(ner_root or NER_ROOT, "fds_extract", "ner_lite",
+                                      os.path.basename(dd), "ner_lite.json"))
+
+
+def scan_docs(up=None, out_dir=None, ner_root=None, include_archived=True):
     """文件系统派生的文档状态(真值): 未跑/未完成/缺渠道/完成 + 渠道勾选 + 完成时间。
+
 
     已归档的文档不出现在工作台(2026-11-13): 归档把 PDF 与 out/ 都移走了, 但索引是权威凭据,
     所以先按索引过滤一遍——否则手工把产物挪回来、或只归档了 PDF, 就会漏成一条"无PDF"的僵尸行。
     """
+    up, out_dir, ner_root = up or UP, out_dir or OUT, ner_root or NER_ROOT
     try:
-        done_docs = archive.archived_set()
+        done_docs = archive.archived_set() if include_archived else set()
     except ValueError:
         done_docs = set()      # 索引损坏: 宁可多显示几条, 也不能让所有文档凭空消失
     docs = {}
-    for f in sorted(os.listdir(UP)) if os.path.isdir(UP) else []:
+    for f in sorted(os.listdir(up)) if os.path.isdir(up) else []:
         if not f.lower().endswith(".pdf"):
             continue
         doc = doc_of(f)
         if doc in done_docs:
             continue
-        dd = os.path.join(OUT, doc)
+        dd = os.path.join(out_dir, doc)
         idx = os.path.join(dd, "index.html")
-        ch = {c: _ch_done(doc, c) for c in CH}
+        ch = {c: _ch_done(doc, c, out_dir) for c in CH}
         done_at = os.path.getmtime(idx) if os.path.exists(idx) else None
         miss = [c for c in CH if not ch[c]]
         if done_at is None:
@@ -158,30 +194,32 @@ def scan_docs():
             state = "未完成"
         else:
             state = "完成"
-        docs[doc] = {"pdf": os.path.join(UP, f), "state": state, "ch": ch,
-                     "done_at": done_at, "miss": miss}
+        docs[doc] = {"pdf": os.path.join(up, f), "state": state, "ch": ch,
+                     "done_at": done_at, "miss": miss, "ner": _ner_done(dd, ner_root)}
     # out/ 里有产物但 uploads 里 PDF 已没了的(清库残留), 也列出来只读展示
-    if os.path.isdir(OUT):
+    if os.path.isdir(out_dir):
         for d in sorted(os.listdir(OUT)):
             if d in docs or d.startswith("_") or d in done_docs:
                 continue
-            if not os.path.isdir(os.path.join(OUT, d)):
+            if not os.path.isdir(os.path.join(out_dir, d)):
                 continue
-            idx = os.path.join(OUT, d, "index.html")
+            idx = os.path.join(out_dir, d, "index.html")
             if not os.path.exists(idx):
                 continue
             docs[d] = {"pdf": None, "state": "无PDF",
-                       "ch": {c: _ch_done(d, c) for c in CH},
-                       "done_at": os.path.getmtime(idx), "miss": []}
+                       "ch": {c: _ch_done(d, c, out_dir) for c in CH},
+                       "done_at": os.path.getmtime(idx), "miss": [],
+                       "ner": _ner_done(os.path.join(out_dir, d), ner_root)}
     return docs
 
 
-def load_history():
+def load_history(fp=None):
     """gui_runs.jsonl → {doc: [记录...]}(按时间序); 文件损坏时跳过坏行。"""
+    fp = fp or HIST_FP
     hist = {}
-    if not os.path.exists(HIST_FP):
+    if not os.path.exists(fp):
         return hist
-    for ln in io.open(HIST_FP, encoding="utf-8"):
+    for ln in io.open(fp, encoding="utf-8"):
         ln = ln.strip()
         if not ln:
             continue
@@ -218,8 +256,8 @@ def save_prefs(d):
         pass
 
 
-def append_history(rec):
-    with io.open(HIST_FP, "a", encoding="utf-8") as fh:
+def append_history(rec, fp=None):
+    with io.open(fp or HIST_FP, "a", encoding="utf-8") as fh:
         fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
 
@@ -236,8 +274,10 @@ class Runner(object):
     依赖校验; 全链预设等价于原 pipeline.main, 后链子集秒级完成。
     """
 
-    def __init__(self, log, parallel=None):
+    def __init__(self, log, parallel=None, out_root=None, history_fp=None):
         self.log = log
+        self.out_root = out_root or OUT
+        self.history_fp = history_fp or HIST_FP
         self.q = queue.Queue()          # (doc, pdf, ids, clear_tuple, trigger, generation)
         self.running = {}               # doc -> (trigger, started): 并发下"当前在跑"是一个集合
         self.queued = set()             # 运行中+排队中的 doc(去重)
@@ -357,7 +397,7 @@ class Runner(object):
     def _run_one(self, doc, pdf, ids, clear, trigger):
         for ch in clear:
             for sub in (ch, ch + "_api"):
-                d = os.path.join(OUT, doc, "raw", sub)
+                d = os.path.join(self.out_root, doc, "raw", sub)
                 if os.path.isdir(d):
                     shutil.rmtree(d, ignore_errors=True)
             self.log("[重取] %s 渠道 %s 缓存已清" % (doc, ch))
@@ -370,7 +410,8 @@ class Runner(object):
 
         res = {"ok": False, "results": {}, "error": ""}
         try:
-            res = stages.run_one_child({"doc": doc, "ids": list(ids), "pdf": pdf}, log=_hook)
+            res = stages.run_one_child({"doc": doc, "ids": list(ids), "pdf": pdf},
+                                       log=_hook, out_root=self.out_root)
         except Exception as e:   # stages.run_one_child 内部已兜异常; 这里兜它自己(如进程起不来)
             res = {"ok": False, "results": {}, "error": str(e)[:200]}
         ok = bool(res.get("ok"))
@@ -387,9 +428,9 @@ class Runner(object):
                "ocr_s": ocr_s, "llm_s": llm_s, "stage_elapsed": stage_elapsed,
                "stages": {k: ("ok" if v.get("ok") else ("skip" if v.get("skipped") else "fail"))
                           for k, v in (res.get("results") or {}).items()},
-               "channels": {c: _ch_done(doc, c) for c in CH}}
+               "channels": {c: _ch_done(doc, c, self.out_root) for c in CH}}
         with self._hist_lock:
-            append_history(rec)
+            append_history(rec, self.history_fp)
         # 不替用户补跑未勾选的阶段(2026-11-12 用户定: 耦合的地方不要一起重跑)。
         # 元数据/NER 变了而没勾 viewer, 只在日志里提醒一句, 由人决定要不要补一段。
         if "viewer" not in ids and any(i in ids for i in stages.META_IDS + ("ner",)):
@@ -429,6 +470,76 @@ class Runner(object):
         return (", ".join(docs[:3]) + (" …" if len(docs) > 3 else "")) if docs else ""
 
 
+API_CONFIG_SCHEMA = [
+    ("mineru_api", "MinerU 云端 API", [
+        ("token", "Token", "text"), ("model_version", "模型版本", ("pipeline", "vlm", "MinerU-HTML")),
+        ("language", "语言", "text"), ("is_ocr", "启用 OCR（默认关=非OCR）", "bool"),
+        ("enable_formula", "公式识别", "bool"), ("enable_table", "表格识别", "bool"),
+        ("timeout", "超时（秒）", "int"),
+    ]),
+    ("paddle_api", "PaddleOCR 云端 API", [
+        ("token", "Token", "text"), ("model", "模型", "text"),
+        ("base", "API 地址", "text"), ("timeout", "超时（秒）", "int"),
+    ]),
+    ("dots_api", "dots.ocr 云端 API", [
+        ("base", "实例地址", "text"), ("model", "模型", ("dots.mocr", "dots.mocr-svg")),
+        ("prompt", "Prompt 键", "text"), ("timeout", "超时（秒）", "int"),
+    ]),
+]
+
+
+class ApiConfigWindow(tk.Toplevel):
+    def __init__(self, app):
+        tk.Toplevel.__init__(self, app)
+        self.app = app
+        self.title("渠道 API 配置")
+        self.geometry("620x680")
+        self.transient(app)
+        import pipeline
+        cfg = pipeline.load_cfg()
+        self.vars = {}
+        body = ttk.Frame(self, padding=12)
+        body.pack(fill="both", expand=True)
+        for sec, title, fields in API_CONFIG_SCHEMA:
+            self.vars[sec] = {}
+            box = ttk.LabelFrame(body, text=title, padding=8)
+            box.pack(fill="x", pady=6)
+            for row, (key, label, kind) in enumerate(fields):
+                ttk.Label(box, text=label, width=24).grid(row=row, column=0, sticky="w", pady=3)
+                value = (cfg.get(sec) or {}).get(key)
+                if kind == "bool":
+                    var = tk.BooleanVar(value=bool(value))
+                    ttk.Checkbutton(box, variable=var).grid(row=row, column=1, sticky="w")
+                else:
+                    var = tk.StringVar(value="" if value is None else str(value))
+                    if isinstance(kind, tuple):
+                        widget = ttk.Combobox(box, textvariable=var, values=kind, state="readonly", width=28)
+                    else:
+                        widget = ttk.Entry(box, textvariable=var, width=31,
+                                           show="•" if key == "token" else "")
+                    widget.grid(row=row, column=1, sticky="ew", pady=3)
+                self.vars[sec][key] = var
+            box.columnconfigure(1, weight=1)
+        ttk.Label(body, text="保存至 channels.local.json；下一篇新任务生效，正在运行的文档不改变配置。",
+                  foreground="#4b5563", wraplength=570).pack(fill="x", pady=8)
+        actions = ttk.Frame(body)
+        actions.pack(fill="x", pady=8)
+        ttk.Button(actions, text="取消", command=self.destroy).pack(side="right", padx=4)
+        ttk.Button(actions, text="保存", command=self._save).pack(side="right", padx=4)
+
+    def _save(self):
+        updates = {sec: {key: var.get() for key, var in self.vars[sec].items()}
+                   for sec, _title, _fields in API_CONFIG_SCHEMA}
+        try:
+            import webapp
+            webapp._save_cfg(updates)
+        except Exception as e:
+            messagebox.showerror("保存失败", str(e), parent=self)
+            return
+        messagebox.showinfo("渠道 API 配置", "已保存，下一篇新任务生效。", parent=self)
+        self.destroy()
+
+
 class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
@@ -442,7 +553,13 @@ class App(tk.Tk):
         self._qc_thread = None
         self._running_view_key = None
         self._prefs = load_prefs()
-        self.runner = Runner(self._log, parallel=self._prefs.get("parallel"))
+        self._workspace_paths = self._prefs.get("workspace_paths", {})
+        current = self._prefs.get("workspace", "main")
+        self.workspace = workspaces.custom_workspace(self._workspace_paths[current]) \
+            if current in self._workspace_paths else workspaces.get_workspace(ROOT, current)
+        self._notes = load_notes(self.workspace.notes)
+        self.runner = Runner(self._log, parallel=self._prefs.get("parallel"),
+                             out_root=self.workspace.out, history_fp=self.workspace.history)
         self._was_busy = False
         self._webapp_on = False
         self.protocol("WM_DELETE_WINDOW", self._on_close)
@@ -458,15 +575,23 @@ class App(tk.Tk):
     def _build(self):
         top = ttk.Frame(self)
         top.pack(fill="x", padx=10, pady=8)
+        ttk.Label(top, text="工作区").pack(side="left")
+        self.workspace_var = tk.StringVar(value=self.workspace.name)
+        self.workspace_box = ttk.Combobox(top, textvariable=self.workspace_var, width=10,
+                                          state="readonly", values=workspaces.list_workspaces(ROOT, self._workspace_paths))
+        self.workspace_box.pack(side="left", padx=(4, 2))
+        self.workspace_box.bind("<<ComboboxSelected>>", self._on_workspace)
+        ttk.Button(top, text="新建", command=self._new_workspace).pack(side="left", padx=(0, 6))
         ttk.Button(top, text="刷新", command=self.refresh).pack(side="left")
         ttk.Button(top, text="重启", command=self._restart).pack(side="left", padx=6)
-        ttk.Button(top, text="打开 uploads 目录", command=lambda: self._open(UP)).pack(side="left", padx=6)
-        ttk.Button(top, text="打开 out 目录", command=lambda: self._open(OUT)).pack(side="left")
+        ttk.Button(top, text="打开 uploads 目录", command=lambda: self._open(self.workspace.uploads)).pack(side="left", padx=6)
+        ttk.Button(top, text="打开 out 目录", command=lambda: self._open(self.workspace.out)).pack(side="left")
         # 归档清单是全局视图(不依赖选中), 所以入口在顶栏而不是操作条
         ttk.Button(top, text="已归档…", command=self._open_archive_list).pack(side="left", padx=6)
         # 浏览器工作台(拖拽上传 + 三渠道并排调参)也收进这里: 用户只记"打开这个工作台"一个动作,
         # 不必再分辨该双击 start.bat 还是 启动GUI.bat(2026-11-13 入口收口)。
         ttk.Button(top, text="浏览器工作台", command=self._open_webapp).pack(side="left")
+        ttk.Button(top, text="渠道 API 配置", command=self._open_api_config).pack(side="left", padx=(8, 0))
         # 并发数: 这是"同时跑几篇", 不是"一篇跑多快"。调大只影响排队位置, 见 crossproc.py。
         ttk.Label(top, text="并发").pack(side="left", padx=(12, 2))
         self.par_var = tk.StringVar(value=str(self.runner.parallel))
@@ -499,22 +624,42 @@ class App(tk.Tk):
         ttk.Label(viewbar, text="状态").pack(side="left")
         self.filter_var = tk.StringVar(value="全部")
         filter_box = ttk.Combobox(viewbar, textvariable=self.filter_var, width=8, state="readonly",
-                                  values=("全部", "运行中", "异常", "未跑", "完成"))
+                                  values=("全部", "运行中", "异常", "未通过", "非正规", "未跑", "未跑NER", "完成"))
         filter_box.pack(side="left", padx=4)
         filter_box.bind("<<ComboboxSelected>>", lambda _ev: self._apply_view())
-        cols = ("state", "qc", "channels", "timing", "done_at", "runs")
-        self.tree = ttk.Treeview(wrap, columns=cols, show="tree headings", height=12,
+        ttk.Label(viewbar, text="语言").pack(side="left", padx=(8, 0))
+        self.lang_filter_var = tk.StringVar(value="全部")
+        lang_box = ttk.Combobox(viewbar, textvariable=self.lang_filter_var, width=7, state="readonly",
+                                values=("全部", "韩文", "中文", "英文", "混合", "未知"))
+        lang_box.pack(side="left", padx=4)
+        lang_box.bind("<<ComboboxSelected>>", lambda _ev: self._apply_view())
+        self.count_lbl = ttk.Label(viewbar, text="文档 0 篇", foreground="#4b5563")
+        self.count_lbl.pack(side="right", padx=4)
+        selection_box = ttk.Frame(viewbar)
+        selection_box.pack(side="right", padx=8)
+        self.sel_lbl = ttk.Label(selection_box, text="未选中")
+        self.sel_lbl.pack(side="left", padx=(0, 4))
+        self.btn_clear_sel = ttk.Button(selection_box, text="清除选择", command=self._clear_selection)
+        self.btn_clear_sel.pack(side="left")
+        cols = ("state", "qc", "language", "channels", "ner", "timing", "done_at", "runs", "note")
+        table = ttk.Frame(wrap)
+        table.pack(fill="both", expand=True)
+        self.tree = ttk.Treeview(table, columns=cols, show="tree headings", height=12,
                                  selectmode="extended")
         self.tree.heading("#0", text="文档")
-        for c, w, t in (("state", 70, "状态"), ("qc", 214, "质检 · 必抽项"),
-                        ("channels", 92, "渠道(M/D/P)"), ("timing", 178, "时间分析"),
-                        ("done_at", 118, "上次完成"), ("runs", 86, "历史")):
+        for c, w, t in (("state", 64, "状态"), ("qc", 190, "质检 · 必抽项"),
+                        ("language", 58, "语言"),
+                        ("channels", 58, "渠道"), ("ner", 54, "NER"),
+                        ("timing", 104, "时间分析(OCR:LLM)"),
+                        ("done_at", 100, "上次完成"), ("runs", 64, "历史"), ("note", 220, "备注")):
             self.tree.heading(c, text=t)
             self.tree.column(c, width=w, anchor="center")
-        self.tree.column("#0", width=180)
+        self.tree.column("#0", width=150)
         self.tree.column("qc", anchor="w")   # 缺项名要能读, 左对齐; 其余列居中
+        self.tree.column("note", anchor="w")
         self.tree.tag_configure("qc_bad", foreground="#b03030")
-        self.tree.tag_configure("state_complete", foreground="#15803d")
+        self.tree.tag_configure("qc_nonregular", foreground="#2563eb")
+        self.tree.tag_configure("state_complete", foreground="#000000")
         self.tree.tag_configure("state_running", foreground="#1d4ed8")
         self.tree.tag_configure("state_unrun", foreground="#6b7280")
         self.tree.tag_configure("state_warn", foreground="#b45309")
@@ -522,12 +667,19 @@ class App(tk.Tk):
         style.configure("Treeview", rowheight=28)
         style.map("Treeview", background=[("selected", "#dbeafe")],
                   foreground=[("selected", "#111827")])
-        self.tree.pack(side="left", fill="both", expand=True)
-        sb = ttk.Scrollbar(wrap, orient="vertical", command=self.tree.yview)
+        table.rowconfigure(0, weight=1)
+        table.columnconfigure(0, weight=1)
+        self.tree.grid(row=0, column=0, sticky="nsew")
+        sb = ttk.Scrollbar(table, orient="vertical", command=self.tree.yview)
+        self.tree_vscroll = sb
         self.tree.configure(yscrollcommand=sb.set)
-        sb.pack(side="right", fill="y")
+        sb.grid(row=0, column=1, sticky="ns")
+        self._column_base = {"#0": 150, "state": 64, "qc": 190, "language": 58,
+                             "channels": 58, "ner": 54, "timing": 104,
+                             "done_at": 100, "runs": 64, "note": 220}
+        wrap.bind("<Configure>", lambda _ev: self._fit_tree_columns())
         self.tree.bind("<<TreeviewSelect>>", lambda e: self._sync_buttons())
-        self.tree.bind("<Double-1>", lambda e: self._open_viewer())
+        self.tree.bind("<Double-1>", self._on_double_click)
         self.tree.bind("<Button-3>", self._context_menu)
         mid.add(wrap, weight=3)
 
@@ -559,10 +711,6 @@ class App(tk.Tk):
         self.btn_archive = ttk.Button(act, text="归档选中", command=self._archive_selected)
         for b in (self.btn_retry, self.btn_view, self.btn_index, self.btn_archive):
             b.pack(side="left", padx=4)
-        self.sel_lbl = ttk.Label(act, text="未选中")
-        self.sel_lbl.pack(side="left", padx=(12, 4))
-        self.btn_clear_sel = ttk.Button(act, text="清除选择", command=self._clear_selection)
-        self.btn_clear_sel.pack(side="left", padx=4)
         mid.add(act, weight=0)
 
         # 日志
@@ -580,6 +728,42 @@ class App(tk.Tk):
         mid.add(logw, weight=2)
 
         self.after(1000, self._tick_status)
+
+    def _on_workspace(self, _ev=None):
+        name = self.workspace_var.get()
+        if name == self.workspace.name:
+            return
+        if self.runner.is_busy():
+            self.workspace_var.set(self.workspace.name)
+            messagebox.showwarning("任务正在运行", "请等待当前工作区任务完成后再切换。", parent=self)
+            return
+        self.workspace = workspaces.custom_workspace(self._workspace_paths[name]).ensure() \
+            if name in self._workspace_paths else workspaces.get_workspace(ROOT, name).ensure()
+        self.runner.out_root = self.workspace.out
+        self.runner.history_fp = self.workspace.history
+        self._notes = load_notes(self.workspace.notes)
+        self._qc_results = {}
+        self._prefs["workspace"] = name
+        save_prefs(self._prefs)
+        self.refresh()
+        self._log("[工作区] 已切换到 %s" % name)
+
+    def _new_workspace(self):
+        path = filedialog.askdirectory(title="选择工作区文件夹", parent=self, mustexist=True)
+        if not path:
+            return
+        ws = workspaces.custom_workspace(path).ensure()
+        name = ws.name
+        if name == "main" or (name in workspaces.list_workspaces(ROOT)
+                              and name not in self._workspace_paths):
+            name = "workspace-" + str(len(self._workspace_paths) + 1)
+            ws.name = name
+        self._workspace_paths[name] = ws.root
+        self._prefs["workspace_paths"] = self._workspace_paths
+        save_prefs(self._prefs)
+        self.workspace_box.configure(values=workspaces.list_workspaces(ROOT, self._workspace_paths))
+        self.workspace_var.set(name)
+        self._on_workspace()
 
     def _on_parallel(self, _ev=None):
         try:
@@ -622,7 +806,7 @@ class App(tk.Tk):
         m.delete(0, "end")
         docs = self._selected() or ([self.tree.focus()] if self.tree.focus() else [])
         probe = docs[0] if docs else None
-        avail = stages.availability(probe) if probe else {}
+        avail = stages.availability(probe, self.workspace.out) if probe else {}
 
         pre = tk.Menu(m, tearoff=0)
         for name, ids in stages.PRESETS:
@@ -668,8 +852,9 @@ class App(tk.Tk):
 
     # ---------- 数据 ----------
     def refresh(self):
-        self.docs = scan_docs()
-        self.hist = load_history()
+        self.docs = scan_docs(self.workspace.uploads, self.workspace.out,
+                              self.workspace.ner_root, include_archived=self.workspace.is_main)
+        self.hist = load_history(self.workspace.history)
         self._webapp_on = webapp_alive()
         if self._webapp_on:
             self.conflict_lbl.configure(text="警告：检测到 web 服务(8765)同时运行，请勿在两端解析同一篇文档")
@@ -694,6 +879,8 @@ class App(tk.Tk):
     def _row_tag(self, doc, qr=None):
         if qr and qr.get("level") == "bad":
             return "qc_bad"
+        if qr and qr.get("level") == "nonregular":
+            return "qc_nonregular"
         state = self._display_state(doc)
         if state in ("运行中", "排队"):
             return "state_running"
@@ -703,22 +890,37 @@ class App(tk.Tk):
             return "state_unrun"
         return "state_warn"
 
+    def _fit_tree_columns(self):
+        available = max(240, self.tree.master.winfo_width() - self.tree_vscroll.winfo_reqwidth() - 4)
+        ratio = min(1.0, available / float(sum(self._column_base.values())))
+        for col, width in self._column_base.items():
+            self.tree.column(col, width=max(30, int(width * ratio)))
+
     def _apply_view(self):
         sels = set(self.tree.selection())
         self.tree.delete(*self.tree.get_children())
         query = self.search_var.get().strip().lower()
         mode = self.filter_var.get()
+        lang_mode = self.lang_filter_var.get()
         for doc in sorted(self.docs):
             if query and query not in doc.lower():
                 continue
             state = self._display_state(doc)
             qr = self._qc_results.get(doc)
+            if lang_mode != "全部" and (qr or {}).get("language", "未知") != lang_mode:
+                continue
             if mode == "运行中" and state not in ("运行中", "排队"):
                 continue
             if mode == "异常" and not (state in ("失败", "缺渠道", "未完成", "无PDF")
                                        or (qr and qr.get("level") == "bad")):
                 continue
+            if mode == "未通过" and not (qr and qr.get("level") == "bad"):
+                continue
+            if mode == "非正规" and not (qr and qr.get("level") == "nonregular"):
+                continue
             if mode == "未跑" and state != "未跑":
+                continue
+            if mode == "未跑NER" and self.docs[doc].get("ner"):
                 continue
             if mode == "完成" and state != "完成":
                 continue
@@ -730,13 +932,17 @@ class App(tk.Tk):
             self.tree.insert("", "end", iid=doc, text=doc, tags=(self._row_tag(doc, qr),), values=(
                 state,
                 qc_display(qr) if qr else "质检中",
+                "-" if d["state"] == "未跑" else (qr or {}).get("language", "检查中"),
                 channel_display(d),
+                "已跑" if d.get("ner") else "未跑",
                 timing_display(h[-1] if h else None),
                 time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
-                runs))
+                runs,
+                self._notes.get(doc, "")))
         visible = [d for d in sels if self.tree.exists(d)]
         if visible:
             self.tree.selection_set(visible)
+        self.count_lbl.configure(text="文档 %d / %d 篇" % (len(self.tree.get_children()), len(self.docs)))
         self._sync_buttons()
 
     def _start_qc_loader(self):
@@ -753,7 +959,8 @@ class App(tk.Tk):
                 self._qc_queue.put((generation, None, None))
                 return
             state = (self.docs.get(doc) or {}).get("state")
-            qr = qc_of(doc) if state != "未跑" else {"label": "-", "level": "", "issues": []}
+            qr = qc_of(doc, out_dir=self.workspace.out, ner_root=self.workspace.ner_root) \
+                if state != "未跑" else {"label": "-", "level": "", "issues": []}
             self._qc_queue.put((generation, doc, qr))
         self._qc_queue.put((generation, None, None))
 
@@ -774,10 +981,13 @@ class App(tk.Tk):
                 if doc in self.docs and self.tree.exists(doc):
                     values = list(self.tree.item(doc, "values"))
                     values[1] = qc_display(qr)
+                    values[2] = qr.get("language", "未知")
+                    if len(values) >= 9:
+                        values[8] = self._notes.get(doc, "")
                     self.tree.item(doc, values=values, tags=(self._row_tag(doc, qr),))
         except queue.Empty:
             pass
-        if self.filter_var.get() == "异常":
+        if self.filter_var.get() in ("异常", "未通过", "非正规") or self.lang_filter_var.get() != "全部":
             self._apply_view()
         if restart:
             self._start_qc_loader()
@@ -798,7 +1008,7 @@ class App(tk.Tk):
                                  text="重试全部缺失渠道（%d篇）" % retry_count)
         self.btn_view.configure(state="normal" if has else "disabled")
         self.btn_index.configure(state="normal" if has else "disabled")
-        self.btn_archive.configure(state="normal" if has else "disabled")
+        self.btn_archive.configure(state="normal" if has and self.workspace.is_main else "disabled")
         self.btn_clear_sel.configure(state="normal" if has else "disabled")
         self.btn_stop.configure(state="normal" if self.runner.is_busy()
                                 and not self.runner.is_stopping() else "disabled")
@@ -859,18 +1069,59 @@ class App(tk.Tk):
             return
         counts = {c: sum(c in d["miss"] for _doc, d in jobs) for c in CH}
         msg = ("将重试 %d 篇文档的缺失渠道：\n\nMinerU %d 篇 ｜ dots %d 篇 ｜ Paddle %d 篇\n\n"
-               "只清除缺失渠道的 raw 缓存并重新调用 API；已有渠道继续复用。\n确定继续吗？"
+               "只清除缺失渠道的 raw 缓存并重新调用 API；已有渠道继续复用。\n"
+               "本次不执行 NER，不产生该阶段的 LLM 用时。\n确定继续吗？"
                % (len(jobs), counts["mineru"], counts["dots"], counts["paddle"]))
         if not messagebox.askokcancel("确认重试全部缺失渠道", msg, parent=self):
             return
         n = 0
+        ids = [sid for sid in stages.ORDER if sid != "ner"]
         for doc, d in jobs:
-            if self.runner.submit(doc, d["pdf"], stages.ORDER,
+            if self.runner.submit(doc, d["pdf"], ids,
                                   "重试缺失:" + "/".join(d["miss"]), clear=tuple(d["miss"])):
                 n += 1
         if n:
             self._log("[批量] 重试缺失渠道已提交 %d 篇" % n)
 
+
+    def _on_double_click(self, ev):
+        if self.tree.identify_column(ev.x) == "#10":
+            self._edit_note()
+        else:
+            self._open_viewer()
+
+    def _edit_note(self):
+        doc = self.tree.focus() or (self._selected()[0] if self._selected() else None)
+        if not doc:
+            return
+        win = tk.Toplevel(self)
+        win.title("备注 — %s" % doc)
+        win.geometry("560x260")
+        win.transient(self)
+        text = tk.Text(win, wrap="word", font=("Microsoft YaHei", 10))
+        text.pack(fill="both", expand=True, padx=10, pady=(10, 4))
+        text.insert("1.0", self._notes.get(doc, ""))
+        text.focus_set()
+        actions = ttk.Frame(win)
+        actions.pack(fill="x", padx=10, pady=8)
+        ttk.Button(actions, text="取消", command=win.destroy).pack(side="right", padx=4)
+        ttk.Button(actions, text="保存", command=lambda: self._save_note(
+            doc, text.get("1.0", "end-1c"), win)).pack(side="right", padx=4)
+
+    def _save_note(self, doc, value, win=None):
+        value = value.strip()
+        if value:
+            self._notes[doc] = value
+        else:
+            self._notes.pop(doc, None)
+        try:
+            save_notes(self._notes, self.workspace.notes)
+        except Exception as e:
+            messagebox.showerror("备注保存失败", str(e), parent=self)
+            return
+        self._apply_view()
+        if win is not None:
+            win.destroy()
 
     def _context_menu(self, ev):
         iid = self.tree.identify_row(ev.y)
@@ -879,10 +1130,11 @@ class App(tk.Tk):
         if not iid:
             return
         m = tk.Menu(self, tearoff=0)
+        m.add_command(label="编辑备注…", command=self._edit_note)
         m.add_command(label="打开对照查看器", command=self._open_viewer)
-        m.add_command(label="打开结果总览", command=lambda: self._open(os.path.join(OUT, iid, "index.html"))
-                      if os.path.exists(os.path.join(OUT, iid, "index.html")) else None)
-        m.add_command(label="打开产物目录", command=lambda: self._open(os.path.join(OUT, iid)))
+        m.add_command(label="打开结果总览", command=lambda: self._open(os.path.join(self.workspace.out, iid, "index.html"))
+                      if os.path.exists(os.path.join(self.workspace.out, iid, "index.html")) else None)
+        m.add_command(label="打开产物目录", command=lambda: self._open(os.path.join(self.workspace.out, iid)))
         m.add_command(label="归档选中…", command=self._archive_selected)
         m.add_separator()
         m.add_command(label="复制文档 ID", command=lambda: (self.clipboard_clear(),
@@ -903,18 +1155,21 @@ class App(tk.Tk):
         doc = self.tree.focus() or (self._selected()[0] if self._selected() else None)
         if not doc:
             return
-        fp = os.path.join(OUT, doc, "viewer_compare.html")
+        fp = os.path.join(self.workspace.out, doc, "viewer_compare.html")
         if os.path.exists(fp):
             self._open(fp)
 
     def _open_index(self):
         for doc in self._selected():
-            fp = os.path.join(OUT, doc, "index.html")
+            fp = os.path.join(self.workspace.out, doc, "index.html")
             if os.path.exists(fp):
                 self._open(fp)
 
     # ---------- 归档 ----------
     def _archive_selected(self):
+        if not self.workspace.is_main:
+            messagebox.showinfo("实验区不归档", "请先在正式区处理需要归档的论文。", parent=self)
+            return
         """对选中集归档。一次确认, 不逐篇问——但把"含几篇红的"写在确认框里。
 
         红项必须在确认框里说出来: 归档后文档从工作台消失, 缺项只剩归档清单里那一行,
@@ -967,9 +1222,18 @@ class App(tk.Tk):
         self.refresh()
 
     def _open_archive_list(self):
+        if not self.workspace.is_main:
+            messagebox.showinfo("正式区功能", "归档清单只在正式区提供。", parent=self)
+            return
         ArchiveWindow(self)
 
+    def _open_api_config(self):
+        ApiConfigWindow(self)
+
     def _open_webapp(self):
+        if not self.workspace.is_main:
+            messagebox.showinfo("实验区独立运行", "实验区请使用当前 GUI，不共用正式区的 Web 上传服务。", parent=self)
+            return
         """浏览器工作台的唯一入口。已在跑就开浏览器; 没跑就起一个(新控制台窗口)。
 
         两者都会监视 uploads, 同时解析同一篇会写坏产物(13563526 实证), 所以 GUI 有任务在跑时
@@ -1026,6 +1290,10 @@ class App(tk.Tk):
         else:
             import webbrowser
             webbrowser.open("file://" + path)
+
+    def destroy(self):
+        self._qc_generation += 1
+        super().destroy()
 
     # ---------- 日志/状态 ----------
     def _log(self, s):
