@@ -14,6 +14,10 @@ class Workspace(object):
         self.notes = notes
 
     @property
+    def archive(self):
+        return os.path.join(self.root, "archive")
+
+    @property
     def is_main(self):
         return self.name == "main"
 

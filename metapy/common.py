@@ -306,8 +306,12 @@ def _page_col_boundary(j):
     """页栏判定: 内容块左边缘的最大空隙分两栏(>0.15W 且两侧各>=2块)才认双栏,
     否则单栏(返回 None)。防 1632041 单栏变宽行被中心点切分误认双栏(条目顺序被打乱)。"""
     W = j["w"]
+    # 普查口径(2026-11-17 修正): Section-header 一并入样——可靠的栏位锚点。
+    # 旧口径只数 Text/Footnote 且剔 cross_page 块: 双栏页右栏内容全在跨页 tail/节头里时
+    # 样本 <4 误判单栏(13570214 p9 实证: 左右栏混排, 正文混入文献, 漏抽一大部分)。
     xs = sorted(u["box"][0] for u in j["unified"]
-                if u["type"] in CONTENT_TYPES and not u.get("cross_page", {}).get("role")
+                if (u["type"] in CONTENT_TYPES or u["type"] == "Section-header")
+                and not u.get("cross_page", {}).get("role")
                 and not _is_margin(u, W))
     if len(xs) < 4 or xs[-1] - xs[0] <= 0.30 * W:
         return None

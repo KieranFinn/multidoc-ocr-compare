@@ -385,6 +385,7 @@ def main(argv=None):
     try:
         from metapy import (m3_doc, refs_doc, frefs_doc, front_doc,
                             abstract_doc, issue_doc, cspan_doc)
+        _chain_fails = []
         for _name, _fn in ((u"m3", m3_doc), (u"refs", refs_doc), (u"frefs", frefs_doc),
                            (u"front", front_doc), (u"abs", abstract_doc),
                            (u"issue", issue_doc), (u"cspan", cspan_doc)):
@@ -392,6 +393,7 @@ def main(argv=None):
                 _fn(doc, _out_root)
                 log(u"⑥ 元数据 %s 完成" % _name)
             except Exception as e:
+                _chain_fails.append(_name)
                 log(u"⑥ 元数据 %s 失败(不阻断): %s" % (_name, str(e)[:120]))
     except Exception as e:
         log(u"⑥ 元数据链导入失败(不阻断): %s" % str(e)[:120])
@@ -402,12 +404,14 @@ def main(argv=None):
         try:
             import ner_lite as _nl
             _model = _nl.make_model(_llm_cfg)
-            _product, _audit = _nl.run_doc(doc, _model, echo=lambda s: log(u"  ner_lite| %s" % s))
+            _product, _audit = _nl.run_doc(doc, _model,
+                    echo=lambda s: log(u"  ner_lite| %s" % s), out_root=_out_root)
             _nl.write_outputs(doc, _product, _audit)
             log(u"⑥ ner_lite: 提名 %d 准入 %d 记录 %d" % (
                 _audit["counts"]["nominations"], _audit["counts"]["admitted"],
                 _audit["counts"]["records"]))
         except Exception as e:
+            _chain_fails.append(u"ner")
             log(u"⑥ ner_lite 失败(不阻断): %s" % str(e)[:150])
     else:
         log(u"⑥ ner_lite 跳过(ner_lite_auto 关 / KCI_LLM_KEY 缺 / 本次跳 NER)")
@@ -416,7 +420,20 @@ def main(argv=None):
         rebuild_viewer(doc, _out_root)
         log(u"⑥ 终版对照查看器已重建(元数据带+实体面板)")
     except Exception as e:
+        _chain_fails.append(u"viewer")
         log(u"⑥ 终版查看器重建失败(不阻断): %s" % str(e)[:120])
+    if _chain_fails:
+        # 阶段失败汇总落盘(2026-11-17): 失败列表进 metadata, webapp 判 done 时读取——
+        # 有阶段失败不得标 done(此前异常只记日志, index 照写, 旧绿值伪装成功)。
+        try:
+            _mfp = os.path.join(_out_root, doc, "metadata.json")
+            _m = json.load(io.open(_mfp, encoding="utf-8")) if os.path.exists(_mfp) else {}
+            _m["chain_failures"] = _chain_fails
+            io.open(_mfp, "w", encoding="utf-8").write(
+                json.dumps(_m, ensure_ascii=False, indent=1))
+            log(u"⑥ 阶段失败汇总(本条不得标 done): %s" % u",".join(_chain_fails))
+        except Exception:
+            pass
 
     write_index(doc, out, report, cmp_fp, sizes, os.path.basename(a.pdf))
     log("⑤ 完成 ->", out)
