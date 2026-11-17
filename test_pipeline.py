@@ -783,7 +783,11 @@ class WorkspaceTest(unittest.TestCase):
             with tempfile.TemporaryDirectory() as tmp:
                 ws = gui.workspaces.get_workspace(tmp, "rule-lab").ensure()
                 pathlib.Path(ws.uploads, "paper.pdf").write_bytes(b"pdf")
-                docs = gui.scan_docs(ws.uploads, ws.out, ws.ner_root, include_archived=False)
+                # CI 的 clone 里没有 out/ (被忽略), 本地有——两种环境必须走同一条路径。
+                # 正式区 OUT 不存在时, 实验区的扫描不能去读它(2026-11-17 CI 实证:
+                # scan_docs 判空看 out_dir、循环体却读全局 OUT, 本地因 out/ 存在而没暴露)。
+                with mock.patch.object(gui, "OUT", os.path.join(tmp, "no-such-out")):
+                    docs = gui.scan_docs(ws.uploads, ws.out, ws.ner_root, include_archived=False)
                 self.assertEqual(docs["paper"]["state"], "未跑")
                 self.assertEqual(docs["paper"]["pdf"], os.path.join(ws.uploads, "paper.pdf"))
                 self.assertNotEqual(ws.out, gui.OUT)
