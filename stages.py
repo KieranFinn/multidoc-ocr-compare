@@ -184,7 +184,8 @@ def _st_ner(ctx):
     if not (os.environ.get("KCI_ZJLAB_KEY") or os.environ.get("KCI_LLM_KEY")):
         raise RuntimeError("缺 KCI_LLM_KEY / KCI_ZJLAB_KEY")
     model = ner_lite.make_model(cfg)
-    product, audit = ner_lite.run_doc(ctx["doc"], model, echo=ctx["log"])
+    product, audit = ner_lite.run_doc(ctx["doc"], model, echo=ctx["log"],
+                                out_root=ctx["out_root"])
     ner_root = os.path.join(os.path.dirname(os.path.abspath(ctx["out_root"])), "out_llm_trial")
     ner_lite.write_outputs(ctx["doc"], product, audit, dst=ner_root)
     c = audit["counts"]

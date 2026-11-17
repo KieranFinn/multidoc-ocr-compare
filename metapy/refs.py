@@ -39,7 +39,7 @@ def _split_entries_block(t, style):
         # 按条目头行重组
         cur = ""
         for ln in tail0.split("\n"):
-            if AY_HEAD.match(ln) and cur:
+            if (AY_HEAD.match(ln) or DASH_HEAD.match(ln)) and cur:
                 out.append((None, cur.strip()))
                 cur = ln
             else:
@@ -89,7 +89,9 @@ def _entry_like(etext, num):
     无编号条目= looks_cite 或 (有年 且 非简历/注记特征)。"""
     has_y = any(int(m.group(1)) in YEAR_OK for m in YEAR_RE.finditer(etext))
     if num is not None:
-        return has_y or _looks_cite(etext)
+        # 编号条目准入放宽(2026-11-17): +含 URL——"[1] 术语辞典, https://…" 式工具书
+        # 条目无年无刊名词, 但 编号+URL 在文献区内已是强证据(13564462 [1] 实证)。
+        return has_y or _looks_cite(etext) or ("http" in etext)
     if _looks_cite(etext):
         return True
     return has_y and not _BIO_MARK.search(etext)
@@ -1033,8 +1035,44 @@ def selftest():
         n_ok += 1
     else:
         print("FAIL [fnote-num-borrow] %s %s %s %s %s %s" % (_b1, _b2, _b3, _b4, _b5, _b6))
-    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 8))
-    return n_ok == len(SELFTEST) + 8
+    # bullet-square + barenum 体例解析器(2026-11-17, 渠道驱动): 残段丢弃/序号 1 起递增守卫
+    def _bk(t, p=0):
+        return {"p": p, "col": 0, "y": 0,
+                "u": {"uid": "ub", "type": "Text", "box": [0, 0, 100, 100],
+                      "review": False, "confidence": {"level": "high"}},
+                "t": t}
+    _blocks = [_bk("x")]
+    _cl = [(1, "dots", u"satisfaction”, Procedia, 15, pp. 5284-5289, 2011.\n"
+           u"■ Park, H., “Heat Dissipation” Journal, 2021.\n"
+           u"■ Kim, S., “Study” Press, 2020.")]
+    _sq = _bullet_square_entries(_cl, _blocks, {0})
+    _bn = _barenum_entries([(1, "dots", u"1 Lee, M., & An, W., “Improvement” Journal, 2020. "
+                            u"2 Kim, S., “Study” Press, 2021. "
+                            u"3 Gkikas, Z., Life Cycle, 2016.")], _blocks, {0})
+    _bn_bad = _barenum_entries([(1, "dots", u"3 Kim, S., “Study” Press, 2021. "
+                                u"5 Lee, M., “X” Journal, 2020.")], _blocks, {0})
+    if (len(_sq) == 2 and "Park, H." in _sq[0]["text"] and "Kim, S." in _sq[1]["text"]
+            and [e["num"] for e in _bn] == [1, 2, 3] and not _bn_bad):
+        n_ok += 1
+    else:
+        print("FAIL [bullet-barenum-parsers] sq=%d bn=%s bad=%s"
+              % (len(_sq), [e["num"] for e in _bn], bool(_bn_bad)))
+    # 附录表格文献表(2026-11-17, 13567053): 表头  순번/저자/연도/제목 → 逐行条目
+    _tbl = {"uid": "ut", "type": "Table", "box": [0, 0, 100, 100],
+            "review": False, "confidence": {"level": "high"},
+            "main_text": u"<table><tr><td>순번</td><td>저자</td><td>연도</td><td>제목</td></tr>"
+                           u"<tr><td>1</td><td>강진경</td><td>2022</td><td>의사소통 장애 중재</td></tr>"
+                           u"<tr><td>2</td><td>김영규</td><td>2025</td><td>AI 스토리텔링</td></tr></table>"}
+    _tb = _appendix_table_entries({0: {"unified": [_tbl]}}, {0})
+    if (len(_tb) == 2 and _tb[0]["num"] == 1 and "2022" in _tb[0]["text"]
+            and _tb[1]["num"] == 2 and _appendix_table_entries({0: {"unified": [
+                dict(_tbl, main_text=u"<table><tr><td>a</td><td>b</td></tr></table>")]}}, {0}) == []):
+        n_ok += 1
+    else:
+        print("FAIL [appendix-table] %s" % (len(_tb),))
+    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 10))
+    print("selftest: %d/%d PASS" % (n_ok, len(SELFTEST) + 10))
+    return n_ok == len(SELFTEST) + 9
 
 
 def _split_authors(auth, corp=False, latcorp=False):
@@ -1486,6 +1524,200 @@ def guards_for_doc(doc_dir):
             "coverage": _coverage_guard(m, pdata, pages)}
 
 
+def _chan_anchor(blocks, p, key):
+    """渠道行 → unified 块锚(短横线兜底同款): 按折叠前缀找同页块, 找不到取首块。"""
+    cands = [b for b in blocks if b["p"] == p - 1]
+    return next((b for b in cands if key[:30] in _fold(b["t"])),
+                cands[0] if cands else None)
+
+
+# 同作者续行头(2026-11-17, 13563541 实证): "______, 「次条」" 是独立条目, 无年份, AY_HEAD 认不出它。
+DASH_HEAD = re.compile(r"^\s*(?:_{2,}|\uff3f{2,}|\u2014{2,}|\u2015{2,}|\u2013{2,})\s*[,，]?\s*[*\u300c\u300e\u201c\u2018A-Za-z\uac00-\ud7a3]\u300e\u201c\u2018]")
+
+
+def _blocks_to_entries(blocks):
+    """块列表 → 准入条目(主路 L2 全逻辑: 块级风格切分→作者簇再切→跨块缝合→准入)。
+    抽出共用: 主路 / 前导节头页回退 / 自检。blocks 元素形如
+    {"p","col","u","t"}; 返回条目 dict 列表(可能为空)。"""
+    out = []
+    for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
+        bstyle = "bracketed" if re.search(r"(?m)^\s*\[\s*\d{1,3}\s*\]", b["t"]) else (
+            "numbered" if re.search(r"(?m)^\s*\d{1,3}\s*[.、]\s", b["t"]) else "authoryear")
+        pieces = _split_entries_block(b["t"], bstyle)
+        glued = None
+        if bstyle in ("numbered", "authoryear") and len(_fold(b["t"])) >= 200:
+            g = _split_glued(b["t"])
+            if g and len(g) > len(pieces):
+                glued = g   # 批次2: 作者簇再切分仅在'锚数>已有段数'时启用
+        for num, etext in ([(None, s) for s in glued] if glued else pieces):
+            if len(_fold(etext)) < ENTRY_MIN_LEN:
+                continue
+            out.append({"num": num, "text": etext, "page": b["p"] + 1, "col": b["col"],
+                        "box": b["u"]["box"], "uid": b["u"]["uid"],
+                        "block_review": b["u"]["review"],
+                        "block_level": b["u"]["confidence"]["level"]})
+    # 跨块缝合(条目尾无终止标点且下一条非新头)
+    merged = []
+    for e in out:
+        if merged:
+            prev = merged[-1]
+            prev_open = not _complete(prev["text"])
+            new_head = (e["num"] is not None or (e["num"] is None and
+                                                (AY_HEAD.match(e["text"]) or DASH_HEAD.match(e["text"]))))
+            if prev_open and not new_head:
+                prev["text"] += " " + e["text"].strip()
+                continue
+        merged.append(dict(e))
+    # 准入(与主路原逻辑逐字一致): _entry_like + 无编号条目须 AY_HEAD 头 + 引号/来源线索
+    out = []
+    for e in merged:
+        if not _entry_like(e["text"], e["num"]):
+            continue
+        if e["num"] is None:
+            if not AY_HEAD.match(e["text"]):
+                continue
+            if not (QUOTE_TITLE.search(e["text"]) or ITALIC_TITLE.search(e["text"])
+                    or re.search(r"pp?\.\s?\d|학\s*회|회\s*지|제\s*\d+\s*[권호]|출판사|University|Press|"
+                                 r"Journal|학술|Inc\.|Book|[A-Za-z]{4,}", e["text"])):
+                continue
+        out.append(e)
+    return out
+
+
+def _collect_region_blocks(pdata, pages, doc_heads, skip_types=("Section-header",)):
+    """页集合 → 条目块列表(主路收集逻辑的页级复用; 默认剔节头块)。"""
+    out = []
+    for p in pages:
+        j = pdata[p]
+        for u in j["unified"]:
+            if u.get("cross_page", {}).get("role") == "head":
+                continue
+            if u["type"] not in CONTENT_TYPES or u["type"] in skip_types:
+                continue
+            t = (u.get("main_text") or "").strip()
+            if not t:
+                continue
+            t, _ = _clean_lines(t, (), doc_heads)
+            if not t or _is_running(t, doc_heads):
+                continue
+            out.append({"p": p, "col": 0, "y": u["box"][1], "uid": u["uid"], "u": u, "t": t})
+    return out
+
+
+def _appendix_table_entries(pdata, ref_pages):
+    """附录表格型文献表(2026-11-17, 13567053 实证): 부록 '분석 대상 문헌' 四列表
+    (순번/저자/연도/제목) → 条目。表头行同时含 저자/연도/제목 才认, 行缺列/缺年跳过;
+    合成 '作者. 年. “题”.' 走常规字段抽取。仅既有准入为 0 时由 refs_doc 调用。"""
+    out = []
+    for p in sorted(ref_pages):
+        for u in pdata[p]["unified"]:
+            if u.get("type") != "Table":
+                continue
+            t = u.get("main_text") or ""
+            if "<table" not in t:
+                continue
+            rows = re.findall(r"<tr>(.*?)</tr>", t, re.S)
+            cells = [[re.sub(r"<[^>]+>", "", c).strip()
+                      for c in re.findall(r"<td[^>]*>(.*?)</td>", r, re.S)] for r in rows]
+            cells = [c for c in cells if any(c)]
+            if len(cells) < 2:
+                continue
+            head = " ".join(cells[0])
+            if not (u"저자" in head and u"연도" in head and u"제목" in head):
+                continue
+            for r in cells[1:]:
+                if len(r) < 4:
+                    continue
+                num, author, year, title = r[0], r[1], r[2], r[3]
+                ym = re.search(r"(?:19|20)\d{2}", year)
+                if not ym or not author.strip() or not title.strip():
+                    continue
+                text = u"%s. %s. “%s”." % (author.strip(), ym.group(0), title.strip())
+                out.append({"num": int(num) if num.strip().isdigit() else None,
+                            "text": text, "page": p + 1, "col": 0,
+                            "box": u["box"], "uid": u["uid"],
+                            "block_review": u["review"],
+                            "block_level": u["confidence"]["level"]})
+            if out:
+                return out
+    return out
+
+
+def _bullet_square_entries(ch_lines, blocks, ref_pages):
+    """■ 项目符号文献体例(2026-11-17 测量: 20 篇, 공학/국방계열)。
+    渠道行驱动: ■ 在 unified 侧常被 m3 跨页拼接拆散(role=head 块被跳过),
+    三渠道原文行保留完整。页文本按 ■ 切, 首段(上条续尾)丢弃; 准入沿用无编号
+    口径 _entry_like; 三渠道按折叠 gdice 去重。只在既有准入为 0 时调用。"""
+    out, seen = [], []
+    for p, _ch, text in ch_lines:
+        if p - 1 not in ref_pages or "■" not in (text or ""):
+            continue
+        parts = (text or "").split("■")
+        for s in parts[1:]:
+            s = " ".join(s.split())
+            if len(_fold(s)) < ENTRY_MIN_LEN or re.match(r"^[a-z]", s):
+                continue
+            # 准入: 无编号口径; 或 URL+合法年(13569378 实证: '■ Artificial Intelligence
+            # and International Security, https://…, 2025, 2, 18' 式网络文献,■ 标本身就是强信号)
+            if not (_entry_like(s, None)
+                    or ("http" in s and any(int(m.group(1)) in YEAR_OK
+                                            for m in YEAR_RE.finditer(s)))):
+                continue
+            normalized = "".join(c for c in unicodedata.normalize("NFKD", s)
+                                 if not unicodedata.combining(c))
+            key = re.sub(r"[\W_]+", "", normalized, flags=re.UNICODE).lower()
+            if not key or any(_gdice(key, old) >= 0.90 for old in seen):
+                continue
+            seen.append(key)
+            anchor = _chan_anchor(blocks, p, key)
+            if anchor:
+                out.append({"num": None, "text": s, "page": p, "col": anchor["col"],
+                            "box": anchor["u"]["box"], "uid": anchor["u"]["uid"],
+                            "block_review": anchor["u"]["review"],
+                            "block_level": anchor["u"]["confidence"]["level"]})
+    return out
+
+
+def _barenum_entries(ch_lines, blocks, ref_pages):
+    """裸编号文献体例(2026-11-17 测量: 14 篇): 渠道行驱动, "N 名字"(无点/顿号)切条目。
+    序号守卫: 首条必须 1 且严格递增——"Vol. 7 No. 1" 式卷期数字不成 1,2,3 序列自然出局;
+    编号间文本(含换行)整条并入; 1 之前的残段丢弃; 三渠道折叠 gdice 去重。
+    只在既有准入为 0 时调用。"""
+    _MARK = re.compile(r"(?<![\d.])(\d{1,3})\s+(?=[A-Z가-힣])")
+    out, seen = [], []
+    for p, _ch, text in ch_lines:
+        if p - 1 not in ref_pages:
+            continue
+        marks = list(_MARK.finditer(text or ""))
+        expected, kept = 1, []
+        for k, mm in enumerate(marks):
+            n = int(mm.group(1))
+            if n != expected:
+                continue
+            end = marks[k + 1].start() if k + 1 < len(marks) else len(text)
+            seg = " ".join((text or "")[mm.start():end].split())
+            if len(_fold(seg)) >= ENTRY_MIN_LEN:
+                kept.append(seg)
+            expected = n + 1
+        for s in kept:
+            if not _entry_like(s, int(s.split(None, 1)[0])):
+                continue
+            normalized = "".join(c for c in unicodedata.normalize("NFKD", s)
+                                 if not unicodedata.combining(c))
+            key = re.sub(r"[\W_]+", "", normalized, flags=re.UNICODE).lower()
+            if not key or any(_gdice(key, old) >= 0.90 for old in seen):
+                continue
+            seen.append(key)
+            anchor = _chan_anchor(blocks, p, key)
+            if anchor:
+                out.append({"num": int(s.split(None, 1)[0]), "text": s, "page": p,
+                            "col": anchor["col"], "box": anchor["u"]["box"],
+                            "uid": anchor["u"]["uid"],
+                            "block_review": anchor["u"]["review"],
+                            "block_level": anchor["u"]["confidence"]["level"]})
+    return out
+
+
 def refs_doc(doc, out_root):
     """单篇①: 文献区定位(页级 in_ref + 条目模式过滤) → 条目切分(跨块缝合) → 字段抽取 → 校验。
     产出 out 中文档目录下 metadata.json 的 references 段 + 校验摘要。"""
@@ -1565,49 +1797,27 @@ def refs_doc(doc, out_root):
                            "uid": u["uid"], "u": u, "t": t})
     style = _detect_style([b["u"] for b in blocks])
     # —— L2: 块→条目(保持页/栏/纵序); 块级风格(bracketed>numbered>authoryear)防跨流污染 ——
-    entries = []
-    for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):  # 栏内按底边(M3跨页块并集框顶会跨页)
-        bstyle = "bracketed" if re.search(r"(?m)^\s*\[\s*\d{1,3}\s*\]", b["t"]) else (
-            "numbered" if re.search(r"(?m)^\s*\d{1,3}\s*[.、]\s", b["t"]) else "authoryear")
-        pieces = _split_entries_block(b["t"], bstyle)
-        glued = None
-        if bstyle in ("numbered", "authoryear") and len(_fold(b["t"])) >= 200:
-            g = _split_glued(b["t"])
-            if g and len(g) > len(pieces):
-                glued = g   # 批次2: 作者簇再切分仅在'锚数>已有段数'时启用(u12_14 13锚 vs 12段实证)
-        for num, etext in ([(None, s) for s in glued] if glued else pieces):
-            if len(_fold(etext)) < ENTRY_MIN_LEN:
-                continue
-            # 过滤在缝合后统一做(无头段可能是上一条的跨块续尾, 先给缝合机会)
-            entries.append({"num": num, "text": etext, "page": b["p"] + 1, "col": b["col"],
-                            "box": b["u"]["box"], "uid": b["uid"],
-                            "block_review": b["u"]["review"],
-                            "block_level": b["u"]["confidence"]["level"]})
-    # —— L2: 跨块缝合(条目尾无终止标点且下一条非新头) ——
-    merged = []
-    for e in entries:
-        if merged:
-            prev = merged[-1]
-            prev_open = not _complete(prev["text"])
-            new_head = e["num"] is not None or (e["num"] is None and
-                                                AY_HEAD.match(e["text"]))
-            if prev_open and not new_head:
-                prev["text"] += " " + e["text"].strip()
-                continue
-        merged.append(dict(e))
-    entries = []
-    for e in merged:
-        if not _entry_like(e["text"], e["num"]):
-            continue
-        if e["num"] is None:
-            # 无编号条目: 作者-年头起 + 带 引号/斜体题名/来源线索 之一(防正文句含年份混入)
-            if not AY_HEAD.match(e["text"]):
-                continue
-            if not (QUOTE_TITLE.search(e["text"]) or ITALIC_TITLE.search(e["text"])
-                    or re.search(r"pp?\.\s?\d|학\s*회|회\s*지|제\s*\d+\s*[권호]|출판사|University|Press|"
-                                 r"Journal|학술|Inc\.|Book|[A-Za-z]{4,}", e["text"])):
-                continue
-        entries.append(e)
+    #    2026-11-17 收敛: 切分/缝合/准入全逻辑抽至 _blocks_to_entries, 主路与各兜底共用。——
+    entries = _blocks_to_entries(blocks)
+    # —— 前导节头页回退(2026-11-17, 13567053 实证: p17 '<참고문헌>' 正规文献区未被标 in_ref,
+    #    refs 只收 in_ref 页 → 正规文献区整体失明, 只有附录表进候选)。A4 全量回退未拍板,
+    #    此处仅在条目仍为 0 时收 in_ref 起点前 1-2 页的节头页跑同一套准入。——
+    if not entries and ref_pages:
+        # 找 in_ref 起点前最近的有 REF_HEAD 节头的页(至多回溯 3 页), 收
+        # [节头页, in_ref 起点) 的**连续整段**——文献常跨页, 续页无节头但属于同一文献区
+        # (13567053 实证: p17 节头+p18 英文续页; 只收节头页会漏续页且把跨页条目截残)。
+        _p0 = min(ref_pages)
+        _head = None
+        for _p in range(_p0 - 1, max(-1, _p0 - 4), -1):
+            if any(u["type"] == "Section-header"
+                   and regress.REF_HEAD.search(((u.get("main_text") or "").splitlines() or [""])[0])
+                   for u in pdata[_p]["unified"]):
+                _head = _p
+                break
+        if _head is not None:
+            entries = _blocks_to_entries(
+                _collect_region_blocks(pdata, list(range(_head, _p0)), doc_heads))
+
     # —— 拉丁/SpringerOpen 参考文献体例(2026-11-12 全覆盖) ——
     # 条目形如 "Lee CB. Coloured flora ... 2003b." / "Hattori T. ... 1992;42(3):215-30."
     # AY_HEAD 只认 "(YYYY)" / ", YYYY" 型作者-年头, 这套"姓 + 缩写 + 句点 + 年份在尾部"
@@ -1643,10 +1853,21 @@ def refs_doc(doc, out_root):
                                 "box": b["u"]["box"], "uid": b["uid"],
                                 "block_review": b["u"]["review"],
                                 "block_level": b["u"]["confidence"]["level"]})
+    # —— ■ 项目符号 / 裸编号 两种体例(2026-11-17 测量: 20+14 篇, 守卫见两函数 docstring):
+    #    仅在以上全部准入仍为 0 时启用, 与 Latin/CJK 兜底同一"只填空"先例。——
+    bullet_streams = list(channel_lines(doc_dir))
+    # 启用口径与短横线兜底同款(refs.py:1785 先例): 候选**严格更多**才替换, 否则不动。
+    _bn_entries = _barenum_entries(bullet_streams, blocks, ref_pages)
+    if len(_bn_entries) > len(entries):
+        entries = _bn_entries
+    _sq_entries = _bullet_square_entries(bullet_streams, blocks, ref_pages)
+    if len(_sq_entries) > len(entries):
+        entries = _sq_entries
+    if not entries:
+        entries = _appendix_table_entries(pdata, ref_pages)
     # 短横线项目符号文献: unified 漏块时从三渠道原始行补齐；仅在候选更多时替换。
     bullet_entries = []
     seen_bullets = []
-    bullet_streams = list(channel_lines(doc_dir))
     has_dots_bullets = any(ch == "dots" and re.search(r"(?m)^\s*[-–—]\s+", t or "")
                            for _p, ch, t in bullet_streams)
     for p, _ch, text in bullet_streams:

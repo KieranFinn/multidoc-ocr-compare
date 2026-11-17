@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import io
 import json
 import os
 import pathlib
@@ -602,6 +603,13 @@ class StageRunTest(unittest.TestCase):
             self.assertNotIn("doc1", app.tree.get_children())
             app.filter_var.set("全部")
             self.assertIn("web", app.conflict_lbl.cget("text"))
+            app.filter_var.set("未跑NER")
+            app._apply_view()
+            with mock.patch.object(app.tree, "identify_row",
+                                   side_effect=lambda y: {1: "doc2", 2: "doc4"}.get(y, "")):
+                app._remember_selection_anchor(mock.Mock(y=1))
+                app._select_shift_range(mock.Mock(y=2))
+            self.assertEqual(set(app.tree.selection()), {"doc2", "doc3", "doc4"})
             for i in range(100):
                 app._log("line %d" % i)
             app._drain()
@@ -719,8 +727,81 @@ class RunnerStopTest(unittest.TestCase):
             self.assertTrue(app.tree_vscroll.winfo_ismapped())
             self.assertLessEqual(app.tree_vscroll.winfo_x() + app.tree_vscroll.winfo_width(),
                                  app.tree_vscroll.master.winfo_width())
+            self.assertTrue(app.par_box.winfo_ismapped())
+            self.assertLessEqual(app.par_box.winfo_x() + app.par_box.winfo_width(),
+                                 app.par_box.master.winfo_width())
         finally:
             app.destroy()
+
+
+class GuiRestartTest(unittest.TestCase):
+    """一键重启必须只留一个 GUI: 旧进程真正退出, 端口/名额交接给新进程。"""
+
+    def _fake_app(self):
+        import gui
+        app = mock.Mock()
+        app._restarting = False
+        app._instance_sock = mock.Mock()
+        app._runners = {}
+        return app
+
+    def test_restart_stops_tasks_frees_port_and_exits_old_process(self):
+        import gui
+        app = self._fake_app()
+        runner = mock.Mock()
+        app._runners = {"w": runner}
+        kids = [mock.Mock(pid=111), mock.Mock(pid=222)]
+
+        app._terminate_children = mock.Mock(return_value=[111, 222])
+        app._free_own_slots = mock.Mock(return_value=2)
+        old_sock = app._instance_sock
+        with mock.patch.object(gui.messagebox, "askyesno", return_value=True), \
+                mock.patch("subprocess.Popen") as popen, \
+                mock.patch.object(gui.os, "_exit") as exit_:
+            # after 立即执行回调, 模拟 200ms 后硬退出
+            app.after.side_effect = lambda delay, fn, *a: fn(*a)
+            gui.App._restart(app)
+
+        runner.stop_after_current.assert_called_once_with()
+        app._terminate_children.assert_called_once_with()
+        app._free_own_slots.assert_called_once_with([111, 222])
+        old_sock.close.assert_called_once_with()
+        self.assertIsNone(app._instance_sock)
+        popen.assert_called_once()
+        exit_.assert_called_once_with(0)
+
+    def test_double_click_restart_spawns_only_one_process(self):
+        import gui
+        app = self._fake_app()
+        app._terminate_children = mock.Mock(return_value=[])
+        app._free_own_slots = mock.Mock(return_value=0)
+        with mock.patch.object(gui.messagebox, "askyesno", return_value=True), \
+                mock.patch("subprocess.Popen") as popen, \
+                mock.patch.object(gui.os, "_exit"):
+            app.after.side_effect = lambda delay, fn, *a: None   # 不真退, 才能点第二次
+            gui.App._restart(app)
+            gui.App._restart(app)
+
+        popen.assert_called_once()
+        self.assertTrue(app._restarting)
+
+    def test_free_own_slots_keeps_other_process_slots(self):
+        import gui
+        with tempfile.TemporaryDirectory() as tmp:
+            import crossproc
+            d = os.path.join(tmp, "ocr_api")
+            os.makedirs(d)
+            mine = os.path.join(d, "slot_0")
+            other = os.path.join(d, "slot_1")
+            with io.open(mine, "w", encoding="utf-8") as fh:
+                fh.write("%d uuid 0" % os.getpid())
+            with io.open(other, "w", encoding="utf-8") as fh:
+                fh.write("999999 uuid 0")
+            with mock.patch.object(crossproc, "LOCK_ROOT", tmp):
+                n = gui.App._free_own_slots([44444])
+                self.assertEqual(n, 1)
+                self.assertFalse(os.path.exists(mine))
+                self.assertTrue(os.path.exists(other))
 
 
 class QcLanguageTest(unittest.TestCase):
@@ -797,6 +878,115 @@ class WorkspaceTest(unittest.TestCase):
                 self.assertEqual(app.workspace.root, ws.root)
                 self.assertEqual(app.runner.out_root, ws.out)
         finally:
+            app.destroy()
+
+
+    def test_archive_columns_fit_window(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        try:
+            app.withdraw()
+            app.deiconify()
+            win = gui.ArchiveWindow(app)
+            win.geometry("900x540")
+            win.update()
+            win._fit_columns()
+            base = win._archive_column_base
+            self.assertLessEqual(sum(win.tree.column(c, "width") for c in base),
+                                 win.tree.master.winfo_width())
+            win.destroy()
+        finally:
+            app.destroy()
+
+    def test_workspace_archive_retains_note_and_restores_files(self):
+        import archive
+        with tempfile.TemporaryDirectory() as tmp:
+            import gui
+            ws = gui.workspaces.custom_workspace(os.path.join(tmp, "lab")).ensure()
+            pathlib.Path(ws.uploads, "paper.pdf").write_bytes(b"pdf")
+            out = pathlib.Path(ws.out, "paper")
+            out.mkdir()
+            pathlib.Path(out, "metadata.json").write_text(json.dumps({"title": "测试"}), encoding="utf-8")
+            result = archive.archive_docs(["paper"], out_root=ws.out, up_root=ws.uploads,
+                                           arch_root=ws.archive, meta_note={"paper": "规则回测备注"})
+            self.assertEqual(result["ok"], ["paper"])
+            self.assertEqual(archive.item_of("paper", ws.archive)["note"], "规则回测备注")
+            ok, _msg = archive.restore_doc("paper", out_root=ws.out, up_root=ws.uploads,
+                                            arch_root=ws.archive)
+            self.assertTrue(ok)
+            self.assertTrue(pathlib.Path(ws.uploads, "paper.pdf").is_file())
+            self.assertTrue(out.is_dir())
+
+    def test_background_jobs_keep_submission_workspace(self):
+        import gui
+        calls = []
+        gate = threading.Event()
+        gate.set()
+        logs = []
+
+        def fake_run(job, log, out_root=None):
+            calls.append((job["doc"], out_root))
+            gate.wait(1)
+            return {"ok": True, "results": {}, "error": ""}
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(gui.stages, "run_one_child", side_effect=fake_run), \
+                mock.patch.object(gui, "append_history"):
+            runner = gui.Runner(logs.append, parallel=2, out_root=os.path.join(tmp, "main"),
+                                history_fp=os.path.join(tmp, "main.jsonl"))
+            runner.submit("one", "one.pdf", ["index"])
+            runner.out_root = os.path.join(tmp, "lab")
+            runner.history_fp = os.path.join(tmp, "lab.jsonl")
+            runner.submit("two", "two.pdf", ["index"])
+            deadline = time.time() + 5
+            while len(calls) < 2 and time.time() < deadline:
+                time.sleep(0.05)
+            self.assertEqual(calls, [("one", os.path.join(tmp, "main")),
+                                     ("two", os.path.join(tmp, "lab"))])
+
+
+    def test_runners_and_logs_are_independent(self):
+        try:
+            import gui
+        except ImportError as exc:
+            self.skipTest("tkinter unavailable: %s" % exc)
+        import tkinter
+        try:
+            app = gui.App()
+        except tkinter.TclError as exc:
+            self.skipTest("no display for Tk: %s" % exc)
+        gate = threading.Event()
+        try:
+            app.withdraw()
+            with tempfile.TemporaryDirectory() as tmp:
+                one = gui.workspaces.custom_workspace(os.path.join(tmp, "one")).ensure()
+                two = gui.workspaces.custom_workspace(os.path.join(tmp, "two")).ensure()
+                r1, r2 = app._runner_for(one), app._runner_for(two)
+                self.assertIsNot(r1, r2)
+                def fake_run(job, log, out_root=None):
+                    gate.wait(2)
+                    return {"ok": True, "results": {}, "error": ""}
+                with mock.patch.object(gui.stages, "run_one_child", side_effect=fake_run), \
+                        mock.patch.object(gui, "append_history"):
+                    self.assertTrue(r1.submit("same", "one.pdf", ["index"]))
+                    self.assertTrue(r2.submit("same", "two.pdf", ["index"]))
+                app._log("one-log", workspace_root=one.root)
+                app._log("two-log", workspace_root=two.root)
+                app._drain()
+                app.workspace = two
+                app.runner = r2
+                app._restore_log_view()
+                self.assertIn("two-log", app.logtxt.get("1.0", "end"))
+                self.assertNotIn("one-log", app.logtxt.get("1.0", "end"))
+        finally:
+            gate.set()
             app.destroy()
 
 

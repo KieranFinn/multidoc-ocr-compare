@@ -272,9 +272,23 @@ def run_pipeline(job, pdf_path):
                 pipeline.main(argv)
                 idx = os.path.join(OUT, doc, "index.html")   # 只认本次跑出来的 index: 上一轮残留的旧文件不能算成功
                 ok = os.path.exists(idx) and os.path.getmtime(idx) >= t0 - 2
+                fails = []
+                if ok:
+                    try:
+                        fails = (json.load(io.open(os.path.join(OUT, doc, "metadata.json"),
+                                                   encoding="utf-8")).get("chain_failures")) or []
+                    except Exception:
+                        fails = []
                 with JOB_LOCK:
-                    JOBS[job]["state"] = ("degraded" if JOBS[job]["warnings"] else "done") if ok else "error"
-                    JOBS[job]["stage"] = "已完成" if ok else "未生成本次总览"
+                    if not ok:
+                        JOBS[job]["state"] = "error"
+                        JOBS[job]["stage"] = "未生成本次总览"
+                    elif fails:
+                        JOBS[job]["state"] = "degraded"
+                        JOBS[job]["stage"] = "阶段失败: " + ",".join(fails)
+                    else:
+                        JOBS[job]["state"] = "degraded" if JOBS[job]["warnings"] else "done"
+                        JOBS[job]["stage"] = "已完成"
                     JOBS[job]["finished_at"] = time.time()
             except Exception as e:
                 with JOB_LOCK:
@@ -300,31 +314,41 @@ def run_pipeline(job, pdf_path):
 
 PAGE = u"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <title>三渠道解析对比工作台</title>
-<style>
-body{font-family:"Microsoft YaHei";margin:0;background:#f4f5f7;color:#222}
+<style>body{font-family:"Microsoft YaHei";margin:0;background:#f4f5f7;color:#222}
 header{background:#1f2937;color:#fff;padding:14px 22px}
-header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12px}
+header b{font-size:17px}
+header span{color:#9ca3af;font-size:12px;margin-left:12px}
 .wrap{max-width:1180px;margin:24px auto;padding:0 16px}
 #drop{border:2px dashed #93c5fd;border-radius:12px;background:#fff;padding:30px 20px;text-align:center;color:#6b7280;transition:.15s;cursor:pointer}
 #drop.over{border-color:#2563eb;background:#eff6ff;transform:scale(1.01)}
 #drop b{color:#2563eb;font-size:18px}
-.boardtitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 10px}
-.boardtitle h2{font-size:18px;margin:0}
-#boardstatus{font-size:12px;color:#6b7280}#boardstatus.online{color:#059669}#boardstatus.offline{color:#dc2626}
+#boardstatus{font-size:12px;color:#6b7280}
+#boardstatus.online{color:#059669}
+#boardstatus.offline{color:#dc2626}
 #summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:12px}
 .metric{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
-.metric span{font-size:12px;color:#6b7280}.metric b{font-size:22px}.metric .run{color:#2563eb}.metric .ok{color:#059669}.metric .warn{color:#d97706}.metric .err{color:#dc2626}
-#log{background:#111827;color:#a7f3d0;font:12px/1.7 Consolas,monospace;border-radius:10px;padding:12px 16px;margin-top:18px;min-height:60px;max-height:420px;overflow:auto;white-space:pre-wrap;display:none}
+.metric span{font-size:12px;color:#6b7280}
+.metric b{font-size:22px}
+.metric .run{color:#2563eb}
+.metric .ok{color:#059669}
+.metric .warn{color:#d97706}
+.metric .err{color:#dc2626}
 #jobs{margin-top:12px}
 #jobs .jrow{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:13px 15px;margin:10px 0;cursor:pointer;font-size:13px}
-#jobs .jrow:hover{border-color:#2563eb}#jobs .jrow.cur{border-color:#2563eb;box-shadow:0 0 0 2px #dbeafe}
-.jhead{display:flex;align-items:center;gap:10px}.jhead b{font-size:15px}.stage{color:#4b5563}.elapsed{margin-left:auto;color:#6b7280;font-size:12px}
-.st{font-size:11px;border-radius:6px;padding:3px 9px;color:#fff;white-space:nowrap}.st.run{background:#2563eb}.st.que{background:#9ca3af}.st.ok{background:#059669}.st.warn{background:#d97706}.st.err{background:#dc2626}
-.channels{display:flex;flex-wrap:wrap;gap:7px;margin:11px 0 8px}.channel{font-size:11px;border-radius:5px;padding:3px 8px;background:#f3f4f6;color:#6b7280}.channel.run{background:#dbeafe;color:#1d4ed8}.channel.ok{background:#d1fae5;color:#047857}.channel.warn{background:#fef3c7;color:#b45309}.channel.err{background:#fee2e2;color:#b91c1c}
-.jlog{font-size:12px;color:#6b7280;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.jfoot{display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:#9ca3af}
-#jobs a{margin-left:12px;color:#2563eb;text-decoration:none}.warnings{margin-top:10px;border-left:3px solid #d97706;background:#fffbeb;padding:8px 10px;color:#92400e;font-size:12px;line-height:1.6}.warnings div{white-space:pre-wrap}
+#jobs .jrow:hover{border-color:#2563eb}
+#jobs .jrow.cur{border-color:#2563eb;box-shadow:0 0 0 2px #dbeafe}
+.st{font-size:11px;border-radius:6px;padding:3px 9px;color:#fff;white-space:nowrap}
+.st.run{background:#2563eb}
+.st.que{background:#9ca3af}
+.st.ok{background:#059669}
+.st.warn{background:#d97706}
+.st.err{background:#dc2626}
+.channel.run{background:#dbeafe;color:#1d4ed8}
+.channel.ok{background:#d1fae5;color:#047857}
+.channel.warn{background:#fef3c7;color:#b45309}
+.channel.err{background:#fee2e2;color:#b91c1c}
+#jobs a{margin-left:12px;color:#2563eb;text-decoration:none}
 .empty{background:#fff;border:1px dashed #d1d5db;border-radius:10px;padding:28px;text-align:center;color:#9ca3af;font-size:13px}
-.tip{font-size:12px;color:#9ca3af;margin-top:10px}
 #cfgbtn{float:right;background:#374151;color:#e5e7eb;border:1px solid #4b5563;border-radius:8px;padding:6px 14px;cursor:pointer;font-size:13px}
 #cfgbtn:hover{background:#4b5563}
 #cfgpanel{display:none;position:fixed;right:0;top:0;height:100%;width:430px;background:#fff;box-shadow:-6px 0 24px rgba(0,0,0,.18);z-index:99;overflow:auto;padding:18px 22px}
@@ -337,9 +361,12 @@ header b{font-size:17px}header span{color:#9ca3af;font-size:12px;margin-left:12p
 #cfgpanel .row>div{flex:1}
 #cfgpanel .acts{position:sticky;bottom:0;background:#fff;padding:10px 0;display:flex;gap:10px}
 #cfgpanel .acts button{flex:1;border:0;border-radius:8px;padding:9px 0;cursor:pointer;font-size:14px}
-#savecfg{background:#2563eb;color:#fff}#closecfg{background:#e5e7eb}
+#savecfg{background:#2563eb;color:#fff}
+#closecfg{background:#e5e7eb}
 #cfgmsg{font-size:12px;color:#059669;min-height:16px}
-@media(max-width:760px){#summary{grid-template-columns:repeat(2,1fr)}.jhead{flex-wrap:wrap}.elapsed{margin-left:0}.links{display:block;margin-top:6px}header span{display:none}}
+@media(max-width:760px){#summary{grid-template-columns:repeat(2,1fr)}
+.links{display:block;margin-top:6px}
+header span{display:none}
 </style><link rel="stylesheet" href="/dashboard.css"></head><body>
 <header class="topbar"><div class="brand"><div class="logo">KCI</div><div><b>三渠道解析对比工作台</b><small>PDF 解析、归一化与元数据流水线</small></div></div><button id="cfgbtn">渠道 API 配置</button></header>
 <div class="wrap">
@@ -438,12 +465,6 @@ class H(BaseHTTPRequestHandler):
                 with io.open(os.path.join(ddir, "_choice.json"), "w", encoding="utf-8") as f:
                     f.write(json.dumps(payload, ensure_ascii=False, indent=1))
                 return self._send(200, json.dumps({"ok": 1}, ensure_ascii=False), "application/json")
-            except Exception as e:
-                return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
-                                  "application/json")
-                return self._send(200, json.dumps(
-                    {"ok": 1, "removed": before - len(g["entries"])}, ensure_ascii=False),
-                    "application/json")
             except Exception as e:
                 return self._send(400, json.dumps({"ok": 0, "err": str(e)}, ensure_ascii=False),
                                   "application/json")
@@ -630,15 +651,34 @@ class SingleServer(ThreadingHTTPServer):
 
 if __name__ == "__main__":
     LOCK = os.path.join(ROOT, "_server.lock")
-    if os.path.exists(LOCK):  # 单实例锁: 防重复双击 start.bat 叠出多服务
+
+    def _port_taken(p):
+        import socket as _sk
+        s = _sk.socket()
+        s.settimeout(0.15)
         try:
-            os.kill(int(io.open(LOCK, encoding="ascii").read().strip()), 0)
+            s.connect(("127.0.0.1", p))
+            return True
+        except OSError:
+            return False
+        finally:
+            s.close()
+
+    # 单实例: O_EXCL 原子创建(内核保证唯一), 无 check-then-act 竞态窗; 端口段探活
+    # 双保险(防 PID 复用/残留锁误判)——任一段口有服务在答即退出, 绝不叠第二个
+    # watch_uploads(两个服务并发解析同一篇会写坏产物, 13563526 实证)。
+    for p in range(8765, 8775):
+        if _port_taken(p):
             print("服务已在运行(见另一个控制台窗口), 请勿重复启动。")
-            print("浏览器访问: http://127.0.0.1:8765")
+            print("浏览器访问: http://127.0.0.1:%d" % p)
             sys.exit(0)
-        except (OSError, ValueError):
-            pass  # 残留锁(进程已死)
-    io.open(LOCK, "w", encoding="ascii").write(str(os.getpid()))
+    try:
+        fd = os.open(LOCK, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.write(fd, str(os.getpid()).encode("ascii"))
+        os.close(fd)
+    except OSError:
+        print("服务已在运行(_server.lock 存在), 请勿重复启动。")
+        sys.exit(0)
 
     port = 0
     for off in range(10):  # 端口被占则自动顺延
@@ -648,6 +688,8 @@ if __name__ == "__main__":
             break
         except OSError:
             continue
+    if port:
+        io.open(os.path.join(ROOT, "_server.port"), "w", encoding="ascii").write(str(port))
     if not port:
         print("错误: 8765-8774 端口全被占用"); sys.exit(1)
     url = "http://127.0.0.1:%d" % port

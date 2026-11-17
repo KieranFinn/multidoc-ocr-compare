@@ -96,14 +96,15 @@ def _load_paddle_json(path):
     return blocks
 
 
-def load_blocks(doc):
+def load_blocks(doc, out_root=None):
     """正文块(ner.py 口径): unified 取 Text/Footnote、剔文献页/跨页头/栏外; 13564165 用 paddle JSON。"""
     if doc in PADDLE_ONLY_DOCS:
         raw = _load_paddle_json(PADDLE_ONLY_DOCS[doc])
         return [{"uid": b["uid"], "page": b["page"], "type": b["type"], "text": (b["text"] or "").strip()}
                 for b in raw if b["type"] in ("text", "footnote", "paragraph_title")]
     blocks = []
-    for p in sorted(glob.glob(os.path.join(OUT, doc, "unified", "page_*.json"))):
+    root = out_root or OUT
+    for p in sorted(glob.glob(os.path.join(root, doc, "unified", "page_*.json"))):
         j = json.load(io.open(p, encoding="utf-8"))
         if j.get("in_ref"):
             continue
@@ -327,7 +328,7 @@ def make_model(cfg, post=None):
 
 # ---------- 主流程 ----------
 
-def run_doc(doc, model, cfg=None, echo=print, blocks=None):
+def run_doc(doc, model, cfg=None, echo=print, blocks=None, out_root=None):
     """对外入口 = 名额闸 + 实际抽取。
 
     并发 5 篇时同一 key 会同时开 5 路模型调用, 限流命中后单批只记一条 nomination 就继续,
@@ -341,11 +342,12 @@ def run_doc(doc, model, cfg=None, echo=print, blocks=None):
     with crossproc.Slots("llm", n=n, ttl=3600, wait=3600) as s:
         if s.waited > 1:
             echo(u"  ner_lite 排队 %.0fs(LLM 并发名额 %d 已满)" % (s.waited, n))
-        return _run_doc(doc, model, cfg=cfg, echo=echo, blocks=blocks)
+        return _run_doc(doc, model, cfg=cfg, echo=echo, blocks=blocks,
+                          out_root=out_root)
 
 
-def _run_doc(doc, model, cfg=None, echo=print, blocks=None):
-    blocks = blocks if blocks is not None else load_blocks(doc)
+def _run_doc(doc, model, cfg=None, echo=print, blocks=None, out_root=None):
+    blocks = blocks if blocks is not None else load_blocks(doc, out_root)
     tbl = DocTable(blocks)
     # 分批(按原始字符预算, 块不拆)
     batches, cur, cur_n = [], [], 0

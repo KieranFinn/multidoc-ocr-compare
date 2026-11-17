@@ -36,6 +36,9 @@ NARR = re.compile(r"([0-9A-Za-z가-힣一-鿿·.'\-]{2,40}?)[ ]?(\((?:19|20)\d{2
 NUM_LOOSE = re.compile(r"\[\s*\d{1,3}(?:[,\-\s]\d{1,3})*\s*\]")
 NUM_STRICT = re.compile(r"(?<![\[\d])\[\s*(\d{1,3})\s*\]")
 
+# 韩语人文体例(2026-11-17 三批实证): 括注单元内 "이원상 2024" 作者+空格+年份(无逗号),
+# 多引仍由 _split_top_level 按 ; 顶层拆分。锚定整单元 ^...$, 与既有逗号形态互斥分流。
+_KO_AY = re.compile(r"^([0-9A-Za-z가-힣一-鿿·.'’\-]{2,40}?)\s+((?:19|20)\d{2}[a-z]?)$")
 _SENT_CITE = (
     (u"narrative", NARR),
     (u"numeric", NUM_STRICT),
@@ -62,6 +65,14 @@ def _paren_cite(inner):
             continue   # 年份段不当作者
         if re.search(u"[A-Za-z가-힣一-鿿]{2}", s):
             return s, year
+    # 韩语人文体例兜底: 单元整体是 '作者 年份'(无逗号, 多引已由 ; 顶层拆开)。
+    # 只在逗号形态全部失败后尝试, 旧行为零改动(2026-11-17 三批实证: 历史/社会学科
+    # '(이원상 2024; 박성수 2023)' 体例, 17 篇 QC 引文句/脚注 全空由此而起)。
+    m = _KO_AY.match(inner.strip())
+    if m:
+        author = m.group(1).strip()
+        if _year_ok(m.group(2)):
+            return author, m.group(2)
     return None
 
 
@@ -467,7 +478,14 @@ def _selftest():
     best11, _, ma11, my11 = fuzzy.link_ay("Fillipek et al.", "1987", 12)
     ok11 = (reverse11 == (0, "Fillipek et al.") and best11["uid"] == "uF"
             and ma11 and my11 and not _author_matches("Kim", fuzzy.rows[0]))
-    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11)
+    # 12) 韩语人文体例: '이원상 2024' 无逗号单元过; 多引 ; 拆分逐单元; 纯年份续引单元不出作者
+    ok12 = _paren_cite(u"이원상 2024") == (u"이원상", u"2024") and _paren_cite(u"2015 개정교육과정") is None
+    hits12 = _paren_hits(u"(이원상 2024; 박성수 2023)")
+    ok12 = ok12 and [(h[3][0], h[3][1]) for h in hits12] == [(u"이원상", u"2024"),
+                                                             (u"박성수", u"2023")]
+    hits12b = _paren_hits(u"(박강 2018; 2015)")
+    ok12 = ok12 and [h[3][0] for h in hits12b] == [u"박강"]
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12)
     for i, ok in enumerate(oks, 1):
         if ok:
             n_ok += 1

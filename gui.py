@@ -128,17 +128,28 @@ def webapp_alive():
     now = time.time()
     if now - _WEBAPP_CACHE[0] < 30:
         return _WEBAPP_CACHE[1]
-    s = socket.socket()
-    s.settimeout(0.15)
+    # webapp 绑定 8765 起、被占顺延至 8774(webapp.py 端口段), 只探 8765 会被绕过:
+    # 服务落在 8766+ 时 GUI 不告警且再次拉起第二个 watch_uploads, 并发写坏同一篇(13563526 实证)。
+    hint = None
     try:
-        s.connect(("127.0.0.1", 8765))
-        alive = True
-    except OSError:
-        alive = False
-    finally:
-        s.close()
-    _WEBAPP_CACHE[:] = [now, alive]
-    return alive
+        hint = int(io.open(os.path.join(ROOT, "_server.port"), encoding="ascii").read().strip())
+    except (OSError, ValueError):
+        pass
+    order = ([hint] if hint else []) + [p for p in range(8765, 8775) if p != hint]
+    port = None
+    for p in order:
+        s = socket.socket()
+        s.settimeout(0.15)
+        try:
+            s.connect(("127.0.0.1", p))
+            port = p
+            break
+        except OSError:
+            pass
+        finally:
+            s.close()
+    _WEBAPP_CACHE[:] = [now, port]
+    return port
 
 
 
@@ -162,7 +173,7 @@ def _ner_done(dd, ner_root=None):
                                       os.path.basename(dd), "ner_lite.json"))
 
 
-def scan_docs(up=None, out_dir=None, ner_root=None, include_archived=True):
+def scan_docs(up=None, out_dir=None, ner_root=None, include_archived=True, arch_root=None):
     """文件系统派生的文档状态(真值): 未跑/未完成/缺渠道/完成 + 渠道勾选 + 完成时间。
 
 
@@ -171,7 +182,7 @@ def scan_docs(up=None, out_dir=None, ner_root=None, include_archived=True):
     """
     up, out_dir, ner_root = up or UP, out_dir or OUT, ner_root or NER_ROOT
     try:
-        done_docs = archive.archived_set() if include_archived else set()
+        done_docs = archive.archived_set(arch_root) if include_archived else set()
     except ValueError:
         done_docs = set()      # 索引损坏: 宁可多显示几条, 也不能让所有文档凭空消失
     docs = {}
@@ -304,7 +315,8 @@ class Runner(object):
                 self.log("[队列] %s 已有任务在跑/排队, 跳过重复提交" % doc)
                 return False
             self.queued.add(doc)
-            self.q.put((doc, pdf, tuple(ids), tuple(clear), trigger, self._generation))
+            self.q.put((doc, pdf, tuple(ids), tuple(clear), trigger, self._generation,
+                        self.out_root, self.history_fp))
         self.log("[队列] %s 已加入 (%s · %d 段)" % (doc, trigger, len(ids)))
         return True
 
@@ -318,7 +330,7 @@ class Runner(object):
             self._stop_cancelled = 0
         while True:
             try:
-                doc, _pdf, _ids, _clear, _trigger, _generation = self.q.get_nowait()
+                doc, _pdf, _ids, _clear, _trigger, _generation, _out, _hist = self.q.get_nowait()
             except queue.Empty:
                 break
             with self.lock:
@@ -359,7 +371,7 @@ class Runner(object):
         while True:
             while self._active_count() >= self.parallel:
                 time.sleep(0.15)
-            doc, pdf, ids, clear, trigger, generation = self.q.get()
+            doc, pdf, ids, clear, trigger, generation, out_root, history_fp = self.q.get()
             with self.lock:
                 if generation != self._generation or self._stop_requested:
                     self.queued.discard(doc)
@@ -371,16 +383,17 @@ class Runner(object):
             if cancel:
                 self.q.task_done()
                 continue
-            t = threading.Thread(target=self._task, args=(doc, pdf, ids, clear, trigger), daemon=True)
+            t = threading.Thread(target=self._task,
+                                 args=(doc, pdf, ids, clear, trigger, out_root, history_fp), daemon=True)
             t.start()
 
     def _active_count(self):
         with self.lock:
             return len(self.running)
 
-    def _task(self, doc, pdf, ids, clear, trigger):
+    def _task(self, doc, pdf, ids, clear, trigger, out_root, history_fp):
         try:
-            self._run_one(doc, pdf, ids, clear, trigger)
+            self._run_one(doc, pdf, ids, clear, trigger, out_root, history_fp)
         except BaseException as e:   # 单任务异常不许杀死调度线程
             self.log("[异常] %s 任务抛出: %s" % (doc, e))
         finally:
@@ -394,10 +407,11 @@ class Runner(object):
             if stopped:
                 self.log("[停止] 当前任务已跑完，可以重新提交")
 
-    def _run_one(self, doc, pdf, ids, clear, trigger):
+    def _run_one(self, doc, pdf, ids, clear, trigger, out_root=None, history_fp=None):
+        out_root, history_fp = out_root or self.out_root, history_fp or self.history_fp
         for ch in clear:
             for sub in (ch, ch + "_api"):
-                d = os.path.join(self.out_root, doc, "raw", sub)
+                d = os.path.join(out_root, doc, "raw", sub)
                 if os.path.isdir(d):
                     shutil.rmtree(d, ignore_errors=True)
             self.log("[重取] %s 渠道 %s 缓存已清" % (doc, ch))
@@ -411,7 +425,7 @@ class Runner(object):
         res = {"ok": False, "results": {}, "error": ""}
         try:
             res = stages.run_one_child({"doc": doc, "ids": list(ids), "pdf": pdf},
-                                       log=_hook, out_root=self.out_root)
+                                       log=_hook, out_root=out_root)
         except Exception as e:   # stages.run_one_child 内部已兜异常; 这里兜它自己(如进程起不来)
             res = {"ok": False, "results": {}, "error": str(e)[:200]}
         ok = bool(res.get("ok"))
@@ -428,9 +442,9 @@ class Runner(object):
                "ocr_s": ocr_s, "llm_s": llm_s, "stage_elapsed": stage_elapsed,
                "stages": {k: ("ok" if v.get("ok") else ("skip" if v.get("skipped") else "fail"))
                           for k, v in (res.get("results") or {}).items()},
-               "channels": {c: _ch_done(doc, c, self.out_root) for c in CH}}
+               "channels": {c: _ch_done(doc, c, out_root) for c in CH}}
         with self._hist_lock:
-            append_history(rec, self.history_fp)
+            append_history(rec, history_fp)
         # 不替用户补跑未勾选的阶段(2026-11-12 用户定: 耦合的地方不要一起重跑)。
         # 元数据/NER 变了而没勾 viewer, 只在日志里提醒一句, 由人决定要不要补一段。
         if "viewer" not in ids and any(i in ids for i in stages.META_IDS + ("ner",)):
@@ -552,14 +566,16 @@ class App(tk.Tk):
         self._qc_pending = []
         self._qc_thread = None
         self._running_view_key = None
+        self._selection_anchor = None
         self._prefs = load_prefs()
         self._workspace_paths = self._prefs.get("workspace_paths", {})
         current = self._prefs.get("workspace", "main")
         self.workspace = workspaces.custom_workspace(self._workspace_paths[current]) \
             if current in self._workspace_paths else workspaces.get_workspace(ROOT, current)
         self._notes = load_notes(self.workspace.notes)
-        self.runner = Runner(self._log, parallel=self._prefs.get("parallel"),
-                             out_root=self.workspace.out, history_fp=self.workspace.history)
+        self._runners = {}
+        self._log_views = {}
+        self.runner = self._runner_for(self.workspace)
         self._was_busy = False
         self._webapp_on = False
         self.protocol("WM_DELETE_WINDOW", self._on_close)
@@ -570,6 +586,15 @@ class App(tk.Tk):
         self._log("就绪: 拖 PDF 到 uploads; Ctrl/Shift 多选可批量(默认 %d 篇并发, 顶栏可调)。"
                   "「一键重跑」= 执行勾选的阶段(主区) / 右端箭头选阶段; "
                   "「快速重跑(跳NER)」不烧 LLM。质检列只查必抽项齐全, 缺项报红。" % self.runner.parallel)
+
+    def _runner_for(self, workspace):
+        key = workspace.root
+        if key not in self._runners:
+            self._runners[key] = Runner(
+                lambda msg, root=key: self._log(msg, workspace_root=root),
+                parallel=self._prefs.get("parallel"), out_root=workspace.out,
+                history_fp=workspace.history)
+        return self._runners[key]
 
     # ---------- 界面 ----------
     def _build(self):
@@ -586,16 +611,18 @@ class App(tk.Tk):
         ttk.Button(top, text="重启", command=self._restart).pack(side="left", padx=6)
         ttk.Button(top, text="打开 uploads 目录", command=lambda: self._open(self.workspace.uploads)).pack(side="left", padx=6)
         ttk.Button(top, text="打开 out 目录", command=lambda: self._open(self.workspace.out)).pack(side="left")
+        tools = ttk.Frame(self)
+        tools.pack(fill="x", padx=10, pady=(0, 6))
         # 归档清单是全局视图(不依赖选中), 所以入口在顶栏而不是操作条
-        ttk.Button(top, text="已归档…", command=self._open_archive_list).pack(side="left", padx=6)
+        ttk.Button(tools, text="已归档…", command=self._open_archive_list).pack(side="left", padx=6)
         # 浏览器工作台(拖拽上传 + 三渠道并排调参)也收进这里: 用户只记"打开这个工作台"一个动作,
         # 不必再分辨该双击 start.bat 还是 启动GUI.bat(2026-11-13 入口收口)。
-        ttk.Button(top, text="浏览器工作台", command=self._open_webapp).pack(side="left")
-        ttk.Button(top, text="渠道 API 配置", command=self._open_api_config).pack(side="left", padx=(8, 0))
+        ttk.Button(tools, text="浏览器工作台", command=self._open_webapp).pack(side="left")
+        ttk.Button(tools, text="渠道 API 配置", command=self._open_api_config).pack(side="left", padx=(8, 0))
         # 并发数: 这是"同时跑几篇", 不是"一篇跑多快"。调大只影响排队位置, 见 crossproc.py。
-        ttk.Label(top, text="并发").pack(side="left", padx=(12, 2))
+        ttk.Label(tools, text="并发").pack(side="left", padx=(12, 2))
         self.par_var = tk.StringVar(value=str(self.runner.parallel))
-        self.par_box = ttk.Combobox(top, textvariable=self.par_var, width=3, state="readonly",
+        self.par_box = ttk.Combobox(tools, textvariable=self.par_var, width=3, state="readonly",
                                     values=[str(i) for i in range(1, MAX_PARALLEL + 1)])
         self.par_box.pack(side="left")
         self.par_box.bind("<<ComboboxSelected>>", self._on_parallel)
@@ -679,6 +706,8 @@ class App(tk.Tk):
                              "done_at": 100, "runs": 64, "note": 220}
         wrap.bind("<Configure>", lambda _ev: self._fit_tree_columns())
         self.tree.bind("<<TreeviewSelect>>", lambda e: self._sync_buttons())
+        self.tree.bind("<Button-1>", self._remember_selection_anchor, add=True)
+        self.tree.bind("<Shift-Button-1>", self._select_shift_range)
         self.tree.bind("<Double-1>", self._on_double_click)
         self.tree.bind("<Button-3>", self._context_menu)
         mid.add(wrap, weight=3)
@@ -729,18 +758,28 @@ class App(tk.Tk):
 
         self.after(1000, self._tick_status)
 
+    def _save_log_view(self):
+        self._log_views[self.workspace.root] = (
+            self.logtxt.get("1.0", "end-1c"), self.logtxt.yview()[0])
+
+    def _restore_log_view(self):
+        text, top = self._log_views.get(self.workspace.root, ("", 0.0))
+        self.logtxt.configure(state="normal")
+        self.logtxt.delete("1.0", "end")
+        if text:
+            self.logtxt.insert("1.0", text)
+        self.logtxt.configure(state="disabled")
+        self.logtxt.yview_moveto(top)
+
     def _on_workspace(self, _ev=None):
         name = self.workspace_var.get()
         if name == self.workspace.name:
             return
-        if self.runner.is_busy():
-            self.workspace_var.set(self.workspace.name)
-            messagebox.showwarning("任务正在运行", "请等待当前工作区任务完成后再切换。", parent=self)
-            return
+        self._save_log_view()
         self.workspace = workspaces.custom_workspace(self._workspace_paths[name]).ensure() \
             if name in self._workspace_paths else workspaces.get_workspace(ROOT, name).ensure()
-        self.runner.out_root = self.workspace.out
-        self.runner.history_fp = self.workspace.history
+        self.runner = self._runner_for(self.workspace)
+        self._restore_log_view()
         self._notes = load_notes(self.workspace.notes)
         self._qc_results = {}
         self._prefs["workspace"] = name
@@ -853,11 +892,13 @@ class App(tk.Tk):
     # ---------- 数据 ----------
     def refresh(self):
         self.docs = scan_docs(self.workspace.uploads, self.workspace.out,
-                              self.workspace.ner_root, include_archived=self.workspace.is_main)
+                              self.workspace.ner_root, include_archived=True,
+                              arch_root=self.workspace.archive)
         self.hist = load_history(self.workspace.history)
         self._webapp_on = webapp_alive()
         if self._webapp_on:
-            self.conflict_lbl.configure(text="警告：检测到 web 服务(8765)同时运行，请勿在两端解析同一篇文档")
+            self.conflict_lbl.configure(
+                text="警告：检测到 web 服务(端口%d)同时运行，请勿在两端解析同一篇文档" % self._webapp_on)
             self.conflict_lbl.pack(fill="x", padx=10, pady=(0, 4))
         else:
             self.conflict_lbl.pack_forget()
@@ -993,6 +1034,24 @@ class App(tk.Tk):
             self._start_qc_loader()
         self.after(50, self._drain_qc)
 
+    def _remember_selection_anchor(self, ev):
+        doc = self.tree.identify_row(ev.y)
+        if doc:
+            self._selection_anchor = doc
+
+    def _select_shift_range(self, ev):
+        target = self.tree.identify_row(ev.y)
+        if not target:
+            return "break"
+        docs = list(self.tree.get_children())
+        anchor = self._selection_anchor or self.tree.focus()
+        if anchor not in docs:
+            anchor = self._selected()[0] if self._selected() else docs[0]
+        i, j = docs.index(anchor), docs.index(target)
+        self.tree.selection_set(docs[min(i, j):max(i, j) + 1])
+        self.tree.focus(target)
+        return "break"
+
     def _selected(self):
         return list(self.tree.selection())
 
@@ -1008,7 +1067,7 @@ class App(tk.Tk):
                                  text="重试全部缺失渠道（%d篇）" % retry_count)
         self.btn_view.configure(state="normal" if has else "disabled")
         self.btn_index.configure(state="normal" if has else "disabled")
-        self.btn_archive.configure(state="normal" if has and self.workspace.is_main else "disabled")
+        self.btn_archive.configure(state="normal" if has else "disabled")
         self.btn_clear_sel.configure(state="normal" if has else "disabled")
         self.btn_stop.configure(state="normal" if self.runner.is_busy()
                                 and not self.runner.is_stopping() else "disabled")
@@ -1033,6 +1092,8 @@ class App(tk.Tk):
         if not ids:
             self._log("[阶段] 未选择任何阶段")
             return
+        self.runner.out_root = self.workspace.out
+        self.runner.history_fp = self.workspace.history
         n = 0
         skipped = []
         for doc in self._selected():
@@ -1076,6 +1137,8 @@ class App(tk.Tk):
             return
         n = 0
         ids = [sid for sid in stages.ORDER if sid != "ner"]
+        self.runner.out_root = self.workspace.out
+        self.runner.history_fp = self.workspace.history
         for doc, d in jobs:
             if self.runner.submit(doc, d["pdf"], ids,
                                   "重试缺失:" + "/".join(d["miss"]), clear=tuple(d["miss"])):
@@ -1167,9 +1230,6 @@ class App(tk.Tk):
 
     # ---------- 归档 ----------
     def _archive_selected(self):
-        if not self.workspace.is_main:
-            messagebox.showinfo("实验区不归档", "请先在正式区处理需要归档的论文。", parent=self)
-            return
         """对选中集归档。一次确认, 不逐篇问——但把"含几篇红的"写在确认框里。
 
         红项必须在确认框里说出来: 归档后文档从工作台消失, 缺项只剩归档清单里那一行,
@@ -1202,7 +1262,9 @@ class App(tk.Tk):
         if not messagebox.askokcancel("确认归档", msg, parent=self):
             return
         try:
-            r = archive.archive_docs(docs)
+            r = archive.archive_docs(docs, out_root=self.workspace.out,
+                                     up_root=self.workspace.uploads, arch_root=self.workspace.archive,
+                                     meta_note=self._notes)
         except Exception as e:
             messagebox.showerror("归档失败", str(e), parent=self)
             return
@@ -1222,9 +1284,6 @@ class App(tk.Tk):
         self.refresh()
 
     def _open_archive_list(self):
-        if not self.workspace.is_main:
-            messagebox.showinfo("正式区功能", "归档清单只在正式区提供。", parent=self)
-            return
         ArchiveWindow(self)
 
     def _open_api_config(self):
@@ -1242,9 +1301,10 @@ class App(tk.Tk):
         import subprocess
         import sys
         import webbrowser
-        if webapp_alive():
-            webbrowser.open("http://127.0.0.1:8765")
-            self._log("[web] 已在运行，已打开浏览器 · 注意别与 GUI 同时解析同一篇")
+        _wport = webapp_alive()
+        if _wport:
+            webbrowser.open("http://127.0.0.1:%d" % _wport)
+            self._log("[web] 已在运行(端口%d)，已打开浏览器 · 注意别与 GUI 同时解析同一篇" % _wport)
             return
         if self.runner.is_busy() and not messagebox.askokcancel(
                 "GUI 正在跑任务",
@@ -1256,12 +1316,42 @@ class App(tk.Tk):
         self._log("[web] 已启动浏览器工作台(新窗口)，稍候自动打开 http://127.0.0.1:8765")
 
     def _restart(self):
-        """一键重启: 拉新进程替自己, 以加载 gui.py 等外壳改动(热更新只覆盖流水线模块)。
-        新老进程交接端口互斥有空窗——新进程 bind 自带重试(_acquire_instance_sock)。"""
-        if self.runner.is_busy():
+        """一键重启: 确保"只有一个 GUI"地换新进程, 以加载 gui.py 等外壳改动。
+
+        2026-11-17 修复"越重启越多"——旧实现先 Popen 新进程再 destroy 自己窗口,
+        但窗口关闭 ≠ 进程退出: Runner 的 daemon 线程 + 在跑的 daemon=False 子进程
+        (stages.run_batch) 会让进程吊着, 端口迟迟不放; 新进程抢不到就打印"已在运行"
+        后自行退出, 于是旧进程还在、新进程没了。反复点就叠出多个 GUI 进程, 名额被
+        占满 → 任务卡住。
+
+        现在反过来做: ①停任务、②终止子进程、③真正释放端口/名额、④拉新进程、
+        ⑤确认新进程接管后本进程 os._exit 硬退出(不走 mainloop 的自然退出)。
+        """
+        if getattr(self, "_restarting", False):
+            self._log("[重启] 正在重启中, 忽略重复点击")
+            return
+        if any(r.is_busy() for r in self._runners.values()):
             if not messagebox.askyesno("重启", "有任务正在运行/排队。\n"
-                                                "正在跑的会在后台跑完(子进程独立)，排队中的会丢失。\n确定要重启吗?"):
+                                                "重启会终止这些任务(含后台子进程)，然后开一个干净的新工作台。\n确定要重启吗?"):
                 return
+        self._restarting = True
+        self._log("[重启] 停止任务并终止子进程…")
+        # ① 取消排队 + 递增 generation; 不写假失败记录(进程随即退出, 产物由新进程重扫)
+        for r in self._runners.values():
+            r.stop_after_current()
+        # ② 终止本进程起的全部子进程(daemon=False, 否则会拖住本进程退出、占着名额)
+        kids = self._terminate_children()
+        # ③ 释放单实例端口与自己的名额: 让新进程立刻接管, 不误删别的进程(如 webapp)占的槽
+        sock = getattr(self, "_instance_sock", None)
+        if sock is not None:
+            try:
+                sock.close()
+            except Exception:
+                pass
+            self._instance_sock = None
+        freed = self._free_own_slots(kids)
+        self._log("[重启] 已终止 %d 个子进程, 释放 %d 个自己的名额" % (len(kids), freed))
+        # ④ 拉新进程
         import subprocess, sys
         try:
             subprocess.Popen([sys.executable, os.path.abspath(__file__)],
@@ -1269,14 +1359,69 @@ class App(tk.Tk):
                              creationflags=getattr(subprocess, "DETACHED_PROCESS", 0)
                              | getattr(subprocess, "CREATE_NEW_PROCESS_GROUP", 0))
         except Exception as e:
+            self._restarting = False
             messagebox.showerror("重启失败", str(e))
             return
-        self._log("[重启] 新进程已拉起, 本进程退出(端口随退出释放, 新进程重试接管)")
-        self.after(300, self.destroy)   # 让日志先刷出去再退
+        self._log("[重启] 新进程已拉起, 本进程立即退出(不等待, 避免与新版并存)")
+        # ⑤ 硬退出: 不 destroy 窗口后靠 mainloop 自然退——那样 daemon 线程/子进程
+        #    会吊住进程, 出现"两个 GUI 并存"。os._exit 保证本进程即刻消失。
+        self.after(200, os._exit, 0)
+
+    @staticmethod
+    def _terminate_children():
+        """终止本进程起的全部 multiprocessing 子进程, 返回其 pid 列表。"""
+        import multiprocessing as mp
+        kids = list(mp.active_children())
+        pids = [p.pid for p in kids if getattr(p, "pid", None)]
+        for p in kids:
+            try:
+                p.terminate()
+            except Exception:
+                pass
+        for p in kids:
+            try:
+                p.join(timeout=1.5)
+            except Exception:
+                pass
+        return pids
+
+    @staticmethod
+    def _free_own_slots(child_pids):
+        """只清 pid 属于本进程/本进程子进程的名额文件, 不动其他进程(如 webapp)占的槽。
+
+        槽文件首字段是 pid(见 crossproc.Slots._try)。子进程被 terminate 时不会走
+        __exit__, 槽会残留到 ttl 过期 —— 重启必须当场清掉, 否则新界面的重跑要等。
+        """
+        mine = set(child_pids or ()) | {os.getpid()}
+        n = 0
+        try:
+            import crossproc
+            for name in os.listdir(crossproc.LOCK_ROOT):
+                d = os.path.join(crossproc.LOCK_ROOT, name)
+                if not os.path.isdir(d):
+                    continue
+                for f in os.listdir(d):
+                    if not f.startswith("slot_"):
+                        continue
+                    fp = os.path.join(d, f)
+                    try:
+                        with io.open(fp, encoding="utf-8") as fh:
+                            pid = int(fh.read().split()[0])
+                    except Exception:
+                        continue
+                    if pid in mine:
+                        try:
+                            os.remove(fp)
+                            n += 1
+                        except OSError:
+                            pass
+        except Exception:
+            pass
+        return n
 
     def _on_close(self):
-        if self.runner.is_busy():
-            n = self.runner._active_count()
+        if any(r.is_busy() for r in self._runners.values()):
+            n = sum(r._active_count() for r in self._runners.values())
             if not messagebox.askyesno("任务仍在运行",
                                        "正在跑的 %d 篇会在后台继续跑完（一篇一个子进程，不随窗口退出）。\n"
                                        "排队中的任务会丢失。\n\n确定要关闭吗?" % n):
@@ -1296,8 +1441,14 @@ class App(tk.Tk):
         super().destroy()
 
     # ---------- 日志/状态 ----------
-    def _log(self, s):
-        self.q.put(s)
+    def _log(self, s, workspace_root=None):
+        root = workspace_root or self.workspace.root
+        line = time.strftime("%H:%M:%S ") + s + "\n"
+        if root == self.workspace.root:
+            self.q.put((root, line))
+        else:
+            text, top = self._log_views.get(root, ("", 0.0))
+            self._log_views[root] = ((text + line)[-500000:], top)
 
     def _on_log_scroll(self, _ev=None):
         self.after_idle(self._sync_log_follow)
@@ -1314,10 +1465,14 @@ class App(tk.Tk):
         try:
             n = 0
             while n < 300:   # 单次回调限量: 日志洪峰不许把 UI 线程钉死
-                s = self.q.get_nowait()
+                root, s = self.q.get_nowait()
                 n += 1
+                if root != self.workspace.root:
+                    text, top = self._log_views.get(root, ("", 0.0))
+                    self._log_views[root] = ((text + s)[-500000:], top)
+                    continue
                 self.logtxt.configure(state="normal")
-                self.logtxt.insert("end", time.strftime("%H:%M:%S ") + s + "\n")
+                self.logtxt.insert("end", s)
                 # 日志上限: 只保留最后 ~3000 行, 防长会话内存膨胀
                 tail = self.logtxt.index("end-1c")
                 if tail and int(tail.split(".")[0]) > 3000:
@@ -1334,7 +1489,7 @@ class App(tk.Tk):
         ocr_total, llm_total = self.runner.timing_totals()
         txt += " ｜ 启动累计 OCR %s · LLM %s" % (fmt_duration(ocr_total), fmt_duration(llm_total))
         if self._webapp_on:
-            txt = "⚠ 检测到 web 服务(8765)也在运行, 勿与 GUI 同时解析同一篇 · " + txt
+            txt = "⚠ 检测到 web 服务(端口%s)也在运行, 勿与 GUI 同时解析同一篇 · " % self._webapp_on + txt
         self.status_lbl.configure(text=txt)
         busy = self.runner.is_busy()
         if busy:
@@ -1363,8 +1518,8 @@ class ArchiveWindow(tk.Toplevel):
     都与工作台不同, 混在同一张表里会让"归档"看起来只是打了个标(用户 2026-11-13 要求能查看)。
     """
 
-    COLS = (("title", 380, "标题"), ("journal", 150, "刊名"), ("year", 56, "年"),
-            ("qc", 130, "质检"), ("when", 130, "归档时间"))
+    COLS = (("title", 330, "标题"), ("journal", 130, "刊名"), ("year", 56, "年"),
+            ("qc", 130, "质检"), ("when", 130, "归档时间"), ("note", 180, "备注"))
 
     def __init__(self, app):
         tk.Toplevel.__init__(self, app)
@@ -1387,7 +1542,7 @@ class ArchiveWindow(tk.Toplevel):
         ttk.Button(bar, text="清空", command=lambda: (self.qvar.set(""), self.refresh())).pack(side="left")
         self.cnt = ttk.Label(bar, text="")
         self.cnt.pack(side="left", padx=12)
-        ttk.Button(bar, text="打开归档目录", command=lambda: app_open(archive.ARCH_DIR)).pack(side="right")
+        ttk.Button(bar, text="打开归档目录", command=lambda: app_open(self.app.workspace.archive)).pack(side="right")
 
         wrap = ttk.Frame(self)
         wrap.pack(fill="both", expand=True, padx=10)
@@ -1399,6 +1554,9 @@ class ArchiveWindow(tk.Toplevel):
             anchor = "w" if cid in ("doc", "title", "journal", "qc") else "center"
             self.tree.column(cid, width=w, anchor=anchor)
         self.tree.tag_configure("qc_bad", foreground="#b03030")
+        self._archive_column_base = {"doc": 110}
+        self._archive_column_base.update({c[0]: c[1] for c in self.COLS})
+        wrap.bind("<Configure>", lambda _ev: self._fit_columns())
         self.tree.pack(side="left", fill="both", expand=True)
         sb = ttk.Scrollbar(wrap, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=sb.set)
@@ -1414,9 +1572,17 @@ class ArchiveWindow(tk.Toplevel):
         self.hint = ttk.Label(act, text="双击一行 = 打开产物")
         self.hint.pack(side="left", padx=12)
 
+    def _fit_columns(self):
+        available = max(400, self.tree.master.winfo_width() - 24)
+        total = float(sum(self._archive_column_base.values()))
+        ratio = available / total
+        for name, width in self._archive_column_base.items():
+            self.tree.column(name, width=max(48, int(width * ratio)))
+
     def refresh(self):
         try:
-            self.items = archive.list_items(q=self.qvar.get().strip())
+            self.items = archive.list_items(arch_root=self.app.workspace.archive,
+                                            q=self.qvar.get().strip())
         except ValueError as e:
             messagebox.showerror("归档索引损坏", str(e), parent=self)
             self.items = []
@@ -1427,7 +1593,8 @@ class ArchiveWindow(tk.Toplevel):
             self.tree.insert("", "end", iid=it["doc"], tags=("qc_bad",) if miss else (),
                              values=(it.get("doc"), it.get("title") or "",
                                      it.get("journal") or "", it.get("year") or "",
-                                     qtxt, (it.get("archived_at") or "").replace("T", " ")[:16]))
+                                     qtxt, (it.get("archived_at") or "").replace("T", " ")[:16],
+                                     it.get("note") or ""))
         n_bad = sum(1 for it in self.items if it.get("qc_issues"))
         self.cnt.configure(text="共 %d 篇%s" % (
             len(self.items), "，其中 %d 篇有缺项" % n_bad if n_bad else ""))
@@ -1440,8 +1607,8 @@ class ArchiveWindow(tk.Toplevel):
         if not docs:
             return
         for doc in docs:
-            it = archive.item_of(doc) or {}
-            base = os.path.join(archive.ARCH_DIR, doc, "out")
+            it = archive.item_of(doc, self.app.workspace.archive) or {}
+            base = os.path.join(self.app.workspace.archive, doc, "out")
             for name in ("index.html", "viewer_compare.html"):
                 fp = os.path.join(base, name)
                 if os.path.isfile(fp):
@@ -1461,9 +1628,15 @@ class ArchiveWindow(tk.Toplevel):
             return
         msgs = []
         for doc in docs:
-            ok, msg = archive.restore_doc(doc)
+            it = archive.item_of(doc, self.app.workspace.archive) or {}
+            ok, msg = archive.restore_doc(doc, out_root=self.app.workspace.out,
+                                          up_root=self.app.workspace.uploads,
+                                          arch_root=self.app.workspace.archive, keep_note=True)
             msgs.append(("✔ " if ok else "✘ ") + doc + ": " + msg)
             if ok:
+                if it.get("note"):
+                    self.app._notes[doc] = it["note"]
+                    save_notes(self.app._notes, self.app.workspace.notes)
                 qc.clear_cache(doc)
         messagebox.showinfo("恢复结果", "\n".join(msgs), parent=self)
         self.refresh()
@@ -1508,6 +1681,7 @@ def main():
         print("GUI 已在运行(见任务栏另一个窗口), 请勿重复启动。")
         return
     app = App()
+    app._instance_sock = sock   # 重启时由 App._restart 提前 close, 交接端口给新进程
     app.mainloop()   # sock 随进程存活, 退出即释放端口
 
 

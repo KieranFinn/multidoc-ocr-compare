@@ -50,12 +50,23 @@ _DOI_YV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.")
 # 原来的 _DOI_YV 要求年后面紧跟数字, 双点直接不匹配, 卷号白白丢掉。
 _DOI_YEV = re.compile(r"\.((?:19|20)\d{2})\.\.(\d{1,3})\.")
 # 同体例的**四段式**(期位有值): 'xxx.2025.10.20.001' = 年.期.卷.文号。
+# 2026-11-17 修正: 该解读**仅限 riks 前缀实证**(한국연구); 其余出版社(csgc/kwr/kjcss/jnah/
+# espkor/jdca…)四段式实为 年.卷.期.文号, 旧代码一律按 年.期.卷 读, 卷期互换
+# (kjcss.2025.7.2.006 实证: 全刊卷=年序 2024→6/2025→7, 读成期7卷2 则同年两篇"卷1/卷2"自相矛盾)。
 # 与 _DOI_YV 的区别只在段数: 三段 '2025.20.006' 是 年.卷.文号, 四段才带期位。
 _DOI_YIV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.(\d{1,3})\.\d{1,4}")
+_YIV_RIKS = re.compile(r"/riks\.", re.I)   # 年.期.卷.文号 前缀白名单
 _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
 # 刊头竖线段体例: '한국연구 | THE JOURNAL OF KOREAN STUDIES | 19 | 202506'
 # 日期段 = yyyymm 或 yyyymmdd; 紧挨在日期前那一段纯数字就是卷号(글로컬 '| 20 | 202510' 同理)。
 _MAST_DATE = re.compile(r"^\d{6}(?:\d{2})?$")
+# 首页"稿件历程"脚注: '접수일(YYYY년 …), 수정일(…), 게재확정일(YYYY년 …)'。编辑部固定体例,
+# 块内必须同时有 접수일 与 게재확정일 才认(正文/引文凑不齐这两个词); 只取 게재확정일 的年
+# (접수일 可能跨年, 如 11월 접수 → 次年 1월 게재확정)。2026-11-17 全库测量: 62 篇命中
+# (《국방과 보안》系 2023/2024/2025 三批), 全部 year 为空, 无任何其它结构题录信号。
+_PUBDATE_FN = re.compile(r"게재\s*확정일\s*[(（]\s*((?:19|20)\d{2}|(\d{2}))\s*년")
+# 变体(2026-11-17 二批实证): "게재 확정일" 带空格(13564443)、两位年 "24년"(13564442, OCR 体例);
+# 两位年按世纪启发式 YY>26 → 19YY, 否则 20YY, 再交 YEAR_OK(1900-2026) 守卫。
 _CH_LINE_MAX = 60          # 渠道兜底只收"刊头/页脚那么短"的行(正文/脚注行一律长于它)
 _FN_ENTRY_HEAD = re.compile(r"^\s*[(（]?\d{1,3}\s*[)）.．、]\s*\S")   # 行首脚注编号
 # 刊名前缀截断: 最早出现的卷期/页码/括号年/BMC 卷:文号/季节词之前
@@ -305,8 +316,12 @@ def extract(source, n_pages, excluded_folds):
             for m in got4:
                 _add(year, int(m.group(1)), page, uid)
                 _add(year_strong, int(m.group(1)), page, uid)
-                _add(issue, int(m.group(2)), page, uid)
-                _add(vol_vol, int(m.group(3)), page, uid)
+                if _YIV_RIKS.search(s):   # 年.期.卷.文号(仅 riks 实证)
+                    _add(issue, int(m.group(2)), page, uid)
+                    _add(vol_vol, int(m.group(3)), page, uid)
+                else:                     # 年.卷.期.文号(其余出版社默认)
+                    _add(vol_vol, int(m.group(2)), page, uid)
+                    _add(issue, int(m.group(3)), page, uid)
             for m in _DOI_YEV.finditer(s):     # 期位留空的双点: 年..卷.
                 _add(year, int(m.group(1)), page, uid)
                 _add(year_strong, int(m.group(1)), page, uid)
@@ -486,6 +501,29 @@ def _publication_year(source):
     return None
 
 
+def _pubdate_fn_year(pdata):
+    """首页 Footnote 块的"접수일…게재확정일(YYYY년…)"→ (year, uid) 或 (None, None)。
+
+    仅在年/卷/期抽取全空(年无候选)时由 issue_doc 调用; 已有年份的篇一律不触发。
+    """
+    for u in pdata[0]["unified"]:
+        t = u.get("main_text") or ""
+        for ln in t.splitlines():
+            s = ln.strip()
+            # 行级守卫比块型更严: 必须以 접수일 开头(编辑部固定体例), 块型不限
+            # (13564386/13564394 的 unify 把日期行并进 Text 块, 只认 Footnote 会漏)。
+            if not s.startswith("접수일"):   # 双词守卫的 specificity 由 _PUBDATE_FN 承担(容许 게재 확정일 空格变体)
+                continue
+            m = _PUBDATE_FN.search(s)
+            if m:
+                y = int(m.group(1))
+                if m.group(2):                      # 两位年: 26 이하 → 2000년대
+                    y = 2000 + y if y <= 26 else 1900 + y
+                if y in YEAR_OK:
+                    return y, u.get("uid")
+    return None, None
+
+
 def _apply_running_journal(res, source, excluded):
     current = res["journal"]["value"]
     if current is not None and not re.search(r"^\W*\d+\)|^[\[<`]|등$|그림", str(current)):
@@ -494,8 +532,13 @@ def _apply_running_journal(res, source, excluded):
     display = {}
     for page, _uid, line in source:
         s = line.strip()
+        # 页脚刊名带页码(2026-11-17: 중국사회과학논총 'The Korea Journal of Chinese Social Science 31'
+        # / '4 중국사회과학논총' 6 篇实证): 先剥行首/行尾页码再进守卫; 剥后仍带数字的行维持原排除。
+        _s2 = re.sub(r"^\d{1,4}\s+", "", re.sub(r"\s+\d{1,4}\s*$", "", s))
+        if _s2 != s and not re.search(r"\d", _s2):
+            s = _s2
         folded = _fold(s)
-        if not (4 <= len(folded) <= 50) or re.search(r"\d|`", s):
+        if not (4 <= len(folded) <= 50) or re.search(r"\d|`|www\.", s):
             continue
         if any(len(ex) >= 8 and (folded in ex or ex in folded or _gdice(folded, ex) >= 0.80)
                for ex in excluded):
@@ -531,6 +574,25 @@ def _apply_doi_series(res, source):
                         "confidence": {"level": "high", "source": "doi"}}
         return True
     return False
+
+
+def _apply_year_ladder(res, source, pdata):
+    """年份兜底阶梯(2026-11-17 收敛, 原 issue_doc 内两段分散逻辑合一):
+    ① 출판연도 出版社标签行 → ② 稿件历程脚注(접수일+게재확정일, 见 _pubdate_fn_year)。
+    只填空不覆盖; 返回 (阶梯命中说明|None) 供 audit。"""
+    if res["year"]["value"] is None:
+        pub_year = _publication_year(source)
+        if pub_year is not None:
+            res["year"] = {"value": pub_year, "uid": None,
+                           "confidence": {"level": "high", "source": "publisher_label"}}
+            return "publisher_label:%d" % pub_year
+    if res["year"]["value"] is None:
+        y_fn, uid_fn = _pubdate_fn_year(pdata)
+        if y_fn is not None:
+            res["year"] = {"value": y_fn, "uid": uid_fn,
+                           "confidence": {"level": "mid", "source": "pub_date_fn"}}
+            return "pub_date_fn:%d" % y_fn
+    return None
 
 
 def issue_doc(doc, out_root):
@@ -589,11 +651,10 @@ def issue_doc(doc, out_root):
         if a.get("name"):
             excluded.add(_fold(a["name"]))
     res = extract(source, len(pages), excluded)
-    if res["year"]["value"] is None:
-        pub_year = _publication_year(source)
-        if pub_year is not None:
-            res["year"] = {"value": pub_year, "uid": None,
-                           "confidence": {"level": "high", "source": "publisher_label"}}
+    _ladder_hit = _apply_year_ladder(res, source, pdata)
+    pubdate_fn_hit = None
+    if _ladder_hit and _ladder_hit.startswith("pub_date_fn"):
+        pubdate_fn_hit = {"value": res["year"]["value"], "uid": res["year"]["uid"]}
     # —— 页: pp./裸区间无 → 页码推断。**必须在渠道兜底之前**: 全篇 Page-number 一致 offset
     #    (2309666 是 35/35 页)是硬证据; 而兜底源把"每页前 4 块"当页眉区, 无页眉的页会拿下
     #    正文句 —— 2309666 p16 '…20-30 둥 정도의 순익을 거둘 수 있었지만…' 是盈利数字, 被当成
@@ -678,6 +739,8 @@ def issue_doc(doc, out_root):
         audit["journal_running_header"] = True
     if publisher_series:
         audit["publisher_series"] = "DOI 期段位"
+    if pubdate_fn_hit:
+        audit["year_pub_date_fn"] = pubdate_fn_hit
     res.pop("_internal")
     if derived:
         first, last, support, offset = derived
@@ -926,14 +989,58 @@ def _selftest():
         and r["issue"]["confidence"]["source"] == "volume_only" \
         and r["volume"]["value"] == 19 \
         and r2["issue"]["confidence"]["source"] == "regex"
+    # 19b) 四段式 DOI 前缀感知(2026-11-17 修正): 非 riks 出版社为 年.卷.期.文号
+    _r19b = extract([(0, "u0", "https://doi.org/10.23192/kjcss.2025.7.2.006")], 1, set())
+    _r19b2 = extract([(0, "u0", "DOI 10.23166/csgc.2024.6.1.004")], 1, set())
+    ok19b = (_r19b["volume"]["value"] == 7 and _r19b["issue"]["value"] == 2
+             and _r19b2["volume"]["value"] == 6 and _r19b2["issue"]["value"] == 1)
+    # 20) \u7a3f\u4ef6\u5386\u7a0b\u811a\u6ce8(issue_doc \u7ea7): \uc811\uc218\uc77c+\uac8c\uc7ac\ud655\uc815\uc77c \u53cc\u8bcd\u5b88\u536b \u2192 \u53d6 \uac8c\uc7ac\ud655\uc815\uc77c \u7684\u5e74;
+    #     \u7f3a \uc811\uc218\uc77c \u4e0d\u8ba4; \u520a\u5934\u5df2\u6709\u5e74\u4efd\u65f6\u4e0d\u8986\u76d6(\u4e0d\u4e0e\u65e7\u89c4\u5219\u51b2\u7a81)\u3002
+    blk_a = {"uid": "u0", "page": 1, "type": "Footnote", "main_text": u"\uc811\uc218\uc77c(2024\ub144 11\uc6d4 2\uc77c), \uc218\uc815\uc77c(2024\ub144 12\uc6d4 1\uc77c), \uac8c\uc7ac\ud655\uc815\uc77c(2025\ub144 1\uc6d4 5\uc77c)", "box": [10, 1200, 500, 1300], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_b = {"uid": "u0", "page": 1, "type": "Footnote", "main_text": u"\uac8c\uc7ac\ud655\uc815\uc77c(2025\ub144 6\uc6d4 24\uc77c)", "box": [10, 1200, 500, 1300], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_c1 = {"uid": "u0", "page": 1, "type": "Page-header", "main_text": u"\u300e\uad6d\ubc29\uacfc \ubcf4\uc548\u300f \uc81c3\uad8c \uc81c1\ud638, 2024, pp. 10-30", "box": [10, 100, 500, 1300], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_c2 = {"uid": "u0", "page": 1, "type": "Footnote", "main_text": u"\uc811\uc218\uc77c(2024\ub144 3\uc6d4 2\uc77c), \uac8c\uc7ac\ud655\uc815\uc77c(2024\ub144 5\uc6d4 5\uc77c)", "box": [10, 1200, 500, 1300], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_d = {"uid": "u0", "page": 1, "type": "Footnote",
+             "main_text": u"\uc811\uc218\uc77c(2024\ub144 5\uc6d4 24\uc77c), \uac8c\uc7ac \ud655\uc815\uc77c(2024\ub144 6\uc6d4 18\uc77c)",
+             "box": [10, 1200, 500, 1300], "cross_page": {"spans": False},
+             "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_e = {"uid": "u0", "page": 1, "type": "Footnote",
+             "main_text": u"\uc811\uc218\uc77c(24\ub144 5\uc6d4 27\uc77c), \uc218\uc815\uc77c(1차 : 24\ub144 6\uc6d4 7\uc77c), \uac8c\uc7ac\ud655\uc815\uc77c(24\ub144 6\uc6d4 18\uc77c)",
+             "box": [10, 1200, 500, 1300], "cross_page": {"spans": False},
+             "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    with tempfile.TemporaryDirectory() as tmp:
+        for name, blocks in (("a", [blk_a]), ("b", [blk_b]), ("c", [blk_c1, blk_c2]),
+                               ("d", [blk_d]), ("e", [blk_e])):
+            sub = os.path.join(tmp, name)
+            udir = os.path.join(sub, "unified")
+            os.makedirs(udir)
+            io.open(os.path.join(udir, "page_0.json"), "w", encoding="utf-8").write(
+                json.dumps({"doc": name, "page": 1, "w": 1000, "h": 1500, "in_ref": False,
+                            "unified": blocks}, ensure_ascii=False))
+            io.open(os.path.join(sub, "metadata.json"), "w", encoding="utf-8").write("{}")
+            got = issue_doc(name, tmp)
+            if name == "a":
+                ok20 = (got.get("year", {}).get("value") == 2025
+                        and got["year"]["confidence"]["source"] == "pub_date_fn")
+            elif name == "b":
+                ok20 = ok20 and got.get("year", {}).get("value") is None
+            elif name == "c":
+                ok20 = (ok20 and got.get("year", {}).get("value") == 2024
+                        and got["year"]["confidence"]["source"] == "regex")
+            elif name == "d":
+                ok20 = ok20 and got.get("year", {}).get("value") == 2024 \
+                    and got["year"]["confidence"]["source"] == "pub_date_fn"
+            else:
+                ok20 = ok20 and got.get("year", {}).get("value") == 2024 \
+                    and got["year"]["confidence"]["source"] == "pub_date_fn"
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15, ok16, ok17, ok18, ok19), 1):
+                            ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/19 PASS" % n_ok)
-    return n_ok == 19
+    print("issue selftest: %d/21 PASS" % n_ok)
+    return n_ok == 21
 
 
 if __name__ == "__main__":

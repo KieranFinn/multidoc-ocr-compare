@@ -71,7 +71,9 @@ def _pick_title(j, want_hangul):
                 continue
             if re.search(u"[가-힣]", t) and (SUP_LATEX.search(t) or "<sup>" in t
                                                or re.search(r"\*{1,5}", t)) \
-                    and len(_parse_author_line(t, None, {})) >= 2:
+                    and len(_parse_author_line(t, None, {})) >= 2 \
+                    and not re.search(r"\s[:：]\s", t):   # 副题冒号豁免(2026-11-17, 13567059): 带*通讯标记+逗号并列案例名的题名行
+
                 continue
             hr = _hangul_ratio(t)
             has_cjk = bool(re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(t)))
@@ -286,6 +288,135 @@ def _cjk_author_names(line):
 def _valid_author_name(name):
     name = (name or "").strip()
     return bool(name) and not re.match(r"^(?:www\.|\$)", name) and not _INVALID_AUTHOR.match(name)
+
+
+# 作者脚注机构行(2026-11-17 测量: 全库 197 篇 "*...email" 行, 30 篇机构字段仍空)。
+# 守卫: 行首 *{1,4} 锚 + 行内含 email + 职务词锚切分; 切不出职务词锚的行一律跳过不猜
+# ("동국대 …연구원" 这类'연구원'作机构名一部分的形态无法与本义区分, 弃)。
+_STAR_MARK = re.compile(r"^\s*(?:\*{1,4}|\$\s*\^\{?\*{1,4}\}?\s*\$)\s*")  # 裸* 与 LaTeX $\^{*}$/$\^{**}$ 双形态
+# (13568646 实证: mineru 把作者标记渲成 $\ ^{*} $, 裸*扫不到)
+_FN_EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}")
+# 职务词锚(长词优先匹配); 故意不含裸"연구원/박사/석사"(机构名/学位双重身份, 分不清就不切)
+_JOB_ANCHORS = sorted((u"명예교수", u"전임강사", u"초빙교수", u"부교수", u"조교수", u"교수",
+                       u"강사", u"조교", u"연구교수", u"선임연구원", u"책임연구원",
+                       u"수석연구원", u"객원연구원", u"연구위원", u"편집위원", u"위원",
+                       u"팀장", u"센터장", u"소장", u"과장", u"박사과정", u"석사과정",
+                       u"박사수료", u"근무", u"재직"), key=len, reverse=True)
+_ORG_HINT = re.compile(u"대학|학교|연구|위원회|학회|연합회|협회|협의회|재단|센터|사령부|주식회사|회사|방송사|신문사|출판사|"
+                       u"기관|박물관|도서관|병원|신문사|방송|공사|은행|조합|학원|연수원|"
+                       u"전문대|대학원|학과|학부|사료|전략원|개발원|총연합회")
+
+
+def _org_ok(org, strict=True):
+    """机构段通用校验(2026-11-17 扩展): 韩文走 ORG_HINT+助词/动词语尾守卫;
+    拉丁走词形守卫(≥2 词、无 Tel/email/Author 等行内杂质)。"""
+    org = (org or "").strip().strip("()（）")
+    if not org:
+        return False
+    if re.search(u"[가-힣]", org):
+        # 含韩文统一走韩文守卫(MBC 충북 PD 式混排也走这里)
+        if re.search(r"(?:는|은|을|를|에서|에게|으로)\s", org) or re.search(u"다$", org.strip()):
+            return False
+        if strict and not _ORG_HINT.search(org):
+            return False
+        # strict=False(结构性回退): 位置本身(人名行与 email 行之间)即担保,
+        # 只验非句子形态与最小长度("MBC 충북 PD" 式无提示词机构行由此过)。
+        return len(_fold(org)) >= (2 if strict else 4)
+    if re.match(r"^[A-Za-z0-9][A-Za-z0-9&.,'\-() ]{5,90}$", org):
+        words = [w for w in org.split() if w.strip(".,'-")]
+        if len(words) < 2:
+            return False
+        return not re.search(r"Tel|email|Author|Received|Abstract|http|Corresponding", org, re.I)
+    return False
+
+
+def _email_zone_affil(lines):
+    """email 锚机构行的另两种形态(2026-11-17 六篇实证):
+    ① '† Corresponding Author : 名 … email : x@y 机构, 地址…' → email 后取机构;
+    ② '名, 주저자
+机构
+(email)' / '(email)' 独立行 → 机构 = email 上方最近的非人名行。
+    行内杂质词与地址段(逗号+数字起)一律剥除; 校验走 _org_ok。"""
+    flat = []
+    for _ty, s in lines:
+        for ln in s.splitlines():
+            if ln.strip():
+                flat.append(ln.strip())
+    for k, s in enumerate(flat):
+        if not _FN_EMAIL.search(s):
+            continue
+        # ① email 之后的机构段(到行尾; 逗号+数字起=地址, 截断)
+        after = _FN_EMAIL.split(s)[-1]
+        after = re.split(r",\s*\d|\s+(?:Received|Accepted|Revised|Reprint|Published)", after)[0].strip(" ,.;()")
+        if after and "Corresponding" not in after and _org_ok(after):
+            return after, s
+        # ①b email 行尾无机构 → 看下一行(13569395 实证: 机构在 email 行之后)
+        if not after:
+            for j in range(k + 1, min(len(flat), k + 3)):
+                nxt = flat[j]
+                if "@" in nxt:
+                    break
+                cand = re.split(r",\s*\d", nxt)[0].strip(" ,.;()")
+                if cand and _org_ok(cand):
+                    return cand, s
+        # ② 向上找最近非人名/角色行
+        for j in range(k - 1, max(-1, k - 4), -1):
+            prev = flat[j]
+            if re.search(r"주저자|교신저자|Corresponding|Tel|E-mail|email|ISSN|ISBN|^[^가-힣a-zA-Z]*[A-Z][a-z]+\s+[A-Z]", prev):
+                continue
+            if _org_ok(prev, strict=False):
+                return prev.strip(), s
+    return None
+
+
+def _footnote_affil_line(s):
+    """单行解析: 返回机构字符串或 None。双机构行取第一个(audit 层面由调用方留原行)。"""
+    s = (s or "").strip()
+    if not _STAR_MARK.match(s) or not _FN_EMAIL.search(s):
+        return None
+    zone = _STAR_MARK.sub("", _FN_EMAIL.split(s)[0], count=1)   # 去 * 锚; email 及之后丢弃
+    zone = zone.split("(")[0].strip()      # "(bglee@tw.ac.kr)" 式括号尾巴
+    cut = None
+    for j in _JOB_ANCHORS:
+        m = re.search(re.escape(j) + u"(?![가-힣])", zone)   # 词界: 不许咬进更长词(위원→위원회)
+        if m and m.start() > 0 and (cut is None or m.start() < cut):
+            cut = m.start()
+    if cut is None:
+        return None                        # 无职务词锚, 不猜
+    org = zone[:cut].strip(" ,,;·")
+    if "," in org:
+        org = org.split(",")[-1].strip()   # "* 이름, 机构 …" 剥姓名
+    org = org.strip(" ,,;·")
+    if len(_fold(org)) < 2:
+        return None
+    if not _ORG_HINT.search(org):
+        return None   # 机构形态线索强制(13569925 教训: 纯长度闸会放进行句子残段)
+    # 助词守卫只收无歧义后缀(는/은/을/를/에서/에게/으로); 이/가/의 不收——
+    # "하노이" 等音译名内嵌 이, 误杀面大(13569925 教训的句子形态仍被 는/에서 拦截)。
+    if re.search(r"(?:는|은|을|를|에서|에게|으로)\s", org) or re.search(u"다$", org.strip()):
+        return None                        # 句子形态(助词/动词语尾)拒绝
+        return None                        # 句子形态(助词/动词语尾)拒绝
+    return org
+
+
+def _footnote_affil(doc_dir):
+    """首页逐行扫, 返回 (机构, 原行) 或 None。"""
+    fp = os.path.join(doc_dir, "unified", "page_0.json")
+    if not os.path.isfile(fp):
+        return None
+    try:
+        j = json.load(io.open(fp, encoding="utf-8"))
+    except Exception:
+        return None
+    lines = []
+    for u in j.get("unified") or []:
+        for ln in (u.get("main_text") or "").splitlines():
+            lines.append((u.get("type"), ln))
+    for _ty, ln in lines:
+        got = _footnote_affil_line(ln)
+        if got:
+            return got, ln.strip()
+    return _email_zone_affil(lines)
 
 
 def _xpage_affils(doc_dir):
@@ -847,11 +978,29 @@ def front_doc(doc, out_root):
             affils = _got[:6]
             ch_front["affiliations"] = (_got[0], _got_ch)
 
+    _fa_note = None
+    if not affils:
+        # 作者脚注机构行兜底(2026-11-17): "*기관 직위, email" 体例, 见 _footnote_affil。
+        # 只在以上全部来源都空时启用; 有机构的篇一律不触发。
+        _fa = _footnote_affil(doc_dir)
+        if _fa:
+            affils = [_fa[0]]
+            ch_front["affiliations"] = (_fa[0], "footnote_email")
+            _fa_note = _fa[1]
     if t_ko:
+        # —— 作者区扫描(2026-11-17 重构): 窗口内收集全部候选, 打分选优 ——
+        # 首中即停旧策略的病灶: 英文标题/摘要首行/ISSN 行都能过人名校验,
+        # 排除法砍不完坏形态(13563580/13569377 归因); 标记/角色词/贴题位置
+        # 才是作者行的正面信号。长块首行路径保留(13569752 实证)但加 <=8 词闸。
         early = []
+        _cands = []
         ordered = sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0]))
         start = next((i + 1 for i, u in enumerate(ordered) if u["uid"] == t_ko["uid"]), len(ordered))
+        _ty = (t_ko["box"][1] / float(j0["h"])) if t_ko else 0.0
         for u in ordered[start:]:
+            _y1 = u["box"][1] / float(j0["h"])
+            if _y1 > _ty + 0.45:
+                break   # 作者区窗口: 标题下方 45% 页高
             t = (u.get("main_text") or "").strip()
             if not t:
                 continue
@@ -859,27 +1008,56 @@ def front_doc(doc, out_root):
                 continue
             if (t.startswith("[") and t.endswith("]")) \
                     or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
-                    or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
+                    or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\))", t)):
                 break
-            if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote") \
-                    or len(_fold(t)) > 80:
+            if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
                 continue
-            for ln in t.split("\n"):
-                if re.fullmatch(u"[\\(（].+[\\)）]", ln.strip()) and AFFIL_HEAD.search(ln):
+            _long = len(_fold(t)) > 80
+            _lines = [t.splitlines()[0].strip()] if _long else t.split("\n")
+            _names = []
+            for ln in _lines:
+                if _long and len(ln.split()) > 8:
+                    break   # 长块首行句子型(摘要/正文), 不是作者行
+                if re.fullmatch(u"[\\(（].+[\\)）)]", ln.strip()) and AFFIL_HEAD.search(ln):
                     continue
-                for a in _parse_author_line(ln, u, affil_notes):
-                    if _valid_author_name(a.get("name")):
-                        a.update(uid=u["uid"], page=1, box=u["box"])
-                        early.append(a)
-            if early:
-                break
+                if re.search(r"ISSN|ISBN|https?://|www\.|DOI|주제어|Keywords?|Abstract|핵심\s*어", ln, re.I):
+                    continue
+                _pn = [a for a in _parse_author_line(ln, u, affil_notes)
+                       if _valid_author_name(a.get("name"))]
+                if _pn and not any(a["markers"] for a in _pn) \
+                        and len(_pn) >= 3 \
+                        and not re.search(u"[가-힣一-鿿]", " ".join(a["name"] for a in _pn)):
+                    continue   # 无标记无韩文 >=3 词 = 英文标题/栏目行
+                _names.extend(_pn)
+            if not _names:
+                continue
+            _score = 3.0 * sum(1 for a in _names if a.get("markers")) \
+                + 2.0 * sum(1 for a in _names if a.get("role")) \
+                + 1.0 * len(_names) \
+                + max(0.0, 3.0 - (_y1 - _ty) * 8.0)
+            _cands.append((_score, _y1, u, _names))
+        if _cands:
+            _cands.sort(key=lambda c: (-c[0], c[1]))
+            _score, _y1, u, _names = _cands[0]
+            for a in _names:
+                a.update(uid=u["uid"], page=1, box=u["box"])
+            early = _names
         if early:
             authors = early
-    authors = [a for a in authors if _valid_author_name(a.get("name"))]
+    _ORG_FRAG = (u"국립", u"한국", u"서울", u"부산", u"대구", u"경북", u"경남", u"기계",
+             u"전기", u"석사과정", u"박사과정", u"대학원", u"연구원", u"학과", u"학부", u"위원")
+    for _a in authors:
+        _a["name"] = re.sub(r"\s*\$?\^\{[^}]*\}\$?\s*", "", _a.get("name") or "").strip()
+    authors = [a for a in authors
+               if _valid_author_name(a.get("name"))
+               and (a.get("name") or "") not in (u"주저자", u"교신저자", u"저자", u"성명")
+               and (a.get("name") or "") not in _ORG_FRAG]
     meta_fp = os.path.join(doc_dir, "metadata.json")
     meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
     meta.pop("front_notes", None)   # 遗留诊断键清理(§38 已迁 audit)
     t_ko_c, t_en_c = _conf(t_ko), _conf(t_en)
+    affils = [a for a in affils
+              if not re.search(r"Corresponding Author|Tel\s*[:：]|e-mail|email\s*[:：]", a)]
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -898,7 +1076,7 @@ def front_doc(doc, out_root):
     audit.update({"doc": doc,
                   "title": {"basis": t_ko_c["basis"]},
                   "title_en": {"basis": t_en_c["basis"]},
-                  "front_notes": {"author_zone_lines": [s for s, _ in zone_lines],
+                  "front_notes": {"affil_footnote_email": _fa_note, "author_zone_lines": [s for s, _ in zone_lines],
                                   "affil_footnotes": affil_notes}})
     save_audit(doc_dir, audit)
     print("== ② %s ==" % doc)
@@ -956,11 +1134,39 @@ def _selftest():
     notes = _channel_affil_notes(note_block)
     ok10 = u"제1저자" in notes.get("**", "") \
         and u"교신저자" in notes.get("***", "")
-    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10)
+    # 11-13) 作者脚注机构行(2026-11-17): email+职务词双锚; 无锚不猜; 姓名行前剥; 纯姓名/纯学位拒
+    ok11 = (_footnote_affil_line(u"* 국사편찬위원회 사료조사 위원, sch0519@hanmail.net")
+              == u"국사편찬위원회 사료조사"
+              and _footnote_affil_line(
+                  u"** 한국교육개발원 영재교육연구센터 현장연구·선발팀장, 23mine@kedi.re.kr")
+              == u"한국교육개발원 영재교육연구센터 현장연구·선발")
+    ok12 = (_footnote_affil_line(
+                u"* 辛承福, 베트남 하노이 페니칼대학교 동방학과 전임강사email: shinsbvn@gmail.com")
+            == u"베트남 하노이 페니칼대학교 동방학과")
+    ok13b = (_footnote_affil_line(u"$ ^{*} $한국인문사회총연합회 연구교수, khse1004@hanmail.net")
+             == u"한국인문사회총연합회")
+    ok13c = _footnote_affil_line(
+        u"* 이 논문의 초고는 미시간 대학 남 센터의 마루에서 발표된 적 있다. ** 한국교육대 교수, x@y.kr") is None
+    ok13 = (ok13b and ok13c
+            and _footnote_affil_line(u"* 동국대 치유와 행복융합연구원, maitreye@naver.com") is None
+            and _footnote_affil_line(u"* 홍길동 교수, hong@x.ac.kr") is None
+            and _footnote_affil_line(u"* 국방부, 정볼보호학 석사, gkssptdb3@naver.com") is None
+            and _footnote_affil_line(u"* 그냥 각주 문장임") is None)
+    # 14) email 锚另两形态(2026-11-17): † Corresponding 行 email 后取机构 /
+    #     (email) 独立行取上方机构行; 行内杂质与地址段拒。
+    _z1 = _email_zone_affil([("Text", u"† Corresponding Author : Taewoong Kwon Tel : +82-2-961-1526, email : rio6760@naver.com HD Hyundai Heavy Industries, 400, Bangeojinsunhwando")])
+    _z2 = _email_zone_affil([("Text", u"김동성, 주저자"), ("Text", u"주식회사 코랩인터내셔널"), ("Text", u"(dss1729@colabintl.com)")])
+    _z3 = _email_zone_affil([("Text", u"김영수, 주저자"), ("Text", u"MBC 충북 PD"), ("Text", u"(caboy@hanmai.net)")])
+    _z4 = _email_zone_affil([("Text", u"† Corresponding Author : Kibeom Ku Tel : +82-2-961-1526, email : slal123@dtaq.re.kr Received 2025")])
+    ok14 = (_z1 and _z1[0] == "HD Hyundai Heavy Industries"
+            and _z2 and _z2[0] == u"주식회사 코랩인터내셔널"
+            and _z3 and _z3[0] == "MBC 충북 PD"
+            and not _z4)
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)
-    print("front selftest: %d/10 PASS" % sum(oks))
+    print("front selftest: %d/14 PASS" % sum(oks))
     return all(oks)
 
 

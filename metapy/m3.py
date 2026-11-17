@@ -7,6 +7,18 @@ import unify
 from .common import *
 
 
+def _cols_guarded(unified_list, j):
+    """列分组(2026-11-17 修正): 先 _page_col_boundary 判栏(单栏页返回 None → 全 col 0),
+    再 _col_of_b 按边界分组。替换裸 _col_blocks/_col_of 的中心点切分——宽行块中心
+    在页中线附近抖动会被随机分到幻影第二栏, 跨页拼接随之取错头(13567053 p18 实证:
+    'Approach' 续段被分到 col 1, 拼接误取 col 0 的 McCarthy 段)。"""
+    boundary = _page_col_boundary(j)
+    cols = {}
+    for u in _content_blocks(unified_list, j["w"]):
+        cols.setdefault(_col_of_b(u, boundary, j["w"]), []).append(u)
+    return cols
+
+
 def _annotate_join(tail_u, head_u, W, H, in_ref, line_h, how, stexts=(), doc_heads=(),
                    head_stexts=()):
     """执行拼接: 以尾成员重建组跑 make_unified(尾侧共识/置信/缺陷检测), 主读法=尾主读法+sep+页首主读法
@@ -151,7 +163,7 @@ def m3_doc(doc, out_root):
         line_h = _line_h(j["unified"])
         stexts = _struct_texts(j["unified"])
         in_ref = bool(j.get("in_ref"))
-        cols = _col_blocks(j["unified"], W)
+        cols = _cols_guarded(j["unified"], j)
         cmax = max(cols.keys()) if cols else -1
         ctx = {"W": W, "H": H, "line_h": line_h, "stexts": stexts, "in_ref": in_ref,
                "doc_heads": doc_heads}
@@ -215,7 +227,7 @@ def m3_doc(doc, out_root):
                 if p + 1 not in pdata:
                     continue
                 q = pdata[p + 1]
-                q_cols = _col_blocks(q["unified"], q["w"])
+                q_cols = _cols_guarded(q["unified"], q)
                 if not q_cols:
                     continue
                 q_line = _line_h(q["unified"])
@@ -256,7 +268,7 @@ def m3_doc(doc, out_root):
                 continue
             if not info["cleaned"] or _is_running(info["cleaned"], doc_heads):
                 continue
-            c = _col_of(u, W)
+            c = _col_of_b(u, _page_col_boundary(j), W)
             below = [x for x in cols.get(c, []) if x["box"][1] >= u["box"][3] - 2
                      and x["uid"] not in consumed
                      and not _is_running(x["main_text"], doc_heads)]
@@ -281,11 +293,11 @@ def m3_doc(doc, out_root):
         # ---- 3) 链式续接: 拼后仍无终止标点的跨页块, 按末段栏位再续一程(如 u11_5→u11_6→u12_2) ----
         if p + 1 in pdata:
             q = pdata[p + 1]
-            q_cols = _col_blocks(q["unified"], q["w"])
+            q_cols = _cols_guarded(q["unified"], q)
             if q_cols:
                 q_line = _line_h(q["unified"])
                 ctx["head_stexts"] = _struct_texts(q["unified"])
-                cmax_q = max(_col_blocks(j["unified"], W).keys() or [0])
+                cmax_q = max(cols.keys() or [0])
                 for u in list(j["unified"]):
                     cp = u.get("cross_page") or {}
                     if cp.get("role") != "tail" or cp.get("chained"):
@@ -322,7 +334,7 @@ def m3_doc(doc, out_root):
         # ---- 3) 粘入段处置: 回填下页空块, 或并入下页片段头 ----
         if glued and glued_from and p + 1 in pdata:
             q = pdata[p + 1]
-            q_cols = _col_blocks(q["unified"], q["w"])
+            q_cols = _cols_guarded(q["unified"], q)
             tgt = None
             if q_cols:
                 d0 = min(q_cols)
