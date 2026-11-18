@@ -574,7 +574,7 @@ class StageRunTest(unittest.TestCase):
             app._sync_buttons()
             self.assertEqual(app.btn_rerun.cget("text"), "一键重跑（5） ▾")
             self.assertNotIn("doc1", app.sel_lbl.cget("text"))
-            app._clear_selection()
+            app._toggle_select_all()   # 2026-11-18: _clear_selection 已并入全选/清除二合一按钮
             self.assertFalse(app.tree.selection())
             app.docs["doc1"]["ner"] = True
             app.filter_var.set("未跑NER")
