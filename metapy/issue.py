@@ -825,6 +825,25 @@ def issue_doc(doc, out_root):
                     kws_en, kw_raw_en, kw_loc_en = en, [t], {"page": 1, "uid": u["uid"]}
                 break
     # —— 落盘 ——
+    # 关键词终滤(2026-11-17 全库扫描): 长句/含句号/含 URL 的"关键词"是摘要或文献串混入, 丢弃。
+    kws = [k for k in kws if len(k) <= 50 and u"。" not in k
+           and not re.search(r"https?://|www\.", k)]
+    kws_en = [k for k in kws_en if len(k) <= 50 and u"。" not in k
+              and not re.search(r"https?://|www\.", k)]
+    # 卷期同源复制守卫(2026-11-17): issue==volume 且两候选页集相同 = 同一行被双写(제N집/
+    # BMC 卷:文号 体例), 期号是复制值不是证据 → 置空, 由 audit 记 note。
+    _ia = res.get("_audit") or {}
+    _iv = _ia.get("issue_candidates") or {}
+    _vv = _ia.get("volume_candidates") or {}
+    if res["issue"]["value"] is not None and res["issue"]["value"] == res["volume"]["value"]:
+        _ik = str(res["issue"]["value"]); _vk = "kwan:%d" % res["volume"]["value"]
+        _ik2 = str(res["issue"]["value"])
+        _ip = sorted(_iv.get(_ik) or _iv.get(_ik2) or [])
+        _vp = sorted(sum((_vv.get(k) or [] for k in _vv if k.endswith(":%d" % res["volume"]["value"])), []))
+        if (res["volume"]["value"] or 0) > 20 or (_ip and _ip == _vp):
+            audit["issue_dup_of_volume"] = True
+            res["issue"] = {"value": None, "uid": None,
+                            "confidence": {"level": "low", "source": "regex"}}
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),

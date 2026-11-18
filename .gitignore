@@ -39,3 +39,6 @@ Thumbs.db
 *.swp
 reviewed_docs.json
 推送GitHub.bat
+
+# 实体视图正文字数增量缓存
+out/.view_body_chars.json
