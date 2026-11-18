@@ -804,6 +804,61 @@ class GuiRestartTest(unittest.TestCase):
                 self.assertTrue(os.path.exists(other))
 
 
+class CachePreflightTest(unittest.TestCase):
+    """缓存预检: 老文章不该为"读缓存"去抢 ocr_api 名额。"""
+
+    def _out_with_cache(self, channels):
+        d = tempfile.mkdtemp()
+        for ch in channels:
+            raw = os.path.join(d, "raw", ch + "_api")
+            os.makedirs(raw)
+            fp = os.path.join(raw, "x_content_list_v2.json" if ch == "mineru" else "page_0.json")
+            with io.open(fp, "w", encoding="utf-8") as fh:
+                fh.write("[]")
+        return d
+
+    def test_full_cache_skips_slot_and_api(self):
+        import pipeline, crossproc
+        out = self._out_with_cache(("mineru", "dots", "paddle"))
+        logs = []
+        slot = mock.Mock()
+        with mock.patch.object(crossproc, "Slots", return_value=slot) as Slots, \
+                mock.patch.object(pipeline, "fetch_mineru_api") as fmin, \
+                mock.patch.object(pipeline, "fetch_dots_api") as fdots, \
+                mock.patch.object(pipeline, "fetch_paddle_api") as fpaddle, \
+                mock.patch.object(pipeline, "scan_inbox", return_value={}), \
+                mock.patch.object(pipeline, "try_auto", return_value={}):
+            chans, src = pipeline.fetch_channels("paper", "p.pdf", out,
+                                                 {"mineru": None, "dots": None, "paddle": None},
+                                                 echo=logs.append)
+        Slots.assert_not_called()
+        fmin.assert_not_called(); fdots.assert_not_called(); fpaddle.assert_not_called()
+        self.assertTrue(all(chans.get(c) for c in ("mineru", "dots", "paddle")))
+        self.assertTrue(all(src.get(c) == "API缓存" for c in ("mineru", "dots", "paddle")))
+
+    def test_missing_channel_only_fetches_that_one(self):
+        import pipeline, crossproc
+        out = self._out_with_cache(("mineru", "dots"))   # paddle 缺
+        logs = []
+        slot = mock.MagicMock()
+        slot.__enter__.return_value = slot
+        slot.waited = 0
+        with mock.patch.object(crossproc, "Slots", return_value=slot) as Slots, \
+                mock.patch.object(pipeline, "fetch_mineru_api") as fmin, \
+                mock.patch.object(pipeline, "fetch_dots_api") as fdots, \
+                mock.patch.object(pipeline, "fetch_paddle_api", return_value=out + "/raw/paddle_api") as fpaddle, \
+                mock.patch.object(pipeline, "scan_inbox", return_value={}), \
+                mock.patch.object(pipeline, "try_auto", return_value={}), \
+                mock.patch.object(pipeline, "CFG", {}):
+            chans, src = pipeline.fetch_channels("paper", "p.pdf", out,
+                                                 {"mineru": None, "dots": None, "paddle": None},
+                                                 echo=logs.append)
+        Slots.assert_called_once()
+        fmin.assert_not_called(); fdots.assert_not_called()
+        fpaddle.assert_called_once()
+        self.assertTrue(chans.get("paddle"))
+
+
 class QcLanguageTest(unittest.TestCase):
     def test_body_language_detection(self):
         cases = [

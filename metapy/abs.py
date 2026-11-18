@@ -359,7 +359,8 @@ def abstract_doc(doc, out_root):
         if h_en is not None:
             tail = h_en["page"]
     # —— 英摘要取值: 首页 Abstract 头 → 英题下无头形态(作者行下取至 Keywords) ——
-    meta0 = json.load(io.open(os.path.join(doc_dir, "metadata.json"), encoding="utf-8"))         if os.path.exists(os.path.join(doc_dir, "metadata.json")) else {}
+    _meta_fp0 = os.path.join(doc_dir, "metadata.json")
+    meta0 = json.load(io.open(_meta_fp0, encoding="utf-8")) if os.path.exists(_meta_fp0) else {}
     ten_fold = _fold(((meta0.get("title_en") or {}).get("value") or ""))
     # 尾页英文题名预探(h_en 之下的首个英文节头/长英文行): 其折叠值供收集时跳过题名复写
     if h_en is not None and h_en["page"] - 1 > 0:
@@ -513,8 +514,8 @@ def abstract_doc(doc, out_root):
     if "abstract_en" not in res:
         res["abstract_en"] = {"value": None, "from_tail": False, "confidence": _conf(None, [])}
     # —— 尾页英文 matter 顺带: title_en 兜底 + 罗马化作者 ——
-    meta_fp = os.path.join(doc_dir, "metadata.json")
-    meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
+    meta_fp = _meta_fp0
+    meta = meta0   # 2026-11-18: 与 362 行同函数重复读合并(中段无写盘, 两次读同值)
     tail_title_en = None
     tail_roman = []
     if h_en is not None and h_en["page"] - 1 > 0:

@@ -4,6 +4,7 @@
 不读取或改写 OCR 数据；pipeline.py 保留同名 re-export。
 """
 import os, re, io, json, html, hashlib
+import qc   # 公共判据(正文/机构三源)唯一实现处, 2026-11-17 收敛
 from pipeline_io import _cin, _fold_sym, _gdice, _iou
 
 NS = {"Section-header":"sec","Text":"txt","Footnote":"ftn","Picture":"pic","Caption":"cap",
@@ -1056,9 +1057,7 @@ def _meta_overview(meta, audit=None, ents=None, body_chars=0):
     _grp_checks = [
         ("题录", [("标题", _has((meta.get("title") or {}).get("value"))),
                   ("作者", bool(meta.get("authors"))),
-                  ("机构", bool(meta.get("affiliations")) or _kinds.get("org", 0) > 0
-                   or any(str((a.get("affiliation") or "")).strip()
-                          for a in (meta.get("authors") or []) if isinstance(a, dict)))]),
+                  ("机构", qc.affiliation_present(meta, _kinds.get("org", 0)))]),
         ("来源", [("期刊", _has((meta.get("journal") or {}).get("value"))),
                   ("出版年", _has((meta.get("year") or {}).get("value"))),
                   ("卷", _has((meta.get("volume") or {}).get("value"))),
@@ -1388,10 +1387,9 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
         ov_cell = ""
         if meta is not None:
             if p == 0:
-                # 实体清单"正文"项判据: unified 全篇 Text/Footnote 主读法总字符
-                _body = sum(len((u.get("main_text") or "").strip())
-                            for _us in (unified_pages or {}).values() for u in _us
-                            if u.get("type") in ("Text", "Footnote"))
+                # 实体清单"正文"项判据 = qc.body_text_chars(公共唯一实现)
+                _body = qc.body_text_chars(u for _us in (unified_pages or {}).values()
+                                           for u in _us)
                 ov_cell = _meta_overview(meta, audit, ents, _body) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
             ch_cells += _meta_cell(meta, p + 1, audit, choices) or ""
         ch_cells += _entity_cell((ents or {}).get(p + 1)) or ""

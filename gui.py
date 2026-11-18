@@ -23,6 +23,7 @@ import archive
 import qc
 import stages
 import workspaces
+import entview
 from docid import doc_of
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -651,7 +652,7 @@ class App(tk.Tk):
         ttk.Label(viewbar, text="状态").pack(side="left")
         self.filter_var = tk.StringVar(value="全部")
         filter_box = ttk.Combobox(viewbar, textvariable=self.filter_var, width=8, state="readonly",
-                                  values=("全部", "运行中", "异常", "未通过", "非正规", "未跑", "未跑NER", "完成"))
+                                  values=("全部", "运行中", "异常", "未通过", "非正规", "特殊", "未跑", "未跑NER", "完成"))
         filter_box.pack(side="left", padx=4)
         filter_box.bind("<<ComboboxSelected>>", lambda _ev: self._apply_view())
         ttk.Label(viewbar, text="语言").pack(side="left", padx=(8, 0))
@@ -660,32 +661,33 @@ class App(tk.Tk):
                                 values=("全部", "韩文", "中文", "英文", "混合", "未知"))
         lang_box.pack(side="left", padx=4)
         lang_box.bind("<<ComboboxSelected>>", lambda _ev: self._apply_view())
+        self.entity_view = tk.BooleanVar(value=False)
+        tk.Checkbutton(lang_box.master, text="实体视图", variable=self.entity_view,
+                       command=self._switch_view).pack(side="left", padx=(10, 0))
         self.count_lbl = ttk.Label(viewbar, text="文档 0 篇", foreground="#4b5563")
         self.count_lbl.pack(side="right", padx=4)
         selection_box = ttk.Frame(viewbar)
         selection_box.pack(side="right", padx=8)
         self.sel_lbl = ttk.Label(selection_box, text="未选中")
         self.sel_lbl.pack(side="left", padx=(0, 4))
-        self.btn_clear_sel = ttk.Button(selection_box, text="清除选择", command=self._clear_selection)
+        self.btn_clear_sel = ttk.Button(selection_box, text="全选", command=self._toggle_select_all)
         self.btn_clear_sel.pack(side="left")
-        cols = ("state", "qc", "language", "channels", "ner", "timing", "done_at", "runs", "note")
         table = ttk.Frame(wrap)
         table.pack(fill="both", expand=True)
-        self.tree = ttk.Treeview(table, columns=cols, show="tree headings", height=12,
+        self.tree = ttk.Treeview(table, columns=(), show="tree headings", height=12,
                                  selectmode="extended")
-        self.tree.heading("#0", text="文档")
-        for c, w, t in (("state", 64, "状态"), ("qc", 190, "质检 · 必抽项"),
-                        ("language", 58, "语言"),
-                        ("channels", 58, "渠道"), ("ner", 54, "NER"),
-                        ("timing", 104, "时间分析(OCR:LLM)"),
-                        ("done_at", 100, "上次完成"), ("runs", 64, "历史"), ("note", 220, "备注")):
-            self.tree.heading(c, text=t)
-            self.tree.column(c, width=w, anchor="center")
-        self.tree.column("#0", width=150)
-        self.tree.column("qc", anchor="w")   # 缺项名要能读, 左对齐; 其余列居中
-        self.tree.column("note", anchor="w")
+        # 列规格(列名, 基准宽, 表头, 对齐)——文档视图 9 列; 实体视图 4 列(entview.KINDS 顺序)
+        self._doc_colspec = (("state", 64, "状态", "center"), ("qc", 190, "质检 · 必抽项", "w"),
+                             ("language", 58, "语言", "center"), ("channels", 58, "渠道", "center"),
+                             ("ner", 54, "NER", "center"), ("timing", 104, "时间分析(OCR:LLM)", "center"),
+                             ("done_at", 100, "上次完成", "center"), ("runs", 64, "历史", "center"),
+                             ("note", 220, "备注", "w"))
+        # 实体视图列 = 14 必抽项字段 + 4 实体 kind(entview.COLUMNS 驱动, 字段在前实体在后)
+        self._ent_colspec = tuple((k, w, zh, "w") for k, zh, w in entview.COLUMNS)
+        self._set_columns(self._doc_colspec)
         self.tree.tag_configure("qc_bad", foreground="#b03030")
         self.tree.tag_configure("qc_nonregular", foreground="#2563eb")
+        self.tree.tag_configure("qc_novol", foreground="#7c3aed")   # 免卷期刊: 紫
         self.tree.tag_configure("state_complete", foreground="#000000")
         self.tree.tag_configure("state_running", foreground="#1d4ed8")
         self.tree.tag_configure("state_unrun", foreground="#6b7280")
@@ -920,6 +922,8 @@ class App(tk.Tk):
     def _row_tag(self, doc, qr=None):
         if qr and qr.get("level") == "bad":
             return "qc_bad"
+        if qr and qr.get("level") == "novol":
+            return "qc_novol"
         if qr and qr.get("level") == "nonregular":
             return "qc_nonregular"
         state = self._display_state(doc)
@@ -930,6 +934,30 @@ class App(tk.Tk):
         if state == "未跑":
             return "state_unrun"
         return "state_warn"
+
+    def _set_columns(self, colspec):
+        """列重配(实体视图切换): 重设列集合/表头/宽度, 同步 _column_base。"""
+        self.tree.configure(columns=tuple(c for c, _w, _t, _a in colspec))
+        self.tree.heading("#0", text="文档")
+        for c, w, t, a in colspec:
+            self.tree.heading(c, text=t)
+            self.tree.column(c, width=w, anchor=a)
+        self.tree.column("#0", width=150)
+        self._column_base = dict([("#0", 150)] + [(c, w) for c, w, _t, _a in colspec])
+
+    def _switch_view(self):
+        """一键切换: 文档视图(状态/质检/…) ↔ 实体视图(机构/基金/软件/数据集)。"""
+        if self.entity_view.get():
+            self._set_columns(self._ent_colspec)
+            # 切到实体视图时全量取一次实体矩阵; 之后 refresh 新增的篇目暂显示空格,
+            # 再切一次即刷新(NER 产物是 LLM 阶段产出, 不值得每次 refresh 全库重读)。
+            # 首次切换全库扫一次正文字数并落增量缓存(out/.view_body_chars.json), 之后秒开
+            self._ent_cache = entview.matrix(sorted(self.docs), self.workspace.out,
+                                             self.workspace.ner_root)
+        else:
+            self._set_columns(self._doc_colspec)
+        self._fit_tree_columns()
+        self._apply_view()
 
     def _fit_tree_columns(self):
         available = max(240, self.tree.master.winfo_width() - self.tree_vscroll.winfo_reqwidth() - 4)
@@ -959,6 +987,8 @@ class App(tk.Tk):
                 continue
             if mode == "非正规" and not (qr and qr.get("level") == "nonregular"):
                 continue
+            if mode == "特殊" and not (qr and qr.get("level") == "novol"):
+                continue
             if mode == "未跑" and state != "未跑":
                 continue
             if mode == "未跑NER" and self.docs[doc].get("ner"):
@@ -970,16 +1000,21 @@ class App(tk.Tk):
             runs = "%d 次%s" % (len(h), "(末次失败)" if (h and not h[-1]["ok"]) else "")
             if d["state"] == "未跑":
                 qr = {"label": "-", "level": "", "issues": []}
-            self.tree.insert("", "end", iid=doc, text=doc, tags=(self._row_tag(doc, qr),), values=(
-                state,
-                qc_display(qr) if qr else "质检中",
-                "-" if d["state"] == "未跑" else (qr or {}).get("language", "检查中"),
-                channel_display(d),
-                "已跑" if d.get("ner") else "未跑",
-                timing_display(h[-1] if h else None),
-                time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
-                runs,
-                self._notes.get(doc, "")))
+            if self.entity_view.get():
+                _cells = (self._ent_cache or {}).get(doc) or {}
+                _vals = tuple(_cells.get(k, "") for k, _zh, _w in entview.COLUMNS)
+            else:
+                _vals = (
+                    state,
+                    qc_display(qr) if qr else "质检中",
+                    "-" if d["state"] == "未跑" else (qr or {}).get("language", "检查中"),
+                    channel_display(d),
+                    "已跑" if d.get("ner") else "未跑",
+                    timing_display(h[-1] if h else None),
+                    time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
+                    runs,
+                    self._notes.get(doc, ""))
+            self.tree.insert("", "end", iid=doc, text=doc, tags=(self._row_tag(doc, qr),), values=_vals)
         visible = [d for d in sels if self.tree.exists(d)]
         if visible:
             self.tree.selection_set(visible)
@@ -1007,6 +1042,8 @@ class App(tk.Tk):
 
     def _drain_qc(self):
         restart = False
+        got = False   # dirty 门闩(2026-11-18): 本轮确实收到新质检结果才重绘视图——
+                      # 此前挂在筛选档时每 50ms 重建近千行表格 20 次/秒, 多数轮次空转。
         try:
             for _ in range(30):
                 generation, doc, qr = self._qc_queue.get_nowait()
@@ -1019,16 +1056,19 @@ class App(tk.Tk):
                     self._qc_pending = []
                     continue
                 self._qc_results[doc] = qr
+                got = True
                 if doc in self.docs and self.tree.exists(doc):
                     values = list(self.tree.item(doc, "values"))
-                    values[1] = qc_display(qr)
-                    values[2] = qr.get("language", "未知")
+                    if not self.entity_view.get():
+                        values[1] = qc_display(qr)
+                        values[2] = qr.get("language", "未知")
                     if len(values) >= 9:
                         values[8] = self._notes.get(doc, "")
                     self.tree.item(doc, values=values, tags=(self._row_tag(doc, qr),))
         except queue.Empty:
             pass
-        if self.filter_var.get() in ("异常", "未通过", "非正规") or self.lang_filter_var.get() != "全部":
+        if got and (self.filter_var.get() in ("异常", "未通过", "非正规", "特殊")
+                    or self.lang_filter_var.get() != "全部"):
             self._apply_view()
         if restart:
             self._start_qc_loader()
@@ -1068,7 +1108,10 @@ class App(tk.Tk):
         self.btn_view.configure(state="normal" if has else "disabled")
         self.btn_index.configure(state="normal" if has else "disabled")
         self.btn_archive.configure(state="normal" if has else "disabled")
-        self.btn_clear_sel.configure(state="normal" if has else "disabled")
+        _visible = list(self.tree.get_children())
+        _full = bool(_visible) and set(self.tree.selection()) >= set(_visible)
+        self.btn_clear_sel.configure(state="normal" if _visible else "disabled",
+                                     text="清除选择" if _full else "全选")
         self.btn_stop.configure(state="normal" if self.runner.is_busy()
                                 and not self.runner.is_stopping() else "disabled")
         n = len(self._checked_stages()) if hasattr(self, "stage_vars") else 0
@@ -1078,8 +1121,16 @@ class App(tk.Tk):
             self.sel_lbl.configure(text="未选中")
 
     # ---------- 动作(对选中集批量) ----------
-    def _clear_selection(self):
-        self.tree.selection_remove(self.tree.selection())
+    def _toggle_select_all(self):
+        """全选/清除 二合一(2026-11-17): 对**当前筛选出的**全部文档,
+        未全选 → 一键全选; 已全选 → 清除。按钮文字随状态切换。"""
+        visible = list(self.tree.get_children())
+        if not visible:
+            return
+        if set(self.tree.selection()) >= set(visible):
+            self.tree.selection_remove(self.tree.selection())
+        else:
+            self.tree.selection_set(visible)
         self._sync_buttons()
 
     def _stop_batch(self):
@@ -1148,7 +1199,7 @@ class App(tk.Tk):
 
 
     def _on_double_click(self, ev):
-        if self.tree.identify_column(ev.x) == "#10":
+        if not self.entity_view.get() and self.tree.identify_column(ev.x) == "#10":
             self._edit_note()
         else:
             self._open_viewer()

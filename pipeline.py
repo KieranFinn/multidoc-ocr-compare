@@ -118,6 +118,23 @@ def _load_fresh_unified(udir, t0):
     return upages, True
 
 
+def _cached_channel_dir(out, ch):
+    """只查缓存(不调 API), 命中返回缓存目录, 否则 None。
+
+    与 fetch_channels 内 _resolve_* 的缓存判据逐字一致:
+      mineru: raw/mineru_api 下存在 *_content_list_v2.json
+      dots/paddle: raw/<ch>_api/page_0.json
+    抽出来是为了在抢 ocr_api 名额**之前**先做一遍预检——缓存命中不该排队。
+    """
+    cached = os.path.join(out, "raw", ch + "_api")
+    if ch == "mineru":
+        if any(x.endswith("_content_list_v2.json") for _, _, fs in os.walk(cached) for x in fs):
+            return cached
+    elif os.path.exists(os.path.join(cached, "page_0.json")):
+        return cached
+    return None
+
+
 def fetch_channels(doc, pdf, out, chans_in, echo=None):
     """② 渠道获取(独立可跑, stages.py 与 main 共用一份实现)。
 
@@ -139,6 +156,23 @@ def fetch_channels(doc, pdf, out, chans_in, echo=None):
     for k, v in try_auto(pdf, out).items():
         if v and not chans.get(k):
             chans[k] = v; SRC_KIND[k] = "auto命令"
+
+    # —— 缓存预检(2026-11-17) ——
+    # 老文章三路缓存齐全时, 一个 API 都不该调, 自然也不该去抢 ocr_api 名额。
+    # 旧实现先抢名额再查缓存: 名额被首跑新文章的分钟级 API 占满时, 老文章明明
+    # 有缓存却卡在 wait=3600 的队列里(注释"缓存命中名额无成本"是错的)。
+    # 这里先把纯读盘的缓存判定做掉, 只有真缺的渠道才进下面的 with _slot。
+    for ch in ("mineru", "dots", "paddle"):
+        if chans.get(ch):
+            continue
+        hit = _cached_channel_dir(out, ch)
+        if hit:
+            chans[ch] = hit
+            SRC_KIND[ch] = "API缓存"
+            log_("② 渠道[%s] 复用缓存(预检, 不占名额): %s" % (ch, hit))
+    if all(chans.get(c) for c in ("mineru", "dots", "paddle")):
+        log_("② 三路缓存齐全, 跳过 ocr_api 名额(无需调 API)")
+        return chans, SRC_KIND
 
     # 三路获取并行跑(ThreadPoolExecutor), 主线程收结果: 三家 API 互不阻塞
     from concurrent.futures import ThreadPoolExecutor

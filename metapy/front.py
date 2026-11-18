@@ -1008,7 +1008,7 @@ def front_doc(doc, out_root):
                 continue
             if (t.startswith("[") and t.endswith("]")) \
                     or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
-                    or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\))", t)):
+                    or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
                 break
             if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
                 continue
@@ -1025,16 +1025,14 @@ def front_doc(doc, out_root):
                 _pn = [a for a in _parse_author_line(ln, u, affil_notes)
                        if _valid_author_name(a.get("name"))]
                 if _pn and not any(a["markers"] for a in _pn) \
-                        and len(_pn) >= 3 \
-                        and not re.search(u"[가-힣一-鿿]", " ".join(a["name"] for a in _pn)):
-                    continue   # 无标记无韩文 >=3 词 = 英文标题/栏目行
+                        and not re.search(u"[가-힣一-鿿]", " ".join(a["name"] for a in _pn)) \
+                        and (len(_pn) >= 3 or (u"," not in ln and len(_pn) >= 2)):
+                    continue   # 无标记无韩文: >=3 词, 或无逗号 >=2 词 = 英文标题/栏目行
                 _names.extend(_pn)
             if not _names:
                 continue
-            _score = 3.0 * sum(1 for a in _names if a.get("markers")) \
-                + 2.0 * sum(1 for a in _names if a.get("role")) \
-                + 1.0 * len(_names) \
-                + max(0.0, 3.0 - (_y1 - _ty) * 8.0)
+            _ln_mk = sum(len(re.findall(u"[•●▪◆†‡]", ln)) + len(re.findall(r"\*+", ln)) for ln in _lines)
+            _score = (3.0 * sum(1 for a in _names if a.get("markers")) + 3.0 * _ln_mk + 2.0 * sum(1 for a in _names if a.get("role")) + 1.0 * len(_names) + max(0.0, 3.0 - (_y1 - _ty) * 8.0))
             _cands.append((_score, _y1, u, _names))
         if _cands:
             _cands.sort(key=lambda c: (-c[0], c[1]))
@@ -1052,12 +1050,16 @@ def front_doc(doc, out_root):
                if _valid_author_name(a.get("name"))
                and (a.get("name") or "") not in (u"주저자", u"교신저자", u"저자", u"성명")
                and (a.get("name") or "") not in _ORG_FRAG]
+    _seen = set()
+    authors = [a for a in authors if not (a.get("name") in _seen or _seen.add(a.get("name")))]
     meta_fp = os.path.join(doc_dir, "metadata.json")
     meta = json.load(io.open(meta_fp, encoding="utf-8")) if os.path.exists(meta_fp) else {}
     meta.pop("front_notes", None)   # 遗留诊断键清理(§38 已迁 audit)
     t_ko_c, t_en_c = _conf(t_ko), _conf(t_en)
     affils = [a for a in affils
-              if not re.search(r"Corresponding Author|Tel\s*[:：]|e-mail|email\s*[:：]", a)]
+              if not re.search(r"Corresponding Author|Tel\s*[:：]|e-mail|email\s*[:：]", a)
+              and len(a) <= 60
+              and not re.search(u"(?:는|은 |을 |를 |에서|이다$|하였다|하였음|있다)", a)]
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
