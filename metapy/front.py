@@ -67,6 +67,10 @@ def _pick_title(j, want_hangul):
             y1 = u["box"][1] / H
             if not (TITLE_ZONE[0] <= y1 <= (TITLE_ZONE[1] if want_hangul else TITLE_EN_ZONE[1])):
                 continue
+            if re.match(u"^[가-힣]{2,4}(?:<sup>.*?</sup>|[\\s*†‡§¹²³⁴⁵⁶⁷⁸⁹])*[(,]\\s*[A-Za-z]", t):   # 署名行(김영준(…)/오우림<sup>†</sup>, Woorim Oh)不当题名(13570509/13569378 实证)
+                continue
+            if (re.match(u"^[가-힣]{2,4}[\\s]+", t) and _looks_affil(t) and len(t.split()) <= 4) or re.match(u"^(?:[가-힣][\\s]+){2,}[가-힣]", t):   # 人名+机构行(유인태 단국대학교式,≤4词)与间隔名单行(백 서 인  당 정)不当题名(13567389/13569913 实证; 真题名如"트럼프 시대 이후 미국 내 중국학과"更长, 词数守卫放行)
+                continue
             if re.match(u"^[가-힣\\s]+\\([A-Za-z .\\-']+\\)\\*?$", t):
                 continue
             if re.search(u"[가-힣]", t) and (SUP_LATEX.search(t) or "<sup>" in t
@@ -79,9 +83,9 @@ def _pick_title(j, want_hangul):
             has_cjk = bool(re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(t)))
             if want_hangul and hr < 0.3 and not has_cjk:
                 continue
-            if not want_hangul and (hr > 0.35 or has_cjk or not re.search(r"[A-Za-z]", t)
-                                    or re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]",
-                                                 _fold(u.get("main_text") or ""))):
+            if not want_hangul and (hr > 0.35 or has_cjk or not re.search(r"[A-Za-z]", t)):
+                # 整块 CJK 拒收已删(2026-11-18): 韩刊"英题+韩署名"同块是常态, 整块拒把真英题
+                # 一并毙掉(413 篇 title_en 变 None 的根因); 行级 hr/CJK/字母守卫已足够。
                 continue
             # 题名不结句(1536751 实证): 正文段落以 '…다./…요.' 收尾、宽度又占满整栏, 靠宽度+长度
             # 加分压过真题名(Section-header)当选, 随后整段正文被当题名、正文词被当作者。
@@ -152,6 +156,8 @@ def _looks_affil(s):
     return len(s) - last.end() <= 16
 
 
+_MIL_HEAD = re.compile(
+    u"^(?:육군|해군|공군|해병대|국방부|국방기술품질원|군수참모처|정비창|사령부|소방천|합동참모본부)")
 _AFF_ROLE_TAIL = re.compile(
     u"\\s*(?:초빙교수|겸임교수|명예교수|전임교수|부교수|조교수|교수|강사|총장|부총장|학장|기획처장|처장|"
     u"원장|실장|팀장|선임연구원|책임연구원|전문연구원|연구원|박사과정|석사과정|대학원생|전임|겸임|초빙)\\S*\\s*$")
@@ -443,6 +449,16 @@ def _xpage_affils(doc_dir):
     return out
 
 
+def _byline_lead(s):
+    """题名块兜底用的署名行起判: 2-4 音节韩名 + (上标标记 | 分隔符 | 行尾)。
+    不用正则转义判 LaTeX 上标($^{...}$), 免得多层转义把反斜杠啃坏。"""
+    m = re.match(u"^[가-힣]{2,4}", (s or "").strip())
+    if not m:
+        return False
+    rest = (s or "").strip()[m.end():]
+    return (not rest or rest.startswith("<sup") or rest.startswith("$^{")
+            or rest[0] in u" ,(*·")
+
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
     + 括号内罗马拼音硬锚 + OCR 粘连名(홍영식서울교육대학교)按机构词表切开。
@@ -459,6 +475,41 @@ def _parse_author_line(line, u, foot_affil):
     line = line.strip(" ·•,․")
     if not line:
         return []
+    # 编辑部署名单行体例(2026-11-18, 整行判定在切分之前 —— '박규성, Gyuseong Park
+    # 경북대학교, 경영학부' 若先按 ", 한글" 预切分, 机构段会被切成碎令牌):
+    # ① 국방품질연구논집 jdqs '한글명, Roman Name[ 机构]' — 罗马名内逗号归一为空格
+    #   ('Yong, Kim' → 'Yong Kim'); 机构段必须带机构特征, 防 '김철수, 박영희'
+    #   多作者行被整体吞成名+机构(整行不匹配时自然落回旧切分路径)。
+    # ② ESP Review 老式括号机构 '백서현(한양여자대학교)' — mrom 只认括号内罗马拼音,
+    #   韩文机构此前残留在人名里; 括号内容须带机构特征, 号/别名不拆('방정환(고당)' 过不了)。
+    _mk0 = SUP_LATEX.findall(line) + re.findall(r"<sup>(.*?)</sup>", line, flags=re.I)
+    _cl = SUP_LATEX.sub("", line)
+    _cl = re.sub(r"<sup>.*?</sup>", "", _cl, flags=re.I)
+    _cl = re.sub(r"</?sup>", "", _cl, flags=re.I)
+    _cl = re.sub(r"(\*{1,4}|[†‡§¹²³⁴⁵⁶⁷⁸⁹])+(?=$|[\s·•,.])", "", _cl).strip(" ·•,․")
+    if _cl:
+        _role0 = None
+        _mrole0 = ROLE_WORDS.search(_cl)
+        if _mrole0:
+            _role0 = _mrole0.group(1)
+            _cl = ROLE_WORDS.sub("", _cl).strip(" ,·•")
+        _mby = re.match(
+            u"^([가-힣]{2,4}),(?:[ \t]*)([A-Z][A-Za-z.\\-]*+(?:[ ,]+[A-Z][A-Za-z.\\-]*+)*+)"
+            u"(?:[ \t]*(.+))?$", _cl)
+        if _mby:
+            _aff_rest = (_mby.group(3) or "").strip()
+            if (not _aff_rest or re.match(u"[가-힣(（]", _aff_rest)
+                    or AFFIL_HEAD.search(_aff_rest) or _looks_affil(_aff_rest)):
+                _rom = re.sub(r"[ ]*,[ ]*", " ", _mby.group(2)).strip()
+                return [{"name": _mby.group(1), "markers": _mk0,
+                         "affiliation": _aff_rest or None,
+                         "role": _role0, "roman": _rom or None}]
+        _mkp = re.match(u"^([가-힣]{2,4})\\(([^()]{2,40})\\)(.*)$", _cl)
+        if _mkp and not re.search(r"[A-Za-z]", _mkp.group(2)) \
+                and (AFFIL_HEAD.search(_mkp.group(2)) or _looks_affil(_mkp.group(2))):
+            return [{"name": _mkp.group(1), "markers": _mk0,
+                     "affiliation": _strip_affil_tail(_mkp.group(2).strip()) or None,
+                     "role": _role0, "roman": (_mkp.group(3).strip() or None)}]
     out = []
     glued_names = list(re.finditer(u"([가-힣]{2,4})(?:<sup>\\d+</sup>|\\*{0,2})?(\\([^)]+\\))", line))
     if len(glued_names) >= 2 and "^" not in line:
@@ -996,7 +1047,7 @@ def front_doc(doc, out_root):
         _cands = []
         ordered = sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0]))
         start = next((i + 1 for i, u in enumerate(ordered) if u["uid"] == t_ko["uid"]), len(ordered))
-        _ty = (t_ko["box"][1] / float(j0["h"])) if t_ko else 0.0
+        _ty = (t_ko["box"][1] / float(j0["h"])) if (t_ko and t_ko.get("box")) else 0.0
         for u in ordered[start:]:
             _y1 = u["box"][1] / float(j0["h"])
             if _y1 > _ty + 0.45:
@@ -1060,6 +1111,73 @@ def front_doc(doc, out_root):
               if not re.search(r"Corresponding Author|Tel\s*[:：]|e-mail|email\s*[:：]", a)
               and len(a) <= 60
               and not re.search(u"(?:는|은 |을 |를 |에서|이다$|하였다|하였음|있다)", a)]
+    # —— 题名块署名兜底(2026-11-18, 국방품질연구논집/kwr/jdca 实证): 编辑部把英题与署名、
+    #    机构合并进同一块(unify 跨栏断行合并), 上面的重构扫描对长块只试首行(题名)即跳,
+    #    题名块余行的 '김민규, Minkyu Kim' 署名与 '국립창원대학교, …' 机构随之丢失。
+    #    此处补扫题名块余行: 只在缺作者或缺机构时启用(全绿篇一条不动); 位于作者清理之后; 罗马起头的
+    #    题名残行仍不进门(13563535 英题切片误配 roman 的回归同样被防)。
+    if (not authors or not affils) and (t_ko or t_en):
+        _tb = {t["uid"] for t in (t_ko, t_en) if t and t.get("uid")}
+        _top = min(t["box"][1] for t in (t_ko, t_en) if t)
+        _win = _top + 0.45 * float(j0["h"])
+        _scan_uids = set()
+        _res_a, _res_z = [], []
+        for _u in j0["unified"]:
+            if not (_u["uid"] in _tb or _top - 4 <= _u["box"][1] < _win or _u["type"] == "Footnote"):
+                continue
+            _scan_uids.add(_u["uid"])
+            for _ln in (_u.get("main_text") or "").split("\n"):
+                _s = _ln.strip()
+                if not _s or _fold(_s) in _title_keys or len(_s) > 200:
+                    continue
+                if re.search(r"ISSN|ISBN|https?://|www\.|DOI|Abstract|Keywords?|주제어|핵심\s*어", _s, re.I):
+                    continue
+                # 合并署名行按 '|' 切段归类(13570509 jdca 实证: '김영준(Young-Joon Kim)¹ |
+                # ¹(제1저자)전북대학교 … 연구교수 | dharma0421@…' 同段三职, 整行进作者
+                # 解析会被 mrom 吃掉机构残段)。email/电话段自然落选(无机构特征、非韩名起头)。
+                _segs = [x.strip() for x in re.split(r"[|/]", _s)] if ("|" in _s or "/" in _s) else [_s]
+                for _seg in _segs:
+                    _seg = re.sub(r"\S+@\S+", "", _seg).strip()
+                    if not _seg or re.search(r"Corresponding|e-?mail|Tel\s*[:：]", _seg, re.I):
+                        continue
+                    # 军单位起头行优先归机构(13569393 实证: '육군 제2672부대, 군수참모처, 장비정비과장'
+                    # 按逗号切会被作者分支切成垃圾名)。
+                    _v0 = re.sub(u"^[¹²³⁴⁵⁶⁷⁸⁹⁰•·●▪◆\\*\\s]+", "", _seg)
+                    if _u["type"] == "Footnote" and _v0 == _seg:
+                        continue   # 引文脚注无署名标记, 整段跳过
+                    if _MIL_HEAD.match(_v0):
+                        _v = _strip_affil_tail(ROLE_WORDS.sub("", _v0).strip("()|·• ").strip())
+                        if _looks_affil(_v) or _MIL_HEAD.match(_v):
+                            _res_z.append(_v)
+                        continue
+                    # 机构行(非韩名起头): 剥 上标/作者序位括号/职称词尾 后仍须像机构
+                    if AFFIL_HEAD.search(_seg) and not _byline_lead(_seg) and not _non_affil(_seg):
+                        _v = re.sub(u"^[(（]제?\\d+\\s*저자[)）]\\s*", "", _v0)
+                        _v = _strip_affil_tail(ROLE_WORDS.sub("", _v).strip("()|·• ").strip())
+                        if _looks_affil(_v) or _MIL_HEAD.match(_v):
+                            _res_z.append(_v)
+                        continue
+                    # 署名行(韩名起头, 容忍 <sup>/LaTeX 上标)
+                    if _byline_lead(_seg):
+                        _res_a.extend(a for a in _parse_author_line(_seg, _u, {})
+                                      if _valid_author_name(a.get("name")))
+        if _res_a and (not authors or all(
+                (not a.get("affiliation")) and (a.get("uid") in _scan_uids or not a.get("uid"))
+                for a in authors)):
+            authors = _res_a
+        if _res_z:
+            affils = []
+            for _z in _res_z:
+                for _x in _split_affils(_z):
+                    if _x not in affils and len(_x) <= 60:
+                        affils.append(_x)
+            # 单一机构时才回填到人(多机构按序对应是上标配对的事, 不猜);
+            # affiliations[] 列表本身已够质检与查看器用。
+            if len(_res_z) == 1:
+                for _a in authors:
+                    if not _a.get("affiliation"):
+                        _a["affiliation"] = _res_z[0]
+            ch_front["affiliations"] = (affils[0] if affils else None, "title_block_byline")
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -1164,11 +1282,26 @@ def _selftest():
             and _z2 and _z2[0] == u"주식회사 코랩인터내셔널"
             and _z3 and _z3[0] == "MBC 충북 PD"
             and not _z4)
-    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14)
+    # 15-18) 英题块署名体例(2026-11-18 jdqs 6 篇实证): '한글명, Roman Name [机构]' 单行 —
+    #    罗马名内逗号归一; 机构段必须带机构特征; 多韩文作者行('김철수, 박영희')不得被吞并;
+    #    老式括号机构 '백서현(한양여자대학교)' 拆开(号/别名形态 '방정환(고당)' 不拆)。
+    _by1 = _parse_author_line(u"김민규, Minkyu Kim", None, {})
+    ok15 = (len(_by1) == 1 and _by1[0]["name"] == u"김민규"
+            and _by1[0]["roman"] == "Minkyu Kim")
+    _by2 = _parse_author_line(u"박규성, Gyuseong Park 경북대학교, 경영학부", None, {})
+    ok16 = (len(_by2) == 1 and _by2[0]["name"] == u"박규성"
+            and "경북대학교" in (_by2[0]["affiliation"] or ""))
+    _by3 = _parse_author_line(u"김철수, 박영희", None, {})
+    ok17 = len(_by3) == 2
+    _pa1 = _parse_author_line(u"백서현(한양여자대학교)", None, {})
+    ok18 = (len(_pa1) == 1 and _pa1[0]["name"] == u"백서현"
+            and _pa1[0]["affiliation"] == u"한양여자대학교")
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14,
+           ok15, ok16, ok17, ok18)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)
-    print("front selftest: %d/14 PASS" % sum(oks))
+    print("front selftest: %d/%d PASS" % (sum(oks), len(oks)))
     return all(oks)
 
 

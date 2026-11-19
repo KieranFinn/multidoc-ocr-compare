@@ -42,3 +42,20 @@ reviewed_docs.json
 
 # 实体视图正文字数增量缓存
 out/.view_body_chars.json
+
+# 回归闸门工作产物(meta_diff.py/failures.py): 快照与 diff 是本地基线, 随时重建, 不入库
+_meta_snapshot_*.zip
+_meta_diff_*.json
+_failures.json
+_meta_backup_*.zip
+
+# 轮次台账与进度报告(failures.py --round 产物, 本地过程数据, 每轮刷新)
+_rounds.jsonl
+_rounds_report.html
+_kgs_toc.json
+
+# 一次性运维脚本: 跑完即弃, 依赖本地私有数据(_doi_registry.json / raw 站点缓存), 不入库
+_webfill_batch.py
+_note_fmt.py
+# 本地私有数据: 期刊 DOI 注册表
+_doi_registry.json

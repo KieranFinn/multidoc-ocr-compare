@@ -10,6 +10,7 @@ from .llmrep import llm_apply, report_meta, rebuild_viewer
 from .dual import run as dual_run
 from .cspan import cspan_doc
 from .issue import issue_doc
+from .webfill import webfill_doc
 
 __all__ = ["m3_doc", "refs_doc", "frefs_doc", "front_doc", "abstract_doc", "llm_apply",
            "report_meta", "rebuild_viewer", "dual_run",

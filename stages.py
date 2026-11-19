@@ -249,6 +249,7 @@ STAGES = [
     ("abs",     "③ 元数据", "摘要关键词", "abstract/keywords",             ("unified",), False),
     ("issue",   "③ 元数据", "期刊年卷期", "journal/year/volume/issue",     ("unified", "metadata"), False),
     ("cspan",   "③ 元数据", "引文句",     "citation_spans[]",              ("unified", "metadata"), False),
+    ("webfill", "③ 元数据", "联网回填",   "红单缺失(刊/年/卷/期)联网检索回填(双闸+备注标注; 只碰有缺失的篇)", ("metadata",), False),
     ("ner",     "④ 实体/呈现", "实体抽取", "ner_lite.json(需 LLM key)",     ("unified",), False),
     ("viewer",  "④ 实体/呈现", "对照查看器", "viewer_compare.html 重建",     ("merged",), False),
     ("index",   "④ 实体/呈现", "结果总览", "index.html 重建",               ("pages",), False),
@@ -256,7 +257,7 @@ STAGES = [
 
 BY_ID = {s[0]: s for s in STAGES}
 ORDER = [s[0] for s in STAGES]
-META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan")
+META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan", "webfill")
 
 
 def _stage_missing(sid, dd, have, pdf=None):
@@ -268,7 +269,7 @@ def _stage_missing(sid, dd, have, pdf=None):
 # 阶段 id -> metapy 入口函数名。不能靠 "<id>_doc" 拼: abs 的入口是 abstract_doc
 # (2026-11-12 实跑踩过: 全链跑到 abs 抛 module 'metapy' has no attribute 'abs_doc')。
 META_FN = {"m3": "m3_doc", "refs": "refs_doc", "frefs": "frefs_doc", "front": "front_doc",
-           "abs": "abstract_doc", "issue": "issue_doc", "cspan": "cspan_doc"}
+           "abs": "abstract_doc", "issue": "issue_doc", "cspan": "cspan_doc", "webfill": "webfill_doc"}
 
 RUNNERS = {
     "render": _st_render, "acquire": _st_acquire, "adapt": _st_adapt,
@@ -279,15 +280,17 @@ for _m in META_IDS:
     RUNNERS[_m] = _meta_stage(_m)
 
 PRESETS = [
-    ("全链(等价一键重跑)", ORDER),
-    ("只后链(元数据+实体)", list(META_IDS) + ["ner"]),
+    ("全链(等价一键重跑)", [s for s in ORDER if s != "webfill"]),
+    ("只后链(元数据+实体)", [s for s in META_IDS if s != "webfill"] + ["ner"]),
     ("只重建呈现(查看器+总览)", ["viewer", "index"]),
     ("只归一化及以下", ["merge", "unify"]),
 ]
 # 菜单默认勾选: 全选。因为「一键重跑」主区的动作 = 执行当前勾选(= 菜单里的"执行选中阶段"),
 # 默认若不勾全, 这个键就不再是"一键重跑"了。想少跑/不烧 LLM 有两条路:
 # 「快速重跑(跳NER)」独立键, 或在箭头菜单里取消勾选后回来点主区。
-DEFAULT_IDS = list(ORDER)
+DEFAULT_IDS = [s for s in ORDER if s != "webfill"]
+# webfill(联网回填)保留在链路(ORDER/stage 菜单可见可单独勾跑), 但不进默认执行:
+# 当前缺失字段已补齐, 默认跑只会白走网络(2026-11-19 用户定: 有用, 但现在不用)
 
 
 def _check_registry():

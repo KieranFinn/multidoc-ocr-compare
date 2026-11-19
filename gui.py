@@ -58,6 +58,27 @@ def load_notes(fp=None):
         return {}
 
 
+
+
+def load_webfill_flags(out_root):
+    """{doc: [字段]} — metadata 顶层 webfill 标记 = 含联网回填值(web_record)的文档,
+    2026-11-18: 题录值三种来源(原文/web_record回填/注册表·账本)在界面上可一眼区分。
+    备注列加 \U0001F310 前缀; 实体值来源以 confidence.source 为准(web_record 即联网)。"""
+    flags = {}
+    if not os.path.isdir(out_root):
+        return flags
+    for doc in os.listdir(out_root):
+        mp = os.path.join(out_root, doc, "metadata.json")
+        if not os.path.isfile(mp):
+            continue
+        try:
+            with io.open(mp, encoding="utf-8") as fh:
+                v = (json.load(fh) or {}).get("webfill")
+            if v:
+                flags[doc] = v
+        except Exception:
+            pass
+    return flags
 def save_notes(notes, fp=None):
     fp = fp or NOTES_FP
     tmp = fp + ".tmp"
@@ -91,13 +112,14 @@ def channel_display(d):
     return " ".join("✔" if d["ch"][c] else "—" for c in CH)
 
 
-def timing_display(rec):
-    if not rec or ("ocr_s" not in rec and "llm_s" not in rec):
+def timing_display(recs):
+    """时间分析列 = 该篇累计: OCR 累计(acquire 各次实跑之和, 缓存命中贡献~0) : LLM 累计(ner+webfill)"""
+    recs = [r for r in (recs or []) if isinstance(r, dict)]
+    if not recs:
         return "-"
-    return "%s : %s" % (fmt_duration(rec.get("ocr_s", 0)),
-                        fmt_duration(rec.get("llm_s", 0)))
-
-
+    ocr = sum(int(r.get("ocr_s") or 0) for r in recs)
+    llm = sum(int(r.get("llm_s") or 0) for r in recs)
+    return "%s : %s" % (fmt_duration(ocr), fmt_duration(llm))
 def _acquire_instance_sock(attempts=15, wait=0.3):
     """单实例: 独占本机端口即存活证明。bind 由内核原子完成, 无文件锁的 check-then-act 竞态窗。
     attempts>1: 一键重启时新老进程交接端口有空窗, 新进程重试等待(老进程退出即释放)。"""
@@ -433,7 +455,7 @@ class Runner(object):
         stage_elapsed = {k: int(v.get("elapsed") or 0)
                          for k, v in (res.get("results") or {}).items()}
         ocr_s = stage_elapsed.get("acquire", 0)
-        llm_s = stage_elapsed.get("ner", 0)
+        llm_s = stage_elapsed.get("ner", 0) + stage_elapsed.get("webfill", 0)
         with self.lock:
             self._timing_ocr += ocr_s
             self._timing_llm += llm_s
@@ -574,6 +596,7 @@ class App(tk.Tk):
         self.workspace = workspaces.custom_workspace(self._workspace_paths[current]) \
             if current in self._workspace_paths else workspaces.get_workspace(ROOT, current)
         self._notes = load_notes(self.workspace.notes)
+        self._webfilled = load_webfill_flags(self.workspace.out)
         self._runners = {}
         self._log_views = {}
         self.runner = self._runner_for(self.workspace)
@@ -664,6 +687,7 @@ class App(tk.Tk):
         self.entity_view = tk.BooleanVar(value=False)
         tk.Checkbutton(lang_box.master, text="实体视图", variable=self.entity_view,
                        command=self._switch_view).pack(side="left", padx=(10, 0))
+        ttk.Button(lang_box.master, text="更新实体", command=self._refresh_entities).pack(side="left", padx=(4, 0))
         self.count_lbl = ttk.Label(viewbar, text="文档 0 篇", foreground="#4b5563")
         self.count_lbl.pack(side="right", padx=4)
         selection_box = ttk.Frame(viewbar)
@@ -688,6 +712,7 @@ class App(tk.Tk):
         self.tree.tag_configure("qc_bad", foreground="#b03030")
         self.tree.tag_configure("qc_nonregular", foreground="#2563eb")
         self.tree.tag_configure("qc_novol", foreground="#7c3aed")   # 免卷期刊: 紫
+        self.tree.tag_configure("state_special", foreground="#0e7490")  # 联网回填: 青蓝
         self.tree.tag_configure("state_complete", foreground="#000000")
         self.tree.tag_configure("state_running", foreground="#1d4ed8")
         self.tree.tag_configure("state_unrun", foreground="#6b7280")
@@ -703,6 +728,10 @@ class App(tk.Tk):
         self.tree_vscroll = sb
         self.tree.configure(yscrollcommand=sb.set)
         sb.grid(row=0, column=1, sticky="ns")
+        hsb = ttk.Scrollbar(table, orient="horizontal", command=self.tree.xview)
+        self.tree_hscroll = hsb
+        self.tree.configure(xscrollcommand=hsb.set)
+        hsb.grid(row=1, column=0, sticky="ew")
         self._column_base = {"#0": 150, "state": 64, "qc": 190, "language": 58,
                              "channels": 58, "ner": 54, "timing": 104,
                              "done_at": 100, "runs": 64, "note": 220}
@@ -783,6 +812,7 @@ class App(tk.Tk):
         self.runner = self._runner_for(self.workspace)
         self._restore_log_view()
         self._notes = load_notes(self.workspace.notes)
+        self._webfilled = load_webfill_flags(self.workspace.out)
         self._qc_results = {}
         self._prefs["workspace"] = name
         save_prefs(self._prefs)
@@ -893,6 +923,7 @@ class App(tk.Tk):
 
     # ---------- 数据 ----------
     def refresh(self):
+        self._webfilled = load_webfill_flags(self.workspace.out)
         self.docs = scan_docs(self.workspace.uploads, self.workspace.out,
                               self.workspace.ner_root, include_archived=True,
                               arch_root=self.workspace.archive)
@@ -922,6 +953,8 @@ class App(tk.Tk):
     def _row_tag(self, doc, qr=None):
         if qr and qr.get("level") == "bad":
             return "qc_bad"
+        if doc in self._webfilled:
+            return "state_special"
         if qr and qr.get("level") == "novol":
             return "qc_novol"
         if qr and qr.get("level") == "nonregular":
@@ -959,9 +992,19 @@ class App(tk.Tk):
         self._fit_tree_columns()
         self._apply_view()
 
+    def _refresh_entities(self):
+        """更新实体视图: 重读题录+NER 产物并重渲(NER 是 LLM 阶段产物,
+        默认只在切换视图时全量取一次; 此键手动强制刷新, 比如 ner 阶段补跑完之后)。"""
+        self._ent_cache = entview.matrix(sorted(self.docs), self.workspace.out,
+                                         self.workspace.ner_root)
+        if self.entity_view.get():
+            self._fit_tree_columns()
+            self._apply_view()
+
     def _fit_tree_columns(self):
         available = max(240, self.tree.master.winfo_width() - self.tree_vscroll.winfo_reqwidth() - 4)
-        ratio = min(1.0, available / float(sum(self._column_base.values())))
+        # 2026-11-18: 列总宽超出窗口时不再按比例硬挤(字看不清), 保持基准宽交给横向滚动条; 放得下时才拉伸铺满
+        ratio = 1.0 if sum(self._column_base.values()) > available else available / float(sum(self._column_base.values()))
         for col, width in self._column_base.items():
             self.tree.column(col, width=max(30, int(width * ratio)))
 
@@ -987,13 +1030,14 @@ class App(tk.Tk):
                 continue
             if mode == "非正规" and not (qr and qr.get("level") == "nonregular"):
                 continue
-            if mode == "特殊" and not (qr and qr.get("level") == "novol"):
+            special = doc in self._webfilled and not (qr and qr.get("level") == "bad")
+            if mode == "特殊" and not special:
                 continue
             if mode == "未跑" and state != "未跑":
                 continue
             if mode == "未跑NER" and self.docs[doc].get("ner"):
                 continue
-            if mode == "完成" and state != "完成":
+            if mode == "完成" and (state != "完成" or special):
                 continue
             d = self.docs[doc]
             h = self.hist.get(doc, [])
@@ -1004,16 +1048,17 @@ class App(tk.Tk):
                 _cells = (self._ent_cache or {}).get(doc) or {}
                 _vals = tuple(_cells.get(k, "") for k, _zh, _w in entview.COLUMNS)
             else:
+                state_disp = "特殊" if special else state
                 _vals = (
-                    state,
+                    state_disp,
                     qc_display(qr) if qr else "质检中",
                     "-" if d["state"] == "未跑" else (qr or {}).get("language", "检查中"),
                     channel_display(d),
                     "已跑" if d.get("ner") else "未跑",
-                    timing_display(h[-1] if h else None),
+                    timing_display(h),
                     time.strftime("%m-%d %H:%M", time.localtime(d["done_at"])) if d["done_at"] else "-",
                     runs,
-                    self._notes.get(doc, ""))
+                    (("\U0001F310 " + self._notes.get(doc, "")) if doc in self._webfilled else self._notes.get(doc, "")))
             self.tree.insert("", "end", iid=doc, text=doc, tags=(self._row_tag(doc, qr),), values=_vals)
         visible = [d for d in sels if self.tree.exists(d)]
         if visible:
@@ -1170,7 +1215,9 @@ class App(tk.Tk):
         不改动菜单里的勾选状态: 菜单勾选是另一条路(自定义子集), 替用户改勾选
         会让他下一次"执行选中阶段"跑出没预期的集合。
         """
-        ids = [i for i in stages.ORDER if i != "ner"]
+        # webfill 亦跳过(2026-11-19): 保留在链路可单独勾跑, 默认不装载;
+        # 快速重跑语义 = 全链减烧 LLM/走网的段。
+        ids = [i for i in stages.ORDER if i not in ("ner", "webfill")]
         self._run_stages(ids, "快速重跑(跳NER)")
 
     def _retry_missing(self):
