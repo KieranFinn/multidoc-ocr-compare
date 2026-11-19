@@ -25,6 +25,7 @@ r"""本篇期刊/出版年/卷/期/页/关键词 (--stage issue): 页眉页脚+�
 import os, re, io, json, datetime, collections
 
 from .common import *
+from . import journals as jreg
 
 _Y_GUARD = re.compile(r"권|호|집|Vol|No|pp|ISSN|DOI|doi|Journal|학회지|학술지|『|』|AUTUMN|SPRING|SUMMER|WINTER|FALL")
 _YEAR = re.compile(r"(?<![\d\-])((?:19|20)\d{2})(?![\d\-])")
@@ -55,7 +56,7 @@ _DOI_YEV = re.compile(r"\.((?:19|20)\d{2})\.\.(\d{1,3})\.")
 # (kjcss.2025.7.2.006 实证: 全刊卷=年序 2024→6/2025→7, 读成期7卷2 则同年两篇"卷1/卷2"自相矛盾)。
 # 与 _DOI_YV 的区别只在段数: 三段 '2025.20.006' 是 年.卷.文号, 四段才带期位。
 _DOI_YIV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.(\d{1,3})\.\d{1,4}")
-_YIV_RIKS = re.compile(r"/riks\.", re.I)   # 年.期.卷.文号 前缀白名单
+_YIV_RIKS = re.compile(r"/(riks|jnah)\.", re.I)   # 年.期.卷.文号 前缀白名单: riks(한국연구) + jnah(유라시아문화, 2026-11-18 增补: 页眉只印 통권 "제 N 집"=DOI 第三段, 15 篇印刷实证, 按 11-17 非 riks 默认(年.卷.期)会把它误读成期号+编造卷号)
 _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
 # 刊头竖线段体例: '한국연구 | THE JOURNAL OF KOREAN STUDIES | 19 | 202506'
 # 日期段 = yyyymm 或 yyyymmdd; 紧挨在日期前那一段纯数字就是卷号(글로컬 '| 20 | 202510' 同理)。
@@ -64,7 +65,7 @@ _MAST_DATE = re.compile(r"^\d{6}(?:\d{2})?$")
 # 块内必须同时有 접수일 与 게재확정일 才认(正文/引文凑不齐这两个词); 只取 게재확정일 的年
 # (접수일 可能跨年, 如 11월 접수 → 次年 1월 게재확정)。2026-11-17 全库测量: 62 篇命中
 # (《국방과 보안》系 2023/2024/2025 三批), 全部 year 为空, 无任何其它结构题录信号。
-_PUBDATE_FN = re.compile(r"게재\s*확정일\s*[(（]\s*((?:19|20)\d{2}|(\d{2}))\s*년")
+_PUBDATE_FN = re.compile(r"게재\s*확정일\s*[(（:]?\s*((?:19|20)\d{2}|(\d{2}))\s*년")
 # 变体(2026-11-17 二批实证): "게재 확정일" 带空格(13564443)、两位年 "24년"(13564442, OCR 体例);
 # 两位年按世纪启发式 YY>26 → 19YY, 否则 20YY, 再交 YEAR_OK(1900-2026) 守卫。
 _CH_LINE_MAX = 60          # 渠道兜底只收"刊头/页脚那么短"的行(正文/脚注行一律长于它)
@@ -502,27 +503,37 @@ def _publication_year(source):
 
 
 def _pubdate_fn_year(pdata):
-    """首页 Footnote 块的"접수일…게재확정일(YYYY년…)"→ (year, uid) 或 (None, None)。
+    u"""稿件历程脚注(접수일…게재확정일)→ (year, uid) 或 (None, None)。
 
     仅在年/卷/期抽取全空(年无候选)时由 issue_doc 调用; 已有年份的篇一律不触发。
-    """
-    for u in pdata[0]["unified"]:
-        t = u.get("main_text") or ""
-        for ln in t.splitlines():
-            s = ln.strip()
-            # 行级守卫比块型更严: 必须以 접수일 开头(编辑部固定体例), 块型不限
-            # (13564386/13564394 的 unify 把日期行并进 Text 块, 只认 Footnote 会漏)。
-            if not s.startswith("접수일"):   # 双词守卫的 specificity 由 _PUBDATE_FN 承担(容许 게재 확정일 空格变体)
+    页级双词守卫(正文/引文凑不齐这两个编辑部固定词); 行首锚 (원고)?접수일 / 게재확정일;
+    只取 게재확정일 的年(접수일 可能跨年, 如 11월 접수 → 次年 1월 게재확정)。
+    2026-11-18 增补体例(중국사회과학논총 8 篇实证): '원고접수일: YYYY년 MM월 DD일' 冒号体例,
+    日期行在末页; 13569971/13569973 实证 원고접수일 与 게재확정일 分处两个块 → 守卫放宽到页级
+    (行首锚不变, 特异性不降级)。"""
+    for p in sorted(pdata.keys()):
+        anchored = []
+        for u in pdata[p]["unified"]:
+            for ln in (u.get("main_text") or "").splitlines():
+                s0 = ln.strip()
+                if s0.startswith(u"접수일") or s0.startswith(u"원고접수일") \
+                        or s0.startswith(u"게재확정일"):
+                    anchored.append((s0, u.get("uid")))
+        if not anchored:
+            continue
+        has_recv = any(s0.startswith(u"접수일") or s0.startswith(u"원고접수일")
+                       for s0, _u in anchored)
+        for s0, uid in anchored:
+            if not re.search(u"게재\\s*확정일", s0) or not has_recv:
                 continue
-            m = _PUBDATE_FN.search(s)
+            m = _PUBDATE_FN.search(s0)
             if m:
                 y = int(m.group(1))
                 if m.group(2):                      # 两位年: 26 이하 → 2000년대
                     y = 2000 + y if y <= 26 else 1900 + y
                 if y in YEAR_OK:
-                    return y, u.get("uid")
+                    return y, uid
     return None, None
-
 
 def _apply_running_journal(res, source, excluded):
     current = res["journal"]["value"]
@@ -539,6 +550,17 @@ def _apply_running_journal(res, source, excluded):
             s = _s2
         folded = _fold(s)
         if not (4 <= len(folded) <= 50) or re.search(r"\d|`|www\.", s):
+            continue
+        if re.search(r"\\[A-Za-z]+\{", s):   # LaTeX 残片不当刊名 (2000년대 스캔본 수식 OCR \end{bmatrix} 当选 실증, KCI_FI001536751_2000)
+            continue
+        if re.search(u"[<>\u3008\u3009\u3010\u3011\u2460-\u2473\u005b\u005d]", s):
+            # 公式残片第二形态: OCR 矩阵/特征结构碎片带角括号/圈码/方括号(TFA [TOP <1,2>] 实证);
+            # 误报边界: 正常刊名不含 〈〉【】①-⑳ 与 [] (韩刊刊名用 ()/『』, 已保留)。
+            continue
+        if not re.search(u"[가-힣]", s) and len(re.findall(r"[A-Za-z]+", s)) < 2:
+            # 无韩文且连两个英文单词都凑不齐 → 不当刊名(PHON/TOP 类公式特征词实证,
+            # KCI_FI001536751_2000 连投三票: bmatrix→TFA[TOP…]→PHON);
+            # 误报边界: 单词刊名未见实例, 若真出现仍可由 DOI 系列/渠道兜底, 不会丢刊。
             continue
         if any(len(ex) >= 8 and (folded in ex or ex in folded or _gdice(folded, ex) >= 0.80)
                for ex in excluded):
@@ -733,6 +755,30 @@ def issue_doc(doc, out_root):
     full_source = source + [(p, None, line) for p, _ch, t in ch_lines for line in t.split("\n")]
     running_journal = _apply_running_journal(res, full_source, excluded)
     publisher_series = _apply_doi_series(res, full_source)
+    # —— DOI 注册表回填刊名(2026-11-18 白名单): 投票/捞源都没刊名而 DOI 前缀在注册表
+    #    → 查表填空(只填空不覆盖; corpus 行由 failures.py --round 每轮重扫维护,
+    #    manual 行永驻——BJH=방정환연구 经 doi.org CSL + KCI 著录页双证实)。
+    _jk = _fit = None
+    if res["journal"]["value"] is None:
+        _jk, _je = jreg.journal_from_doi("\n".join(s for _p, _u, s in source))
+        if _jk:
+            res["journal"] = {"value": _jk, "uid": None,
+                              "confidence": {"level": "high", "source": "doi_registry"}}
+            if res["journal_en"]["value"] is None and _je:
+                res["journal_en"] = {"value": _je, "uid": None,
+                                     "confidence": {"level": "high", "source": "doi_registry"}}
+    # —— 同刊卷期账本推断(只填空): 缺卷/期且同刊存在"印刷页码完整落入其跨度、又不与
+    #    已知文章撞车"的唯一卷期 → 继承(语料自带冗余; 无 DOI 篇如 KCI_FI/중국사회과학논총)。
+    if res["volume"]["value"] is None or res["issue"]["value"] is None:
+        _fit = jreg.fit_issue(res["journal"]["value"], res["year"]["value"],
+                              res["pages"]["value"], jreg.issue_ledger(out_root))
+        if _fit:
+            if res["volume"]["value"] is None:
+                res["volume"] = {"value": _fit[1], "uid": None,
+                                 "confidence": {"level": "mid", "source": "sibling_issue"}}
+            if res["issue"]["value"] is None:
+                res["issue"] = {"value": _fit[2], "uid": None,
+                                "confidence": {"level": "mid", "source": "sibling_issue"}}
     audit = res.pop("_audit")
     audit["channel_fallback"] = ch_filled
     if running_journal:
@@ -741,6 +787,11 @@ def issue_doc(doc, out_root):
         audit["publisher_series"] = "DOI 期段位"
     if pubdate_fn_hit:
         audit["year_pub_date_fn"] = pubdate_fn_hit
+    if _jk:
+        audit["journal_registry"] = _jk
+    if _fit:
+        audit["issue_sibling_inherit"] = {"year": _fit[0], "volume": _fit[1],
+                                              "issue": _fit[2]}
     res.pop("_internal")
     if derived:
         first, last, support, offset = derived
@@ -801,29 +852,36 @@ def issue_doc(doc, out_root):
                                                   "source": kw_loc}
     if not kws or not kws_en:
         for u in pdata[0]["unified"]:
-            t = (u.get("main_text") or "").strip()
-            if not (t.startswith("[") and t.endswith("]") and "/" in t):
-                continue
-            items = [x.strip() for x in t[1:-1].split("/") if x.strip()]
-            ko, en = [], []
-            for item in items:
-                if "," in item and _hangul_ratio(item) >= 0.2:
-                    left, right = item.rsplit(",", 1)
-                    if _hangul_ratio(left) < 0.2 and re.search(r"[A-Za-z]", left) \
-                            and _hangul_ratio(right) >= 0.2:
-                        en.append(left.strip())
-                        ko.append(right.strip())
-                        continue
-                if _hangul_ratio(item) >= 0.2:
-                    ko.append(item)
-                elif re.search(r"[A-Za-z]", item):
-                    en.append(item)
-            if ko and en:
-                if not kws:
-                    kws, kw_raw, kw_loc = ko, [t], {"page": 1, "uid": u["uid"]}
-                if not kws_en:
-                    kws_en, kw_raw_en, kw_loc_en = en, [t], {"page": 1, "uid": u["uid"]}
-                break
+            mt = u.get("main_text") or ""
+            # 整块括号体例之外, 再试块内行级括号(2026-11-18 13564504 实证: 关键词行并进
+            # 英文摘要块末行, 整块不以 [ 起故旧判据够不着); 守卫不变: 括号行 + '/' 分隔
+            # + 韩英双板齐(ko and en), 数式/页码行过不了双板闸。
+            _cands = [mt.strip()] if mt.strip().startswith("[") else []
+            _cands += [ln.strip() for ln in mt.split("\n")
+                       if ln.strip().startswith("[") and ln.strip().endswith("]")]
+            for t in _cands:
+                if not (t.startswith("[") and t.endswith("]") and "/" in t):
+                    continue
+                items = [x.strip() for x in t[1:-1].split("/") if x.strip()]
+                ko, en = [], []
+                for item in items:
+                    if "," in item and _hangul_ratio(item) >= 0.2:
+                        left, right = item.rsplit(",", 1)
+                        if _hangul_ratio(left) < 0.2 and re.search(r"[A-Za-z]", left) \
+                                and _hangul_ratio(right) >= 0.2:
+                            en.append(left.strip())
+                            ko.append(right.strip())
+                            continue
+                    if _hangul_ratio(item) >= 0.2:
+                        ko.append(item)
+                    elif re.search(r"[A-Za-z]", item):
+                        en.append(item)
+                if ko and en:
+                    if not kws:
+                        kws, kw_raw, kw_loc = ko, [t], {"page": 1, "uid": u["uid"]}
+                    if not kws_en:
+                        kws_en, kw_raw_en, kw_loc_en = en, [t], {"page": 1, "uid": u["uid"]}
+                    break
     # —— 落盘 ——
     # 关键词终滤(2026-11-17 全库扫描): 长句/含句号/含 URL 的"关键词"是摘要或文献串混入, 丢弃。
     kws = [k for k in kws if len(k) <= 50 and u"。" not in k
@@ -844,6 +902,16 @@ def issue_doc(doc, out_root):
             audit["issue_dup_of_volume"] = True
             res["issue"] = {"value": None, "uid": None,
                             "confidence": {"level": "low", "source": "regex"}}
+            # 置空的期号若有无期位 DOI 旁证(年.卷.页码 / 年..卷), 即原文结构上不编期号,
+            # 按 P1 拍板标 volume_only 交质检豁免(2026-11-18 KCI_FI002983265_2023 实证:
+            # dasein.2023.70.33 三段式, 70 被 vol_jip/issue_jip 双写)。四段式(期位有值)
+            # 不得误标——YIV 命中即说明期位存在。
+            if any(_DOI_YEV.search(s) or (_DOI_YV.search(s) and not _DOI_YIV.search(s))
+                   for _, _, s in source):
+                res["issue"]["confidence"] = {
+                    "level": "high", "source": "volume_only",
+                    "evidence": "issue==volume 同源复制; DOI 期位留空(年.卷.页码 / 年..卷)"}
+                audit["issue_note"] = "issue==volume 同源复制置空; DOI 无期位, 原文不编期号"
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -967,6 +1035,30 @@ def _selftest():
         and r["volume"]["value"] == 9 and r["issue"]["value"] == 1 and r["pages"]["value"] == "1-30"
     # 16) issue_doc 级: 韩英双板同篇(英在页1/韩在页2)双字段各收——字段语言不再由版序决定
     import tempfile
+    # 24) 页眉 LaTeX 残片: 2000년대 스캔본 수식 OCR 混进页眉区, 不得当选刊名
+    _bi = {"uid": "u0", "page": 1, "type": "Page-header", "main_text": "\\end{bmatrix}",
+           "box": [10, 100, 500, 200], "cross_page": {"spans": False}, "readings": [],
+           "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_i0 = dict(_bi); blk_i1 = dict(_bi, uid="u1", page=2); blk_i2 = dict(_bi, uid="u2", page=3, main_text="PHON")
+
+    # 25) DOI 注册表回填刊名: 前缀在注册表(manual 行) → journal 查表填出(BJH 实证)
+    blk_j1a = {"uid": "u0", "page": 1, "type": "Page-header",
+              "main_text": "https://doi.org/10.33957/BJH.2025.14.4", "box": [10, 100, 500, 200],
+              "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"},
+              "review": False, "members": {}}
+    blk_j1b = dict(blk_j1a, uid="u1", page=2)
+    # 26) 同刊卷期账本推断: j2(4-100)/j3(110-117) 构成 (2023,5,2) 账本(跨度4-117),
+    #     j4 页码 101-109 完整落入且不撞已知区间 → 唯一解, 继承卷期
+    _bjk = {"uid": "u0", "page": 1, "type": "Page-header", "box": [10, 100, 500, 200],
+            "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"},
+            "review": False, "members": {}}
+    blk_j2a = dict(_bjk, main_text=u"시험저널 제5권 제2호 (2023) pp. 4-100")
+    blk_j2b = dict(_bjk, uid="u1", page=2, main_text=u"시험저널")
+    blk_j3a = dict(_bjk, main_text=u"시험저널 제5권 제2호 (2023) pp. 110-117")
+    blk_j3b = dict(_bjk, uid="u1", page=2, main_text=u"시험저널")
+    blk_j4a = dict(_bjk, main_text=u"시험저널 pp. 101-109")
+    blk_j4b = dict(_bjk, uid="u1", page=2, main_text=u"시험저널")
+
     with tempfile.TemporaryDirectory() as tmp:
         dd = os.path.join(tmp, "kwbi")
         udir = os.path.join(dd, "unified")
@@ -1027,15 +1119,34 @@ def _selftest():
              "main_text": u"\uc811\uc218\uc77c(24\ub144 5\uc6d4 27\uc77c), \uc218\uc815\uc77c(1차 : 24\ub144 6\uc6d4 7\uc77c), \uac8c\uc7ac\ud655\uc815\uc77c(24\ub144 6\uc6d4 18\uc77c)",
              "box": [10, 1200, 500, 1300], "cross_page": {"spans": False},
              "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    # 21) 원고접수일 冒号体例 + 日期行在末页(2026-11-18 중국사회과학논총 8 篇实证):
+    #     块级双词守卫 + 行首 (원고)?접수일/게재확정일 锚 + 全物理页扫描。
+    blk_f0 = {"uid": "u0", "page": 1, "type": "Text", "main_text": u"중국의 정책 과정 분석 본문", "box": [10, 100, 500, 900], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    blk_f1 = {"uid": "u1", "page": 2, "type": "Footnote", "main_text": u"원고접수일: 2023년 12월 21일\n심사완료일: 2024년 02월 20일\n게재확정일: 2024년 02월 26일", "box": [10, 1200, 500, 1300], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    # 22) 关键词行级方括号(2026-11-18 13564504 实证): 关键词行并进英文摘要块末行,
+    #     整块不以 [ 起, 旧整块判据够不着 → 行级括号候选 + 韩英双板守卫。
+    blk_g = {"uid": "u0", "page": 1, "type": "Text", "main_text": "The purpose of this study was to investigate and gain insight into the learning process.\n[Aviation English/Communication Difficulties/Radiotelephony, 항공영어/의사소통의 어려움/항공무선통신]", "box": [10, 100, 500, 900], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
+    # 23) issue==volume 同源复制置空后, 有三段式 DOI(年.卷.页码, 期位不存在)旁证 → volume_only
+    #     交质检豁免(2026-11-18 KCI_FI002983265_2023 dasein.2023.70.33 实证);
+    #     四段式(期位有值)同形行不得误标。
+    blk_h = {"uid": "u0", "page": 1, "type": "Page-header", "main_text": u"『현대유럽철학연구』 제70집, pp.33~63. DOI 10.20974/dasein.2023.70.33", "box": [10, 100, 500, 200], "cross_page": {"spans": False}, "readings": [], "confidence": {"level": "high"}, "review": False, "members": {}}
     with tempfile.TemporaryDirectory() as tmp:
-        for name, blocks in (("a", [blk_a]), ("b", [blk_b]), ("c", [blk_c1, blk_c2]),
-                               ("d", [blk_d]), ("e", [blk_e])):
+        for name, pages in (("a", {0: [blk_a]}), ("b", {0: [blk_b]}),
+                            ("c", {0: [blk_c1, blk_c2]}), ("d", {0: [blk_d]}),
+                            ("e", {0: [blk_e]}), ("f", {0: [blk_f0], 1: [blk_f1]}),
+                            ("g", {0: [blk_g]}), ("h", {0: [blk_h]}),
+                            ("i", {0: [blk_i0], 1: [blk_i1], 2: [blk_i2]}),
+                            ("j1", {0: [blk_j1a], 1: [blk_j1b]}),
+                            ("j2", {0: [blk_j2a], 1: [blk_j2b]}),
+                            ("j3", {0: [blk_j3a], 1: [blk_j3b]}),
+                            ("j4", {0: [blk_j4a], 1: [blk_j4b]})):
             sub = os.path.join(tmp, name)
             udir = os.path.join(sub, "unified")
             os.makedirs(udir)
-            io.open(os.path.join(udir, "page_0.json"), "w", encoding="utf-8").write(
-                json.dumps({"doc": name, "page": 1, "w": 1000, "h": 1500, "in_ref": False,
-                            "unified": blocks}, ensure_ascii=False))
+            for pno, blocks in pages.items():
+                io.open(os.path.join(udir, "page_%d.json" % pno), "w", encoding="utf-8").write(
+                    json.dumps({"doc": name, "page": pno + 1, "w": 1000, "h": 1500,
+                                "in_ref": False, "unified": blocks}, ensure_ascii=False))
             io.open(os.path.join(sub, "metadata.json"), "w", encoding="utf-8").write("{}")
             got = issue_doc(name, tmp)
             if name == "a":
@@ -1049,17 +1160,34 @@ def _selftest():
             elif name == "d":
                 ok20 = ok20 and got.get("year", {}).get("value") == 2024 \
                     and got["year"]["confidence"]["source"] == "pub_date_fn"
-            else:
+            elif name == "e":
                 ok20 = ok20 and got.get("year", {}).get("value") == 2024 \
                     and got["year"]["confidence"]["source"] == "pub_date_fn"
+            elif name == "f":
+                ok21 = (got.get("year", {}).get("value") == 2024
+                        and got["year"]["confidence"]["source"] == "pub_date_fn")
+            elif name == "g":
+                ok22 = (got.get("keywords") == [u"항공영어", u"의사소통의 어려움", u"항공무선통신"]
+                        and got.get("keywords_en") == ["Aviation English", "Communication Difficulties", "Radiotelephony"])
+            elif name == "h":
+                ok23 = (got.get("issue", {}).get("value") is None
+                        and got["issue"]["confidence"]["source"] == "volume_only")
+            elif name == "i":
+                ok24 = (got.get("journal", {}).get("value") is None)
+            elif name == "j1":
+                ok25 = (got.get("journal", {}).get("value") == u"방정환연구"
+                        and got.get("volume", {}).get("value") == 14)
+            elif name == "j4":
+                ok26 = (got.get("volume", {}).get("value") == 5
+                        and got.get("issue", {}).get("value") == 2)
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20), 1):
+                            ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/21 PASS" % n_ok)
-    return n_ok == 21
+    print("issue selftest: %d/27 PASS" % n_ok)
+    return n_ok == 27
 
 
 if __name__ == "__main__":

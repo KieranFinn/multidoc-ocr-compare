@@ -65,17 +65,17 @@
   "llm": {
     "enabled": false,
     "_note": "M5④LLM 兜底: 只对正则失败/低置信字段提问; endpoint 为 OpenAI 兼容 chat.completions; api_key 从环境变量读(不落盘)",
-    "endpoint": "https://api.deepseek.com/chat/completions",
-    "model": "deepseek-flash",
-    "api_key_env": "KCI_LLM_KEY",
+    "endpoint": "http://i-nhi.zhejianglab.org/maas/v1/chat/completions",
+    "model": "DeepSeek-V4.1-Flash",
+    "api_key_env": "KCI_ZJLAB_KEY",
     "temperature": 0,
     "ner_lite_auto": true,
     "channels": [
       {
-        "label": "zjlab-maas",
-        "endpoint": "http://i-nhi.zhejianglab.org/maas/v1/chat/completions",
-        "model": "DeepSeek-V4.1-Flash",
-        "api_key_env": "KCI_ZJLAB_KEY"
+        "label": "deepseek-official",
+        "endpoint": "https://api.deepseek.com/chat/completions",
+        "model": "deepseek-flash",
+        "api_key_env": "KCI_LLM_KEY"
       },
       {
         "label": "deepseek-official",
