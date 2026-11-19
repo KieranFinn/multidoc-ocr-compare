@@ -494,7 +494,7 @@ def _parse_author_line(line, u, foot_affil):
             _role0 = _mrole0.group(1)
             _cl = ROLE_WORDS.sub("", _cl).strip(" ,·•")
         _mby = re.match(
-            u"^([가-힣]{2,4}),(?:[ \t]*)([A-Z][A-Za-z.\\-]*+(?:[ ,]+[A-Z][A-Za-z.\\-]*+)*+)"
+            u"^([가-힣]{2,4}),(?:[ \t]*)([A-Z][A-Za-z.\\-]*(?:[ ,]+[A-Z][A-Za-z.\\-]*)*)"
             u"(?:[ \t]*(.+))?$", _cl)
         if _mby:
             _aff_rest = (_mby.group(3) or "").strip()
