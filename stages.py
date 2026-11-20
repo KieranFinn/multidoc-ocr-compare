@@ -33,6 +33,12 @@ if HERE not in sys.path:
 
 OUT = os.path.join(HERE, "out")
 UP = os.path.join(HERE, "uploads")
+# 工作区覆盖(2026-11-19, 与 failures.py/meta_diff.py 同口径): KCI_WS_ROOT=E:/KCI11_17 时
+# CLI 批量指向该工作区; GUI 走显式 out_root 且不设此环境变量, 行为不变。
+WS = os.environ.get("KCI_WS_ROOT") or ""
+if WS:
+    OUT = os.path.join(WS, "out")
+    UP = os.path.join(WS, "uploads")
 CH = ("mineru", "dots", "paddle")
 CH_ZH = {"mineru": "MinerU", "dots": "dots.ocr", "paddle": "PaddleOCR"}
 
@@ -181,12 +187,17 @@ def _st_ner(ctx):
     import ner_lite
     import pipeline
     cfg = (pipeline.load_cfg().get("llm") or {})
-    if not (os.environ.get("KCI_ZJLAB_KEY") or os.environ.get("KCI_LLM_KEY")):
+    # 钥匙判空走 _env_key(注册表直读, 免进程环境旧快照 2026-11-19);
+    # 产物落 out_llm_trial/fds_extract/ner_lite —— 与 ner_lite.DST / GUI 判定(_ner_done) /
+    # 实体视图(entview.cells_for) 同一抽屉。旧 dst=out_llm_trial 平铺, 判定/视图看深层目录,
+    # 造成"NER 跑了却显示未跑"(KCI11_17 826 篇实录)。
+    if not (ner_lite._env_key("KCI_ZJLAB_KEY") or ner_lite._env_key("KCI_LLM_KEY")):
         raise RuntimeError("缺 KCI_LLM_KEY / KCI_ZJLAB_KEY")
     model = ner_lite.make_model(cfg)
     product, audit = ner_lite.run_doc(ctx["doc"], model, echo=ctx["log"],
                                 out_root=ctx["out_root"])
-    ner_root = os.path.join(os.path.dirname(os.path.abspath(ctx["out_root"])), "out_llm_trial")
+    ner_root = os.path.join(os.path.dirname(os.path.abspath(ctx["out_root"])),
+                            "out_llm_trial", "fds_extract", "ner_lite")
     ner_lite.write_outputs(ctx["doc"], product, audit, dst=ner_root)
     c = audit["counts"]
     ctx["ner_counts"] = c
@@ -249,7 +260,6 @@ STAGES = [
     ("abs",     "③ 元数据", "摘要关键词", "abstract/keywords",             ("unified",), False),
     ("issue",   "③ 元数据", "期刊年卷期", "journal/year/volume/issue",     ("unified", "metadata"), False),
     ("cspan",   "③ 元数据", "引文句",     "citation_spans[]",              ("unified", "metadata"), False),
-    ("webfill", "③ 元数据", "联网回填",   "红单缺失(刊/年/卷/期)联网检索回填(双闸+备注标注; 只碰有缺失的篇)", ("metadata",), False),
     ("ner",     "④ 实体/呈现", "实体抽取", "ner_lite.json(需 LLM key)",     ("unified",), False),
     ("viewer",  "④ 实体/呈现", "对照查看器", "viewer_compare.html 重建",     ("merged",), False),
     ("index",   "④ 实体/呈现", "结果总览", "index.html 重建",               ("pages",), False),
@@ -257,7 +267,7 @@ STAGES = [
 
 BY_ID = {s[0]: s for s in STAGES}
 ORDER = [s[0] for s in STAGES]
-META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan", "webfill")
+META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan")
 
 
 def _stage_missing(sid, dd, have, pdf=None):
@@ -269,7 +279,7 @@ def _stage_missing(sid, dd, have, pdf=None):
 # 阶段 id -> metapy 入口函数名。不能靠 "<id>_doc" 拼: abs 的入口是 abstract_doc
 # (2026-11-12 实跑踩过: 全链跑到 abs 抛 module 'metapy' has no attribute 'abs_doc')。
 META_FN = {"m3": "m3_doc", "refs": "refs_doc", "frefs": "frefs_doc", "front": "front_doc",
-           "abs": "abstract_doc", "issue": "issue_doc", "cspan": "cspan_doc", "webfill": "webfill_doc"}
+           "abs": "abstract_doc", "issue": "issue_doc", "cspan": "cspan_doc"}
 
 RUNNERS = {
     "render": _st_render, "acquire": _st_acquire, "adapt": _st_adapt,
@@ -280,17 +290,17 @@ for _m in META_IDS:
     RUNNERS[_m] = _meta_stage(_m)
 
 PRESETS = [
-    ("全链(等价一键重跑)", [s for s in ORDER if s != "webfill"]),
-    ("只后链(元数据+实体)", [s for s in META_IDS if s != "webfill"] + ["ner"]),
+    ("全链(等价一键重跑)", list(ORDER)),
+    ("只后链(元数据+实体)", list(META_IDS) + ["ner"]),
     ("只重建呈现(查看器+总览)", ["viewer", "index"]),
     ("只归一化及以下", ["merge", "unify"]),
 ]
 # 菜单默认勾选: 全选。因为「一键重跑」主区的动作 = 执行当前勾选(= 菜单里的"执行选中阶段"),
 # 默认若不勾全, 这个键就不再是"一键重跑"了。想少跑/不烧 LLM 有两条路:
 # 「快速重跑(跳NER)」独立键, 或在箭头菜单里取消勾选后回来点主区。
-DEFAULT_IDS = [s for s in ORDER if s != "webfill"]
-# webfill(联网回填)保留在链路(ORDER/stage 菜单可见可单独勾跑), 但不进默认执行:
-# 当前缺失字段已补齐, 默认跑只会白走网络(2026-11-19 用户定: 有用, 但现在不用)
+DEFAULT_IDS = list(ORDER)
+# webfill(联网回填)2026-11-19 用户定: 移出链路, 不给任何入口——工作台/一键重跑/预设都够不着。
+# 模块本体与两个一次性批处理脚本留档(已完成 81 篇回填的 provenance), 但流水线无任何路径装载它。
 
 
 def _check_registry():

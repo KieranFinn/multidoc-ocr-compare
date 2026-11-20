@@ -19,6 +19,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from metapy.common import _fold          # noqa: E402  (fold 复用)
 from metapy import journals as jreg      # noqa: E402  (账本对账)
+import ner_lite                          # noqa: E402  (_env_key: 用户变量注册表直读, 免进程重启)
 
 FIELDS = ("journal", "year", "volume", "issue")
 YEAR_OK = set(range(1900, 2027))
@@ -335,7 +336,7 @@ def _llm_read(card, pages, cfg, opener=None):
     import time as _time
     last_err = None
     for c in cands:
-        key = os.environ.get(c.get("api_key_env") or "KCI_LLM_KEY", "")
+        key = ner_lite._env_key(c.get("api_key_env") or "KCI_LLM_KEY") or ""
         if not key:
             last_err = u"缺 key(%s)" % c.get("api_key_env")
             continue

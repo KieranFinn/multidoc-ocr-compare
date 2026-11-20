@@ -6,7 +6,9 @@
   无值即空串, 符合"没有就空着"。
 - 正文字数: unified 页 Text/Footnote 主读法总字符(QC 同口径), 按 summary mtime
   做增量持久缓存(out/.view_body_chars.json)——首次切换全库扫一次, 之后近秒开。
-- 实体列: ner_lite 产物, 去重最多 4 个 ";"连接。"""
+- 实体列: ner_lite 产物, 去重最多 4 个 ";"连接。
+- export_xlsx: 与视图同一份数据落 Excel(需 openpyxl, 惰性导入; 无则抛说明)。"""
+
 import io
 import json
 import os
@@ -128,3 +130,36 @@ def matrix(docs, out_root, ner_root):
         except Exception:
             pass
     return out
+
+
+def export_xlsx(fp, docs, out_root, ner_root):
+    """实体矩阵 → xlsx(与实体视图严格同一份数据: 同一 matrix())。
+    首行表头加粗冻结, 列宽按 COLUMNS 基准宽换算。返回导出的篇数。"""
+    try:
+        from openpyxl import Workbook
+        from openpyxl.styles import Alignment, Font, PatternFill
+        from openpyxl.utils import get_column_letter
+        from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE
+    except ImportError:
+        raise RuntimeError(u"导出 Excel 需要 openpyxl(本机 3.1.5 已装, 请勿卸载)")
+    def _clean(v):
+        # OCR 文本可能混入 XML 1.0 非法控制字符(如 \x0b), openpyxl 会直接拒写
+        return ILLEGAL_CHARACTERS_RE.sub("", v) if isinstance(v, str) else v
+    data = matrix(docs, out_root, ner_root)
+    ws = Workbook().active
+    ws.title = u"实体视图"
+    ws.append([u"文档"] + [h for _k, h, _w in COLUMNS])
+    for c in ws[1]:
+        c.font = Font(bold=True)
+        c.fill = PatternFill("solid", fgColor="D9E1F2")
+        c.alignment = Alignment(horizontal="center", vertical="center")
+    for i, (_k, _h, w) in enumerate(COLUMNS, start=2):
+        ws.column_dimensions[get_column_letter(i)].width = max(6, round(w / 10.0))
+    ws.column_dimensions["A"].width = 16
+    for d in docs:
+        cells = data.get(d) or {}
+        ws.append([_clean(d)] + [_clean(cells.get(k, "")) for k, _h, _w in COLUMNS])
+    ws.freeze_panes = "B2"
+    ws.auto_filter.ref = "A1:%s1" % get_column_letter(1 + len(COLUMNS))
+    ws.parent.save(fp)
+    return len(docs)

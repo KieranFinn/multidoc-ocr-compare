@@ -10,7 +10,8 @@ from .llmrep import llm_apply, report_meta, rebuild_viewer
 from .dual import run as dual_run
 from .cspan import cspan_doc
 from .issue import issue_doc
-from .webfill import webfill_doc
+# webfill 2026-11-19 用户定: 移出链路——包级不再导出(流水线/工作台均无入口),
+# 模块本体留档(provenance), 仅 import metapy.webfill 可及(一次性批处理脚本用)。
 
 __all__ = ["m3_doc", "refs_doc", "frefs_doc", "front_doc", "abstract_doc", "llm_apply",
            "report_meta", "rebuild_viewer", "dual_run",

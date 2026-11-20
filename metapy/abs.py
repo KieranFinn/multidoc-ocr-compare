@@ -555,6 +555,7 @@ def abstract_doc(doc, out_root):
         v = (res[k] or {}).get("value")
         if v:
             cleaned, _ = _clean_lines(v, (), doc_heads)
+            cleaned = _strip_supsub(cleaned)   # HTML 上下标剥壳(KCI HTML 系 PDF 自带)
             res[k]["value"] = cleaned.strip() or v
     # §38 分层: confidence.basis → audit; 产品 confidence 只留 {level, source, uid_head}
     abs_audit = {}
@@ -621,7 +622,7 @@ def _selftest():
         title = {"uid": "t", "page": 1, "type": "Section-header", "box": [0, 100, 500, 140],
                  "main_text": "English Title", "cross_page": {}}
         block = {"uid": "b", "page": 1, "type": "Text", "box": [0, 160, 500, 220],
-                 "main_text": "Abstract: This study answers.\nKeywords: alpha, beta",
+                 "main_text": "Abstract: This study<sup>*</sup> answers.\nKeywords: alpha, beta",
                  "cross_page": {}}
         page = {"w": 1000, "h": 1000, "unified": [title, block]}
         page_fp = os.path.join(udir, "page_0.json")
@@ -632,7 +633,7 @@ def _selftest():
             ensure_ascii=False))
         meta = abstract_doc("d", tmp)
         audit = load_audit(doc_dir)
-        ok2 = (meta["abstract_en"]["value"] == "This study answers."
+        ok2 = (meta["abstract_en"]["value"] == "This study* answers."
                and meta["abstract_en"]["confidence"]["uid_head"] == "t"
                and meta["keywords_lines"] == ["Keywords: alpha, beta"]
                and audit["abstract_en"]["basis"] == "英题下无 Abstract 头, 作者行下取至 Keywords"
