@@ -58,6 +58,26 @@ _DOI_YEV = re.compile(r"\.((?:19|20)\d{2})\.\.(\d{1,3})\.")
 _DOI_YIV = re.compile(r"\.((?:19|20)\d{2})\.(\d{1,3})\.(\d{1,3})\.\d{1,4}")
 _YIV_RIKS = re.compile(r"/(riks|jnah)\.", re.I)   # 年.期.卷.文号 前缀白名单: riks(한국연구) + jnah(유라시아문화, 2026-11-18 增补: 页眉只印 통권 "제 N 집"=DOI 第三段, 15 篇印刷实证, 按 11-17 非 riks 默认(年.卷.期)会把它误读成期号+编造卷号)
 _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
+# 卷..年月 DOI 形态(2026-11-19, mses=다문화사회와 교육연구 29 篇缺出版年): 'mses.11..202207.97'
+# 第三段 yyyymm 即出版年月, 期位结构上不存在 —— _DOI_YEV(年..卷) 的姊妹式。
+_DOI_VYY = re.compile(r"\.(\d{1,3})\.\.((?:19|20)\d{2})\d{2}\.")
+# 横幅 '2023, Vol. 6, No. 2, …' 题录信号(JAMS 系): 第 1 页含此形态的块整体进来源
+_YEAR_VOL = re.compile(r"(?:19|20)\d{2}\s*,\s*Vol\b", re.I)
+# 页脚刊例(2026-11-19, 산업연구 系 37 篇实测, 4 篇红): '34 산업연구 | 2025년 제9권 제2호'。
+# 该刊带日期的页脚出现位置不定(13578203 拖到第 29 页才有), 首页 p0-1 来源行永远够不着,
+# 故 issue_doc 对"任意页 Page-header/footer 命中本形态"的行放行进 source。
+# 误报边界: 需页脚区同时印 '| 年 제권 제호' 四要素; 正文块不会被类型标成 Page-footer。
+_FOOT_MAST = re.compile(r"[|｜]\s*((?:19|20)\d{2})\s*년\s*제\s*(\d{1,3})\s*권\s*제\s*(\d{1,3})\s*호")
+# 页码与出版年粘连(2026-11-19, 한국진로창업경영학회지 13 篇实测): 'pp. 1 ~ 312022년 8월'。
+# _YEAR 的数位 lookaround 够不着粘连位 → 出版年漏抽; _PP 同时把 '3120' 当页末 →
+# pages 抽成 1-3120(13583589 实证)。一条正则同时切出真页区间与年, 并让 _PP 跳过粘连匹配。
+# 误报边界: 需 'pp' 引导 + 区间 + 数字直接粘 19/20 年 + '년'; 引文页码与年份间必有分隔。
+_PP_GLUE = re.compile(r"pp?\.?\s*(\d{1,4})\s*[-–~～]\s*(\d{1,4})((?:19|20)\d{2})\s*년")
+# 独立出版月行(2026-11-19, 한국진로창업경영학회지 3 篇实证): 刊头块内 'pp. 111 ~ 131' 与
+# '2022년 8월' 是两行, 后者无一行级刊头信号, 被 _Y_GUARD 挡掉。放行条件: 同行块(同 uid)
+# 另有一行带刊头信号 + 本行是纯日期形态。误报边界: 带刊头信号的块里混印的独立日期行
+# 即出版月; 正文/脚注块不会带刊头信号行。
+_DATE_ONLY = re.compile(r"^\s*(?:19|20)\d{2}\s*년(?:\s*\d{1,2}\s*월)?\s*$")
 # 刊头竖线段体例: '한국연구 | THE JOURNAL OF KOREAN STUDIES | 19 | 202506'
 # 日期段 = yyyymm 或 yyyymmdd; 紧挨在日期前那一段纯数字就是卷号(글로컬 '| 20 | 202510' 同理)。
 _MAST_DATE = re.compile(r"^\d{6}(?:\d{2})?$")
@@ -70,11 +90,13 @@ _PUBDATE_FN = re.compile(r"게재\s*확정일\s*[(（:]?\s*((?:19|20)\d{2}|(\d{2
 # 两位年按世纪启发式 YY>26 → 19YY, 否则 20YY, 再交 YEAR_OK(1900-2026) 守卫。
 _CH_LINE_MAX = 60          # 渠道兜底只收"刊头/页脚那么短"的行(正文/脚注行一律长于它)
 _FN_ENTRY_HEAD = re.compile(r"^\s*[(（]?\d{1,3}\s*[)）.．、]\s*\S")   # 行首脚注编号
-# 刊名前缀截断: 最早出现的卷期/页码/括号年/BMC 卷:文号/季节词之前
+# 刊名前缀截断: 最早出现的卷期/页码/括号年/BMC 卷:文号/季节词/横幅"年 卷(期)"之前
+# (2026-11-19 增末项: 'Analyses & Alternatives 2025 9(3): 027-047 DOI:…' 横幅式,
+#  卷期无 Vol/No 字样, 原 boundary 够不着 → 刊名候选出不来; 双页横幅重复, 误报由投票阈值兜)
 _BOUNDARY = re.compile(
     r"제\s*\d+\s*[권호]|제?\s*\d{1,4}\s*집|(?<![A-Za-z])Vol\.?\s*\d|(?<![A-Za-z])No\.?\s*\d|"
     r"pp?\.|\(\s*(?:19|20)\d{2}\s*\)|\(\s*(?:19|20)\d{2}\s*\)\s*\d{1,3}:|"
-    r"AUTUMN|SPRING|SUMMER|WINTER|FALL", re.I)
+    r"AUTUMN|SPRING|SUMMER|WINTER|FALL|\s+(?:19|20)\d{2}\s+(?=\d{1,3}\s*\()", re.I)
 _ENKEY = re.compile(r"Journal|Review|Quarterly|Bulletin|Annals|Proceedings|Studies|Research|Letters")
 _FUNC = {"of", "and", "the", "for", "in", "on", "de", "des", "la", "le", "y", "di", "del", "&", "et"}
 _KW_SPLIT = re.compile(u"[,，;；、]")
@@ -121,6 +143,8 @@ def _clean_jname(c):
     m = re.match(r"^.+?\bet\s+al\.?\s+", c, re.I)
     if m and len(c) - m.end() >= 8:
         c = c[m.end():]
+    # 页脚刊例尾部 '| 2025년'(산업연구 系实证): 全文清洗循环剥不掉(Hangul 是 \w, \b 失效)
+    c = re.sub(r"\s*[|｜]\s*(?:19|20)\d{2}\s*년\s*$", "", c).strip()
     c = re.sub(r"[\s,.]*[,.\s]*(?:19|20)\d{2}\b[\s,.'」』)]*$", "", c).strip()
     c = c.strip(u" \t/·.,-–—|〔【('（")
     return c
@@ -185,12 +209,16 @@ def _jname_from_line(s):
                 return (cand, en)
     if not cand:
         # 独立英文刊名行(多行页眉的英名单独成行, 如 3275609 'The Korean Journal of the Law
-        # of the Sea'): 无 boundary/管道/数字/谚文, 词全为大写或功能词, 含刊名词 → 仅 en
-        if _ENKEY.search(s) and not re.search(u"[가-힣]", s) and not re.search(r"\d", s):
-            words = s.split()
-            if len(_fold(s)) >= 8 and all(re.match(r"^[A-Z]", w) or w.lower() in _FUNC
+        # of the Sea'): 无 boundary/管道/数字/谚文, 词全为大写或功能词, 含刊名词 → 仅 en。
+        # 2026-11-19: 先剥 'p-ISSN 2586-5439 e-ISSN …' 段(JTS 横幅把 ISSN 和刊名印同行,
+        # 原数字守卫把整个候选毙掉)——剥后按无数字行走同一套判据。
+        # 注意模式不许吃掉段间空格外的字符, 且两段 ISSN 都要剥(自测 ok28 实证)。
+        s2 = re.sub(r"\s*[pe]-?ISSN\s*[0-9][0-9-]*", "", s, flags=re.I).strip()
+        if _ENKEY.search(s2) and not re.search(u"[가-힣]", s2) and not re.search(r"\d", s2):
+            words = s2.split()
+            if len(_fold(s2)) >= 8 and all(re.match(r"^[A-Z]", w) or w.lower() in _FUNC
                                           for w in words):
-                return None, s.strip()
+                return None, s2.strip()
         return None
     if not (2 <= len(_fold(cand)) <= 50):
         return None
@@ -235,6 +263,8 @@ def extract(source, n_pages, excluded_folds):
     issue_jip = {}   # 제N집 老式连续页码期刊: 无 권/호 时"第N集"就是期号(最低优先级候选组)
     issue_season = {}  # 季刊页眉 'KOREA JOURNAL / AUTUMN 2002': 季节词本身即期次标识
     tongkwan, bmc_art = [], []
+    guard_uid = {uid for _, uid, s0 in source
+                 if uid is not None and _Y_GUARD.search(s0)}   # 独立出版月行放行(见 _DATE_ONLY)
     for page, uid, s in source:
         if len(_fold(s)) > 130:
             continue   # 正文粘入的误标长行
@@ -247,8 +277,8 @@ def extract(source, n_pages, excluded_folds):
                     _add(journal_en, en, page, uid)
             elif en and _fold(en) not in excluded_folds and 2 <= len(_fold(en)) <= 80:
                 _add(journal_en, en, page, uid)
-        # 年(刊头信号守卫 + 数字/连字符夹住排除)
-        if _Y_GUARD.search(s):
+        # 年(刊头信号守卫 + 数字/连字符夹住排除; 独立出版月行经 guard_uid 放行)
+        if _Y_GUARD.search(s) or (uid in guard_uid and _DATE_ONLY.match(s)):
             for m in _YEAR.finditer(s):
                 y = int(m.group(1))
                 if y in YEAR_OK:
@@ -302,9 +332,17 @@ def extract(source, n_pages, excluded_folds):
                 y0, i0 = int(m.group(1)), int(m.group(2))
                 if y0 in YEAR_OK and 1 <= i0 <= 99:
                     _add(issue, i0, page, uid)
+        # 页码-年粘连: 真区间进页组、年进年组(_YEAR 的 lookaround 够不着粘连位)
+        for m in _PP_GLUE.finditer(s):
+            b0, y0 = int(m.group(2)), int(m.group(3))
+            if b0 < 999 and y0 in YEAR_OK:
+                _add(pages_pp, (int(m.group(1)), b0), page, uid)
+                _add(year, y0, page, uid)
         # 页
         for m in _PP.finditer(s):
             a, b = int(m.group(1)), int(m.group(2))
+            if re.match(r"^\d{1,2}\s*년", s[m.end():]):
+                continue   # 粘连形态: 真区间已由 _PP_GLUE 收, 防 '3120' 充页末
             if a < b and b < 9999:
                 _add(pages_pp, (a, b), page, uid)
         for m in _BARE_RANGE.finditer(s):
@@ -327,6 +365,10 @@ def extract(source, n_pages, excluded_folds):
                 _add(year, int(m.group(1)), page, uid)
                 _add(year_strong, int(m.group(1)), page, uid)
                 _add(vol_vol, int(m.group(2)), page, uid)
+            for m in _DOI_VYY.finditer(s):     # 卷..年月(期位不存在): mses.11..202207.97
+                _add(year, int(m.group(2)), page, uid)
+                _add(year_strong, int(m.group(2)), page, uid)
+                _add(vol_vol, int(m.group(1)), page, uid)
             if not got4:
                 # 四段式命中时不能再跑这条: '2025.10.20.001' 里的 '2025.10.' 会把**期**当卷
                 # 塞进 vol_vol, 与上面的 20 打平票。
@@ -401,7 +443,7 @@ def extract(source, n_pages, excluded_folds):
     # (年..卷 / 年.卷.文号)。这类刊按通卷编号, 期号在原文结构里不存在, 不是抽取失败。
     # 证据只写进 confidence.source, 由 qc 决定"期"要不要报缺; 值仍然是 None(不臆造)。
     issue_volume_only = i_w is None and any(
-        _DOI_YEV.search(s) or _DOI_YV.search(s) for _, _, s in source)
+        _DOI_YEV.search(s) or _DOI_YV.search(s) or _DOI_VYY.search(s) for _, _, s in source)
     res = {
         "journal": {"value": j_w, "uid": _uid0(journal, j_w),
                     "confidence": {"level": _lvl(j_sup), "source": "regex"}},
@@ -660,7 +702,9 @@ def issue_doc(doc, out_root):
         for u in j["unified"]:
             t = u["main_text"] or ""
             if (p <= 1 and (u["type"] in STRUCT_TYPES or (p == 0 and u["box"][1] < 0.12 * j["h"]))) \
-                    or (p == 0 and (_DOI.search(t) or re.search(r"출판연도\s*[:：]", t))):
+                    or (p == 0 and (_DOI.search(t) or re.search(r"출판연도\s*[:：]", t)
+                                    or _YEAR_VOL.search(t))) \
+                    or (u["type"] in ("Page-header", "Page-footer") and _FOOT_MAST.search(t)):
                 for ln in t.split("\n"):
                     if ln.strip():
                         source.append((p, u["uid"], ln.strip()))
@@ -906,7 +950,8 @@ def issue_doc(doc, out_root):
             # 按 P1 拍板标 volume_only 交质检豁免(2026-11-18 KCI_FI002983265_2023 实证:
             # dasein.2023.70.33 三段式, 70 被 vol_jip/issue_jip 双写)。四段式(期位有值)
             # 不得误标——YIV 命中即说明期位存在。
-            if any(_DOI_YEV.search(s) or (_DOI_YV.search(s) and not _DOI_YIV.search(s))
+            if any(_DOI_YEV.search(s) or _DOI_VYY.search(s)
+                   or (_DOI_YV.search(s) and not _DOI_YIV.search(s))
                    for _, _, s in source):
                 res["issue"]["confidence"] = {
                     "level": "high", "source": "volume_only",
@@ -1180,14 +1225,53 @@ def _selftest():
             elif name == "j4":
                 ok26 = (got.get("volume", {}).get("value") == 5
                         and got.get("issue", {}).get("value") == 2)
+    # 27-30) 二次收敛(2026-11-19, KCI11_17 171 篇真缺口三族):
+    #   27 '名 年 卷(期):' 横幅式(Analyses & Alternatives 系 ~46 篇缺刊名)
+    r27 = extract([(0, "u0", "Analyses & Alternatives 2025 9(3): 027-047 DOI: 10.22931/aanda.2025.9.3.002")], 1, set())
+    ok27 = r27["journal_en"]["value"] == "Analyses & Alternatives" \
+        and r27["journal"]["value"] == "Analyses & Alternatives" \
+        and r27["year"]["value"] == 2025
+    #   28 '名 p-ISSN … e-ISSN …' 横幅式(JTS 系): 剥 ISSN 段后走独立英文刊名行判据
+    r28 = extract([(0, "u0", "The Journal of Transdisciplinary Studies p-ISSN 2586-5439 e-ISSN 2586-5417")], 1, set())
+    ok28 = r28["journal_en"]["value"] == "The Journal of Transdisciplinary Studies" \
+        and r28["journal"]["value"] == "The Journal of Transdisciplinary Studies"
+    #   29 'YYYY, Vol. N, No. M, …' 横幅行(JAMS 系; 来源门在 issue_doc(_YEAR_VOL), 此例行机制)
+    r29 = extract([(0, "u0", "2023, Vol. 6, No. 2, 163-180")], 1, set())
+    ok29 = r29["year"]["value"] == 2023 and r29["volume"]["value"] == 6 \
+        and r29["issue"]["value"] == 2
+    #   30 '卷..年月' DOI(mses 系): 年+卷进票, 期位结构上不存在 → volume_only
+    r30 = extract([(0, "u0", "DOI http://dx.doi.org/10.22957/mses.11..202207.97")], 1, set())
+    ok30 = r30["year"]["value"] == 2022 and r30["volume"]["value"] == 11 \
+        and r30["issue"]["value"] is None \
+        and r30["issue"]["confidence"]["source"] == "volume_only"
+    # 31) 页码-年粘连(한국진로창업경영학회지 系): 年补出 + pages 真值(不再 1-3120)
+    r31 = extract([(0, "u0", u"한국진로창업경영학회지 제6권 3호: pp. 1 ~ 312022년 8월")], 1, set())
+    ok31 = r31["year"]["value"] == 2022 and r31["pages"]["value"] == "1-31" \
+        and r31["volume"]["value"] == 6 and r31["issue"]["value"] == 3
+    # 32) 页脚刊例尾部 '| 2025년' 剥除( Hangul 是 \w, 旧 \b 年剥除对它失效)
+    ok32 = _clean_jname(u"34 산업연구 | 2025년 ") == u"산업연구" \
+        and _clean_jname(u"안전관리자 및 보건관리자 채용과 산업재해 예방 간의 관계 분석") \
+        == u"안전관리자 및 보건관리자 채용과 산업재해 예방 간의 관계 분석"
+    # 33) 页脚刊例放行(산업연구 系): 迟到第 29 页的日期页脚也能供出四字段, 刊名不夹年
+    r33 = extract([(29, "u29", u"114 산업연구 | 2025년 제9권 제1호")], 30, set())
+    ok33 = r33["journal"]["value"] == u"산업연구" and r33["year"]["value"] == 2025 \
+        and r33["volume"]["value"] == 9 and r33["issue"]["value"] == 1
+    # 34) 独立出版月行: 同行块带刊头信号 → 年补出; 异行块不补(防正文日期)
+    r34 = extract([(0, "u0", u"한국진로창업경영학회지 제6권 3호: pp. 111 ~ 131"),
+                   (0, "u0", u"2022년 8월")], 1, set())
+    ok34 = r34["year"]["value"] == 2022
+    r34b = extract([(0, "u0", u"요약 본문 블록"),
+                    (1, "u1", u"2022년 8월")], 2, set())
+    ok34 = ok34 and r34b["year"]["value"] is None
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
-                            ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26), 1):
+                            ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
+                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/27 PASS" % n_ok)
-    return n_ok == 27
+    print("issue selftest: %d/35 PASS" % n_ok)
+    return n_ok == 35
 
 
 if __name__ == "__main__":

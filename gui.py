@@ -669,7 +669,7 @@ class App(tk.Tk):
         viewbar.pack(fill="x", pady=(0, 4))
         ttk.Label(viewbar, text="文档 ID").pack(side="left")
         self.search_var = tk.StringVar()
-        search = ttk.Entry(viewbar, textvariable=self.search_var, width=18)
+        search = ttk.Entry(viewbar, textvariable=self.search_var, width=12)
         search.pack(side="left", padx=(4, 12))
         self.search_var.trace_add("write", lambda *_args: self._apply_view())
         ttk.Label(viewbar, text="状态").pack(side="left")
@@ -687,15 +687,21 @@ class App(tk.Tk):
         self.entity_view = tk.BooleanVar(value=False)
         tk.Checkbutton(lang_box.master, text="实体视图", variable=self.entity_view,
                        command=self._switch_view).pack(side="left", padx=(10, 0))
-        ttk.Button(lang_box.master, text="更新实体", command=self._refresh_entities).pack(side="left", padx=(4, 0))
-        self.count_lbl = ttk.Label(viewbar, text="文档 0 篇", foreground="#4b5563")
-        self.count_lbl.pack(side="right", padx=4)
+        # 实体专属按钮只在实体视图下挂出(平时收起, 不挤"全选"按钮)
+        self._btn_ent_refresh = ttk.Button(lang_box.master, text="更新实体",
+                                           command=self._refresh_entities)
+        self._btn_ent_export = ttk.Button(lang_box.master, text="导出Excel",
+                                          command=self._export_entity_xlsx)
+        # 右侧打包次序 = 被裁时的牺牲次序: 先包者最右且最后被裁。
+        # 全选/已选 是功能件优先保; 文档计数纯展示, 顶栏溢出时先裁它(不再"全选被挤掉")。
         selection_box = ttk.Frame(viewbar)
         selection_box.pack(side="right", padx=8)
         self.sel_lbl = ttk.Label(selection_box, text="未选中")
         self.sel_lbl.pack(side="left", padx=(0, 4))
         self.btn_clear_sel = ttk.Button(selection_box, text="全选", command=self._toggle_select_all)
         self.btn_clear_sel.pack(side="left")
+        self.count_lbl = ttk.Label(viewbar, text="文档 0 篇", foreground="#4b5563")
+        self.count_lbl.pack(side="right", padx=4)
         table = ttk.Frame(wrap)
         table.pack(fill="both", expand=True)
         self.tree = ttk.Treeview(table, columns=(), show="tree headings", height=12,
@@ -979,8 +985,11 @@ class App(tk.Tk):
         self._column_base = dict([("#0", 150)] + [(c, w) for c, w, _t, _a in colspec])
 
     def _switch_view(self):
-        """一键切换: 文档视图(状态/质检/…) ↔ 实体视图(机构/基金/软件/数据集)。"""
+        """一键切换: 文档视图(状态/质检/…) ↔ 实体视图(机构/基金/软件/数据集)。
+        实体专属按钮(更新实体/导出Excel)随视图挂出收起, 文档视图下顶栏保持原样。"""
         if self.entity_view.get():
+            self._btn_ent_refresh.pack(side="left", padx=(4, 0))
+            self._btn_ent_export.pack(side="left", padx=(4, 0))
             self._set_columns(self._ent_colspec)
             # 切到实体视图时全量取一次实体矩阵; 之后 refresh 新增的篇目暂显示空格,
             # 再切一次即刷新(NER 产物是 LLM 阶段产出, 不值得每次 refresh 全库重读)。
@@ -988,18 +997,57 @@ class App(tk.Tk):
             self._ent_cache = entview.matrix(sorted(self.docs), self.workspace.out,
                                              self.workspace.ner_root)
         else:
+            self._btn_ent_refresh.pack_forget()
+            self._btn_ent_export.pack_forget()
             self._set_columns(self._doc_colspec)
         self._fit_tree_columns()
         self._apply_view()
 
     def _refresh_entities(self):
         """更新实体视图: 重读题录+NER 产物并重渲(NER 是 LLM 阶段产物,
-        默认只在切换视图时全量取一次; 此键手动强制刷新, 比如 ner 阶段补跑完之后)。"""
-        self._ent_cache = entview.matrix(sorted(self.docs), self.workspace.out,
-                                         self.workspace.ner_root)
+        默认只在切换视图时全量取一次; 此键手动强制刷新, 比如 ner 阶段补跑完之后)。
+        全程反馈: 状态栏提示+忙光标, 完成后日志报篇数/实体数/耗时。"""
+        t0 = time.time()
+        self.status_lbl.configure(text="正在更新实体视图…")
+        self.configure(cursor="watch")
+        self.update_idletasks()
+        try:
+            self._ent_cache = entview.matrix(sorted(self.docs), self.workspace.out,
+                                             self.workspace.ner_root)
+        finally:
+            self.configure(cursor="")
+        dt = time.time() - t0
+        n_with_ent = sum(1 for c in self._ent_cache.values()
+                         if any(c.get(k) for k, _h, _w in entview.KINDS))
+        note = "" if self.entity_view.get() else "(未开实体视图, 仅刷新缓存)"
+        self._log("[实体视图] 已重读 %d 篇, 含实体 %d 篇, 用时 %.1fs%s"
+                  % (len(self._ent_cache), n_with_ent, dt, note))
         if self.entity_view.get():
             self._fit_tree_columns()
             self._apply_view()
+
+    def _export_entity_xlsx(self):
+        """实体矩阵导出 Excel: 与实体视图同一份数据(entview.export_xlsx),
+        落盘位置用户自选, 完成后日志留路径。"""
+        name = "实体视图_%s.xlsx" % time.strftime("%Y%m%d_%H%M%S")
+        fp = filedialog.asksaveasfilename(
+            parent=self, title="导出实体视图", initialdir=self.workspace.root,
+            initialfile=name, defaultextension=".xlsx",
+            filetypes=[("Excel", "*.xlsx")])
+        if not fp:
+            return
+        self.status_lbl.configure(text="正在导出 Excel…")
+        self.configure(cursor="watch")
+        self.update_idletasks()
+        try:
+            n = entview.export_xlsx(fp, sorted(self.docs), self.workspace.out,
+                                    self.workspace.ner_root)
+        except Exception as e:
+            messagebox.showerror("导出失败", str(e), parent=self)
+            return
+        finally:
+            self.configure(cursor="")
+        self._log("[实体视图] 已导出 %d 篇 -> %s" % (n, fp))
 
     def _fit_tree_columns(self):
         available = max(240, self.tree.master.winfo_width() - self.tree_vscroll.winfo_reqwidth() - 4)
@@ -1161,7 +1209,7 @@ class App(tk.Tk):
                                 and not self.runner.is_stopping() else "disabled")
         n = len(self._checked_stages()) if hasattr(self, "stage_vars") else 0
         if has:
-            self.sel_lbl.configure(text="已选 %d 篇 ｜ 菜单勾选 %d 段" % (len(docs), n))
+            self.sel_lbl.configure(text="已选 %d ｜ 勾选 %d 段" % (len(docs), n))
         else:
             self.sel_lbl.configure(text="未选中")
 
@@ -1215,9 +1263,8 @@ class App(tk.Tk):
         不改动菜单里的勾选状态: 菜单勾选是另一条路(自定义子集), 替用户改勾选
         会让他下一次"执行选中阶段"跑出没预期的集合。
         """
-        # webfill 亦跳过(2026-11-19): 保留在链路可单独勾跑, 默认不装载;
-        # 快速重跑语义 = 全链减烧 LLM/走网的段。
-        ids = [i for i in stages.ORDER if i not in ("ner", "webfill")]
+        # 快速重跑语义 = 全链减烧 LLM 的段(webfill 2026-11-19 已整体移出链路, 无可跳过)。
+        ids = [i for i in stages.ORDER if i != "ner"]
         self._run_stages(ids, "快速重跑(跳NER)")
 
     def _retry_missing(self):

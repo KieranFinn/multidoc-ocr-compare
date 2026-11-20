@@ -105,7 +105,7 @@ def _pick_title(j, want_hangul):
     return best, bli
 
 _AFFIL_TAIL = re.compile(
-    u"(?:초빙교수|겸임교수|명예교수|전임교수|부교수|조교수|교수|강사|선임연구원|책임연구원|"
+    u"(?:초빙교수|겸임교수|명예교수|특임교수|전임교수|부교수|조교수|교수|강사|선임연구원|책임연구원|"
     u"전문연구원|연구원|박사후연구원|박사|대학원생|박사과정|석사과정|(?<=과)\\s*대학원)[\\s,，·•]*$")
 
 
@@ -510,12 +510,38 @@ def _parse_author_line(line, u, foot_affil):
             return [{"name": _mkp.group(1), "markers": _mk0,
                      "affiliation": _strip_affil_tail(_mkp.group(2).strip()) or None,
                      "role": _role0, "roman": (_mkp.group(3).strip() or None)}]
+    if "|" in _cl:
+        # 한마음연구 体例(2026-11-19, KCI11_17 37 篇缺机构): '이름 | 기관 직위' 单行竖线分隔——
+        # 机构侧带 '前' 前缀与职称尾巴(강사/특임교수…); 竖线在作者区行内即强证据。
+        # 机构缩写(한국외대/글로벌캠퍼스)命中不了机构词表, 故此处以竖线为锚、不按 AFFIL_HEAD 验收;
+        # 名与竖线之间只许标记(*†…)不许韩文(防 '김철수 박사 |…' 整吞); 机构侧再含 '|' 的多作者行
+        # 不进此门(落回旧切分路径)。
+        _mp = re.match(u"^([가-힣]{2,4})([^|]{0,12}?)[|｜]\\s*(?:前\\s*)?([^|]{2,60})$", _cl)
+        if _mp and not re.search(u"[가-힣]", _mp.group(2) or u""):
+            _aff = _AFFIL_TAIL.sub("", _mp.group(3).strip()).rstrip(u" ,·•").strip()
+            return [{"name": _mp.group(1), "markers": _mk0,
+                     "affiliation": _aff or None,
+                     "role": _role0, "roman": None}]
     out = []
     glued_names = list(re.finditer(u"([가-힣]{2,4})(?:<sup>\\d+</sup>|\\*{0,2})?(\\([^)]+\\))", line))
     if len(glued_names) >= 2 and "^" not in line:
         toks = [m.group(0) for m in glued_names]
     elif en_line:
-        toks = re.split(r"\s*,\s*|\s+and\s+", line)
+        # JAMS 英文署名行(2026-11-19, KCI11_17 ~58 篇): 'Surname, Given* · Surname2, Given2**'。
+        # 先按 '·' 切段; 段内 '姓, 名' 倒置形态归一成 '名 姓'(_NAME_EN 同形)——罗马行的逗号是
+        # 姓名内部结构, 不是作者分隔符(原实现按逗号切, 把 'Park, Chulhyun' 拆成两个人)。
+        toks = []
+        for _seg in re.split(r"\s*·\s*", line):
+            _seg = _seg.strip()
+            if not _seg:
+                continue
+            _minv = re.match(
+                r"^([A-Z][A-Za-z\-']+),\s*((?:[A-Z]\.?[A-Za-z\-']+)(?:\s+[A-Z]\.?[A-Za-z\-']+)*)"
+                r"(\*{0,4})$", _seg)
+            if _minv:
+                toks.append(_minv.group(2) + " " + _minv.group(1) + _minv.group(3))
+            else:
+                toks.extend(re.split(r"\s*,\s*|\s+and\s+", _seg))
     else:
         toks = re.split(u"[·•․]|\\s+,\\s+|,\\s+(?=[가-힣])", line)
     for tk in toks:
@@ -845,6 +871,7 @@ def front_doc(doc, out_root):
 
     def _clean_title(t):
         t = SUP_LATEX.sub("", t or "").strip()
+        t = _strip_supsub(t)   # HTML 上下标(KCI HTML 系 PDF 自带)剥壳留字
         t = re.sub(r"^#+\s*", "", t)
         t = re.sub(r"(\*{1,4}|†|‡|§)+(?=$|\s)", "", t).strip()
         return t
@@ -857,11 +884,24 @@ def front_doc(doc, out_root):
     if not t_ko or not authors or not affils:
         p1 = [(ch, t) for (p, ch, t) in channel_lines(doc_dir) if p == 1]
         if not t_ko:
+            # 运行头守卫(2026-11-19, JAMS/JTS 系): 横幅短题名每页复写, 频道行在 2+ 页出现
+            # ≥2 次者不作兜底题名——否则英文刊的运行头('Attack helicopter…')占掉 KO 题槽,
+            # 连带扫描锚点(uid=None)失效、作者区整扫被跳过。
+            _runs = {}
+            for _p, _c, _t in channel_lines(doc_dir):
+                if _p <= 1:
+                    continue
+                for _ln in _t.split("\n"):
+                    _f = _fold(SUP_LATEX.sub("", _ln.strip()))
+                    if _f:
+                        _runs[_f] = _runs.get(_f, 0) + 1
             for ch, t in p1:
                 for ln in t.split("\n"):
                     s = SUP_LATEX.sub("", re.sub(r"^#+\s*", "", ln.strip())).strip()
                     if not (15 <= len(s) <= 220) or _NOT_TITLE.search(s):
                         continue
+                    if _runs.get(_fold(s), 0) >= 2:
+                        continue   # 跨页复写=运行头
                     if AFFIL_HEAD.search(s) or ROLE_WORDS.search(s):
                         continue
                     if _NAME_KO.match(s) or _NAME_EN.match(s):
@@ -1038,7 +1078,11 @@ def front_doc(doc, out_root):
             affils = [_fa[0]]
             ch_front["affiliations"] = (_fa[0], "footnote_email")
             _fa_note = _fa[1]
-    if t_ko:
+    if t_ko or t_en:
+        # 扫描锚点: 兜底题名是频道行合成品(uid/box=None, 见体例兜底)——锚不到块就
+        # 退取 t_en 的真块; 全缺时窗口从页顶起(2026-11-19 JAMS 英文刊实证: 合成锚点使
+        # start=len(ordered), 作者区整扫被跳过, 作者全空)。
+        _tref = t_ko if (t_ko and t_ko.get("uid")) else t_en
         # —— 作者区扫描(2026-11-17 重构): 窗口内收集全部候选, 打分选优 ——
         # 首中即停旧策略的病灶: 英文标题/摘要首行/ISSN 行都能过人名校验,
         # 排除法砍不完坏形态(13563580/13569377 归因); 标记/角色词/贴题位置
@@ -1046,8 +1090,9 @@ def front_doc(doc, out_root):
         early = []
         _cands = []
         ordered = sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0]))
-        start = next((i + 1 for i, u in enumerate(ordered) if u["uid"] == t_ko["uid"]), len(ordered))
-        _ty = (t_ko["box"][1] / float(j0["h"])) if (t_ko and t_ko.get("box")) else 0.0
+        start = next((i + 1 for i, u in enumerate(ordered)
+                      if _tref and u["uid"] == _tref["uid"]), len(ordered))
+        _ty = (_tref["box"][1] / float(j0["h"])) if (_tref and _tref.get("box")) else 0.0
         for u in ordered[start:]:
             _y1 = u["box"][1] / float(j0["h"])
             if _y1 > _ty + 0.45:
@@ -1116,9 +1161,12 @@ def front_doc(doc, out_root):
     #    题名块余行的 '김민규, Minkyu Kim' 署名与 '국립창원대학교, …' 机构随之丢失。
     #    此处补扫题名块余行: 只在缺作者或缺机构时启用(全绿篇一条不动); 位于作者清理之后; 罗马起头的
     #    题名残行仍不进门(13563535 英题切片误配 roman 的回归同样被防)。
-    if (not authors or not affils) and (t_ko or t_en):
+    # box 判空(2026-11-19): 体例兜底产出的题名 box=None, 原 "if t" 只防 dict 本身为空 ——
+    # KCI11_17 649 次 NoneType 全崩在 min(t["box"][1]); 双题名均无 box 时扫描窗口无从定位, 整块跳过。
+    if (not authors or not affils) and (t_ko or t_en) \
+            and any(t and t.get("box") for t in (t_ko, t_en)):
         _tb = {t["uid"] for t in (t_ko, t_en) if t and t.get("uid")}
-        _top = min(t["box"][1] for t in (t_ko, t_en) if t)
+        _top = min(t["box"][1] for t in (t_ko, t_en) if t and t.get("box"))
         _win = _top + 0.45 * float(j0["h"])
         _scan_uids = set()
         _res_a, _res_z = [], []
@@ -1296,8 +1344,24 @@ def _selftest():
     _pa1 = _parse_author_line(u"백서현(한양여자대학교)", None, {})
     ok18 = (len(_pa1) == 1 and _pa1[0]["name"] == u"백서현"
             and _pa1[0]["affiliation"] == u"한양여자대학교")
+    # 19) '이름 | 기관 직위' 单行竖线(한마음연구体例, 2026-11-19 KCI11_17 37 篇缺机构):
+    #     机构缩写(외대/캠퍼스)不走机构词表验收, 竖线为锚; '前'前缀与职称尾巴剥除;
+    #     机构侧含 '|' 的多作者行不得被整吞(落回旧切分)。
+    _p1 = _parse_author_line(u"오현희 | 한국외대 글로벌캠퍼스 강사", None, {})
+    ok19 = (len(_p1) == 1 and _p1[0]["name"] == u"오현희"
+            and _p1[0]["affiliation"] == u"한국외대 글로벌캠퍼스")
+    _p2 = _parse_author_line(u"김광식 | 前 동국대 특임교수", None, {})
+    ok19 = ok19 and len(_p2) == 1 and _p2[0]["affiliation"] == u"동국대"
+    _p3 = _parse_author_line(u"김철수 | 서울대 · 박영희 | 연세대", None, {})
+    ok19 = ok19 and [a["name"] for a in _p3] != [u"김철수"]
+    # 20) JAMS 英文署名行 'Surname, Given* · Surname2, Given2**'(2026-11-19):
+    #     '·' 切段 + 段内 '姓, 名' 归一 '名 姓'; 逗号是姓名内部结构不是作者分隔符。
+    _e1 = _parse_author_line("Park, Chulhyun* · An, Jihun** · Oh, YunJi***", None, {})
+    ok20 = [a["name"] for a in _e1] == ["Chulhyun Park", "Jihun An", "YunJi Oh"]
+    _e2 = _parse_author_line("Lee, Bohyung* · Jeong, Seokjae**", None, {})
+    ok20 = ok20 and [a["name"] for a in _e2] == ["Bohyung Lee", "Seokjae Jeong"]
     oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14,
-           ok15, ok16, ok17, ok18)
+           ok15, ok16, ok17, ok18, ok19, ok20)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)

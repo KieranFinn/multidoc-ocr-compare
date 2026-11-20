@@ -31,6 +31,14 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 sys.path.insert(0, HERE)
+# 工作区覆盖(2026-11-19, 与 failures.py 同口径): KCI_WS_ROOT=E:/KCI11_17 时对照/质检指向该工作区;
+# 快照 tag 默认带工作区名前缀, 防止与主库快照互相误选。ner_root 必须跟工作区走, 否则 QC 闸
+# 会把已被本区 NER 满足的"机构"误判为缺失(failures.py 同款 bug)。
+WS = os.environ.get("KCI_WS_ROOT") or ""
+if WS:
+    OUT = os.path.join(WS, "out")
+NER_TRIAL = os.path.join(WS if WS else HERE, "out_llm_trial")
+WS_PREFIX = (os.path.basename(WS.rstrip("/\\")) + "-") if WS else ""
 
 FIELDS = ("title", "title_en", "authors", "affiliations",
           "journal", "journal_en", "year", "volume", "issue", "pages",
@@ -54,7 +62,7 @@ def _snap(m):
 
 
 def snapshot(tag=None):
-    tag = tag or __import__("datetime").datetime.now().strftime("%Y%m%d-%H%M%S")
+    tag = tag or (WS_PREFIX + __import__("datetime").datetime.now().strftime("%Y%m%d-%H%M%S"))
     fp = os.path.join(HERE, "_meta_snapshot_%s.zip" % tag)
     zf = zipfile.ZipFile(fp, "w", zipfile.ZIP_DEFLATED)
     n = 0
@@ -80,7 +88,9 @@ def _load_snap(fp):
 
 def diff(tag=None):
     import qc
-    snaps = sorted(f for f in os.listdir(HERE) if re.match(r"_meta_snapshot_.*\.zip$", f))
+    snaps = sorted(f for f in os.listdir(HERE)
+                   if re.match(r"_meta_snapshot_.*\.zip$", f)
+                   and f.startswith("_meta_snapshot_" + WS_PREFIX))
     if not snaps:
         raise SystemExit("无快照, 先 python meta_diff.py snapshot")
     fp = None
@@ -106,8 +116,8 @@ def diff(tag=None):
                    if before.get(k) != after.get(k)}
         if changed:
             diffs[doc] = changed
-        lb = qc.qc_of(doc, out_dir=OUT)["level"] if doc in base else None
-        la = qc.qc_of(doc, out_dir=OUT)["level"]
+        lb = qc.qc_of(doc, out_dir=OUT, ner_root=NER_TRIAL)["level"] if doc in base else None
+        la = qc.qc_of(doc, out_dir=OUT, ner_root=NER_TRIAL)["level"]
         if lb in ("", "ok", "novol", "nonregular") and la == "bad" and lb is not None:
             worsened.append((doc, lb or "ok", la))
     out_fp = os.path.join(HERE, "_meta_diff_%s.json" % tag)

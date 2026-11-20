@@ -251,18 +251,20 @@ def iter_channels(cfg):
 
 
 def _env_key(name):
-    """按 api_key_env 取 key。Windows 用户变量存注册表, 新设的变量对已在运行的进程不可见
-    (2026-11-12 KCI_ZJLAB_KEY 实证)——环境缺省时回读 HKCU\\Environment, 免重启进程。"""
-    v = os.environ.get(name or "")
-    if v or os.name != "nt" or not name:
-        return v
-    try:
-        import winreg
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment") as k:
-            v, _ = winreg.QueryValueEx(k, name)
-    except OSError:
-        return None
-    return v or None
+    """按 api_key_env 取 key。Windows 下以注册表 HKCU\\Environment(用户变量)为唯一事实源:
+    运行中进程的 os.environ 只是启动时快照, 用户改变量后旧值仍残留在进程内——
+    2026-11-19 实证(改 zjlab key 后 NER 6/6 401: 进程用快照旧 key, 注册表新 key 同请求 6/6 通过)。
+    注册表无该名(机器级变量等)才回落 os.environ。"""
+    if os.name == "nt" and name:
+        try:
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Environment") as k:
+                v, _ = winreg.QueryValueEx(k, name)
+                if v:
+                    return v
+        except OSError:
+            pass
+    return os.environ.get(name or "")
 
 
 def _post(channel, prompt):

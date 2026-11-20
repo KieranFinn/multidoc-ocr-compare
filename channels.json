@@ -72,10 +72,10 @@
     "ner_lite_auto": true,
     "channels": [
       {
-        "label": "deepseek-official",
-        "endpoint": "https://api.deepseek.com/chat/completions",
-        "model": "deepseek-flash",
-        "api_key_env": "KCI_LLM_KEY"
+        "label": "zjlab-maas",
+        "endpoint": "http://i-nhi.zhejianglab.org/maas/v1/chat/completions",
+        "model": "DeepSeek-V4.1-Flash",
+        "api_key_env": "KCI_ZJLAB_KEY"
       },
       {
         "label": "deepseek-official",

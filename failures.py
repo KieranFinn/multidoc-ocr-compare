@@ -29,6 +29,13 @@ UP = "uploads"
 HERE = os.path.dirname(os.path.abspath(__file__))
 LEDGER = os.path.join(HERE, "_rounds.jsonl")
 REPORT = os.path.join(HERE, "_rounds_report.html")
+# 工作区覆盖(2026-11-19): KCI_WS_ROOT=E:/KCI11_17 时收集/报告指向该工作区;
+# 台账仍共享一本, 条目带 ws 字段, 跨工作区的轮次互不比较。
+WS = os.environ.get("KCI_WS_ROOT") or ""
+if WS:
+    OUT = os.path.join(WS, "out")
+    UP = os.path.join(WS, "uploads")
+NER_TRIAL = os.path.join(WS if WS else HERE, "out_llm_trial")
 
 _PUBDATE_ANY = re.compile(u"(?:원고)?접수일|게재\\s*확정일")
 _KW_HEAD = re.compile(u"(?:키\\s*워드|핵심\\s*어|주제\\s*어|중심\\s*어|주요\\s*어|Key\\s*words?)", re.I)
@@ -67,7 +74,9 @@ def collect():
             rows.append({"doc": doc, "level": "无产物", "issues": [], "note": "",
                          "family": None, "hints": {}})
             continue
-        r = qc.qc_of(doc)
+        # ner_root 必须跟工作区走(2026-11-19 修): 漏传时 qc_of 回落到主库 NER_ROOT,
+        # 工作区模式下会把已被本区 NER 满足的"机构"误判为缺失(台账虚增 112 vs GUI 93)。
+        r = qc.qc_of(doc, out_dir=OUT, ner_root=NER_TRIAL)
         if r["level"] != "bad":
             continue
         meta = {}
@@ -91,7 +100,9 @@ def collect():
 
 
 def _load_notes():
-    nfp = os.path.join(HERE, "gui_notes.json")
+    # 备注跟工作区走(2026-11-19 修): 此前恒读主库 gui_notes.json, 工作区模式下
+    # "全部已标原因"永远盯着错的文件(GUI 读写的是 <WS>/gui_notes.json)。
+    nfp = os.path.join(WS, "gui_notes.json") if WS else os.path.join(HERE, "gui_notes.json")
     if os.path.isfile(nfp):
         try:
             return json.load(io.open(nfp, encoding="utf-8"))
@@ -165,7 +176,7 @@ def _compare(now, prev, prev2):
 def _entity_blurb(doc):
     try:
         import entview
-        cells = entview.cells_for(doc, OUT, os.path.join(HERE, "out_llm_trial"))
+        cells = entview.cells_for(doc, OUT, NER_TRIAL)
         parts = []
         for k, zh in (("person", "人"), ("org", "机构"), ("dataset", "数据集"),
                       ("funding", "基金"), ("software", "软件")):
@@ -240,9 +251,10 @@ details{margin:8px 0} summary{cursor:pointer;color:#2a6fd6}
                 miss = u"、".join((c.get("issues_by_doc") or {}).get(d) or []) or u"(无产物)"
                 note = (notes.get(d, "") or "")[:60]
                 ent = _entity_blurb(d)
+                _prefix = (rd["ws"] + "/") if rd.get("ws") and rd["ws"] != "main" else ""
                 h.append(u"<tr><td>%s</td><td>%s</td><td class='muted'>%s</td><td class='muted'>%s</td>"
-                         u"<td><a href='out/%s/viewer_compare.html'>对照视图</a></td></tr>" % (
-                             e(d), e(miss), e(note), e(ent[:120]), e(d)))
+                         u"<td><a href='%sout/%s/viewer_compare.html'>对照视图</a></td></tr>" % (
+                             e(d), e(miss), e(note), e(ent[:120]), e(_prefix), e(d)))
             h.append(u"</table></details>")
     h.append(u'<p class="muted">报告生成于 %s · 由 failures.py --round 生成, 每跑一轮自动刷新</p>'
              % time.strftime("%Y-%m-%d %H:%M"))
@@ -273,14 +285,18 @@ def _round(tokens, did):
         "took_s": round(took, 1),
         "tokens": tokens or None,
         "did": did or "",
+        "ws": WS or "main",
         "total": total, "red": red, "acc": acc,
         "clusters": clusters,
     }
-    if prev:
+    if prev and prev.get("ws", "main") == rec["ws"]:
         rec["prev_red"] = prev["red"]
         rec["prev_acc"] = prev["acc"]
         rec["change"] = _compare(clusters, prev.get("clusters") or {},
                                  (prev2 or {}).get("clusters"))
+    else:
+        # 跨工作区(或首轮)无可比对象: change 置空同形, 打印/报告块无需分支。
+        rec["change"] = {"消失": [], "缩小": [], "没动": [], "连续没动": [], "新出现": []}
     with io.open(LEDGER, "a", encoding="utf-8") as fh:
         fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
 

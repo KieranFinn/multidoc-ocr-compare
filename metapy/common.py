@@ -5,7 +5,7 @@ r"""metapy 各 stage 共享的阈值、正则、文本折叠与 metadata/audit s
 pipeline 的 _fold_sym/_gdice 在此 re-export，保持既有 `from .common import *` 调用契约。
 """
 
-__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_struct_texts', 'load_audit', 'save_audit', 'channel_blocks', 'channel_lines', 'page_indices', 'read_unified']
+__all__ = ['ABSTRACT_START', 'ABS_HEAD_EN', 'ABS_HEAD_KO', 'ABS_INLINE_KO', 'AFFIL_HEAD', 'AGREE_CHARS', 'AUDIT_NAME', 'AY_HEAD', 'BOUND_DICE', 'CITE_HINT', 'CONTENT_TYPES', 'CONT_GAP', 'DEGREE', 'DOI_RE', 'ENTRY_MIN_LEN', 'FOOTNOTE_CITE', 'HEAD_EXCLUDE', 'HEAD_ZONE_LINES', 'HONORIFIC', 'ITALIC_TITLE', 'KNAME', 'KW_LINE', 'KW_NO', 'KW_VOL', 'LIST_MARK', 'LV_COLOR', 'MARGIN_X', 'MARKER_LINE', 'MIN_GLUE_LEN', 'NARROW_W', 'NEW_START', 'NEW_WORDS', 'NOTE_LINE', 'NOTE_WORDS', 'NO_RE', 'NUMERIC_CITE_MIN', 'NUM_MARK', 'PGNO_LINE', 'PG_RANGE', 'PP_RE', 'QUOTE_TITLE', 'RAW_HEAD_LEN', 'ROLE_WORDS', 'ROOT', 'STRUCT_TYPES', 'SUP_LATEX', 'TAIL_SOFT_LINES', 'TERM', 'TITLE_EN_ZONE', 'TITLE_READING_DICE', 'TITLE_ZONE', 'URL_LINE', 'VOL_RE', 'YEAR_OK', 'YEAR_RE', '_BIO_MARK', '_clean_lines', '_col_blocks', '_col_of', '_col_of_b', '_complete', '_content_blocks', '_dh_core', '_doc_heads', '_fold', '_foldv', '_frag_ok', '_gdice', '_group_from_members', '_hangul_ratio', '_head_agree', '_is_margin', '_is_running', '_join_sep', '_lang_mismatch', '_line_h', '_norm_ws', '_page_col_boundary', '_rebuild', '_standalone_note', '_strip_glued', '_strip_supsub', '_struct_texts', 'load_audit', 'save_audit', 'channel_blocks', 'channel_lines', 'page_indices', 'read_unified']
 
 import os, re, io, json, collections, datetime
 
@@ -338,6 +338,10 @@ ABSTRACT_START = re.compile(u"^(본 연구|이 연구|본 논문|The purpose|Thi
 HEAD_EXCLUDE = re.compile(u"^(차\\s*례|목\\s*차|요\\s*약|국문\\s*요약|·?국문요약|Abstract|ABSTRACT|Keywords?|중심\\s*어|핵심\\s*어|서\\s*론|머리\\|Ⅰ\\.|I\\.)", re.I)
 
 SUP_LATEX = re.compile(r"\$\s*\^\{([^}]*)\}\s*\$")
+# HTML 上下标(KCI HTML 系 PDF 文本层自带, 2026-11-19 实体视图导出脏数据实证 17 篇):
+# 成对剥壳留内容(<sup>*</sup>→*), 再剥残留单标签; 韩文尖括号书名引号(<대장금>)非标签, 不碰。
+_SUPSUB_PAIR = re.compile(r"<(sup|sub)\b[^>]*>(.*?)</\1\s*>", re.I | re.S)
+_SUPSUB_STRAY = re.compile(r"</?(?:sup|sub)\b[^>]*>", re.I)
 
 AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|국회방송|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital|Nunnery|KIDA|KAIST|CMU)")
 
@@ -492,6 +496,14 @@ def _hangul_ratio(t):
     return h / max(1.0, h + a)
 
 
+def _strip_supsub(t):
+    """剥 HTML 上下标标记: <sup>X</sup>/<sub>X</sub>→X, 残留单标签再剥; 无标签原样返回。"""
+    if not t or "<" not in t:
+        return t
+    t = _SUPSUB_PAIR.sub(lambda m: m.group(2), t)
+    return _SUPSUB_STRAY.sub("", t)
+
+
 def _selftest():
     import shutil
     import tempfile
@@ -510,11 +522,15 @@ def _selftest():
         shutil.rmtree(tmp, ignore_errors=True)
     ok5 = (RAW_HEAD_LEN, NUMERIC_CITE_MIN, TITLE_READING_DICE) == (48, 3, 0.8)
     ok6 = _hangul_ratio("한글 ABC") == 0.4
-    oks = (ok1, ok2, ok3, ok4, ok5, ok6)
+    ok7 = (_strip_supsub(u"선명상<sup>*</sup> 및 <sub>적용</sub>과 <대장금>")
+           == u"선명상* 및 적용과 <대장금>"
+           and _strip_supsub(u"잔여<sup>태그") == u"잔여태그"
+           and _strip_supsub(None) is None and _strip_supsub("") == "")
+    oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [common case %d]" % i)
-    print("common selftest: %d/6 PASS" % sum(oks))
+    print("common selftest: %d/%d PASS" % (sum(oks), len(oks)))
     return all(oks)
 
 
