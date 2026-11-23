@@ -55,13 +55,17 @@ def affiliation_present(meta, org_entity_count=0):
 
 
 def _body_stats(doc, dd):
-    """一次扫描同时计算正文达标和主导语种，判定口径与分别扫描保持一致。"""
+    """一次扫描同时计算正文达标和主导语种，判定口径与分别扫描保持一致。
+    2026-11-20 俄葡法适配: 西里尔字母单列(→俄语); 拉丁主导时用 langid 功能词
+    打分细分 葡萄牙语/法语/英文(标签经 langid.LABELS 映射, GUI 语言列直接显示)。"""
     sp = os.path.join(dd, "unified", "_unified_summary.json")
     mt = os.path.getmtime(sp) if os.path.isfile(sp) else 0
     hit = _BODY_CACHE.get(doc)
     if hit and hit[0] == mt:
         return hit[1], hit[2]
-    counts = {"韩文": 0, "中文": 0, "英文": 0}
+    from metapy import langid
+    counts = {u"韩文": 0, u"中文": 0, u"英文": 0, u"西里尔": 0}
+    lat_parts = []
     total, udir = 0, os.path.join(dd, "unified")
     if os.path.isdir(udir):
         for f in os.listdir(udir):
@@ -78,17 +82,33 @@ def _body_stats(doc, dd):
                     continue
                 for ch in u.get("main_text") or "":
                     if u"\uac00" <= ch <= u"\ud7a3":
-                        counts["韩文"] += 1
+                        counts[u"韩文"] += 1
                     elif ("\u3400" <= ch <= "\u4dbf" or "\u4e00" <= ch <= "\u9fff"
                           or "\uf900" <= ch <= "\ufaff"):
-                        counts["中文"] += 1
+                        counts[u"中文"] += 1
+                    elif "\u0400" <= ch <= "\u04ff":
+                        counts[u"西里尔"] += 1
                     elif "A" <= ch <= "Z" or "a" <= ch <= "z":
-                        counts["英文"] += 1
+                        counts[u"英文"] += 1
+                if len(lat_parts) < 8000:
+                    lat_parts.append(u.get("main_text") or "")   # 整段攒样本供葡/法打分
     lang = "未知"
     n_chars = sum(counts.values())
     if n_chars >= 20:
-        top = max(counts, key=counts.get)
-        lang = top if counts[top] / float(n_chars) >= 0.60 else "混合"
+        if counts[u"西里尔"] / float(n_chars) >= 0.15:
+            lang = u"俄语"
+        else:
+            top = max((k for k in counts if k != u"西里尔"),
+                      key=lambda k: counts[k])
+            if counts[top] / float(n_chars) >= 0.60:
+                if top == u"英文":
+                    base = "".join(lat_parts)[:4000] or None
+                    code = langid.classify(base) if base else None
+                    lang = langid.LABELS.get(code, u"英文") if code else u"英文"
+                else:
+                    lang = top
+            else:
+                lang = "混合"
     ok = total >= 500
     _BODY_CACHE[doc] = (mt, ok, lang)
     return ok, lang
@@ -184,8 +204,11 @@ def _non_regular_article_impl(dd, m):
                 texts.extend(b.get("text") or "" for b in blocks)
     except Exception:
         return False
-    section = re.compile(r"요\s*약|초\s*록|Abstract|Keywords?|주제\s*어|핵심\s*어|"
-                         r"참고\s*문헌|References|Bibliography", re.I)
+    section = re.compile(u"요\\s*약|초\\s*록|Abstract|Keywords?|주제\\s*어|핵심\\s*어|"
+                         u"참고\\s*문헌|References|Bibliography|"
+                         u"Аннотация|Реферат|Ключевые\\s+слова|Список\\s+литературы|"
+                         u"Resumo|Palavras[-–][Cc]have|Referências|Bibliografia|"
+                         u"R[ée]sum[ée]|Mots[-–][Cc]l[ée]s|Références", re.I)
     return not any(section.search(t) for t in texts)
 
 

@@ -26,8 +26,9 @@ import os, re, io, json, datetime, collections
 
 from .common import *
 from . import journals as jreg
+from . import langid as _langid
 
-_Y_GUARD = re.compile(r"권|호|집|Vol|No|pp|ISSN|DOI|doi|Journal|학회지|학술지|『|』|AUTUMN|SPRING|SUMMER|WINTER|FALL")
+_Y_GUARD = re.compile(u"권|호|집|Vol|No|pp|ISSN|DOI|doi|Journal|학회지|학술지|『|』|AUTUMN|SPRING|SUMMER|WINTER|FALL|Том|Номер|№|nº|n°|fasc|année|год|Год|изд")
 _YEAR = re.compile(r"(?<![\d\-])((?:19|20)\d{2})(?![\d\-])")
 _JBOOK = re.compile(r"『([^』]{2,40})』")
 _KWAN = re.compile(r"제\s*(\d{1,4})\s*권")
@@ -253,10 +254,149 @@ def _add(cand_pages, value, page, uid=None):
         cand_pages[value].append((page, uid))
 
 
-def extract(source, n_pages, excluded_folds):
+def _fold_accent(s):
+    """口音折叠(2026-11-20 俄葡法适配): NFKD 去音符再折叠——OCR 把 ô/ê 印成不同
+    码位时, 标题/作者守卫仍能认出刊名候选在行文中复写(fr_02 作者 running head 实证)。
+    间距修饰符(ˆˇ˜ 等, OCR 扬抑符漂移)先行剥除, 否则 NFKD 分解不到它们。"""
+    import unicodedata
+    s = re.sub(u"[ˆˇ˘˙˚˛˜˝]", "", s or u"")
+    s = unicodedata.normalize("NFKD", s)
+    return _fold("".join(c for c in s if not unicodedata.combining(c)))
+
+
+# 栏目/文类词黑名单: 大写 running head 里的栏目名不是刊名(ru_07 临床指南/ru_14 方法栏目实证)
+_LATIN_RUBRIC = re.compile(
+    u"^(?:клинические рекомендации|методы и методология|горячая тема|исследования|"
+    u"переводы|рецензии|научная жизнь|information|editorial|artigo original|"
+    u"documento para|diretrizes brasileiras|valores normais)", re.I)
+
+
+def _latin_jname(s, lang):
+    """俄/葡/法刊名补充形态(2026-11-20, 证据全部来自 91 篇语料 journal_lines 汇总):
+    ru: 全大写西里尔刊头(含刊名信号词) / 双语斜杠刊名; pt+fr+en: NLM 缩写型
+    'Arq Neuropsiquiatr 2003;61(3-B):777-781'、'Rev. sci. tech. Off. int. Epiz., 2012, 31 (1)',
+    'Annals of Mathematics, 171 (2010), 1591–1646', 'Saber (e) Educar 13 | 2008',
+    'Revue de communication sociale et publique' 句型。返回 (cand, None) 进主 journal 槽。"""
+    s0 = re.sub(r"\*+", "", (s or "")).strip()
+    s0 = re.sub(r"</?(?:sup|sub)\b[^>]*>", "", s0, flags=re.I)
+    s0 = re.sub(r"\s+", " ", s0).strip()
+    if not s0 or s0.startswith("(") or _LATIN_RUBRIC.match(s0):
+        return None
+    if lang == "fr":
+        m = re.match(u"^Dans\\s+(.+?)\\s+(?=(?:19|20)\\d{2}\\s*/)", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.search(u"\\b((?:Revue|Annales|Cahiers|Bulletin|Actes)\\b[^,\\n]{2,60})"
+                      u",\\s*(?:19|20)\\d{2}\\s*,\\s*\\d+", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^((?:Revue|Annales|Cahiers|Bulletin|Actes)\\b[^,\\n]{2,60})"
+                     u",\\s*\\d{1,3}(?:-\\d+)?,\\s*(?:19|20)\\d{2}\\s*,", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+    if lang == "pt":
+        m = re.match(u"^((?:Revista|Jornal|Cadernos|Estudos|Perspectivas|Boletim|Anais)\\b[^,\\n]{2,60})"
+                     u"\\s+Ano\\s+(?:[IVXLC]+|\\d+)\\b", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^(.+?),\\s+[A-ZÀ-Ú][\\wÀ-ú-]+(?:\\s+[\\wÀ-ú-]+){0,2},\\s+ano\\s+\\d+\\b", s0, re.I)
+        if not m:
+            m = re.match(u"^(.+?),\\s+ano\\s+(?:[IVXLC]+|\\d+)\\b", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+    if lang in ("pt", "fr"):
+        m = re.match(u"^([^,]{3,60}),\\s*\\d+\\(\\d+\\):\\d+-\\d+,\\s*(?:19|20)\\d{2}\\b", s0)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^((?:Revista|Jornal|Cadernos|Estudos|Perspectivas|Boletim|Anais|Cahiers)"
+                     u"\\b[^,\\n]{2,60}),\\s*(?:n[º°.]|ano\\b|v\\.|vol\\.|\\d)", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+    if lang == "ru":
+        m = re.match(u"^([А-ЯЁ][А-ЯЁ\\s:—-]{3,70}?)\\s+(?:19|20)\\d{2}\\s+(?:№|Vol\\.|Том)", s0)
+        if not m:
+            m = re.match(u"^([А-ЯЁ][А-ЯЁ\\s:—-]{3,70}?)\\s+№\\s*\\d+", s0)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.search(u"//\\s*(.+?)\\s*[.]+\\s*[—–-]?\\s*(?:19|20)\\d{2}\\b", s0)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^([А-ЯЁ][А-ЯЁ\\s-]+?)\\.\\s*(?:19|20)\\d{2}\\.\\s*ТОМ", s0)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^[«\\\"'](.+?)[»\\\"']\\s+(?:19|20)\\d{2}\\s+(?:№|no\\.)", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        m = re.match(u"^(.+?журнал)\\s*[▪|]?\\s*№", s0, re.I)
+        if m:
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+    fl = _fold(s0)
+    if not (4 <= len(fl) <= 75):
+        return None
+    if lang == "ru":
+        letters = [c for c in s0 if c.isalpha()]
+        cyr = sum(1 for c in letters if u"Ѐ" <= c <= u"ӿ")
+        if letters and cyr >= 3 and not re.search(r"\d", s0) \
+                and sum(1 for c in letters if c.isupper()) / float(len(letters)) >= 0.85 \
+                and re.search(u"(?i)журнал|известия|вестник|труды|наук|эконом|академ|"
+                              u"университет|сборник|обозрение|cybernetics|journal", s0):
+            return (_clean_jname(s0), None)
+        m = re.match(u"^([А-ЯЁ][^/\\n]{2,50}/\\s*[A-Z][^\\n]{2,60}?)[\\.\\s]+(?:19|20)\\d{2}\\s*;", s0)
+        if m:
+            return (_clean_jname(m.group(1)), None)
+        m = re.match(u"^([А-ЯЁ][^/\\n]{2,50}/\\s*[A-Z][^\\n]{2,60})$", s0)
+        if m:
+            return (_clean_jname(m.group(1)), None)
+        return None
+    # 拉丁: NLM/温哥华缩写型(缩写词允许句点与小写词: 'Rev. sci. tech.', 后接年;卷或年, 卷)
+    m = re.match(r"^((?:[A-ZÀ-Ú]?[A-Za-zÀ-ú\-]{1,15}\.?\s*){1,7})[\.,]?\s+(19|20)\d{2}\s*[;,]\s*\S", s0)
+    if m:
+        cand = _clean_jname(m.group(1).strip(" .,"))
+        if cand and re.search(r"(?i)rev|j\b|arq|acta|ann|bull|arch|bras|paul|esc|univ|off|"
+                              r"int|sci|tech|neuro|cardiol|enferm|fisioter|epiz", cand):
+            return (cand, None)
+    m = re.match(r"^([A-ZÀ-Ú][A-Za-zÀ-ú\-\s]{2,50}?),?\s+\d{1,4}\s*\((?:19|20)\d{2}\)", s0)
+    if m:
+        return (_clean_jname(m.group(1).strip(" ,")), None)
+    m = re.match(u"^((?:[A-ZÀ-Ú(][\\w'’()\\-]*\\s+){1,5}[A-ZÀ-Ú(][\\w'’()\\-]*)\\s+\\d{1,4}\\s*\\|\\s*(?:19|20)\\d{2}", s0)
+    if m:
+        return (_clean_jname(m.group(1)), None)
+    m = re.match(u"^(?:[A-Z][\\w'’-]{1,20}\\.\\s+)?((?:Revue|Annales|Cahiers|Bulletin|[eé]tudes|"
+                 u"Travaux|Actes|Communications?)\\s+(?:de|des|du|d'|fran[çc]aise?)\\s+[^\\n]{3,50})$",
+                 s0, re.I)
+    if m:
+        return (_clean_jname(m.group(1)), None)
+    m = re.match(u"^((?:Revista|Jornal|Cadernos|Estudos|Perspectivas|Boletim|Anais)\\s+"
+                 u"(?:de|da|do|di|brasileir[ao]s?)\\s+[^\\n]{2,50})$", s0, re.I)
+    if m:
+        return (_clean_jname(m.group(1)), None)
+    # 小写 running 刊名(pt_01 'remark revista brasileira de marketing' 实证)
+    m = re.match(u"^((?:[a-zà-ú0-9&]+\\s+){1,5}[a-zà-ú0-9&]+)$", s0)
+    if m and re.search(r"(?i)revista|journal|jornal|review|science|research|magazine", s0):
+        return (_clean_jname(m.group(1)), None)
+    # 刊名+城市段: 'Rev. bras. fisioter., São Carlos, v. 11' /
+    # 'Resenhas EccoS Rev. Cient., UNINOVE, São Paulo: (1): 81-102'(pt_07/fr_12 实证)
+    m = re.match(u"^((?:[A-Za-zÀ-ú&]+\\.?\\s*){2,6}?),\\s+(?:[A-Z]{2,}|[A-ZÀ-Ú][\\wà-ú]+"
+                 u"(?:\\s+[\\wà-ú]+)?)\\s*[,:]", s0)
+    if m:
+        cand = _clean_jname(m.group(1).strip(" ,"))
+        if cand and re.search(u"(?i)rev|cient|journal|arq|acta|ann|bull|arch|bras|paul|esc|"
+                              u"univ|off|int|sci|tech|neuro|cardiol|enferm|fisioter|epiz|"
+                              u"estud|cad|pesqui|saber", cand):
+            return (cand, None)
+    # 单词小写刊名+年卷: 'haematologica 2012;97(4):…'(fr_20 实证)
+    m = re.match(r"^([a-z][a-z\-]{2,20})\s+(19|20)\d{2}\s*[;,]\s*\d", s0)
+    if m:
+        return (_clean_jname(m.group(1)), None)
+    return None
+
+
+def extract(source, n_pages, excluded_folds, lang=None):
     """核心抽取(纯函数, selftest 直接喂构造行)。
     source: [(page, uid, line)]; excluded_folds: 本篇标题/作者的折叠集合(守卫);
-    n_pages: 物理页数。返回结果 dict(含 audit 段)。"""
+    n_pages: 物理页数。返回结果 dict(含 audit 段)。
+    lang(2026-11-20 俄葡法适配): 'ru'/'pt'/'fr' 时行首剥 ** 残留, 且 _jname_from_line
+    落空后走 _latin_jname 刊名形态(NLM 缩写/全大写西里尔刊头/双语斜杠/Revue de…)。"""
     journal, journal_en = {}, {}
     year, year_strong = {}, {}      # year_strong: DOI/ISSN 行上的年份(出版社自带, 优先)
     vol_kwan, vol_vol, vol_jip, issue, pages_pp, pages_bare = {}, {}, {}, {}, {}, {}
@@ -266,16 +406,28 @@ def extract(source, n_pages, excluded_folds):
     guard_uid = {uid for _, uid, s0 in source
                  if uid is not None and _Y_GUARD.search(s0)}   # 独立出版月行放行(见 _DATE_ONLY)
     for page, uid, s in source:
-        if len(_fold(s)) > 130:
-            continue   # 正文粘入的误标长行
-        got = _jname_from_line(s)
+        if len(_fold(s)) > 130 and not (lang in ("ru", "pt", "fr", "en") and "©" not in s
+                                        and (re.search(u"//\\s*[^/]+[.]\\s*[—–-]?\\s*(?:19|20)\\d{2}", s)
+                                             or re.search(r"(?i)Revue\s+[^,\n]+,\s*(?:19|20)\d{2}\s*,\s*\d+", s))):
+            continue   # 正文粘入的误标长行; 首页引文中的本刊题录除外
+        if lang in ("ru", "pt", "fr", "en"):
+            # 2026-11-20 俄葡法适配: 拉丁文献跳过韩刊专用的 _jname_from_line(《》/권호 体系),
+            # 统一走 _latin_jname; OCR 加粗残留(**31**)先行剥离(fr_17 实证)。
+            s = re.sub(r"\*+", "", s).strip()
+            got = None if ("©" in s or u"droits réservés" in s.lower()) else _latin_jname(s, lang)
+        else:
+            got = None if ("©" in s or u"droits réservés" in s.lower()) else _jname_from_line(s)
         if got:
             ko, en = got
-            if ko and _fold(ko) not in excluded_folds and 2 <= len(_fold(ko)) <= 50:
+            if ko and _fold(ko) not in excluded_folds \
+                    and _fold_accent(ko) not in excluded_folds \
+                    and 2 <= len(_fold(ko)) <= (80 if lang in ("ru", "pt", "fr", "en") else 50):
                 _add(journal, ko, page, uid)
                 if en:
                     _add(journal_en, en, page, uid)
-            elif en and _fold(en) not in excluded_folds and 2 <= len(_fold(en)) <= 80:
+            elif en and _fold(en) not in excluded_folds \
+                    and _fold_accent(en) not in excluded_folds \
+                    and 2 <= len(_fold(en)) <= 80:
                 _add(journal_en, en, page, uid)
         # 年(刊头信号守卫 + 数字/连字符夹住排除; 独立出版月行经 guard_uid 放行)
         if _Y_GUARD.search(s) or (uid in guard_uid and _DATE_ONLY.match(s)):
@@ -703,8 +855,11 @@ def issue_doc(doc, out_root):
             t = u["main_text"] or ""
             if (p <= 1 and (u["type"] in STRUCT_TYPES or (p == 0 and u["box"][1] < 0.12 * j["h"]))) \
                     or (p == 0 and (_DOI.search(t) or re.search(r"출판연도\s*[:：]", t)
-                                    or _YEAR_VOL.search(t))) \
-                    or (u["type"] in ("Page-header", "Page-footer") and _FOOT_MAST.search(t)):
+                                    or _YEAR_VOL.search(t) or re.search(r"(?im)^Dans\s+", t)
+                                    or re.search(r"(?i)Revue\s+[^,\n]+,\s*(?:19|20)\d{2}\s*,\s*\d+", t)
+                                    or re.search(u"//\\s*[^/]+[.]\\s*[—–-]?\\s*(?:19|20)\\d{2}", t))) \
+                    or (u["type"] in ("Page-header", "Page-footer")
+                        and (_FOOT_MAST.search(t) or re.search(u"(?i)обозрение|журнал|ciência|saúde", t))):
                 for ln in t.split("\n"):
                     if ln.strip():
                         source.append((p, u["uid"], ln.strip()))
@@ -716,7 +871,10 @@ def issue_doc(doc, out_root):
     for a in meta.get("authors") or []:
         if a.get("name"):
             excluded.add(_fold(a["name"]))
-    res = extract(source, len(pages), excluded)
+    excluded |= {_fold_accent(x) for x in list(excluded)}   # 2026-11-20 口音折叠双形态守卫
+    _j0 = pdata[0] if 0 in pdata else None
+    _lang = _langid.classify_page(_j0) if _j0 else None
+    res = extract(source, len(pages), excluded, lang=_lang)
     _ladder_hit = _apply_year_ladder(res, source, pdata)
     pubdate_fn_hit = None
     if _ladder_hit and _ladder_hit.startswith("pub_date_fn"):
@@ -753,7 +911,7 @@ def issue_doc(doc, out_root):
             by_page.setdefault(p, []).append(t)
         src2 = []
         for p, texts in by_page.items():
-            if p > 2:
+            if p > 4:
                 continue
             for t in texts[:4]:
                 for ln in t.split("\n"):
@@ -766,7 +924,7 @@ def issue_doc(doc, out_root):
                                  r"Copyright|Abstract|Keywords)\b", ln, re.I):
                         continue
                     src2.append((p - 1, None, ln))
-        res2 = extract(src2, len(pages), excluded)
+        res2 = extract(src2, len(pages), excluded, lang=_lang)
 
         def _ok_val(k, v):
             if v is None:
@@ -781,6 +939,8 @@ def issue_doc(doc, out_root):
                     return False
                 if re.fullmatch(r"[A-Za-z]{1,4}", s):      # 正文缩写('SSP')/人名('Iida')不是刊名
                     return False
+                if _lang in ("ru", "pt", "fr", "en"):
+                    return True
                 return bool(re.search(r"(Journal|Review|Quarterly|Bulletin|Annals|Proceedings|"
                                       r"Studies|Research|Letters|학회|학술|연구|논문|문화|사학|"
                                       r"철학|법학|음악|문학|언어|교육|과학|論|學|誌|志)", s, re.I)
@@ -796,8 +956,48 @@ def issue_doc(doc, out_root):
                 res[k] = {"value": res2[k]["value"], "uid": None,
                           "confidence": {"level": "mid", "source": "channel_fallback"}}
                 ch_filled[k] = res2[k]["value"]
+    # —— 单词型/全大写 running 刊名(2026-11-20 俄葡法适配; fr_20 'haematologica' 页脚跨年复写、
+    #    pt_11 'ESTUDOS FEMINISTAS' 全大写 running head 实证): _latin_jname 按单行匹配够不到
+    #    跨年频率, 这里按页眉/页脚统计补空。running_journal 的"任意重复行"判据对拉丁
+    #    running head(作者名/副题)敞开, 故仅限带刊名信号的形态。
+    if _lang in ("ru", "pt", "fr", "en") and res["journal"]["value"] is None:
+        _JWORD = re.compile(r"(?i)revista|journal|jornal|annals|bulletin|cahiers|estudos|"
+                            r"cad|pesqui|research|review|proceedings|transactions|archive|"
+                            r"quarterly|cybernetics|neuro|cardiol|enferm|fisioter|epiz|sci|"
+                            r"tech|saber|resenhas")
+        _jw = collections.Counter()
+        _jpages = collections.defaultdict(set)
+        _disp = {}
+        for p in pages:
+            for u in pdata[p]["unified"]:
+                if u["type"] not in ("Page-footer", "Page-header"):
+                    continue
+                for ln in re.split(r"[\n|]", (u.get("main_text") or "")):
+                    s = ln.strip()
+                    _ok = False
+                    if re.fullmatch(r"[a-z][a-z\-]{3,20}", s):
+                        _ok = True
+                    elif re.fullmatch(u"[A-ZÀ-Ú0-9][A-ZÀ-Ú0-9&\\.\\-\\s]{3,40}", s) \
+                            and _JWORD.search(s):
+                        _ok = True
+                    if not _ok or "." in s or _fold_accent(s) in excluded:
+                        continue   # 带点=域名/网址(ru_13 WWW.DEMREVIEW.HSE.RU 实证)
+                    if s.upper() in (u"REVISTA", u"JOURNAL", u"BOLETIM", u"ANAIS", u"BULLETIN"):
+                        continue   # 泛词单行不当刊名(pt_30 实证)
+                    _jw[_fold(s)] += 1
+                    _jpages[_fold(s)].add(p)
+                    _disp.setdefault(_fold(s), s)
+        _good = [k for k in _jw if _jw[k] >= 2 and min(_jpages[k]) <= 1]
+        if _good:
+            _key = max(_good, key=lambda k: _jw[k])
+            res["journal"] = {"value": _disp[_key], "uid": None,
+                              "confidence": {"level": "mid", "source": "running_head_latin"}}
     full_source = source + [(p, None, line) for p, _ch, t in ch_lines for line in t.split("\n")]
-    running_journal = _apply_running_journal(res, full_source, excluded)
+    # 2026-11-20 俄葡法适配: 拉丁文献跳过 _apply_running_journal——它的"跨年≥2 次重复行即刊名"
+    # 判据对拉丁 running head(作者名/副题)是敞开的(fr_02/fr_18/fr_24 实证); 拉丁刊名已由
+    # _latin_jname + 下方单词型页脚规则覆盖。韩文文献行为不变。
+    running_journal = None if _lang in ("ru", "pt", "fr", "en") \
+        else _apply_running_journal(res, full_source, excluded)
     publisher_series = _apply_doi_series(res, full_source)
     # —— DOI 注册表回填刊名(2026-11-18 白名单): 投票/捞源都没刊名而 DOI 前缀在注册表
     #    → 查表填空(只填空不覆盖; corpus 行由 failures.py --round 每轮重扫维护,

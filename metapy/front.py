@@ -1,6 +1,51 @@
 # -*- coding: utf-8 -*-
 import os, re, io, json, datetime
 from .common import *
+from . import langid as _langid
+
+
+# 俄语作者行(2026-11-20 俄葡法适配): 缩写式 "Я. И. Кузьминов, Д. С. Семенов" 或
+# 全名双词式 "Иван Иванов" 逗号并列; 三词"姓+名+父称"作者简介行(Кузьминов Ярослав Иванович)
+# 与学位/地址行必须被挡在作者区之外(front_doc 区行入口守卫)。
+_RU_BYLINE = re.compile(
+    u"^(?:(?:[А-ЯЁA-Z]\\.[\\s-]*){1,3}[А-ЯЁ][а-яё\\-]+|[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё\\-]+|"
+    u"[А-ЯЁ][а-яё\\-]+\\s+(?:[А-ЯЁA-Z]\\.){1,2})"
+    u"(?:\\s*,\\s*(?:(?:[А-ЯЁA-Z]\\.[\\s-]*){1,3}[А-ЯЁ][а-яё\\-]+|[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё\\-]+|"
+    u"[А-ЯЁ][а-яё\\-]+\\s+(?:[А-ЯЁA-Z]\\.){1,2}))*$")
+def _clean_byline(s):
+    """署名行清洗: 去 LaTeX 上标/HTML 标/星标, 折叠空白——俄刊署名行常带 $^{1,a}$ 标记,
+    清洗后才能套 RU_BYLINE(ru_09 实证)。"""
+    s = re.sub(r"\$[^$]*\$", "", s or "")
+    s = re.sub(r"<[^>]+>", "", s)
+    s = re.sub(r"[*†‡§⁰¹²³⁴⁵⁶⁷⁸⁹]+", "", s)
+    return re.sub(r"\s+", " ", s).strip(" ,")
+
+
+# 全大写全名式署名: 'ПИТЕР СИНГЕР'(ru_07 实证; 仅在署名候选语境使用)
+_RU_CAPS_NAME = re.compile(u"^[А-ЯЁ]{2,15}\\s+[А-ЯЁ]{2,15}$")
+# 全大写姓+首字母+全大写名: 'АБДЕЛЬ Р. ОМРАН'(ru_04 实证)
+_RU_CAPS_SI_NAME = re.compile(u"^[А-ЯЁ]{2,15}\\s+[А-ЯЁ]\\.\\s*[А-ЯЁ]{2,15}$")
+
+
+_RU_PREFIX_NAME = re.compile(u"^([А-ЯЁ][а-яё-]+\\s+(?:[А-ЯЁ]\\.){1,2})(?=\\s|\\d|$)")
+
+
+def _ru_byline_value(s):
+    c = _clean_byline(s)
+    m = _RU_PREFIX_NAME.match(c)
+    if m and (re.search(r"(?i)ORCID", c) or _RU_AFFIL_WORD.search(c)):
+        return m.group(1)
+    return c
+
+
+def _looks_ru_byline(s):
+    c = _ru_byline_value(s)
+    return bool(_RU_BYLINE.match(c) or _RU_CAPS_NAME.match(c) or _RU_CAPS_SI_NAME.match(c))
+
+
+# 机构形态行放行词(与 _AFF_STRICT 的俄文尾巴对齐)
+_RU_AFFIL_WORD = re.compile(
+    u"(?<![А-Яа-яЁё])(?:Университет|Институт|Академи|Факультет|Кафедра|Лаборатори|НИУ|НИИ|РАН|Адрес)", re.I)
 
 
 # 首页"区段头"识别(2026-11-12 三轮): 作者区必须止于摘要/目录/正文之前, 否则会把摘要正文、
@@ -11,7 +56,9 @@ _FRONT_HEAD_RE = re.compile(
     u"(?:(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]+|I{1,3}|IV|V|VI{0,3}|\\d{1,2})\\s*[.)．]\\s*)?(?:"
     u"차\\s*례|목\\s*차|目\\s*次|\\bContents\\b|"
     u"요\\s*약|국문\\s*요약|국문\\s*초록|영문\\s*요약|영문\\s*초록|초\\s*록|"
-    u"Abstract|ABSTRACT|Keywords?|주제\\s*어|중심\\s*어|핵심\\s*어|"
+    u"Abstract|ABSTRACT|Key[-\\s]*words?|주제\\s*어|중심\\s*어|핵심\\s*어|"
+    u"Аннотация|Реферат|Ключевые\\s+слова|Содержание|"
+    u"Resumo|RESUMO|Palavras[-–][Cc]have|Mots[-–][Cc]l[ée]s|"
     u"서\\s*론|Ⅰ\\.|I\\.)", re.I)
 
 
@@ -20,7 +67,10 @@ _FRONT_HEAD_RE = re.compile(
 # 题录型行(期刊名/DOI/卷期/页码范围/版权行), 不可能是题名或作者
 _NOT_TITLE = re.compile(
     r"(Journal|DOI|doi\.org|www\.|Vol\.|No\.|pp\.|Abstract|Keywords?|"
-    r"RESEARCH|Open Access|©|https?://|^\s*Page\s+\d|^\s*\d+\s*[./)])", re.I)
+    r"RESEARCH|Open Access|©|https?://|^\s*Page\s+\d|^\s*\d+\s*[./)])|"
+    r"English\s+version|"
+    u"(УДК|ББК|Реферат|Аннотация|Ключевые\\s+слова|Resumo|Palavras[-–][Cc]have|"
+    u"Mots[-–][Cc]l[ée]s)", re.I)
 _KO_NAME_CORE = u"[가-힣](?:\\s*[가-힣]){1,4}"          # 2–5 字韩文姓名(允许姓名间空格)
 _NAME_KO = re.compile(u"^%s\\s*\\*{0,2}$" % _KO_NAME_CORE)
 _NAME_EN = re.compile(r"^[A-Z][a-zA-Z\-]+(?:\s+[A-Z][a-zA-Z\-]+){1,2}\s*\*{0,2}$")
@@ -39,11 +89,12 @@ _SECTION_NO = re.compile(u"^(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ]+|I{1,3}|IV
 _SUBTITLE_DASH = re.compile(u"^[\\-–—]\\s*\\S|[\\-–—]\\s*$")
 
 
-def _pick_title(j, want_hangul):
+def _pick_title(j, want_hangul, lang=None):
     """打分制选标题(禁单取 max 字号): Section-header 权重最高 + 垂直位置 + 宽度占比 + 排除词典
     (차례/요약/Keywords…) + running 头(顶部带且命中 doc_heads 者)排除。
     返回 (块, 行号)。英题模式加看次行——'副标题首行/英题次行'同块形态(13563529 u0_4 实证);
-    首行规则仍守 1892171 '英题+韩作者行' 同块形态。"""
+    首行规则仍守 1892171 '英题+韩作者行' 同块形态。
+    lang(2026-11-20 俄葡法适配): 'ru'/'pt'/'fr' 时启用大写加分/刊名词降分/俄式作者行剔除。"""
     H = float(j["h"])
     best, bs, bli = None, -1.0, 0
     for u in j["unified"]:
@@ -65,7 +116,8 @@ def _pick_title(j, want_hangul):
             if not (10 <= len(f) <= 220):
                 continue
             y1 = u["box"][1] / H
-            if not (TITLE_ZONE[0] <= y1 <= (TITLE_ZONE[1] if want_hangul else TITLE_EN_ZONE[1])):
+            _lo = 0.03 if (lang in ("ru", "pt", "fr") and not want_hangul) else TITLE_ZONE[0]
+            if not (_lo <= y1 <= (TITLE_ZONE[1] if want_hangul else TITLE_EN_ZONE[1])):
                 continue
             if re.match(u"^[가-힣]{2,4}(?:<sup>.*?</sup>|[\\s*†‡§¹²³⁴⁵⁶⁷⁸⁹])*[(,]\\s*[A-Za-z]", t):   # 署名行(김영준(…)/오우림<sup>†</sup>, Woorim Oh)不当题名(13570509/13569378 实证)
                 continue
@@ -83,10 +135,18 @@ def _pick_title(j, want_hangul):
             has_cjk = bool(re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(t)))
             if want_hangul and hr < 0.3 and not has_cjk:
                 continue
-            if not want_hangul and (hr > 0.35 or has_cjk or not re.search(r"[A-Za-z]", t)):
+            if not want_hangul and (hr > 0.35 or has_cjk
+                                    or not re.search(r"[A-Za-z\u0400-\u04FF\u00c0-\u024f]", t)):
                 # 整块 CJK 拒收已删(2026-11-18): 韩刊"英题+韩署名"同块是常态, 整块拒把真英题
                 # 一并毙掉(413 篇 title_en 变 None 的根因); 行级 hr/CJK/字母守卫已足够。
+                # 2026-11-20 俄葡法适配: 拉丁通道放行西里尔与拉丁扩展字母(é/ô/ã…)。
                 continue
+            if lang in ("ru", "pt", "fr"):
+                # 俄/葡/法: 俄式作者简介行(学位/邮箱)与题录行(УДК/Реферат/Resumo…)不可能是题名
+                if "@" in t or re.search(u"(?:кандидат|доктор)\\s+\\w+\\s+наук|E-mail", t, re.I):
+                    continue
+                if _NOT_TITLE.search(t):
+                    continue
             # 题名不结句(1536751 实证): 正文段落以 '…다./…요.' 收尾、宽度又占满整栏, 靠宽度+长度
             # 加分压过真题名(Section-header)当选, 随后整段正文被当题名、正文词被当作者。
             if re.search(u"(?:다|요|음|임|함|됨)\\.\\s*$", t.strip()) \
@@ -100,6 +160,12 @@ def _pick_title(j, want_hangul):
             score += min(2.0, (u["box"][2] - u["box"][0]) / j["w"] * 3)
             score += 2.0 - abs(y1 - 0.20) * 4     # 垂直位置因子(页 10%-45% 最佳)
             score += min(1.5, len(f) / 80.0)
+            if lang in ("ru", "pt", "fr"):
+                _lets = re.sub(r"[^A-Za-z\u0400-\u04FF]", "", t)
+                if _lets and sum(1 for c in _lets if c.isupper()) / float(len(_lets)) >= 0.7:
+                    score += 0.8   # 俄/葡/法刊题惯用大写(葡法全大写刊惯例, pt_02/fr_02 实证)
+                if re.search(u"(?i)\\b(revista|jornal|journal|revue|журнал|вестник|известия)\\b", t):
+                    score -= 1.2   # 刊名页眉行不当题名(pt_01 remark/fr_01 Communiquer 实证)
             if score > bs:
                 best, bs, bli = u, score, li
     return best, bli
@@ -116,7 +182,10 @@ _AFF_STRICT = re.compile(
     u"(?:대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|연구단|연구재단|교육원|학술원|어학원|개발원|진흥원|"
     u"관리원|센터|박물관|도서관|병원|재단|학회|학교|공단|공사|협회|"
     r"University|College|Institute|Laborator|School\s+of|Department|Faculty|Center|Centre|"
-    r"Academy|Hospital|Campus|Association|Society|Foundation|Nunnery|KIDA|KAIST|CMU|국회방송)", re.I)
+    r"Academy|Hospital|Campus|Association|Society|Foundation|Nunnery|KIDA|KAIST|CMU|"
+    r"Universidade|Faculdade|Instituto|Escola|Funda[cç][aã]o|"
+    r"Universit[eé]|Institut|Laboratoire|[eé]cole|Facult[eé]|Coll[eè]ge|"
+    r"Университет|Институт|Академи[яи]|Факультет|Кафедра|Лаборатори[яи]|НИУ|НИИ|РАН)", re.I)
 _AFF_SENT = re.compile(
     u"(?:본고는|본\\s*논문은|이\\s*논문은|밝힙니다|일환으로|지원사업|사의를|감사를|"
     u"수정[·ㆍ]?\\s*보완|발표한\\s*글|논평|토론을\\s*통해|연구\\s*과제|보고서를|"
@@ -191,7 +260,7 @@ def _split_affils(s):
     逐段剥标记/括号/职位词/前缀, 只留过 _looks_affil 的段。"""
     out = []
     for part in re.split(r"\s*[|｜]\s*", s or ""):
-        for seg in re.split(r"(?<=[.。])\s+|\s*;\s*", part):
+        for seg in re.split(r"(?<![A-ZА-ЯЁ])(?<=[.。])\s+|\s*;\s*", part):
             seg = re.sub(r"^[*•●○※\d\)\s]+", "", seg).strip()
             seg = re.sub(r"\$\s*\^\s*\{?\s*\d+\s*\}?\s*\$", "", seg).strip()      # BMC 上标 '$^{1}$Korea …'
             m2 = re.match(u"^[가-힣]{2,5}\\s*[(（]([^)）]{4,80})[)）]\\s*$", seg)
@@ -291,9 +360,165 @@ def _cjk_author_names(line):
     return [x.strip() for x in re.split(r"\s*[·•]\s*", m.group(1)) if x.strip()]
 
 
+def _fix_spacing_hat(s):
+    """OCR 间距扬抑符归位(2026-11-20 俄葡法适配): 'Ngˆo Bao Chˆau' → 'Ngô Bao Châu'——
+    扬抑符漂移到了前一字母之后, 须落到后一元音上(fr_02 实证; OCR 对带音符拉丁名的
+    常见错印)。"""
+    import unicodedata as _ud
+    def _repl(m):
+        return m.group(1) + _ud.normalize("NFC", m.group(2) + u"̂")
+    return re.sub(u"(\\w)ˆ([AEIOUYÊÔÂÎÛÀÈÌÒÙaeiouyêôâîûàèìòù])", _repl, s or "")
+
+
+# 出版社/平台词: 永远不当作者(fr_03 'ÉDITIONS ÉRÈS' 被 ** 标记加分误选实证)
+_PUBLISHER_WORD = re.compile(u"(?i)éditions|editions|presses|cairn|universit(é|a)tsverlag|"
+                             u"издательств|publishing| university press")
+
+
 def _valid_author_name(name):
     name = (name or "").strip()
     return bool(name) and not re.match(r"^(?:www\.|\$)", name) and not _INVALID_AUTHOR.match(name)
+
+
+_LATIN_NON_AUTHOR = re.compile(
+    u"(?i)(?:19|20)\\d{2}|^\\s*(?:autorisation\\s+hal$|hal\\s+authorization$|dans\\s+|correspond(?:ence|ência|encia)\\b|"
+    u"tradu(?:ção|ction)\\b|перевод\\b|key[-\\s]*words?\\b|palavras[-–\\s]chave\\b|"
+    u"mots[-–\\s]cl[ée]s\\b)")
+_LATIN_ORG_WORD = re.compile(
+    u"(?i)(?:Universidade|Universit[ée]|University|Faculdade|Facult[ée]|Instituto|Institut|Institute|"
+    u"Escola|[eé]cole|Funda[cç][aã]o|Centro|Center|Centre|Departamento|Department|Laboratoire|Laboratory|"
+    u"School\\s+of|Университет\\w*|Институт\\w*|Академи\\w*|Факультет\\w*|Кафедра\\w*|Лаборатори\\w*)")
+_LATIN_ORG_GLUE = re.compile(
+    u"(?i)\\s+(?=Universidade\\b|Universit[ée]\\b|University\\b|Faculdade\\b|Facult[ée]\\b|"
+    u"Departamento\\b|Department\\b|Instituto\\b|Institut\\b|Institute\\b|Escola\\b)")
+
+
+def _latin_author_ok(name, lang):
+    n = (name or "").strip()
+    if not n or ":" in n or (n[:1] or " ").islower() or _PUBLISHER_WORD.search(n):
+        return False
+    if _LATIN_NON_AUTHOR.search(n) or _LATIN_ORG_WORD.search(n):
+        return False
+    if len(re.sub(r"[^A-Za-zÀ-ÿА-Яа-яЁё]", "", n)) < 3:
+        return False
+    if re.fullmatch(r"[A-ZÀ-Ú]{2,4}\.?[A-ZÀ-Ú]?\.?", n):
+        return False
+    if len(n.split()) < 2 and "." not in n:
+        return False
+    if n.endswith(".") and not re.search(u"[A-ZÀ-ÚА-ЯЁ]\\.$", n):
+        return False
+    return lang != "ru" or bool(re.search(u"[А-Яа-яЁё]", n))
+
+
+def _split_latin_author_affil(name, affiliation=None):
+    m = _LATIN_ORG_GLUE.search(name or "")
+    if not m or m.start() < 2:
+        return name, affiliation
+    return name[:m.start()].strip(), affiliation or name[m.end():].strip()
+
+
+def _latin_affil_from_clause(clause):
+    s = clause or ""
+    if re.match(r"^\s*\$\s*\^\s*\{[A-Za-z]", s):
+        return None
+    s = re.sub(r"^\s*\$\s*\^\s*\{[^}]*\}\s*\$\s*", "", s)
+    s = re.sub(r"</?(?:sup|sub)\b[^>]*>", "", s, flags=re.I)
+    s = re.sub(r"\s+", " ", s).strip(" |;,. ")
+    s = re.sub(r"^\d+(?:\s*,\s*\d+)*\s+(?=\D)", "", s)
+    s = re.sub(r"\s+(?:Jerusalem\s+)?\d{5}\b.*$", "", s, flags=re.I)
+    if not s or len(s) > 220 or _PUBLISHER_WORD.search(s):
+        return None
+    if re.search(r"(?i)https?://|www\.|\bDOI\b|\bISSN\b|Téléchargé|Correspond(?:ence|ência|encia)", s):
+        return None
+    if re.match(u"(?i)(?:Conférence|Conferência|Cf\\.|Texto|Cette|Ce\\s|Distribution|Article|©)", s):
+        return None
+    s = re.sub(u"^[¹²³⁴⁵⁶⁷⁸⁹⁰*•·●▪◆\\s]+", "", s)
+    m = _LATIN_ORG_WORD.search(s)
+    if not m:
+        return None
+    prefix = s[:m.start()]
+    _role_prefix = re.search(u"(?i)professor|professora|phd|doutorand|mestrand|pesquisador|соискател|"
+                             u"кандидат|доктор|доцент|профессор|студент|аспирант", prefix)
+    if prefix and not _role_prefix and re.search(r"\b[a-z]{2,}\b", prefix):
+        if re.search(r"(?i)\b(?:da|do|de|pela|pelo)\s+$", prefix):
+            s = s[m.start():]
+            prefix = ""
+        else:
+            return None
+    if _role_prefix:
+        _preps = list(re.finditer(r"(?i)\b(?:da|do|de|pela|pelo|at|em)\s+", prefix))
+        s = s[_preps[-1].end():] if _preps else s[m.start():]
+    elif re.match(u"(?i)Universidade|Instituto|Escola|Faculdade|Departamento|Funda[cç][aã]o|"
+                  u"Centro|Universit[ée]|Institut\\b", m.group(0)):
+        if prefix.strip() not in ("L'", "l'") \
+                and not re.fullmatch(r"[A-ZÀ-Ú][\wÀ-ú-]*-[\wÀ-ú-]+\s+", prefix):
+            s = s[m.start():]
+    s = s.strip(" |;,. ")
+    if re.match(r"^[a-z]", s) or len(s.split()) < 2:
+        return None
+    if re.match(u"(?i)Университетская\\s+наб", s):
+        return None
+    if not (_looks_affil(s) or re.match(u"(?i)(?:Centro|Departamento)\\b", s)
+            or (len(s) <= 220 and _LATIN_ORG_WORD.search(s))):
+        return None
+    return s
+
+
+def _latin_affils_from_pages(doc_dir):
+    out = []
+    for page in page_indices(os.path.join(doc_dir, "unified")):
+        fp = os.path.join(doc_dir, "unified", "page_%d.json" % page)
+        if not os.path.isfile(fp):
+            continue
+        try:
+            j = json.load(io.open(fp, encoding="utf-8"))
+        except Exception:
+            continue
+        H = float(j.get("h") or 1)
+        for u in j.get("unified") or []:
+            if u.get("type") == "Section-header":
+                continue
+            footnote = u.get("type") == "Footnote"
+            front_zone = page == 0 and u.get("box", [0, H])[1] < 0.60 * H
+            for ln in (u.get("main_text") or "").splitlines():
+                s = re.sub(r"\s+", " ", ln).strip()
+                s = re.split(r"(?i)\bE-?mail\s*:", s)[0].strip()
+                if _front_head(s):
+                    if not footnote:
+                        break
+                    continue
+                if not s or len(s) > 240:
+                    continue
+                direct = _looks_affil(s)
+                role = re.search(u"(?i)professor|professora|phd|doutorand|mestrand|pesquisador|"
+                                 u"соискател|кандидат|доктор|доцент|профессор|студент|аспирант", s)
+                marked = re.match(u"^(?:[¹²³⁴⁵⁶⁷⁸⁹⁰*•·●▪◆]|\\$\\s*\\^|<sup)", s)
+                glued = bool(_LATIN_ORG_GLUE.search(s) and len(s) <= 100)
+                page1_org = page == 1 and direct and not footnote and re.match(
+                    u"(?i)(?:Universit|University|Faculd|Institut|Escola|Funda|Centro|Centre|Center|[eé]cole|Laboratoire|"
+                    u"Laboratory|Aix-Marseille|National|Federal|Herzen|Surgut|Российский|"
+                    u"Национальный|Сургутский)", s)
+                late_direct = page > 1 and direct and re.match(
+                    u"(?i)(?:Centre|Center|Institut|Laboratoire|Universit|[eé]cole|CNRS-)", s) \
+                    and not re.search(r"(?:19|20)\d{2}", s)
+                late_org = page > 1 and ((u.get("type") == "Page-header" and direct)
+                                          or (role and s.upper() == s) or late_direct)
+                if not ((front_zone and _LATIN_ORG_WORD.search(s))
+                        or (page <= 1 and footnote and (role or marked or direct))
+                        or page1_org or (page <= 1 and glued) or late_org):
+                    continue
+                if (re.match(u"(?i)(?:The|This|It|There|In|On|For|To|As|At|By|Territory|"
+                             u"Статья|Цель|Ключевые|Keywords|\\d+\\)|\\d{4}\\b)", s)
+                        or s[:1].islower()) and not role:
+                    continue
+                if len(s) > 60 and s.upper() == s and not (role or marked):
+                    continue
+                for clause in re.split(u"(?<!\\bим)(?<!\\b[A-ZА-ЯЁ])[,;.]\\s+|"
+                                       u"\\s+e\\s+(?=(?:Doutorand|Mestrand|Pesquisador|bolsista))", s, flags=re.I):
+                    v = _latin_affil_from_clause(clause)
+                    if v and v not in out:
+                        out.append(v)
+    return out
 
 
 # 作者脚注机构行(2026-11-17 测量: 全库 197 篇 "*...email" 行, 30 篇机构字段仍空)。
@@ -541,14 +766,14 @@ def _parse_author_line(line, u, foot_affil):
             if _minv:
                 toks.append(_minv.group(2) + " " + _minv.group(1) + _minv.group(3))
             else:
-                toks.extend(re.split(r"\s*,\s*|\s+and\s+", _seg))
+                toks.extend(re.split(r"\s*,\s*|\s+and\s+|\s*&\s+|\s+e\s+", _seg))
     else:
         toks = re.split(u"[·•․]|\\s+,\\s+|,\\s+(?=[가-힣])", line)
     for tk in toks:
         tk = tk.strip()
         if not tk:
             continue
-        tk = re.sub(r"^(?:and|&)\s+", "", tk)
+        tk = re.sub(r"^(?:and|&|par)\s+", "", tk)
         mk = SUP_LATEX.findall(tk)
         mk += re.findall(r"<sup>(.*?)</sup>", tk, flags=re.I)
         tk = SUP_LATEX.sub("", tk)
@@ -615,6 +840,8 @@ def _parse_author_line(line, u, foot_affil):
             if maff3.start() >= 2 and re.fullmatch(u"[가-힣]{2,4}", nm[:maff3.start()]):
                 affil = nm[maff3.start():].strip()
                 nm = nm[:maff3.start()]
+        if en_line:
+            nm, affil = _split_latin_author_affil(nm, affil)
         out.append({"name": nm, "markers": mk, "affiliation": affil,
                     "role": role, "roman": roman})
     return out
@@ -628,9 +855,33 @@ def front_doc(doc, out_root):
         print("跳过 %s: 无 unified 产物" % doc)
         return None
     j0 = json.load(io.open(os.path.join(udir, "page_0.json"), encoding="utf-8"))
+    # 语种(2026-11-20 俄葡法适配): ko 走原双题路径; ru/pt/fr 的本地语题名经拉丁通道选取
+    # (西里尔/拉丁扩展字母已放行)并落入 title 字段; 英文题名(若另印)仍落 title_en。
+    lang = _langid.classify_page(j0)
     # 标题(返回块+行号: 英题可能在副标题块的次行)
     t_ko, li_ko = _pick_title(j0, True)
-    t_en, li_en = _pick_title(j0, False)
+    t_en, li_en = _pick_title(j0, False, lang)
+    if lang in ("ru", "pt", "fr") and t_ko is None and t_en is not None:
+        t_ko, li_ko, t_en, li_en = t_en, li_en, None, 0
+    # 俄刊"作者+题名同行"体例(ru_02 实证): 'Егорова М.С., Паршикова О.В. Психометрические…'
+    # 题名行首的作者前缀剥出进作者表, 余下才是真题名。证据=题名块主读法行本身。
+    ru_inline_authors, title_val_override = [], None
+    if lang == "ru" and t_ko is not None and t_ko.get("uid"):
+        _tl = (t_ko.get("main_text") or "").split("\n")
+        _ti = li_ko if 0 <= li_ko < len(_tl) else 0
+        _m = re.match(
+            u"^((?:[А-ЯЁ][а-яё\\-]+\\s+(?:[А-ЯЁ]\\.){1,2}(?:,|\\s+и\\s+)?\\s*){1,6})(?=\\S)", _tl[_ti])
+        if _m:
+            _rest = _tl[_ti][_m.end():].strip(u" ,.—-–«")
+            if len(re.sub(r"\\s", "", _rest)) >= 10:
+                for _nm in re.split(u"\\s*,\\s*|\\s+и\\s+", _m.group(1).strip()):
+                    _nm = _nm.strip(u" ,")
+                    if _nm and re.search(u"[А-ЯЁ]\\.", _nm):
+                        ru_inline_authors.append({"name": _nm, "markers": [], "affiliation": None,
+                                                  "role": None, "roman": None, "uid": t_ko["uid"],
+                                                  "page": 1, "box": t_ko["box"]})
+                if ru_inline_authors:
+                    title_val_override = _rest
     H = float(j0["h"])
     # 作者区: 标题(韩/英)之下, 摘要/차례/키워드头 之上; 区块行级扫描(两个区: 韩题下 + 英题下)
     stops = []
@@ -711,6 +962,14 @@ def front_doc(doc, out_root):
             if not ln:
                 continue
             m = MARKER_LINE.match(ln) or re.match(u"^([•·])\\s*(.+)$", ln)
+            if m is None:
+                _ml = re.match(u"^\\$\\s*\\^\\s*\\{?\\s*(\\d{1,2})\\s*\\}?\\s*\\$\\s*(.+)$", ln)
+                if _ml:
+                    _mv = re.sub(
+                        u"^(?:(?:Doutor(?:ado)?|Mestre|Professor(?:a)?|Ph\\.?\\s?D\\.?|Bacharel)"
+                        u"(?:\\s+(?:pela|pelo|em|da|do|de))+\\s+)+", "", _ml.group(2).strip())
+                    if AFFIL_HEAD.search(_mv) or _looks_affil(_mv):
+                        affil_notes[_ml.group(1)] = _mv
             if m and (AFFIL_HEAD.search(m.group(2)) or ROLE_WORDS.search(m.group(2))) \
                     and (_looks_affil(m.group(2)) or _split_affils(m.group(2))):
                 affil_notes[m.group(1).strip()] = m.group(2).strip()
@@ -726,6 +985,23 @@ def front_doc(doc, out_root):
     authors = []
     affils_zone = []
     for s, u in zone_lines:
+        if lang == "ru" and not (_looks_ru_byline(s) or _RU_AFFIL_WORD.search(s)):
+            # 俄式 front-matter 混入作者区的正文行(作者简介/基金/地址叙述)一律挡下;
+            # 作者行与机构行才进入后续解析(ru_01 的 "**Кузьминов Ярослав Иванович**" 三词
+            # 父称式简介由此不进作者表)。署名行先清洗标记再匹配(ru_09 的 $^{1,a}$ 实证)。
+            continue
+        if lang in ("ru", "pt", "fr"):
+            if u["type"] == "Section-header":
+                continue   # 栏目头/侧栏块(OpenEdition 侧栏实证)不进作者区
+            if re.search(r"(?i)https?://|www\.|\bDOI\b|\bISSN\b|©", s) or _PUBLISHER_WORD.search(s) \
+                    or _LATIN_NON_AUTHOR.search(s) or _front_head(s):
+                continue   # 题录/链接/出版社/通信地址/关键词行
+        if lang == "ru" and _RU_AFFIL_WORD.search(s) and not _RU_BYLINE.match(s):
+            # 俄式机构行(可含逗号: '…университет…, Москва, Россия')进机构提取, 不当作者行
+            _v = _strip_affil_tail(re.sub(ROLE_WORDS, "", s).strip("() ").strip())
+            if _looks_affil(_v):
+                affils_zone.append(_v)
+            continue
         if (re.fullmatch(u"[\\(（].+[\\)）]", s) and AFFIL_HEAD.search(s)) or \
            (_hangul_ratio(s) < 0.2 and AFFIL_HEAD.search(s) and "," not in s):
             _v = _strip_affil_tail(re.sub(ROLE_WORDS, "", s).strip("() ").strip())
@@ -735,18 +1011,22 @@ def front_doc(doc, out_root):
         author_prefix = re.match(u"^((?:[가-힣]{2,4}\\*{1,5}(?:<sup>)?\\s*,?\\s*){2,})", s)
         if author_prefix:
             s = author_prefix.group(1).strip().rstrip(",")
-        if len(_fold(s)) > 80 and not re.search(u"[·•]", s) and "<sup>" not in s:
+        if len(_fold(s)) > 80 and not re.search(u"[·•]", s) and "<sup>" not in s \
+                and not (lang in ("ru", "pt", "fr") and (SUP_LATEX.search(s) or "," in s)):
             # 长行无作者分隔符 → 更像正文/摘要, 仅取首段尝试
             if not re.match(u"^[가-힣]{2,4}[\\( ]", s):
                 continue
         parsed = _parse_author_line(s, u, affil_notes)
+        if lang in ("ru", "pt", "fr"):
+            parsed = [p for p in parsed if _latin_author_ok(p["name"], lang)]
         en_side = _hangul_ratio(s) < 0.2
         for p in parsed:
             p["uid"] = u["uid"]
             p["page"] = 1
             p["box"] = u["box"]
-            if en_side:
+            if en_side and lang not in ("ru", "pt", "fr"):
                 p["roman_source"] = True   # 英题下作者区=罗马拼音来源, 事后链接到韩文作者
+                # 2026-11-20: 俄/葡/法文献作者行本就用拉丁/西里尔字母, 无"罗马拼音链接"一说
         authors.extend(parsed)
         if not parsed and AFFIL_HEAD.search(s):
             _v = _strip_affil_tail(re.sub(ROLE_WORDS, "", s).strip("() ").strip())
@@ -791,6 +1071,8 @@ def front_doc(doc, out_root):
                     if tgt and tgt in _norm_roman(ra["name"]):
                         ka["roman"] = ra["name"]
                         break
+    if ru_inline_authors:
+        authors = ru_inline_authors + authors
     authors = [a for a in authors if not a.get("roman_source") and _valid_author_name(a.get("name"))]
     unique_authors = {}
     for a in authors:
@@ -820,14 +1102,65 @@ def front_doc(doc, out_root):
     affils = [_clean_affil(x) for x in affils if x]
     affils = [x for x in affils if _looks_affil(x)]
 
-    def _best_text(u, line_idx=0):
+    def _best_text(u, line_idx=0, keep_all=False, majority=False):
         """题名取值: 主读法之外, 若各渠道 dice 与主读法≥0.8, 取断行/空格最多者(dots 断行='\n' 版
         本即带空格的正确形态); 多行块按主读法首行的折叠长度截前缀(英题名+韩作者行同块形态)。
-        line_idx>0 时直接取该行的渠道最优读法(副标题块次行的英题名, 13563529)。"""
+        line_idx>0 时直接取该行的渠道最优读法(副标题块次行的英题名, 13563529)。
+        keep_all(2026-11-20 俄葡法适配): 题名块多行时全部保留——俄/葡/法刊题名跨 2-3 行是
+        常态(pt_02 'GÊNERO:/UMA CATEGORIA ÚTIL DE/ANÁLISE HISTÓRICA' 实证), 不能按首行截断。"""
         mt = u["main_text"] or ""
         cands = [r["text"] for r in u["readings"]
                  if (r.get("text") or "").strip() and _gdice(r["text"], mt) >= TITLE_READING_DICE] or [mt]
         best = max(cands, key=lambda t: t.count(" ") + t.count("\n") * 2)
+        if majority and u.get("readings"):
+            # 2026-11-20 俄葡法适配: 符号/语法敏感的题名, 取≥2 渠道同文读法(fr_20 level/levels
+            # 单渠道变体实证), 不再单取"空格最多者"(该启发式偏向个别渠道的长断行版本)。
+            _votes = {}
+            for r in u["readings"]:
+                _t = (r.get("text") or "").strip()
+                if _t and _gdice(_t, mt) >= TITLE_READING_DICE:
+                    _votes[_t] = _votes.get(_t, 0) + 1
+            if _votes:
+                _top = max(_votes.items(), key=lambda kv: (kv[1], len(kv[0])))
+                if _top[1] >= 2:
+                    best = _top[0]
+        if majority and re.search(r"[A-Za-zÀ-ÿА-Яа-яЁё]«[A-Za-zÀ-ÿА-Яа-яЁё]", best):
+            best = mt
+        if majority and len(mt.splitlines()) > len(best.splitlines()) \
+                and _gdice(best, mt.splitlines()[0]) >= TITLE_READING_DICE:
+            best = mt
+        if keep_all:
+            # 2026-11-20 俄葡法适配: 题名块多行全保留, 但逐行验收——栏目头/句末点/总长 200 封顶/
+            # 西里尔→拉丁切换(译文题行)都停。pt_26(unify 把摘要并进了题名块)与 ru_06
+            # (题名块含作者+机构+英文题名)实证。
+            _parts = []
+            for _ln in best.split("\n"):
+                _s = _ln.strip()
+                if not _s:
+                    continue
+                if _parts:
+                    if re.search(r"[.!?。]$", _parts[-1]) or _front_head(_s) \
+                            or len(" ".join(_parts)) > 200:
+                        break
+                    _p0 = re.sub(r"[^A-Za-zÀ-ÿА-Яа-яЁё ]", "", _parts[0])
+                    if re.search(u"[А-Яа-яЁё]", _p0) and re.match(r"^[A-Za-z ]+$", _s):
+                        break   # 西里尔题下的大写拉丁行=英译题行, 另刊不并入
+                    if lang in ("pt", "fr") and re.search(r"[À-ÿ]", _parts[0]) \
+                            and re.search(r"[a-z]", _s) and re.match(r"^[A-Za-z :,'’-]+$", _s):
+                        break
+                    if lang == "ru" and (_looks_ru_byline(_s)
+                                         or (_RU_AFFIL_WORD.search(_s) and _s.upper() != _s)
+                                         or re.fullmatch(u"[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+", _s)):
+                        break
+                    _l0 = [c for c in _p0 if c.isalpha()]
+                    _lc = [c for c in _s if c.isalpha()]
+                    if _l0 and _lc:
+                        _r0 = sum(1 for c in _l0 if c.isupper()) / float(len(_l0))
+                        _rc = sum(1 for c in _lc if c.isupper()) / float(len(_lc))
+                        if _r0 >= 0.7 and _rc < 0.45:
+                            break   # 大写题名不再续小写行(作者/机构/正文行)
+                _parts.append(_s)
+            return re.sub(r"\s*\n\s*", " ", " ".join(_parts)).strip()
         if line_idx and not re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(mt)):
             bl = [x.strip() for x in best.split("\n") if x.strip()]
             if bl:
@@ -837,7 +1170,7 @@ def front_doc(doc, out_root):
         if re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(mt)) \
                 or (len(mt.split("\n")) > 1 and not _parse_author_line(mt.split("\n")[-1], None, {})):
             return val
-        if len(mt.split("\n")) > 1:
+        if len(mt.split("\n")) > 1 and not keep_all:
             # 多行块只留题名首行: 在主读法首行长附近找'第一个词尾空格'截断(rfind 会落到
             # 次行更远的空格上——实证 1892171 题名尾被切进 '김 진 경' 作者行)
             raw_len = len(mt.split("\n")[0])
@@ -1095,8 +1428,8 @@ def front_doc(doc, out_root):
         _ty = (_tref["box"][1] / float(j0["h"])) if (_tref and _tref.get("box")) else 0.0
         for u in ordered[start:]:
             _y1 = u["box"][1] / float(j0["h"])
-            if _y1 > _ty + 0.45:
-                break   # 作者区窗口: 标题下方 45% 页高
+            if _y1 > _ty + (0.60 if lang in ("ru", "pt", "fr") else 0.45):
+                break   # 作者区窗口: 标题下方 45% 页高(俄/葡/法放宽到 60%: 署名在摘要后)
             t = (u.get("main_text") or "").strip()
             if not t:
                 continue
@@ -1105,14 +1438,34 @@ def front_doc(doc, out_root):
             if (t.startswith("[") and t.endswith("]")) \
                     or (len(t) >= 200 and _hangul_ratio(t) < 0.2) \
                     or (_hangul_ratio(t) < 0.2 and re.search(r"\((?:19|20)\d{2}\)", t)):
-                break
+                if lang in ("ru", "pt", "fr"):
+                    _lead_names = []
+                    for _ln in t.splitlines()[:4]:
+                        if _front_head(_ln.strip()):
+                            break
+                        _lead_names.extend(a for a in _parse_author_line(_ln, u, affil_notes)
+                                           if _latin_author_ok(a.get("name"), lang))
+                    if not _lead_names:
+                        continue   # 摘要/版权整块跨过去; 署名与摘要同块时保留署名行
+                else:
+                    break
             if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
                 continue
             _long = len(_fold(t)) > 80
             _lines = [t.splitlines()[0].strip()] if _long else t.split("\n")
+            if _long and lang in ("ru", "pt", "fr"):
+                _lines = []
+                for _ln in t.splitlines():
+                    if _front_head(_ln.strip()):
+                        break
+                    _lines.append(_ln)
+                    if len(_lines) >= 12:
+                        break
             _names = []
             for ln in _lines:
-                if _long and len(ln.split()) > 8:
+                if _long and len(ln.split()) > 8 \
+                        and not (lang in ("ru", "pt", "fr")
+                                 and (SUP_LATEX.search(ln) or "<sup>" in ln or "&" in ln)):
                     break   # 长块首行句子型(摘要/正文), 不是作者行
                 if re.fullmatch(u"[\\(（].+[\\)）)]", ln.strip()) and AFFIL_HEAD.search(ln):
                     continue
@@ -1120,9 +1473,17 @@ def front_doc(doc, out_root):
                     continue
                 _pn = [a for a in _parse_author_line(ln, u, affil_notes)
                        if _valid_author_name(a.get("name"))]
+                if lang in ("ru", "pt", "fr"):
+                    if u["type"] == "Section-header" \
+                            or re.search(r"(?i)https?://|www\.|\bDOI\b|\bISSN\b|©", ln) \
+                            or _LATIN_NON_AUTHOR.search(ln) or _front_head(ln):
+                        continue
+                    if lang == "ru" and not _RU_BYLINE.match(ln):
+                        continue   # 俄式机构/地名叙述行不进作者候选(ru_02 实证)
+                    _pn = [a for a in _pn if _latin_author_ok(a["name"], lang)]
                 if _pn and not any(a["markers"] for a in _pn) \
                         and not re.search(u"[가-힣一-鿿]", " ".join(a["name"] for a in _pn)) \
-                        and (len(_pn) >= 3 or (u"," not in ln and len(_pn) >= 2)):
+                        and (len(_pn) >= 3 or (u"," not in ln and "&" not in ln and len(_pn) >= 2)):
                     continue   # 无标记无韩文: >=3 词, 或无逗号 >=2 词 = 英文标题/栏目行
                 _names.extend(_pn)
             if not _names:
@@ -1136,14 +1497,77 @@ def front_doc(doc, out_root):
             for a in _names:
                 a.update(uid=u["uid"], page=1, box=u["box"])
             early = _names
-        if early:
+        if early and (lang not in ("ru", "pt", "fr") or len(early) >= len(authors)):
             authors = early
+    if lang == "ru" and not any(re.search(u"[А-Яа-яЁё]", a.get("name") or u"") for a in authors):
+        # 俄语全面署名增补(2026-11-20): 清洗标记后按 RU_BYLINE/全大写全名匹配, 覆盖
+        # ①题名块内其他行(ru_03 'Ричард Бурк'/ru_10 题名块末行署名)
+        # ②题名上方块(ru_07 'ПИТЕР СИНГЕР', ru_01 Pict 署名)
+        # ③页眉 running 署名(ru_05 'Е. Н. Осин, Д. А. Леонтьев')
+        # zone/rescan 分别因"在题名上方/块类型跳过/带 $标记"够不着这些位置。
+        _ty = t_ko
+        _ty0 = _ty["box"][1] if (_ty and _ty.get("box")) else None
+        _H = float(j0["h"])
+        _cands = []
+        if _ty is not None and _ty.get("uid"):
+            for u in j0["unified"]:
+                if u["uid"] != _ty["uid"]:
+                    continue
+                _tl = (u.get("main_text") or "").split("\n")
+                for _i, ln in enumerate(_tl):
+                    if _looks_ru_byline(ln):
+                        _cands.append((_ru_byline_value(ln), u))
+                        continue
+                    _m3 = re.match(u"^[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+$",
+                                   _clean_byline(ln))
+                    if _m3 and _i + 1 < len(_tl) \
+                            and _RU_AFFIL_WORD.search(_tl[_i + 1] or u""):
+                        # 三词全名且下一行是机构=真题名块署名(ru_10 'Суров Илья Алексеевич'
+                        # 实证); 单独出现的三词全名仍是简介, 不收。
+                        _cands.append((_clean_byline(ln), u))
+        for u in sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0])):
+            if u["type"] in ("Page-footer", "Page-number", "Footnote") \
+                    or (_ty is not None and u.get("uid") == _ty.get("uid")):
+                continue
+            _lns = ((u.get("main_text") or "").split("\n")[:1] if u["type"] == "Page-header"
+                    else (u.get("main_text") or "").split("\n"))
+            c = None
+            for _i, _ln in enumerate(_lns):
+                if _looks_ru_byline(_ln):
+                    c = _ru_byline_value(_ln)
+                    break
+                _m3 = re.match(u"^[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+\\s+[А-ЯЁ][а-яё]+$",
+                               _clean_byline(_ln))
+                if _m3 and _i + 1 < len(_lns) and _RU_AFFIL_WORD.search(_lns[_i + 1] or u""):
+                    c = _clean_byline(_ln)
+                    break
+            if c is None:
+                continue
+            if u["type"] == "Page-header" \
+                    or (_ty0 is not None
+                        and -0.08 * _H < u["box"][1] - _ty0 < 0.30 * _H):
+                _cands.append((c, u))
+        _seen = set()
+        for c, u in _cands:
+            for a in _parse_author_line(c, u, {}):
+                nm = a.get("name") or ""
+                if _valid_author_name(nm) and re.search(u"[А-Яа-яЁё]", nm) and nm not in _seen:
+                    _seen.add(nm)
+                    a.update(uid=u["uid"], page=1, box=u["box"])
+                    authors.append(a)
+            if authors:
+                break
     _ORG_FRAG = (u"국립", u"한국", u"서울", u"부산", u"대구", u"경북", u"경남", u"기계",
              u"전기", u"석사과정", u"박사과정", u"대학원", u"연구원", u"학과", u"학부", u"위원")
     for _a in authors:
         _a["name"] = re.sub(r"\s*\$?\^\{[^}]*\}\$?\s*", "", _a.get("name") or "").strip()
+        if lang in ("ru", "pt", "fr"):
+            _a["name"] = re.sub(r"^\[VARIA\]\s*", "", _a["name"])
+            _a["name"] = _fix_spacing_hat(_a["name"])
     authors = [a for a in authors
                if _valid_author_name(a.get("name"))
+               and (lang not in ("ru", "pt", "fr") or _latin_author_ok(a.get("name"), lang))
+               and not _PUBLISHER_WORD.search(a.get("name") or u"")
                and (a.get("name") or "") not in (u"주저자", u"교신저자", u"저자", u"성명")
                and (a.get("name") or "") not in _ORG_FRAG]
     _seen = set()
@@ -1226,14 +1650,57 @@ def front_doc(doc, out_root):
                     if not _a.get("affiliation"):
                         _a["affiliation"] = _res_z[0]
             ch_front["affiliations"] = (affils[0] if affils else None, "title_block_byline")
+    if lang in ("ru", "pt", "fr"):
+        _author_folds = {_fold(a.get("name")) for a in authors}
+        _cleaned_affils = []
+        for _v in affils:
+            for _clause in re.split(u"(?<!\\bим)(?<!\\b[A-ZА-ЯЁ])[,;.]\\s+", _v):
+                _cv = _latin_affil_from_clause(_clause)
+                if _cv and _fold(_cv) not in _author_folds and _cv not in _cleaned_affils:
+                    _cleaned_affils.append(_cv)
+        for _cv in _latin_affils_from_pages(doc_dir):
+            if _fold(_cv) not in _author_folds and _cv not in _cleaned_affils:
+                _cleaned_affils.append(_cv)
+        affils = _cleaned_affils
+        for _a in authors:
+            _nm, _af = _split_latin_author_affil(_a.get("name") or "", _a.get("affiliation"))
+            _a["name"] = _nm
+            if _af:
+                _cv = _latin_affil_from_clause(_af)
+                _a["affiliation"] = _cv
+    title_value = _clean_title(title_val_override or _best_text(
+        t_ko, li_ko, keep_all=lang in ("ru", "pt", "fr"), majority=lang in ("ru", "pt", "fr"))) if t_ko else None
+    if lang == "pt" and title_value:
+        title_value = re.sub(r"\s+Application of the\b.*$", "", title_value).strip()
+    if lang == "ru" and title_value \
+            and re.fullmatch(u"[А-ЯЁ,\\s-]+/[A-Z][A-Za-z,\\s-]+", title_value):
+        for _u in j0["unified"]:
+            _text = _u.get("main_text") or ""
+            _m = re.search(u"\\bEDN:\\s*\\S+\\s+([А-ЯЁ][А-ЯЁ.\\s-]{10,})", _text)
+            if _m:
+                title_value = _m.group(1).strip()
+                break
+    if lang == "ru" and t_ko and title_value:
+        _after_title = False
+        for _u in sorted(j0["unified"], key=lambda x: (x["box"][1], x["box"][0])):
+            if _u.get("uid") == t_ko.get("uid"):
+                _after_title = True
+                continue
+            if not _after_title:
+                continue
+            _lines = [_x.strip() for _x in (_u.get("main_text") or "").splitlines() if _x.strip()]
+            if _lines and re.fullmatch(u"[А-ЯЁ-]+(?:\\s+[А-ЯЁ-]+){0,2}", _lines[0]) \
+                    and any(_looks_ru_byline(_x) for _x in _lines[1:4]):
+                title_value += " " + _lines[0]
+            break
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
         # 产品: 五元组 + confidence{level, source}; basis 见 metadata_audit.json
-        "title": {"value": _clean_title(_best_text(t_ko, li_ko)) if t_ko else None,
+        "title": {"value": title_value,
                   "page": t_ko_c.get("page"), "box": t_ko_c.get("box"), "uid": t_ko_c.get("uid"),
                   "confidence": {"level": t_ko_c["level"], "source": t_ko_c["source"]}},
-        "title_en": {"value": _clean_title(_best_text(t_en, li_en)) if t_en else None,
+        "title_en": {"value": _clean_title(_best_text(t_en, li_en, keep_all=lang in ("ru", "pt", "fr"), majority=lang in ("ru", "pt", "fr"))) if t_en else None,
                      "page": t_en_c.get("page"), "box": t_en_c.get("box"), "uid": t_en_c.get("uid"),
                      "confidence": {"level": t_en_c["level"], "source": t_en_c["source"]}},
         "authors": authors,

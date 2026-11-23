@@ -343,7 +343,7 @@ SUP_LATEX = re.compile(r"\$\s*\^\{([^}]*)\}\s*\$")
 _SUPSUB_PAIR = re.compile(r"<(sup|sub)\b[^>]*>(.*?)</\1\s*>", re.I | re.S)
 _SUPSUB_STRAY = re.compile(r"</?(?:sup|sub)\b[^>]*>", re.I)
 
-AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|국회방송|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital|Nunnery|KIDA|KAIST|CMU)")
+AFFIL_HEAD = re.compile(u"(대학교|대학원|대학|학과|학부|연구소|연구원|역경원|국방부|외교부|기념사업회|서울평양뉴스|국회방송|박물관|학회|학원|병원|공사|학교|위원회|재단|센터|기업체|관|University|College|Institute|Laboratory|Dept\\.|School of|Hospital|Nunnery|KIDA|KAIST|CMU|Universidade|Faculdade|Instituto|Escola|Funda[cç][aã]o|Universit[eé]|Institut|Laboratoire|[eé]cole|Facult[eé]|Coll[eè]ge|Университет|Институт|Академи[яи]|Факультет|Кафедра|Лаборатори[яи]|НИУ|НИИ|РАН)")
 
 ROLE_WORDS = re.compile(u"(교신저자|제\\s*\\d+\\s*저자|공동저자|책임저자|선행\\s*연구)")
 
