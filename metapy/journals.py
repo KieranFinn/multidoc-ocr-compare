@@ -80,6 +80,21 @@ FAMILIES = [
         "gaps": "无",
     },
     {
+        "key": "mses", "names": [u"다문화사회와 교육연구"], "doi_prefix": "10.22957/mses",
+        "layout": "页脚/页眉印 'N 다문화사회와 교육연구 N집'(老刊按집编号); DOI 为 卷..年月.文号",
+        "extractor": "issue._DOI_VYY 年+卷; journal_from_doi 注册表填空",
+        "gaps": "无",
+    },
+    {
+        "key": "jams", "names": ["Journal of Advances in Military Studies", "JAMS"],
+        "doi_prefix": "10.37944/jams",
+        "layout": "多行英文刊头: 'JAMS / JOURNAL OF ADVANCES IN MILITARY STUDIES' + "
+                  "'YYYY, Vol. N, No. M, pp.-pp.' + DOI; OCR 常把刊头粘连成 "
+                  "'J A JAMS M S JOURNAL OFADVANCES…'",
+        "extractor": "issue._latin_jname 的 JAMS 归一分支 + _YEAR_VOL 年卷期行",
+        "gaps": "无",
+    },
+    {
         "key": "espkor", "names": ["ESP Review"], "doi_prefix": "10.23191/espkor",
         "layout": "页眉印 'ESP Review Vol. N, No. M, Season YYYY'; 作者行 '백서현(한양여자대학교)' "
                   "括号机构; 方括号关键词",
@@ -104,6 +119,11 @@ _MANUAL = {
                              u"ISSN 2671-4051。注意: KCI 卷=자체권(2025→7), DOI 第二段=통권(13/14)"},
     "10.23073/defsec": {"journal": u"국방과 보안", "journal_en": None, "source": "manual",
                         "note": u"国防部杂志型免卷刊物(2026-11-17 用户拍板)"},
+    "10.37944/jams": {"journal": "Journal of Advances in Military Studies",
+                      "journal_en": "JAMS", "source": "manual",
+                      "note": u"2026-11-24 KCI11_17 刊头/DOI 双实证; OCR 粘连变体由 issue._latin_jname 归一"},
+    "10.22957/mses": {"journal": u"다문화사회와 교육연구", "journal_en": None, "source": "manual",
+                      "note": u"2026-11-24 13573745 DOI 前缀+页脚 '다문화사회와 교육연구 10집' 双实证"},
 }
 _REGISTRY_CACHE = None
 

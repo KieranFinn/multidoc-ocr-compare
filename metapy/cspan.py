@@ -79,6 +79,8 @@ def _paren_cite(inner):
 def _narr_name_ok(name):
     """叙述式名字段: 至少含 2 个字母/韩文/汉字, 排除纯句尾碎片('는'/'과' 等)。"""
     core = re.sub(u"[^0-9A-Za-z가-힣一-鿿]", "", name or "")
+    if re.match(r"^[a-z]", (name or "").strip()):
+        return False
     return len(core) >= 2
 
 
@@ -188,6 +190,10 @@ def _narrative_reverse(sent, m, ridx):
                 score = (row["yfull"] == year, len(key), token.start())
                 if best is None or score > best[0]:
                     best = (score, token.start(), left[token.start():].strip())
+    if best is None:
+        latin = re.search(r"([A-ZÀ-Ý][A-Za-zÀ-ÿ'`-]+(?:\s+(?:et|and)\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'`-]+|\s+et\s+al\.)?)\s*$", left)
+        if latin:
+            return latin.start(), latin.group(1)
     return (best[1], best[2]) if best else None
 
 
@@ -347,7 +353,7 @@ def cspan_doc(doc, out_root):
                 authors, year, best, ncand = None, None, None, 0
                 if kind == "narrative":
                     name = m.group(1)
-                    if not _narr_name_ok(name):
+                    if not _narr_name_ok(name) and name.strip().lower() != "al.":
                         continue
                     year = m.group(2).strip(u"()")[:5]
                     if not _year_ok(year):

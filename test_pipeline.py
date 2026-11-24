@@ -119,7 +119,13 @@ class UnifiedSafetyTest(unittest.TestCase):
         self.assertEqual(html.count('<rect class="r cite-target"'), 3)
         for uid in ("u0_1", "u0_2", "u0_3"):
             self.assertIn('<rect class="r cite-target" data-u="%s"' % uid, html)
-        self.assertIn(".refs .mf[data-u]", html)
+        self.assertEqual(html.count("e.target.closest('.mf[data-u]')"), 2)
+        self.assertIn("var u=UBOX[mf.dataset.u],bx=u&&u.box", html)
+        self.assertIn("r.setAttribute('class','r cite-target')", html)
+        self.assertIn("svg.appendChild(r);r.classList.add('cite-on')", html)
+        self.assertIn("document.querySelector(target)", html)
+        self.assertIn("rect.cite-target[data-bx=", html)
+        self.assertIn("mf.dataset.bx||''", html)
         self.assertIn("citeHover(mf,true)", html)
         self.assertIn("citeHover(mf,false)", html)
         self.assertIn(".r.cite-target.cite-on", html)
@@ -129,6 +135,35 @@ class UnifiedSafetyTest(unittest.TestCase):
         self.assertIn("cs.setAttribute('viewBox'", html)
         self.assertIn('class="cpbox"', html)
         self.assertIn(".pane:not(.meta) > .pmask", html)
+
+    def test_metadata_fields_have_individual_evidence_anchors(self):
+        units = [{"uid": "u0_1", "main_text": "Alexandre Moine"},
+                  {"uid": "u1_1", "main_text": "Université de Franche-Comté\nLaboratoire THÉMA UMR 6049 CNRS"},
+                  {"uid": "u1_2", "main_text": "ACTORS, GEOGRAPHICAL SPACE, SYSTEM, TERRITORY"}]
+        finder = viewer._meta_evidence_finder({0: units[:1] + [{"uid": "u0_0", "main_text": "621"}],
+                                                1: units[1:]})
+        self.assertEqual(finder.span("621-626"), "u0_0")
+        self.assertEqual(finder("palavras-chave: ACTORS, GEOGRAPHICAL SPACE, SYSTEM, TERRITORY"), "u1_2")
+        meta = {
+            "title": {"value": "Titre", "uid": "u0_1"},
+            "authors": [{"name": "Alexandre Moine", "uid": "u0_1", "page": 1,
+                         "box": [20.0, 30.0, 220.0, 55.0]},
+                        {"name": "Second Author", "uid": "u0_2"}],
+            "affiliations": ["Université de Franche-Comté", "Laboratoire THÉMA UMR 6049 CNRS"],
+            "keywords": ["ACTORS", "GEOGRAPHICAL SPACE", "SYSTEM", "TERRITORY"],
+            "abstract": {"value": "Résumé", "page": 2,
+                         "confidence": {"level": "mid", "uid_head": "u1_2"}},
+        }
+        panel = viewer._meta_cell(meta, 1, evidence=finder)
+        self.assertEqual(panel.count('<b>作者</b>'), 2)
+        self.assertEqual(panel.count('<b>机构</b>'), 2)
+        self.assertEqual(panel.count('data-u="u1_1"'), 2)
+        self.assertIn('data-u="u0_2"', panel)
+        self.assertIn('data-bx="0.0,20.0,30.0,220.0,55.0"', panel)
+        overview = viewer._meta_overview(meta, evidence=finder)
+        self.assertIn('<b>关键词 4 个</b>', overview)
+        self.assertIn('data-u="u1_2"', overview)
+        self.assertIn('data-bx="0.0,20.0,30.0,220.0,55.0"', overview)
 
     def test_citation_sentences_are_grouped_without_losing_citations(self):
         sentence = "原文[1]与[2]"
@@ -394,6 +429,13 @@ class StageRunTest(unittest.TestCase):
 
     def tearDown(self):
         self.tmp.cleanup()
+
+    def test_lean_convergence_chain_excludes_fetch_ocr_and_llm_stages(self):
+        self.assertEqual(stages.LEAN_IDS, list(stages.META_IDS) + ["viewer", "index"])
+        for sid in ("render", "acquire", "adapt", "ner"):
+            self.assertNotIn(sid, stages.LEAN_IDS)
+        for sid in ("front", "issue", "viewer", "index"):
+            self.assertIn(sid, stages.LEAN_IDS)
 
     def test_first_run_rechecks_dependencies_and_executes_full_chain(self):
         calls = []

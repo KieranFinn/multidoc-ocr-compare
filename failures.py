@@ -3,14 +3,15 @@
 
 两种用法:
   python failures.py                          # 看当前红单聚类(不落盘)
-  python failures.py --round [--tokens N] [--did "这轮做了什么"] [--json x.json]
+  python failures.py --round [--tokens N] [--did "这轮做了什么"] [--json x.json] [--rebuild-registry]
       # 记一轮台账(_rounds.jsonl) + 跟上轮对比 + 重新生成进度报告(_rounds_report.html)
+      # --rebuild-registry 才重扫 DOI→刊名注册表; 默认不重扫(收敛台账不该有全库写副作用)。
 
 台账字段: 轮号/时间/耗时/这轮的token消耗/这轮怎么收敛的/总篇数/没通过数/正确率/
           剩余红单(按期刊分组, 组内篇目)。
 token 消耗没有自动来源(运行者从界面抄), 不填就记"没记录"。
 进度报告是给不干活的人看的: 不写术语, 每轮一节, 每节说清四件事——
-什么时候跑的/花了多少/token 多少/这轮怎么收敛的/还剩哪些文档(带对照视图链接和实体摘要)。
+什么时候跑的/花了多少/token 多少/这轮怎么收敛的/还剩哪些文档(带对照视图链接与原因)。
 """
 import io
 import json
@@ -173,26 +174,12 @@ def _compare(now, prev, prev2):
     return res
 
 
-def _entity_blurb(doc):
-    try:
-        import entview
-        cells = entview.cells_for(doc, OUT, NER_TRIAL)
-        parts = []
-        for k, zh in (("person", "人"), ("org", "机构"), ("dataset", "数据集"),
-                      ("funding", "基金"), ("software", "软件")):
-            if cells.get(k):
-                parts.append("%s:%s" % (zh, cells[k]))
-        return "　".join(parts)
-    except Exception:
-        return ""
-
-
 def _write_report(rounds, current_clusters, notes):
     e = html.escape
     total = rounds[-1]["total"]
     red = rounds[-1]["red"]
     acc = rounds[-1]["acc"]
-    conv = "已收敛：剩下的都是原文确实没印的（每组都标了原因），别再挖了。" if \
+    conv = "已收敛：剩余红单均已逐篇标注原因（原文证据缺失或明确规则缺口），本轮不再展开。" if \
         all(c["all_noted"] for c in current_clusters.values()) and current_clusters else \
         "还没收敛：有的组没写原因，或还有组在动。"
     h = []
@@ -246,15 +233,14 @@ details{margin:8px 0} summary{cursor:pointer;color:#2a6fd6}
             h.append(u"<details><summary>%s · %d 篇%s</summary><table>" % (
                 e(c["display"]), len(c["docs"]),
                 u" · 全部已标原因" if c.get("all_noted") else u" · <b style='color:red'>有没写原因的</b>"))
-            h.append(u"<tr><th>文档号</th><th>没通过的字段</th><th>原因</th><th>实体摘要</th><th></th></tr>")
+            h.append(u"<tr><th>文档号</th><th>没通过的字段</th><th>原因</th><th></th></tr>")
             for d in c["docs"]:
                 miss = u"、".join((c.get("issues_by_doc") or {}).get(d) or []) or u"(无产物)"
-                note = (notes.get(d, "") or "")[:60]
-                ent = _entity_blurb(d)
+                note = (notes.get(d, "") or "")[:80]
                 _prefix = (rd["ws"] + "/") if rd.get("ws") and rd["ws"] != "main" else ""
-                h.append(u"<tr><td>%s</td><td>%s</td><td class='muted'>%s</td><td class='muted'>%s</td>"
+                h.append(u"<tr><td>%s</td><td>%s</td><td class='muted'>%s</td>"
                          u"<td><a href='%sout/%s/viewer_compare.html'>对照视图</a></td></tr>" % (
-                             e(d), e(miss), e(note), e(ent[:120]), e(_prefix), e(d)))
+                             e(d), e(miss), e(note), e(_prefix), e(d)))
             h.append(u"</table></details>")
     h.append(u'<p class="muted">报告生成于 %s · 由 failures.py --round 生成, 每跑一轮自动刷新</p>'
              % time.strftime("%Y-%m-%d %H:%M"))
@@ -263,7 +249,10 @@ details{margin:8px 0} summary{cursor:pointer;color:#2a6fd6}
 
 
 def _round(tokens, did):
-    journals.build_registry()   # 注册表每轮自动重扫语料(corpus 行); manual 行永驻
+    # 注册表默认不在这里重扫: 收敛轮是“读 QC/写台账”, 不应顺带改写 issue 会消费的
+    # DOI 注册表。确需刷新语料投票时显式加 --rebuild-registry。
+    if "--rebuild-registry" in sys.argv:
+        journals.build_registry()
     t0 = time.time()
     notes = _load_notes()
     rows = collect()
@@ -317,7 +306,7 @@ def _round(tokens, did):
     if uncovered:
         print("这些组还有没写原因的文档, 先补备注:", uncovered)
     else:
-        print("剩下的组全部标了原因(原文证据缺失型)。")
+        print("剩下的组全部标了原因(原文证据缺失或明确规则缺口)。")
 
     _write_round_report(history + [rec], clusters, notes)
     print("报告 ->", os.path.basename(REPORT))

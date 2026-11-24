@@ -609,7 +609,7 @@ class App(tk.Tk):
         self.after(50, self.refresh)
         self._log("就绪: 拖 PDF 到 uploads; Ctrl/Shift 多选可批量(默认 %d 篇并发, 顶栏可调)。"
                   "「一键重跑」= 执行勾选的阶段(主区) / 右端箭头选阶段; "
-                  "「快速重跑(跳NER)」不烧 LLM。质检列只查必抽项齐全, 缺项报红。" % self.runner.parallel)
+                  "「快速重跑(收敛链)」不取数/不跑NER。质检列只查必抽项齐全, 缺项报红。" % self.runner.parallel)
 
     def _runner_for(self, workspace):
         key = workspace.root
@@ -759,13 +759,13 @@ class App(tk.Tk):
         #   右端小箭头 = 只负责打开菜单改勾选。
         # 必须是同一个控件——拆成两个按钮会变成"两个键", 用 Menubutton 又会让点哪都弹菜单、
         # 逼用户再确认一次。所以用单个 Button + 按下坐标判断落在哪个热区。
-        # 「快速重跑(跳NER)」仍是独立键: 它存在的目的就是不重复调 LLM。
+        # 「快速重跑(收敛链)」仍是独立键: 只跑元数据+呈现, 不重取数、不跑 LLM。
         grp = ttk.Frame(act)
         grp.pack(side="left", padx=(4, 8))
         self.btn_rerun = ttk.Button(grp, text="一键重跑  ▾", command=self._on_rerun_click)
         self.btn_rerun.pack(side="left")
         self.btn_rerun.bind("<ButtonPress-1>", self._note_click_x)
-        self.btn_quick = ttk.Button(grp, text="快速重跑(跳NER)", command=self._rerun_fast)
+        self.btn_quick = ttk.Button(grp, text="快速重跑(收敛链)", command=self._rerun_fast)
         self.btn_quick.pack(side="left", padx=(4, 0))
         self.stage_menu = tk.Menu(self, tearoff=0, postcommand=self._build_stage_menu)
         self.btn_stop = ttk.Button(act, text="停止", command=self._stop_batch, state="disabled")
@@ -1258,14 +1258,14 @@ class App(tk.Tk):
 
 
     def _rerun_fast(self):
-        """快速重跑(跳NER): 全链减实体抽取——这个键存在的唯一目的就是不重复烧 LLM。
+        """快速重跑(收敛链): 只跑会改 metadata/查看器的后段, 不重取数、不跑 NER。
 
         不改动菜单里的勾选状态: 菜单勾选是另一条路(自定义子集), 替用户改勾选
         会让他下一次"执行选中阶段"跑出没预期的集合。
         """
-        # 快速重跑语义 = 全链减烧 LLM 的段(webfill 2026-11-19 已整体移出链路, 无可跳过)。
-        ids = [i for i in stages.ORDER if i != "ner"]
-        self._run_stages(ids, "快速重跑(跳NER)")
+        # 快速重跑语义 = stages.LEAN_IDS(元数据+呈现), 不再默认重取数/单渠道查看器/NER。
+        ids = list(stages.LEAN_IDS)
+        self._run_stages(ids, "快速重跑(收敛链)")
 
     def _retry_missing(self):
         jobs = [(doc, self.docs[doc]) for doc in sorted(self.docs)

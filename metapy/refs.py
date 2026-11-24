@@ -2,6 +2,7 @@
 import os, re, io, json, datetime, collections, unicodedata
 import regress
 from .common import *
+from . import langid as _langid
 
 
 def _split_entries_block(t, style):
@@ -1519,7 +1520,8 @@ def guards_for_doc(doc_dir):
     # 与 refs_doc 同口径(head_fallback=False): 守卫衡量的是 refs 阶段视角——无 in_ref 时
     # 节头页回退(A4 修复)未启用, 该形态应报 RED-1 定位失败而非把扩展页误当文献区;
     # 全口径扩展页集合是 NER 输入过滤的事, 不进守卫。
-    ref_pages = ref_pages_extended(pdata, pages, head_fallback=False)
+    _lang = _langid.classify_page(pdata[0])
+    ref_pages = ref_pages_extended(pdata, pages, head_fallback=_lang in ("ru", "pt", "fr"))
     return {"yield": _yield_guard(pdata, pages, ref_pages, len(m.get("references") or [])),
             "coverage": _coverage_guard(m, pdata, pages)}
 
@@ -1730,7 +1732,17 @@ def refs_doc(doc, out_root):
     doc_heads = _doc_heads(pdata, pages)
     # —— L1: 文献区定位统一走 ref_pages_extended(head_fallback=False: 无 in_ref 时的节头页
     # 回退是 A4 修复未拍板, 仍早退); 起始页的 참고문헌 头定位 ——
-    ref_pages = ref_pages_extended(pdata, pages, head_fallback=False)
+    _lang = _langid.classify_page(pdata[0])
+    ref_pages = ref_pages_extended(pdata, pages, head_fallback=_lang in ("ru", "pt", "fr"))
+    if not ref_pages:
+        _dense_tail = []
+        for _p in pages:
+            _text = "\n".join((u.get("main_text") or "") for u in pdata[_p]["unified"]
+                              if u.get("type") in CONTENT_TYPES)
+            if len(AY_HEAD.findall(_text)) >= 4 and len(re.findall(r"(?:19|20)\d{2}", _text)) >= 4:
+                _dense_tail.append(_p)
+        if _dense_tail:
+            ref_pages = list(range(_dense_tail[0], _dense_tail[-1] + 1))
     if not ref_pages:
         # —— 脚注即参考文献体例(2002 英文人文期刊实证: KCI_FI001004818_2002) ——
         # 这类论文没有独立文献表, 40 条编号脚注本身就是著录条目。现有 frefs 只把它们
@@ -1825,15 +1837,30 @@ def refs_doc(doc, out_root):
     # 只在既有准入结果为 0 时启用: in_ref 页的块按换行切条, 作者缩写头 + 年份/卷期证据准入。
     if not entries and style == "authoryear":
         _LAT_HEAD = re.compile(
-            r"^[A-Z][a-zA-Z'\-]{1,18}(?:\s+[A-Z]{1,4}[a-z]?)?(?:[.,]\s|"
-            r",\s*[A-Z][a-zA-Z'\-]{1,18}\s+[A-Z]{1,4}[a-z]?)")
+            r"^(?:(?:VAN|VON|DE|DEL|DER|DEN|LA|LE)\s+)?[A-ZÀ-Ý][a-zA-ZÀ-ÿ'\-]{1,24}"
+            r"(?:\s+[A-Z](?:\.-?[A-Z])?)?(?:[.,]{1,2}\s|"
+            r",\s*[A-ZÀ-Ý][a-zA-ZÀ-ÿ'\-]{1,24}\s+[A-Z]{1,4}[a-z]?)")
+        _LAT_CORP = re.compile(r"^[A-ZÀ-Ý0-9&'’\-]+(?:\s+[A-ZÀ-Ý0-9&'’\-]+){1,12},\s*(?:19|20)\d{2}")
         _LAT_YEAR = re.compile(r"(?:19|20)\d{2}|;\s*\d{1,3}\s*[:(]")
-        for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
+        _latin_blocks = list(blocks)
+        _latin_uids = {b["uid"] for b in blocks}
+        for _p in ref_pages:
+            for _u in pdata[_p]["unified"]:
+                if _u["uid"] in _latin_uids or _u.get("cross_page", {}).get("role") != "head" \
+                        or _u["type"] not in CONTENT_TYPES:
+                    continue
+                _t = (_u.get("main_text") or "").strip()
+                if len(AY_HEAD.findall(_t)) < 4:
+                    continue
+                _latin_blocks.append({"p": _p, "col": 0, "y": _u["box"][1], "uid": _u["uid"],
+                                      "u": _u, "t": _t})
+        for b in sorted(_latin_blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
             if b["p"] not in ref_pages:
                 continue
             for ln in b["t"].split("\n"):
                 s = ln.strip()
-                if len(_fold(s)) < ENTRY_MIN_LEN or not _LAT_HEAD.match(s) \
+                s = re.sub(r"^(?:\d+,\s*)?Revue\s+[^,\n]+,\s*[\d/-]+,\s*(?:19|20)\d{2}(?:,\s*\d+)?\s+", "", s)
+                if len(_fold(s)) < ENTRY_MIN_LEN or not (_LAT_HEAD.match(s) or _LAT_CORP.match(s)) \
                         or not _LAT_YEAR.search(s):
                     continue
                 entries.append({"num": None, "text": s, "page": b["p"] + 1, "col": b["col"],

@@ -335,7 +335,7 @@ TITLE_EN_ZONE = (0.06, 0.62)
 
 ABSTRACT_START = re.compile(u"^(본 연구|이 연구|본 논문|The purpose|This (study|paper|article|research)|In this|In the present|The present|We (compared|investigated|examined)|Abstract\\s*[:：])", re.I)
 
-HEAD_EXCLUDE = re.compile(u"^(차\\s*례|목\\s*차|요\\s*약|국문\\s*요약|·?국문요약|Abstract|ABSTRACT|Keywords?|중심\\s*어|핵심\\s*어|서\\s*론|머리\\|Ⅰ\\.|I\\.)", re.I)
+HEAD_EXCLUDE = re.compile(u"^(차\\s*례|목\\s*차|요\\s*약|국문\\s*요약|·?국문요약|Abstract|ABSTRACT|Keywords?|중심\\s*어|핵심\\s*어|주제\\s*어|주요\\s*어|서\\s*론|머리\\|Ⅰ\\.|I\\.)", re.I)
 
 SUP_LATEX = re.compile(r"\$\s*\^\{([^}]*)\}\s*\$")
 # HTML 上下标(KCI HTML 系 PDF 文本层自带, 2026-11-19 实体视图导出脏数据实证 17 篇):
@@ -357,9 +357,9 @@ ABS_INLINE_KO = re.compile(u"^(요\\s*약|국문\\s*요약|초\\s*록)\\s*[:：]
 
 ABS_HEAD_EN = re.compile(r"^(<\s*)?(Abstract|ABSTRACT)(\s*>)?$|^\(Abstract\)$")
 
-KW_LINE = re.compile(u"^(?:[■◆]\\s*)?(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어|주제\\s*어|"
+KW_LINE = re.compile(u"^(?:[■◆\\[【]\\s*)?(키\\s*워드|중심\\s*어|핵심\\s*어|주요\\s*어|주제\\s*어|"
                      u"关\\s*键\\s*词|關\\s*鍵\\s*詞|关\\s*键\\s*字|"
-                     u"Key\\s*words?|Keywords?|Keyword\\s*:)", re.I)
+                     u"Key[-\\s]*words?|Keywords?|Keyword\\s*:)", re.I)
 # 2026-11-09: 增 주제어 与 ■/◆ 通用符号前缀(B3: FI001892171 '◆ 주제어(Key Words)' 实证);
 # group(1)=头词(不含符号前缀), issue 阶段按头词是否含 ASCII 字母区分韩/英组——改动需同步
 # abs.py(keywords_lines/摘要边界守卫)与 issue.py 自检

@@ -268,6 +268,9 @@ STAGES = [
 BY_ID = {s[0]: s for s in STAGES}
 ORDER = [s[0] for s in STAGES]
 META_IDS = ("m3", "refs", "frefs", "front", "abs", "issue", "cspan")
+# 收敛链: 只重跑“会改 metadata/查看器”的后段。取数(render/acquire)、单渠道查看器(adapt)、
+# LLM实体(ner)都不是规则收敛的必要输入; 默认快速重跑走这条, 需要补渠道时再显式勾选全链。
+LEAN_IDS = list(META_IDS) + ["viewer", "index"]
 
 
 def _stage_missing(sid, dd, have, pdf=None):
@@ -291,6 +294,7 @@ for _m in META_IDS:
 
 PRESETS = [
     ("全链(等价一键重跑)", list(ORDER)),
+    ("收敛链(元数据+呈现,不取数/不跑NER)", list(LEAN_IDS)),
     ("只后链(元数据+实体)", list(META_IDS) + ["ner"]),
     ("只重建呈现(查看器+总览)", ["viewer", "index"]),
     ("只归一化及以下", ["merge", "unify"]),

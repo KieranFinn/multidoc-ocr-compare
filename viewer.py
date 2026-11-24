@@ -536,18 +536,42 @@ function scheduleHide(){if(ghide)clearTimeout(ghide);
   if(pinned&&document.querySelector('.eye[data-g="'+pinned+'"]'))showPinned();else hideAllMasks();},80);}
 function citeHover(mf,on){
  var sec=mf.closest('section');
+ var fb=mf.dataset.bx?mf.dataset.bx.split(',').map(Number):null;
+ var fieldBox=(fb&&fb.length===5&&fb.every(function(v){return isFinite(v);}))?fb:null;
  var target=mf.dataset.e ? 'rect.cite-target[data-e="'+mf.dataset.e+'"]' : 'rect.cite-target[data-u="'+mf.dataset.u+'"]';
- sec.querySelectorAll(target).forEach(function(r){r.classList.toggle('cite-on',on);});
+ var r=fieldBox?document.querySelector('rect.cite-target[data-bx="'+mf.dataset.bx+'"]'):document.querySelector(target);
+ if(r)r.classList.toggle('cite-on',on);
  var pop=document.getElementById('citepop');
  if(!on){if(pop)pop.style.display='none';return;}
- var r=sec.querySelector(target);
- if(!r||!pop)return;
- var svg=r.ownerSVGElement,vb=svg.viewBox.baseVal;
- var x=parseFloat(r.getAttribute('x')),y=parseFloat(r.getAttribute('y'));
- var w=parseFloat(r.getAttribute('width')),h=parseFloat(r.getAttribute('height')),pad=60;
- var x0=Math.max(0,x-pad),y0=Math.max(0,y-pad);
+ if(!pop)return;
+ var svg,vb,x,y,w,h,img;
+ if(fieldBox){
+  sec=document.getElementById('p'+fieldBox[0]);if(!sec)return;
+  img=sec.querySelector('.imgw img');svg=imgwSvg(sec);if(!svg)return;
+  vb=svg.viewBox.baseVal;x=fieldBox[1];y=fieldBox[2];w=fieldBox[3]-fieldBox[1];h=fieldBox[4]-fieldBox[2];
+  if(!r){r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+   r.setAttribute('class','r cite-target');r.setAttribute('data-u',mf.dataset.u);r.setAttribute('data-bx',mf.dataset.bx);
+   r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);
+   svg.appendChild(r);}
+  r.classList.add('cite-on');
+ }else if(r){
+  sec=r.closest('section')||sec;
+  svg=r.ownerSVGElement;vb=svg.viewBox.baseVal;
+  x=parseFloat(r.getAttribute('x'));y=parseFloat(r.getAttribute('y'));
+  w=parseFloat(r.getAttribute('width'));h=parseFloat(r.getAttribute('height'));
+  img=sec.querySelector('.imgw img');
+ }else{
+  var u=UBOX[mf.dataset.u],bx=u&&u.box;if(!bx)return;
+  sec=document.getElementById('p'+bx[0]);if(!sec)return;
+  img=sec.querySelector('.imgw img');svg=imgwSvg(sec);if(!svg)return;
+  vb=svg.viewBox.baseVal;x=bx[1];y=bx[2];w=bx[3]-bx[1];h=bx[4]-bx[2];
+  r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r.setAttribute('class','r cite-target');r.setAttribute('data-u',mf.dataset.u);
+  r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);
+  svg.appendChild(r);r.classList.add('cite-on');
+ }
+ var pad=60,x0=Math.max(0,x-pad),y0=Math.max(0,y-pad);
  var x1=Math.min(vb.width,x+w+pad),y1=Math.min(vb.height,y+h+pad);
- var img=sec.querySelector('.imgw img');
  if(!img)return;
  var cs=document.getElementById('citesvg');
  cs.setAttribute('viewBox',[x0,y0,x1-x0,y1-y0].join(' '));
@@ -556,15 +580,16 @@ function citeHover(mf,on){
  document.getElementById('citepoptitle').textContent='原图块定位 · '+mf.dataset.u;
  pop.style.display='block';
 }
+function imgwSvg(sec){var w=sec&&sec.querySelector('.imgw');return w?w.querySelector('svg'):null;}
 var citeKey=null;   /* 同一行内移动不重复重建原图弹层 */
 document.addEventListener('mouseover',function(e){
- var mf=e.target.closest?e.target.closest('.refs .mf[data-u]'):null;
+ var mf=e.target.closest?e.target.closest('.mf[data-u]'):null;
  if(!mf)return;
- var k=mf.dataset.e||mf.dataset.u;
+ var k=(mf.dataset.e||mf.dataset.u||'')+'|'+(mf.dataset.bx||'');
  if(k!==citeKey){citeKey=k;citeHover(mf,true);}
 });
 document.addEventListener('mouseout',function(e){
- var mf=e.target.closest?e.target.closest('.refs .mf[data-u]'):null;
+ var mf=e.target.closest?e.target.closest('.mf[data-u]'):null;
  if(mf&&(!e.relatedTarget||!mf.contains(e.relatedTarget))){citeKey=null;citeHover(mf,false);}
 });
 function centerBlock(sec,fracY){
@@ -609,6 +634,16 @@ document.addEventListener('click',function(e){
  clearTimeout(ghide);
  hideAllMasks();
  var sec=mf.closest('section');
+ if(mf.dataset.bx){var fb=mf.dataset.bx.split(',').map(Number);
+  if(fb.length===5&&fb.every(function(v){return isFinite(v);})){
+   var fsec=document.getElementById('p'+fb[0]),fsvg=imgwSvg(fsec);
+   if(fsvg){var fr=document.createElementNS('http://www.w3.org/2000/svg','rect');
+    fr.setAttribute('class','r cite-target flash');fr.setAttribute('data-bx',mf.dataset.bx);
+    fr.setAttribute('x',fb[1]);fr.setAttribute('y',fb[2]);
+    fr.setAttribute('width',Math.max(2,fb[3]-fb[1]));fr.setAttribute('height',Math.max(2,fb[4]-fb[2]));
+    fsvg.appendChild(fr);centerBlock(fsec,_fracY(fsvg,fb[2],fb[4]-fb[2]));
+    setTimeout(function(){if(fr.parentNode)fr.parentNode.removeChild(fr);},1600);
+    hintCentered(sec,mf.dataset.u);return;}}}
  if(mf.dataset.e){var r1=document.querySelector('section rect.cite-target[data-e="'+mf.dataset.e+'"]');if(r1){flashAt(r1);hintCentered(sec,mf.dataset.u);return;}}
  if(mf.dataset.u&&jumpToUid(mf.dataset.u))hintCentered(sec,mf.dataset.u);
 });
@@ -752,14 +787,83 @@ def _esc(s):
     return html.escape(str(s if s is not None else ""), quote=False)
 
 
-def _mf_row(lv, uid, inner):
-    """metadata 行(总览/本页横带共用, 2026-11-10 收敛双份闭包): 置信色条 + 可选证据 uid 锚。"""
+def _mf_row(lv, uid, inner, box=None):
+    """metadata 行(总览/本页横带共用, 2026-11-10 收敛双份闭包): 置信色条 + 可选证据 uid 锚。
+    box=[page,x1,y1,x2,y2] 时另写字段级定位(如合并块内的作者行), 查看器悬停/点击优先于整块。"""
     u = ' data-u="%s"' % html.escape(str(uid), quote=True) if uid else ""
-    return '<div class="mf %s"%s>%s</div>' % (lv, u, inner)
+    b = ' data-bx="%s"' % html.escape(",".join(str(float(x)) for x in box), quote=True) \
+        if box and len(box) == 5 else ""
+    return '<div class="mf %s"%s%s>%s</div>' % (lv, u, b, inner)
 
 
 def _mf_dot():
     return '<i class="md"></i>'
+
+
+def _meta_evidence_finder(unified_pages):
+    import unicodedata
+    blocks = []
+
+    def fold(value):
+        value = unicodedata.normalize("NFKD", str(value or "").lower())
+        value = "".join(c for c in value if not unicodedata.combining(c))
+        return re.sub(r"[\W_]+", "", value, flags=re.UNICODE)
+
+    for pno, units in (unified_pages or {}).items():
+        for u in units or []:
+            text = (u.get("main_text") or "").strip()
+            if u.get("uid") and text:
+                blocks.append({"uid": u["uid"], "page": pno + 1, "text": fold(text),
+                               "raw": text, "type": u.get("type")})
+    if not blocks:
+        return None
+
+    def find(value, page=None):
+        needle = fold(value)
+        if len(needle) < 4:
+            return None
+        ordered = sorted(blocks, key=lambda b: 0 if page and b["page"] == page else 1)
+        needles = [needle]
+        if ":" in str(value or ""):
+            tail = fold(str(value).split(":", 1)[1])
+            if len(tail) >= 4 and tail != needle:
+                needles.append(tail)
+        for b in ordered:
+            if any(n in b["text"] for n in needles):
+                return b["uid"]
+        if len(needle) <= 16:
+            prefix = needle[:12]
+            for b in ordered:
+                if prefix in b["text"]:
+                    return b["uid"]
+            return None
+        width = 12
+        windows = [needle[i:i + width] for i in range(len(needle) - width + 1)]
+        for b in ordered:
+            hits = sum(1 for w in windows if w in b["text"])
+            if hits / float(len(windows)) >= 0.85:
+                return b["uid"]
+        return None
+
+    def span(value):
+        direct = find(value)
+        if direct:
+            return direct
+        m = re.fullmatch(r"\s*(\d+)\s*[-–—]\s*(\d+)\s*", str(value or ""))
+        if not m:
+            return None
+        start = m.group(1)
+        for b in blocks:
+            if b["page"] == 1 and b["text"] == start:
+                return b["uid"]
+        for b in blocks:
+            if b["page"] == 1 and len(b["raw"]) <= 100 \
+                    and re.search(r"(?<!\d)%s(?!\d)" % re.escape(start), b["raw"]):
+                return b["uid"]
+        return None
+
+    find.span = span
+    return find
 
 
 def _evidence_key(kind, item):
@@ -797,7 +901,7 @@ def _cspan_sentence_groups(cspans):
     return list(groups.values())
 
 
-def _meta_cell(meta, pno, audit=None, choices=None):
+def _meta_cell(meta, pno, audit=None, choices=None, evidence=None):
     """metadata 面板(方案A): 只列落在本页(pno, 1 基)的字段——原图×本页字段对照。
     每行 lv 色条=置信, data-u=unified uid(点击钉住该块的证据遮罩/闪共识框)。
     组: 题录(标题/作者/机构) → 摘要(折叠全文) → 文献(表格行 + 本页编号连续徽标)。
@@ -809,6 +913,9 @@ def _meta_cell(meta, pno, audit=None, choices=None):
     grp = []
 
     esc = _esc
+    def _uid(value, current=None, page=None):
+        return current or (evidence(value, page) if evidence else None)
+
     # 批次4d 双渠道选择映射(raw_head 优先, uid/index 兜底)
     ch_by_rh, ch_by_uid, ch_by_idx = {}, {}, {}
     for c in (choices or []):
@@ -818,28 +925,30 @@ def _meta_cell(meta, pno, audit=None, choices=None):
     # —— 题录 ——
     t = meta.get("title") or {}
     if t.get("value") and (t.get("page") or 1) == pno:
-        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), t.get("uid"),
+        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), _uid(t["value"], t.get("uid")),
                                  _mf_dot() + "<b>标题</b> " + esc(t["value"][:90]))))
     te = meta.get("title_en") or {}
     if te.get("value") and (te.get("page") or 1) == pno:
-        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), te.get("uid"),
+        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), _uid(te["value"], te.get("uid")),
                                  _mf_dot() + "<b>标题(英)</b> " + esc(te["value"][:90]))))
     aus = [a for a in (meta.get("authors") or []) if (a.get("page") or 1) == pno]
-    if aus:
-        rows = []
-        for a in aus:
-            nm = a.get("name") or ""
-            if a.get("roman"):
-                nm += " (%s)" % a["roman"]
-            if a.get("role"):
-                nm += " [%s]" % a["role"]
-            af = a.get("affiliation") or ""
-            rows.append("<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc(af[:40])))
-        grp.append(("题录", _mf_row("mid", aus[0].get("uid"),
-                                 _mf_dot() + "<b>作者</b><table>%s</table>" % "".join(rows))))
+    for a in aus:
+        nm = a.get("name") or ""
+        if a.get("roman"):
+            nm += " (%s)" % a["roman"]
+        if a.get("role"):
+            nm += " [%s]" % a["role"]
+        af = a.get("affiliation") or ""
+        row = "<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc(af[:40]))
+        _ab = a.get("box") or []
+        _abox = [(a.get("page") or pno) - 1] + list(_ab) if len(_ab) == 4 else None
+        grp.append(("题录", _mf_row("mid", _uid(a.get("name"), a.get("uid"), pno),
+                                 _mf_dot() + "<b>作者</b><table>%s</table>" % row, box=_abox)))
     affs = meta.get("affiliations") or []
-    if pno == 1 and affs:
-        grp.append(("题录", _mf_row("mid", None, _mf_dot() + "<b>机构</b> " + esc(" / ".join(affs)[:110]))))
+    if pno == 1:
+        for aff in affs:
+            grp.append(("题录", _mf_row("mid", _uid(aff),
+                                     _mf_dot() + "<b>机构</b> " + esc(aff))))
     # —— 摘要 ——
     for k, lab in (("abstract", "摘要"), ("abstract_en", "摘要(英)")):
         f = meta.get(k) or {}
@@ -852,7 +961,7 @@ def _meta_cell(meta, pno, audit=None, choices=None):
             else:
                 inner += _texesc(v)
             grp.append(("摘要", _mf_row((f.get("confidence") or {}).get("level", "mid"),
-                                    (f.get("confidence") or {}).get("uid_head"), inner)))
+                                    _uid(v, (f.get("confidence") or {}).get("uid_head"), f.get("page") or 1), inner)))
     # —— 文献(本页条目) + 脚注引文(本页, --stage frefs 独立键 footnote_refs) ——
     def _raw_head(s):
         from metapy.common import RAW_HEAD_LEN, _foldv
@@ -1026,7 +1135,7 @@ def _meta_cell(meta, pno, audit=None, choices=None):
            '<div class="mfw">%s</div><div class="pmask"></div></div>' % "".join(out)
 
 
-def _meta_overview(meta, audit=None, ents=None, body_chars=0):
+def _meta_overview(meta, audit=None, ents=None, body_chars=0, evidence=None):
     """metadata 总览横带(只挂第 1 页 section): 实体清单(16 项✓/✗) + 全部抽取字段一览——题录/
     来源(期刊年卷期页)/关键词/摘要(折叠全文)/三类大列表计数(refs/frefs/cspan 全库分布+徽标,
     不展开, 明细在每页横带)。body_chars=unified 正文总字符(实体清单"正文"项判据)。
@@ -1044,6 +1153,10 @@ def _meta_overview(meta, audit=None, ents=None, body_chars=0):
         return "第 %d-%d 页" % (ps[0], ps[-1]) if ps else ""
 
     grp = []
+
+    def _uid(value, current=None, page=None):
+        return current or (evidence(value, page) if evidence else None)
+
     # —— 实体清单(2026-11-12): 分组一眼看全抽出/未抽——题录/来源/内容/引证/文献/实体;
     #    脚注与引文句是正文页内引证(期刊中多互斥, 同篇只用一种), 同归"引证"组;
     #    参考文献=文末文献列表, 独立"文献"组。字段类取 metadata, 实体类取 ner 产物 ——
@@ -1086,47 +1199,63 @@ def _meta_overview(meta, audit=None, ents=None, body_chars=0):
 
     t = meta.get("title") or {}
     if t.get("value"):
-        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), t.get("uid"),
+        grp.append(("题录", _mf_row((t.get("confidence") or {}).get("level", "mid"), _uid(t["value"], t.get("uid")),
                                  _mf_dot() + "<b>标题</b> " + _pg_hint(t) + esc(t["value"][:120]))))
     te = meta.get("title_en") or {}
     if te.get("value"):
-        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), te.get("uid"),
+        grp.append(("题录", _mf_row((te.get("confidence") or {}).get("level", "mid"), _uid(te["value"], te.get("uid")),
                                  _mf_dot() + "<b>标题(英)</b> " + _pg_hint(te) + esc(te["value"][:120]))))
     aus = meta.get("authors") or []
-    if aus:
-        trs = []
-        for a in aus:
-            nm = a.get("name") or ""
-            if a.get("roman"):
-                nm += " (%s)" % a["roman"]
-            if a.get("role"):
-                nm += " [%s]" % a["role"]
-            trs.append("<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc((a.get("affiliation") or "")[:48])))
-        grp.append(("题录", _mf_row("mid", aus[0].get("uid"),
-                                 _mf_dot() + "<b>作者 %d 人</b><table>%s</table>" % (len(aus), "".join(trs)))))
+    for a in aus:
+        nm = a.get("name") or ""
+        if a.get("roman"):
+            nm += " (%s)" % a["roman"]
+        if a.get("role"):
+            nm += " [%s]" % a["role"]
+        row = "<tr><td>%s</td><td>%s</td></tr>" % (esc(nm), esc((a.get("affiliation") or "")[:48]))
+        _ab = a.get("box") or []
+        _abox = [(a.get("page") or 1) - 1] + list(_ab) if len(_ab) == 4 else None
+        grp.append(("题录", _mf_row("mid", _uid(a.get("name"), a.get("uid"), a.get("page") or 1),
+                                 _mf_dot() + "<b>作者</b><table>%s</table>" % row, box=_abox)))
     affs = meta.get("affiliations") or []
-    if affs:
-        grp.append(("题录", _mf_row("mid", None, _mf_dot() + "<b>机构 %d 个</b> " % len(affs)
-                                 + esc(" / ".join(affs)[:160]))))
+    for aff in affs:
+        grp.append(("题录", _mf_row("mid", _uid(aff), _mf_dot() + "<b>机构</b> " + esc(aff))))
     # —— 来源(--stage issue: 本篇期刊/年/卷/期/页) ——
+    def _source_uid(k, f):
+        if f.get("uid"):
+            return f["uid"]
+        if k == "pages" and evidence and hasattr(evidence, "span"):
+            return evidence.span(f["value"])
+        return _uid(f["value"] if k in ("journal", "journal_en") else None)
+
     for k, lab in (("journal", u"期刊"), ("journal_en", u"期刊(英)"), ("year", u"年"),
                    ("volume", u"卷"), ("issue", u"期"), ("pages", u"页")):
         f = meta.get(k) or {}
         if f.get("value") is not None:
             # 行带来源行 uid(issue 阶段 _uid0 回填; 页码推断兜底无锚则 None 不可跳)
             grp.append(("来源", _mf_row((f.get("confidence") or {}).get("level", "mid"),
-                                    f.get("uid"),
+                                    _source_uid(k, f),
                                     _mf_dot() + "<b>%s</b> %s" % (lab, esc(f["value"])))))
     # —— 关键词(韩/英双字段, 2026-11-09 用户拍板: 有双板的都提取) ——
     # 行带 evidence uid(audit.issue.keywords.source*): 点击=跳到原文关键词行所在块并橙框闪烁。
     kw_src = (((audit or {}).get("issue") or {}).get("keywords") or {})
+    kw_lines = meta.get("keywords_lines") or []
+
+    def _kw_raw(english):
+        for line in kw_lines:
+            if bool(re.match(r"(?i)\s*key[-\s]*words?\b", line)) == english:
+                return line
+        return kw_lines[0] if kw_lines else ""
+
     kws = meta.get("keywords") or []
     if kws:
-        grp.append(("关键词", _mf_row("mid", (kw_src.get("source") or {}).get("uid"),
+        grp.append(("关键词", _mf_row("mid", _uid(_kw_raw(False) or ", ".join(kws),
+                                  (kw_src.get("source") or {}).get("uid")),
                                   _mf_dot() + "<b>关键词 %d 个</b> " % len(kws) + esc(", ".join(kws)[:200]))))
     kws_en = meta.get("keywords_en") or []
     if kws_en:
-        grp.append(("关键词", _mf_row("mid", (kw_src.get("source_en") or {}).get("uid"),
+        grp.append(("关键词", _mf_row("mid", _uid(_kw_raw(True) or ", ".join(kws_en),
+                                  (kw_src.get("source_en") or {}).get("uid")),
                                   _mf_dot() + "<b>关键词(英) %d 个</b> " % len(kws_en)
                                   + esc(", ".join(kws_en)[:200]))))
     # —— 摘要(折叠全文) ——
@@ -1143,7 +1272,7 @@ def _meta_overview(meta, audit=None, ents=None, body_chars=0):
             else:
                 inner += _texesc(v)
             grp.append(("摘要", _mf_row((f.get("confidence") or {}).get("level", "mid"),
-                                    (f.get("confidence") or {}).get("uid_head"), inner)))
+                                    _uid(v, (f.get("confidence") or {}).get("uid_head"), f.get("page") or 1), inner)))
     # —— 三类大列表: 全库计数 + 分布(明细在每页横带) ——
     refs = meta.get("references") or []
     if refs:
@@ -1266,6 +1395,7 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
     nav = "".join('<a href="#p%d">%d</a>' % (i, i + 1) for i in range(n))
     secs, data, groups_json = [], {}, {}
     ents = _load_ner_lite(out_fp)   # ner_lite 实体(可缺省): per-page 面板, 点击行=定位闪块
+    meta_evidence = _meta_evidence_finder(unified_pages)
     chs = ("mineru", "dots", "paddle")
     for p in range(n):
         W, H = sizes[p]
@@ -1390,8 +1520,8 @@ def build_compare_viewer(out_fp, title, sizes, per_ch, src_dirs=None, unified_pa
                 # 实体清单"正文"项判据 = qc.body_text_chars(公共唯一实现)
                 _body = qc.body_text_chars(u for _us in (unified_pages or {}).values()
                                            for u in _us)
-                ov_cell = _meta_overview(meta, audit, ents, _body) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
-            ch_cells += _meta_cell(meta, p + 1, audit, choices) or ""
+                ov_cell = _meta_overview(meta, audit, ents, _body, meta_evidence) or ""   # 实体并入总览带"实体"分组(RULES §6), 不另起横带
+            ch_cells += _meta_cell(meta, p + 1, audit, choices, meta_evidence) or ""
         ch_cells += _entity_cell((ents or {}).get(p + 1)) or ""
         flag = ""
         if nffd:

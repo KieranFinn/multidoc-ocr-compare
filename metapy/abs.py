@@ -2,6 +2,7 @@
 import os, re, io, json, datetime
 import regress
 from .common import *
+from . import langid as _langid
 
 # markdown 加粗 요약 头(13563525 '**국문요약** 본고는…' 同块, 无冒号——ABS_INLINE_KO 要求冒号,
 # ABS_HEAD_KO 只认独立节头, 两不沾则整段丢失)
@@ -20,6 +21,127 @@ _ABS_ANY = re.compile(
     u"\\s*[>)】〉\\]]?\\s*[:：.]?\\s*(.*)$", re.I)
 _ABS_STOP = re.compile(u"^(?:참고\\s*문헌|Reference|References|Bibliography|목\\s*차|차\\s*례|"
                        u"I{1,3}\\.|^\\d+\\.\\s)", re.I)
+
+
+_LATIN_ABS = re.compile(u"(?i)^[*#\\s]*(Résumé|Resumo|Аннотация|Abstract)\\b[.\\-—:：*]*\\s*(.*)$")
+_LATIN_KW = re.compile(u"(?i)^[*#\\s]*(Mots[- ]cl[ée]s|Palavras[-–]chave|Ключевые\\s+слова|"
+                       u"Key[-\\s]*words?|Descritores)\\b[.\\-—:：]*\\s*(.*)$")
+
+
+def _abs_trim(rest):
+    rest = re.sub(r"(?i)^Revue\s+[^,\n]+,\s*[\d/-]+,\s*(?:19|20)\d{2},\s*\d+\s+", "", rest.strip())
+    rest = re.split(u"(?im)^\\s*(?:Bibliographie|Bibliográficas|Referências|References|Список\\s+литературы)\\b", rest)[0]
+    rest = re.split(u"(?im)^\\s*(?:Abstract|Résumé|Resumo|Аннотация)\\b", rest)[0]
+    rest = re.split(u"(?m)(?<=\n)\\s*(?:Introduction|Introdução|Notas introdutórias|Введение|КОНТЕКСТ)\\b", rest)[0]
+    return re.sub(r"^[:：]\s*", "", rest.strip())
+
+
+def _latin_abs_res(pdata, pages):
+    res = {"abstract": {"value": None, "confidence": {"level": "low", "source": "regex"}},
+           "abstract_en": {"value": None, "from_tail": False,
+                           "confidence": {"level": "low", "source": "regex"}},
+           "keywords": [], "keywords_en": [], "keywords_lines": []}
+    scan_pages = list(dict.fromkeys(list(pages[:3]) + list(pages[-5:])))
+    flat = [(p, u) for p in scan_pages for u in pdata[p]["unified"]]
+    for bi, (p, u) in enumerate(flat):
+        if u.get("type") not in ("Text", "Section-header"):
+            continue
+        lines = (u.get("main_text") or "").splitlines()
+        for i, ln in enumerate(lines):
+            m = _LATIN_ABS.match(ln.strip())
+            if not m:
+                continue
+            label, rest = m.group(1).lower(), m.group(2).strip()
+            if not rest and i + 1 < len(lines):
+                rest = "\n".join(lines[i + 1:]).strip()
+            elif rest and len(rest) < 50 and i + 1 < len(lines):
+                rest = "\n".join([rest] + lines[i + 1:]).strip()
+            if not rest and i > 0:
+                rest = max((x.strip() for x in lines[:i]), key=len, default="")
+            if len(rest) < 60:
+                for _p2, u2 in flat[bi + 1:]:
+                    if u2.get("type") != "Text":
+                        continue
+                    t2 = (u2.get("main_text") or "").strip()
+                    if not t2 or _LATIN_ABS.match(t2.splitlines()[0].strip()):
+                        break
+                    if _LATIN_KW.match(t2.splitlines()[0].strip()) \
+                            or (t2.upper() == t2 and re.search(r"\s+[–—]\s+", t2)):
+                        continue
+                    rest = t2
+                    break
+            rest = _abs_trim(rest)
+            if len(rest) < 60:
+                continue
+            key = "abstract_en" if label == "abstract" else "abstract"
+            if res[key]["value"]:
+                continue
+            res[key] = {"value": rest, "page": p + 1, "box": u["box"],
+                        "from_tail": p not in pages[:3],
+                        "confidence": {"level": "mid", "source": "regex", "uid_head": u["uid"]}}
+    if not res["abstract"]["value"]:
+        for u in pdata[0]["unified"]:
+            for ln in (u.get("main_text") or "").splitlines():
+                if re.match(u"(?i)(?:В\\s+статье|Статья\\s+посвящена)\\b", ln.strip()):
+                    rest = re.split(u"(?i)Ключевые\\s+слова", ln.strip())[0].strip()
+                    if len(rest) >= 60:
+                        res["abstract"] = {"value": rest, "page": 1, "box": u["box"],
+                                           "confidence": {"level": "mid", "source": "regex",
+                                                          "uid_head": u["uid"]}}
+                        break
+            if res["abstract"]["value"]:
+                break
+    for bi, (p, u) in enumerate(flat):
+        lines = (u.get("main_text") or "").splitlines()
+        for i, ln in enumerate(lines):
+                m = _LATIN_KW.match(ln.strip())
+                if not m:
+                    continue
+                label, rest = m.group(1).lower(), m.group(2).strip()
+                if not rest and i + 1 < len(lines):
+                    rest = lines[i + 1].strip()
+                if not rest:
+                    for _p2, u2 in flat[bi + 1:]:
+                        t2 = (u2.get("main_text") or "").strip()
+                        if not t2 or _LATIN_ABS.match(t2.splitlines()[0].strip()):
+                            break
+                        if _LATIN_KW.match(t2.splitlines()[0].strip()):
+                            continue
+                        rest = t2.splitlines()[0].strip()
+                        break
+                raw = label + ": " + rest
+                rest = SUP_LATEX.sub("", rest).lstrip(" :")
+                items = [re.sub(r"^[\d\s$.]+|[\s$.]+$", "", x).strip(" .-")
+                         for x in re.split(r"[;,]\s*|\s+[-–—]\s+|\.\s+", rest) if x.strip(" .-")]
+                items = [re.sub(r"(?i)([a-zà-ÿ]{6,})-(tion|sion|ment|alization|alisation)", r"\1\2", x)
+                         for x in items]
+                items = [x for x in items if 1 < len(x) < 60 and not x.lower().startswith(("key", "palavras", "mots", "descritores"))]
+                if not items:
+                    continue
+                if label.startswith("key"):
+                    if not res["keywords_en"]:
+                        res["keywords_en"] = items
+                elif not res["keywords"]:
+                    res["keywords"] = items
+                if len(res["keywords_lines"]) < 4:
+                    res["keywords_lines"].append(raw)
+    if not res["keywords"] and res["abstract"]["value"]:
+        for p in pages[:3]:
+            for u in pdata[p]["unified"]:
+                for ln in (u.get("main_text") or "").splitlines():
+                    s = ln.strip().strip(" .")
+                    if len(s) > 180 or s.count(",") < 2 or s.upper() != s or not re.search(r"[A-ZÀ-Ý]", s):
+                        continue
+                    items = [x.strip(" .-") for x in s.split(",") if x.strip(" .-")]
+                    if all(1 < len(x) < 60 for x in items):
+                        res["keywords"] = items
+                        res["keywords_lines"].append(s)
+                        break
+                if res["keywords"]:
+                    break
+            if res["keywords"]:
+                break
+    return res
 
 
 def _collect_abstract(pdata, pages, head_u, max_pages=3, skip_fold=None):
@@ -186,6 +308,44 @@ def abstract_doc(doc, out_root):
                 "source": "regex", "uid_head": u and u["uid"]}
 
     res = {}
+    meta_fp = os.path.join(doc_dir, "metadata.json")
+    meta = json.load(io.open(meta_fp, encoding="utf-8"))
+    _lang = _langid.classify_page(pdata[0])
+    if _lang in ("ru", "pt", "fr"):
+        res = _latin_abs_res(pdata, pages)
+        _full_text = "\n".join((u.get("main_text") or "") for p in pages for u in pdata[p]["unified"])
+        for _key in ("abstract", "abstract_en"):
+            meta.setdefault(_key, dict(res[_key]))
+            _old = (meta.get(_key) or {}).get("value") or ""
+            if re.search(r"(?i)A\s+propos\s+de\s*:", _full_text) \
+                    or re.match(r"(?i)Key[- ]words?|##\s*Keywords|Sociologias", _old) \
+                    or len(re.findall(r"(?:19|20)\d{2}", _old)) >= 5:
+                meta[_key]["value"] = None
+            elif re.search(r"(?i)\bAbstract\.", _old) and not re.match(r"(?i)^Abstract\.", _old):
+                meta[_key]["value"] = re.split(r"(?i)\bAbstract\.", _old)[-1].strip()
+        for _key in ("abstract", "abstract_en"): 
+            if res[_key]["value"]:
+                meta[_key] = res[_key]
+        for _key in ("keywords", "keywords_en", "keywords_lines"):
+            meta.setdefault(_key, [])
+            if res[_key]:
+                meta[_key] = res[_key]
+        # 拉丁文种分支同样适用"摘要不分语种"口径: 只有英文摘要时主 abstract 采用英文摘要
+        # (13582983/13582999 实证; 与非拉丁分支下方的主摘要回退同语义)。
+        if not ((meta.get("abstract") or {}).get("value")) \
+                and ((meta.get("abstract_en") or {}).get("value")):
+            _a = dict(meta["abstract_en"])
+            _c = dict(_a.get("confidence") or {})
+            _c["fallback_from"] = "abstract_en"
+            _a["confidence"] = _c
+            meta["abstract"] = _a
+        meta["generated"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+        print("== ③ %s ==" % doc)
+        print("  abstract   : %s" % ((meta["abstract"]["value"] or "")[:70]))
+        print("  abstract_en: %s" % ((meta["abstract_en"]["value"] or "")[:70]))
+        print("  keywords   : %d / %d" % (len(meta["keywords"]), len(meta["keywords_en"])))
+        io.open(meta_fp, "w", encoding="utf-8").write(json.dumps(meta, ensure_ascii=False, indent=1))
+        return meta
     # —— 韩摘要: 首页 ——
     h_ko = _find_head(ABS_HEAD_KO, [0])
     if h_ko is not None:

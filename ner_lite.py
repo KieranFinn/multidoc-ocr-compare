@@ -55,6 +55,7 @@ def all_docs():
                            if not os.path.isdir(os.path.join(OUT, d, "unified"))]
 BATCH_CHARS = 8000
 KINDS = ("funding", "software", "dataset", "org")
+_ORG_BAD = re.compile(u"(?i)éditions|editions|presses|alternatives\\s+economiques|publisher|publishing")
 
 PROMPT_SYS = u"你是文献实体提名器。只输出 JSON。"
 PROMPT_BODY = (u"아래 텍스트에서 연구 지원(펀딩)의 기관·사업·과제명, 연구에 사용된 소프트웨어명, "
@@ -75,7 +76,7 @@ GLOSSARY = {
     "mention_in_biblio_footnote": {"scope": "record",
                                    "meaning": u"全部定位块为 Footnote 且 _fnote_biblio(著录脚注)"},
     "verdict": {"scope": "nomination", "values": ["admitted", "dropped"]},
-    "drop_reason": {"scope": "nomination", "values": ["anchor_miss", "parse_fail"]},
+    "drop_reason": {"scope": "nomination", "values": ["anchor_miss", "parse_fail", "publisher"]},
     "etype": {"scope": "run", "values": ["network"]},
 }
 
@@ -389,6 +390,10 @@ def _run_doc(doc, model, cfg=None, echo=print, blocks=None, out_root=None):
             if k not in KINDS or not n:
                 nominations.append({"batch": bi, "raw": json.dumps(it, ensure_ascii=False)[:200],
                                     "verdict": "dropped", "drop_reason": "parse_fail"})
+                continue
+            if k == "org" and _ORG_BAD.search(n):
+                nominations.append({"batch": bi, "kind": k, "name": n,
+                                    "verdict": "dropped", "drop_reason": "publisher"})
                 continue
             nf = _foldv(n)
             hit = nf != "" and nf in batch_folded

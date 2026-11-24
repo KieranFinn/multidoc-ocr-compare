@@ -267,7 +267,7 @@ def _fold_accent(s):
 # 栏目/文类词黑名单: 大写 running head 里的栏目名不是刊名(ru_07 临床指南/ru_14 方法栏目实证)
 _LATIN_RUBRIC = re.compile(
     u"^(?:клинические рекомендации|методы и методология|горячая тема|исследования|"
-    u"переводы|рецензии|научная жизнь|information|editorial|artigo original|"
+    u"экономика и образование|переводы|рецензии|научная жизнь|information|editorial|artigo original|"
     u"documento para|diretrizes brasileiras|valores normais)", re.I)
 
 
@@ -282,6 +282,27 @@ def _latin_jname(s, lang):
     s0 = re.sub(r"\s+", " ", s0).strip()
     if not s0 or s0.startswith("(") or _LATIN_RUBRIC.match(s0):
         return None
+    if lang in ("pt", "fr", "en"):
+        # JAMS 刊头 OCR 变体: 'JAMS / JOURNAL OF ADVANCES…'、'JAMS JOURNAL…'、
+        # 'J A JAMS M S JOURNAL OFADVANCES…' 全部归一到官方题名(2026-11-24 KCI11_17 7 篇实证)。
+        if re.search(r"(?i)\bJAMS\b|ADVANCES\s+IN\s+MILITARY\s+STUDIES", s0):
+            return ("Journal of Advances in Military Studies", None)
+        # KCI11_17 2026-11-24: 'Analyses & Alternatives 2025 9(3): …' 名-年-卷(期) 横幅
+        # (该刊被 langid 误判 pt/fr 时走本函数, 不能只吃带 Vol/No 的旧式)。候选限无句读
+        # 短名且含 '&' 或刊名信号词, 防把题名/引文行当刊名。
+        m = re.match(r"^([A-Z][A-Za-z'’-]*(?:\s+(?:[A-Z][A-Za-z'’-]*|&)){1,7})\s+"
+                     r"(?:19|20)\d{2}\s+\d{1,3}\s*\(\d{1,3}\)", s0)
+        if m and ("&" in m.group(1) or _ENKEY.search(m.group(1).title())):
+            return (_clean_jname(m.group(1).strip(" ,.-")), None)
+        # JAMS 多行刊头: 'JAMS / JOURNAL OF ADVANCES IN MILITARY STUDIES' 或连写同形。
+        m = re.match(r"^(?:[A-Z]{2,8}\s*/\s*)?([A-Z][A-Z&'’-]*(?:\s+[A-Z][A-Z&'’-]*){2,10})$", s0)
+        if m and _ENKEY.search(s0.title()):
+            cand = m.group(1)
+            if "/" in cand:
+                parts = [p.strip() for p in cand.split("/")]
+                if parts and _ENKEY.search(parts[-1].title()):
+                    cand = parts[-1]
+            return (_clean_jname(cand.strip(" ,.-")), None)
     if lang == "fr":
         m = re.match(u"^Dans\\s+(.+?)\\s+(?=(?:19|20)\\d{2}\\s*/)", s0, re.I)
         if m:
@@ -414,6 +435,7 @@ def extract(source, n_pages, excluded_folds, lang=None):
             # 2026-11-20 俄葡法适配: 拉丁文献跳过韩刊专用的 _jname_from_line(《》/권호 体系),
             # 统一走 _latin_jname; OCR 加粗残留(**31**)先行剥离(fr_17 实证)。
             s = re.sub(r"\*+", "", s).strip()
+            s = re.sub(r"^©(?=\s*(?:Revista|Revue|Jornal))", "", s, flags=re.I).strip()
             got = None if ("©" in s or u"droits réservés" in s.lower()) else _latin_jname(s, lang)
         else:
             got = None if ("©" in s or u"droits réservés" in s.lower()) else _jname_from_line(s)
@@ -535,7 +557,8 @@ def extract(source, n_pages, excluded_folds, lang=None):
     # 刊名: 首页行(阅读序首个) > 全语料投票; ko/en 各自独立定(纯英文刊名 BMC 型无 ko 字段)
     p0list = [v for v, ps in journal.items() if any(p == 0 for p, _ in ps)]
     if p0list:
-        j_w = p0list[0]
+        _full_names = [v for v in p0list if not re.search(r"\b(?:Rev|bras|fisioter)\.", v, re.I)]
+        j_w = (_full_names or p0list)[0]
         j_sup = [0]
     else:
         j_w, j_sup = _vote(journal, 0)
@@ -667,6 +690,7 @@ def _kw_parse(s, lines, i):
         return None
     en = bool(re.search(r"[A-Za-z]", m.group(1) or ""))
     rest = s[m.end():]
+    rest = re.sub(u"^\\s*[\\]】）)]\\s*", "", rest)   # '[Key-words]' / '【키워드】' 尾括号角
     if ":" in rest or u"：" in rest:
         rest = re.split(r"[:：]", rest, maxsplit=1)[1]
     rest = re.sub(r"^\s*[(（]\s*Key\s*words?\s*[)）]\s*", "", rest, flags=re.I)
@@ -811,6 +835,96 @@ def _apply_year_ladder(res, source, pdata):
     return None
 
 
+def _latin_biblio_overrides(res, source, lang):
+    if lang not in ("ru", "pt", "fr"):
+        return
+    volume_found = False
+    for page, uid, s in source:
+        if page > 2 or not re.search(r"(?i)dans|revue|revista|jornal|cadernos|estudos|annales|actes|"
+                                     u"журнал|вестник|известия|обозрение|успехи|мониторинг|"
+                                     r"doi|volume|vol\.|tome|ano\b|v\.\s*\d|n[°º]|№", s):
+            continue
+        s0 = re.sub(r"</?(?:sup|sub)\b[^>]*>", "", s, flags=re.I)
+        s0 = re.sub(r"\s+", " ", s0)
+        m = re.search(r"(?i)\bpages?\s+(\d+)\s+à\s+(\d+)", s0)
+        if not m:
+            m = re.search(r"(?i)(?:pp?\.\s*|С\.\s+)(\d+)\s*[-–—]\s*(\d+)", s0)
+        if m:
+            start, end = int(m.group(1)), int(m.group(2))
+            if end < start and len(m.group(2)) < len(m.group(1)):
+                end = start // 100 * 100 + end
+                if end < start:
+                    end += 100
+        if m and start <= end:
+            res["pages"] = {"value": "%d-%d" % (start, end), "uid": uid,
+                            "confidence": {"level": "high", "source": "latin_biblio"}}
+        ym = re.search(r"(?<!\d)((?:19|20)\d{2})(?!\d)", s0)
+        if ym and int(ym.group(1)) in YEAR_OK:
+            res["year"] = {"value": int(ym.group(1)), "uid": uid,
+                           "confidence": {"level": "high", "source": "latin_biblio"}}
+        patterns = [
+            (r"(?i)\bTome\s+(\d+)", 1, None),
+            (r"(?i)\bVol\.?\s*(\d+)", 1, None),
+            (r"(?i)\bVOLUME\s+(\d+)", 1, None),
+            (r"(?i)\bv\.\s*(\d+)", 1, None),
+            (u"Т\\.\s*(\\d+)|ТОМ\\s*(\\d+)", 1, 2),
+            (r"(?i)\bAno\s+(\d+)", 1, None),
+            (r"[;,]\s*(\d+)\s*\((\d+(?:[-/]\d+)?)\)", 1, 2),
+        ]
+        for pat, vi, ii in patterns:
+            m = re.search(pat, s0)
+            if not m:
+                continue
+            v = next((x for x in m.groups() if x), "")
+            if v.isdigit():
+                res["volume"] = {"value": int(v), "uid": uid,
+                                 "confidence": {"level": "high", "source": "latin_biblio"}}
+                volume_found = True
+            if ii:
+                iv = m.group(ii)
+                res["issue"] = {"value": int(iv) if iv.isdigit() else iv, "uid": uid,
+                                "confidence": {"level": "high", "source": "latin_biblio"}}
+            break
+        m = re.search(u"Т\\.\\s*([IVX]+)", s0)
+        if m:
+            res["volume"] = {"value": {"I": 1, "V": 5, "X": 10}[m.group(1)], "uid": uid,
+                             "confidence": {"level": "high", "source": "latin_biblio"}}
+            volume_found = True
+        m = re.search(r"(?:19|20)\d{2}\s*/\s*(\d+)", s0)
+        if m:
+            res["issue"] = {"value": int(m.group(1)), "uid": uid,
+                            "confidence": {"level": "high", "source": "latin_biblio"}}
+        m = re.search(r"(?i)\bn[°º.]?\s*(\d+)|NÚMERO\s+(\d+)|№\s*(\d+)", s0)
+        if m:
+            v = next(x for x in m.groups() if x)
+            res["issue"] = {"value": int(v), "uid": uid,
+                            "confidence": {"level": "high", "source": "latin_biblio"}}
+        m = re.search(r"(?i)\bAno\s+(XXIII|XXII|XXI|XX|XIX|XVIII|XVII|XVI|XV|XIV|XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)\b", s0)
+        if m:
+            roman = m.group(1)
+            values = {"I": 1, "II": 2, "III": 3, "IV": 4, "V": 5, "VI": 6, "VII": 7, "VIII": 8,
+                      "IX": 9, "X": 10, "XI": 11, "XII": 12, "XIII": 13, "XIV": 14, "XV": 15,
+                      "XVI": 16, "XVII": 17, "XVIII": 18, "XIX": 19, "XX": 20, "XXI": 21,
+                      "XXII": 22, "XXIII": 23}
+            res["volume"] = {"value": values[roman], "uid": uid,
+                             "confidence": {"level": "high", "source": "latin_biblio"}}
+            volume_found = True
+        m = re.search(r"(?i)Número\s+(I{1,3})\b", s0)
+        if m:
+            res["issue"] = {"value": len(m.group(1)), "uid": uid,
+                            "confidence": {"level": "high", "source": "latin_biblio"}}
+        m = re.search(r"(?i)(1|2)\s*[º°]\s*SEMESTRE", s0)
+        if m:
+            res["issue"] = {"value": int(m.group(1)), "uid": uid,
+                            "confidence": {"level": "high", "source": "latin_biblio"}}
+    if res["issue"]["value"] is not None and not volume_found \
+            and res["volume"]["value"] is None:
+        # 不覆盖 extract() 已从 DOI/刊头收到的卷号(Analyses & Alternatives 2025 9(2)
+        # 实证): 本函数只在没有卷证据时把 volume 明确置空, 否则会把 9 清掉。
+        res["volume"] = {"value": None, "uid": None,
+                         "confidence": {"level": "high", "source": "latin_biblio"}}
+
+
 def issue_doc(doc, out_root):
     """单篇: 来源行收集 → extract() → 页码推断兜底 → metadata.json 新字段 + audit.issue。"""
     doc_dir = os.path.join(out_root, doc)
@@ -856,6 +970,7 @@ def issue_doc(doc, out_root):
             if (p <= 1 and (u["type"] in STRUCT_TYPES or (p == 0 and u["box"][1] < 0.12 * j["h"]))) \
                     or (p == 0 and (_DOI.search(t) or re.search(r"출판연도\s*[:：]", t)
                                     or _YEAR_VOL.search(t) or re.search(r"(?im)^Dans\s+", t)
+                                    or (p == 0 and re.match(r"(?i)(?:Revista|Revue|Jornal)\b", t))
                                     or re.search(r"(?i)Revue\s+[^,\n]+,\s*(?:19|20)\d{2}\s*,\s*\d+", t)
                                     or re.search(u"//\\s*[^/]+[.]\\s*[—–-]?\\s*(?:19|20)\\d{2}", t))) \
                     or (u["type"] in ("Page-header", "Page-footer")
@@ -1023,6 +1138,7 @@ def issue_doc(doc, out_root):
             if res["issue"]["value"] is None:
                 res["issue"] = {"value": _fit[2], "uid": None,
                                 "confidence": {"level": "mid", "source": "sibling_issue"}}
+    _latin_biblio_overrides(res, source, _lang)
     audit = res.pop("_audit")
     audit["channel_fallback"] = ch_filled
     if running_journal:
@@ -1157,6 +1273,20 @@ def issue_doc(doc, out_root):
                     "level": "high", "source": "volume_only",
                     "evidence": "issue==volume 同源复制; DOI 期位留空(年.卷.页码 / 年..卷)"}
                 audit["issue_note"] = "issue==volume 同源复制置空; DOI 无期位, 原文不编期号"
+    if _lang in ("ru", "pt", "fr", "en"):
+        # 旧值只在本轮没抽到同语种组时保留; 不得把刚按 keywords_en 填好的主 keywords 又盖空
+        # (13582999 实证)。
+        if not kws:
+            kws = (meta.get("keywords") or []) or kws
+        if not kws_en:
+            kws_en = (meta.get("keywords_en") or []) or kws_en
+    # 英文/原文只印英文关键词时, 主 keywords[] 不空置(13573745 '[Key-words]' /
+    # 13582999 实证; 与 13582997 既有口径一致)。必须在旧值保留之后执行。
+    if not kws and kws_en:
+        kws = list(kws_en)
+        kw_raw = kw_raw_en
+        kw_loc = kw_loc_en
+        audit["keywords_language_fallback"] = u"keywords[] 原语种空缺, 以 keywords_en 同值填充"
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -1243,6 +1373,7 @@ def _selftest():
         and _kw(u"◆ 주제어(Key Words) : 경찰공무원, 외상 후 스트레스장애") == [u"경찰공무원", u"외상 후 스트레스장애"] \
         and _kw(u"주제어 : 성곽, 우수주") == [u"성곽", u"우수주"] \
         and _kw("Key Words: alpha, beta") == ["alpha", "beta"] \
+        and _kw("[Key-words] Korean Language Education, Family Culture") == ["Korean Language Education", "Family Culture"] \
         and _kw_parse("Keywords Lee Sung Dang, Gunsan", ["Keywords Lee Sung Dang, Gunsan"], 0)[0] is True \
         and _kw_parse(u"핵심어 이성당, 군산", [u"핵심어 이성당, 군산"], 0)[0] is False \
         and not _KL.match(u"◆ 관련법령은 다음과 같다")
@@ -1463,15 +1594,29 @@ def _selftest():
     r34b = extract([(0, "u0", u"요약 본문 블록"),
                     (1, "u1", u"2022년 8월")], 2, set())
     ok34 = ok34 and r34b["year"]["value"] is None
+    # 35-37) 2026-11-24 KCI11_17: 英文刊被 langid 误判 pt/fr 时, 刊名/卷号不得丢。
+    r35 = extract([(0, "u0", "Analyses & Alternatives 2025 9(2): 095-118 DOI: 10.22931/aanda.2025.9.2.004")],
+                  1, set(), lang="pt")
+    ok35 = r35["journal"]["value"] == "Analyses & Alternatives" \
+        and r35["volume"]["value"] == 9 and r35["issue"]["value"] == 2
+    r36 = extract([(0, "u0", "JAMS / JOURNAL OF ADVANCES IN MILITARY STUDIES"),
+                   (0, "u1", "2025, Vol. 8, No. 2, 21-41")], 1, set(), lang="fr")
+    ok36 = r36["journal"]["value"] == "Journal of Advances in Military Studies" \
+        and r36["year"]["value"] == 2025 and r36["volume"]["value"] == 8 \
+        and r36["issue"]["value"] == 2
+    r37 = extract([(0, "u0", u"Analyses & Alternatives 2023 7(1): 007-043 DOI: 10.22931/aanda.2023.7.1.001")],
+                  1, set(), lang="fr")
+    ok37 = r37["volume"]["value"] == 7 and r37["issue"]["value"] == 1 \
+        and r37["journal"]["value"] == "Analyses & Alternatives"
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
                             ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
-                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34), 1):
+                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/35 PASS" % n_ok)
-    return n_ok == 35
+    print("issue selftest: %d/38 PASS" % n_ok)
+    return n_ok == 38
 
 
 if __name__ == "__main__":
