@@ -1131,7 +1131,9 @@ class WorkspaceTest(unittest.TestCase):
             gate.wait(1)
             return {"ok": True, "results": {}, "error": ""}
 
-        with tempfile.TemporaryDirectory() as tmp, \
+        # ignore_cleanup_errors: 任务线程是 daemon, 收尾写盘可能比 with 退出晚一拍,
+        # py3.12 上偶发 OSError: Directory not empty(2026-11-25 CI 复现)
+        with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp, \
                 mock.patch.object(gui.stages, "run_one_child", side_effect=fake_run), \
                 mock.patch.object(gui, "append_history"):
             runner = gui.Runner(logs.append, parallel=2, out_root=os.path.join(tmp, "main"),
@@ -1145,6 +1147,9 @@ class WorkspaceTest(unittest.TestCase):
                 time.sleep(0.05)
             self.assertEqual(calls, [("one", os.path.join(tmp, "main")),
                                      ("two", os.path.join(tmp, "lab"))])
+            # calls 只代表"开跑", 不代表"落盘完"; 等队列与在跑集合都清空再退出 with
+            while (runner.queued or runner.running) and time.time() < deadline:
+                time.sleep(0.05)
 
 
     def test_runners_and_logs_are_independent(self):
@@ -1160,7 +1165,7 @@ class WorkspaceTest(unittest.TestCase):
         gate = threading.Event()
         try:
             app.withdraw()
-            with tempfile.TemporaryDirectory() as tmp:
+            with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp:
                 one = gui.workspaces.custom_workspace(os.path.join(tmp, "one")).ensure()
                 two = gui.workspaces.custom_workspace(os.path.join(tmp, "two")).ensure()
                 r1, r2 = app._runner_for(one), app._runner_for(two)
