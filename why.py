@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""why.py — 口径统一查询入口(2026-11-24): "这篇为什么红/这个刊到底免不免卷", 一处查全。
+"""why.py — 口径统一查询入口(2026-11-24): "这篇为什么红/这个刊什么体例", 一处查全。
 
 背景: 同一类"为什么例外"的口径散在五处, 互相漂移且无交叉引用——
     qc.py(运行时判定) / journals.py(刊例事实) / metadata(字段来源) /
@@ -84,8 +84,11 @@ def _parse_note(note):
 
 
 def _family_of(journal, doi_text):
-    """按刊名/DOI 命中 journals.py 族表 + 免卷白名单 + DOI 注册表。"""
-    import qc
+    """按刊名/DOI 命中 journals.py 族表 + DOI 注册表。
+
+    免卷白名单已于 2026-11-25 移除; 这里的 was_novol 只反映族表记载的历史体例,
+    不再代表 QC 会豁免——缺卷期一律报红。
+    """
     from metapy import journals
     fold = lambda s: re.sub(r"\s+", "", (s or "")).lower()
     jn = fold(journal)
@@ -99,8 +102,9 @@ def _family_of(journal, doi_text):
     reg = journals.load_registry()
     doi_hits = [(p, v) for p, v in sorted(reg.items())
                 if doi_text and p in doi_text.lower()]
-    novol = bool(journal) and journal in qc._NO_VOL_JOURNALS
-    return hits, doi_hits, novol
+    was_novol = any(u"免卷" in (f.get("layout") or "") or u"不印年卷期" in (f.get("layout") or "")
+                    for f in hits)
+    return hits, doi_hits, was_novol
 
 
 def _guard_evidence(doc):
@@ -138,7 +142,7 @@ def show_doc(doc, root, ws_name):
 
     # 权威 1: 运行时 QC
     r = qc.qc_of(doc, out_dir, ner_root)
-    verdict = {"": "通过", "novol": "免卷期刊(结构豁免)",
+    verdict = {"": "通过", "novol": "历史免卷档(已取消, 老台账残留)",
                "nonregular": "非正规论文", "bad": "异常"}.get(r["level"], r["level"])
     print("\n[1 权威·红绿] qc.qc_of → %s" % verdict)
     if r["issues"]:
@@ -149,18 +153,15 @@ def show_doc(doc, root, ws_name):
     journal = ((m.get("journal") or {}).get("value") if isinstance(m.get("journal"), dict)
                else m.get("journal")) or ""
     doi_text = " ".join(str(m.get(k) or "") for k in ("doi", "doi_url"))
-    fams, doi_hits, novol = _family_of(journal, doi_text)
+    fams, doi_hits, was_novol = _family_of(journal, doi_text)
     print("\n[2 权威·体例] journals.py / qc.py")
-    print("   刊名=%s  免卷白名单=%s" % (journal or "(空)", "是" if novol else "否"))
+    print("   刊名=%s  历史免卷体例=%s (QC 不再豁免, 缺卷期照常报红)" % (journal or "(空)", "是" if was_novol else "否"))
     for f in fams:
         print("   族[%s] extractor=%s" % (f["key"], (f.get("extractor") or "")[:80]))
         print("          gaps=%s" % (f.get("gaps") or "无")[:160])
     for p, v in doi_hits:
         print("   DOI注册表[%s] → %s (%s)" % (p, v.get("journal"), v.get("source")))
-    # 同一刊在族表/白名单/注册表间的口径漂移
-    gtxt = " ".join((f.get("gaps") or "") for f in fams)
-    if novol and ("不再视为免卷" in gtxt or "不再视为免卷" in gtxt.replace(" ", "")):
-        print("   ⚠ 漂移: 族表 gaps 已记'不再视为免卷', 但 qc 白名单仍收录该刊")
+    # 免卷口径已于 2026-11-25 统一: QC 无豁免, 族表只记历史体例, 不再存在三处漂移。
 
     # 权威 3: 字段来源
     print("\n[3 权威·来源] metadata confidence / webfill")
@@ -218,8 +219,8 @@ def show_doc(doc, root, ws_name):
         conflicts.append("历史台账记'通过', 但 QC 现判异常 —— 后链回归或判据收紧")
     if (not bad) and row and row.get("result") == "原文证据不足":
         conflicts.append("历史台账记'证据不足', 但 QC 现已通过 —— 规则已修好, 档案过时(仅提示)")
-    if note and ("免卷" in note or "不印卷期" in note) and not novol:
-        conflicts.append("备注称免卷, 但 qc._NO_VOL_JOURNALS 未收录该刊 —— 口径未同步")
+    if note and ("免卷" in note or "不印卷期" in note) and was_novol:
+        conflicts.append("历史备注称免卷, 但 QC 已取消该豁免(2026-11-25) —— 备注过时, 仅提示")
     if conflicts:
         for c in conflicts:
             print("   ⚠ " + c)
@@ -231,7 +232,7 @@ def show_journal(query, root, ws_name):
     import qc
     from metapy import journals
     out_dir = os.path.join(root, "out") if root else os.path.join(HERE, "out")
-    fams, doi_hits, novol = _family_of(query, query)
+    fams, doi_hits, was_novol = _family_of(query, query)
     reg = journals.load_registry()
     # DOI 注册表也按刊名反查
     for p, v in sorted(reg.items()):
@@ -251,8 +252,8 @@ def show_journal(query, root, ws_name):
             print("   gaps=%s" % (f.get("gaps") or "无")[:300])
     else:
         print("   (未登记族)")
-    print("\n[免卷白名单 qc._NO_VOL_JOURNALS] %s" % ("命中" if novol else "未命中"))
-    print("   %s" % ", ".join(sorted(qc._NO_VOL_JOURNALS)))
+    print("\n[免卷口径] 已取消(2026-11-25): 族表历史体例=%s, QC 不再豁免缺卷期" %
+          ("是" if was_novol else "否"))
     print("\n[DOI 注册表]")
     for p, v in doi_hits:
         print("   %s → %s / %s [%s] %s" % (p, v.get("journal"), v.get("journal_en"),
