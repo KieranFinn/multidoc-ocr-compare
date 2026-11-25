@@ -47,6 +47,7 @@ out/.view_body_chars.json
 _meta_snapshot_*.zip
 _meta_diff_*.json
 _failures.json
+_failures_*.json
 _meta_backup_*.zip
 
 # 轮次台账与进度报告(failures.py --round 产物, 本地过程数据, 每轮刷新)

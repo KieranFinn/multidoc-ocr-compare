@@ -150,7 +150,8 @@ labelled "not provided" in the report instead of failing the run.
 ```bash
 cp channels.local.example.json channels.local.json   # fill in only the tokens you have; gitignored
 python pipeline.py mypaper.pdf                       # uses every channel that has a token (or a cache / inbox entry)
-python webapp.py                                     # or: drag & drop workbench at 127.0.0.1:8765
+python gui.py                                        # desktop workbench (tkinter, zero deps; 启动GUI.bat on Windows)
+                                                     # the browser workbench opens from its toolbar (same as: python webapp.py)
 ```
 
 A channel with no token, no cache and nothing in `inbox/` is simply skipped — you do not have to
@@ -448,7 +449,7 @@ accept "this doc is in the archive index".
   Every one of the 35 dataset records is still *verifiable* — each `slice` is verbatim in the source —
   which is exactly the difference between "located" and "correct".
 - Every channel goes through a cloud API, so there is no platform-specific path; `pipeline.py`,
-  `webapp.py`, `metadata.py` and the views are platform-neutral. `start.bat` / `start.sh` are convenience wrappers.
+  `webapp.py`, `metadata.py` and the views are platform-neutral. `启动GUI.bat` / `start.sh` are convenience wrappers around `gui.py`.
 - No live-service tests are included (they would need credentials and quota). CI compiles every module,
   runs the unit tests, `ner_lite.py selfcheck` and the offline demo; it does not call an LLM.
 

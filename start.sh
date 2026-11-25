@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 cd "$(dirname "$0")" || exit 1
-exec python3 webapp.py
+exec python3 gui.py

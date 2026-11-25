@@ -117,8 +117,8 @@ python -m http.server -d _attic/examples/demo/out/demo_kr  # 然后打开 /index
 ```bash
 cp channels.local.example.json channels.local.json   # 只填你有的 token，该文件已被 gitignore
 python pipeline.py mypaper.pdf                       # 用上所有有 token（或有缓存 / inbox 产物）的渠道
-python webapp.py                                     # 或者开拖拽工作台：127.0.0.1:8765
-python gui.py                                        # 桌面工作台（tkinter，零依赖，Windows 可双击 启动GUI.bat）
+python gui.py                                        # 桌面工作台（tkinter，零依赖；Windows 可直接双击 启动GUI.bat）
+                                                     # 浏览器工作台由 GUI 右上角按钮拉起（等价: python webapp.py）
 ```
 
 没有 token、没有缓存、`inbox/` 里也没产物的渠道会被**直接跳过**，不需要显式禁用。先只开 `dots`（它不要 token）是拿到第一次真实运行的最短路径；之后补上 `paddle` / `mineru` 的 token，下一篇文档就会自动用上。
@@ -317,7 +317,7 @@ python archive.py --selftest                # 30 个断言
 - `dots_api.base` 默认指向一个社区公共实例；万一它没了，请指向你自己的 Gradio 5 部署（或者用 `inbox/` 喂已有产物）。
 - **准确率并不均匀，且残余失败是原文缺字段，不是解析器缺能力。** 文献条目与前置信息（题目/作者区）的启发式是在 `out/` 下 23 篇韩 / 英 / 中期刊语料上调的，验收标准就是工作台的质检列：当前 23 篇里 20 篇必抽项全通过。剩下 3 篇是文章本身就没有该字段，已逐张页图核对——`KCI_FI001004818_2002` 无关键词栏、无摘要、无卷号表述；`KCI_FI001536751_2000` 首页只有题名与作者，末页只有参考文献加通信地址；`KCI_FI002542944` 用 BMC 编号 `(2019) 43:44`，即卷 43 + 文章号 44，该刊不设期号。要补只能靠臆造。早前版本列过的弱点——全汉字作者行、摘要无可识别引导词、文献表末页与另一栏摘要同页——现已由上面的渠道兜底覆盖，而不是逐个打补丁。把 `metadata.json` 当高精度草稿用：引用前请检查每个字段的置信度（并对照 `viewer_compare.html`）。
 - **实体抽取是召回受限，不是精度受限。** 在 13 篇语料上，`ner_lite.py` 产出 57 条记录（数据集 35 / 软件 15 / 基金 7），61 条提名全部通过定位闸门，网络与解析零失败；但对人工核过的 `verified.json` 的召回并不齐：软件 6/7、基金 3/4（漏的是被拆成两条——机构与项目各成一条）、数据集 0/0（35 条全是误报，多为含「史」「報告書」的旧书与国际法院报告题名）。这 35 条仍然**每条都可验**——每个 `slice` 都逐字在原文里——这正是「定位到」和「抽对了」的区别。
-- 全部渠道都走云端 API，没有平台专属路径；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`start.bat` / `start.sh` 只是便捷包装。
+- 全部渠道都走云端 API，没有平台专属路径；`pipeline.py`、`webapp.py`、`metadata.py` 和各查看器都是跨平台的。`启动GUI.bat` / `start.sh` 只是 `gui.py` 的便捷包装；唯一 UI 入口是桌面工作台。
 - 不包含在线服务测试（需要凭据和额度）。CI 会编译每个模块、跑单元测试、`ner_lite.py selfcheck` 和离线 demo；CI 不调用 LLM。
 
 ## 仓库结构

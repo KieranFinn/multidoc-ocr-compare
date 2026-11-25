@@ -640,7 +640,7 @@ class App(tk.Tk):
         # 归档清单是全局视图(不依赖选中), 所以入口在顶栏而不是操作条
         ttk.Button(tools, text="已归档…", command=self._open_archive_list).pack(side="left", padx=6)
         # 浏览器工作台(拖拽上传 + 三渠道并排调参)也收进这里: 用户只记"打开这个工作台"一个动作,
-        # 不必再分辨该双击 start.bat 还是 启动GUI.bat(2026-11-13 入口收口)。
+        # 唯一的双击入口就是 启动GUI.bat / start.sh(2026-11-13 收口, 11-25 删掉了重复的 start.bat)。
         ttk.Button(tools, text="浏览器工作台", command=self._open_webapp).pack(side="left")
         ttk.Button(tools, text="渠道 API 配置", command=self._open_api_config).pack(side="left", padx=(8, 0))
         # 并发数: 这是"同时跑几篇", 不是"一篇跑多快"。调大只影响排队位置, 见 crossproc.py。
