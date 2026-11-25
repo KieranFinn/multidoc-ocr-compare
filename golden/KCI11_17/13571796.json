@@ -1,0 +1,5444 @@
+{
+ "doc": "13571796",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571796",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "영국 윤리경영연구소(IBE; Institute of Business Ethics)의 2018년 연구에 따르면 영국의 젊은 직원은 나이가 많은 직원보다 고용주에게 윤리적 문제를 보고할 가능성이 더 높았고, 또한 밀레니엄 세대와 Z세대 구성원은 구매 결정 시 윤리적 고려 사항을 우선시하고 자신의 가치와 일치하는 회사에서 일할 가능성이 더 높은 것으로 나타났습니다.",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     154.5,
+     1340.3,
+     1000.1,
+     1418.0
+    ],
+    "uid": "u16_4",
+    "authors": [
+     "영국 윤리경영연구소(IBE; Institute of Business Ethics)의"
+    ],
+    "authors_raw": "영국 윤리경영연구소(IBE; Institute of Business Ethics)의",
+    "et_al": false,
+    "year": "2018",
+    "title": "년 연구에 따르면 영국의 젊은 직원은 나이가 많은 직원보다 고용주에게 윤리적 문제를 보고할 가능성이 더 높았고",
+    "source": "또한 밀레니엄 세대와 Z세대 구성원은 구매 결정 시 윤리적 고려 사항을 우선시하고 자신의 가치와 일치하는 회사에서 일할 가능성이 더 높은 것으로 나타났습니다",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 1,
+   "per_page": {
+    "17": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "17": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Avey, J. B., Reichard, R. J., Luthans, F., & Mhatre, K. H. (2011). Meta-analysis of the impact of positive psychological capital on employee attitudes, behaviors, and performance. Human Resource Development Quarterly, 22(2), 127-152. https://doi.org/10.1002/ hrdq.20070",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Avey J. B",
+     "Reichard R. J",
+     "Luthans F",
+     "Mhatre K. H"
+    ],
+    "authors_raw": "Avey, J. B., Reichard, R. J., Luthans, F., & Mhatre, K. H",
+    "et_al": false,
+    "year": "2011",
+    "title": "Meta-analysis of the impact of positive psychological capital on employee attitudes",
+    "source": "behaviors",
+    "volume": null,
+    "issue": null,
+    "pages": "127-152",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Avolio, B. J., & Gardner, W. L. (2005). Authentic leadership development: Getting to the root of positive forms of leadership. The Leadership Quarterly, 16(3), 315-338. https://doi.org 10.1016/j.leaqua.2005.03.001",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Avolio B. J",
+     "Gardner W. L"
+    ],
+    "authors_raw": "Avolio, B. J., & Gardner, W. L",
+    "et_al": false,
+    "year": "2005",
+    "title": "Authentic leadership development: Getting to the root of positive forms of leadership. The Leadership Quarterly",
+    "source": "16(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "315-338",
+    "doi": "10.1016/j.leaqua.2005.03.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Avolio, B. J., Gardner, W. L., Walumbwa, F. O., Luthans, F., & May, D. R. (2004). Unlocking the mask: A look at the process by which authentic leaders impact follower attitudes and behaviors. The Leadership Quarterly, 15(6), 801-823. https://doi.org/10.1016/j.leaqua. 2004.09.003",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Avolio B. J",
+     "Gardner W. L",
+     "Walumbwa F. O",
+     "Luthans F",
+     "May D. R"
+    ],
+    "authors_raw": "Avolio, B. J., Gardner, W. L., Walumbwa, F. O., Luthans, F., & May, D. R",
+    "et_al": false,
+    "year": "2004",
+    "title": "Unlocking the mask: A look at the process by which authentic leaders impact follower attitudes and behaviors. The Leadership Quarterly",
+    "source": "15(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "801-823",
+    "doi": "10.1016/j.leaqua",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Avolio, B.J., & Luthans, F. (2006). The high impact leader: Moments matter for accelerating authentic leadership development. New York, US: McGraw-Hill.",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Avolio B.J",
+     "Luthans F"
+    ],
+    "authors_raw": "Avolio, B.J., & Luthans, F",
+    "et_al": false,
+    "year": "2006",
+    "title": "The high impact leader: Moments matter for accelerating authentic leadership development. New York",
+    "source": "US: McGraw-Hill",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bakker, A. B., & Demerouti, E. (2007). The Job demands-resources model: State of the Art. Journal of Managerial Psychology, 22(3), 309-328. https://doi.org/10.1108/02683940710733115",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Bakker A. B",
+     "Demerouti E"
+    ],
+    "authors_raw": "Bakker, A. B., & Demerouti, E",
+    "et_al": false,
+    "year": "2007",
+    "title": "The Job demands-resources model: State of the Art. Journal of Managerial Psychology",
+    "source": "22(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "309-328",
+    "doi": "10.1108/02683940710733115",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bakker, A. B., Demerouti, E., & Sanz-Vergel, A. I. (2014), Burnout and work engagement: The JD-R approach. The Annual Review of Organizational Psychology and Organizational Behavior, 1(1), 389-411. https://doi.org/10.1146/annurev-orgpsych-031413-091235",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Bakker A. B",
+     "Demerouti E",
+     "Sanz-Vergel A. I"
+    ],
+    "authors_raw": "Bakker, A. B., Demerouti, E., & Sanz-Vergel, A. I",
+    "et_al": false,
+    "year": "2014",
+    "title": "Burnout and work engagement: The JD-R approach. The Annual Review of Organizational Psychology and Organizational Behavior",
+    "source": "1(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "389-411",
+    "doi": "10.1146/annurev-orgpsych-031413-091235",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bandura, A. (1969). Social-Learning Theory of Identificatory Processes. In D. A. Goslin (Ed.), Handbook of Socialization Theory and Research (pp. 213-262). Chicago, IL: Rand McNally & Company.",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Bandura A"
+    ],
+    "authors_raw": "Bandura, A",
+    "et_al": false,
+    "year": "1969",
+    "title": "Social-Learning Theory of Identificatory Processes. In D. A. Goslin (Ed.)",
+    "source": "Handbook of Socialization Theory and Research (pp. 213-262). Chicago",
+    "volume": null,
+    "issue": null,
+    "pages": "213-262",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. Psychological Review, 84(2), 191-215. https://doi.org/10.1037/0033-295X.84.2.191",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Bandura A"
+    ],
+    "authors_raw": "Bandura, A",
+    "et_al": false,
+    "year": "1977",
+    "title": "Self-efficacy: Toward a unifying theory of behavioral change. Psychological Review",
+    "source": "84(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "191-215",
+    "doi": "10.1037/0033-295X.84.2.191",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Baron, R. M., & Kenny, D. A. (1986). The moderator–mediator variable distinction in social psychological research: Conceptual, strategic, and statistical considerations. Journal of Personality and Social Psychology, 51(6), 1173-1182. https://doi.org/10.1037/0022-3514. 51.6.1173",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Baron R. M",
+     "Kenny D. A"
+    ],
+    "authors_raw": "Baron, R. M., & Kenny, D. A",
+    "et_al": false,
+    "year": "1986",
+    "title": "The moderator–mediator variable distinction in social psychological research: Conceptual",
+    "source": "strategic",
+    "volume": null,
+    "issue": null,
+    "pages": "1173-1182",
+    "doi": "10.1037/0022-3514",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Brotheridge, C. M., & Grandey, A. A. (2002). Emotional labor and burnout: Comparing two perspectives of people work. Journal of Vocational Behavior, 60(1), 17-23. https://doi.org/ 10.1006/jvbe.2001.1815 Cho, Y. M., & Jang, K. H. (2020). Relationship between Basic Psychological Needs and Psychological Burnout of Nurse: Mediation Effect of Positive Psychological Capital and Moderated Mediation Effect of Authentic Leadership. Journal of Digital Convergence, 18(11), 319-328. https://doi.org/10.14400/JDC.2020.18.11.319",
+    "page": 21,
+    "box": [
+     143.8,
+     799.4,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u20_2",
+    "authors": [
+     "Brotheridge C. M",
+     "Grandey A. A"
+    ],
+    "authors_raw": "Brotheridge, C. M., & Grandey, A. A",
+    "et_al": false,
+    "year": "2020",
+    "title": "Relationship between Basic Psychological Needs and Psychological Burnout of Nurse: Mediation Effect of Positive Psychological Capital and Moderated Mediation Effect of Authentic Leadership. Journal of Digital Convergence",
+    "source": "18(11)",
+    "volume": null,
+    "issue": null,
+    "pages": "17-23",
+    "doi": "10.1006/jvbe.2001.1815",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, S., Cheong, K. K., & Feinberg, R. A. (2012). Moderating effects of supervisor support, monetary rewards, and career paths on the relationship between job burnout and turnover intentions in the context of call centers. Managing Service Quality: An International Journal, 22(5), 492-516. https://doi.org/10.1108/09604521211281396",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Choi S",
+     "Cheong K. K",
+     "Feinberg R. A"
+    ],
+    "authors_raw": "Choi, S., Cheong, K. K., & Feinberg, R. A",
+    "et_al": false,
+    "year": "2012",
+    "title": "Moderating effects of supervisor support",
+    "source": "monetary rewards",
+    "volume": null,
+    "issue": null,
+    "pages": "492-516",
+    "doi": "10.1108/09604521211281396",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, W. J., & Cho, Y. H. (2013). The Effects of Authentic Leadership on Psychological Well-being and Adaptive Performance: The Mediating Role of Self-Efficacy. Korean Journal of Management, 21(1), 185-228. G704-000359.2013.21.1.005",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Choi W. J",
+     "Cho Y. H"
+    ],
+    "authors_raw": "Choi, W. J., & Cho, Y. H",
+    "et_al": false,
+    "year": "2013",
+    "title": "The Effects of Authentic Leadership on Psychological Well-being and Adaptive Performance: The Mediating Role of Self-Efficacy. Korean Journal of Management",
+    "source": "21(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "185-228",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Coutu, D. L. (2002). How resilience works. Harvard Business Review, 80(5), 46-56.",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Coutu D. L"
+    ],
+    "authors_raw": "Coutu, D. L",
+    "et_al": false,
+    "year": "2002",
+    "title": "How resilience works. Harvard Business Review",
+    "source": "80(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "46-56",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Demerouti E., Bakker A. B., Nachreiner F., & Schaufeli W. B. (2001). The job demands-resources model of burnout. Journal of Applied Psychology, 86(3), 499-512. https://doi.org/10.1037// 0021-9010.86.3.499",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Demerouti E",
+     "Bakker A. B",
+     "Nachreiner F",
+     "Schaufeli W. B"
+    ],
+    "authors_raw": "Demerouti E., Bakker A. B., Nachreiner F., & Schaufeli W. B",
+    "et_al": false,
+    "year": "2001",
+    "title": "The job demands-resources model of burnout. Journal of Applied Psychology",
+    "source": "86(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "499-512",
+    "doi": "10.1037//",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Freudenberger, H. J. (1974). Staff burn-out. Journal of Social Issues, 30(1), 159-165. https://doi.org/ 10.1111/j.1540-4560.1974.tb00706.x",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Freudenberger H. J"
+    ],
+    "authors_raw": "Freudenberger, H. J",
+    "et_al": false,
+    "year": "1974",
+    "title": "Staff burn-out. Journal of Social Issues",
+    "source": "30(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "159-165",
+    "doi": "10.1111/j.1540-4560.1974.tb00706.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gardner, W. L., & Schermerhorn, J. R. (2004). Performance gains through positive organizational behaviour and authentic leadership. Organizational Dynamics, 33(3), 270-281. https://doi.org/ 10.1016/j.orgdyn.2004.06.004",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Gardner W. L",
+     "Schermerhorn J. R"
+    ],
+    "authors_raw": "Gardner, W. L., & Schermerhorn, J. R",
+    "et_al": false,
+    "year": "2004",
+    "title": "Performance gains through positive organizational behaviour and authentic leadership. Organizational Dynamics",
+    "source": "33(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "270-281",
+    "doi": "10.1016/j.orgdyn.2004.06.004",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gardner, W. L., Avolio, B. J., Luthans, F., May, D. R., & Walumbwa, F. (2005). Can you see the real me?: A self-based model of authentic and follower development. The Leadership Quarterly, 16(3), 343-372. https://doi.org/10.1016/j.leaqua.2005.03.003",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Gardner W. L",
+     "Avolio B. J",
+     "Luthans F",
+     "May D. R",
+     "Walumbwa F"
+    ],
+    "authors_raw": "Gardner, W. L., Avolio, B. J., Luthans, F., May, D. R., & Walumbwa, F",
+    "et_al": false,
+    "year": "2005",
+    "title": "Can you see the real me?: A self-based model of authentic and follower development. The Leadership Quarterly",
+    "source": "16(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "343-372",
+    "doi": "10.1016/j.leaqua.2005.03.003",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gardner, W.L., Fischer, D., & Hunt. J. G. (2009). Emotional labor and leadership: A Threat to authenticity? The Leadership Quarterly, 20(3), 466-82. https://doi.org/10.1016/j.leaqua. 2009.03.011",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Gardner W.L",
+     "Fischer D",
+     "Hunt. J. G"
+    ],
+    "authors_raw": "Gardner, W.L., Fischer, D., & Hunt. J. G",
+    "et_al": false,
+    "year": "2009",
+    "title": "Emotional labor and leadership: A Threat to authenticity? The Leadership Quarterly",
+    "source": "20(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1016/j.leaqua",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Han, B. J. (2013). A Study on the Mediating Effects of LMX and Psychological Capital between Authentic Leadership and Organizational Commitment. Journal of Organization and Management, 37(3), 125-153. G704-000984.2013.37.3.008",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Han B. J"
+    ],
+    "authors_raw": "Han, B. J",
+    "et_al": false,
+    "year": "2013",
+    "title": "A Study on the Mediating Effects of LMX and Psychological Capital between Authentic Leadership and Organizational Commitment. Journal of Organization and Management",
+    "source": "37(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "125-153",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Harter, S. (2002). Authenticity. In C. R. Snyder & S. J. Lopez (Eds.), Handbook of positive psychology(pp. 382-394). Oxford: Oxford University Press.",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Harter S"
+    ],
+    "authors_raw": "Harter, S",
+    "et_al": false,
+    "year": "2002",
+    "title": "Authenticity. In C. R. Snyder & S. J. Lopez (Eds.)",
+    "source": "Handbook of positive psychology(pp. 382-394). Oxford: Oxford University Press",
+    "volume": null,
+    "issue": null,
+    "pages": "382-394",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hatfield, E., Cacioppo, J., & Rapson, R. (1993). Emotional Contagion. Cambridge: Cambridge University Press.",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Hatfield E",
+     "Cacioppo J",
+     "Rapson R"
+    ],
+    "authors_raw": "Hatfield, E., Cacioppo, J., & Rapson, R",
+    "et_al": false,
+    "year": "1993",
+    "title": "Emotional Contagion. Cambridge: Cambridge University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hobfoll, S. E. (1989). Conservation of resources: A new attempt at conceptualizing stress.",
+    "page": 22,
+    "box": [
+     143.8,
+     826.5,
+     1000.1,
+     1239.0
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Hobfoll S. E"
+    ],
+    "authors_raw": "Hobfoll, S. E",
+    "et_al": false,
+    "year": "1989",
+    "title": "Conservation of resources: A new attempt at conceptualizing stress",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hong, E. S. (2006). Conceptual understanding of resilience and instructional suggestion. Korean Journal of Special Education, 41(2), 45-67. G704-000685.2006.41.2.003",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Hong E. S"
+    ],
+    "authors_raw": "Hong, E. S",
+    "et_al": false,
+    "year": "2006",
+    "title": "Conceptual understanding of resilience and instructional suggestion. Korean Journal of Special Education",
+    "source": "41(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "45-67",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jang, M. Y, & Lee, S. S. (2020). The Serial Multiple Mediation Effect of Psychological Ownership, Job Burnout on the Relationship between Authentic Leadership and on the Job Turnover Intention: Focusing on Emotional Workers in Generation X and Generation Y. Journal of Vocational Education & Training, 23(2), 1-42. https://www.kci.go.kr/kciportal/ ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002612052",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Jang M. Y",
+     "Lee S. S"
+    ],
+    "authors_raw": "Jang, M. Y, & Lee, S. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Serial Multiple Mediation Effect of Psychological Ownership",
+    "source": "Job Burnout on the Relationship between Authentic Leadership and on the Job Turnover Intention: Focusing on Emotional Workers in Generation X and Generation Y. Journal of Vocational Education & Training",
+    "volume": null,
+    "issue": null,
+    "pages": "1-42",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ji, I. H., Kim, D. C., & Kim, J. W. (2021). A Study on the Effect of Authentic Leadership on Affective Organization Commitment and Change Supportive Behavior: Focused on the Mediating Effects of Positive Psychological Capital. Journal of Organization and Management, 45(3), 101-125.",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Ji I. H",
+     "Kim D. C",
+     "Kim J. W"
+    ],
+    "authors_raw": "Ji, I. H., Kim, D. C., & Kim, J. W",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Effect of Authentic Leadership on Affective Organization Commitment and Change Supportive Behavior: Focused on the Mediating Effects of Positive Psychological Capital. Journal of Organization and Management",
+    "source": "45(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "101-125",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jin, L., & Park, K. H. (2021). Research on the Effects of Positive Psychological Capital on Innovative Behaviors and Job Burnout: Mediating effect of Organizational Citizenship Behavior. KBM Journal, 6(1), 39-61. https://doi.org/10.51858/KBMJ.2022.02.6.1.39",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Jin L",
+     "Park K. H"
+    ],
+    "authors_raw": "Jin, L., & Park, K. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "Research on the Effects of Positive Psychological Capital on Innovative Behaviors and Job Burnout: Mediating effect of Organizational Citizenship Behavior. KBM Journal",
+    "source": "6(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "39-61",
+    "doi": "10.51858/KBMJ.2022.02.6.1.39",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Johnston, R. (1995). The determinants of service quality: satisfiers and dissatisfiers. International Journal of Service Industry Management. 6(5), 53-71. https://doi.org/10.1108/09564239510101536",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Johnston R"
+    ],
+    "authors_raw": "Johnston, R",
+    "et_al": false,
+    "year": "1995",
+    "title": "The determinants of service quality: satisfiers and dissatisfiers. International Journal of Service Industry Management. 6(5)",
+    "source": "53-71. https://doi.org/10.1108/09564239510101536",
+    "volume": null,
+    "issue": null,
+    "pages": "53-71",
+    "doi": "10.1108/09564239510101536",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Joo, I. H., & Kim, J. S. (2021). A Study on Experts<sup>’</sup> Perception Types towards Press Reports about Defense Acquisition Program. Journal of Korean Society for the Scientific Study of Subjectivity, 54, 93-115. https://doi.org/10.18346/KSSSS.54.5",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Joo I. H",
+     "Kim J. S"
+    ],
+    "authors_raw": "Joo, I. H., & Kim, J. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on Experts<sup>’</sup> Perception Types towards Press Reports about Defense Acquisition Program. Journal of Korean Society for the Scientific Study of Subjectivity",
+    "source": "54",
+    "volume": null,
+    "issue": null,
+    "pages": "93-115",
+    "doi": "10.18346/KSSSS.54.5",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, Y. A., Oh, M. S., & Kim, H. S. (2020). The Relationship between Occupational Stress and Burnout among Firefighters: Mediating of Grit. Journal of Korean Academy of Psychiatric and Mental Health Nursing, 29(2), 96-105. https://doi.org/10.12934/jkpmhn. 2020.29.2.96",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Jung Y. A",
+     "Oh M. S",
+     "Kim H. S"
+    ],
+    "authors_raw": "Jung, Y. A., Oh, M. S., & Kim, H. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Relationship between Occupational Stress and Burnout among Firefighters: Mediating of Grit. Journal of Korean Academy of Psychiatric and Mental Health Nursing",
+    "source": "29(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "96-105",
+    "doi": "10.12934/jkpmhn",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, K. H., & Kim, M. J. (2019). The Effects of Positive Psychological Capital and Job Satisfaction on Innovative Behavior: Focused on the Moderating Effect of Knowledge Sharing. The Journal of Business Education, 33(6), 229-258. https://doi.org/10.34274/ krabe.2019.33.6.011",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kang K. H",
+     "Kim M. J"
+    ],
+    "authors_raw": "Kang, K. H., & Kim, M. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "The Effects of Positive Psychological Capital and Job Satisfaction on Innovative Behavior: Focused on the Moderating Effect of Knowledge Sharing. The Journal of Business Education",
+    "source": "33(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "229-258",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kernis, M. H. (2003). Toward a conceptualisation of optimal self-esteem. Psychological Inquiry, 14(1), 1-26. https://doi.org/10.1207/S15327965PLI1401_01",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kernis M. H"
+    ],
+    "authors_raw": "Kernis, M. H",
+    "et_al": false,
+    "year": "2003",
+    "title": "Toward a conceptualisation of optimal self-esteem. Psychological Inquiry",
+    "source": "14(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-26",
+    "doi": "10.1207/S15327965PLI1401_01",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. J. (2018). The Influence of Positive Psychological Capital to the Job Satisfaction of Child Care Teachers: Verification of the Mediating Effect of Psychological Exhaustion. The Journal of Humanities and Social science, 9(1), 755-766. https://doi.org/10.22143/ HSS21.9.1.60",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim B. J"
+    ],
+    "authors_raw": "Kim, B. J",
+    "et_al": false,
+    "year": "2018",
+    "title": "The Influence of Positive Psychological Capital to the Job Satisfaction of Child Care Teachers: Verification of the Mediating Effect of Psychological Exhaustion. The Journal of Humanities and Social science",
+    "source": "9(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "755-766",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, M. S., & Jang, C. S. (2012). The effects of authentic leadership on employee positive psychological capital and affective commitment. Korean Journal of Human Resources Development, 15(1), 101-125. G704-SER000010057.2012.15.1.002",
+    "page": 23,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1029.7
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim M. S",
+     "Jang C. S"
+    ],
+    "authors_raw": "Kim, M. S., & Jang, C. S",
+    "et_al": false,
+    "year": "2012",
+    "title": "The effects of authentic leadership on employee positive psychological capital and affective commitment. Korean Journal of Human Resources Development",
+    "source": "15(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "101-125",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. H. (2018). Relationship between positive psychological capital and learning agility and innovative behavior of R&D Research Institute. [Master<sup>’</sup>s dissertation, Korea University]",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kim S. H"
+    ],
+    "authors_raw": "Kim, S. H",
+    "et_al": false,
+    "year": "2018",
+    "title": "Relationship between positive psychological capital and learning agility and innovative behavior of R&D Research Institute. [Master<sup>’</sup>s dissertation",
+    "source": "Korea University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, W. S., Chi, M. W., & Lee, K. W. (2017). A Study on the Effect of Perceived Organizational Support on the Service Improvement Behavior of Travel Agency Employees - Focused on the Mediated Effects of Job Burnout. Journal of Hotel & Resort, 16(3), 87-109. https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearc hBean.artiId=ART002256769",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kim W. S",
+     "Chi M. W",
+     "Lee K. W"
+    ],
+    "authors_raw": "Kim, W. S., Chi, M. W., & Lee, K. W",
+    "et_al": false,
+    "year": "2017",
+    "title": "A Study on the Effect of Perceived Organizational Support on the Service Improvement Behavior of Travel Agency Employees - Focused on the Mediated Effects of Job Burnout. Journal of Hotel & Resort",
+    "source": "16(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "87-109",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Krumpal, I. (2013). Determinants of social desirability bias in sensitive surveys: A literature review. Quality & Quantity, 47(4), 2025-2047. https://doi.org/10.1007/s11135-011-9640-9",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Krumpal I"
+    ],
+    "authors_raw": "Krumpal, I",
+    "et_al": false,
+    "year": "2013",
+    "title": "Determinants of social desirability bias in sensitive surveys: A literature review. Quality & Quantity",
+    "source": "47(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "2025-2047",
+    "doi": "10.1007/s11135-011-9640-9",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, S. B. (2016). Effects of Positive Psychological Capital on Job Burnout: Based on the Job Demands-Resources Model. [Doctoral dissertation, Dankook University]",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kwon S. B"
+    ],
+    "authors_raw": "Kwon, S. B",
+    "et_al": false,
+    "year": "2016",
+    "title": "Effects of Positive Psychological Capital on Job Burnout: Based on the Job Demands-Resources Model. [Doctoral dissertation",
+    "source": "Dankook University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Law, F. M., & Guo, G. J. (2015). Correlation of hope and self-efficacy with job satisfaction, job stress, and borganizational commitment for correctional officers in the Taiwan prison system. International Journal of Offender Therapy and Comparative Criminology, 60(11), 1257-1277. https://doi.org/10.1177/0306624X15574997",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Law F. M",
+     "Guo G. J"
+    ],
+    "authors_raw": "Law, F. M., & Guo, G. J",
+    "et_al": false,
+    "year": "2015",
+    "title": "Correlation of hope and self-efficacy with job satisfaction",
+    "source": "job stress",
+    "volume": null,
+    "issue": null,
+    "pages": "1257-1277",
+    "doi": "10.1177/0306624X15574997",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, D. S., & Choi, Y. D. (2010). A Study on Antecedents and Consequences of Positive Psychological Capital in Organizations. Korean Management Review, 39(1), 1-28. G704-000126.2010.39.1.001",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee D. S",
+     "Choi Y. D"
+    ],
+    "authors_raw": "Lee, D. S., & Choi, Y. D",
+    "et_al": false,
+    "year": "2010",
+    "title": "A Study on Antecedents and Consequences of Positive Psychological Capital in Organizations. Korean Management Review",
+    "source": "39(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-28",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, H. S. (2017). Analysis of emotional labor and burnout among nurses: A structural equation model based on the conservation of resources theory. [Doctoral dissertation, Chung-Ang University]",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee H. S"
+    ],
+    "authors_raw": "Lee, H. S",
+    "et_al": false,
+    "year": "2017",
+    "title": "Analysis of emotional labor and burnout among nurses: A structural equation model based on the conservation of resources theory. [Doctoral dissertation",
+    "source": "Chung-Ang University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. Y., & Lee, H. S. (2015). An analysis of Structural Relationships among Managers<sup>’</sup> Emotional Leadership, Salesperson<sup>’</sup>s Positive Psychological Capital, Burnout, and Work Engagement. Journal of Corporate Education and Talent Research, 17(2), 129-157. G704-002126.2015.17.2.008",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee J. Y",
+     "Lee H. S"
+    ],
+    "authors_raw": "Lee, J. Y., & Lee, H. S",
+    "et_al": false,
+    "year": "2015",
+    "title": "An analysis of Structural Relationships among Managers<sup>’</sup> Emotional Leadership",
+    "source": "Salesperson<sup>’</sup>s Positive Psychological Capital",
+    "volume": null,
+    "issue": null,
+    "pages": "129-157",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, K. S., & Kim, M. J. (2019). Study on the Factors Effecting the Positive Psychological Capital of Social Workers at Seniors Welfare Centers on Job Burnout. The Journal of the Korea Contents Association, 19(4), 581-597. https://doi.org/10.5392/JKCA.2019.19.04.581",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee K. S",
+     "Kim M. J"
+    ],
+    "authors_raw": "Lee, K. S., & Kim, M. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "Study on the Factors Effecting the Positive Psychological Capital of Social Workers at Seniors Welfare Centers on Job Burnout. The Journal of the Korea Contents Association",
+    "source": "19(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "581-597",
+    "doi": "10.5392/JKCA.2019.19.04.581",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. H., & Lee, H. R. (2019). A Moderating Effect of Supervisor Support in the Relation between Emotional Labor and Job Burnout of Hotel Buffet Restaurant Employees: focused on Five-star Hotels in Gangnam Seoul. Journal of Tourism and Leisure Research, 31(5), 209-227. https://doi.org/10.31336/JTLR.2019.5.31.5.209",
+    "page": 24,
+    "box": [
+     143.8,
+     613.9,
+     1000.1,
+     1026.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee S. H",
+     "Lee H. R"
+    ],
+    "authors_raw": "Lee, S. H., & Lee, H. R",
+    "et_al": false,
+    "year": "2019",
+    "title": "A Moderating Effect of Supervisor Support in the Relation between Emotional Labor and Job Burnout of Hotel Buffet Restaurant Employees: focused on Five-star Hotels in Gangnam Seoul. Journal of Tourism and Leisure Research",
+    "source": "31(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "209-227",
+    "doi": "10.31336/JTLR.2019.5.31.5.209",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Leiter, M. P., & Schaufeli, W. B. (1996). Consistency of the burnout construct across occupations. Anxiety, Stress and Coping, 9, 229-243. https://doi.org/10.1080/10615809608249404",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Leiter M. P",
+     "Schaufeli W. B"
+    ],
+    "authors_raw": "Leiter, M. P., & Schaufeli, W. B",
+    "et_al": false,
+    "year": "1996",
+    "title": "Consistency of the burnout construct across occupations. Anxiety",
+    "source": "Stress and Coping",
+    "volume": null,
+    "issue": null,
+    "pages": "229-243",
+    "doi": "10.1080/10615809608249404",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans F., & Youssef, C. M. (2004). Human, social, and now positive psychological capital management: Investing in people for competitive advantage. Organizational Dynamics, 33(2), 143-160. https://doi.org/10.1016/j.orgdyn.2004.01.003",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F",
+     "Youssef C. M"
+    ],
+    "authors_raw": "Luthans F., & Youssef, C. M",
+    "et_al": false,
+    "year": "2004",
+    "title": "Human",
+    "source": "social",
+    "volume": null,
+    "issue": null,
+    "pages": "143-160",
+    "doi": "10.1016/j.orgdyn.2004.01.003",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans, F. (2002). The need for and meaning of positive organizational behavior. Journal of Organizational Behavior, 23(6), 695-706. https://doi.org/10.1002/job.165",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F"
+    ],
+    "authors_raw": "Luthans, F",
+    "et_al": false,
+    "year": "2002",
+    "title": "The need for and meaning of positive organizational behavior. Journal of Organizational Behavior",
+    "source": "23(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "695-706",
+    "doi": "10.1002/job.165",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans, F., & Avolio, B. J. (2003). Authentic leadership development. San Francisco, US: Berrett-Koehler.",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F",
+     "Avolio B. J"
+    ],
+    "authors_raw": "Luthans, F., & Avolio, B. J",
+    "et_al": false,
+    "year": "2003",
+    "title": "Authentic leadership development. San Francisco",
+    "source": "US: Berrett-Koehler",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans, F., Avolio, B. J., Avey, J. B., & Norman, S. M. (2007). Positive psychological capital: Measurement and relationship with performance and satisfaction. Personnel Psychology, 60(3), 541-572. https://doi.org/10.1111/j.1744-6570.2007.00083.x",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F",
+     "Avolio B. J",
+     "Avey J. B",
+     "Norman S. M"
+    ],
+    "authors_raw": "Luthans, F., Avolio, B. J., Avey, J. B., & Norman, S. M",
+    "et_al": false,
+    "year": "2007",
+    "title": "Positive psychological capital: Measurement and relationship with performance and satisfaction. Personnel Psychology",
+    "source": "60(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "541-572",
+    "doi": "10.1111/j.1744-6570.2007.00083.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans, F., Luthans, K. W., & Luthans, B. C. (2004). Positive psychological capital: Beyond human and social capital. Business Horizons, 47(1), 45-50. https://doi.org/10.1016/ j.bushor.2003.11.007",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F",
+     "Luthans K. W",
+     "Luthans B. C"
+    ],
+    "authors_raw": "Luthans, F., Luthans, K. W., & Luthans, B. C",
+    "et_al": false,
+    "year": "2004",
+    "title": "Positive psychological capital: Beyond human and social capital. Business Horizons",
+    "source": "47(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "45-50",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luthans, F., Youssef, C. M., & Avolio, B. J. (2007). Psychological capital: Developing the human competitive edge. Oxford: Oxford University Press.",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Luthans F",
+     "Youssef C. M",
+     "Avolio B. J"
+    ],
+    "authors_raw": "Luthans, F., Youssef, C. M., & Avolio, B. J",
+    "et_al": false,
+    "year": "2007",
+    "title": "Psychological capital: Developing the human competitive edge. Oxford: Oxford University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Maslach, C., & Jackson, S. E. (1981). The measurement of experienced burnout. Journal of Organizational Behavior, 2(2), 99-113. https://doi.org/10.1002/job.4030020205",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Maslach C",
+     "Jackson S. E"
+    ],
+    "authors_raw": "Maslach, C., & Jackson, S. E",
+    "et_al": false,
+    "year": "1981",
+    "title": "The measurement of experienced burnout. Journal of Organizational Behavior",
+    "source": "2(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "99-113",
+    "doi": "10.1002/job.4030020205",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Maslach, C., Jackson, S. E., & Leiter, M. P. (1997). Maslach Burnout Inventory: Third edition. In C. P. Zalaquett & R. J. Wood (Eds.), Evaluating stress: A book of resources (pp. 191-218). Scarecrow Education.",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Maslach C",
+     "Jackson S. E",
+     "Leiter M. P"
+    ],
+    "authors_raw": "Maslach, C., Jackson, S. E., & Leiter, M. P",
+    "et_al": false,
+    "year": "1997",
+    "title": "Maslach Burnout Inventory: Third edition. In C. P. Zalaquett & R. J. Wood (Eds.)",
+    "source": "Evaluating stress: A book of resources (pp. 191-218). Scarecrow Education",
+    "volume": null,
+    "issue": null,
+    "pages": "191-218",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Maslach, C., Schaufeli, W. B., & Leiter, M. P. (2001). Job Burnout. Annual Review of Psychology, 52(1), 397-422. https://doi.org/10.1146/annurev.psych.52.1.397",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Maslach C",
+     "Schaufeli W. B",
+     "Leiter M. P"
+    ],
+    "authors_raw": "Maslach, C., Schaufeli, W. B., & Leiter, M. P",
+    "et_al": false,
+    "year": "2001",
+    "title": "Job Burnout. Annual Review of Psychology",
+    "source": "52(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "397-422",
+    "doi": "10.1146/annurev.psych.52.1.397",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Masten, A. S. (2001). Ordinary magic: Resilience processes in development. American Psychologist, 56(3), 227-238. https://doi.org/10.1037/0003-066X.56.3.227",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Masten A. S"
+    ],
+    "authors_raw": "Masten, A. S",
+    "et_al": false,
+    "year": "2001",
+    "title": "Ordinary magic: Resilience processes in development. American Psychologist",
+    "source": "56(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "227-238",
+    "doi": "10.1037/0003-066X.56.3.227",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Masten, A. S., & Reed, M. G. (2002). Psychological capital and job performance: The mediating role of work attitudes. In Snyder, C. R. & Lopez, S. J. (Eds.), The Handbook of Positive Psychology(pp. 74-88). Oxford: Oxford University Press.",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Masten A. S",
+     "Reed M. G"
+    ],
+    "authors_raw": "Masten, A. S., & Reed, M. G",
+    "et_al": false,
+    "year": "2002",
+    "title": "Psychological capital and job performance: The mediating role of work attitudes. In Snyder",
+    "source": "C. R. & Lopez",
+    "volume": null,
+    "issue": null,
+    "pages": "74-88",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Na, S. Y., & Park, H. J. (2019). The Effect of Nurse<sup>’</sup>s Emotional Labor on Turnover Intention: Mediation Effect of Burnout and Moderated Mediation Effect of Authentic Leadership. Journal of Korean Academy of Nursing, 49(3), 286-297. https://doi.org/10.4040/jkan. 2019.49.3.286",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Na S. Y",
+     "Park H. J"
+    ],
+    "authors_raw": "Na, S. Y., & Park, H. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "The Effect of Nurse<sup>’</sup>s Emotional Labor on Turnover Intention: Mediation Effect of Burnout and Moderated Mediation Effect of Authentic Leadership. Journal of Korean Academy of Nursing",
+    "source": "49(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "286-297",
+    "doi": "10.4040/jkan",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, S. J., & Park, S. J. (2023). An Analysis of Domestic Research Trends in Military Leadership(2012-2021). Korean Journal of Military Art and Science, 79(1), 303-340. https://doi.org/10.31066/kjmas.2023.79.1.012",
+    "page": 25,
+    "box": [
+     143.8,
+     755.6,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u24_2",
+    "authors": [
+     "Oh S. J",
+     "Park S. J"
+    ],
+    "authors_raw": "Oh, S. J., & Park, S. J",
+    "et_al": false,
+    "year": "2023",
+    "title": "An Analysis of Domestic Research Trends in Military Leadership(2012-2021). Korean Journal of Military Art and Science",
+    "source": "79(1)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.31066/kjmas.2023.79.1.012",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, S. A., & Lee, J. C. (2014). The effect of emotional labor strategy on job burnout and job engagement: the moderating effect of positive psychological capital. Korean Journal of Industrial and Organizational Psychology, 27(4), 781-807. https://doi.org/10.24230/ksiop. 27.4.201411.781",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Park S. A",
+     "Lee J. C"
+    ],
+    "authors_raw": "Park, S. A., & Lee, J. C",
+    "et_al": false,
+    "year": "2014",
+    "title": "The effect of emotional labor strategy on job burnout and job engagement: the moderating effect of positive psychological capital. Korean Journal of Industrial and Organizational Psychology",
+    "source": "27(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "781-807",
+    "doi": "10.24230/ksiop",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, W. W., Kim, M. S., Jung, S. M., & Heo, K. M. (2007). Cause and Remedies of Common Method Bias. Korean Journal of Management, 15(1), 89-133. G704-000359.2007.15.1.005",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Park W. W",
+     "Kim M. S",
+     "Jung S. M",
+     "Heo K. M"
+    ],
+    "authors_raw": "Park, W. W., Kim, M. S., Jung, S. M., & Heo, K. M",
+    "et_al": false,
+    "year": "2007",
+    "title": "Cause and Remedies of Common Method Bias. Korean Journal of Management",
+    "source": "15(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "89-133",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Sand, G., & Miyazaki, A. D. (2000). The Impact of social support on salesperson burnout and burnout components. Psychology & Marketing, 17(1), 13-26. https://doi.org/10.1002/ (SICI)1520-6793(200001)17:1<13::AID-MAR2>3.0.CO;2-S",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Sand G",
+     "Miyazaki A. D"
+    ],
+    "authors_raw": "Sand, G., & Miyazaki, A. D",
+    "et_al": false,
+    "year": "2000",
+    "title": "The Impact of social support on salesperson burnout and burnout components. Psychology & Marketing",
+    "source": "17(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "13-26",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Schaufeli, W. B., & Bakker, A. B. (2004). Job demands, job resources, and their relationship with burnout and engagement: a multi-sample study. Journal of Organizational Behavior, 25(3), 293-315. https://doi.org/10.1002/job.248",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Schaufeli W. B",
+     "Bakker A. B"
+    ],
+    "authors_raw": "Schaufeli, W. B., & Bakker, A. B",
+    "et_al": false,
+    "year": "2004",
+    "title": "Job demands",
+    "source": "job resources",
+    "volume": null,
+    "issue": null,
+    "pages": "293-315",
+    "doi": "10.1002/job.248",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Schaufeli, W. B., Leiter, M. P., Maslach, C., & Jackson, S. E. (1996). The Maslach burnout inventory-test Manual (3rd edn). Consulting Psychologists Press, Palo Alto, CA.",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Schaufeli W. B",
+     "Leiter M. P",
+     "Maslach C",
+     "Jackson S. E"
+    ],
+    "authors_raw": "Schaufeli, W. B., Leiter, M. P., Maslach, C., & Jackson, S. E",
+    "et_al": false,
+    "year": "1996",
+    "title": "The Maslach burnout inventory-test Manual (3rd edn). Consulting Psychologists Press",
+    "source": "Palo Alto",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Seligman, M. E. (2002). Positive psychology, positive prevention, and positive therapy. In C. R. Snyder & S. J. Lopez (Eds.), Handbook of positive psychology(pp. 3-9). Oxford: Oxford University Press.",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Seligman M. E"
+    ],
+    "authors_raw": "Seligman, M. E",
+    "et_al": false,
+    "year": "2002",
+    "title": "Positive psychology",
+    "source": "positive prevention",
+    "volume": null,
+    "issue": null,
+    "pages": "3-9",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, K. H. (2003). The Maslach Burnout Inventory-General Survey (MBI-GS): An Application In South Korea. Korean Journal of Industrial and Organizational Psychology, 16(3), 1-17. G704-000280.2003.16.3.009",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Shin K. H"
+    ],
+    "authors_raw": "Shin, K. H",
+    "et_al": false,
+    "year": "2003",
+    "title": "The Maslach Burnout Inventory-General Survey (MBI-GS): An Application In South Korea. Korean Journal of Industrial and Organizational Psychology",
+    "source": "16(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-17",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shirom, A. (1989). Burnout in work organizations. New York, US: Wiley.",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Shirom A"
+    ],
+    "authors_raw": "Shirom, A",
+    "et_al": false,
+    "year": "1989",
+    "title": "Burnout in work organizations. New York",
+    "source": "US: Wiley",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Snyder, C. R. (2000). Handbook of hope. San Diego, CA, Academic Press.",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Snyder C. R"
+    ],
+    "authors_raw": "Snyder, C. R",
+    "et_al": false,
+    "year": "2000",
+    "title": "Handbook of hope. San Diego",
+    "source": "CA",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Son, I. N. (2018). Moderating role of social support to less job burnout of irregular emotional workers in foodservice. Korean Journal of Hospitality and Tourism, 27(1), 161-175. https://doi.org/10.24992/KJHT.2018.01.27.01.161.",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Son I. N"
+    ],
+    "authors_raw": "Son, I. N",
+    "et_al": false,
+    "year": "2018",
+    "title": "Moderating role of social support to less job burnout of irregular emotional workers in foodservice. Korean Journal of Hospitality and Tourism",
+    "source": "27(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "161-175",
+    "doi": "10.24992/KJHT.2018.01.27.01.161",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Stajkovic, A. D. (2006). Development of a core confidence-higher order construct. Journal of Applied Psychology, 91(6), 1208-1224. https://doi.org/10.1037/0021-9010.91.6.1208",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Stajkovic A. D"
+    ],
+    "authors_raw": "Stajkovic, A. D",
+    "et_al": false,
+    "year": "2006",
+    "title": "Development of a core confidence-higher order construct. Journal of Applied Psychology",
+    "source": "91(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "1208-1224",
+    "doi": "10.1037/0021-9010.91.6.1208",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Taris, T. W. (2006). Is there a relationship between burnout and objective performance? A critical review of 16 studies. Work & Stress, 20(4), 316-334. https://doi.org/10.1080/ 02678370601065893",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Taris T. W"
+    ],
+    "authors_raw": "Taris, T. W",
+    "et_al": false,
+    "year": "2006",
+    "title": "Is there a relationship between burnout and objective performance? A critical review of 16 studies. Work & Stress",
+    "source": "20(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "316-334",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Unterbrink, T., Hack, A., Muller, U., Scheuch, K., Seibt, R., Wirsching, M., & Bauer, J. (2007). Burnout and effort‐reward imbalance in a sample of 949 German teachers. Int Arch Occup Environ Health, 80, 433-441. https://doi.org/10.1007/s00420-007-0169-0",
+    "page": 26,
+    "box": [
+     143.8,
+     891.9,
+     1000.1,
+     1030.8
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Unterbrink T",
+     "Hack A",
+     "Muller U",
+     "Scheuch K",
+     "Seibt R",
+     "Wirsching M",
+     "Bauer J"
+    ],
+    "authors_raw": "Unterbrink, T., Hack, A., Muller, U., Scheuch, K., Seibt, R., Wirsching, M., & Bauer, J",
+    "et_al": false,
+    "year": "2007",
+    "title": "Burnout and effort‐reward imbalance in a sample of 949 German teachers. Int Arch Occup Environ Health",
+    "source": "80",
+    "volume": null,
+    "issue": null,
+    "pages": "433-441",
+    "doi": "10.1007/s00420-007-0169-0",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "VanYperen, N. W. (1998). Informational support, equity, and burnout: the moderating effect of self‐efficacy. Journal of Occupational and Organizational Psychology, 71(1), 29-33. https://doi.org/10.1111/j.2044-8325.1998.tb00660.x",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "VanYperen N. W"
+    ],
+    "authors_raw": "VanYperen, N. W",
+    "et_al": false,
+    "year": "1998",
+    "title": "Informational support",
+    "source": "equity",
+    "volume": null,
+    "issue": null,
+    "pages": "29-33",
+    "doi": "10.1111/j.2044-8325.1998.tb00660.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Walumbwa, F. O., Avolio, B. J., Gardner, W. L., Wernsing, T. S., & Peterson, S. J. (2008). Authentic leadership: Development and validation of a theory-based measure. Journal of Management, 34(1), 89-126. https://doi.org/10.1177/0149206307308913",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "Walumbwa F. O",
+     "Avolio B. J",
+     "Gardner W. L",
+     "Wernsing T. S",
+     "Peterson S. J"
+    ],
+    "authors_raw": "Walumbwa, F. O., Avolio, B. J., Gardner, W. L., Wernsing, T. S., & Peterson, S. J",
+    "et_al": false,
+    "year": "2008",
+    "title": "Authentic leadership: Development and validation of a theory-based measure. Journal of Management",
+    "source": "34(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "89-126",
+    "doi": "10.1177/0149206307308913",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, K. H. (2015). The Effect of Authentic Leadership on Organizational Commitment: The Mediating Role of Leader Trust. Korean Journal of Military Art and Science, 71(2), 103-133. https://doi.org/10.31066/kjmas.2015.71.2.005",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "Yang K. H"
+    ],
+    "authors_raw": "Yang, K. H",
+    "et_al": false,
+    "year": "2015",
+    "title": "The Effect of Authentic Leadership on Organizational Commitment: The Mediating Role of Leader Trust. Korean Journal of Military Art and Science",
+    "source": "71(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "103-133",
+    "doi": "10.31066/kjmas.2015.71.2.005",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, K. H., Kim J. S., & Kim J. S. (2017). Effects of Authentic Leadership on Organizational Commitment: A Case of Military Organization. Journal of Human Resource Management Research, 24(2), 1-26. https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView. kci?sereArticleSearchBean.artiId=ART002234596",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "Yang K. H",
+     "Kim J. S",
+     "Kim J. S"
+    ],
+    "authors_raw": "Yang, K. H., Kim J. S., & Kim J. S",
+    "et_al": false,
+    "year": "2017",
+    "title": "Effects of Authentic Leadership on Organizational Commitment: A Case of Military Organization. Journal of Human Resource Management Research",
+    "source": "24(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-26",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yoon, J. G. (2012). Socrates asks the world<sup>’</sup>s leaders what sincerity is. Seoul, Korea: Haneon.",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "Yoon J. G"
+    ],
+    "authors_raw": "Yoon, J. G",
+    "et_al": false,
+    "year": "2012",
+    "title": "Socrates asks the world<sup>’</sup>s leaders what sincerity is. Seoul",
+    "source": "Korea: Haneon",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Youssef, C. M., & Luthans, F. (2007). Positive organizational behavior in the workplace: The Impact of hope, optimism, and resilience. Journal of Management, 33(5), 774-800. https://doi.org/10.1177/0149206307305562 원고 접수일 2023년 02월 07일\n원고수정일2023년04월10일\n게재확정일 2023년 04월 24일",
+    "page": 27,
+    "box": [
+     151.6,
+     364.4,
+     999.1,
+     750.0
+    ],
+    "uid": "u26_2",
+    "authors": [
+     "Youssef C. M",
+     "Luthans F"
+    ],
+    "authors_raw": "Youssef, C. M., & Luthans, F",
+    "et_al": false,
+    "year": "2007",
+    "title": "Positive organizational behavior in the workplace: The Impact of hope",
+    "source": "optimism",
+    "volume": null,
+    "issue": null,
+    "pages": "774-800",
+    "doi": "10.1177/0149206307305562",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Authentic leadership and job burnout: Mediating effects of positive psychological capitals",
+   "page": 1,
+   "box": [
+    249.7,
+    393.1,
+    891.9,
+    472.1
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Sunggeun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     429.2,
+     495.1,
+     734.2,
+     523.3
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Kim, Jungsik",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     429.2,
+     495.1,
+     734.2,
+     523.3
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "This study explored methods for reducing job burnout among organizational members working in highly stressful job environments from the perspective of positive organizational scholarship. In particular, we focused on the role of authentic leadership, an alternative leadership concept that has recently received much attention in the leadership literature. To explain the mechanism underlying the effects of authentic leadership on job burnout, the mediating effect of positive psychological capitals (PsyCap), a critical variable of positive psychology, was analyzed. To examine the proposed hypotheses, data were collected through a survey of employees of the Defense Acquisition Program Administration and analyzed. The results of the analyses demonstrate that authentic leadership has positive effects on team members' positive PsyCap, which in turn reduces their job burnout. In particular, in the relationship between authentic leadership and job burnout, all sub-factors of team members’ positive psychological capital revealed partial mediating effects, with the most significant mediating effect being optimism. Based on the results, we propose several suggestions to strengthen both authentic leadership and positive PsyCap within military organizations.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study explored methods for reducing job burnout among organizational members working in highly stressful job environments from the perspective of positive organizational scholarship. In particular, we focused on the role of authentic leadership, an alternative leadership concept that has recently received much attention in the leadership literature. To explain the mechanism underlying the effects of authentic leadership on job burnout, the mediating effect of positive psychological capitals (PsyCap), a critical variable of positive psychology, was analyzed. To examine the proposed hypotheses, data were collected through a survey of employees of the Defense Acquisition Program Administration and analyzed. The results of the analyses demonstrate that authentic leadership has positive effects on team members' positive PsyCap, which in turn reduces their job burnout. In particular, in the relationship between authentic leadership and job burnout, all sub-factors of team members’ positive psychological capital revealed partial mediating effects, with the most significant mediating effect being optimism. Based on the results, we propose several suggestions to strengthen both authentic leadership and positive PsyCap within military organizations.",
+   "page": 1,
+   "box": [
+    190.5,
+    583.4,
+    310.5,
+    610.8
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : authentic leadership, positive psychological capital, job burnout, mediation effect, military organization"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u1_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "19-48",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "진성 리더십",
+   "긍정심리자본",
+   "직무소진",
+   "매개효과",
+   "군 조직"
+  ],
+  "keywords_en": [
+   "authentic leadership",
+   "positive psychological capital",
+   "job burnout",
+   "mediation effect",
+   "military organization"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "게다가, 외부적으로 방위사업 관련 부정적 사건이 발생했을 때 사업진행 과정의 시행오차나 일부 결함 발생에도 불구하고 명확한 문제발생 원인 규명보다 방산 비리로 단정하는 언론보도(Joo & Kim, 2021)로 사업 담당자는 국민적 불신을 겪거나 민형사상의 법적처벌까지 받을 수 있다.",
+    "raw": "게다가, 외부적으로 방위사업 관련 부정적 사건이 발생했을 때 사업진행 과정의 시행오차나 일부 결함 발생에도 불구하고 명확한 문제발생 원인 규명보다 방산 비리로 단정하는 언론보도(Joo & Kim, 2021)로 사업 담당자는 국민적 불신을 겪거나 민형사상의 법적처벌까지 받을 수 있다.",
+    "citation_text": "(Joo & Kim, 2021)",
+    "offset": [
+     98,
+     115
+    ],
+    "authors": [
+     "Joo & Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이런 이유로 방위사업청 근무자는 오랜 기간 지속 적이고 반복적인 업무 압박에 따른 몹시 지친 상태인 소진(Lee & Kim, 2019)을 겪게 된다.",
+    "raw": "이런 이유로 방위사업청 근무자는 오랜 기간 지속 적이고 반복적인 업무 압박에 따른 몹시 지친 상태인 소진(Lee & Kim, 2019)을 겪게 된다.",
+    "citation_text": "(Lee & Kim, 2019)",
+    "offset": [
+     58,
+     75
+    ],
+    "authors": [
+     "Lee & Kim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이런 직무소진은 심리적, 신체적, 행동적 측면에서 다양한 부정적 영향을 가져와 다시 임무수행에 지장을 주는 악순환이 반복될 수 있다(Jung, Oh, & Kim, 2020), 특히 자존감 저하, 고갈된 느낌 등으로 양질의 업무성과를 저해하는 추가적인 심리적 영향을 가져오게 된다.",
+    "raw": "이런 직무소진은 심리적, 신체적, 행동적 측면에서 다양한 부정적 영향을 가져와 다시 임무수행에 지장을 주는 악순환이 반복될 수 있다(Jung, Oh, & Kim, 2020), 특히 자존감 저하, 고갈된 느낌 등으로 양질의 업무성과를 저해하는 추가적인 심리적 영향을 가져오게 된다.",
+    "citation_text": "(Jung, Oh, & Kim, 2020)",
+    "offset": [
+     73,
+     96
+    ],
+    "authors": [
+     "Jung"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 28,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "raw": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "citation_text": "Brotheridge & Grandey, 2002",
+    "offset": [
+     38,
+     65
+    ],
+    "authors": [
+     "Brotheridge & Grandey"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "raw": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "citation_text": "Lee & Lee, 2019",
+    "offset": [
+     67,
+     82
+    ],
+    "authors": [
+     "Lee & Lee"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "raw": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "citation_text": "Son, 2018",
+    "offset": [
+     84,
+     93
+    ],
+    "authors": [
+     "Son"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 66,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "raw": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "citation_text": "Unterbrink et al., 2007",
+    "offset": [
+     103,
+     126
+    ],
+    "authors": [
+     "Unterbrink et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 69,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "raw": "기존 연구는 직무소진의 부적인 효과를 완화하는 요인으로 사회적 지원(Brotheridge & Grandey, 2002; Lee & Lee, 2019; Son, 2018), 금전적 보상(Unterbrink et al., 2007; Van Yperen, 1998) 등을 제안하였다.",
+    "citation_text": "Van Yperen, 1998",
+    "offset": [
+     128,
+     144
+    ],
+    "authors": [
+     "Van Yperen"
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 70,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "철저한 자아인식(self-awareness)을 기반으로 확고한 자신만의 가치 및 원칙을 세우고, 본인의 강점과 약점까지 구성원들과 공유함으로써 투명한 관계를 형성하여 구성원의 긍정적인 심리를 고취 시켜 원하는 목적을 성취하도록 유도하므로 조직이나 성과보다 부하 중심의 인본주의적 리더십이다(Avolio & Gardner, 2005; Gardner, Fischer, & Hunt, 2009).",
+    "raw": "철저한 자아인식(self-awareness)을 기반으로 확고한 자신만의 가치 및 원칙을 세우고, 본인의 강점과 약점까지 구성원들과 공유함으로써 투명한 관계를 형성하여 구성원의 긍정적인 심리를 고취 시켜 원하는 목적을 성취하도록 유도하므로 조직이나 성과보다 부하 중심의 인본주의적 리더십이다(Avolio & Gardner, 2005; Gardner, Fischer, & Hunt, 2009).",
+    "citation_text": "Avolio & Gardner, 2005",
+    "offset": [
+     162,
+     184
+    ],
+    "authors": [
+     "Avolio & Gardner"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "철저한 자아인식(self-awareness)을 기반으로 확고한 자신만의 가치 및 원칙을 세우고, 본인의 강점과 약점까지 구성원들과 공유함으로써 투명한 관계를 형성하여 구성원의 긍정적인 심리를 고취 시켜 원하는 목적을 성취하도록 유도하므로 조직이나 성과보다 부하 중심의 인본주의적 리더십이다(Avolio & Gardner, 2005; Gardner, Fischer, & Hunt, 2009).",
+    "raw": "철저한 자아인식(self-awareness)을 기반으로 확고한 자신만의 가치 및 원칙을 세우고, 본인의 강점과 약점까지 구성원들과 공유함으로써 투명한 관계를 형성하여 구성원의 긍정적인 심리를 고취 시켜 원하는 목적을 성취하도록 유도하므로 조직이나 성과보다 부하 중심의 인본주의적 리더십이다(Avolio & Gardner, 2005; Gardner, Fischer, & Hunt, 2009).",
+    "citation_text": "Gardner, Fischer, & Hunt, 2009",
+    "offset": [
+     186,
+     216
+    ],
+    "authors": [
+     "Gardner"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "parenthetical",
+    "sentence": "긍정심리자본은 성취와 성공을 위해 개인이 추구하는 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 복원력, 낙관성으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜 경험하는 것으로 나타났다(Bakker, Demerouti, & Sanz-Vergel, 2014; Luthans et al., 2007).",
+    "raw": "긍정심리자본은 성취와 성공을 위해 개인이 추구하는 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 복원력, 낙관성으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜 경험하는 것으로 나타났다(Bakker, Demerouti, & Sanz-Vergel, 2014; Luthans et al., 2007).",
+    "citation_text": "Bakker, Demerouti, & Sanz-Vergel, 2014",
+    "offset": [
+     138,
+     176
+    ],
+    "authors": [
+     "Bakker"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "parenthetical",
+    "sentence": "긍정심리자본은 성취와 성공을 위해 개인이 추구하는 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 복원력, 낙관성으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜 경험하는 것으로 나타났다(Bakker, Demerouti, & Sanz-Vergel, 2014; Luthans et al., 2007).",
+    "raw": "긍정심리자본은 성취와 성공을 위해 개인이 추구하는 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 복원력, 낙관성으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜 경험하는 것으로 나타났다(Bakker, Demerouti, & Sanz-Vergel, 2014; Luthans et al., 2007).",
+    "citation_text": "Luthans et al., 2007",
+    "offset": [
+     178,
+     198
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "narrative",
+    "sentence": "Kwon(2016)의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에 모두 부적 영향을 미치는 것으로 나타났으며 조직구성원들이 겪고 있는 불확실한 환경과 직무 과부하에 따른 정서적 불안감을 개인이 능동적으로 극복하는 데 도움을 줄 수 있다(Hong, 2006).",
+    "raw": "Kwon(2016)의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에 모두 부적 영향을 미치는 것으로 나타났으며 조직구성원들이 겪고 있는 불확실한 환경과 직무 과부하에 따른 정서적 불안감을 개인이 능동적으로 극복하는 데 도움을 줄 수 있다(Hong, 2006).",
+    "citation_text": "Kwon(2016)",
+    "offset": [
+     0,
+     10
+    ],
+    "authors": [
+     "Kwon"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 36,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "parenthetical",
+    "sentence": "Kwon(2016)의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에 모두 부적 영향을 미치는 것으로 나타났으며 조직구성원들이 겪고 있는 불확실한 환경과 직무 과부하에 따른 정서적 불안감을 개인이 능동적으로 극복하는 데 도움을 줄 수 있다(Hong, 2006).",
+    "raw": "Kwon(2016)의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에 모두 부적 영향을 미치는 것으로 나타났으며 조직구성원들이 겪고 있는 불확실한 환경과 직무 과부하에 따른 정서적 불안감을 개인이 능동적으로 극복하는 데 도움을 줄 수 있다(Hong, 2006).",
+    "citation_text": "(Hong, 2006)",
+    "offset": [
+     144,
+     156
+    ],
+    "authors": [
+     "Hong"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진성 리더십은 조직적 맥락에서 긍정적 자기개발을 기반으로 긍정적 윤리적 풍토와 심리능력을 강화하는 리더십(Gardner et al., 2005; Luthans & Avolio, 2003)으로 핵심개념은 ‘진정성(authenticity, 真性)’이다.",
+    "raw": "진성 리더십은 조직적 맥락에서 긍정적 자기개발을 기반으로 긍정적 윤리적 풍토와 심리능력을 강화하는 리더십(Gardner et al., 2005; Luthans & Avolio, 2003)으로 핵심개념은 ‘진정성(authenticity, 真性)’이다.",
+    "citation_text": "Gardner et al., 2005",
+    "offset": [
+     59,
+     79
+    ],
+    "authors": [
+     "Gardner et al."
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진성 리더십은 조직적 맥락에서 긍정적 자기개발을 기반으로 긍정적 윤리적 풍토와 심리능력을 강화하는 리더십(Gardner et al., 2005; Luthans & Avolio, 2003)으로 핵심개념은 ‘진정성(authenticity, 真性)’이다.",
+    "raw": "진성 리더십은 조직적 맥락에서 긍정적 자기개발을 기반으로 긍정적 윤리적 풍토와 심리능력을 강화하는 리더십(Gardner et al., 2005; Luthans & Avolio, 2003)으로 핵심개념은 ‘진정성(authenticity, 真性)’이다.",
+    "citation_text": "Luthans & Avolio, 2003",
+    "offset": [
+     81,
+     103
+    ],
+    "authors": [
+     "Luthans & Avolio"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "raw": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "citation_text": "Yoon, 2012",
+    "offset": [
+     38,
+     48
+    ],
+    "authors": [
+     "Yoon"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 74,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "raw": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "citation_text": "Luthans & Avolio, 2003",
+    "offset": [
+     50,
+     72
+    ],
+    "authors": [
+     "Luthans & Avolio"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "raw": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "citation_text": "Harter, 2002",
+    "offset": [
+     165,
+     177
+    ],
+    "authors": [
+     "Harter"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "raw": "진정성은 고대 그리스 철학의 ‘네 자신을 알라’로부터 유래되는 개념(Yoon, 2012; Luthans & Avolio, 2003)으로 자신을 실제보다 과다하게 표현하거나 사실과 다르게 위선적으로 표현하지 않고 항상 진실한 자아(self)를 발견하고 이를 발현하기 위해 노력하는 것을 의미한다 (Harter, 2002; Kernis, 2003).",
+    "citation_text": "Kernis, 2003",
+    "offset": [
+     179,
+     191
+    ],
+    "authors": [
+     "Kernis"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "즉, 진성 리더십은 리더 스스로 진정성을 가지고자 노력하고, 자신의 가치와 인식이 행동과 다르지 않은 일관적인 언행일치(walk the talk) 및 솔선수범(walk the walk)의 모습을 통해 부하의 신뢰를 획득함으로써 부하들이 자발적으로 업무에 몰입하고 기여하도록 유도할 수 있다 (Choi & Cho, 2013; Walumbwa et al., 2008).",
+    "raw": "즉, 진성 리더십은 리더 스스로 진정성을 가지고자 노력하고, 자신의 가치와 인식이 행동과 다르지 않은 일관적인 언행일치(walk the talk) 및 솔선수범(walk the walk)의 모습을 통해 부하의 신뢰를 획득함으로써 부하들이 자발적으로 업무에 몰입하고 기여하도록 유도할 수 있다 (Choi & Cho, 2013; Walumbwa et al., 2008).",
+    "citation_text": "Choi & Cho, 2013",
+    "offset": [
+     163,
+     179
+    ],
+    "authors": [
+     "Choi & Cho"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "즉, 진성 리더십은 리더 스스로 진정성을 가지고자 노력하고, 자신의 가치와 인식이 행동과 다르지 않은 일관적인 언행일치(walk the talk) 및 솔선수범(walk the walk)의 모습을 통해 부하의 신뢰를 획득함으로써 부하들이 자발적으로 업무에 몰입하고 기여하도록 유도할 수 있다 (Choi & Cho, 2013; Walumbwa et al., 2008).",
+    "raw": "즉, 진성 리더십은 리더 스스로 진정성을 가지고자 노력하고, 자신의 가치와 인식이 행동과 다르지 않은 일관적인 언행일치(walk the talk) 및 솔선수범(walk the walk)의 모습을 통해 부하의 신뢰를 획득함으로써 부하들이 자발적으로 업무에 몰입하고 기여하도록 유도할 수 있다 (Choi & Cho, 2013; Walumbwa et al., 2008).",
+    "citation_text": "Walumbwa et al., 2008",
+    "offset": [
+     181,
+     202
+    ],
+    "authors": [
+     "Walumbwa et al."
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 71,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "특히, 해당 리더십은 자아인식(self-awareness), 내재화된 도덕적 관점(internalized moral perspective), 균형 잡힌 정보처리(balanced processing of information), 관계적 투명성(relational transparency)의 하위요인으로 구성된 복합적 개념이다(Walumbwa et al., 2008).",
+    "raw": "특히, 해당 리더십은 자아인식(self-awareness), 내재화된 도덕적 관점(internalized moral perspective), 균형 잡힌 정보처리(balanced processing of information), 관계적 투명성(relational transparency)의 하위요인으로 구성된 복합적 개념이다(Walumbwa et al., 2008).",
+    "citation_text": "(Walumbwa et al., 2008)",
+    "offset": [
+     180,
+     203
+    ],
+    "authors": [
+     "Walumbwa et al."
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 71,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "진성 리더십은 조직에 미치는 긍정적 영향을 미치며, 특히 구성원의 관점에서 자기효능감, 낙관성, 희망, 회복력과 같은 긍정적인 심리상태를 끌어낼 수 있다(Gardner et al., 2005).",
+    "raw": "진성 리더십은 조직에 미치는 긍정적 영향을 미치며, 특히 구성원의 관점에서 자기효능감, 낙관성, 희망, 회복력과 같은 긍정적인 심리상태를 끌어낼 수 있다(Gardner et al., 2005).",
+    "citation_text": "(Gardner et al., 2005)",
+    "offset": [
+     85,
+     107
+    ],
+    "authors": [
+     "Gardner et al."
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "그 결과 진성 리더는 구성원에게 경쟁력 우위와 성과를 향상시킬 수 있는 긍정심리자본을 구축할 기회를 제공할 수 있다(Avolio et al., 2004).",
+    "raw": "그 결과 진성 리더는 구성원에게 경쟁력 우위와 성과를 향상시킬 수 있는 긍정심리자본을 구축할 기회를 제공할 수 있다(Avolio et al., 2004).",
+    "citation_text": "(Avolio et al., 2004)",
+    "offset": [
+     64,
+     85
+    ],
+    "authors": [
+     "Avolio et al."
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "최근 군 리더십의 국내 연구경향 고찰에 따르면(Oh & Park(2023), 2012~2021년간 변혁적 리더십이 16편(24.2%)으로 가장 많이 연구되었으며, 진성 리더십 10편(15.2%), 서번트 리더십 8편(12.1%), 윤리적 리더십 6편(9.1%)으로 전체 60.6%가 4종의 리더십 유형에 집중되어 있다.",
+    "raw": "최근 군 리더십의 국내 연구경향 고찰에 따르면(Oh & Park(2023), 2012~2021년간 변혁적 리더십이 16편(24.2%)으로 가장 많이 연구되었으며, 진성 리더십 10편(15.2%), 서번트 리더십 8편(12.1%), 윤리적 리더십 6편(9.1%)으로 전체 60.6%가 4종의 리더십 유형에 집중되어 있다.",
+    "citation_text": "Park(2023)",
+    "offset": [
+     31,
+     41
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 56,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "국내 사례를 보면, 군조직 대상으로 Yang(2015)과 Yang, Kim, & Kim(2017) 연구는 차상위 리더인 대대장의 진성 리더십에 대한 지각, 리더와의 신뢰관계 및 조직몰입 관계를 연구하였다.",
+    "raw": "국내 사례를 보면, 군조직 대상으로 Yang(2015)과 Yang, Kim, & Kim(2017) 연구는 차상위 리더인 대대장의 진성 리더십에 대한 지각, 리더와의 신뢰관계 및 조직몰입 관계를 연구하였다.",
+    "citation_text": "Yang(2015)",
+    "offset": [
+     20,
+     30
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 72,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "국내 사례를 보면, 군조직 대상으로 Yang(2015)과 Yang, Kim, & Kim(2017) 연구는 차상위 리더인 대대장의 진성 리더십에 대한 지각, 리더와의 신뢰관계 및 조직몰입 관계를 연구하였다.",
+    "raw": "국내 사례를 보면, 군조직 대상으로 Yang(2015)과 Yang, Kim, & Kim(2017) 연구는 차상위 리더인 대대장의 진성 리더십에 대한 지각, 리더와의 신뢰관계 및 조직몰입 관계를 연구하였다.",
+    "citation_text": "Kim(2017)",
+    "offset": [
+     45,
+     54
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 34,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "최근 경영학 분야는 재화를 중심으로 정의하던 전통적인 자본의 개념이 인적자본과 사회적 자본 중심에서 인간의 심리적인 성향을 자본으로 인식하는 긍정심리자본으로 초점이 이동하고 있다 (Luthans & Youssef, 2004; Seligman, 2002).",
+    "raw": "최근 경영학 분야는 재화를 중심으로 정의하던 전통적인 자본의 개념이 인적자본과 사회적 자본 중심에서 인간의 심리적인 성향을 자본으로 인식하는 긍정심리자본으로 초점이 이동하고 있다 (Luthans & Youssef, 2004; Seligman, 2002).",
+    "citation_text": "Luthans & Youssef, 2004",
+    "offset": [
+     101,
+     124
+    ],
+    "authors": [
+     "Luthans & Youssef"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "최근 경영학 분야는 재화를 중심으로 정의하던 전통적인 자본의 개념이 인적자본과 사회적 자본 중심에서 인간의 심리적인 성향을 자본으로 인식하는 긍정심리자본으로 초점이 이동하고 있다 (Luthans & Youssef, 2004; Seligman, 2002).",
+    "raw": "최근 경영학 분야는 재화를 중심으로 정의하던 전통적인 자본의 개념이 인적자본과 사회적 자본 중심에서 인간의 심리적인 성향을 자본으로 인식하는 긍정심리자본으로 초점이 이동하고 있다 (Luthans & Youssef, 2004; Seligman, 2002).",
+    "citation_text": "Seligman, 2002",
+    "offset": [
+     126,
+     140
+    ],
+    "authors": [
+     "Seligman"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 62,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "(Youssef & Luthans, 2007).",
+    "raw": "(Youssef & Luthans, 2007).",
+    "citation_text": "(Youssef & Luthans, 2007)",
+    "offset": [
+     0,
+     25
+    ],
+    "authors": [
+     "Youssef & Luthans"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "최근에는 고난이나 역경, 시련, 실패에서도 좌절하지 않고 성공과 성취를 추구하는 개인의 회복탄력성을 포함하고 있다(Luthans et al., 2007).",
+    "raw": "최근에는 고난이나 역경, 시련, 실패에서도 좌절하지 않고 성공과 성취를 추구하는 개인의 회복탄력성을 포함하고 있다(Luthans et al., 2007).",
+    "citation_text": "(Luthans et al., 2007)",
+    "offset": [
+     63,
+     85
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "요약하면, 긍정심리자본의 하위요인인 자기효능감, 희망, 복원력, 낙관성은 과거에는 개별적인 변수로서 취급하였으나 서로 개념적 · 실증적 공통 영역이 존재한다는 점이 밝혀져(Luthans et al., 2007) 각 변수를 포괄적으로 결합하여 긍정심리자원으로 간주한다.",
+    "raw": "요약하면, 긍정심리자본의 하위요인인 자기효능감, 희망, 복원력, 낙관성은 과거에는 개별적인 변수로서 취급하였으나 서로 개념적 · 실증적 공통 영역이 존재한다는 점이 밝혀져(Luthans et al., 2007) 각 변수를 포괄적으로 결합하여 긍정심리자원으로 간주한다.",
+    "citation_text": "(Luthans et al., 2007)",
+    "offset": [
+     95,
+     117
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "자기효능감이 높은 사람은 역경이나 좌절을 떨쳐내고 원래나 그 이상의 상태로 복원할 수 있으며(Bandura, 1977), 희망(hope)의 수준이 높으면 구체적인 업무에 있어 더 높은 자신감을 가지며 빠르게 일시적인 무기력으로부터 활력을 되찾을 수 있다(Snyder, 2000).",
+    "raw": "자기효능감이 높은 사람은 역경이나 좌절을 떨쳐내고 원래나 그 이상의 상태로 복원할 수 있으며(Bandura, 1977), 희망(hope)의 수준이 높으면 구체적인 업무에 있어 더 높은 자신감을 가지며 빠르게 일시적인 무기력으로부터 활력을 되찾을 수 있다(Snyder, 2000).",
+    "citation_text": "(Bandura, 1977)",
+    "offset": [
+     51,
+     66
+    ],
+    "authors": [
+     "Bandura"
+    ],
+    "year": "1977",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "자기효능감이 높은 사람은 역경이나 좌절을 떨쳐내고 원래나 그 이상의 상태로 복원할 수 있으며(Bandura, 1977), 희망(hope)의 수준이 높으면 구체적인 업무에 있어 더 높은 자신감을 가지며 빠르게 일시적인 무기력으로부터 활력을 되찾을 수 있다(Snyder, 2000).",
+    "raw": "자기효능감이 높은 사람은 역경이나 좌절을 떨쳐내고 원래나 그 이상의 상태로 복원할 수 있으며(Bandura, 1977), 희망(hope)의 수준이 높으면 구체적인 업무에 있어 더 높은 자신감을 가지며 빠르게 일시적인 무기력으로부터 활력을 되찾을 수 있다(Snyder, 2000).",
+    "citation_text": "(Snyder, 2000)",
+    "offset": [
+     141,
+     155
+    ],
+    "authors": [
+     "Snyder"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 65,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "그래서 희망은 직무만족과 조직물입의 향상과 직무 스트레스 감소의 긍정적인 역할을 한다(Law & Guo, 2015; Kang & Kim, 2019).",
+    "raw": "그래서 희망은 직무만족과 조직물입의 향상과 직무 스트레스 감소의 긍정적인 역할을 한다(Law & Guo, 2015; Kang & Kim, 2019).",
+    "citation_text": "Law & Guo, 2015",
+    "offset": [
+     48,
+     63
+    ],
+    "authors": [
+     "Law & Guo"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 37,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "그래서 희망은 직무만족과 조직물입의 향상과 직무 스트레스 감소의 긍정적인 역할을 한다(Law & Guo, 2015; Kang & Kim, 2019).",
+    "raw": "그래서 희망은 직무만족과 조직물입의 향상과 직무 스트레스 감소의 긍정적인 역할을 한다(Law & Guo, 2015; Kang & Kim, 2019).",
+    "citation_text": "Kang & Kim, 2019",
+    "offset": [
+     65,
+     81
+    ],
+    "authors": [
+     "Kang & Kim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "raw": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "citation_text": "Masten, 2001",
+    "offset": [
+     65,
+     77
+    ],
+    "authors": [
+     "Masten"
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 53,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "raw": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "citation_text": "Masten & Reed, 2002",
+    "offset": [
+     79,
+     98
+    ],
+    "authors": [
+     "Masten & Reed"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "raw": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "citation_text": "(Coutu, 2002)",
+    "offset": [
+     116,
+     129
+    ],
+    "authors": [
+     "Coutu"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "raw": "특히 최근에 주목받는 복원력(resilience)은 부정적 상황에서 원래의 상태로 돌아올 수 있는 유연한 대처 능력(Masten, 2001; Masten & Reed, 2002)으로 다양한 직무 관련 스트레스(Coutu, 2002)를 낮추어 역경, 갈등, 실패 등을 극복하는데 기여할 수 있으며, 이에 대한 부담감으로부터 원래 상태로 되돌아오거나 그것을 뛰어넘게 한다(Luthans, 2002).",
+    "citation_text": "(Luthans, 2002)",
+    "offset": [
+     205,
+     220
+    ],
+    "authors": [
+     "Luthans"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 45,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "낙관성 역시 다양한 개인 및 조직성과에 대하여 긍정적 결과를 가져올 수 있다(Luthans, 2002).",
+    "raw": "낙관성 역시 다양한 개인 및 조직성과에 대하여 긍정적 결과를 가져올 수 있다(Luthans, 2002).",
+    "citation_text": "(Luthans, 2002)",
+    "offset": [
+     42,
+     57
+    ],
+    "authors": [
+     "Luthans"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 45,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "직무소진(job burnout)은 스트레스의 특수한 유형으로 지속될 때 개인에 내재된 정신적, 신체적, 인지적 에너지 자원이 점진적으로 고갈되는 상태를 의미한다(Shirom, 1989).",
+    "raw": "직무소진(job burnout)은 스트레스의 특수한 유형으로 지속될 때 개인에 내재된 정신적, 신체적, 인지적 에너지 자원이 점진적으로 고갈되는 상태를 의미한다(Shirom, 1989).",
+    "citation_text": "(Shirom, 1989)",
+    "offset": [
+     89,
+     103
+    ],
+    "authors": [
+     "Shirom"
+    ],
+    "year": "1989",
+    "linked_refs": [
+     {
+      "index": 64,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "narrative",
+    "sentence": "Freudenberger(1974)의 연구를 통해 처음 밝혀진 정서적, 신체적인 고갈로 대인관계가 많은 직무군(교사, 간호사, 사회복지사, 경찰 등)에서 이유 없이 의욕감소, 피곤, 탈진 증세가 나타나는 상태이다.",
+    "raw": "Freudenberger(1974)의 연구를 통해 처음 밝혀진 정서적, 신체적인 고갈로 대인관계가 많은 직무군(교사, 간호사, 사회복지사, 경찰 등)에서 이유 없이 의욕감소, 피곤, 탈진 증세가 나타나는 상태이다.",
+    "citation_text": "Freudenberger(1974)",
+    "offset": [
+     0,
+     19
+    ],
+    "authors": [
+     "Freudenberger"
+    ],
+    "year": "1974",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "raw": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "citation_text": "Demerouti, Bakker, Nachreiner, & Schaufeli, 2001",
+    "offset": [
+     61,
+     109
+    ],
+    "authors": [
+     "Demerouti"
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "raw": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "citation_text": "Leiter & Schaufeli, 1996",
+    "offset": [
+     111,
+     135
+    ],
+    "authors": [
+     "Leiter & Schaufeli"
+    ],
+    "year": "1996",
+    "linked_refs": [
+     {
+      "index": 43,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "raw": "이런 현상은 대인접촉 직무에서뿐만 아니라 사물과 정보를 취급하는 대부분 직종과 조직구성원에게서 나타나고 있다(Demerouti, Bakker, Nachreiner, & Schaufeli, 2001; Leiter & Schaufeli, 1996; Sand & Miyazaki, 2000).",
+    "citation_text": "Sand & Miyazaki, 2000",
+    "offset": [
+     137,
+     158
+    ],
+    "authors": [
+     "Sand & Miyazaki"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 59,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "국내 연구의 경우도 직무소진 현상을 감정노동을 수반하는 서비스업 종사자뿐만 아니라 여타의 업종에서도 연구하고 있다(Kim, Chi, & Lee, 2017; Lee & Kim, 2019).",
+    "raw": "국내 연구의 경우도 직무소진 현상을 감정노동을 수반하는 서비스업 종사자뿐만 아니라 여타의 업종에서도 연구하고 있다(Kim, Chi, & Lee, 2017; Lee & Kim, 2019).",
+    "citation_text": "Kim, Chi, & Lee, 2017",
+    "offset": [
+     64,
+     85
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 34,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "국내 연구의 경우도 직무소진 현상을 감정노동을 수반하는 서비스업 종사자뿐만 아니라 여타의 업종에서도 연구하고 있다(Kim, Chi, & Lee, 2017; Lee & Kim, 2019).",
+    "raw": "국내 연구의 경우도 직무소진 현상을 감정노동을 수반하는 서비스업 종사자뿐만 아니라 여타의 업종에서도 연구하고 있다(Kim, Chi, & Lee, 2017; Lee & Kim, 2019).",
+    "citation_text": "Lee & Kim, 2019",
+    "offset": [
+     87,
+     102
+    ],
+    "authors": [
+     "Lee & Kim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "Maslach and Jackson(1981)은 직무소진을 구성하는 하위요인을 감정고갈, 비인격화, 성취감 저하로 범주화하였으며 이에 대한 측정 방법으로 MBI(Maslach Burnout Inventory) 척도를 개발하였다.",
+    "raw": "Maslach and Jackson(1981)은 직무소진을 구성하는 하위요인을 감정고갈, 비인격화, 성취감 저하로 범주화하였으며 이에 대한 측정 방법으로 MBI(Maslach Burnout Inventory) 척도를 개발하였다.",
+    "citation_text": "Jackson(1981)",
+    "offset": [
+     12,
+     25
+    ],
+    "authors": [
+     "Jackson"
+    ],
+    "year": "1981",
+    "linked_refs": [
+     {
+      "index": 50,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "MBI는 직무소진에 대한 후발 연구자들이 가장 많이 사용하는 척도로(Taris, 2006), 본 연구는MBI 척도를 바탕으로 직무소진의 요인으로 감정고갈, 비인격화, 성취감 저하의 세 가지로 구성하였다.",
+    "raw": "MBI는 직무소진에 대한 후발 연구자들이 가장 많이 사용하는 척도로(Taris, 2006), 본 연구는MBI 척도를 바탕으로 직무소진의 요인으로 감정고갈, 비인격화, 성취감 저하의 세 가지로 구성하였다.",
+    "citation_text": "(Taris, 2006)",
+    "offset": [
+     37,
+     50
+    ],
+    "authors": [
+     "Taris"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 68,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "감정고갈은 직무수행 과정에서 발생하는 과도한 심리적 부담 등으로 개인의 정서적 자원을다 소모하거나 지나치게 감정적인 것과 같은 개인의 감정 상태이다(Maslach & Jackson, 1981).",
+    "raw": "감정고갈은 직무수행 과정에서 발생하는 과도한 심리적 부담 등으로 개인의 정서적 자원을다 소모하거나 지나치게 감정적인 것과 같은 개인의 감정 상태이다(Maslach & Jackson, 1981).",
+    "citation_text": "(Maslach & Jackson, 1981)",
+    "offset": [
+     82,
+     107
+    ],
+    "authors": [
+     "Maslach & Jackson"
+    ],
+    "year": "1981",
+    "linked_refs": [
+     {
+      "index": 50,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "타인에대한 비인격화는 본인의 정서적 탈진을 극복할 수 있는 어떠한 대안이 없을 때 심리적 대처반응으로 타인에 대한 비인격화가 나타난다(이경숙, 김민정, 2019).",
+    "raw": "타인에대한 비인격화는 본인의 정서적 탈진을 극복할 수 있는 어떠한 대안이 없을 때 심리적 대처반응으로 타인에 대한 비인격화가 나타난다(이경숙, 김민정, 2019).",
+    "citation_text": "(이경숙, 김민정, 2019)",
+    "offset": [
+     74,
+     90
+    ],
+    "authors": [
+     "이경숙"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "성취감 저하는 자신의 직무를 성공적으로 달성할 수 있는 역량에 대한 상태의 감소로 정의되며, 성취감의 저하는 구성원 및 조직의 사기 저하, 생산성의 감소, 직무이탈, 무능력한 대응 행동으로 나타날 수 있다고 보고되고 있다(Maslach & Jackson, 1997).",
+    "raw": "성취감 저하는 자신의 직무를 성공적으로 달성할 수 있는 역량에 대한 상태의 감소로 정의되며, 성취감의 저하는 구성원 및 조직의 사기 저하, 생산성의 감소, 직무이탈, 무능력한 대응 행동으로 나타날 수 있다고 보고되고 있다(Maslach & Jackson, 1997).",
+    "citation_text": "(Maslach & Jackson, 1997)",
+    "offset": [
+     123,
+     148
+    ],
+    "authors": [
+     "Maslach & Jackson"
+    ],
+    "year": "1997",
+    "linked_refs": [
+     {
+      "index": 51,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "진성 리더십은 구성원의 자기효능감, 낙관성, 희망, 회복력과 같은 긍정적인 심리 상태를 이끌어낼 수 있다(Gardner et al., 2005).",
+    "raw": "진성 리더십은 구성원의 자기효능감, 낙관성, 희망, 회복력과 같은 긍정적인 심리 상태를 이끌어낼 수 있다(Gardner et al., 2005).",
+    "citation_text": "(Gardner et al., 2005)",
+    "offset": [
+     58,
+     80
+    ],
+    "authors": [
+     "Gardner et al."
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "자신만의 가치관과 신념에 일치되게 행동하는 내재화된 도덕적 관점은 역경과 불확실성의 상황에서 발생하는 판단의 모호함을 줄일 수 있어서 자기효능감이나 희망에 대한 자기지각(self-perception)을 향상시킬 수있다(Luthans, Youssef & Avolio, 2007).",
+    "raw": "자신만의 가치관과 신념에 일치되게 행동하는 내재화된 도덕적 관점은 역경과 불확실성의 상황에서 발생하는 판단의 모호함을 줄일 수 있어서 자기효능감이나 희망에 대한 자기지각(self-perception)을 향상시킬 수있다(Luthans, Youssef & Avolio, 2007).",
+    "citation_text": "(Luthans, Youssef & Avolio, 2007)",
+    "offset": [
+     121,
+     154
+    ],
+    "authors": [
+     "Luthans"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_6",
+    "kind": "parenthetical",
+    "sentence": "그래서 진성 리더십은 성과와 경쟁력 우위를 향상시킬 수 있는 심리적 자본을 강화시키고, 구성원의 성공적인 업무수행과 성과를 통해 자신의 심리적 자본을 구축할 기회를 제공한다(Avolio et al., 2004).",
+    "raw": "그래서 진성 리더십은 성과와 경쟁력 우위를 향상시킬 수 있는 심리적 자본을 강화시키고, 구성원의 성공적인 업무수행과 성과를 통해 자신의 심리적 자본을 구축할 기회를 제공한다(Avolio et al., 2004).",
+    "citation_text": "(Avolio et al., 2004)",
+    "offset": [
+     96,
+     117
+    ],
+    "authors": [
+     "Avolio et al."
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "parenthetical",
+    "sentence": "(Yang, 2015).",
+    "raw": "(Yang, 2015).",
+    "citation_text": "(Yang, 2015)",
+    "offset": [
+     0,
+     12
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 72,
+      "num": null,
+      "uid": "u26_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "parenthetical",
+    "sentence": "경험적 연구결과, 진성 리더십이 긍정심리자본에 미치는 정적인 영향(Gardner & Schermerhorn, 2004)과 심리적 자본의 하위개념인 회복력과 희망(Luthans et al., 2007)에 미치는 긍정적인 영향관계가 나타났다.",
+    "raw": "경험적 연구결과, 진성 리더십이 긍정심리자본에 미치는 정적인 영향(Gardner & Schermerhorn, 2004)과 심리적 자본의 하위개념인 회복력과 희망(Luthans et al., 2007)에 미치는 긍정적인 영향관계가 나타났다.",
+    "citation_text": "(Gardner & Schermerhorn, 2004)",
+    "offset": [
+     36,
+     66
+    ],
+    "authors": [
+     "Gardner & Schermerhorn"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "parenthetical",
+    "sentence": "경험적 연구결과, 진성 리더십이 긍정심리자본에 미치는 정적인 영향(Gardner & Schermerhorn, 2004)과 심리적 자본의 하위개념인 회복력과 희망(Luthans et al., 2007)에 미치는 긍정적인 영향관계가 나타났다.",
+    "raw": "경험적 연구결과, 진성 리더십이 긍정심리자본에 미치는 정적인 영향(Gardner & Schermerhorn, 2004)과 심리적 자본의 하위개념인 회복력과 희망(Luthans et al., 2007)에 미치는 긍정적인 영향관계가 나타났다.",
+    "citation_text": "(Luthans et al., 2007)",
+    "offset": [
+     89,
+     111
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "parenthetical",
+    "sentence": "과거에는 업무현장에서 발생하는 직무소진에 대한 정서적인 회복(emotional recovery)은 구성원 스스로의 몫이었다(Johnston, 1995).",
+    "raw": "과거에는 업무현장에서 발생하는 직무소진에 대한 정서적인 회복(emotional recovery)은 구성원 스스로의 몫이었다(Johnston, 1995).",
+    "citation_text": "(Johnston, 1995)",
+    "offset": [
+     68,
+     84
+    ],
+    "authors": [
+     "Johnston"
+    ],
+    "year": "1995",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "Choi et al. (2012)는 상사지원이 구성원의 소진을 완화시키는 것으로 보았고, 특히 상사와 구성원 간 지원적 관계(supportive relations)가 구성원 소진에 유의미한 영향을 미친다고 하였다.",
+    "raw": "Choi et al. (2012)는 상사지원이 구성원의 소진을 완화시키는 것으로 보았고, 특히 상사와 구성원 간 지원적 관계(supportive relations)가 구성원 소진에 유의미한 영향을 미친다고 하였다.",
+    "citation_text": "Choi et al. (2012)",
+    "offset": [
+     0,
+     18
+    ],
+    "authors": [
+     "Choi et al."
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "Maslach et al. (2001)은 직무열의가 직무탈진의 세 하위요인과 반대되는 에너지, 관여, 효능감의 특징을 가지며, 진성 리더십이 직무열의에 긍정적인 효과를 준다는 것을 발견하였다.",
+    "raw": "Maslach et al. (2001)은 직무열의가 직무탈진의 세 하위요인과 반대되는 에너지, 관여, 효능감의 특징을 가지며, 진성 리더십이 직무열의에 긍정적인 효과를 준다는 것을 발견하였다.",
+    "citation_text": "Maslach et al. (2001)",
+    "offset": [
+     0,
+     21
+    ],
+    "authors": [
+     "Maslach et al."
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 52,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_9",
+    "kind": "parenthetical",
+    "sentence": "긍정심리자본은 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 낙관성, 회복력으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜경험하는 것으로 나타났다(Luthans et al., 2004).",
+    "raw": "긍정심리자본은 개인의 긍정적 심리상태를 의미하는 것으로 자기효능감, 희망, 낙관성, 회복력으로 구성되며, 긍정심리자본이 높으면 조직에서 업무에 대한 부정적 감정이 감소하여 직무소진을 덜경험하는 것으로 나타났다(Luthans et al., 2004).",
+    "citation_text": "(Luthans et al., 2004)",
+    "offset": [
+     116,
+     138
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_9",
+    "kind": "parenthetical",
+    "sentence": "긍정심리자본은 직무소진의 하위 변인들인 정서적 고갈, 비인격화, 성취감 저하와 부적 영향을 미치는 것으로 보고된다(Bakker & Demerouti,2007).",
+    "raw": "긍정심리자본은 직무소진의 하위 변인들인 정서적 고갈, 비인격화, 성취감 저하와 부적 영향을 미치는 것으로 보고된다(Bakker & Demerouti,2007).",
+    "citation_text": "(Bakker & Demerouti,2007)",
+    "offset": [
+     63,
+     88
+    ],
+    "authors": [
+     "Bakker & Demerouti"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_9",
+    "kind": "parenthetical",
+    "sentence": "서비스 유통업에 근무자 대상의 연구에서 긍정심리자본이 직무소진에 부적인 영향을 미치는 것으로 나타났고(Lee & Lee, 2015; Park & Lee, 2014),일반기업 등을 대상의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에모두 부적 영향을 미치는 것으로 나타나 긍정심리자본이 높을수록 직무소진의 정도가 낮아지는 것으로 밝혀졌다(Kim, B.",
+    "raw": "서비스 유통업에 근무자 대상의 연구에서 긍정심리자본이 직무소진에 부적인 영향을 미치는 것으로 나타났고(Lee & Lee, 2015; Park & Lee, 2014),일반기업 등을 대상의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에모두 부적 영향을 미치는 것으로 나타나 긍정심리자본이 높을수록 직무소진의 정도가 낮아지는 것으로 밝혀졌다(Kim, B.",
+    "citation_text": "Lee & Lee, 2015",
+    "offset": [
+     57,
+     72
+    ],
+    "authors": [
+     "Lee & Lee"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 37,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_9",
+    "kind": "parenthetical",
+    "sentence": "서비스 유통업에 근무자 대상의 연구에서 긍정심리자본이 직무소진에 부적인 영향을 미치는 것으로 나타났고(Lee & Lee, 2015; Park & Lee, 2014),일반기업 등을 대상의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에모두 부적 영향을 미치는 것으로 나타나 긍정심리자본이 높을수록 직무소진의 정도가 낮아지는 것으로 밝혀졌다(Kim, B.",
+    "raw": "서비스 유통업에 근무자 대상의 연구에서 긍정심리자본이 직무소진에 부적인 영향을 미치는 것으로 나타났고(Lee & Lee, 2015; Park & Lee, 2014),일반기업 등을 대상의 연구에서도 긍정심리자본이 직무소진의 하위요인인 직무탈진과 직무이탈에모두 부적 영향을 미치는 것으로 나타나 긍정심리자본이 높을수록 직무소진의 정도가 낮아지는 것으로 밝혀졌다(Kim, B.",
+    "citation_text": "Park & Lee, 2014",
+    "offset": [
+     74,
+     90
+    ],
+    "authors": [
+     "Park & Lee"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 8,
+    "uid": "u7_2",
+    "kind": "parenthetical",
+    "sentence": "이는 직무를 수행하는 과정에서 갈등상황이 발생했을 때 긍정심리자본이 높은 사람은 이를 스트레스 요인으로 받아들이기보다는 도전할 만한 과제라 여기고, 긍정심리자본이 낮은 사람보다 상대적으로 직무소진에 덜 노출될 수 있다(Luthans, Luthans, & Luthans, 2004).",
+    "raw": "이는 직무를 수행하는 과정에서 갈등상황이 발생했을 때 긍정심리자본이 높은 사람은 이를 스트레스 요인으로 받아들이기보다는 도전할 만한 과제라 여기고, 긍정심리자본이 낮은 사람보다 상대적으로 직무소진에 덜 노출될 수 있다(Luthans, Luthans, & Luthans, 2004).",
+    "citation_text": "(Luthans, Luthans, & Luthans, 2004)",
+    "offset": [
+     121,
+     156
+    ],
+    "authors": [
+     "Luthans"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_9",
+    "kind": "parenthetical",
+    "sentence": "또한, 구성원과 개방적이고 솔직한 대화를 통해 구성원의 애로사항 및 고충 등을 잘 이해하는 관계적 투명성과 진실한 자아를 지속적으로 이해하는 자아인식을 보이기 때문에 구성원과의 신뢰를 촉진할 뿐만 하니라 구성원의 다양한 관점과 의견을 수렴하는 균형 잡힌 정보처리를 통해(Han, 2013) 구성원과의 긍정적인 업무관계를 형성하게 되면 다양한 직무요구나 주변 환경에 따른 스트레스에 대한 완만한 해결방법을 찾아내거나, 어려운 문제나 역경을 겪더라도 성공을 위해 지속적으로 노력할 수 있다.",
+    "raw": "또한, 구성원과 개방적이고 솔직한 대화를 통해 구성원의 애로사항 및 고충 등을 잘 이해하는 관계적 투명성과 진실한 자아를 지속적으로 이해하는 자아인식을 보이기 때문에 구성원과의 신뢰를 촉진할 뿐만 하니라 구성원의 다양한 관점과 의견을 수렴하는 균형 잡힌 정보처리를 통해(Han, 2013) 구성원과의 긍정적인 업무관계를 형성하게 되면 다양한 직무요구나 주변 환경에 따른 스트레스에 대한 완만한 해결방법을 찾아내거나, 어려운 문제나 역경을 겪더라도 성공을 위해 지속적으로 노력할 수 있다.",
+    "citation_text": "(Han, 2013)",
+    "offset": [
+     150,
+     161
+    ],
+    "authors": [
+     "Han"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_10",
+    "kind": "parenthetical",
+    "sentence": "진성 리더십과 직무소진의 관계는 직무요구-자원모형(job demands-resources model: JD-R model) (Schaufeli & Bakker, 2004)으로 설명할 수 있다.",
+    "raw": "진성 리더십과 직무소진의 관계는 직무요구-자원모형(job demands-resources model: JD-R model) (Schaufeli & Bakker, 2004)으로 설명할 수 있다.",
+    "citation_text": "(Schaufeli & Bakker, 2004)",
+    "offset": [
+     69,
+     95
+    ],
+    "authors": [
+     "Schaufeli & Bakker"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 8,
+    "uid": "u7_10",
+    "kind": "parenthetical",
+    "sentence": "자원보존이론(Hobfoll, 1989)의 관점에서 보면, 진성성 있는 리더는 명확한 목표를 제공하고, 모호한 역할을 줄이고, 업무 요구의 스트레스를 줄이는 지원과 피드백을 제공함으로써 직원들이 자원(예: 시간, 에너지, 감정적 자원)을 확보하고 유지, 보호 및 육성하려는 것을 도울 수 있다.",
+    "raw": "자원보존이론(Hobfoll, 1989)의 관점에서 보면, 진성성 있는 리더는 명확한 목표를 제공하고, 모호한 역할을 줄이고, 업무 요구의 스트레스를 줄이는 지원과 피드백을 제공함으로써 직원들이 자원(예: 시간, 에너지, 감정적 자원)을 확보하고 유지, 보호 및 육성하려는 것을 도울 수 있다.",
+    "citation_text": "(Hobfoll, 1989)",
+    "offset": [
+     6,
+     21
+    ],
+    "authors": [
+     "Hobfoll"
+    ],
+    "year": "1989",
+    "linked_refs": [
+     {
+      "index": 21,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "사회학습이론(Bandura, 1969)의 관점에서 보면, 개인은 관찰과 모방을 통해 바람직한 행동을 습득할 수 있는데, 진성 리더십은 직원들에게 사회적 학습 및 모델링 기회를 제공할 수 있다.",
+    "raw": "사회학습이론(Bandura, 1969)의 관점에서 보면, 개인은 관찰과 모방을 통해 바람직한 행동을 습득할 수 있는데, 진성 리더십은 직원들에게 사회적 학습 및 모델링 기회를 제공할 수 있다.",
+    "citation_text": "(Bandura, 1969)",
+    "offset": [
+     6,
+     21
+    ],
+    "authors": [
+     "Bandura"
+    ],
+    "year": "1969",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "직원들은 진성리더의 긍정적인 행동을 모방 및 학습을 통해서 효과적인 대처 전략을 관찰하고 학습함으로써 업무수행 과정에서 발생하는 직무소진에 대처하는 방법을 학습할 수 있다(Avolio & Gardner, 2005).",
+    "raw": "직원들은 진성리더의 긍정적인 행동을 모방 및 학습을 통해서 효과적인 대처 전략을 관찰하고 학습함으로써 업무수행 과정에서 발생하는 직무소진에 대처하는 방법을 학습할 수 있다(Avolio & Gardner, 2005).",
+    "citation_text": "(Avolio & Gardner, 2005)",
+    "offset": [
+     95,
+     119
+    ],
+    "authors": [
+     "Avolio & Gardner"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "특히, 정서전염이론(Hatfield, Cacioppo & Rapson, 1993)에 따르면, 정서는 모방을 통해서 전이되므로 리더의 진정성은 구성원들에게 모방되고 전이될 수 있다.",
+    "raw": "특히, 정서전염이론(Hatfield, Cacioppo & Rapson, 1993)에 따르면, 정서는 모방을 통해서 전이되므로 리더의 진정성은 구성원들에게 모방되고 전이될 수 있다.",
+    "citation_text": "(Hatfield, Cacioppo & Rapson, 1993)",
+    "offset": [
+     10,
+     45
+    ],
+    "authors": [
+     "Hatfield"
+    ],
+    "year": "1993",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "narrative",
+    "sentence": "국내에서도 Jang and Lee(2020)는 진성 리더십과 이직의도의 영향 관계에서 심리적 주인의식과 직무소진의 매개효과를 보고하였으며, Na and Park(2019)은 간호사를 대상으로 감정노동의 표면행위가 소진을 통해 이직의도에 미치는 영향관계에서 진성 리더십의 조절된 매개효과를 확인하였다.",
+    "raw": "국내에서도 Jang and Lee(2020)는 진성 리더십과 이직의도의 영향 관계에서 심리적 주인의식과 직무소진의 매개효과를 보고하였으며, Na and Park(2019)은 간호사를 대상으로 감정노동의 표면행위가 소진을 통해 이직의도에 미치는 영향관계에서 진성 리더십의 조절된 매개효과를 확인하였다.",
+    "citation_text": "Lee(2020)",
+    "offset": [
+     15,
+     24
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "narrative",
+    "sentence": "국내에서도 Jang and Lee(2020)는 진성 리더십과 이직의도의 영향 관계에서 심리적 주인의식과 직무소진의 매개효과를 보고하였으며, Na and Park(2019)은 간호사를 대상으로 감정노동의 표면행위가 소진을 통해 이직의도에 미치는 영향관계에서 진성 리더십의 조절된 매개효과를 확인하였다.",
+    "raw": "국내에서도 Jang and Lee(2020)는 진성 리더십과 이직의도의 영향 관계에서 심리적 주인의식과 직무소진의 매개효과를 보고하였으며, Na and Park(2019)은 간호사를 대상으로 감정노동의 표면행위가 소진을 통해 이직의도에 미치는 영향관계에서 진성 리더십의 조절된 매개효과를 확인하였다.",
+    "citation_text": "Park(2019)",
+    "offset": [
+     85,
+     95
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 55,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "간호사의 기본심리욕구와 심리적 소진의 관계에서도 긍정심리자본의 매개효과와 진성 리더십의 조절된 매개효과가 보고된 바 있다(Cho & Jang, 2020).",
+    "raw": "간호사의 기본심리욕구와 심리적 소진의 관계에서도 긍정심리자본의 매개효과와 진성 리더십의 조절된 매개효과가 보고된 바 있다(Cho & Jang, 2020).",
+    "citation_text": "(Cho & Jang, 2020)",
+    "offset": [
+     67,
+     85
+    ],
+    "authors": [
+     "Cho & Jang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "narrative",
+    "sentence": "진성 리더십을 측정하기 위하여 Avoilo et al. (2007)가 개발한 Authentic Leadership Questionnaire를 사용하였다.",
+    "raw": "진성 리더십을 측정하기 위하여 Avoilo et al. (2007)가 개발한 Authentic Leadership Questionnaire를 사용하였다.",
+    "citation_text": "Avoilo et al. (2007)",
+    "offset": [
+     17,
+     37
+    ],
+    "authors": [
+     "Avoilo et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_5",
+    "kind": "narrative",
+    "sentence": "긍정심리자본은 Luthans et al.(2007)이 기존의 긍정심리자본의 하위요인을 조직적 상황에 맞게 사용할 수 있도록 개발한 PCQ(Psychological Capital Questionnaire)를 사용하여 측정하였다.",
+    "raw": "긍정심리자본은 Luthans et al.(2007)이 기존의 긍정심리자본의 하위요인을 조직적 상황에 맞게 사용할 수 있도록 개발한 PCQ(Psychological Capital Questionnaire)를 사용하여 측정하였다.",
+    "citation_text": "Luthans et al.(2007)",
+    "offset": [
+     8,
+     28
+    ],
+    "authors": [
+     "Luthans et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_5",
+    "kind": "parenthetical",
+    "sentence": "이 적도는 응답자의 타고난 기질이 아닌 현재의 심리적 상태(state)를 측정하기 위해 개발되었다(Lee & Choi, 2010).",
+    "raw": "이 적도는 응답자의 타고난 기질이 아닌 현재의 심리적 상태(state)를 측정하기 위해 개발되었다(Lee & Choi, 2010).",
+    "citation_text": "(Lee & Choi, 2010)",
+    "offset": [
+     54,
+     72
+    ],
+    "authors": [
+     "Lee & Choi"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 38,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_7",
+    "kind": "narrative",
+    "sentence": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "raw": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "citation_text": "Jackson (1981)",
+    "offset": [
+     18,
+     32
+    ],
+    "authors": [
+     "Jackson"
+    ],
+    "year": "1981",
+    "linked_refs": [
+     {
+      "index": 50,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_7",
+    "kind": "narrative",
+    "sentence": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "raw": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "citation_text": "Schaufeli et al. (1996)",
+    "offset": [
+     84,
+     107
+    ],
+    "authors": [
+     "Schaufeli et al."
+    ],
+    "year": "1996",
+    "linked_refs": [
+     {
+      "index": 43,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_7",
+    "kind": "parenthetical",
+    "sentence": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "raw": "직무소진은 Maslach and Jackson (1981)이 개발한 MBI (Maslach Burnout Inventory; MBI) 척도를 바탕으로 Schaufeli et al. (1996)이 일반직 종사자의 직무소진 정도를 측정할 수 있도록 일반화한 MBI-GS (Maslach Burnout Inventory- General Survey; MBI-GS) 척도로 선행연구(Shin, 2003)에서 사용된 척도를 검토한 후 본 연구에 취지에 부합한다고 판단되는 12문항을 사용하였다.",
+    "citation_text": "(Shin, 2003)",
+    "offset": [
+     209,
+     221
+    ],
+    "authors": [
+     "Shin"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 63,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_3",
+    "kind": "narrative",
+    "sentence": "본 연구에서 사용된 진성 리더십, 긍정심리자본, 직무소진의 변수에 대한 기술통계량 결과(부록 1), 하위요인이 정규분포를 이루는지에 대한 정규성 검토기준으로 왜도와 첨도 기준은 West et al.(1995)의 연구에서 제시한 기준(외도<2, 첨도<7)을 충족하였고 진성 리더십, 긍정심리자본, 직무소진 하위요인들이 대부분 충족하여 정규성에 문제가 없는 것으로 판단되었다.",
+    "raw": "본 연구에서 사용된 진성 리더십, 긍정심리자본, 직무소진의 변수에 대한 기술통계량 결과(부록 1), 하위요인이 정규분포를 이루는지에 대한 정규성 검토기준으로 왜도와 첨도 기준은 West et al.(1995)의 연구에서 제시한 기준(외도<2, 첨도<7)을 충족하였고 진성 리더십, 긍정심리자본, 직무소진 하위요인들이 대부분 충족하여 정규성에 문제가 없는 것으로 판단되었다.",
+    "citation_text": "West et al.(1995)",
+    "offset": [
+     99,
+     116
+    ],
+    "authors": [
+     "West et al."
+    ],
+    "year": "1995",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_2",
+    "kind": "narrative",
+    "sentence": "가설 4는 진성 리더십과 직무소진 간의 관계에서 긍정심리자본의 매개효과로 Baron과 Kenny(1986)가 제안했던 3단계 절차를 수행하였다.",
+    "raw": "가설 4는 진성 리더십과 직무소진 간의 관계에서 긍정심리자본의 매개효과로 Baron과 Kenny(1986)가 제안했던 3단계 절차를 수행하였다.",
+    "citation_text": "Kenny(1986)",
+    "offset": [
+     48,
+     59
+    ],
+    "authors": [
+     "Kenny"
+    ],
+    "year": "1986",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이 결과는 선행 연구에서 제시된 진성 리더십과 직무소진 간 유의한 관계성(Cho & Jang, 2020; Maslach, Schaufeli, & Leiter, 2001)과 동일하게 나타났다.",
+    "raw": "이 결과는 선행 연구에서 제시된 진성 리더십과 직무소진 간 유의한 관계성(Cho & Jang, 2020; Maslach, Schaufeli, & Leiter, 2001)과 동일하게 나타났다.",
+    "citation_text": "Cho & Jang, 2020",
+    "offset": [
+     41,
+     57
+    ],
+    "authors": [
+     "Cho & Jang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이 결과는 선행 연구에서 제시된 진성 리더십과 직무소진 간 유의한 관계성(Cho & Jang, 2020; Maslach, Schaufeli, & Leiter, 2001)과 동일하게 나타났다.",
+    "raw": "이 결과는 선행 연구에서 제시된 진성 리더십과 직무소진 간 유의한 관계성(Cho & Jang, 2020; Maslach, Schaufeli, & Leiter, 2001)과 동일하게 나타났다.",
+    "citation_text": "Maslach, Schaufeli, & Leiter, 2001",
+    "offset": [
+     59,
+     93
+    ],
+    "authors": [
+     "Maslach"
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 52,
+      "num": null,
+      "uid": "u24_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "raw": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "citation_text": "Ji, Kim, & Kim, 2021",
+    "offset": [
+     39,
+     59
+    ],
+    "authors": [
+     "Ji"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "raw": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "citation_text": "Kim & Jang, 2012",
+    "offset": [
+     61,
+     77
+    ],
+    "authors": [
+     "Kim & Jang"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "raw": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "citation_text": "Luthans & Avolio, 2003",
+    "offset": [
+     79,
+     101
+    ],
+    "authors": [
+     "Luthans & Avolio"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "raw": "이는 선행연구에서 제시된 진성 리더십과 긍정심리자본의 유의미한 관계성(Ji, Kim, & Kim, 2021; Kim & Jang, 2012; Luthans & Avolio, 2003) 및 진성 리더십과 긍정심리자본의 관련성(Avolio & Luthans, 2006)을 지지하는 결과이다.",
+    "citation_text": "(Avolio & Luthans, 2006)",
+    "offset": [
+     124,
+     148
+    ],
+    "authors": [
+     "Avolio & Luthans"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "raw": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "citation_text": "Avey et al., 2011",
+    "offset": [
+     42,
+     59
+    ],
+    "authors": [
+     "Avey et al."
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u20_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "raw": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "citation_text": "Jin & Park, 2021",
+    "offset": [
+     61,
+     77
+    ],
+    "authors": [
+     "Jin & Park"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "raw": "이러한 결과는 선행연구에서 제시된 긍정심리자본과 직무소진의 유의미한 관계성(Avey et al., 2011; Jin & Park, 2021; Lee & Choi, 2010)이 존재함을 실증적으로 뒷받침한다.",
+    "citation_text": "Lee & Choi, 2010",
+    "offset": [
+     79,
+     95
+    ],
+    "authors": [
+     "Lee & Choi"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 38,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_4",
+    "kind": "parenthetical",
+    "sentence": "첫째, 본 연구의 설계는 자기보고식 설문조사로써 응답자의 사회적 바람직성, 일관성 유지 동기, 반복문항 맥락효과 등 응답자 편의와 동일한 척도점, 반복문항 맥락효과 등으로 인해 동일방법편의가 발생할 가능성이 있다(Park et al., 2007).",
+    "raw": "첫째, 본 연구의 설계는 자기보고식 설문조사로써 응답자의 사회적 바람직성, 일관성 유지 동기, 반복문항 맥락효과 등 응답자 편의와 동일한 척도점, 반복문항 맥락효과 등으로 인해 동일방법편의가 발생할 가능성이 있다(Park et al., 2007).",
+    "citation_text": "(Park et al., 2007)",
+    "offset": [
+     118,
+     137
+    ],
+    "authors": [
+     "Park et al."
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 58,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_5",
+    "kind": "parenthetical",
+    "sentence": "이는 방위사업청 조직이 구성원이 상하 관계가 명확하고 강한 조직의 특성을 존재하여 응답 결과의 노출에 따른 우려 등의 민감한 상황에 따라 리더십 관련 긍정적 가치를 포함한 설문문항에 대해 실제보다 긍정적으로 응답할 가능성이 있다(e.g., Krumpal, 2013).",
+    "raw": "이는 방위사업청 조직이 구성원이 상하 관계가 명확하고 강한 조직의 특성을 존재하여 응답 결과의 노출에 따른 우려 등의 민감한 상황에 따라 리더십 관련 긍정적 가치를 포함한 설문문항에 대해 실제보다 긍정적으로 응답할 가능성이 있다(e.g., Krumpal, 2013).",
+    "citation_text": "(e.g., Krumpal, 2013)",
+    "offset": [
+     127,
+     148
+    ],
+    "authors": [
+     "Krumpal"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 35,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

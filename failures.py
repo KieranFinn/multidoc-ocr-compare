@@ -2,8 +2,10 @@
 """失败档案 + 轮次台账 + 进度报告(2026-11-18)。
 
 两种用法:
-  python failures.py                          # 看当前红单聚类(不落盘)
+  python failures.py [--ws 名或路径]            # 看当前红单聚类(不落盘)
   python failures.py --round [--tokens N] [--did "这轮做了什么"] [--json x.json] [--rebuild-registry]
+      # [--ws 名或路径] 三 CLI 通用: --ws > KCI_WS_ROOT 环境变量 > GUI 当前工作区 > 主库;
+      # 不设时自动跟 GUI 当前工作区(.gui_prefs.json), 开跑前打印一行解析结果防跑错库。
       # 记一轮台账(_rounds.jsonl) + 跟上轮对比 + 重新生成进度报告(_rounds_report.html)
       # --rebuild-registry 才重扫 DOI→刊名注册表; 默认不重扫(收敛台账不该有全库写副作用)。
 
@@ -24,19 +26,31 @@ import html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import qc
 from metapy import journals
+import workspaces
 
 OUT = "out"
 UP = "uploads"
 HERE = os.path.dirname(os.path.abspath(__file__))
 LEDGER = os.path.join(HERE, "_rounds.jsonl")
 REPORT = os.path.join(HERE, "_rounds_report.html")
-# 工作区覆盖(2026-11-19): KCI_WS_ROOT=E:/KCI11_17 时收集/报告指向该工作区;
-# 台账仍共享一本, 条目带 ws 字段, 跨工作区的轮次互不比较。
-WS = os.environ.get("KCI_WS_ROOT") or ""
+# 工作区覆盖(2026-11-24 收敛口径): --ws 显式值 > KCI_WS_ROOT 环境变量 > GUI 当前
+# 工作区(.gui_prefs.json) > 主库。台账仍共享一本, 条目带 ws 字段, 跨工作区的轮次互不比较。
+WS = (os.environ.get("KCI_WS_ROOT") or "").replace("\\", "/")
 if WS:
     OUT = os.path.join(WS, "out")
     UP = os.path.join(WS, "uploads")
 NER_TRIAL = os.path.join(WS if WS else HERE, "out_llm_trial")
+
+
+def _apply_ws(root):
+    """CLI --ws 应用: 重指 WS/OUT/UP/NER_TRIAL(主库也锚到 HERE, 不再随 cwd 漂移)。
+    WS 键斜杠归一为正斜杠(台账环比按字符串相等, 见 stages._apply_ws 同款注释)。"""
+    global WS, OUT, UP, NER_TRIAL
+    WS = root.replace("\\", "/")
+    OUT = os.path.join(root, "out") if root else os.path.join(HERE, "out")
+    UP = os.path.join(root, "uploads") if root else os.path.join(HERE, "uploads")
+    NER_TRIAL = os.path.join(root, "out_llm_trial") if root \
+        else os.path.join(HERE, "out_llm_trial")
 
 _PUBDATE_ANY = re.compile(u"(?:원고)?접수일|게재\\s*확정일")
 _KW_HEAD = re.compile(u"(?:키\\s*워드|핵심\\s*어|주제\\s*어|중심\\s*어|주요\\s*어|Key\\s*words?)", re.I)
@@ -262,8 +276,15 @@ def _round(tokens, did):
     took = time.time() - t0
 
     history = _read_ledger()
-    prev = history[-1] if history else None
-    prev2 = history[-2] if len(history) >= 2 else None
+    # 台账是多工作区共用一本(ws 字段); 环比必须取“本工作区最近一轮”，
+    # 否则 KCI11_17 记完一笔后，俄葡法下一轮会误把 KCI11_17 当上轮/无法对比。
+    # ws 键比较双侧都斜杠归一: round 12 之前 env 手敲正斜杠、resolve 给反斜杠,
+    # 历史条目里两种都有(2026-11-24 实锤断过环比)。
+    _ws_key = (WS or "main").replace("\\", "/")
+    same_ws = [r for r in history
+               if (r.get("ws", "main") or "main").replace("\\", "/") == _ws_key]
+    prev = same_ws[-1] if same_ws else None
+    prev2 = same_ws[-2] if len(same_ws) >= 2 else None
     total = len([f for f in os.listdir(UP) if f.endswith(".pdf")])
     red = len(rows)
     acc = round(100.0 * (total - red) / total, 1) if total else 0.0
@@ -278,7 +299,9 @@ def _round(tokens, did):
         "total": total, "red": red, "acc": acc,
         "clusters": clusters,
     }
-    if prev and prev.get("ws", "main") == rec["ws"]:
+    # 与 same_ws 同口径归一后再比: env 手敲正斜杠与 abspath 反斜杠是同一库
+    # (2026-11-24 round 13 实锤: 外层归一了这里没归一, change 被置零)。
+    if prev and (prev.get("ws", "main") or "main").replace("\\", "/") == _ws_key:
         rec["prev_red"] = prev["red"]
         rec["prev_acc"] = prev["acc"]
         rec["change"] = _compare(clusters, prev.get("clusters") or {},
@@ -326,6 +349,23 @@ def _write_round_report(rounds, current_clusters, notes):
 
 
 def main():
+    # --ws 工作区(2026-11-24): 口径同 stages/meta_diff(workspaces.resolve_ws_root)。
+    ws_val = None
+    if "--ws" in sys.argv:
+        i = sys.argv.index("--ws")
+        if i + 1 >= len(sys.argv):
+            raise SystemExit("--ws 需要一个工作区名或路径")
+        ws_val = sys.argv[i + 1]
+        del sys.argv[i:i + 2]
+    if ws_val is not None:
+        try:
+            root, name, src = workspaces.resolve_ws_root(explicit=ws_val, here=HERE)
+        except ValueError as e:
+            raise SystemExit(str(e))
+        _apply_ws(root)
+        print("[工作区] %s (%s) · 来源 %s" % (name, root or HERE, src))
+    elif WS:
+        print("[工作区] %s · 来源 环境变量 KCI_WS_ROOT" % (WS or "main"))
     if "--round" in sys.argv:
         tokens = did = None
         for flag, var in (("--tokens", "tokens"), ("--did", "did")):

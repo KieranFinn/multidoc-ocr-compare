@@ -1,0 +1,2077 @@
+{
+ "doc": "13571792",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571792",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "통상적으로 국방정책에서 예비전력은 협의적 개념, 즉 전시에 동원되는 인적자원 개념으로 사용되고 있으며(이근식, 2006), 본 연구에서도 예비전력을 협의적 개념으로 사용하고 있다. 이근식(2006). 예비전력 정예화를 위한 정책제안. 국회 정책자료집.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1025.5,
+     1000.1,
+     1277.6
+    ],
+    "uid": "u1_3",
+    "authors": [
+     "통상적으로 국방정책에서 예비전력은 협의적 개념",
+     "즉 전시에 동원되는 인적자원 개념으로 사용되고 있으며(이근식"
+    ],
+    "authors_raw": "통상적으로 국방정책에서 예비전력은 협의적 개념, 즉 전시에 동원되는 인적자원 개념으로 사용되고 있으며(이근식",
+    "et_al": false,
+    "year": "2006",
+    "title": "예비전력 정예화를 위한 정책제안. 국회 정책자료집",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "예비전력 규모에 관한 선행연구는 권삼(1999)의 국가비교 접근법, 정원영 외(2005)의 부대구조 접근법, Jung(2019)의 위협 · 운용기반계획, Oh(2018)의 실증분석이 있으며, 이 중에서 실증분석을 활용한 연구는 오선규(2017)가 유일하다. 정원영, 정주성, 문순영, 안석기, 이성윤(2005). 예비전력, 미래 국방력 건설의 또 하나의 선택. 서울: 한국국방연구원. 권삼(1999). 미래지향적인 군사력 건설과 동원전력의 효율성. 국방대학교 석사학위논문.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1025.5,
+     1000.1,
+     1277.6
+    ],
+    "uid": "u1_3",
+    "authors": [
+     "예비전력 규모에 관한 선행연구는 권삼"
+    ],
+    "authors_raw": "예비전력 규모에 관한 선행연구는 권삼",
+    "et_al": false,
+    "year": "1999",
+    "title": "미래지향적인 군사력 건설과 동원전력의 효율성. 국방대학교 석사학위논문",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "정원영 외(2005)의 예비군 소요산정체계에 의하면 일정한 전시병력 운영수준에서 평시 운용병력 수준에 따라 전시확장 소요가 결정되며, 그 반대의 경우에도 마찬가지임을 알 수 있다. 평시 운용병력 수준이 상비병력 규모를 의미하고, 전시확장 소요가 예비전력 증·창설 소요라는 점에서 상비병력 규모와 예비전력 규모 간에는 상관관계가 있음을 알 수 있다. 정원영, 정주성, 문순영, 안석기, 이성윤(2005). 예비전력, 미래 국방력 건설의 또 하나의 선택. 서울: 한국국방연구원. p. 28.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1025.5,
+     1000.1,
+     1277.6
+    ],
+    "uid": "u1_3",
+    "authors": [
+     "정원영"
+    ],
+    "authors_raw": "정원영 외",
+    "et_al": true,
+    "year": "2005",
+    "title": "예비전력",
+    "source": "미래 국방력 건설의 또 하나의 선택. 서울: 한국국방연구원. p. 28",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "종속변수와 독립변수 간의 양방향 인과관계를 확인하였음에도 불구하고 단일방정식을 이용한 다중회귀분석을 적용할 경우 잔차와 독립변수 간의 독립성 가정이 성립되지 않으므로 추정된 계수는 일관성을 갖추지 못하는 문제가 발생한다. 이러한 문제를 해결하기 위하여 연립방정식 모형에 2단계 최소자승추정법(2 Stage Least Squares Estimate)을 적용하여 잔차와 독립변수 간의 인과관계에 의한 문제를 통제하여 일관성이 충족된 계수를 추정할 수 있어야 한다. Gujarati(2009). Gujarati의 계량경제학. 서울: 집필미디어. p. 795.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1025.5,
+     1000.1,
+     1277.6
+    ],
+    "uid": "u1_3",
+    "authors": [
+     "종속변수와",
+     "독립변수",
+     "간의",
+     "양방향",
+     "인과관계를",
+     "확인하였음에도",
+     "불구하고",
+     "단일방정식을",
+     "이용한",
+     "다중회귀분석을",
+     "적용할",
+     "경우",
+     "잔차와",
+     "독립변수",
+     "간의",
+     "독립성",
+     "가정이",
+     "성립되지",
+     "않으므로",
+     "추정된",
+     "계수는",
+     "일관성을",
+     "갖추지",
+     "못하는",
+     "문제가",
+     "발생한다",
+     "이러한",
+     "문제를",
+     "해결하기",
+     "위하여",
+     "연립방정식",
+     "모형에",
+     "2단계",
+     "최소자승추정법(2",
+     "Stage",
+     "Least",
+     "Squares",
+     "Estimate)을",
+     "적용하여",
+     "잔차와",
+     "독립변수",
+     "간의",
+     "인과관계에",
+     "의한",
+     "문제를",
+     "통제하여",
+     "일관성이",
+     "충족된",
+     "계수를",
+     "추정할",
+     "수",
+     "있어야",
+     "한다",
+     "Gujarati"
+    ],
+    "authors_raw": "종속변수와 독립변수 간의 양방향 인과관계를 확인하였음에도 불구하고 단일방정식을 이용한 다중회귀분석을 적용할 경우 잔차와 독립변수 간의 독립성 가정이 성립되지 않으므로 추정된 계수는 일관성을 갖추지 못하는 문제가 발생한다. 이러한 문제를 해결하기 위하여 연립방정식 모형에 2단계 최소자승추정법(2 Stage Least Squares Estimate)을 적용하여 잔차와 독립변수 간의 인과관계에 의한 문제를 통제하여 일관성이 충족된 계수를 추정할 수 있어야 한다. Gujarati",
+    "et_al": false,
+    "year": "2009",
+    "title": "Gujarati의 계량경제학. 서울: 집필미디어. p. 795",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "박무춘 외(2019). 전략환경 변화에 따른 부대 및 병력구조 발전 방안 연구. 국방부 용역연구 결과보고서. 4, p. 95.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     152.3,
+     1338.2,
+     998.3,
+     1420.0
+    ],
+    "uid": "u2_7",
+    "authors": [
+     "박무춘"
+    ],
+    "authors_raw": "박무춘 외",
+    "et_al": true,
+    "year": "2019",
+    "title": "전략환경 변화에 따른 부대 및 병력구조 발전 방안 연구. 국방부 용역연구 결과보고서. 4",
+    "source": "p. 95",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "국방부 홈페이지 국방예산추이 자료(정부재정 · GDP 대비 국방예산 추이)에 의하면, 정부재정 대비 국방비 비중은 지속적으로 감소하고 있는 실정이다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     152.3,
+     1338.2,
+     998.3,
+     1420.0
+    ],
+    "uid": "u2_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "국방개혁 2.0에 의하면, 예비전력을 상비병력을 보완하는 보조적 수단이 아닌, 대체하는 동등한 수단으로 상정함으로써 예비전력의 중요성이 확대됐음을 알 수 있다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     152.3,
+     1310.1,
+     999.8,
+     1420.8
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "국방동원업무에 관한 훈령(국방부훈령 제1993호 2016.12.26. 시행). 제2장 국가동원령에 의한 동원, 제12조(동원소요 산정).",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     152.3,
+     1310.1,
+     999.8,
+     1420.8
+    ],
+    "uid": "u3_7",
+    "authors": [
+     "국방동원업무에 관한 훈령(국방부훈령 제"
+    ],
+    "authors_raw": "국방동원업무에 관한 훈령(국방부훈령 제",
+    "et_al": false,
+    "year": "2016",
+    "title": "12.26. 시행). 제2장 국가동원령에 의한 동원",
+    "source": "제12조(동원소요 산정)",
+    "volume": null,
+    "issue": "1993",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "정원영, 정주성, 문순영, 안석기, 이성윤(2005). p. 28.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     145.9,
+     1365.3,
+     567.8,
+     1421.4
+    ],
+    "uid": "u4_8",
+    "authors": [
+     "정원영"
+    ],
+    "authors_raw": "정원영",
+    "et_al": false,
+    "year": "2005",
+    "title": "정주성",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "정원영, 정주성, 문순영, 안석기, 이성윤(2005). p. 28.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     145.9,
+     1365.3,
+     567.8,
+     1421.4
+    ],
+    "uid": "u4_8",
+    "authors": [
+     "정원영"
+    ],
+    "authors_raw": "정원영",
+    "et_al": false,
+    "year": "2005",
+    "title": "정주성",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "중속변수와 독립변수 간의 양방향 인과관계를 확인하였음에도 불구하고 단일방정식을 이용한 다중회귀분석을 적용할 경우 잔차와 독립변수 간의 독립성 가정이 성립되지 않으므로 추정된 계수는 일관성을 갖추지 못하는 문제가 발생한다. 이러한 문제를 해결하기 위하여 연립방정식 모형에 2단계 최소자승추정법(2 Stage Least Squares Estimate)을 적용하여 잔차와 독립변수 간의 인과관계에 의한 문제를 통제하여 일관성이 충족된 계수를 추정할 수 있어야 한다. Gujarati(2009). Gujarati의 계량정제학. 서울: 집필미디어, p. 795.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1333.1,
+     997.9,
+     1365.3
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "중속변수와",
+     "독립변수",
+     "간의",
+     "양방향",
+     "인과관계를",
+     "확인하였음에도",
+     "불구하고",
+     "단일방정식을",
+     "이용한",
+     "다중회귀분석을",
+     "적용할",
+     "경우",
+     "잔차와",
+     "독립변수",
+     "간의",
+     "독립성",
+     "가정이",
+     "성립되지",
+     "않으므로",
+     "추정된",
+     "계수는",
+     "일관성을",
+     "갖추지",
+     "못하는",
+     "문제가",
+     "발생한다",
+     "이러한",
+     "문제를",
+     "해결하기",
+     "위하여",
+     "연립방정식",
+     "모형에",
+     "2단계",
+     "최소자승추정법(2",
+     "Stage",
+     "Least",
+     "Squares",
+     "Estimate)을",
+     "적용하여",
+     "잔차와",
+     "독립변수",
+     "간의",
+     "인과관계에",
+     "의한",
+     "문제를",
+     "통제하여",
+     "일관성이",
+     "충족된",
+     "계수를",
+     "추정할",
+     "수",
+     "있어야",
+     "한다",
+     "Gujarati"
+    ],
+    "authors_raw": "중속변수와 독립변수 간의 양방향 인과관계를 확인하였음에도 불구하고 단일방정식을 이용한 다중회귀분석을 적용할 경우 잔차와 독립변수 간의 독립성 가정이 성립되지 않으므로 추정된 계수는 일관성을 갖추지 못하는 문제가 발생한다. 이러한 문제를 해결하기 위하여 연립방정식 모형에 2단계 최소자승추정법(2 Stage Least Squares Estimate)을 적용하여 잔차와 독립변수 간의 인과관계에 의한 문제를 통제하여 일관성이 충족된 계수를 추정할 수 있어야 한다. Gujarati",
+    "et_al": false,
+    "year": "2009",
+    "title": "Gujarati의 계량정제학. 서울: 집필미디어",
+    "source": "p. 795",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "김종탁, 조관호(1993). 미래의 병력규모와 결정요인. 국방정책연구. 23, pp. 186-189.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1333.1,
+     997.9,
+     1365.3
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "김종탁",
+     "조관호"
+    ],
+    "authors_raw": "김종탁, 조관호",
+    "et_al": false,
+    "year": "1993",
+    "title": "미래의 병력규모와 결정요인. 국방정책연구. 23",
+    "source": "pp. 186-189",
+    "volume": null,
+    "issue": null,
+    "pages": "186-189",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "예비전력 규모에 영향을 미치는 요인 중 하나가 상비병력 규모이고, 상비병력 이론을 통해 확인한 예비전력 규모가 상비병력 규모에 영향을 주는 요인이므로 예비전력과 상비병력 간에는 상관관계가 있음을 알 수 있다.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1333.1,
+     997.9,
+     1365.3
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "김종탁, 조관호(1993)에 의하면 총합전력 수준은 예비전력과 상비병력이 배합된 총체적 전력으로 경제력이 그 수준을 결정하는 개념이다. 이는 상비병력 규모와 예비전력 규모로 구성되는 전시병력 수준과 유사한 개념으로 볼 수 있다.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     145.5,
+     1281.9,
+     1000.1,
+     1419.5
+    ],
+    "uid": "u6_6",
+    "authors": [
+     "김종탁",
+     "조관호"
+    ],
+    "authors_raw": "김종탁, 조관호",
+    "et_al": false,
+    "year": "1993",
+    "title": "에 의하면 총합전력 수준은 예비전력과 상비병력이 배합된 총체적 전력으로 경제력이 그 수준을 결정하는 개념이다. 이는 상비병력 규모와 예비전력 규모로 구성되는 전시병력 수준과 유사한 개념으로 볼수 있다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "황성돈, 신도철(2016)이 제시한 한선종합국력지수 측정 모형 중에서 군사력지수 모델을 본 연구에 활용하였다. 현대 · 미래전에 있어 핵무기 보유 여부는 군사력의 중요한 요소이며, 특히, 정치적 · 경제적 · 군사적 파급효과가 상당한 요소이다. 핵무기를 포함하지 않은 군사력지수는 국가 간의 객관적이고 실질적인 전력 비교가 어려워 국가 간의 우열을 나타낼",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     145.5,
+     1281.9,
+     1000.1,
+     1419.5
+    ],
+    "uid": "u6_6",
+    "authors": [
+     "황성돈",
+     "신도철"
+    ],
+    "authors_raw": "황성돈, 신도철",
+    "et_al": false,
+    "year": "2016",
+    "title": "이 제시한 한선종합국력지수 측정 모형 중에서 군사력지수 모델을 본 연구에 활용하였다. 현대 · 미래전에 있어 핵무기 보유 여부는 군사력의 중요한 요소이며",
+    "source": "특히",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "예비역(천명) (4) 전차(대) (5) 대포(천문) (6) 잠수함(정) (7) 전투기(대) (8) 핵전력(개)으로 총 8가지 요소로 구성되어",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     170.9,
+     1245.2,
+     1001.1,
+     1305.9
+    ],
+    "uid": "u7_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "황성돈, 신도철(2016). 종합국력: 국가전략기획을 위한 기초자료. 서울: 다산출판사.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1365.9,
+     997.9,
+     1419.5
+    ],
+    "uid": "u7_9",
+    "authors": [
+     "황성돈",
+     "신도철"
+    ],
+    "authors_raw": "황성돈, 신도철",
+    "et_al": false,
+    "year": "2016",
+    "title": "종합국력: 국가전략기획을 위한 기초자료. 서울: 다산출판사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "총합전력 수준은 예비전력과 상비병력이 배합된 총체적 전력으로 경제력이 그 수준을 결정하는 개념이다. 총합전력",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1365.9,
+     997.9,
+     1419.5
+    ],
+    "uid": "u7_9",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "STOCKHOLM INTERNATIONAL PEACE RESEARCH INSTITUTE(SIPRI). YEARBOOK 2022.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     142.4,
+     1336.1,
+     952.8,
+     1388.7
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "KOSIS 국가통계포털 : 국제통계, https://kosis.kr/index/index.do",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     142.4,
+     1336.1,
+     952.8,
+     1388.7
+    ],
+    "uid": "u9_5",
+    "authors": [
+     "KOSIS 국가통계포털 : 국제통계",
+     "https://kosis.kr/index/index.do"
+    ],
+    "authors_raw": "KOSIS 국가통계포털 : 국제통계, https://kosis.kr/index/index.do",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B3%84_%ED%8F%89%ED%99%94_%EC%A7%80%EC%88%98",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     142.4,
+     1336.1,
+     952.8,
+     1388.7
+    ],
+    "uid": "u9_5",
+    "authors": [
+     "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B3%84_%ED%8F%89%ED%99%94_%EC%A7%80%EC%88%98"
+    ],
+    "authors_raw": "https://ko.wikipedia.org/wiki/%EC%84%B8%EA%B3%84_%ED%8F%89%ED%99%94_%EC%A7%80%EC%88%98",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "에리트리아, 쿠바, 북한, 베네수엘라, 코소보 5개국은 객관적인 자료의 제한으로 연구 범위에서 제외하였다.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     142.4,
+     1336.1,
+     952.8,
+     1388.7
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "일반적으로 회귀분석에 있어 충족되어야 하는 가정(Classical Assumption) 중 잔차와 독립변수 서로 독립적이어야 하는 가정이 깨짐에 따라, Simultaneous Equation bias가 발생하여 해당 계수가 inconsistency가 되어 샘플 숫자를 높여도 계수가 모수값에 근접하지 못하는 문제가 나타난다. 이를 해결하기 위해 연립방정식을 도출하여 계수의 consistency를 보장함으로써 샘플 숫자를 늘려 계수 값이 모수값과 일치하는 특성을 갖추도록 해야 한다.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1194.4,
+     1000.1,
+     1359.4
+    ],
+    "uid": "u10_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "F검정과 t검정 유의도가 0.05보다 작을 경우 F값과 t값 모두 임계치 밖(기각역)에 위치함으로써 귀무가설을 기각하게 된다. 따라서 F검정으로 모형의 적합도, t검정으로 변수의 유의성이 충족됨을 알 수 있다.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1194.4,
+     1000.1,
+     1359.4
+    ],
+    "uid": "u10_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "계산된 d값이 하한임계치 dU보다 작거나 상한임계치 4-dU보다 크면, 잔차의 상관관계가 존재하거나 미결정됨으로써 잔차의 상관관계가 존재하지 않음을 확정지를 수 없게 되어 결과의 신뢰도가 하락한다. 따라서 Durbon-Watson Table에서 모형의 표본 및 독립변수의 수에 해당하는 dU, dL 값을 찾은 뒤 d값의 위치를 확인하여 잔차의 상관관계 존재 여부를 확인하여야 한다.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1194.4,
+     1000.1,
+     1359.4
+    ],
+    "uid": "u10_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "상관계수 해석(성태제 등, 2012)에 의하면 Pearson 상관관계 0.9 이상, 공차 0.1 미만, VIF 10 이상, 상태지수 누적값 15 이상일 경우 변수 간의 상관관계가 존재하는 것으로 볼 수 있다. 성태제, 강대중, 강이철, 곽덕주, 김계현, 김천기, ... & 홍후조(2012). 최신 교육학개론(2판). 서울: 학지사.",
+    "page": 11,
+    "page_end": 12,
+    "box": [
+     144.1,
+     1194.4,
+     1000.1,
+     1359.4
+    ],
+    "uid": "u10_7",
+    "authors": [
+     "상관계수 해석(성태제 등"
+    ],
+    "authors_raw": "상관계수 해석(성태제 등",
+    "et_al": false,
+    "year": "2012",
+    "title": "최신 교육학개론(2판). 서울: 학지사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "Full-Model 추정결과, 국방예산과 GDP와의 Pearson 상관관계가 0.9 이상으로 확인되어 두 변수 간의 상관관계가 존재함을확인하였다. 본 연구에서는 모형의 설명력을 더 높이기 위하여 국방예산을 제외한 Full-Model 추정을 진행하였다.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     149.3,
+     1338.2,
+     997.9,
+     1419.5
+    ],
+    "uid": "u11_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "Full-Model 추정결과, 국방예산과 GDP와의 Pearson 상관관계가 0.9 이상으로 확인되어 두 변수 간의 상관관계가 존재함을 확인하였다. 본 연구에서는 모형의 설명력을 더욱 높이기 위하여 국방예산을 제외한 Full-Model 추정을 진행하였다.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     144.1,
+     1368.2,
+     998.3,
+     1420.0
+    ],
+    "uid": "u12_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "고시성 외(2019). 국방인력 재창출을 위한 평시 복무 예비군제도 발전방향. 한국전략문제연구소, p. 9.",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.1,
+     1395.3,
+     924.6,
+     1421.4
+    ],
+    "uid": "u15_6",
+    "authors": [
+     "고시성"
+    ],
+    "authors_raw": "고시성 외",
+    "et_al": true,
+    "year": "2019",
+    "title": "국방인력 재창출을 위한 평시 복무 예비군제도 발전방향. 한국전략문제연구소",
+    "source": "p. 9",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "이태섭(1994). 생산함수를 이용한 적정 인력규모 판단 연구. 自然科學硏究, 1, 199-210.",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     144.1,
+     1307.4,
+     813.1,
+     1330.1
+    ],
+    "uid": "u18_4",
+    "authors": [
+     "이태섭"
+    ],
+    "authors_raw": "이태섭",
+    "et_al": false,
+    "year": "1994",
+    "title": "생산함수를 이용한 적정 인력규모 판단 연구. 自然科學硏究",
+    "source": "1",
+    "volume": null,
+    "issue": null,
+    "pages": "199-210",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "김충영, 안종일(1998). 통일한국의 적정 군사력 규모를 추정하기 위한 모형에 관한 연구. 국방연구(안보문제연구소), 41(2), 155-183.",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     144.1,
+     1338.2,
+     997.9,
+     1388.5
+    ],
+    "uid": "u18_5",
+    "authors": [
+     "김충영",
+     "안종일"
+    ],
+    "authors_raw": "김충영, 안종일",
+    "et_al": false,
+    "year": "1998",
+    "title": "통일한국의 적정 군사력 규모를 추정하기 위한 모형에 관한 연구. 국방연구(안보문제연구소)",
+    "source": "41(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "155-183",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "31",
+    "raw": "조홍용(2000). 적정 병력규모/국방비 결정 모형에 관한 연구. 국방정책연구, 47, 1-33.",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     144.1,
+     1396.5,
+     807.4,
+     1421.1
+    ],
+    "uid": "u18_6",
+    "authors": [
+     "조홍용"
+    ],
+    "authors_raw": "조홍용",
+    "et_al": false,
+    "year": "2000",
+    "title": "적정 병력규모/국방비 결정 모형에 관한 연구. 국방정책연구",
+    "source": "47",
+    "volume": null,
+    "issue": null,
+    "pages": "1-33",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 32,
+   "per_page": {
+    "2": 4,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3,
+    "7": 2,
+    "8": 3,
+    "10": 4,
+    "11": 4,
+    "12": 1,
+    "13": 1,
+    "16": 1,
+    "19": 3
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    "3": {
+     "markers": [
+      "5",
+      "6"
+     ],
+     "collected": [
+      "5",
+      "6"
+     ]
+    },
+    "4": {
+     "markers": [
+      "7",
+      "8"
+     ],
+     "collected": [
+      "7",
+      "8"
+     ]
+    },
+    "5": {
+     "markers": [
+      "9",
+      "10"
+     ],
+     "collected": [
+      "9",
+      "10"
+     ]
+    },
+    "6": {
+     "markers": [
+      "11",
+      "12",
+      "13"
+     ],
+     "collected": [
+      "11",
+      "12",
+      "13"
+     ]
+    },
+    "7": {
+     "markers": [
+      "14",
+      "15"
+     ],
+     "collected": [
+      "14",
+      "15"
+     ]
+    },
+    "8": {
+     "markers": [
+      "3",
+      "16",
+      "17"
+     ],
+     "collected": [
+      "3",
+      "16",
+      "17"
+     ]
+    },
+    "10": {
+     "markers": [
+      "18",
+      "19",
+      "20",
+      "21"
+     ],
+     "collected": [
+      "18",
+      "19",
+      "20",
+      "21"
+     ]
+    },
+    "11": {
+     "markers": [
+      "22",
+      "23",
+      "24",
+      "25"
+     ],
+     "collected": [
+      "22",
+      "23",
+      "24",
+      "25"
+     ]
+    },
+    "12": {
+     "markers": [
+      "26"
+     ],
+     "collected": [
+      "26"
+     ]
+    },
+    "13": {
+     "markers": [
+      "27"
+     ],
+     "collected": [
+      "27"
+     ]
+    },
+    "16": {
+     "markers": [
+      "28"
+     ],
+     "collected": [
+      "28"
+     ]
+    },
+    "19": {
+     "markers": [
+      "29",
+      "30",
+      "31"
+     ],
+     "collected": [
+      "29",
+      "30",
+      "31"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cho, P. G. (2022). A Study on the Improvement Plan of Long-Period Storing Rifles Management to Make Reserve War Power Become the Best. Military Research and Development, 16(2), 281-301. https://www.earticle.net/Article/A423403",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Cho P. G"
+    ],
+    "authors_raw": "Cho, P. G",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Improvement Plan of Long-Period Storing Rifles Management to Make Reserve War Power Become the Best. Military Research and Development",
+    "source": "16(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "281-301",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, J. S. (2019). A study on the operation of reserve forces after the unification of Korea : focusing on judgment the scale of reserve forces and establishment system. [Doctoral dissertation, Wonkwang University]",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Jung J. S"
+    ],
+    "authors_raw": "Jung, J. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "A study on the operation of reserve forces after the unification of Korea : focusing on judgment the scale of reserve forces and establishment system. [Doctoral dissertation",
+    "source": "Wonkwang University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, Y. G. (2020). A Study on the Development Direction of Reserve Forces Training Center Operation and Scientific Reserve Forces Training. Review of Korean Military Studies, 9(2), 99-121. https://doi.org/10.34166/rokms.2020.9.2.99",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kang Y. G"
+    ],
+    "authors_raw": "Kang, Y. G",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Development Direction of Reserve Forces Training Center Operation and Scientific Reserve Forces Training. Review of Korean Military Studies",
+    "source": "9(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "99-121",
+    "doi": "10.34166/rokms.2020.9.2.99",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, Y. G., & Kim, T. S. (2019). Evaluation of the Shaping Elite Reserve Forces of the ROK Armed Forces and Future-Oriented Policy Direction: Focused on the Defense Reform 2.0 Reserve Forces Policy. Journal of Northeast Asian Studies, 24(3), 31-56. https://doi.org 10.21807/JNAS.2019.09.92.031",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kang Y. G",
+     "Kim T. S"
+    ],
+    "authors_raw": "Kang, Y. G., & Kim, T. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "Evaluation of the Shaping Elite Reserve Forces of the ROK Armed Forces and Future-Oriented Policy Direction: Focused on the Defense Reform 2.0 Reserve Forces Policy. Journal of Northeast Asian Studies",
+    "source": "24(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "31-56",
+    "doi": "10.21807/JNAS.2019.09.92.031",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. M. (2022). European Security Changes With The Launch of AUKUS: Focusing on Europen Union’s Strategic Autonomy. The Journal of Contemporary European Studies, 40(1), 165-187. https://doi.org/10.17052/jces.2022.40.1.165",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim Y. M"
+    ],
+    "authors_raw": "Kim, Y. M",
+    "et_al": false,
+    "year": "2022",
+    "title": "European Security Changes With The Launch of AUKUS: Focusing on Europen Union’s Strategic Autonomy. The Journal of Contemporary European Studies",
+    "source": "40(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "165-187",
+    "doi": "10.17052/jces.2022.40.1.165",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. H. (2015). Change of Aspects on Future Warfare in the Korean Peninsula and Role of Ground Forces. STRATEGIC STUDIES, 22(3), 107-137. UCI : G704-001467.2015.22.3.004",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lee S. H"
+    ],
+    "authors_raw": "Lee, S. H",
+    "et_al": false,
+    "year": "2015",
+    "title": "Change of Aspects on Future Warfare in the Korean Peninsula and Role of Ground Forces. STRATEGIC STUDIES",
+    "source": "22(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "107-137",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, S. K. (2018). An empirical study on the optimal size of reserve forces. [Master’s dissertation, Korea National Defense University]",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Oh S. K"
+    ],
+    "authors_raw": "Oh, S. K",
+    "et_al": false,
+    "year": "2018",
+    "title": "An empirical study on the optimal size of reserve forces. [Master’s dissertation",
+    "source": "Korea National Defense University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, C. H. (2016). The Role of Ground Force and International Cooperation against the Threat of International Terrorism. Korean Journal of Military Art and Science, 72(3), 1-24. https://doi.org/10.31066/kjmas.2016.72.3.001",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Park C. H"
+    ],
+    "authors_raw": "Park, C. H",
+    "et_al": false,
+    "year": "2016",
+    "title": "The Role of Ground Force and International Cooperation against the Threat of International Terrorism. Korean Journal of Military Art and Science",
+    "source": "72(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-24",
+    "doi": "10.31066/kjmas.2016.72.3.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, S. B. (2021). Optimized operation of regional reserve forces in a changing future security environment. Journal of Advances in Military Studies, 4(3), 21-51. https://doi.org/10. 37944/jams.v4i3.121\n원 고 접 수 일 2023년 01월 09일게 재 확 정 일 2023년 08월 11일",
+    "page": 18,
+    "box": [
+     151.6,
+     981.4,
+     997.9,
+     1151.6
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Yang S. B"
+    ],
+    "authors_raw": "Yang, S. B",
+    "et_al": false,
+    "year": "2021",
+    "title": "Optimized operation of regional reserve forces in a changing future security environment. Journal of Advances in Military Studies",
+    "source": "4(3)",
+    "volume": "4",
+    "issue": null,
+    "pages": "21-51",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Regression modeling strategies for optimizing the appropriate size of reserve forces in Republic of Korea",
+   "page": 1,
+   "box": [
+    145.5,
+    395.3,
+    997.5,
+    471.0
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Sim, Hyungbo",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     503.2,
+     495.9,
+     641.8,
+     524.8
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "This study focuses on the size of reserve forces and the factors affecting their size. As a result of analyzing theory and prior research, we identified the relations between standing and reserve forces. To minimize the problem of relations, we used a two-stage least squares estimate with simultaneous equations as the analytical method used. We utilized the 2022 cross-sectional data points and analyzed the sample by dividing it into 69 countries and 38 countries with reserve forces. In 38 countries, the reserve force size derived from regression analysis was 2.2 million people, and the standing force size was 470,000 people. The empirical analysis shows that 2.2 million reserve forces solved the single-equation estimation problem caused by the two-way causal relationship between reserve force size and standing force size through simultaneous equations, which further improved the consistency of the estimated coefficients. In terms of size, it was smaller than the 2.75 million presented in Defense Reform 2.0, which seems to be due to the analysis of countries with relatively capital-intensive military structures compared with Korea. Various factors are expected to further increase the size of future reserve forces: the rapid decline in the nation’s birth population; the proportion of defense spending to the government’s budget; the reserve forces, which have been further expanded by Defense Reform 2.0; and the prospect of a reduction in standing forces expected by Defense Innovation 4.0. Therefore, the size of future appropriate reserve forces will increase further than the current appropriate level, making it necessary to determine policies related to reserve forces and develop appropriate measures for procurement.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study focuses on the size of reserve forces and the factors affecting their size. As a result of analyzing theory and prior research, we identified the relations between standing and reserve forces. To minimize the problem of relations, we used a two-stage least squares estimate with simultaneous equations as the analytical method used. We utilized the 2022 cross-sectional data points and analyzed the sample by dividing it into 69 countries and 38 countries with reserve forces. In 38 countries, the reserve force size derived from regression analysis was 2.2 million people, and the standing force size was 470,000 people. The empirical analysis shows that 2.2 million reserve forces solved the single-equation estimation problem caused by the two-way causal relationship between reserve force size and standing force size through simultaneous equations, which further improved the consistency of the estimated coefficients. In terms of size, it was smaller than the 2.75 million presented in Defense Reform 2.0, which seems to be due to the analysis of countries with relatively capital-intensive military structures compared with Korea. Various factors are expected to further increase the size of future reserve forces: the rapid decline in the nation<sup>’</sup>s birth population; the proportion of defense spending to the government<sup>’</sup>s budget; the reserve forces, which have been further expanded by Defense Reform 2.0; and the prospect of a reduction in standing forces expected by Defense Innovation 4.0. Therefore, the size of future appropriate reserve forces will increase further than the current appropriate level, making it necessary to determine policies related to reserve forces and develop appropriate measures for procurement.",
+   "page": 1,
+   "box": [
+    189.8,
+    583.6,
+    309.4,
+    610.8
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : reserve forces, standing forces, simultaneous equation model, multiple regression analysis, two-stage least squares estimate method"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "43-62",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "예비전력",
+   "상비병력",
+   "연립방정식모형",
+   "다중회귀분석",
+   "2단계 최소자승추정법"
+  ],
+  "keywords_en": [
+   "reserve forces",
+   "standing forces",
+   "simultaneous equation model",
+   "multiple regression analysis",
+   "two-stage least squares estimate method"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "2065년의 가용 병역자원은 2020년에 비해 절반 이상이 감소하는 ‘인구절벽 시대’가 도래할 것으로 예상된다.⁵) 이래 정부는 인구절벽 시대에 예상되는 병역자원 감소 문제의 대안으로 국방개혁을 통해 첨단 과학기술을 활용한 상비병력의 질적 수준 향상으로 전문화·효율화된 병력구조 개편과 예비전력 정예화 달성, 군 구조의 개편 등을 제시하고 있다(Cho, 2022).",
+    "raw": "2065년의 가용 병역자원은 2020년에 비해 절반 이상이 감소하는 ‘인구절벽 시대’가 도래할 것으로 예상된다.⁵) 이래 정부는 인구절벽 시대에 예상되는 병역자원 감소 문제의 대안으로 국방개혁을 통해 첨단 과학기술을 활용한 상비병력의 질적 수준 향상으로 전문화·효율화된 병력구조 개편과 예비전력 정예화 달성, 군 구조의 개편 등을 제시하고 있다(Cho, 2022).",
+    "citation_text": "(Cho, 2022)",
+    "offset": [
+     192,
+     203
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_6",
+    "kind": "parenthetical",
+    "sentence": "또한, 해당 전력은 전통적 안보위협에 대응하는 역할을 넘어서서 새로운 안보위협 요인(예 : 테러, 자연재해 등)에 따른 초국가적 위협 대처 등의 다양한 역할수행이 가능할 것이다(Kang & Kim, 2019).",
+    "raw": "또한, 해당 전력은 전통적 안보위협에 대응하는 역할을 넘어서서 새로운 안보위협 요인(예 : 테러, 자연재해 등)에 따른 초국가적 위협 대처 등의 다양한 역할수행이 가능할 것이다(Kang & Kim, 2019).",
+    "citation_text": "(Kang & Kim, 2019)",
+    "offset": [
+     98,
+     116
+    ],
+    "authors": [
+     "Kang & Kim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_6",
+    "kind": "narrative",
+    "sentence": "둘째, Oh(2018)는 예비전력 이론 검토를 토대로 예비전력 규모에 영향을 미치는 변수를 고려한 분석모형식을 도출하여 다중회귀분석모형을 활용하여 예비전력 규모에 관한 실증연구를 수행하였다.",
+    "raw": "둘째, Oh(2018)는 예비전력 이론 검토를 토대로 예비전력 규모에 영향을 미치는 변수를 고려한 분석모형식을 도출하여 다중회귀분석모형을 활용하여 예비전력 규모에 관한 실증연구를 수행하였다.",
+    "citation_text": "Oh(2018)",
+    "offset": [
+     4,
+     12
+    ],
+    "authors": [
+     "Oh"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이런 적정 병력 규모에 영향을 주는 요인에 대해서 김종탁, 조관호(1993)12)는 ① 영토와 인구 ② 경제력과 국방비 ③ 지정학적 위치와 안보위협도 ④ 대치국가의 병력 규모 ⑤ 무기체계 수준 ⑥ 병력의 질 ⑦ 총합전력수준 ⑧ 집단안보체제 등을 제시하였다.",
+    "raw": "이런 적정 병력 규모에 영향을 주는 요인에 대해서 김종탁, 조관호(1993)12)는 ① 영토와 인구 ② 경제력과 국방비 ③ 지정학적 위치와 안보위협도 ④ 대치국가의 병력 규모 ⑤ 무기체계 수준 ⑥ 병력의 질 ⑦ 총합전력수준 ⑧ 집단안보체제 등을 제시하였다.",
+    "citation_text": "조관호(1993)",
+    "offset": [
+     33,
+     42
+    ],
+    "authors": [
+     "조관호"
+    ],
+    "year": "1993",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "이러한 총합전력 수준에 무기체계 수준 개념을 더하면 예비전력, 상비병력, 경제력, 무기체계로 구성되는 황성돈, 신도철(2016)15)의",
+    "raw": "이러한 총합전력 수준에 무기체계 수준 개념을 더하면 예비전력, 상비병력, 경제력, 무기체계로 구성되는 황성돈, 신도철(2016)15)의",
+    "citation_text": "신도철(2016)",
+    "offset": [
+     62,
+     71
+    ],
+    "authors": [
+     "신도철"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_10",
+    "kind": "narrative",
+    "sentence": "수준에 무기체계 수준을 포함한다면 예비전력, 상비병력, 경제력, 무기체계로 구성되는 황성돈, 신도철(2016)이 제시한 군사력지수와 상당히 유사해짐을 알 수 있었다.",
+    "raw": "수준에 무기체계 수준을 포함한다면 예비전력, 상비병력, 경제력, 무기체계로 구성되는 황성돈, 신도철(2016)이 제시한 군사력지수와 상당히 유사해짐을 알 수 있었다.",
+    "citation_text": "신도철(2016)",
+    "offset": [
+     52,
+     61
+    ],
+    "authors": [
+     "신도철"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_3",
+    "kind": "parenthetical",
+    "sentence": "우리 군의 입장에서 가용병력 자원의 감소에 따른 상비병력의 필연적 감축이 예견되고, 정부예산 대비 국방비 비중의 줄어드는 문제해결을 위해 예비전력이 필요해지고 있다(Yang, 2021).",
+    "raw": "우리 군의 입장에서 가용병력 자원의 감소에 따른 상비병력의 필연적 감축이 예견되고, 정부예산 대비 국방비 비중의 줄어드는 문제해결을 위해 예비전력이 필요해지고 있다(Yang, 2021).",
+    "citation_text": "(Yang, 2021)",
+    "offset": [
+     91,
+     103
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_5",
+    "kind": "parenthetical",
+    "sentence": "따라서 국가별 예비군의 훈련수준·편성 기간·임무 등의 차이로 발생하는 국가 간의 상이한 질적 수준을 고려할 필요성이 있다(e.g., Kang, 2020).",
+    "raw": "따라서 국가별 예비군의 훈련수준·편성 기간·임무 등의 차이로 발생하는 국가 간의 상이한 질적 수준을 고려할 필요성이 있다(e.g., Kang, 2020).",
+    "citation_text": "(e.g., Kang, 2020)",
+    "offset": [
+     67,
+     85
+    ],
+    "authors": [
+     "Kang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

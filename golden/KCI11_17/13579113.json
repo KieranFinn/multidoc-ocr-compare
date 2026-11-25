@@ -1,0 +1,764 @@
+{
+ "doc": "13579113",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13579113",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "권윤경. (2015). “엑스포의 브랜드화 전략 연구”, 한국디자인트랜드학회, 46, 37-46.",
+    "page": 13,
+    "box": [
+     656.3,
+     253.3,
+     1004.3,
+     298.0
+    ],
+    "uid": "u12_4",
+    "authors": [
+     "권윤경"
+    ],
+    "authors_raw": "권윤경",
+    "et_al": false,
+    "year": "2015",
+    "title": "엑스포의 브랜드화 전략 연구",
+    "source": "한국디자인트랜드학회, 46, 37-46",
+    "volume": null,
+    "issue": null,
+    "pages": "37-46",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박소연. (2014). “올림픽 마스코트 디자인 선호도 연구”, 한국디자인트랜드학회, 44, 347-358.",
+    "page": 13,
+    "box": [
+     656.3,
+     305.4,
+     1059.2,
+     349.2
+    ],
+    "uid": "u12_5",
+    "authors": [
+     "박소연"
+    ],
+    "authors_raw": "박소연",
+    "et_al": false,
+    "year": "2014",
+    "title": "올림픽 마스코트 디자인 선호도 연구",
+    "source": "한국디자인트랜드학회, 44, 347-358",
+    "volume": null,
+    "issue": null,
+    "pages": "347-358",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박주현. (2023). “네러티브 시대 캐릭터 마스코트를 활용한 카페 프렌차이즈 브랜드의 파사드 디자인이 소비자 태도에 미치는 영향 연구”, 홍익대학교 산업미술대학원 석사학위논문.",
+    "page": 13,
+    "box": [
+     656.3,
+     357.4,
+     1119.2,
+     424.2
+    ],
+    "uid": "u12_6",
+    "authors": [
+     "박주현"
+    ],
+    "authors_raw": "박주현",
+    "et_al": false,
+    "year": "2023",
+    "title": "네러티브 시대 캐릭터 마스코트를 활용한 카페 프렌차이즈 브랜드의 파사드 디자인이 소비자 태도에 미치는 영향 연구",
+    "source": "홍익대학교 산업미술대학원 석사학위논문",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_thesis",
+    "container_title": "홍익대학교 산업미술대학원 석사학위논문",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박해균, 최지원, 탁준표. (2018). “브랜드의 새 얼굴, 마스코트 마케팅에 대하여”, 한국마케팅연구원, 52(4), 63-70.",
+    "page": 13,
+    "box": [
+     656.3,
+     430.4,
+     1099.0,
+     474.2
+    ],
+    "uid": "u12_7",
+    "authors": [
+     "박해균",
+     "최지원",
+     "탁준표"
+    ],
+    "authors_raw": "박해균, 최지원, 탁준표",
+    "et_al": false,
+    "year": "2018",
+    "title": "브랜드의 새 얼굴, 마스코트 마케팅에 대하여",
+    "source": "한국마케팅연구원, 52(4), 63-70",
+    "volume": null,
+    "issue": null,
+    "pages": "63-70",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "정파. (2008). “1996년~2008년 올림픽 대회의 마스코트 디자인에 대한 연구”, 배재대학교 박사학위논문.",
+    "page": 13,
+    "box": [
+     656.3,
+     481.5,
+     1119.2,
+     527.3
+    ],
+    "uid": "u12_8",
+    "authors": [
+     "정파"
+    ],
+    "authors_raw": "정파",
+    "et_al": false,
+    "year": "2008",
+    "title": "1996년~2008년 올림픽 대회의 마스코트 디자인에 대한 연구",
+    "source": "배재대학교 박사학위논문",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_thesis",
+    "container_title": "배재대학교 박사학위논문",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "조용진. (2011). “국내 금융업계의 캐릭터 개발 및 활용 현황”, 한국디자인트랜드학회, 33, 201-210.",
+    "page": 13,
+    "box": [
+     656.3,
+     533.2,
+     1109.4,
+     579.5
+    ],
+    "uid": "u12_9",
+    "authors": [
+     "조용진"
+    ],
+    "authors_raw": "조용진",
+    "et_al": false,
+    "year": "2011",
+    "title": "국내 금융업계의 캐릭터 개발 및 활용 현황",
+    "source": "한국디자인트랜드학회, 33, 201-210",
+    "volume": null,
+    "issue": null,
+    "pages": "201-210",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "한석원. (2016). “월드컵 마스코트의 기호학적 의미작용 연구”, 한국일러스아트학회, 19, 269-278.",
+    "page": 13,
+    "box": [
+     656.3,
+     583.6,
+     1109.4,
+     631.6
+    ],
+    "uid": "u12_10",
+    "authors": [
+     "한석원"
+    ],
+    "authors_raw": "한석원",
+    "et_al": false,
+    "year": "2016",
+    "title": "월드컵 마스코트의 기호학적 의미작용 연구",
+    "source": "한국일러스아트학회, 19, 269-278",
+    "volume": null,
+    "issue": null,
+    "pages": "269-278",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "한석원. (2016). “올림픽 마스코드 디자인의 형태적 변화에 대한 기호학적 연구”, 한국브랜드디자인학회, 14(3), 297-306",
+    "page": 13,
+    "box": [
+     655.6,
+     635.8,
+     1119.2,
+     732.8
+    ],
+    "uid": "u12_11",
+    "authors": [
+     "한석원"
+    ],
+    "authors_raw": "한석원",
+    "et_al": false,
+    "year": "2016",
+    "title": "올림픽 마스코드 디자인의 형태적 변화에 대한 기호학적 연구",
+    "source": "한국브랜드디자인학회, 14(3), 297-306",
+    "volume": null,
+    "issue": null,
+    "pages": "297-306",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "홍일양. (2012). “엑스포 캐릭터의 현황과 활성화 방안”, 한국멀티미디어학회, 15, 140-147.",
+    "page": 13,
+    "box": [
+     655.6,
+     635.8,
+     1119.2,
+     732.8
+    ],
+    "uid": "u12_11",
+    "authors": [
+     "홍일양"
+    ],
+    "authors_raw": "홍일양",
+    "et_al": false,
+    "year": "2012",
+    "title": "엑스포 캐릭터의 현황과 활성화 방안",
+    "source": "한국멀티미디어학회, 15, 140-147",
+    "volume": null,
+    "issue": null,
+    "pages": "140-147",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [],
+  "footnote_ref_validation": {
+   "entry_count": 0,
+   "per_page": {},
+   "num_borrowed": [],
+   "per_page_detail": {},
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "엑스포 마스코트와 아이던티티 디자인의 통합적 브랜드 개발 연구",
+   "page": 1,
+   "box": [
+    248.3,
+    594.1,
+    1009.0,
+    753.1
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": "Research on Integrated Brand Development of Expo Mascot and Identity Design",
+   "page": 1,
+   "box": [
+    248.3,
+    594.1,
+    1009.0,
+    753.1
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "한희석",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     191.0,
+     1121.4,
+     1109.1,
+     1208.0
+    ],
+    "uid": "u0_3",
+    "page": 1
+   },
+   {
+    "name": "브루더",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     191.0,
+     1121.4,
+     1109.1,
+     1208.0
+    ],
+    "uid": "u0_3",
+    "page": 1
+   },
+   {
+    "name": "이사",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     191.0,
+     1121.4,
+     1109.1,
+     1208.0
+    ],
+    "uid": "u0_3",
+    "page": 1
+   },
+   {
+    "name": "Han, Hee Seok",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     191.0,
+     1121.4,
+     1109.1,
+     1208.0
+    ],
+    "uid": "u0_3",
+    "page": 1
+   },
+   {
+    "name": "BRUDER, Director",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     191.0,
+     1121.4,
+     1109.1,
+     1208.0
+    ],
+    "uid": "u0_3",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Owhyworks, Designer"
+  ],
+  "abstract": {
+   "value": "4.2. 설문 결과\nThe Expo can be said to be the world's largest public exposition that displays and exchanges culture and technology of each country, and as a host country, it is an opportunity to expect economic development and revitalization of the country and development of each region. . Accordingly, the branding of the Expo as a host city and even of a national brand has become important, and the planning and production of branded content appropriate for this has been recognized as an important element in delivering and communicating the Expo. This study focused on analyzing the mascot and identity that make up the brand of this expo through the following steps. First, through theoretical consideration, we looked at the importance of mascots and their functions and roles at the Expo. Second, we looked at the themes of each expo held since 2012, as well as cases of identity and mascots, and analyzed the current status of their symbolic forms and elements. Third, a survey and analysis were conducted on the recognition and relevance of the identity and mascot image based on the theme of each expo. Lastly, based on the results of the above analysis and survey, an integrated expo brand development plan was presented to improve the expo image. In other words, through this study, we aim to present elements and methodologies that can achieve integrated development at the brand level in the correlation between the expo's mascot and identity, which are increasingly becoming more important through their diversified roles.\n4.3. 분석 소결\n4.4. 마스코트와 아이덴티티의 통합적 브랜드 개발 방안\n5. 결론\n참고문헌",
+   "page": 2,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "본 연구는 2012년 이후 공인된 엑스포 브랜드의 마스코트 사례의 분석을 통해 각 마스코트가 가진 기호화된 요소와 형태를 알아보고 이와 엑스포의 주제, 아이덴티티의 상관관계에 대해서 살펴보았다. 나아가 이러한 요소 및 항목을 바탕으로 마스코트가 갖는 이미지 인지 및 연관성에 대한 설문을 진행하였다. 즉 본 연구는 이러한 과정을 통하여 앞으로 엑스포의 브랜드 마케팅 및 엑스포의 이미지 제고 방안을 살펴 보고, 브랜드 단위에서의 엑스포를 위해 이와 함께 병행되어 사용되는 엑스포의 아이덴티티 디자인과 마스코트를 통한 통합적인 엑스포 브랜드 개발 방안을 모색하는 것에 목적이 있다.\n1.2. 연구 방법 및 범위\n본 연구는 글로벌 엑스포를 하나의 브랜드로 바라보고 엑스포를 대내외적으로 홍보하고 알리는 전반의 과정에 있어서 중요한 아이덴티티와 마스코트의 상관관계 및 통합적 브랜드 개발 방안에 대해 살펴보고자 한다. 아이덴티티는 어떤 주제어를 다루는 가장 상징적인 요소로써 작동하며 일반적으로는 조형적인 형태를 기반으로 하는 심볼마크, 그리고 명칭을 직관적으로 나타내는 활자 기반의 로고타입으로 이루어져 있다. 엑스포 또한 개최국의 명칭과 개최년도, 그리고 엑스포의 공식 명칭을 기반으로 구조화된 타이틀을 고유의 아이덴티티 디자인으로 활용하고 있다. 본 연구는 이와 같은 엑스포의 마스코트와 아이덴티티의 통합적 브랜드로써의 개발 방안을 구축하기 위해 다음과 같은 과정으로 진행되었다.\n특히 올림픽이나 월드 컵, 엑스포와 같은 전 세계 규모의 이벤트에서는 아이텐티티만큼 중요한 요소로써 기획 및 제작되는 것이 바로 캐릭터를 기반으로 하는 마스코트이다. 마스코트는 하나의 캐릭터로써 의미와 기능을 가지고 있는 복합적이며 다원화된 시각적인 요소이다. 국적과 문화, 세대를 넘어 이미지와 행동 등으로 직관적인 소통을 할 수 있는 매개체이자 화자로써 개념을 지니고 있으며 전반의 온오프라인 콘텐츠 및 유무형의 다양한 활동에 있어서 엑스포를 대표하는 상징성을 가지고 있다. 그런 의미에서 일반적인 브랜드나 기관 및 기업의 상표, 나아가 심볼마크나\n첫 번째, 이론적 고찰을 위해 선행 연구 및 문헌 등을 통한 마스코트의 개념과 다양한 이벤트에서의 마스코트가 갖는 기능 및 효과에 대해 파악하였다.\n두 번째, 2012년 이후 개최된 여수와 밀라노, 아스트나와 두바이, 그리고 오사카의 5개국 공인 엑스포의 현황으로 각\n능을 가지고 있다. 기업 및 브랜드는 일반적으로 그들의 서비스나 제품을 연상하는 강력한 이미지를 연관케 하여 소비 욕구를 자극하고 충족하도록 하는 기능을 마스코트에 담아낸다. 이처럼 시각 커뮤니케이션으로서 마스코트의 특징은 작은 것으로 가장 큰 이미지를 보여주고 간결한 형태를 통해 그 의미를 한없이 넓게 확장하면서 전달하고자 하는 정보를 명료하게 이해시키는 것(정파, 2008)이다. 한편 대중의 관심을 모으고 직간접적인 참여가 성패를 좌우하는 올림픽이나 월드 컵, 엑스포와 같은 메가 이벤트에는 반드시 그 이벤트를 연상케 하는 캐릭터 또는 마스코트의 성공적 개발 성과가 필수적이며 역대 올림픽의 마스코트는 해당 올림픽에 대한 상징성을 바탕으로 하나의 IP(Intellectual Property)산업으로 성장하기도 한다.\n마스코트는 개최 도시와 스포츠 이벤트를 상징하는 중요한 커뮤니케이션 기호이자 아이콘(한석원, 2016) 역할을 하는 데 특히 전 세계를 대상으로 하는 국제적인 이벤트에서는 이처럼 마스코트의 기능과 역할이 주목받기 시작했다. 또한 그 이벤트를 직간접적으로 홍보하고 상징하는 역할을 넘어 하나의 비즈니스로 자리 잡으며 상징의 의미로 친근감 부여를 목적으로 사용되던 마스코트로부터 캐릭터로 진화해 더 중요하고 새로운 기능과 역할을 부여받고 진화하고 있다. 이와 같은 마스코트는 소비자들이 기업이나 기관, 혹은 이벤트의 주최자가 전하려는 메시지를 거부감 없이 받아들 이게 하는 매개로써의 효과가 있다. 즉 하나의 화자로 마치 사람처럼 자연스러운 이미지를 연출하기 때문에 감정이입이 가능한 부분이 큰 강점으로 인지할 수 있다. 특히 기술과 미디어의 발전에 따라 마스코트의 조형적 형태는 평장히 유연해졌고 그에 따라 구현할 수 있는 다양한 그래픽은 극대화된 생명력을 부여할 수 있게 되었다. 따라서 이와 같은 마스코트에 대한 호감도 상승과 친근감 형성, 감성적인 유대감 등은 홍보활동이나 매출에 직접적인 효과를 기대해 볼 수 있으며 해당 브랜드나 주최를 쉽게 기억하고 연상시키는 데 큰 역할을 한다고 볼 수 있다.",
+   "page": 2,
+   "box": [
+    653.4,
+    1080.7,
+    739.7,
+    1105.6
+   ],
+   "from_tail": true,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u1_9"
+   }
+  },
+  "keywords_lines": [
+   "Keywords 엑스포 마스코트(Expo Mascot), 아이덴티티"
+  ],
+  "journal": {
+   "value": "Journal of Art & Design Research",
+   "uid": null,
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": "Journal of Art & Design Research",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2024,
+   "uid": "u1_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 27,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "111-123",
+   "uid": null,
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "엑스포 마스코트(Expo Mascot)",
+   "아이덴티티디자인(Identity Design)",
+   "통합적 브랜딩(Integrated Branding)"
+  ],
+  "keywords_en": [
+   "엑스포 마스코트(Expo Mascot)",
+   "아이덴티티"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "즉 엑스포의 브랜드가 가지고 있는 서사와 세계관 등 내러티브와 관련된 내용들을 소비자들에게 더욱 쉽고 직관적으로 전달할 수 있는 매체(박주현, 2023)라고 할 수 있다.",
+    "raw": "즉 엑스포의 브랜드가 가지고 있는 서사와 세계관 등 내러티브와 관련된 내용들을 소비자들에게 더욱 쉽고 직관적으로 전달할 수 있는 매체(박주현, 2023)라고 할 수 있다.",
+    "citation_text": "(박주현, 2023)",
+    "offset": [
+     74,
+     85
+    ],
+    "authors": [
+     "박주현"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u12_6"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "이처럼 시각 커뮤니케이션으로서 마스코트의 특징은 작은 것으로 가장 큰 이미지를 보여주고 간결한 형태를 통해 그 의미를 한없이 넓게 확장하면서 전달하고자 하는 정보를 명료하게 이해시키는 것(정파, 2008)이다.",
+    "raw": "이처럼 시각 커뮤니케이션으로서 마스코트의 특징은 작은 것으로 가장 큰 이미지를 보여주고 간결한 형태를 통해 그 의미를 한없이 넓게 확장하면서 전달하고자 하는 정보를 명료하게 이해시키는 것(정파, 2008)이다.",
+    "citation_text": "(정파, 2008)",
+    "offset": [
+     104,
+     114
+    ],
+    "authors": [
+     "정파"
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u12_8"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "마스코트는 개최 도시와 스포츠 이벤트를 상징하는 중요한 커뮤니케이션 기호이자 아이콘(한석원, 2016) 역할을 하는 데 특히 전 세계를 대상으로 하는 국제적인 이벤트에서는 이처럼 마스코트의 기능과 역할이 주목받기 시작했다.",
+    "raw": "마스코트는 개최 도시와 스포츠 이벤트를 상징하는 중요한 커뮤니케이션 기호이자 아이콘(한석원, 2016) 역할을 하는 데 특히 전 세계를 대상으로 하는 국제적인 이벤트에서는 이처럼 마스코트의 기능과 역할이 주목받기 시작했다.",
+    "citation_text": "(한석원, 2016)",
+    "offset": [
+     46,
+     57
+    ],
+    "authors": [
+     "한석원"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u12_10"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_7",
+    "kind": "parenthetical",
+    "sentence": "단어의 어원은 마술사, 마녀로부터 기원한 단어로 이것은 프리로만어에서 기원한 옛 프로방스말 마스코트 (mascot, 1936)에서 파생(박소연, 2014)되었으나 오늘날에는 어떤 대규모 행사나 단체를 홍보하는 상징물 또는 캐릭터의 의미로 더 많이 인식하고 있다.",
+    "raw": "단어의 어원은 마술사, 마녀로부터 기원한 단어로 이것은 프리로만어에서 기원한 옛 프로방스말 마스코트 (mascot, 1936)에서 파생(박소연, 2014)되었으나 오늘날에는 어떤 대규모 행사나 단체를 홍보하는 상징물 또는 캐릭터의 의미로 더 많이 인식하고 있다.",
+    "citation_text": "(mascot, 1936)",
+    "offset": [
+     56,
+     70
+    ],
+    "authors": [
+     "mascot"
+    ],
+    "year": "1936",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 4,
+    "uid": "u3_7",
+    "kind": "parenthetical",
+    "sentence": "단어의 어원은 마술사, 마녀로부터 기원한 단어로 이것은 프리로만어에서 기원한 옛 프로방스말 마스코트 (mascot, 1936)에서 파생(박소연, 2014)되었으나 오늘날에는 어떤 대규모 행사나 단체를 홍보하는 상징물 또는 캐릭터의 의미로 더 많이 인식하고 있다.",
+    "raw": "단어의 어원은 마술사, 마녀로부터 기원한 단어로 이것은 프리로만어에서 기원한 옛 프로방스말 마스코트 (mascot, 1936)에서 파생(박소연, 2014)되었으나 오늘날에는 어떤 대규모 행사나 단체를 홍보하는 상징물 또는 캐릭터의 의미로 더 많이 인식하고 있다.",
+    "citation_text": "(박소연, 2014)",
+    "offset": [
+     75,
+     86
+    ],
+    "authors": [
+     "박소연"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u12_5"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_7",
+    "kind": "parenthetical",
+    "sentence": "마스코트는 캐릭터와 유사한 특성을 가지고 있으나 마스코트의 경우 그 자체가 상징하고 있는 의미에 더 초점이 맞춰져 불변의 물성을 지난 상징물의 의미가 강한 반면, 캐릭터는 그것을 소구하는 대상과의 커뮤니케이션을 통해 의미와 가치를 형성한다는 차이점(조용진, 2011)을 가지고 있다.",
+    "raw": "마스코트는 캐릭터와 유사한 특성을 가지고 있으나 마스코트의 경우 그 자체가 상징하고 있는 의미에 더 초점이 맞춰져 불변의 물성을 지난 상징물의 의미가 강한 반면, 캐릭터는 그것을 소구하는 대상과의 커뮤니케이션을 통해 의미와 가치를 형성한다는 차이점(조용진, 2011)을 가지고 있다.",
+    "citation_text": "(조용진, 2011)",
+    "offset": [
+     138,
+     149
+    ],
+    "authors": [
+     "조용진"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u12_9"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_11",
+    "kind": "parenthetical",
+    "sentence": "즉 엑스포는 인류가 직면한 공동의 문제 틀에 대하여 해결 방안과 비전을 제시하여 인류 공영에 이바지하는 경제문화 올림픽(홍일양, 2012)이라",
+    "raw": "즉 엑스포는 인류가 직면한 공동의 문제 틀에 대하여 해결 방안과 비전을 제시하여 인류 공영에 이바지하는 경제문화 올림픽(홍일양, 2012)이라",
+    "citation_text": "(홍일양, 2012)",
+    "offset": [
+     66,
+     77
+    ],
+    "authors": [
+     "홍일양"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u12_11"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_13",
+    "kind": "parenthetical",
+    "sentence": "이처럼 시각 커뮤니케이션으로서 마스코트의 특징은 작은 것으로 가장 큰 이미지를 보여주고 간결한 형태를 통해 그 의미를 한없이 넓게 확장하면서 전달하고자 하는 정보를 명료하게 이해시키는 것(정파, 2008)이다.",
+    "raw": "이처럼 시각 커뮤니케이션으로서 마스코트의 특징은 작은 것으로 가장 큰 이미지를 보여주고 간결한 형태를 통해 그 의미를 한없이 넓게 확장하면서 전달하고자 하는 정보를 명료하게 이해시키는 것(정파, 2008)이다.",
+    "citation_text": "(정파, 2008)",
+    "offset": [
+     104,
+     114
+    ],
+    "authors": [
+     "정파"
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u12_8"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "즉 엑스포의 브랜딩은 국가가 가진 유·무형적 자산을 브랜드 화하여 내국인 뿐만 아니라 도시를 방문하는 외국인에게도 지역에 대한 정확한 정보와 긍정적이고 친숙한 이미지를 명확하게 전달하고 인식시키기 위한 폭넓은 개념(권윤경, 2015)에 가깝다고 볼 수 있다.",
+    "raw": "즉 엑스포의 브랜딩은 국가가 가진 유·무형적 자산을 브랜드 화하여 내국인 뿐만 아니라 도시를 방문하는 외국인에게도 지역에 대한 정확한 정보와 긍정적이고 친숙한 이미지를 명확하게 전달하고 인식시키기 위한 폭넓은 개념(권윤경, 2015)에 가깝다고 볼 수 있다.",
+    "citation_text": "(권윤경, 2015)",
+    "offset": [
+     119,
+     130
+    ],
+    "authors": [
+     "권윤경"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u12_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

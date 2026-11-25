@@ -1,0 +1,1261 @@
+{
+ "doc": "13571768",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571768",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "Ministry of National Defense (2025). Annex Form No. 3 of the Directive on Defense Force Development (Directive No. 3007, Revised on January 10, 2025). Seoul, Republic of Korea: Author. https://www.law.go.kr",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     155.3,
+     1369.5,
+     997.9,
+     1419.5
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "Ministry of National Defense"
+    ],
+    "authors_raw": "Ministry of National Defense",
+    "et_al": false,
+    "year": "2025",
+    "title": "Annex Form No. 3 of the Directive on Defense Force Development (Directive No. 3007",
+    "source": "Revised on January 10",
+    "volume": null,
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "CMMI-DEV REQM 프로세스를 국방 분야에 적용한 연구는 본 연구가 최초이나, 소프트웨어 개발 및 프로젝트관리 분야에서는 Astridita et al. (2024), Keshta et al. (2020) 등의 선행연구가 존재한다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     150.7,
+     1310.1,
+     999.0,
+     1421.1
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "SEI(Software Engineering Institute). (2010). CMMI® for Development, Version 1.3. CMU/SEI- 2010-TR-033. Carnegie Mellon University.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     150.7,
+     1310.1,
+     999.0,
+     1421.1
+    ],
+    "uid": "u3_7",
+    "authors": [
+     "SEI(Software Engineering Institute)"
+    ],
+    "authors_raw": "SEI(Software Engineering Institute)",
+    "et_al": false,
+    "year": "2010",
+    "title": "CMMI® for Development",
+    "source": "Version 1.3. CMU/SEI- 2010-TR-033. Carnegie Mellon University",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "Reliability, Availability, Maintainability(신뢰도 · 가용도 · 정비도), Integrated Product Support(통합체제지원)",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     154.5,
+     1396.5,
+     985.5,
+     1419.5
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "National Fire Protection Association(미국 화재방지협회)",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     154.5,
+     1396.5,
+     606.3,
+     1424.7
+    ],
+    "uid": "u6_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "전문가 집단은 군사학, 방위산업학, 산업공학 등 관련 분야 박사학위 보유자, 또는 관련 분야 석사학위 소지자로서3년 이상 복무한 자, 또는 학사학위 소지자로서 해당 분야에서 5년 이상 복무한 자를 대상으로 선정하였다. 이들은육군 전력지원체계사업단, 군 관련 학회와 연구기관에 소속된 부서장 또는 실무자급 전문가들로 구성되었다.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     158.4,
+     1330.1,
+     997.9,
+     1391.4
+    ],
+    "uid": "u8_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "CVR=(NN/2)/(N/2). N ,N “전문가의 수이다. CVR= (Ne − N/2)/(N/2)",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     158.4,
+     1330.1,
+     997.9,
+     1391.4
+    ],
+    "uid": "u8_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "CVR 분석 시와 동일한 전문가 집단으로 구성하였다.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     158.4,
+     1330.1,
+     997.9,
+     1391.4
+    ],
+    "uid": "u8_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "Saaty (1980, 1990)는 CR값이 0.10 미만일 경우, 쌍대비교 판단의 일관성이 수용가능한 수준이라고 제안하였다.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1394.5,
+     997.5,
+     1420.8
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "Saaty"
+    ],
+    "authors_raw": "Saaty",
+    "et_al": false,
+    "year": "1980",
+    "title": "1990)는 CR값이 0.10 미만일 경우",
+    "source": "쌍대비교 판단의 일관성이 수용가능한 수준이라고 제안하였다",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 9,
+   "per_page": {
+    "2": 1,
+    "4": 2,
+    "6": 1,
+    "7": 1,
+    "9": 3,
+    "10": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "4": {
+     "markers": [
+      "2",
+      "3"
+     ],
+     "collected": [
+      "2",
+      "3"
+     ]
+    },
+    "6": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "7": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "9": {
+     "markers": [
+      "6",
+      "7",
+      "8"
+     ],
+     "collected": [
+      "6",
+      "7",
+      "8"
+     ]
+    },
+    "10": {
+     "markers": [
+      "9"
+     ],
+     "collected": [
+      "9"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Akao, Y. (1990). Quality Function Deployment: Integrating Customer Requirements into Product Design. Productivity Press. https://doi.org/10.4324/9781003578833",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Akao Y"
+    ],
+    "authors_raw": "Akao, Y",
+    "et_al": false,
+    "year": "1990",
+    "title": "Quality Function Deployment: Integrating Customer Requirements into Product Design. Productivity Press. https://doi.org/10.4324/9781003578833",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.4324/9781003578833",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Astridita, A., Raharjo, T., & Nur Fitriani, A. (2024). Perceived Benefits and Challenges of Implementing CMMI on Agile Project Management: A Systematic Literature Review, International Journal of Advanced Computer Science & Applications, 15(1), 232-239. https://doi.org/10.14569/IJACSA.2024.0150122",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Astridita A",
+     "Raharjo T",
+     "Nur Fitriani",
+     "A"
+    ],
+    "authors_raw": "Astridita, A., Raharjo, T., & Nur Fitriani, A",
+    "et_al": false,
+    "year": "2024",
+    "title": "Perceived Benefits and Challenges of Implementing CMMI on Agile Project Management: A Systematic Literature Review",
+    "source": "International Journal of Advanced Computer Science & Applications",
+    "volume": null,
+    "issue": null,
+    "pages": "232-239",
+    "doi": "10.14569/IJACSA.2024.0150122",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, Y. S. & Lee, D. H. (2023). Development of Technology research and analysis method for acquisition strategy of Combatant support systems, Journal of the Korea Academia-Industrial cooperation Society, 24(4), 413-422. https://doi.org/10.5762/KAIS.2023.24.4.413",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Hwang Y. S",
+     "Lee D. H"
+    ],
+    "authors_raw": "Hwang, Y. S. & Lee, D. H",
+    "et_al": false,
+    "year": "2023",
+    "title": "Development of Technology research and analysis method for acquisition strategy of Combatant support systems",
+    "source": "Journal of the Korea Academia-Industrial cooperation Society",
+    "volume": null,
+    "issue": null,
+    "pages": "413-422",
+    "doi": "10.5762/KAIS.2023.24.4.413",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Keshta, I. M., Niazi, M. & Alshayeb, M. (2020). Towards the implementation of requirements management specific practices (SP1.1 and SP1.2) for small-and medium-sized software development organizations, IET Software, 14(3), 308-317. https://doi.org/10.1049/iet-sen.2019.0180",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Keshta I. M",
+     "Niazi M",
+     "Alshayeb M"
+    ],
+    "authors_raw": "Keshta, I. M., Niazi, M. & Alshayeb, M",
+    "et_al": false,
+    "year": "2020",
+    "title": "Towards the implementation of requirements management specific practices (SP1.1 and SP1.2) for small-and medium-sized software development organizations",
+    "source": "IET Software",
+    "volume": null,
+    "issue": null,
+    "pages": "308-317",
+    "doi": "10.1049/iet-sen.2019.0180",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim J. S., Joo, E. W. & Joo, I. H. (2023). Analysis of Perception Types on Research and Development Programs of Creative and Challenging Defense Science and Technology using Q Methodology. Journal of the Korea Association of Defense Industry Studies, 30(2), 89-109. https://doi.org/- 10.52798/KADIS.2023.30.2.7",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim J. S",
+     "Joo E. W",
+     "Joo I. H"
+    ],
+    "authors_raw": "Kim J. S., Joo, E. W. & Joo, I. H",
+    "et_al": false,
+    "year": "2023",
+    "title": "Analysis of Perception Types on Research and Development Programs of Creative and Challenging Defense Science and Technology using Q Methodology. Journal of the Korea Association of Defense Industry Studies",
+    "source": "30(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "89-109",
+    "doi": "10.52798/KADIS.2023.30.2.7",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, H. B. & Youn, B. J. (2024). A Study on ORD Format Improvement Linked with the ORD Concept, Journal of the Korea Academia-Industrial Cooperation Society, 25(6), 335-345. https://doi.org/10.5762/KAIS.2024.25.6.335",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim H. B",
+     "Youn B. J"
+    ],
+    "authors_raw": "Kim, H. B. & Youn, B. J",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on ORD Format Improvement Linked with the ORD Concept",
+    "source": "Journal of the Korea Academia-Industrial Cooperation Society",
+    "volume": null,
+    "issue": null,
+    "pages": "335-345",
+    "doi": "10.5762/KAIS.2024.25.6.335",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kruskal, J. B. & Wish, M. (1978). Multidimensional scaling (No. 11). Sage. https://doi.org/10.4135/- 9781412985130",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kruskal J. B",
+     "Wish M"
+    ],
+    "authors_raw": "Kruskal, J. B. & Wish, M",
+    "et_al": false,
+    "year": "1978",
+    "title": "Multidimensional scaling (No. 11). Sage. https://doi.org/10.4135/- 9781412985130",
+    "source": null,
+    "volume": null,
+    "issue": "11",
+    "pages": null,
+    "doi": "10.4135/-",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lawshe, C. H. (1975). A quantitative approach to content validity. Personnel Psychology, 28(4), 563– 575. https://doi.org/10.1111/j.1744-6570.1975.tb01393.x",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lawshe C. H"
+    ],
+    "authors_raw": "Lawshe, C. H",
+    "et_al": false,
+    "year": "1975",
+    "title": "A quantitative approach to content validity. Personnel Psychology",
+    "source": "28(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "563-575",
+    "doi": "10.1111/j.1744-6570.1975.tb01393.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. H. (2024). A Study on the Development Direction of Force Support System for the Implementation of Defense Innovation 4.0. STRATEGIC STUDIES, 31(2), 303-344. https://doi.- org/10.46226/jss.2024.7.31.2.303",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lee J. H"
+    ],
+    "authors_raw": "Lee, J. H",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on the Development Direction of Force Support System for the Implementation of Defense Innovation 4.0. STRATEGIC STUDIES",
+    "source": "31(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "303-344",
+    "doi": "10.46226/jss.2024.7.31.2.303",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. Y. & Lee, C. (2015). A Study on Operational Requirements Document(ORD) for Weapons System by Applying MBSE, Journal of the Korea Association of Defense Industry Studies, 22(2), 149-160.",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lee J. Y",
+     "Lee C"
+    ],
+    "authors_raw": "Lee, J. Y. & Lee, C",
+    "et_al": false,
+    "year": "2015",
+    "title": "A Study on Operational Requirements Document(ORD) for Weapons System by Applying MBSE",
+    "source": "Journal of the Korea Association of Defense Industry Studies",
+    "volume": null,
+    "issue": null,
+    "pages": "149-160",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. Y. & Shim, S. R. (2015). A Study on ARD & REQM Process Modeling for Acquisition Organizations based on CMMI & MBSE, Journal of the Korea Association of Defense Industry Studies, 22(3), 124-149. UCI : G704-SER000001543.2015.22.3.006.",
+    "page": 18,
+    "box": [
+     143.8,
+     228.6,
+     1000.1,
+     1160.4
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lee J. Y",
+     "Shim S. R"
+    ],
+    "authors_raw": "Lee, J. Y. & Shim, S. R",
+    "et_al": false,
+    "year": "2015",
+    "title": "A Study on ARD & REQM Process Modeling for Acquisition Organizations based on CMMI & MBSE",
+    "source": "Journal of the Korea Association of Defense Industry Studies",
+    "volume": null,
+    "issue": null,
+    "pages": "124-149",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. Y. (2020). A Study on the Framework of Operational Requirements Document (ORD) for Weapons System after Requirements Decision, Journal of the Korea Institute of Military Science and Technology, 23(1), 87-95. https://doi.org/10.9766/KIMST.2020.23.1.087",
+    "page": 19,
+    "box": [
+     151.6,
+     228.6,
+     1000.1,
+     459.0
+    ],
+    "uid": "u18_1",
+    "authors": [
+     "Lee J. Y"
+    ],
+    "authors_raw": "Lee, J. Y",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Framework of Operational Requirements Document (ORD) for Weapons System after Requirements Decision",
+    "source": "Journal of the Korea Institute of Military Science and Technology",
+    "volume": null,
+    "issue": null,
+    "pages": "87-95",
+    "doi": "10.9766/KIMST.2020.23.1.087",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Saaty, T. L. (1990). How to make a decision: The Analytic Hierarchy Process. European Journal of Operational Research, 48(1), 9–26. https://doi.org/10.1016/0377-2217(90)90057-I",
+    "page": 19,
+    "box": [
+     151.6,
+     228.6,
+     1000.1,
+     459.0
+    ],
+    "uid": "u18_1",
+    "authors": [
+     "Saaty T. L"
+    ],
+    "authors_raw": "Saaty, T. L",
+    "et_al": false,
+    "year": "1990",
+    "title": "How to make a decision: The Analytic Hierarchy Process. European Journal of Operational Research",
+    "source": "48(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "9-26",
+    "doi": "10.1016/0377-2217(90)90057-I",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Decision analysis techniques for establishing a requirements management framework with force support systems ORD based on CMMI-DEV REQM",
+   "page": 1,
+   "box": [
+    202.2,
+    393.9,
+    941.2,
+    532.6
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Park, Chulhyun",
+    "markers": [],
+    "affiliation": "Chungnam National University, Department of Defense Management Engineering",
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     281.3,
+     562.8,
+     881.4,
+     592.0
+    ]
+   },
+   {
+    "name": "An, Jihun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     281.3,
+     562.8,
+     881.4,
+     592.0
+    ]
+   },
+   {
+    "name": "Oh, YunJi",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     281.3,
+     562.8,
+     881.4,
+     592.0
+    ]
+   },
+   {
+    "name": "Seo, Hoseok",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     281.3,
+     562.8,
+     881.4,
+     592.0
+    ]
+   }
+  ],
+  "affiliations": [
+   "Department of Defense Management Engineering",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "This study proposes a novel quantitative analysis framework for establishing a robust requirements management system, specifically designed for Force Support Systems (FSSs), grounded in the Requirements Management (REQM) process area of the CMMI-DEV model. The framework introduces classification criteria that distinguish Key Performance Parameters (KPPs) from System Performance Parameters (SPPs) in Operational Requirements Documents (ORDs) and integrates quantitative decision-making techniques─including CVR, AHP, QFD, and MDS─to enable evidence-based requirement analysis. The proposed framework is systematically mapped to the five specific practices of the CMMI-DEV REQM process area: understanding requirements (SP 1.1), obtaining commitment to requirements (SP 1.2), managing requirements changes (SP 1.3), maintaining bidirectional traceability of requirements (SP 1.4), and ensuring alignment between project work and requirements (SP 1.5). Through these linkages, the framework enhances the structure, prioritization, and consistency of requirements throughout the acquisition lifecycle. Case studies on a training simulator and a next-generation combat uniform verified the quantitative validity of KPP/SPP classification and demonstrate the framework's effectiveness in improving traceability and decision-making in defense acquisition. Overall, the study offers a formalized and practical approach to FSS requirements management, thereby improving the efficiency and reliability of defense acquisition projects.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study proposes a novel quantitative analysis framework for establishing a robust requirements management system, specifically designed for Force Support Systems (FSSs), grounded in the Requirements Management (REQM) process area of the CMMI-DEV model. The framework introduces classification criteria that distinguish Key Performance Parameters (KPPs) from System Performance Parameters (SPPs) in Operational Requirements Documents (ORDs) and integrates quantitative decision-making techniques─including CVR, AHP, QFD, and MDS─to enable evidence-based requirement analysis. The proposed framework is systematically mapped to the five specific practices of the CMMI-DEV REQM process area: understanding requirements (SP 1.1), obtaining commitment to requirements (SP 1.2), managing requirements changes (SP 1.3), maintaining bidirectional traceability of requirements (SP 1.4), and ensuring alignment between project work and requirements (SP 1.5). Through these linkages, the framework enhances the structure, prioritization, and consistency of requirements throughout the acquisition lifecycle. Case studies on a training simulator and a next-generation combat uniform verified the quantitative validity of KPP/SPP classification and demonstrate the framework's effectiveness in improving traceability and decision-making in defense acquisition. Overall, the study offers a formalized and practical approach to FSS requirements management, thereby improving the efficiency and reliability of defense acquisition projects.",
+   "page": 1,
+   "box": [
+    189.8,
+    643.6,
+    309.4,
+    669.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : operational requirements document (ORD), key performance parameters (KPPs), system performance parameters (SPPs), capability maturity model integration for development requirements management (CMMI-DEV REQM), decision analysis techniques, requirements management"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 8,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "1-20",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "전력지원체계",
+   "운용요구서(ORD)",
+   "핵심성능파라미터(KPP)",
+   "체계성능파라미터(SPP)",
+   "능력성숙도통합모델-개발-요구사항 관리(CMMI-DEV REQM)",
+   "의사결정 분석기법",
+   "요구사항 관리"
+  ],
+  "keywords_en": [
+   "operational requirements document (ORD)",
+   "system performance parameters (SPPs)",
+   "decision analysis techniques",
+   "requirements management"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "narrative",
+    "sentence": "Lee & Lee (2015) 연구는 모델 기반 시스템 엔지니어링(Model-Based Systems Engineering, MBSE) 기반의 방법론 적용을 제시하였으며, Lee & Shim (2015)는 CMMI와 MBSE를 연계한 요구사항 개발 및 관리 모델을 제안하였다.",
+    "raw": "Lee & Lee (2015) 연구는 모델 기반 시스템 엔지니어링(Model-Based Systems Engineering, MBSE) 기반의 방법론 적용을 제시하였으며, Lee & Shim (2015)는 CMMI와 MBSE를 연계한 요구사항 개발 및 관리 모델을 제안하였다.",
+    "citation_text": "Lee (2015)",
+    "offset": [
+     6,
+     16
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "narrative",
+    "sentence": "Lee & Lee (2015) 연구는 모델 기반 시스템 엔지니어링(Model-Based Systems Engineering, MBSE) 기반의 방법론 적용을 제시하였으며, Lee & Shim (2015)는 CMMI와 MBSE를 연계한 요구사항 개발 및 관리 모델을 제안하였다.",
+    "raw": "Lee & Lee (2015) 연구는 모델 기반 시스템 엔지니어링(Model-Based Systems Engineering, MBSE) 기반의 방법론 적용을 제시하였으며, Lee & Shim (2015)는 CMMI와 MBSE를 연계한 요구사항 개발 및 관리 모델을 제안하였다.",
+    "citation_text": "Shim (2015)",
+    "offset": [
+     102,
+     113
+    ],
+    "authors": [
+     "Shim"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "narrative",
+    "sentence": "최근 Kim & Youn (2024) 연구는 ORD를 단일 산출물이 아닌 ORD-초안 → ORD-I → ORD-II의 진화적 문서로 정의하고, 단계별로 명확하게 구분하는 서식의 개선안을 제시하였다.",
+    "raw": "최근 Kim & Youn (2024) 연구는 ORD를 단일 산출물이 아닌 ORD-초안 → ORD-I → ORD-II의 진화적 문서로 정의하고, 단계별로 명확하게 구분하는 서식의 개선안을 제시하였다.",
+    "citation_text": "Youn (2024)",
+    "offset": [
+     9,
+     20
+    ],
+    "authors": [
+     "Youn"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "narrative",
+    "sentence": "반면 전력지원체계 관련 연구에서 Hwang & Lee (2023)는 기술성숙도(Technology Readiness Level, TRL) 평가, 기술 수준 분석, MIL-STD-961E 기반 요구성능 정량화 등의 표준화 방안을 제안하였다.",
+    "raw": "반면 전력지원체계 관련 연구에서 Hwang & Lee (2023)는 기술성숙도(Technology Readiness Level, TRL) 평가, 기술 수준 분석, MIL-STD-961E 기반 요구성능 정량화 등의 표준화 방안을 제안하였다.",
+    "citation_text": "Lee (2023)",
+    "offset": [
+     26,
+     36
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "특히, 방위산업과 같이 복수의 이해관계자 및 고신뢰성과 추적성이 요구되는 분야(Kim, Joo, & Joo, 2023)는 CMMI-DEV REQM는 다섯 가지 세부 수행(Specific Practices) 단계(Table 3A)를 포함하여 요구사항 관리의 성숙도 수준을 체계적으로 향상할 수 있다.",
+    "raw": "특히, 방위산업과 같이 복수의 이해관계자 및 고신뢰성과 추적성이 요구되는 분야(Kim, Joo, & Joo, 2023)는 CMMI-DEV REQM는 다섯 가지 세부 수행(Specific Practices) 단계(Table 3A)를 포함하여 요구사항 관리의 성숙도 수준을 체계적으로 향상할 수 있다.",
+    "citation_text": "(Kim, Joo, & Joo, 2023)",
+    "offset": [
+     43,
+     66
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "raw": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "citation_text": "Akao, 1990",
+    "offset": [
+     79,
+     89
+    ],
+    "authors": [
+     "Akao"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "raw": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "citation_text": "Lawshe, 1975, Kruskal & Wish, 1978",
+    "offset": [
+     91,
+     125
+    ],
+    "authors": [
+     "Lawshe"
+    ],
+    "year": "1978",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "raw": "CVR), 품질 기능 전개(Quality Function Deployment, QFD), AHP, MDS와 같은 의사결정 분석기법을 연계한다(Akao, 1990; Lawshe, 1975, Kruskal & Wish, 1978; Saaty, 1990).",
+    "citation_text": "Saaty, 1990",
+    "offset": [
+     127,
+     138
+    ],
+    "authors": [
+     "Saaty"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u18_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

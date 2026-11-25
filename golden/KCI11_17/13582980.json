@@ -1,0 +1,1770 @@
+{
+ "doc": "13582980",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582980",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김원섭.(2013).국민연금 사각지대와 해소방안 연구.한국재정학회·한",
+    "page": 22,
+    "box": [
+     103.5,
+     769.7,
+     793.5,
+     906.1
+    ],
+    "uid": "u21_9",
+    "authors": [
+     "김원섭"
+    ],
+    "authors_raw": "김원섭",
+    "et_al": false,
+    "year": "2013",
+    "title": "국민연금 사각지대와 해소방안 연구.한국재정학회·한",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "국조세연구원 공동 정책세미나(2013. 05. 03.) 「복지 사각지대 현황과 해결방안」 자료집.",
+    "page": 22,
+    "box": [
+     103.5,
+     769.7,
+     793.5,
+     906.1
+    ],
+    "uid": "u21_9",
+    "authors": [
+     "국조세연구원 공동 정책세미나"
+    ],
+    "authors_raw": "국조세연구원 공동 정책세미나",
+    "et_al": false,
+    "year": "2013",
+    "title": "복지 사각지대 현황과 해결방안",
+    "source": "자료집",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김원섭, 강성호, 김형수&이용하. (2016). 우리나라 공적연금의 보편적 중층보장체계로의 재구축 방안에 관한 연구. 사회보장연구 제32권 제4호.",
+    "page": 22,
+    "box": [
+     106.3,
+     916.0,
+     793.0,
+     1016.1
+    ],
+    "uid": "u21_10",
+    "authors": [
+     "김원섭",
+     "강성호",
+     "김형수&이용하"
+    ],
+    "authors_raw": "김원섭, 강성호, 김형수&이용하",
+    "et_al": false,
+    "year": "2016",
+    "title": "우리나라 공적연금의 보편적 중층보장체계로의 재구축 방안에 관한 연구. 사회보장연구 제32권 제4호",
+    "source": null,
+    "volume": "32",
+    "issue": "4",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김태완, 이주미, 강예은, 김기태&강성호. (2021). *국민기초생활보장제도 접근성 강화 방안 연구*. 보건복지부·한국보건사회연구원.",
+    "page": 23,
+    "box": [
+     104.2,
+     169.8,
+     793.0,
+     235.5
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "김태완",
+     "이주미",
+     "강예은",
+     "김기태&강성호"
+    ],
+    "authors_raw": "김태완, 이주미, 강예은, 김기태&강성호",
+    "et_al": false,
+    "year": "2021",
+    "title": "국민기초생활보장제도 접근성 강화 방안 연구",
+    "source": "). 국민기초생활보장제도 접근성 강화 방안 연구. 보건복지부·한국보건사회연구원",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "문화체육관광부국민소통실. (2023). 윤석열 제 20대 대통령취임사, 2023. 05.10. 대한민국정책브리핑. https://www.korea.kr/news/policyNewsView.do?newsId=148901469",
+    "page": 23,
+    "box": [
+     104.2,
+     242.9,
+     793.0,
+     455.5
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "문화체육관광부국민소통실"
+    ],
+    "authors_raw": "문화체육관광부국민소통실",
+    "et_al": false,
+    "year": "2023",
+    "title": "윤석열 제 20대 대통령취임사",
+    "source": "2023. 05.10. 대한민국정책브리핑. https://www.korea.kr/news/policyNewsView.do?newsId=148901469",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이성우.(2022년9월19일). \"취약계층 지원강화\" 쿠정부 약자복지 윤곽···\n순항하나. 복지타임즈",
+    "page": 23,
+    "box": [
+     104.2,
+     242.9,
+     793.0,
+     455.5
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "이성우"
+    ],
+    "authors_raw": "이성우",
+    "et_al": false,
+    "year": "2022",
+    "title": "취약계층 지원강화",
+    "source": "쿠정부 약자복지 윤곽··· 순항하나. 복지타임즈",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "윤석열대통령. (2022년10월25일). 윤석열대통령 2023년도 예산안 및 기금운용계획안 시정연설문. https://www.icouncil.kr/news/articleView.html?idxno=51357",
+    "page": 23,
+    "box": [
+     104.2,
+     462.0,
+     793.0,
+     638.9
+    ],
+    "uid": "u22_3",
+    "authors": [
+     "윤석열대통령"
+    ],
+    "authors_raw": "윤석열대통령",
+    "et_al": false,
+    "year": "2022",
+    "title": "윤석열대통령 2023년도 예산안 및 기금운용계획안 시정연설문. https://www.icouncil.kr/news/articleView.html?idxno=51357",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이상민. (2022). 23년 예산안 지출 구조조정의 모든 것: 현황, 의의, 문제점. *나라살림리포트* 257호.",
+    "page": 23,
+    "box": [
+     104.2,
+     462.0,
+     793.0,
+     638.9
+    ],
+    "uid": "u22_3",
+    "authors": [
+     "이상민"
+    ],
+    "authors_raw": "이상민",
+    "et_al": false,
+    "year": "2022",
+    "title": "나라살림리포트",
+    "source": "). 23년 예산안 지출 구조조정의 모든 것: 현황, 의의, 문제점. 나라살림리포트 257호",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이윤경. (2021). OECD 주요국의 공공사회복지지출 현황. NABO Focus제30호.",
+    "page": 23,
+    "box": [
+     105.2,
+     646.2,
+     793.0,
+     709.8
+    ],
+    "uid": "u22_4",
+    "authors": [
+     "이윤경"
+    ],
+    "authors_raw": "이윤경",
+    "et_al": false,
+    "year": "2021",
+    "title": "OECD 주요국의 공공사회복지지출 현황. NABO Focus제30호",
+    "source": null,
+    "volume": null,
+    "issue": "30",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "제20대대통령직인수위원회. (2022). 윤석열정부 110대 국정과제. 의회. http://www.icouncil.kr.",
+    "page": 23,
+    "box": [
+     104.2,
+     793.1,
+     795.1,
+     857.9
+    ],
+    "uid": "u22_6",
+    "authors": [
+     "제20대대통령직인수위원회"
+    ],
+    "authors_raw": "제20대대통령직인수위원회",
+    "et_al": false,
+    "year": "2022",
+    "title": "윤석열정부 110대 국정과제. 의회. http://www.icouncil.kr",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "최병호. (2014). 우리나라 복지정책의 변천과 과제. 예산정책연구 제3권 제1호.",
+    "page": 23,
+    "box": [
+     104.2,
+     863.4,
+     793.0,
+     931.6
+    ],
+    "uid": "u22_7",
+    "authors": [
+     "최병호"
+    ],
+    "authors_raw": "최병호",
+    "et_al": false,
+    "year": "2014",
+    "title": "우리나라 복지정책의 변천과 과제. 예산정책연구 제3권 제1호",
+    "source": null,
+    "volume": "3",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "최장집. (2010). *민주화 이후의 민주주의: 한국 민주주의의 보수적 기원과 위기 (2)*. 후마니타스.",
+    "page": 23,
+    "box": [
+     105.2,
+     938.2,
+     795.1,
+     1004.2
+    ],
+    "uid": "u22_8",
+    "authors": [
+     "최장집"
+    ],
+    "authors_raw": "최장집",
+    "et_al": false,
+    "year": "2010",
+    "title": "민주화 이후의 민주주의: 한국 민주주의의 보수적 기원과 위기 (2)",
+    "source": "). 민주화 이후의 민주주의: 한국 민주주의의 보수적 기원과 위기 (2). 후마니타스",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jou, Willy. (2010). The Heuristic Value of the Left—Right Schema in East Asia. International Political Science Review 31(3).",
+    "page": 24,
+    "box": [
+     103.2,
+     355.4,
+     793.0,
+     456.6
+    ],
+    "uid": "u23_1",
+    "authors": [
+     "Jou",
+     "Willy"
+    ],
+    "authors_raw": "Jou, Willy",
+    "et_al": false,
+    "year": "2010",
+    "title": "The Heuristic Value of the Left—Right Schema in East Asia. International Political Science Review 31(3)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Won-Sub, Yu, Jin-Sook, & Nam, Yuncheol. (2022). The Impact of Government Partisanship on Social Policy in a Young Democracy: The Case of South Korea, Asian Politics & Policy 14(4).",
+    "page": 24,
+    "box": [
+     103.2,
+     355.4,
+     793.0,
+     456.6
+    ],
+    "uid": "u23_1",
+    "authors": [
+     "Kim",
+     "Won-Sub",
+     "Yu",
+     "Jin-Sook",
+     "Nam",
+     "Yuncheol"
+    ],
+    "authors_raw": "Kim, Won-Sub, Yu, Jin-Sook, & Nam, Yuncheol",
+    "et_al": false,
+    "year": "2022",
+    "title": "The Impact of Government Partisanship on Social Policy in a Young Democracy: The Case of South Korea",
+    "source": "Asian Politics & Policy 14(4)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, Cheol-Sung. (2016). When Solidarity Works: Labor-Civic Networks and Welfare States in the Market Reform Era (Vol.41). Cambridge University Press.",
+    "page": 24,
+    "box": [
+     103.2,
+     355.4,
+     793.0,
+     456.6
+    ],
+    "uid": "u23_1",
+    "authors": [
+     "Lee",
+     "Cheol-Sung"
+    ],
+    "authors_raw": "Lee, Cheol-Sung",
+    "et_al": false,
+    "year": "2016",
+    "title": "When Solidarity Works: Labor-Civic Networks and Welfare States in the Market Reform Era (Vol.41). Cambridge University Press",
+    "source": null,
+    "volume": "41",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "OECD., D. S. E. (2019). Society at a Glance 2019. Organization for Economic.",
+    "page": 24,
+    "box": [
+     103.2,
+     355.4,
+     793.0,
+     456.6
+    ],
+    "uid": "u23_1",
+    "authors": [
+     "OECD",
+     "D. S. E"
+    ],
+    "authors_raw": "OECD., D. S. E",
+    "et_al": false,
+    "year": "2019",
+    "title": "Society at a Glance 2019. Organization for Economic",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, Jae-Jin. (2017). The Political Economy of the Small Welfare State in South Korea. Cambridge University Press.",
+    "page": 24,
+    "box": [
+     103.2,
+     355.4,
+     793.0,
+     456.6
+    ],
+    "uid": "u23_1",
+    "authors": [
+     "Yang",
+     "Jae-Jin"
+    ],
+    "authors_raw": "Yang, Jae-Jin",
+    "et_al": false,
+    "year": "2017",
+    "title": "The Political Economy of the Small Welfare State in South Korea. Cambridge University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "대통령직인수위는 지방시대 공약을 지역균형발전 특별위원회에서 국민이 의견을 수렴하여 국정과제를 구체화하기로 한다(제20대대통령직인수위원회, 2022). 이후 정부는 지방분권위원회와 지역균형발전위원회를 통합하여 지방시대위원회를 출범시킬 계획을 수립한다. 2023년 1월 10일 현재까지 이 위원회는 설치되지 않았다. 이에 따라 지역균형발전을 위한 국정과제의 수립과 실행은 늦어지고 있다(행정안전부, 2022).",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     103.5,
+     1055.9,
+     797.2,
+     1179.7
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "대통령직인수위의 보고서에는 기초연금의 개선은 지속 가능한 복지제도 개혁에 포함되었다.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     109.3,
+     1078.1,
+     793.0,
+     1158.0
+    ],
+    "uid": "u11_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "이 제도는 문재인정부에서 추진한 것보다 더 확대된 정책이다. 문재인정부는 2022년 0~1세 영아를 대상으로 영아수당을 도입하여 30만 원 지급하였고, 이후 급여수준을 2023년 35만 원, 2024년 40만 원, 2025년 50만 원으로 인상할 예정이었다 (정책브리핑 https://www.korea.kr/news/visualNewsView.do?newsId=148894817).",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     109.3,
+     1078.1,
+     793.0,
+     1158.0
+    ],
+    "uid": "u11_4",
+    "authors": [
+     "이",
+     "제도는",
+     "문재인정부에서",
+     "추진한",
+     "것보다",
+     "더",
+     "확대된",
+     "정책이다",
+     "문재인정부는",
+     "2022년",
+     "0~1세",
+     "영아를",
+     "대상으로",
+     "영아수당을",
+     "도입하여",
+     "30만",
+     "원",
+     "지급하였고"
+    ],
+    "authors_raw": "이 제도는 문재인정부에서 추진한 것보다 더 확대된 정책이다. 문재인정부는 2022년 0~1세 영아를 대상으로 영아수당을 도입하여 30만 원 지급하였고",
+    "et_al": false,
+    "year": "2025",
+    "title": "이후 급여수준을 2023년 35만 원",
+    "source": "2024년 40만 원",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 3,
+   "per_page": {
+    "10": 1,
+    "12": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "10": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "12": {
+     "markers": [
+      "2",
+      "3"
+     ],
+     "collected": [
+      "2",
+      "3"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "Korean Welfare System and the Welfare Model of Yoon Seok-yeol government, focusing on social security policies",
+   "page": 1,
+   "box": [
+    102.0,
+    205.4,
+    793.5,
+    342.1
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Won-Sub",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.1,
+     402.3,
+     239.7,
+     452.3
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Korea University",
+   "Department of Sociology"
+  ],
+  "abstract": {
+   "value": "The purpose of this study is to examine the socal policy of the Yoon Seok-Yeol government from the perspective of both policy and theory. Theoretically, the analysis reveals that the Yoon government attempts to build and implement a welfare system model that was distinctly different from the previous Moon government. The newly elected government adopted a welfare model known as 'welfare for the vulnerable.' This model inherits the welfare ideology of the conservative parties in Korea, which is the self-reliance welfare. The Yoon government continues to expand welfare and family support, which were promoted by the Moon government. However, in most other areas, the Yoon government pursues different policies than the previous government. In terms of policy, this study demonstrates that the social security policies of the Yoon government is insufficient to solve the welfare blind spot problem that is widespread in the Korean welfare system. Among the Yoon government's policies, there are only a few policies that can eliminate welfare blind spots, such as improving social assistance systems, introducing parental allowance, and promoting sickness allowances.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The purpose of this study is to examine the social policy of the Yoon Seok-Yeol government from the perspective of both policy and theory. Theoretically, the analysis reveals that the Yoon government attempts to build and implement a welfare system model that was distinctly different from the previous Moon government. The newly elected government adopted a welfare model known as 'welfare for the vulnerable.' This model inherits the welfare ideology of the conservative parties in Korea, which is the self-reliance welfare. The Yoon government continues to expand welfare and family support, which were promoted by the Moon government. However, in most other areas, the Yoon government pursues different policies than the previous government. In terms of policy, this study demonstrates that the social security policies of the Yoon government is insufficient to solve the welfare blind spot problem that is widespread in the Korean welfare system. Among the Yoon government's policies, there are only a few policies that can eliminate welfare blind spots, such as improving social assistance systems, introducing parental allowance, and promoting sickness allowances.",
+   "page": 1,
+   "box": [
+    102.1,
+    512.8,
+    171.9,
+    533.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "Keywords",
+   "주제어"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 7,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "147-170",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "keywords": [],
+  "keywords_en": [],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "윤정부는 양극화와 사회갈등과 같은 국내의 문제와 팬데믹 위기, 교역 질서의 개편, 기후변화 등의 세계의 문제를 ‘자유의 재발견’을 통해 해결할 수 있음을 강조하였다(문화체육 관광부국민소통실, 2023).",
+    "raw": "윤정부는 양극화와 사회갈등과 같은 국내의 문제와 팬데믹 위기, 교역 질서의 개편, 기후변화 등의 세계의 문제를 ‘자유의 재발견’을 통해 해결할 수 있음을 강조하였다(문화체육 관광부국민소통실, 2023).",
+    "citation_text": "(문화체육 관광부국민소통실, 2023)",
+    "offset": [
+     91,
+     112
+    ],
+    "authors": [
+     "문화체육 관광부국민소통실"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "우선, 복지 확대가 민주당 계열 정부, 시민단체, 및 노동조합의 사회적 동맹에 의한 것이라는 주장이 있다(Yang, 2017; Lee, 2016).",
+    "raw": "우선, 복지 확대가 민주당 계열 정부, 시민단체, 및 노동조합의 사회적 동맹에 의한 것이라는 주장이 있다(Yang, 2017; Lee, 2016).",
+    "citation_text": "Yang, 2017",
+    "offset": [
+     59,
+     69
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "우선, 복지 확대가 민주당 계열 정부, 시민단체, 및 노동조합의 사회적 동맹에 의한 것이라는 주장이 있다(Yang, 2017; Lee, 2016).",
+    "raw": "우선, 복지 확대가 민주당 계열 정부, 시민단체, 및 노동조합의 사회적 동맹에 의한 것이라는 주장이 있다(Yang, 2017; Lee, 2016).",
+    "citation_text": "Lee, 2016",
+    "offset": [
+     71,
+     80
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "한국 정당의 이념과 조직은 불안정하고 변동이 심하여 정부의 이념적 지향이 복지정책의 발전에 큰 영향을 미치지 않는다는 것이다(최장집, 2010; Jou, 2010).",
+    "raw": "한국 정당의 이념과 조직은 불안정하고 변동이 심하여 정부의 이념적 지향이 복지정책의 발전에 큰 영향을 미치지 않는다는 것이다(최장집, 2010; Jou, 2010).",
+    "citation_text": "최장집, 2010",
+    "offset": [
+     70,
+     79
+    ],
+    "authors": [
+     "최장집"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u22_8"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "한국 정당의 이념과 조직은 불안정하고 변동이 심하여 정부의 이념적 지향이 복지정책의 발전에 큰 영향을 미치지 않는다는 것이다(최장집, 2010; Jou, 2010).",
+    "raw": "한국 정당의 이념과 조직은 불안정하고 변동이 심하여 정부의 이념적 지향이 복지정책의 발전에 큰 영향을 미치지 않는다는 것이다(최장집, 2010; Jou, 2010).",
+    "citation_text": "Jou, 2010",
+    "offset": [
+     81,
+     90
+    ],
+    "authors": [
+     "Jou"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_1",
+    "kind": "parenthetical",
+    "sentence": "그 방향은 다르다는 견해도 존재한다(Kim, Yu, & Nam, 2022).",
+    "raw": "그 방향은 다르다는 견해도 존재한다(Kim, Yu, & Nam, 2022).",
+    "citation_text": "(Kim, Yu, & Nam, 2022)",
+    "offset": [
+     19,
+     41
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "반면, 같은 기간 OECD 국가들의 공공복지지출 증가율의 평균은 1.21%에 불과하였다(이윤경, 2021).",
+    "raw": "반면, 같은 기간 OECD 국가들의 공공복지지출 증가율의 평균은 1.21%에 불과하였다(이윤경, 2021).",
+    "citation_text": "(이윤경, 2021)",
+    "offset": [
+     48,
+     59
+    ],
+    "authors": [
+     "이윤경"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u22_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "narrative",
+    "sentence": "출처: 최병호(2014); 김원섭· 유진숙(2018); 강혜규 외(2022)",
+    "raw": "출처: 최병호(2014); 김원섭· 유진숙(2018); 강혜규 외(2022)",
+    "citation_text": "최병호(2014)",
+    "offset": [
+     4,
+     13
+    ],
+    "authors": [
+     "최병호"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u22_7"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "narrative",
+    "sentence": "출처: 최병호(2014); 김원섭· 유진숙(2018); 강혜규 외(2022)",
+    "raw": "출처: 최병호(2014); 김원섭· 유진숙(2018); 강혜규 외(2022)",
+    "citation_text": "유진숙(2018)",
+    "offset": [
+     20,
+     29
+    ],
+    "authors": [
+     "유진숙"
+    ],
+    "year": "2018",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "이런 점에서, 이혜경(1993)은 한국이 경제성장과 민주주의의 성숙을 토대로 ‘압축적 복지발전’의 단계로 접어들고 있다고 진단한다.",
+    "raw": "이런 점에서, 이혜경(1993)은 한국이 경제성장과 민주주의의 성숙을 토대로 ‘압축적 복지발전’의 단계로 접어들고 있다고 진단한다.",
+    "citation_text": "이혜경(1993)",
+    "offset": [
+     8,
+     17
+    ],
+    "authors": [
+     "이혜경"
+    ],
+    "year": "1993",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "StatLink http://dx.doi.org/10.1787/888933939218\n출처: OECD(2019), P. 105.",
+    "raw": "StatLink http://dx.doi.org/10.1787/888933939218\n출처: OECD(2019), P. 105.",
+    "citation_text": "OECD(2019)",
+    "offset": [
+     52,
+     62
+    ],
+    "authors": [
+     "OECD"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_1",
+    "kind": "parenthetical",
+    "sentence": "반면 급여 사각지대는 사람들이 제도에 가입하여 급여를 받지만, 그 급여 수준이 제도가 지향하는 목적을 달성하기에 너무 낮은 것을 의미한다(김원섭, 2013).",
+    "raw": "반면 급여 사각지대는 사람들이 제도에 가입하여 급여를 받지만, 그 급여 수준이 제도가 지향하는 목적을 달성하기에 너무 낮은 것을 의미한다(김원섭, 2013).",
+    "citation_text": "(김원섭, 2013)",
+    "offset": [
+     76,
+     87
+    ],
+    "authors": [
+     "김원섭"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_9"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "국민연금과 기초연금은 모두 넓은 적용 사각지대와 낮은 급여 수준의 문제를 가지고 있고(김원섭 외 2016), 도입한 지 얼마나 되지 않은 아동수당과 영아수당의 급여 수준은 2022년 당시 각각 10만 원과 30만 원으로 낮다(김태완 외, 2021, 35).",
+    "raw": "국민연금과 기초연금은 모두 넓은 적용 사각지대와 낮은 급여 수준의 문제를 가지고 있고(김원섭 외 2016), 도입한 지 얼마나 되지 않은 아동수당과 영아수당의 급여 수준은 2022년 당시 각각 10만 원과 30만 원으로 낮다(김태완 외, 2021, 35).",
+    "citation_text": "(김태완 외, 2021, 35)",
+    "offset": [
+     125,
+     142
+    ],
+    "authors": [
+     "김태완 외"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "다음으로 실업시 취업자를 위한 복지급여에는 부조제도인 국민취업지원제도와 보험제도인 고용보험 구직급여가 있는데, 국민취업지원제도 구직촉진수당의 급여액은 일 인당 50만 원에 불과하고, 수급 기간도 6개월에 제한되어 있어 실업부조로 제대로 역할을 다하지 못한다.구직급여 역시 비정규직의 53%만 고용보험에 가입하고 있어 적용 사각지대가 크다(김종진, 2022).",
+    "raw": "다음으로 실업시 취업자를 위한 복지급여에는 부조제도인 국민취업지원제도와 보험제도인 고용보험 구직급여가 있는데, 국민취업지원제도 구직촉진수당의 급여액은 일 인당 50만 원에 불과하고, 수급 기간도 6개월에 제한되어 있어 실업부조로 제대로 역할을 다하지 못한다.구직급여 역시 비정규직의 53%만 고용보험에 가입하고 있어 적용 사각지대가 크다(김종진, 2022).",
+    "citation_text": "(김종진, 2022)",
+    "offset": [
+     188,
+     199
+    ],
+    "authors": [
+     "김종진"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "이에 따라, 한국의 근로자들이 아파서 쉰 날은 연간 평균 2일에불과하여, 벨기에 12.3일, 핀란드 9.7일, 캐나다 8.1일에 비해 훨씬 적은상황이다(김태완, 2021, 123).",
+    "raw": "이에 따라, 한국의 근로자들이 아파서 쉰 날은 연간 평균 2일에불과하여, 벨기에 12.3일, 핀란드 9.7일, 캐나다 8.1일에 비해 훨씬 적은상황이다(김태완, 2021, 123).",
+    "citation_text": "(김태완, 2021, 123)",
+    "offset": [
+     84,
+     100
+    ],
+    "authors": [
+     "김태완"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_1",
+    "kind": "parenthetical",
+    "sentence": "불과하여, 벨기에 12.3일, 판란드 9.7일, 캐나다 8.1일에 비해 훨씬 적은 상황이다(김태완, 2021, 123).",
+    "raw": "불과하여, 벨기에 12.3일, 판란드 9.7일, 캐나다 8.1일에 비해 훨씬 적은 상황이다(김태완, 2021, 123).",
+    "citation_text": "(김태완, 2021, 123)",
+    "offset": [
+     50,
+     66
+    ],
+    "authors": [
+     "김태완"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "마지막으로 최후의 안전망인 국민기초생활보장제도도 부양의무제의 단계적 폐지와 같은 개선에도 불구하고, 수급자의 비율은 2001년 전체 인구의 3%에서 2019년 3.6%로 크게 개선되지 않고 있고, 급여액도 여전히 부족한 형편이다(김태완, 외 2021, 10).",
+    "raw": "마지막으로 최후의 안전망인 국민기초생활보장제도도 부양의무제의 단계적 폐지와 같은 개선에도 불구하고, 수급자의 비율은 2001년 전체 인구의 3%에서 2019년 3.6%로 크게 개선되지 않고 있고, 급여액도 여전히 부족한 형편이다(김태완, 외 2021, 10).",
+    "citation_text": "(김태완, 외 2021, 10)",
+    "offset": [
+     127,
+     144
+    ],
+    "authors": [
+     "김태완"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_2",
+    "kind": "parenthetical",
+    "sentence": "이는 경제성장 중심인 보수와 분배 중심인 진보의 국가목표를 모두 수용하고자 하는 시도였다(제20대대통령직인수위원회, 2022, 5).",
+    "raw": "이는 경제성장 중심인 보수와 분배 중심인 진보의 국가목표를 모두 수용하고자 하는 시도였다(제20대대통령직인수위원회, 2022, 5).",
+    "citation_text": "(제20대대통령직인수위원회, 2022, 5)",
+    "offset": [
+     49,
+     73
+    ],
+    "authors": [
+     "제20대대통령직인수위원회"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u22_6"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "문재인정부는 경제정책에서 케인지안 정책을 시도하였고, 정치목표에서도 국민의 정치참여를 강조한 적극적 민주주의를 추구했으며, 경제정책과 복지정책의 통합을 시도하였고, 북한 문제의 해결에 우선권을 주었다(김원섭, 2022).",
+    "raw": "문재인정부는 경제정책에서 케인지안 정책을 시도하였고, 정치목표에서도 국민의 정치참여를 강조한 적극적 민주주의를 추구했으며, 경제정책과 복지정책의 통합을 시도하였고, 북한 문제의 해결에 우선권을 주었다(김원섭, 2022).",
+    "citation_text": "(김원섭, 2022)",
+    "offset": [
+     111,
+     122
+    ],
+    "authors": [
+     "김원섭"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_9"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "박근혜정부에서 복지목표는 5개 국정목표 중 3개와 연관되어 지배적인 위치를 차지하였다(김원섭, 2022).",
+    "raw": "박근혜정부에서 복지목표는 5개 국정목표 중 3개와 연관되어 지배적인 위치를 차지하였다(김원섭, 2022).",
+    "citation_text": "(김원섭, 2022)",
+    "offset": [
+     47,
+     58
+    ],
+    "authors": [
+     "김원섭"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_9"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "새 정부의 국정목표는 신자유주의적 성격을 가졌던 이명박정부와 유사한 길을 따르고 있다(김원섭&남윤철, 2011, 121-122).",
+    "raw": "새 정부의 국정목표는 신자유주의적 성격을 가졌던 이명박정부와 유사한 길을 따르고 있다(김원섭&남윤철, 2011, 121-122).",
+    "citation_text": "(김원섭&남윤철, 2011, 121-122)",
+    "offset": [
+     47,
+     71
+    ],
+    "authors": [
+     "김원섭&남윤철"
+    ],
+    "year": "2011",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 12,
+    "uid": "u11_1",
+    "kind": "parenthetical",
+    "sentence": "환경 조성(46번), 고용안전망 강화 및 지속가능성 제고(53번) 4가지이다(제20대대통령직인수위원회, 2022, 81-100).",
+    "raw": "환경 조성(46번), 고용안전망 강화 및 지속가능성 제고(53번) 4가지이다(제20대대통령직인수위원회, 2022, 81-100).",
+    "citation_text": "(제20대대통령직인수위원회, 2022, 81-100)",
+    "offset": [
+     42,
+     71
+    ],
+    "authors": [
+     "제20대대통령직인수위원회"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u22_6"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "직전 정부의 복지모델은 ’포용적 사회투자국가 모델‘로 소득보장과 사회서비스 부문 모두에서 보편적 확대를 추진하였다(김원섭,2022).",
+    "raw": "직전 정부의 복지모델은 ’포용적 사회투자국가 모델‘로 소득보장과 사회서비스 부문 모두에서 보편적 확대를 추진하였다(김원섭,2022).",
+    "citation_text": "(김원섭,2022)",
+    "offset": [
+     63,
+     73
+    ],
+    "authors": [
+     "김원섭"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_9"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 13,
+    "uid": "u12_5",
+    "kind": "parenthetical",
+    "sentence": "“우리 정부는 재정 건전화를 추진하면서도 서민과 사회적 약자들을 더욱 두级계 지원하는 ‘약자복지’를 추구하고 있습니다”(윤석열대통령, 2022.10.25.).",
+    "raw": "“우리 정부는 재정 건전화를 추진하면서도 서민과 사회적 약자들을 더욱 두级계 지원하는 ‘약자복지’를 추구하고 있습니다”(윤석열대통령, 2022.10.25.).",
+    "citation_text": "(윤석열대통령, 2022.10.25.)",
+    "offset": [
+     66,
+     87
+    ],
+    "authors": [
+     "윤석열대통령"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u22_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_1",
+    "kind": "parenthetical",
+    "sentence": "자생복지는 잔여적 복지모델로 김영삼정부가 보수주의적 복지모델로 구축하여 이명박정부와 박근혜정부복지모델의 이념적 기반이었다(Kim, et al., 2022; 김원섭&남윤철, 2011).",
+    "raw": "자생복지는 잔여적 복지모델로 김영삼정부가 보수주의적 복지모델로 구축하여 이명박정부와 박근혜정부복지모델의 이념적 기반이었다(Kim, et al., 2022; 김원섭&남윤철, 2011).",
+    "citation_text": "Kim, et al., 2022",
+    "offset": [
+     68,
+     85
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u23_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_1",
+    "kind": "parenthetical",
+    "sentence": "자생복지는 잔여적 복지모델로 김영삼정부가 보수주의적 복지모델로 구축하여 이명박정부와 박근혜정부복지모델의 이념적 기반이었다(Kim, et al., 2022; 김원섭&남윤철, 2011).",
+    "raw": "자생복지는 잔여적 복지모델로 김영삼정부가 보수주의적 복지모델로 구축하여 이명박정부와 박근혜정부복지모델의 이념적 기반이었다(Kim, et al., 2022; 김원섭&남윤철, 2011).",
+    "citation_text": "김원섭&남윤철, 2011",
+    "offset": [
+     87,
+     100
+    ],
+    "authors": [
+     "김원섭&남윤철"
+    ],
+    "year": "2011",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "“첫 번째는 일을 할 수 없거나 일을 해도 소득이 불충분한 취약계층 위주로 내실화하는 것, 두 번째는 전 국민적인 욕구가 확인되는 돌봄·요양·교육·고용·건강 등 분야의 복지는 민간주도로 고도화한다는 점이다”(안상훈, 복지타임즈 2022.09.19).",
+    "raw": "“첫 번째는 일을 할 수 없거나 일을 해도 소득이 불충분한 취약계층 위주로 내실화하는 것, 두 번째는 전 국민적인 욕구가 확인되는 돌봄·요양·교육·고용·건강 등 분야의 복지는 민간주도로 고도화한다는 점이다”(안상훈, 복지타임즈 2022.09.19).",
+    "citation_text": "(안상훈, 복지타임즈 2022.09.19)",
+    "offset": [
+     115,
+     138
+    ],
+    "authors": [
+     "안상훈"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_3",
+    "kind": "parenthetical",
+    "sentence": "반면, 총지출은 607조 원으로 전년 대비 5.2%만 증가하여 수입이 지출보다 높아졌다(기획재정부, 2022, 1).",
+    "raw": "반면, 총지출은 607조 원으로 전년 대비 5.2%만 증가하여 수입이 지출보다 높아졌다(기획재정부, 2022, 1).",
+    "citation_text": "(기획재정부, 2022, 1)",
+    "offset": [
+     48,
+     64
+    ],
+    "authors": [
+     "기획재정부"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_3",
+    "kind": "parenthetical",
+    "sentence": "이는 정부가 “확장재정에서 탈피하여 건전재정으로 전환“의 목표를 주로 지출을 감축시켜 달성하고자 함을 보여준다(기획재정부, 2022, 1).",
+    "raw": "이는 정부가 “확장재정에서 탈피하여 건전재정으로 전환“의 목표를 주로 지출을 감축시켜 달성하고자 함을 보여준다(기획재정부, 2022, 1).",
+    "citation_text": "(기획재정부, 2022, 1)",
+    "offset": [
+     61,
+     77
+    ],
+    "authors": [
+     "기획재정부"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_4",
+    "kind": "parenthetical",
+    "sentence": "또한, 이는 문재인정부의 복지지출 증가율 10.4%뿐 아니라 같은 보수정부인 이명박정부의 7.5%, 박근혜정부의 7.7%보다 낮은 수준이다(국회예산정책처, 2022a, 12).",
+    "raw": "또한, 이는 문재인정부의 복지지출 증가율 10.4%뿐 아니라 같은 보수정부인 이명박정부의 7.5%, 박근혜정부의 7.7%보다 낮은 수준이다(국회예산정책처, 2022a, 12).",
+    "citation_text": "(국회예산정책처, 2022a, 12)",
+    "offset": [
+     77,
+     97
+    ],
+    "authors": [
+     "국회예산정책처"
+    ],
+    "year": "2022a",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_8",
+    "kind": "narrative",
+    "sentence": "출처: 이상민(2022).",
+    "raw": "출처: 이상민(2022).",
+    "citation_text": "이상민(2022)",
+    "offset": [
+     4,
+     13
+    ],
+    "authors": [
+     "이상민"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u22_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_1",
+    "kind": "parenthetical",
+    "sentence": "의료급여 역시 1조 원이 증액되어 12%, 주거급여는 0.4조 원이 추가되어 17.9%의 증액률을 보였다(기획재정부 2022).",
+    "raw": "의료급여 역시 1조 원이 증액되어 12%, 주거급여는 0.4조 원이 추가되어 17.9%의 증액률을 보였다(기획재정부 2022).",
+    "citation_text": "(기획재정부 2022)",
+    "offset": [
+     58,
+     70
+    ],
+    "authors": [
+     "기획재정부"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_2",
+    "kind": "parenthetical",
+    "sentence": "또한, 새 정부는 가족지원제도 강화를 위해 2023년 도입될 부모수당을 위한 예산도 1.3조 원 예산에 반영하였다(국회예산정책처, 2022b, 175)",
+    "raw": "또한, 새 정부는 가족지원제도 강화를 위해 2023년 도입될 부모수당을 위한 예산도 1.3조 원 예산에 반영하였다(국회예산정책처, 2022b, 175)",
+    "citation_text": "(국회예산정책처, 2022b, 175)",
+    "offset": [
+     63,
+     84
+    ],
+    "authors": [
+     "국회예산정책처"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_1",
+    "kind": "parenthetical",
+    "sentence": "당은 제도의 개선이 없어, 그 예산이 2022년 2조4천억에서 2조2천5백만 원으로 1,475억 원 줄어들었다(이상민, 2022, 11).",
+    "raw": "당은 제도의 개선이 없어, 그 예산이 2022년 2조4천억에서 2조2천5백만 원으로 1,475억 원 줄어들었다(이상민, 2022, 11).",
+    "citation_text": "(이상민, 2022, 11)",
+    "offset": [
+     61,
+     76
+    ],
+    "authors": [
+     "이상민"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u22_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_9",
+    "kind": "narrative",
+    "sentence": "출처: 국회예산정책처(2022b).",
+    "raw": "출처: 국회예산정책처(2022b).",
+    "citation_text": "국회예산정책처(2022b)",
+    "offset": [
+     4,
+     18
+    ],
+    "authors": [
+     "국회예산정책처"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

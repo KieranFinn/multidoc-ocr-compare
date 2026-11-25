@@ -88,7 +88,7 @@ _FRONT_HEAD_RE = re.compile(
 # 编译一遍; 提到模块级后同一次运行只编一次, 也便于和 _front_head/_non_affil 对照。
 # 题录型行(期刊名/DOI/卷期/页码范围/版权行), 不可能是题名或作者
 _NOT_TITLE = re.compile(
-    r"(Journal|DOI|doi\.org|www\.|Vol\.|No\.|pp\.|Abstract|Keywords?|"
+    r"(Journal|DOI|doi\.org|www\.|Vol\.|No\.|pp\.|Abstract|Keywords?\b(?=\s*[:：]|$)|"
     r"RESEARCH|Open Access|©|https?://|^\s*Page\s+\d|^\s*\d+\s*[./)])|"
     r"English\s+version|"
     u"(УДК|ББК|Реферат|Аннотация|Ключевые\\s+слова|Resumo|Palavras[-–][Cc]have|"
@@ -163,6 +163,12 @@ def _pick_title(j, want_hangul, lang=None):
                     and not re.search(r"\s[:：]\s", t):   # 作者行豁免只看'真·韩文姓名';
                 # 13572904 实证: 题名本身含逗号列表+基金*, 若按解析条数豁免会把真题名淘汰。
 
+                continue
+            # 拉丁'姓, 名'署名行不当题名(13571811 实证: 单行 'Hwang, Ugsun*' 当选题名后,
+            # 署名块被题名占位踢出作者区 → authors 空、title=人名)。与上面的韩文作者行豁免
+            # 同构; 边界: 整行恰为 'X, Y'+可选星标/․并列段才算, 真英题极少两词带逗号无动词。
+            if re.match(r"^[A-Z][A-Za-z\-']+, [A-Z][A-Za-z\-']+\*{0,4}"
+                        r"(?:\s*[·•․]\s*[A-Z][A-Za-z\-']+, [A-Z][A-Za-z\-']+\*{0,4})*$", t):
                 continue
             hr = _hangul_ratio(t)
             has_cjk = bool(re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(t)))
@@ -340,10 +346,30 @@ def _split_affils(s):
     return out
 
 
+def _strip_title_byline(t):
+    """题名尾部粘连署名剥离(13571771 A&A 实证): unify 把 'Title : Son, Soona* · Kim, Jungsu**'
+    合成一块, 尾部 ': 姓, 名* · 姓, 名**' 须整段剥掉。要求 ≥2 位带星作者——真副题不会
+    呈多名星标并列形; 剥完为空则保留原文(防御性, 不产出空题名)。"""
+    s = (t or "").strip()
+    # 星标在 _clean_title 里可能已被剥掉(*{0,4}), 署名形仍以 '姓, 名 · 姓, 名' 逗号对为强信号
+    r = re.sub(r"\s*[:：]\s*[A-Z][A-Za-z\-']+,\s*[A-Z][A-Za-z\-']+\*{0,4}"
+               r"(?:\s*[·•․]\s*[A-Z][A-Za-z\-']+,\s*[A-Z][A-Za-z\-']+\*{0,4})+\s*$", "", s).strip()
+    return r or s
+
+
+def _strip_role_paren(s):
+    """行首角色括注剥除(2026-11-24, KCI11_17 11 篇实证): 脚注行 '* (First Author)
+    Kwangwoon University, …' 的 '(First Author)/(Corresponding Author)/(제1저자)' 会顺
+    着机构提取一路带进 metadata.affiliations。两处机构入口共用: _strip_affil_tail 与
+    _latin_affil_from_clause。"""
+    return re.sub(u"^[\\(（]\\s*(?:First|Corresponding|제?\\d+)?\\s*(?:Author|저자)\\s*[)）]\\s*",
+                  "", (s or "").strip())
+
+
 def _strip_affil_tail(s):
     """机构行尾职位/学籍词循环剥离; 剥完必须仍命中机构词表, 防误伤'한국교육연구원'这类机构名。
     (2026-11-12: '우송대학교 한국어교육원 초빙교수'→'우송대학교 한국어교육원' 实证)"""
-    s = (s or "").strip()
+    s = _strip_role_paren(s)
     s = re.sub(u"[\\(（]\\s*[\\)）]", "", s)   # 角色词剥除后的空括号残留
     while True:
         ns = _AFFIL_TAIL.sub("", s).rstrip(" ,·•")
@@ -366,14 +392,14 @@ def _marker_key(s):
 def _channel_affil_notes(u):
     """主读法把多条机构注的标记都丢掉时，才从渠道读法补回标记。"""
     lines = [ln.strip() for ln in (u.get("main_text") or "").split("\n")
-             if AFFIL_HEAD.search(ln)]
+             if AFFIL_HEAD.search(ln) and not _latin_byline_lead(ln)]
     if len(lines) < 2 or any(_BULLET_NOTE_LINE.match(ln) for ln in lines):
         return {}
     out = {}
     for r in u.get("readings") or []:
         for ln in (r.get("text") or "").split("\n"):
             m = _BULLET_NOTE_LINE.match(ln.strip())
-            if not m or not AFFIL_HEAD.search(m.group(2)):
+            if not m or not AFFIL_HEAD.search(m.group(2)) or _latin_byline_lead(m.group(2)):
                 continue
             if _split_affils(m.group(2)):
                 out[_marker_key(m.group(1))] = m.group(2).strip()
@@ -471,7 +497,7 @@ def _latin_affil_from_clause(clause):
         return None
     if re.match(u"(?i)(?:Conférence|Conferência|Cf\\.|Texto|Cette|Ce\\s|Distribution|Article|©)", s):
         return None
-    s = re.sub(u"^[¹²³⁴⁵⁶⁷⁸⁹⁰*•·●▪◆\\s]+", "", s)
+    s = re.sub(u"^[¹²³⁴⁵⁶⁷⁸⁹⁰*•·●▪◆\\s]+", "", _strip_role_paren(s))
     m = _LATIN_ORG_WORD.search(s)
     if not m:
         return None
@@ -590,6 +616,9 @@ def _latin_affils_from_pages(doc_dir):
                     and not re.search(r"(?:19|20)\d{2}", s)
                 late_org = page > 1 and ((u.get("type") == "Page-header" and direct)
                                           or (role and s.upper() == s) or late_direct)
+                if _latin_byline_lead(s):
+                    continue   # 拉丁署名行不当机构行(13582984: 'Lee Young Soo** ․ … Hansei
+                # University' 曾被 glued/front_zone 两路当机构, clause 拆分把人名切碎进 affils)
                 if not ((front_zone and _LATIN_ORG_WORD.search(s))
                         or (page <= 1 and footnote and (role or marked or direct))
                         or page1_org or (page <= 1 and glued) or late_org):
@@ -793,15 +822,28 @@ def _xpage_affils(doc_dir):
     return out
 
 
+def _latin_byline_lead(s):
+    """拉丁署名行起判(13582984 实证): 带星标的人名后接 ․/·/行尾——
+    'Lee Young Soo** ․ …' / 'Mun, Jonghyeon* · …'。只认带星标的: 无星标的
+    'Professor Kim, Seoul …' 仍是机构行, 不在这里抢(职称守卫在解析层)。
+    _channel_affil_notes 只用这层: 韩文起判太宽(2-4音节+空格即命中,
+    '중국 연안대학교 …' 机构注会被误杀——case 10 实证), 而粘连混行问题本身是拉丁形态。"""
+    s = (s or "").strip()
+    return bool(
+        re.match(r"^[A-Z][A-Za-z\-']+(?: [A-Z][A-Za-z\-']+){1,2}\*{1,4}(?:\s*[·•․]|$)", s)
+        or re.match(r"^[A-Z][A-Za-z\-']+, [A-Z][A-Za-z\-']+\*{1,4}(?:\s*[·•․]|$)", s))
+
+
 def _byline_lead(s):
     """题名块兜底用的署名行起判: 2-4 音节韩名 + (上标标记 | 分隔符 | 行尾)。
     不用正则转义判 LaTeX 上标($^{...}$), 免得多层转义把反斜杠啃坏。"""
-    m = re.match(u"^[가-힣]{2,4}", (s or "").strip())
-    if not m:
-        return False
-    rest = (s or "").strip()[m.end():]
-    return (not rest or rest.startswith("<sup") or rest.startswith("$^{")
-            or rest[0] in u" ,(*·")
+    s = (s or "").strip()
+    m = re.match(u"^[가-힣]{2,4}", s)
+    if m:
+        rest = s[m.end():]
+        return (not rest or rest.startswith("<sup") or rest.startswith("$^{")
+                or rest[0] in u" ,(*·")
+    return _latin_byline_lead(s)
 
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
@@ -903,8 +945,12 @@ def _parse_author_line(line, u, foot_affil):
         toks = [m.group(0) for m in glued_names]
     elif en_line:
         # JAMS 英文署名行(2026-11-19, KCI11_17 ~58 篇): 'Surname, Given* · Surname2, Given2**'。
-        # 先按 '·' 切段; 段内 '姓, 名' 倒置形态归一成 '名 姓'(_NAME_EN 同形)——罗马行的逗号是
-        # 姓名内部结构, 不是作者分隔符(原实现按逗号切, 把 'Park, Chulhyun' 拆成两个人)。
+        # 先按 '·' 切段; 段内 '姓, 名' **保持印刷形**(2026-11-24 用户拍板)——存值须与原文/
+        # KCI著录/Crossref注册一致(13571795 Crossref family=Mun 实证), 不再做'名 姓'倒置。
+        # 逗号是姓名内部结构, 不是作者分隔符(原实现按逗号切, 把 'Park, Chulhyun' 拆成两个人)。
+        # 语言隔离: 本分支虽由 en_line(韩文占比<0.2)触发, 但'姓, 名'形态全库探针实测仅
+        # KCI11_17 拉丁署名行出现; 俄/葡/法语料的逗号行全是年卷期/关键词行, 被
+        # _LATIN_NON_AUTHOR 等守卫拦在作者区外——"保持印刷序"本身无语种特例, 天然隔离。
         toks = []
         for _seg in re.split(r"\s+and\s+|\s*&\s+|\s+e\s+|[·•․]", line):
             _seg = _seg.strip()
@@ -914,7 +960,7 @@ def _parse_author_line(line, u, foot_affil):
                 r"^([A-Z][A-Za-z\-']+),\s*((?:[A-Z]\.?[A-Za-z\-']+)(?:\s+[A-Z]\.?[A-Za-z\-']+)*)"
                 r"(\*{0,4})$", _seg)
             if _minv:
-                toks.append(_minv.group(2) + " " + _minv.group(1) + _minv.group(3))
+                toks.append(_minv.group(1) + ", " + _minv.group(2) + _minv.group(3))
             else:
                 toks.extend(x for x in re.split(r"\s*,\s*", _seg) if x.strip())
     else:
@@ -924,8 +970,19 @@ def _parse_author_line(line, u, foot_affil):
         if not tk:
             continue
         tk = re.sub(r"^(?:and|&|par)\s+", "", tk)
+        affil = None
+        roman = None
         mk = SUP_LATEX.findall(tk)
         mk += re.findall(r"<sup>(.*?)</sup>", tk, flags=re.I)
+        # 行内星标=姓名与粘连机构的分界(13582984: 'Park Sang Nam*** Hansei University'):
+        # 必须在下面的标记清洗**之前**做——清洗会把后随空白的星标一并删掉。余部为机构形
+        # 时剥出(不剥则 'Hansei' 粘连进名), 名止于星标前。
+        _msplit = re.search(r"[\*†‡§]{1,4}\s+(.+)$", tk)
+        if _msplit and (_looks_affil(_msplit.group(1)) or _LATIN_ORG_WORD.search(_msplit.group(1))):
+            affil = _msplit.group(1).strip(" ,;·•․")
+            tk = tk[:_msplit.start()].strip().rstrip(",·•․")
+            if not tk:
+                continue
         tk = SUP_LATEX.sub("", tk)
         tk = re.sub(r"<sup>.*?</sup>", "", tk, flags=re.I)
         tk = re.sub(r"</?sup>", "", tk, flags=re.I)
@@ -935,7 +992,7 @@ def _parse_author_line(line, u, foot_affil):
         if mrole:
             role = mrole.group(1)
             tk = ROLE_WORDS.sub("", tk).strip(" ,·•")
-        affil = None
+        affil = affil or None
         roman = None
         mrom = re.match(u"^([가-힣\\s]{2,16})\\(([A-Za-z .\\-']+)\\)(.*)$", tk)
         if mrom:
@@ -953,6 +1010,8 @@ def _parse_author_line(line, u, foot_affil):
         else:
             m_aff_paren = re.match(u"^([가-힣]{2,4})\\(([^()]{2,60})\\)(.*)$", tk)
             split_at = None
+            nm = None   # 星标预剥(13582984)在括号/空格分支之外就先给了 affil, 那些分支
+                        # 不碰 nm; 用 None 哨兵防 stale 名(漏赋值时会带上一个 token 的名)。
             if m_aff_paren and not re.search(r"[A-Za-z]", m_aff_paren.group(2)) \
                     and (AFFIL_HEAD.search(m_aff_paren.group(2))
                          or _looks_affil(m_aff_paren.group(2))):
@@ -975,7 +1034,7 @@ def _parse_author_line(line, u, foot_affil):
             if split_at:
                 nm, affil = tk[:split_at], tk[split_at:].strip()
                 rest = ""
-            elif not affil:
+            elif not affil or nm is None:
                 nm, rest = tk, ""
         if rest:
             maff2 = AFFIL_HEAD.search(rest)
@@ -988,6 +1047,11 @@ def _parse_author_line(line, u, foot_affil):
         if not nm or len(_fold(nm)) < 2:
             continue
         if ROLE_WORDS.fullmatch(nm):
+            continue
+        # 机构形 tok 不进作者表(13582984 尾段 'Hanshin University'、13582998 次行
+        # 'Konkuk University' 实证——都曾漏进 authors): 拉丁机构词表+形态双认的整段。
+        # 韩文名不受影响(词表仅拉丁/西里尔); 人名夹机构词的概率远低于漏检代价。
+        if _LATIN_ORG_WORD.search(nm) and _looks_affil(nm):
             continue
         # 章节编号行(13275609 u0_5 'Ⅰ. 서론' 实证): 目录/正文小标题混进作者区时按此剔除。
         if _SECTION_NO.match(nm):
@@ -1876,7 +1940,8 @@ def front_doc(doc, out_root):
                 if _cv and _fold(_cv) not in _author_folds and _cv not in _cleaned_affils:
                     _cleaned_affils.append(_cv)
         for _cv in _latin_affils_from_pages(doc_dir):
-            if _fold(_cv) not in _author_folds and _cv not in _cleaned_affils:
+            _cv = _strip_role_paren(_cv)   # 13571795 实证: 脚注整行 '(First Author) …' 原样漏进
+            if _cv and _fold(_cv) not in _author_folds and _cv not in _cleaned_affils:
                 _cleaned_affils.append(_cv)
         if len(_cleaned_affils) > 1:
             _header_folds = _header_affil_folds(doc_dir)
@@ -1965,6 +2030,12 @@ def front_doc(doc, out_root):
                     break
             if authors:
                 break
+    # 题名尾部粘连署名剥离(13571771 实证)——必须放在**所有**按语种的题名重建之后:
+    # langid 会把英文篇误判成 fr(本篇实锤), fr 通道的副题拼接(1983 行)会把署名
+    # ': Son, Soona* · Kim, Jungsu**' 重新粘回题名; 早剥=白剥。要求 ≥2 位'姓, 名'星标
+    # 并列, 真副题不呈此形。星标可能已被 _clean_title 剥掉(*{0,4})。
+    if title_value:
+        title_value = _strip_title_byline(title_value)
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -2096,12 +2167,12 @@ def _selftest():
     ok19 = ok19 and len(_p2) == 1 and _p2[0]["affiliation"] == u"동국대"
     _p3 = _parse_author_line(u"김철수 | 서울대 · 박영희 | 연세대", None, {})
     ok19 = ok19 and [a["name"] for a in _p3] != [u"김철수"]
-    # 20) JAMS 英文署名行 'Surname, Given* · Surname2, Given2**'(2026-11-19):
-    #     '·' 切段 + 段内 '姓, 名' 归一 '名 姓'; 逗号是姓名内部结构不是作者分隔符。
+    # 20) JAMS 英文署名行 'Surname, Given* · Surname2, Given2**'(2026-11-19; 2026-11-24
+    #     改保持印刷形): '·' 切段 + 段内 '姓, 名' 原样保留; 逗号是姓名内部结构不是作者分隔符。
     _e1 = _parse_author_line("Park, Chulhyun* · An, Jihun** · Oh, YunJi***", None, {})
-    ok20 = [a["name"] for a in _e1] == ["Chulhyun Park", "Jihun An", "YunJi Oh"]
+    ok20 = [a["name"] for a in _e1] == ["Park, Chulhyun", "An, Jihun", "Oh, YunJi"]
     _e2 = _parse_author_line("Lee, Bohyung* · Jeong, Seokjae**", None, {})
-    ok20 = ok20 and [a["name"] for a in _e2] == ["Bohyung Lee", "Seokjae Jeong"]
+    ok20 = ok20 and [a["name"] for a in _e2] == ["Lee, Bohyung", "Jeong, Seokjae"]
     # 21) 合并块内署名行定位(ru_03): 主块含署名/题名/摘要, 渠道成员有单独署名框;
     #     作者 box 取这些成员框并集, 不回退成整块。
     _mixed = {"uid": "m", "type": "Section-header",
@@ -2119,7 +2190,7 @@ def _selftest():
     picked3, pli3 = _pick_title({"h": 1463, "w": 1040, "unified": [_comma_title]}, True)
     ok22 = picked3 is _comma_title and pli3 == 0
     # 23-25) 2026-11-24 KCI11_17 作者行族: '주 저자 박 지 영' / '이승준** 최병철***' /
-    #   'Kwon, Dokyung ․ Kim, Jungsoo ․ Park, Jihyun**'。
+    #   'Kwon, Dokyung ․ Kim, Jungsoo ․ Park, Jihyun**'(与 20) 同口径: 保持印刷形)。
     _r23 = _parse_author_line(u"주 저자 박 지 영", None, {})
     ok23 = [a["name"] for a in _r23] == [u"박지영"]
     _r24 = _parse_author_line(u"이승준** 최병철***", None, {})
@@ -2127,9 +2198,40 @@ def _selftest():
     _r25 = _parse_author_line(u"안 현 욱 손 영 우<sup>†</sup>", None, {})
     ok25 = [a["name"] for a in _r25] == [u"안현욱", u"손영우"]
     _r26 = _parse_author_line("Kwon, Dokyung ․ Kim, Jungsoo ․ Park, Jihyun**", None, {})
-    ok26 = [a["name"] for a in _r26] == ["Dokyung Kwon", "Jungsoo Kim", "Jihyun Park"]
+    ok26 = [a["name"] for a in _r26] == ["Kwon, Dokyung", "Kim, Jungsoo", "Park, Jihyun"]
+    # 30) 题名剥尾部署名 + 机构剥行首角色括注(2026-11-24: 13571771 题名粘 ': Son, Soona* ·
+    #   Kim, Jungsu**'; KCI11_17 11 篇机构带 '(First Author)' 前缀)。反向夹逼: 冒号副题与
+    #   无括注机构不受影响。
+    _aff30 = _strip_affil_tail("(First Author) Kwangwoon University, Department of Electronic "
+                               "Communication Engineering, Professor")
+    ok30 = _strip_title_byline("Improvements in total project cost analysis : Son, Soona* · Kim, Jungsu**") \
+        == "Improvements in total project cost analysis" \
+        and _strip_title_byline("Authentic leadership and burnout: Mediating effects of positive capital") \
+        == "Authentic leadership and burnout: Mediating effects of positive capital" \
+        and _aff30.startswith("Kwangwoon University") and "First Author" not in _aff30 \
+        and _strip_affil_tail("서울대학교") == "서울대학교"
+    # 27) 拉丁'姓, 名'署名行不当题名(13571811): 'Hwang, Ugsun*' 当选会踢空作者区,
+    #   真题名(Section-header)应正常当选。
+    _j27 = {"h": 1000, "w": 800, "unified": [
+        {"uid": "t", "type": "Section-header",
+         "main_text": "Analysis of Text Mining Keyword Issues for Defense Drone on Social Network",
+         "box": [100, 200, 700, 260], "cross_page": {}},
+        {"uid": "a", "type": "Text", "main_text": "Hwang, Ugsun*",
+         "box": [100, 300, 420, 330], "cross_page": {}}]}
+    _b27, _li27 = _pick_title(_j27, False, "en")
+    ok27 = _b27 is not None and _b27.get("uid") == "t"
+    # 28) _byline_lead 拉丁起判(13582984): 带星标人名+․/· 并列算署名行; 无星标的
+    #   'Professor Kim, Seoul …' 仍是机构行(职称守卫在解析层, 不在这一层)。
+    ok28 = _byline_lead("Lee Young Soo** ․ Park Sang Nam*** Hansei University") \
+        and _byline_lead("Mun, Jonghyeon* · Sohn, Chaebong**") \
+        and not _byline_lead("Professor Kim, Seoul National University")
+    # 29) 行内星标剥粘连机构 + 机构形 tok 不进作者表(13582984)
+    _p29 = _parse_author_line("Lee Young Soo** ․ Park Sang Nam*** Hansei University, "
+                              "Hanshin University", None, {})
+    ok29 = [a["name"] for a in _p29] == ["Lee Young Soo", "Park Sang Nam"]
     oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14,
-           ok15, ok16, ok17, ok18, ok19, ok20, ok21, ok22, ok23, ok24, ok25, ok26)
+           ok15, ok16, ok17, ok18, ok19, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
+           ok27, ok28, ok29, ok30)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)

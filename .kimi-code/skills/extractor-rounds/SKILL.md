@@ -5,9 +5,29 @@ description: KCI 题录抽取的轮次收敛工作法 —— QC 红单/新批次
 
 # KCI 题录抽取轮次收敛（需要"智能"的那一跳）
 
-本 skill 固化"失败样本 → 抽取策略"的归纳方法。机械部分（回归闸门/失败档案/刊例路由）
-已代码化：`meta_diff.py`（闸门）、`failures.py`（档案）、`metapy/journals.py`（刊例注册表）。
+本 skill 固化"失败样本 → 抽取策略"的归纳方法。机械部分（回归闸门/失败档案/刊例路由/
+守卫影响面/样本回归）已代码化：`meta_diff.py`（闸门）、`failures.py`（档案）、
+`metapy/journals.py`（刊例注册表）、`guardmap.py`（改守卫前查谁在用它）、
+`golden.py`（修好的篇目存标准答案，改完秒级回归）、
+`why.py`（口径统一查询：一篇/一刊五处说法聚合 + 冲突检测）。
 本文件只做**模式归纳与策略设计**那一跳，以及每跳的红线。
+
+## 口径权威序（2026-11-24 定，先读这条再动手）
+
+同一问题散在五处且互相漂移。查之前先跑 `python why.py <doc|刊名>`，按下面的权威序取值，
+不要凭印象挑一处信：
+
+| 问题 | 唯一权威 | 其余只作参考 |
+|---|---|---|
+| 红不红、缺什么 | `qc.qc_of()` | 备注/台账都不覆盖 QC |
+| 这个刊什么体例 | `metapy/journals.py` 族表 + DOI 注册表 + `qc._NO_VOL_JOURNALS` | 三处口径若打架，`why.py --journal` 会标 ⚠，先修一致再判 |
+| 字段值从哪来 | `metadata.json` 的 `confidence.source` / `webfill` | 产物自带出处，不靠备注猜 |
+| 当初为什么这么判 | `reviewed_docs.json`（冻结档案，只解释过去） | 不判现在，与 QC 冲突时以 QC 为准 |
+| GUI 上显示的备注 | 工作区 `gui_notes.json`（可被回填脚本覆盖） | 展示文字，非判据 |
+| 守卫为什么存在 | 就近代码注释实证 | 改守卫前必读 |
+
+`python why.py --audit` 全库扫"备注称已齐但 QC 仍红 / 台账记通过但 QC 红"的冲突。
+漂移一旦被 `why.py` 标出，**先修口径源、再改产物**，不要在备注里打补丁绕过。
 
 ## 何时启动一轮
 
@@ -19,6 +39,9 @@ description: KCI 题录抽取的轮次收敛工作法 —— QC 红单/新批次
 
 ```bash
 cd KCI/pipeline
+# 工作区: failures/meta_diff/stages 三 CLI 都认 --ws <名或路径>; 不设时按
+# --ws > KCI_WS_ROOT 环境变量 > GUI 当前工作区(.gui_prefs.json) > 主库 解析,
+# 开跑前打印一行解析结果, 确认没跑错库再继续。
 # 记一轮台账: 聚类 + 跟上轮对比 + 刷新进度报告(_rounds_report.html, 给人看的)
 # --tokens 从界面抄这轮的 token 消耗(没有自动来源, 不填则报告里写"没记录")
 # --did 一句话说清这轮怎么收敛的
@@ -56,6 +79,12 @@ python meta_diff.py snapshot      # 改动前快照(闸门基准)
 
 同时在两处互指登记：`metapy/journals.py` 该族的 `extractor` 字段 + 守卫注释里的实证篇号，
 并在 front/issue 的 `_selftest` 里加用例（照抄现有 case 风格，blk 字典 + issue_doc/front_doc 级断言）。
+
+改守卫的准入前查（2026-11-24 新增，防"牵一发而动全身"靠脑补）：
+```bash
+python guardmap.py <守卫名>     # 先看全库谁在用它; 命中别的阶段=生效面外溢, 优先改走刊例族内路由
+python golden.py run --ws <区>  # 改完跑黄金样本, 已有样本必须全绿才算没改坏
+```
 
 ## 第四步：准入闸门（机械，跑完才准入）
 

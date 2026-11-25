@@ -1,0 +1,971 @@
+{
+ "doc": "13582998",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582998",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Black, D. A. and J. A. Smith. (2004). How robust is the evidence on the effects of college quality? Evidence from matching. Journal of Econometrics, 121(1): 99-124.",
+    "page": 31,
+    "box": [
+     105.0,
+     282.5,
+     792.8,
+     1016.3
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "Black D. A",
+     "J. A. Smith"
+    ],
+    "authors_raw": "Black, D. A. and J. A. Smith",
+    "et_al": false,
+    "year": "2004",
+    "title": "How robust is the evidence on the effects of college quality? Evidence from matching. Journal of Econometrics",
+    "source": "121(1): 99-124",
+    "volume": null,
+    "issue": null,
+    "pages": "99-124",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Brewer, D. J., E. R. Eide and R. G. Ehrenberg. (1999). Does it pay to attend an elite private college? Cross-cohort evidence on the effects of college quality on earnings. Journal of Human Resources, 34(1): 104-123.",
+    "page": 31,
+    "box": [
+     105.0,
+     282.5,
+     792.8,
+     1016.3
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "Brewer D. J",
+     "E. R. Eide",
+     "R. G. Ehrenberg"
+    ],
+    "authors_raw": "Brewer, D. J., E. R. Eide and R. G. Ehrenberg",
+    "et_al": false,
+    "year": "1999",
+    "title": "Does it pay to attend an elite private college? Cross-cohort evidence on the effects of college quality on earnings. Journal of Human Resources",
+    "source": "34(1): 104-123",
+    "volume": null,
+    "issue": null,
+    "pages": "104-123",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Dale, Stacy Berg and Alan B. Krueger. (2002). Estimating the Payoff to Attending A More Selective College: An Application of Selection on Observables and Unobservables. Quarterly Journal of Economics, 117(4): 1491-1527.",
+    "page": 31,
+    "box": [
+     105.0,
+     282.5,
+     792.8,
+     1016.3
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "Dale",
+     "Stacy Berg",
+     "Alan B. Krueger"
+    ],
+    "authors_raw": "Dale, Stacy Berg and Alan B. Krueger",
+    "et_al": false,
+    "year": "2002",
+    "title": "Estimating the Payoff to Attending A More Selective College: An Application of Selection on Observables and Unobservables. Quarterly Journal of Economics",
+    "source": "117(4): 1491-1527",
+    "volume": null,
+    "issue": null,
+    "pages": "1491-1527",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Dale, S. B. and A. B. Krueger. (2011). Estimating the return to college selectivity over the career using administrative earnings data. National Bureau of Economic Research Working Paper No. 17159.",
+    "page": 31,
+    "box": [
+     105.0,
+     282.5,
+     792.8,
+     1016.3
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "Dale S. B",
+     "A. B. Krueger"
+    ],
+    "authors_raw": "Dale, S. B. and A. B. Krueger",
+    "et_al": false,
+    "year": "2011",
+    "title": "Estimating the return to college selectivity over the career using administrative earnings data. National Bureau of Economic Research Working Paper No. 17159",
+    "source": null,
+    "volume": null,
+    "issue": "17159",
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Eide, E., D. J. Brewer and R. G. Ehrenberg. (1998). Does it pay to attend an elite private college? Evidence on the effects of undergraduate college quality on graduate school attendance. Economics of Education Review, 17(4): 371-376.",
+    "page": 31,
+    "box": [
+     105.0,
+     282.5,
+     792.8,
+     1016.3
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "Eide E",
+     "D. J. Brewer",
+     "R. G. Ehrenberg"
+    ],
+    "authors_raw": "Eide, E., D. J. Brewer and R. G. Ehrenberg",
+    "et_al": false,
+    "year": "1998",
+    "title": "Does it pay to attend an elite private college? Evidence on the effects of undergraduate college quality on graduate school attendance. Economics of Education Review",
+    "source": "17(4): 371-376",
+    "volume": null,
+    "issue": null,
+    "pages": "371-376",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hoekstra, M. (2009). The effect of attending the flagship state university on earnings: A discontinuity-based approach. Review of Economics and Statistics, 91(4): 717-724.",
+    "page": 32,
+    "box": [
+     112.8,
+     282.5,
+     792.7,
+     385.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Hoekstra M"
+    ],
+    "authors_raw": "Hoekstra, M",
+    "et_al": false,
+    "year": "2009",
+    "title": "The effect of attending the flagship state university on earnings: A discontinuity-based approach. Review of Economics and Statistics",
+    "source": "91(4): 717-724",
+    "volume": null,
+    "issue": null,
+    "pages": "717-724",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ko, E. (2011). Changes in wage differentials among college graduates in South Korea, 1999-2008. Korean Journal of Labor Economics, 34(1): 103-38.",
+    "page": 32,
+    "box": [
+     112.8,
+     282.5,
+     792.7,
+     385.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Ko E"
+    ],
+    "authors_raw": "Ko, E",
+    "et_al": false,
+    "year": "2011",
+    "title": "Changes in wage differentials among college graduates in South Korea",
+    "source": "1999-2008. Korean Journal of Labor Economics",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "이런 연구로는 회귀단절(regression discontinuity) 방법을 이용한 Hoekstra (2008), 성향점수 매칭(propensity score matching) 방법을 이용한 Black and Smith (2004)의 연구나 각 개인이 지원한 여러 대학의 SAT 점수 평균을 통제한 Dale and Krueger (2002, 2011)의 연구를 들 수 있다.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     113.1,
+     1080.9,
+     795.3,
+     1178.3
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "이런",
+     "연구로는",
+     "회귀단절(regression",
+     "discontinuity)",
+     "방법을",
+     "이용한",
+     "Hoekstra"
+    ],
+    "authors_raw": "이런 연구로는 회귀단절(regression discontinuity) 방법을 이용한 Hoekstra",
+    "et_al": false,
+    "year": "2002",
+    "title": "2011)의 연구를 들수 있다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "자료에 대한 자세한 설명은 전재식 외(2009)를 참조.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     112.4,
+     1082.5,
+     790.8,
+     1176.3
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "자료에",
+     "대한",
+     "자세한",
+     "설명은",
+     "전재식"
+    ],
+    "authors_raw": "자료에 대한 자세한 설명은 전재식 외",
+    "et_al": true,
+    "year": "2009",
+    "title": "를 참조",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "1982년과 1992년 졸업자들은 전체 졸업생 명부를 파악할 수 있었으나 2002년도 졸업자 명부는 전체를 파악할 수 없었기 때문에 졸업생 수 자체는 2002년이 더 많음에도 불구하고 표본 추출이 가능한 모집단의 크기는 2002년이 작았다.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     112.4,
+     1082.5,
+     790.8,
+     1176.3
+    ],
+    "uid": "u9_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "연 소득 자료가 있는 관측치의 수는 전체 8,000에서 약간 줄어든다.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     112.4,
+     1154.8,
+     650.1,
+     1178.3
+    ],
+    "uid": "u13_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 4,
+   "per_page": {
+    "5": 1,
+    "10": 2,
+    "14": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "5": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "10": {
+     "markers": [
+      "2",
+      "3"
+     ],
+     "collected": [
+      "2",
+      "3"
+     ]
+    },
+    "14": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "College Hierarchy and the Labor Market in Korea: Changes in the Wage Premium of College Hierarchy over Several Decades",
+   "page": 1,
+   "box": [
+    102.7,
+    205.4,
+    792.7,
+    342.1
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Jin-Yeong Kim",
+    "markers": [
+     "*"
+    ],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.7,
+     401.3,
+     235.5,
+     452.3
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Department of Economics",
+   "Konkuk University"
+  ],
+  "abstract": {
+   "value": "In this paper we define wage premium of college hierarchy as a wage differential among college graduates from different universities within the same graduate cohort and estimate the wage premium of college hierarchy for the three different cohorts: namely, 1982, 1992, and 2002. We utilize a unique data set called Education-Labor Market Lifetime Path Survey, which contains education and labor market information about the three different college graduate cohorts. We find that the wage premium of college hierarchy changes over time for the same cohort. It tends to large right after graduation but decrease with labor market experience. When the test score at the time of college entrance controlled, the wage premium of college hierarchy mostly disappears for the 1992 cohort. But for the 2002 cohort it remains seven years after graduation. The difference in the wage premium of college hierarchy can be explained, at least partly, by the number of colleges, college enrollment ratio, and the relation between college hierarchy and the entrance test score.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "In this paper we define wage premium of college hierarchy as a wage differential among college graduates from different universities within the same graduate cohort and estimate the wage premium of college hierarchy for the three different cohorts: namely, 1982, 1992, and 2002. We utilize a unique data set called Education-Labor Market Lifetime Path Survey, which contains education and labor market information about the three different college graduate cohorts. We find that the wage premium of college hierarchy changes over time for the same cohort. It tends to large right after graduation but decrease with labor market experience. When the test score at the time of college entrance controlled, the wage premium of college hierarchy mostly disappears for the 1992 cohort. But for the 2002 cohort it remains seven years after graduation. The difference in the wage premium of college hierarchy can be explained, at least partly, by the number of colleges, college enrollment ratio, and the relation between college hierarchy and the entrance test score.",
+   "page": 1,
+   "box": [
+    102.7,
+    512.3,
+    173.0,
+    533.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "Keywords",
+   "주제어"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "35-68",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "keywords": [],
+  "keywords_en": [],
+  "citation_spans": [
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Brewer et al. (1998)이나 Eide et al. (1998)과 같은 연구에서는 엘리트 대학 졸업자들이 얻는 높은 임금 프리미엄이 비싸 비용에도 불구하고 충분한 수익을 준다는 결과를 얻기도 했다.",
+    "raw": "Brewer et al. (1998)이나 Eide et al. (1998)과 같은 연구에서는 엘리트 대학 졸업자들이 얻는 높은 임금 프리미엄이 비싸 비용에도 불구하고 충분한 수익을 준다는 결과를 얻기도 했다.",
+    "citation_text": "Brewer et al. (1998)",
+    "offset": [
+     0,
+     20
+    ],
+    "authors": [
+     "Brewer et al."
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u30_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Brewer et al. (1998)이나 Eide et al. (1998)과 같은 연구에서는 엘리트 대학 졸업자들이 얻는 높은 임금 프리미엄이 비싸 비용에도 불구하고 충분한 수익을 준다는 결과를 얻기도 했다.",
+    "raw": "Brewer et al. (1998)이나 Eide et al. (1998)과 같은 연구에서는 엘리트 대학 졸업자들이 얻는 높은 임금 프리미엄이 비싸 비용에도 불구하고 충분한 수익을 준다는 결과를 얻기도 했다.",
+    "citation_text": "Eide et al. (1998)",
+    "offset": [
+     23,
+     41
+    ],
+    "authors": [
+     "Eide et al."
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u30_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "narrative",
+    "sentence": "특히 Dale and Krueger (2002)의 연구는 능력에 대한 통제 여부에 따른 프리미엄 차이가 부각된 연구로 주목할 만하다.",
+    "raw": "특히 Dale and Krueger (2002)의 연구는 능력에 대한 통제 여부에 따른 프리미엄 차이가 부각된 연구로 주목할 만하다.",
+    "citation_text": "Krueger (2002)",
+    "offset": [
+     12,
+     26
+    ],
+    "authors": [
+     "Krueger"
+    ],
+    "year": "2002",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u30_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_1",
+    "kind": "narrative",
+    "sentence": "이 연구의 후속 연구라 할 수 있는 Dale and Krueger(2011)에서는 초기 노동시장 성과를 넘어서 생애 전반에 걸쳐 대학서열에 따른 임금격차를 살펴보고 있다.",
+    "raw": "이 연구의 후속 연구라 할 수 있는 Dale and Krueger(2011)에서는 초기 노동시장 성과를 넘어서 생애 전반에 걸쳐 대학서열에 따른 임금격차를 살펴보고 있다.",
+    "citation_text": "Krueger(2011)",
+    "offset": [
+     29,
+     42
+    ],
+    "authors": [
+     "Krueger"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u30_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "raw": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "citation_text": "오호영·김승보(2006)",
+    "offset": [
+     9,
+     22
+    ],
+    "authors": [
+     "오호영·김승보"
+    ],
+    "year": "2006",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "raw": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "citation_text": "김진영(2007)",
+    "offset": [
+     24,
+     33
+    ],
+    "authors": [
+     "김진영"
+    ],
+    "year": "2007",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "raw": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "citation_text": "김희삼·이삼호(2007)",
+    "offset": [
+     35,
+     48
+    ],
+    "authors": [
+     "김희삼·이삼호"
+    ],
+    "year": "2007",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "raw": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "citation_text": "주휘정(2012)",
+    "offset": [
+     50,
+     59
+    ],
+    "authors": [
+     "주휘정"
+    ],
+    "year": "2012",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "raw": "이러한 연구로는 오호영·김승보(2006), 김진영(2007), 김희삼·이삼호(2007), 주휘정(2012), 김성훈(2014) 등을 들 수 있다.",
+    "citation_text": "김성훈(2014)",
+    "offset": [
+     61,
+     70
+    ],
+    "authors": [
+     "김성훈"
+    ],
+    "year": "2014",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "오호영·김승보(2006)는 한국직업능력개발원의 2003년 졸업생 조사 자료를 활용하여 지방대 차별 문제를 중심으로 서열문제를 연구하였는데 수능점수가 2003년 대학 졸업자들의 임금에 중요한 영향을 미치며 수능점수를 넘어서는 차별은 크지 않은 것으로 보고하고 있다.",
+    "raw": "오호영·김승보(2006)는 한국직업능력개발원의 2003년 졸업생 조사 자료를 활용하여 지방대 차별 문제를 중심으로 서열문제를 연구하였는데 수능점수가 2003년 대학 졸업자들의 임금에 중요한 영향을 미치며 수능점수를 넘어서는 차별은 크지 않은 것으로 보고하고 있다.",
+    "citation_text": "오호영·김승보(2006)",
+    "offset": [
+     0,
+     13
+    ],
+    "authors": [
+     "오호영·김승보"
+    ],
+    "year": "2006",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "narrative",
+    "sentence": "김진영(2007)은 같은 자료를 활용하여 민서(Mincer) 임금 방정식에 학과별 수능점수 추가하는 방식으로 졸업생의 능력과 성실도를 통제한 대학서열의 영향을 살펴보았는데 그 결과는 수능점수 1점의 상승이 0.2%의 임금상승이 연결되며 수능점수 통제 후 상위 5~10개교의 임금 프리미엄은 7%정도에 이르는 것으로 나타났다.",
+    "raw": "김진영(2007)은 같은 자료를 활용하여 민서(Mincer) 임금 방정식에 학과별 수능점수 추가하는 방식으로 졸업생의 능력과 성실도를 통제한 대학서열의 영향을 살펴보았는데 그 결과는 수능점수 1점의 상승이 0.2%의 임금상승이 연결되며 수능점수 통제 후 상위 5~10개교의 임금 프리미엄은 7%정도에 이르는 것으로 나타났다.",
+    "citation_text": "김진영(2007)",
+    "offset": [
+     0,
+     9
+    ],
+    "authors": [
+     "김진영"
+    ],
+    "year": "2007",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "narrative",
+    "sentence": "노동패널 자료를 이용한 김희삼·이삼호(2007)의 연구는 개인의 능력을 수능성적으로 통제하더라도 대학 서열이 임금에 미치는 효과가 남는다는 사실을 발견하였다.",
+    "raw": "노동패널 자료를 이용한 김희삼·이삼호(2007)의 연구는 개인의 능력을 수능성적으로 통제하더라도 대학 서열이 임금에 미치는 효과가 남는다는 사실을 발견하였다.",
+    "citation_text": "김희삼·이삼호(2007)",
+    "offset": [
+     13,
+     26
+    ],
+    "authors": [
+     "김희삼·이삼호"
+    ],
+    "year": "2007",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_2",
+    "kind": "narrative",
+    "sentence": "이후 새롭게 이용 가능하게 된 대졸자직업이동경로조사(GOMS) 자료를 활용한 주휘정(2012)의 연구에서는 대학입학 성적과 임금 사이의관계와 함께 대학 교육의 질이 임금에 미치는 영향도 고려하였다.",
+    "raw": "이후 새롭게 이용 가능하게 된 대졸자직업이동경로조사(GOMS) 자료를 활용한 주휘정(2012)의 연구에서는 대학입학 성적과 임금 사이의관계와 함께 대학 교육의 질이 임금에 미치는 영향도 고려하였다.",
+    "citation_text": "주휘정(2012)",
+    "offset": [
+     43,
+     52
+    ],
+    "authors": [
+     "주휘정"
+    ],
+    "year": "2012",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "narrative",
+    "sentence": "대학 서열과 노동시장 초기 성과의 관계를 연구한 가장 최근 연구라고 할 수 있는 김성훈(2014)에서는 역시 노동패널 자료로 상위 1 ~ 10위 대학의 졸업생이 31위 이하 졸업생에 비해 첫 임금이 약 12~17%높음을 발견하였다.",
+    "raw": "대학 서열과 노동시장 초기 성과의 관계를 연구한 가장 최근 연구라고 할 수 있는 김성훈(2014)에서는 역시 노동패널 자료로 상위 1 ~ 10위 대학의 졸업생이 31위 이하 졸업생에 비해 첫 임금이 약 12~17%높음을 발견하였다.",
+    "citation_text": "김성훈(2014)",
+    "offset": [
+     45,
+     54
+    ],
+    "authors": [
+     "김성훈"
+    ],
+    "year": "2014",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "한편, 본 연구와 같이 입직 후 오랜 기간이 지난 후까지 대학 서열에따른 임금 격차 변화를 살펴본 연구로는 Ko(2011)와 이지영 고영선(2019)를 들 수 있다.",
+    "raw": "한편, 본 연구와 같이 입직 후 오랜 기간이 지난 후까지 대학 서열에따른 임금 격차 변화를 살펴본 연구로는 Ko(2011)와 이지영 고영선(2019)를 들 수 있다.",
+    "citation_text": "Ko(2011)",
+    "offset": [
+     60,
+     68
+    ],
+    "authors": [
+     "Ko"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "한편, 본 연구와 같이 입직 후 오랜 기간이 지난 후까지 대학 서열에따른 임금 격차 변화를 살펴본 연구로는 Ko(2011)와 이지영 고영선(2019)를 들 수 있다.",
+    "raw": "한편, 본 연구와 같이 입직 후 오랜 기간이 지난 후까지 대학 서열에따른 임금 격차 변화를 살펴본 연구로는 Ko(2011)와 이지영 고영선(2019)를 들 수 있다.",
+    "citation_text": "고영선(2019)",
+    "offset": [
+     74,
+     83
+    ],
+    "authors": [
+     "고영선"
+    ],
+    "year": "2019",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "하지만 Ko(2011)의 연구는 약 10년간의 성과만을 추적하였을 뿐이며 능력에 대한 충분한 통제는 이루어지지 않았다.",
+    "raw": "하지만 Ko(2011)의 연구는 약 10년간의 성과만을 추적하였을 뿐이며 능력에 대한 충분한 통제는 이루어지지 않았다.",
+    "citation_text": "Ko(2011)",
+    "offset": [
+     4,
+     12
+    ],
+    "authors": [
+     "Ko"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "이지영·고영선(2019)는 본 연구와 가장 유사한 문제의식으로 출발했다고 볼 수 있다.",
+    "raw": "이지영·고영선(2019)는 본 연구와 가장 유사한 문제의식으로 출발했다고 볼 수 있다.",
+    "citation_text": "이지영·고영선(2019)",
+    "offset": [
+     0,
+     13
+    ],
+    "authors": [
+     "이지영·고영선"
+    ],
+    "year": "2019",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   }
+  ]
+ }
+}

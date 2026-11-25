@@ -1,0 +1,2413 @@
+{
+ "doc": "13582938",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582938",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "강수정.(2022). 반중(反中) 정서의 확산?: 한국인들의 대중국 감정과 인식변화 분석. 현대중국연구. 제23권 3호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "강수정"
+    ],
+    "authors_raw": "강수정",
+    "et_al": false,
+    "year": "2022",
+    "title": "반중(反中) 정서의 확산?: 한국인들의 대중국 감정과 인식변화 분석. 현대중국연구. 제23권 3호",
+    "source": null,
+    "volume": "23",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김강녕.(2019). 문재인 정부의 대북통일정책과 한반도 평화증진과제. 통일전략. 제19권 2호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "김강녕"
+    ],
+    "authors_raw": "김강녕",
+    "et_al": false,
+    "year": "2019",
+    "title": "문재인 정부의 대북통일정책과 한반도 평화증진과제. 통일전략. 제19권 2호",
+    "source": null,
+    "volume": "19",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김영재.(2014). 박근혜 정부의 대북정책. 정치/정보연구. 제17권 2호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "김영재"
+    ],
+    "authors_raw": "김영재",
+    "et_al": false,
+    "year": "2014",
+    "title": "박근혜 정부의 대북정책. 정치/정보연구. 제17권 2호",
+    "source": null,
+    "volume": "17",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김애경.(2004) 중국의 대외정체성 인식 변화: 제1,2차 북핵 위시에 대한 중국의 역할변화 분석을 사례로. 국가전략. 제10권 4호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "김애경"
+    ],
+    "authors_raw": "김애경",
+    "et_al": false,
+    "year": "2004",
+    "title": "중국의 대외정체성 인식 변화: 제1",
+    "source": "2차 북핵 위시에 대한 중국의 역할변화 분석을 사례로. 국가전략. 제10권 4호",
+    "volume": "10",
+    "issue": "4",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김재철.(2017). 미중관계와 한국 대미 편승전략의 한계: 사드배치의 사례를 중심으로. 한국과 국제정치. 제33권 3호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "김재철"
+    ],
+    "authors_raw": "김재철",
+    "et_al": false,
+    "year": "2017",
+    "title": "미중관계와 한국 대미 편승전략의 한계: 사드배치의 사례를 중심으로. 한국과 국제정치. 제33권 3호",
+    "source": null,
+    "volume": "33",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김헌준.(2024). 가치와 규범을 통해 본 한국의 중국 인식과 한중관계. 아세아 연구. 제67권 3호.",
+    "page": 24,
+    "box": [
+     104.2,
+     626.4,
+     792.7,
+     657.2
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "김헌준"
+    ],
+    "authors_raw": "김헌준",
+    "et_al": false,
+    "year": "2024",
+    "title": "가치와 규범을 통해 본 한국의 중국 인식과 한중관계. 아세아 연구. 제67권 3호",
+    "source": null,
+    "volume": "67",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이상숙.(2010). 김정일-후진타오 시대의 북중관계: 불안정한 북한과 부강한 중국의 비대칭협력 강화. 한국과 국제정치. 제26권 제4호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "이상숙"
+    ],
+    "authors_raw": "이상숙",
+    "et_al": false,
+    "year": "2010",
+    "title": "김정일-후진타오 시대의 북중관계: 불안정한 북한과 부강한 중국의 비대칭협력 강화. 한국과 국제정치. 제26권 제4호",
+    "source": null,
+    "volume": "26",
+    "issue": "4",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이장원.(2017). 시진핑 시대의 한중관계: 사드 위기의 본질과 과제. 현대중국연구. 제19권 3호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "이장원"
+    ],
+    "authors_raw": "이장원",
+    "et_al": false,
+    "year": "2017",
+    "title": "시진핑 시대의 한중관계: 사드 위기의 본질과 과제. 현대중국연구. 제19권 3호",
+    "source": null,
+    "volume": "19",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이정남.(2014). 동아시아 세력전이와 한중 전략적 협력을 둘러싸น 딜레마. 평화연구. 제22권 1호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "이정남"
+    ],
+    "authors_raw": "이정남",
+    "et_al": false,
+    "year": "2014",
+    "title": "동아시아 세력전이와 한중 전략적 협력을 둘러싸น 딜레마. 평화연구. 제22권 1호",
+    "source": null,
+    "volume": "22",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이홍종.(2015). 박근혜정부의 한반도 신뢰프로세스정책: 김대중정부와 이명박정부의 대북정책과의 비교를 중심으로. 정차·정보연구. 제18권 1호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "이홍종"
+    ],
+    "authors_raw": "이홍종",
+    "et_al": false,
+    "year": "2015",
+    "title": "박근혜정부의 한반도 신뢰프로세스정책: 김대중정부와 이명박정부의 대북정책과의 비교를 중심으로. 정차·정보연구. 제18권 1호",
+    "source": null,
+    "volume": "18",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이희옥.(2012). 중국의 부상과 한중관계의 새로운 위상. 한국과 국제정치. 제28권 4호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "이희옥"
+    ],
+    "authors_raw": "이희옥",
+    "et_al": false,
+    "year": "2012",
+    "title": "중국의 부상과 한중관계의 새로운 위상. 한국과 국제정치. 제28권 4호",
+    "source": null,
+    "volume": "28",
+    "issue": "4",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "전병곤.(2011). 천안함 이후 북중관계의 변화와 영향. 한중사회과학연구. 제9권 제1호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "전병곤"
+    ],
+    "authors_raw": "전병곤",
+    "et_al": false,
+    "year": "2011",
+    "title": "천안함 이후 북중관계의 변화와 영향. 한중사회과학연구. 제9권 제1호",
+    "source": null,
+    "volume": "9",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "전성훈.(2013). 신뢰·균형·통합·진화의 대북·통일정책. 통일정책연구. 제22권 2호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "전성훈"
+    ],
+    "authors_raw": "전성훈",
+    "et_al": false,
+    "year": "2013",
+    "title": "신뢰·균형·통합·진화의 대북·통일정책. 통일정책연구. 제22권 2호",
+    "source": null,
+    "volume": "22",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "조민.(2003). 노무현 정부의 평화번영정책: 전망 및 과제. 통일정책연구. 제12권 1호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "조민"
+    ],
+    "authors_raw": "조민",
+    "et_al": false,
+    "year": "2003",
+    "title": "노무현 정부의 평화번영정책: 전망 및 과제. 통일정책연구. 제12권 1호",
+    "source": null,
+    "volume": "12",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "조영남.(2011). 한중 관계의 발전추세와 전망: 바람직한 중국정책을 위한 시론. 국제·지역연구. 제20권 1호.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "조영남"
+    ],
+    "authors_raw": "조영남",
+    "et_al": false,
+    "year": "2011",
+    "title": "한중 관계의 발전추세와 전망: 바람직한 중국정책을 위한 시론. 국제·지역연구. 제20권 1호",
+    "source": null,
+    "volume": "20",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "KOTRA.(2013-2016). 북한의 대외무역동향: https://kosis.kr/bukhan/extrlPblictn/selectExtrnlCmmrcTrend.do?menuId=M_03_02_01_05(검색일: 2024. 12. 20).",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "KOTRA"
+    ],
+    "authors_raw": "KOTRA",
+    "et_al": false,
+    "year": "2016",
+    "title": "북한의 대외무역동향: https://kosis.kr/bukhan/extrlPblictn/selectExtrnlCmmrcTrend.do?menuId=M_03_02_01_05(검색일: 2024. 12. 20)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "한종육.(2023). 윤석열 정부 「담대한 구상」과 통일미래 준비. 북한경제리뷰. 5월.",
+    "page": 25,
+    "box": [
+     112.8,
+     669.0,
+     792.8,
+     731.1
+    ],
+    "uid": "u24_1",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2023",
+    "title": "담대한 구상",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_book",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김지은.(2021년 3월 11일) 올해 한-미 방위비 분담금 13.9% 오른다. 한격레. https://www.hani.co.kr/arti/politics/diplomacy/986208.html(검색일: 2021. 30. 12).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "김지은"
+    ],
+    "authors_raw": "김지은",
+    "et_al": false,
+    "year": "2021",
+    "title": "올해 한-미 방위비 분담금 13.9% 오른다. 한격레. https://www.hani.co.kr/arti/politics/diplomacy/986208.html(검색일: 2021. 30. 12)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "신기섭.(2000년 10월 25일). 올브라이트, 북-미현안 “전면, 철저” 논의. 연합뉴스. https://www.yna.co.kr/view/AKR20001025000200071?section=news(검색일: 2000. 10. 27).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "신기섭"
+    ],
+    "authors_raw": "신기섭",
+    "et_al": false,
+    "year": "2000",
+    "title": null,
+    "source": "년 10월 25일). 올브라이트, 북-미현안 “전면, 철저” 논의. 연합뉴스. https://www.yna.co.kr/view/AKR20001025000200071?section=news(검색일: 2000. 10. 27)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "ambiguous_quote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "심재훈.(2017년 1월 10일). 사드 갈등 속 중국, 한국 화장품 무더기 수입 불허. 연합뉴스. https://www.yna.co.kr/view/AKR20170110107000083(검색일: 2017. 01. 11).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "심재훈"
+    ],
+    "authors_raw": "심재훈",
+    "et_al": false,
+    "year": "2017",
+    "title": "사드 갈등 속 중국",
+    "source": "한국 화장품 무더기 수입 불허. 연합뉴스. https://www.yna.co.kr/view/AKR20170110107000083(검색일: 2017. 01. 11)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이대희.(2017년 3월 8일). IBK, 中 사드보복 피해규모 최대 17조원 전망. 프레시안. https://www.pressian.com/pages/articles/152416(검색일: 2017. 03. 09).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "이대희"
+    ],
+    "authors_raw": "이대희",
+    "et_al": false,
+    "year": "2017",
+    "title": null,
+    "source": "中 사드보복 피해규모 최대 17조원 전망. 프레시안. https://www.pressian.com/pages/articles/152416(검색일: 2017. 03. 09)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "정민환.(2022년 5월 27일). 유엔 안보리에서 대북 제재 결의안 처음으로 부결 됐다. 한격레. https://www.hani.co.kr/arti/politics/diplomacy/1044648.html(검색일: 2022. 05. 28).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "정민환"
+    ],
+    "authors_raw": "정민환",
+    "et_al": false,
+    "year": "2022",
+    "title": "유엔 안보리에서 대북 제재 결의안 처음으로 부결 됐다. 한격레. https://www.hani.co.kr/arti/politics/diplomacy/1044648.html(검색일: 2022. 05. 28)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "정시행.(2022년 5월 28일). 안보리 대북제재, 中·러 반대로 첫 부결. 조선일보. https://www.chosun.com/international/international_general/2022/05/28/R6PQ5XOKDJFX7PMWQOQNL5IO7U/(검색일: 2022. 05. 28).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "정시행"
+    ],
+    "authors_raw": "정시행",
+    "et_al": false,
+    "year": "2022",
+    "title": "안보리 대북제재",
+    "source": "中·러 반대로 첫 부결. 조선일보. https://www.chosun.com/international/international_general/2022/05/28/R6PQ5XOKDJFX7PMWQOQNL5IO7U/(검색일: 2022. 05. 28)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "최현준.(2024년 5월 16일). 중-러, ‘미국의 한반도 정책’ 견제 못박아…북과 연대 강화. 한격레. https://www.hani.co.kr/arti/international/china/1140895.html(검색일: 2024. 05. 17).",
+    "page": 26,
+    "box": [
+     112.8,
+     406.5,
+     792.7,
+     562.9
+    ],
+    "uid": "u25_1",
+    "authors": [
+     "최현준"
+    ],
+    "authors_raw": "최현준",
+    "et_al": false,
+    "year": "2024",
+    "title": "중-러",
+    "source": "‘미국의 한반도 정책’ 견제 못박아…북과 연대 강화. 한격레. https://www.hani.co.kr/arti/international/china/1140895.html(검색일: 2024. 05. 17)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chung, Jae Ho.(2007). Between Ally and Partner: Korea-China Relations and the United States. New York: Columbia University Press.",
+    "page": 26,
+    "box": [
+     103.1,
+     1005.9,
+     793.8,
+     1128.2
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Chung",
+     "Jae Ho"
+    ],
+    "authors_raw": "Chung, Jae Ho",
+    "et_al": false,
+    "year": "2007",
+    "title": "Between Ally and Partner: Korea-China Relations and the United States. New York: Columbia University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, Chae-Jin.(1996). China and Korea: Dynamic Relations. Stanford: Hoover Institution.",
+    "page": 26,
+    "box": [
+     103.1,
+     1005.9,
+     793.8,
+     1128.2
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Lee",
+     "Chae-Jin"
+    ],
+    "authors_raw": "Lee, Chae-Jin",
+    "et_al": false,
+    "year": "1996",
+    "title": "China and Korea: Dynamic Relations. Stanford: Hoover Institution",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Colpin, William D and Charles W. Kegley. Jr.(1975). The analysis of Foreign Policy. Analyzing International Relations. New York: Praeger Publisher.",
+    "page": 26,
+    "box": [
+     103.1,
+     1005.9,
+     793.8,
+     1128.2
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Colpin",
+     "William D",
+     "Charles W. Kegley. Jr"
+    ],
+    "authors_raw": "Colpin, William D and Charles W. Kegley. Jr",
+    "et_al": false,
+    "year": "1975",
+    "title": "The analysis of Foreign Policy. Analyzing International Relations. New York: Praeger Publisher",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rosenau, James N. (ed.).(1969). Linkage Politics: Essays on the Convergence of National and International system. New York: Free Press.",
+    "page": 26,
+    "box": [
+     103.1,
+     1005.9,
+     793.8,
+     1128.2
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Rosenau",
+     "James N. (ed.)"
+    ],
+    "authors_raw": "Rosenau, James N. (ed.)",
+    "et_al": false,
+    "year": "1969",
+    "title": "Linkage Politics: Essays on the Convergence of National and International system. New York: Free Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Snyder, Richard C., W.H. Bruck and Burton Sapin.(1954). Decision-Making: An Approach to the Study of International Politics. Foreign Analysis Series. 3. NJ: Princeton University Press.",
+    "page": 27,
+    "box": [
+     112.8,
+     168.9,
+     792.7,
+     797.0
+    ],
+    "uid": "u26_1",
+    "authors": [
+     "Snyder",
+     "Richard C",
+     "W.H. Bruck",
+     "Burton Sapin"
+    ],
+    "authors_raw": "Snyder, Richard C., W.H. Bruck and Burton Sapin",
+    "et_al": false,
+    "year": "1954",
+    "title": "Decision-Making: An Approach to the Study of International Politics. Foreign Analysis Series. 3. NJ: Princeton University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Matsuo, Terrence.(2023. May 9). Sino-Korean Relations in a Fluctuating Region. KEI. https://keia.org/the-peninsula/sino-korean-relations-in-a-fluctuating-region/(검 색일: 2024. 09. 20).",
+    "page": 27,
+    "box": [
+     112.8,
+     168.9,
+     792.7,
+     797.0
+    ],
+    "uid": "u26_1",
+    "authors": [
+     "Matsuo",
+     "Terrence"
+    ],
+    "authors_raw": "Matsuo, Terrence",
+    "et_al": false,
+    "year": "2023",
+    "title": "May 9). Sino-Korean Relations in a Fluctuating Region. KEI. https://keia.org/the-peninsula/sino-korean-relations-in-a-fluctuating-region/(검 색일: 2024. 09. 20",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Luce, Dan De.(2021, April 10). China tries to wear down its neighbors with pressure tactics. https://www.nbcnews.com/news/world/china-tries-wear-down-its-neighbors-pr essure-tactics-n1263631(검색일: 2024. 06. 21).",
+    "page": 27,
+    "box": [
+     112.8,
+     168.9,
+     792.7,
+     797.0
+    ],
+    "uid": "u26_1",
+    "authors": [
+     "Luce",
+     "Dan De"
+    ],
+    "authors_raw": "Luce, Dan De",
+    "et_al": false,
+    "year": "2021",
+    "title": "April 10). China tries to wear down its neighbors with pressure tactics. https://www.nbcnews.com/news/world/china-tries-wear-down-its-neighbors-pr essure-tactics-n1263631(검색일: 2024. 06. 21",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Perlez, Jane.(2014, July 2). Chinese President’s Visit to South Korea Is Seen as Way to Weaken U.S. Alliances. The New York Times. https://www.nytimes.com/2014/07/03/world/asia/chinas-president-to-visit-sout h-korea.html.(검색일: 2014. 07. 3).\n薑龍範，金可.(2024). 尹錫悅政府對華外交政策探析. 延邊大學學報(社會科學版).第56卷 4期.\n李金輝. 金琳森.(2024). 從韓國涉華民調來看韓國民眾對華認知. 東疆學刊. 第41卷 1期\n羅潔, 於美華, 張璉瑰.(2010). 天安\"號事件:把朝韓推向戰爭的邊緣?. 世界知識.第12期.\n高飛, “習近平主席訪韓 中韓關系升級,” 人民網, 2014年 7月 3日,http://opinion.people.com.cn/n/2014/0703/c1003-25236206.html(검색일:2014. 7. 4)\n李忠發, 張藝.(2010年 11月 23日). 外交部： 中方對朝鮮半島炮擊事件表示關注. 新華網. https://news.sina.com.cn/w/2010-11-23/163821520005.shtml(검색일: 2025. 2. 5).\n萬宇, 張建波, 王天樂, 張曉東, 劉軍國, 苑基榮, 劉棟, 李寧, 楊迅, 劉慧, 廖政93 軍, 陳效衛.(2014年 7月 7日). 國際社會高度評價習近平訪韓：展現中國真誠善意. 人民網 於海生.(1998年 11月 13日). 江主席與金大中總統會談. 光明日報.https://www.gmw.cn/01gmrb/1998-11/13/GB/17875%5EGM1-1306.HTM(검색일: 2025. 2. 3).",
+    "page": 27,
+    "box": [
+     112.8,
+     168.9,
+     792.7,
+     797.0
+    ],
+    "uid": "u26_1",
+    "authors": [
+     "Perlez",
+     "Jane"
+    ],
+    "authors_raw": "Perlez, Jane",
+    "et_al": false,
+    "year": "2010",
+    "title": "習近平主席訪韓 中韓關系升級",
+    "source": "人民網",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [],
+  "footnote_ref_validation": {
+   "entry_count": 0,
+   "per_page": {},
+   "num_borrowed": [],
+   "per_page_detail": {},
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "A Study on Factors Affecting South Korea–China Relations: Focusing on South Korea's Policies Toward the North Korea and the United States",
+   "page": 1,
+   "box": [
+    102.7,
+    205.5,
+    792.7,
+    393.0
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Aekyung Kim",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.7,
+     453.4,
+     223.0,
+     503.4
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [],
+  "abstract": {
+   "value": "This article argues that the South Korean government‘s policy toward the U.S. and North Korea has affected South Korea-China relations. Progressive governments' U.S. policy aimed to strengthen the alliance while also seeking to expand diplomatic autonomy. In contrast, conservative governments placed greater emphasis on strengthening the alliance. The Yoon Suk-yeol administration went further by actively supporting the U.S. policy of containing China. While progressive governments sought stability and peace on the Korean Peninsula through North Korea's denuclearization and the development of relations with North Korea, conservative governments did not pursue the development of relations with North Korea unless denuclearization was a precondition. South Korea's U.S. and North Korea policies have influenced South Korea-China trade and China's cooperation on North Korea-related issues. South Korea’s policies toward the U.S. and North Korea have affected China’s cooperation on North Korea-related issues as well as South Korea-China trade. However, during unavoidable crises such as the financial crisis and the COVID-19 pandemic, this correlation was not as clear. When it comes to trade, the impact of South Korea’s U.S. and North Korea policies was relatively less significant compared to the North Korea issue. The periods when South Korea-China trade was most affected by these policies were during the latter half of the Park Geun-hye administration and under the Yoon Suk-yeol administration. During the latter half of Park Geun-hye’s presidency, China viewed South Korea’s decision to deploy the THAAD system as participation in the U.S. missile defense system aimed at countering China. The Yoon Suk-yeol administration has focused on actively supporting the U.S. policy of containing China. As a result, South Korea-China trade volume and trade balance decreased to an unprecedented extent. China's cooperation on North Korea-related issues showed a clear difference between progressive and conservative government periods except for North Korea's nuclear tests. Under progressive administrations, China was more cooperative on North Korea-related issues, while under conservative governments, China was relatively less cooperative. Instead, China expanded its economic cooperation with North Korea, moving in the opposite direction from the policies of South Korea’s conservative governments.\n* Kim, Aekyung. MyongJi College. E-mail: jinaiqing89@gmail.com.\nparticipation in the U.S. missile defense system aimed at countering China. The Yoon Suk-yeol administration has focused on actively supporting the U.S. policy of containing China. As a result, South Korea-China trade volume and trade balance decreased to an unprecedented extent. China's cooperation on North Korea-related issues showed a clear difference between progressive and conservative government periods except for North Korea's nuclear tests. Under progressive administrations, China was more cooperative on North Korea-related issues, while under conservative governments, China was relatively less cooperative. Instead, China expanded its economic cooperation with North Korea, moving in the opposite direction from the policies of South Korea's conservative governments.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This article argues that the South Korean government‘s policy toward the U.S. and North Korea has affected South Korea-China relations. Progressive governments' U.S. policy aimed to strengthen the alliance while also seeking to expand diplomatic autonomy. In contrast, conservative governments placed greater emphasis on strengthening the alliance. The Yoon Suk-yeol administration went further by actively supporting the U.S. policy of containing China. While progressive governments sought stability and peace on the Korean Peninsula through North Korea's denuclearization and the development of relations with North Korea, conservative governments did not pursue the development of relations with North Korea unless denuclearization was a precondition. South Korea's U.S. and North Korea policies have influenced South Korea-China trade and China's cooperation on North Korea-related issues. South Korea’s policies toward the U.S. and North Korea have affected China’s cooperation on North Korea-related issues as well as South Korea-China trade. However, during unavoidable crises such as the financial crisis and the COVID-19 pandemic, this correlation was not as clear. When it comes to trade, the impact of South Korea’s U.S. and North Korea policies was relatively less significant compared to the North Korea issue. The periods when South Korea-China trade was most affected by these policies were during the latter half of the Park Geun-hye administration and under the Yoon Suk-yeol administration. During the latter half of Park Geun-hye’s presidency, China viewed South Korea’s decision to deploy the THAAD system as participation in the U.S. missile defense system aimed at countering China. The Yoon Suk-yeol administration has focused on actively supporting the U.S. policy of containing China. As a result, South Korea-China trade volume and trade balance decreased to an unprecedented extent. China's cooperation on North Korea-related issues showed a clear difference between progressive and conservative government periods except for North Korea's nuclear tests. Under progressive administrations, China was more cooperative on North Korea-related issues, while under conservative governments, China was relatively less cooperative. Instead, China expanded its economic cooperation with North Korea, moving in the opposite direction from the policies of South Korea’s conservative governments.",
+   "page": 1,
+   "box": [
+    102.7,
+    561.8,
+    173.0,
+    583.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: South Korea-China relations, Policy toward the North Korea, Policy toward the United States, South Korea-China Trade, North Korea-related issues"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 9,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "67-94",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "South Korea-China relations",
+   "Policy toward the North Korea",
+   "Policy toward the United States",
+   "South Korea-China Trade",
+   "North Korea-related issues"
+  ],
+  "keywords_en": [
+   "South Korea-China relations",
+   "Policy toward the North Korea",
+   "Policy toward the United States",
+   "South Korea-China Trade",
+   "North Korea-related issues"
+  ],
+  "citation_spans": [
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "raw": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "citation_text": "이희옥, 2012, 1-28",
+    "offset": [
+     49,
+     64
+    ],
+    "authors": [
+     "이희옥"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "raw": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "citation_text": "이정남, 2014, 345-388",
+    "offset": [
+     66,
+     84
+    ],
+    "authors": [
+     "이정남"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "raw": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "citation_text": "김재철, 2017, 1-31",
+    "offset": [
+     86,
+     101
+    ],
+    "authors": [
+     "김재철"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "raw": "연구를 살펴보면, 미중 관계와 같은 체제차원의 구조 요인을 제시하는 견해가 일반적이다.(이희옥, 2012, 1-28; 이정남, 2014, 345-388; 김재철, 2017, 1-31; 정재호, 2024) 일부 연구는 중국의 리더십 변화 등의 요인을 주목한다.",
+    "citation_text": "정재호, 2024",
+    "offset": [
+     103,
+     112
+    ],
+    "authors": [
+     "정재호"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "이 연구들은 주로 중국의 최고지도자가 교체되거나, 2기 집권으로 넘어갈 때를 중심으로 중국의 한반도 정책, 한국 정책에 대한 전망연구를 통해 한중 관계 발전을 검토한다.(최명해, 2018; 김애경, 2023) 그 외에는 주로 탈북자 이슈, 사드 이슈 및 호감도와 비호감도와 같은 이슈를 중심으로 한중 관계를 분석했다.",
+    "raw": "이 연구들은 주로 중국의 최고지도자가 교체되거나, 2기 집권으로 넘어갈 때를 중심으로 중국의 한반도 정책, 한국 정책에 대한 전망연구를 통해 한중 관계 발전을 검토한다.(최명해, 2018; 김애경, 2023) 그 외에는 주로 탈북자 이슈, 사드 이슈 및 호감도와 비호감도와 같은 이슈를 중심으로 한중 관계를 분석했다.",
+    "citation_text": "최명해, 2018",
+    "offset": [
+     95,
+     104
+    ],
+    "authors": [
+     "최명해"
+    ],
+    "year": "2018",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "이 연구들은 주로 중국의 최고지도자가 교체되거나, 2기 집권으로 넘어갈 때를 중심으로 중국의 한반도 정책, 한국 정책에 대한 전망연구를 통해 한중 관계 발전을 검토한다.(최명해, 2018; 김애경, 2023) 그 외에는 주로 탈북자 이슈, 사드 이슈 및 호감도와 비호감도와 같은 이슈를 중심으로 한중 관계를 분석했다.",
+    "raw": "이 연구들은 주로 중국의 최고지도자가 교체되거나, 2기 집권으로 넘어갈 때를 중심으로 중국의 한반도 정책, 한국 정책에 대한 전망연구를 통해 한중 관계 발전을 검토한다.(최명해, 2018; 김애경, 2023) 그 외에는 주로 탈북자 이슈, 사드 이슈 및 호감도와 비호감도와 같은 이슈를 중심으로 한중 관계를 분석했다.",
+    "citation_text": "김애경, 2023",
+    "offset": [
+     106,
+     115
+    ],
+    "authors": [
+     "김애경"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "뿐만 아니라 남북한의 대치가 상시화되어 있기 때문에 국가 안보위기와 관련된 쟁점이 외교정책 영역을 압도하고 있다.(조동준, 2014, 66-72) 결국 한국은 외교 정책 결정과 집행 과정에서 강대국 관계에 대한, 북한에 대한 정부 차원의 정책이 매우 중요하다.",
+    "raw": "뿐만 아니라 남북한의 대치가 상시화되어 있기 때문에 국가 안보위기와 관련된 쟁점이 외교정책 영역을 압도하고 있다.(조동준, 2014, 66-72) 결국 한국은 외교 정책 결정과 집행 과정에서 강대국 관계에 대한, 북한에 대한 정부 차원의 정책이 매우 중요하다.",
+    "citation_text": "(조동준, 2014, 66-72)",
+    "offset": [
+     63,
+     81
+    ],
+    "authors": [
+     "조동준"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "미국의 일방적인 대북 정책을 따르기보다는 북한과의 평화적 환경을 조성하기 위한 한국의역할을 추구하려는 데 정책의 중심을 두었다.(백학순, 2000, 58)",
+    "raw": "미국의 일방적인 대북 정책을 따르기보다는 북한과의 평화적 환경을 조성하기 위한 한국의역할을 추구하려는 데 정책의 중심을 두었다.(백학순, 2000, 58)",
+    "citation_text": "(백학순, 2000, 58)",
+    "offset": [
+     71,
+     86
+    ],
+    "authors": [
+     "백학순"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u25_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "‘햇볕정책’은 대북 화해협력을 통해, “남북 주민들이 자유롭게 오가면서 상호 이해의 폭을 넓히고 민족 동질성을 회복하게 되는 ‘사실상의 통일상황’을 실현”하는 데 초점을 맞췄다.(통일부, 2022, pp. 1-2) 2000년 6월 남북 정상회담이 개최됐고 그 과정에서 미국과 긴밀하게 협력했다.",
+    "raw": "‘햇볕정책’은 대북 화해협력을 통해, “남북 주민들이 자유롭게 오가면서 상호 이해의 폭을 넓히고 민족 동질성을 회복하게 되는 ‘사실상의 통일상황’을 실현”하는 데 초점을 맞췄다.(통일부, 2022, pp. 1-2) 2000년 6월 남북 정상회담이 개최됐고 그 과정에서 미국과 긴밀하게 협력했다.",
+    "citation_text": "(통일부, 2022, pp. 1-2)",
+    "offset": [
+     99,
+     119
+    ],
+    "authors": [
+     "통일부"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "뿐만 아니라 그 해 10월에는 매들린 올 브라이트(Madeleine Jana Korbel Albright) 당시 미국무장관의 북한 방문이 성사되며 남북 관계 개선, 한반도에 냉전 체제 해소를 위한 논의의 기반을 조성하기도 했다.(“올브라이트, 북-미현안 ”전면, 철저” 논의“, 2000) 다만 미국의 클린턴 정부가 부시 정부로 교체되면서 한국의 대북 화해 정책에 대한 지지에 온도 차를 보이기도 했다.",
+    "raw": "뿐만 아니라 그 해 10월에는 매들린 올 브라이트(Madeleine Jana Korbel Albright) 당시 미국무장관의 북한 방문이 성사되며 남북 관계 개선, 한반도에 냉전 체제 해소를 위한 논의의 기반을 조성하기도 했다.(“올브라이트, 북-미현안 ”전면, 철저” 논의“, 2000) 다만 미국의 클린턴 정부가 부시 정부로 교체되면서 한국의 대북 화해 정책에 대한 지지에 온도 차를 보이기도 했다.",
+    "citation_text": "(“올브라이트, 북-미현안 ”전면, 철저” 논의“, 2000)",
+    "offset": [
+     127,
+     161
+    ],
+    "authors": [
+     "“올브라이트"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u25_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_2",
+    "kind": "parenthetical",
+    "sentence": "당시 한국 내 반미감정 표출이라는 새로운 현상이 나타나기도 했기 때문이다.(김석용, 2005, p. 143) 국내에서의 수평적 자주외교에 대한 반대 여론을 극복하기 위해 노무현 정부는 한미자유무역협정(FTA) 협상을 적극 추진·타결, 이라크 파병을 통해 미군을 지원하는 등 실용적인 협력을 병행하는 조치를 취하며 대응했다.",
+    "raw": "당시 한국 내 반미감정 표출이라는 새로운 현상이 나타나기도 했기 때문이다.(김석용, 2005, p. 143) 국내에서의 수평적 자주외교에 대한 반대 여론을 극복하기 위해 노무현 정부는 한미자유무역협정(FTA) 협상을 적극 추진·타결, 이라크 파병을 통해 미군을 지원하는 등 실용적인 협력을 병행하는 조치를 취하며 대응했다.",
+    "citation_text": "(김석용, 2005, p. 143)",
+    "offset": [
+     41,
+     60
+    ],
+    "authors": [
+     "김석용"
+    ],
+    "year": "2005",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "(조민, 2003; 김석용, 2005, pp. 143-144) 대화를 통한 평화적 문제해결, 상호신뢰 우선 및 호혜주의, 남북 당사자 원칙에 기초한 국제협력 등 미국과 차별화된 접근을 취했다.",
+    "raw": "(조민, 2003; 김석용, 2005, pp. 143-144) 대화를 통한 평화적 문제해결, 상호신뢰 우선 및 호혜주의, 남북 당사자 원칙에 기초한 국제협력 등 미국과 차별화된 접근을 취했다.",
+    "citation_text": "조민, 2003",
+    "offset": [
+     1,
+     9
+    ],
+    "authors": [
+     "조민"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "(조민, 2003; 김석용, 2005, pp. 143-144) 대화를 통한 평화적 문제해결, 상호신뢰 우선 및 호혜주의, 남북 당사자 원칙에 기초한 국제협력 등 미국과 차별화된 접근을 취했다.",
+    "raw": "(조민, 2003; 김석용, 2005, pp. 143-144) 대화를 통한 평화적 문제해결, 상호신뢰 우선 및 호혜주의, 남북 당사자 원칙에 기초한 국제협력 등 미국과 차별화된 접근을 취했다.",
+    "citation_text": "김석용, 2005, pp. 143-144",
+    "offset": [
+     11,
+     33
+    ],
+    "authors": [
+     "김석용"
+    ],
+    "year": "2005",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 8,
+    "uid": "u7_2",
+    "kind": "parenthetical",
+    "sentence": "이명박 정부의 대미, 대북 정책은 앞선 두 진보정권인 김대중, 노무현 정부에서 추진했던 기조에서 많은 변화를 주었다.(김영재, 2014, p. 39) 대미 정책에 있어서는 한미동맹 강화를 주장했다.",
+    "raw": "이명박 정부의 대미, 대북 정책은 앞선 두 진보정권인 김대중, 노무현 정부에서 추진했던 기조에서 많은 변화를 주었다.(김영재, 2014, p. 39) 대미 정책에 있어서는 한미동맹 강화를 주장했다.",
+    "citation_text": "(김영재, 2014, p. 39)",
+    "offset": [
+     65,
+     83
+    ],
+    "authors": [
+     "김영재"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "이는 북한이 먼저 비핵화를 실현하고 개방을 추진하면 경제적으로 지원하겠다는 정책으로, 북핵 문제에 대해서는 제재를 강화하는 압박 정책을 추구했다.(이홍종, 2015, pp. 55-56) 김대중 정부의 ‘6·15 공동선언’, 노무현 정부의 ‘10·4 선언’에 대한 계승 여부도 표명하지 않았다.",
+    "raw": "이는 북한이 먼저 비핵화를 실현하고 개방을 추진하면 경제적으로 지원하겠다는 정책으로, 북핵 문제에 대해서는 제재를 강화하는 압박 정책을 추구했다.(이홍종, 2015, pp. 55-56) 김대중 정부의 ‘6·15 공동선언’, 노무현 정부의 ‘10·4 선언’에 대한 계승 여부도 표명하지 않았다.",
+    "citation_text": "(이홍종, 2015, pp. 55-56)",
+    "offset": [
+     81,
+     103
+    ],
+    "authors": [
+     "이홍종"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "사실 박근혜 정부는 균형외교 기조를 표방하며 취임 이전부터 중국과의 관계를 중시했다.(신종대, 2013, p.16) 이 부분에서 보수 정부이지만 이명박 정부와 차별성이 있었다.",
+    "raw": "사실 박근혜 정부는 균형외교 기조를 표방하며 취임 이전부터 중국과의 관계를 중시했다.(신종대, 2013, p.16) 이 부분에서 보수 정부이지만 이명박 정부와 차별성이 있었다.",
+    "citation_text": "(신종대, 2013, p.16)",
+    "offset": [
+     47,
+     64
+    ],
+    "authors": [
+     "신종대"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "raw": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "citation_text": "(김규현, 2013)",
+    "offset": [
+     57,
+     68
+    ],
+    "authors": [
+     "김규현"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "raw": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "citation_text": "전성훈, 2013",
+    "offset": [
+     157,
+     166
+    ],
+    "authors": [
+     "전성훈"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "raw": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "citation_text": "김영재 2014,pp. 44-46",
+    "offset": [
+     168,
+     186
+    ],
+    "authors": [
+     "pp. 44-46"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "raw": "즉 남북 간신뢰를 구축해서 남북 관계 발전, 한반도 평화 정착을 통해 통일 기반을 구축한다는 구상이다.(김규현, 2013) 이는 신뢰구축을 통해 남북 관계 개선과 비핵화를 병행하고자 하는 것으로, 선비핵화 후지원의 기조로 추진했던 이명박 정부의 대북 정책과는 다소 차이가 있었다.(전성훈, 2013; 김영재 2014,pp. 44-46;이홍종, 2015) 그러나 북한의 영변 원자로 재가동, 핵실험과 미사일 도발이 지속되면서 신뢰구축을 통한 평화 정착 구상은 실질적인 성과를 도출해 내지 못하고, 사드 배치로 이어지게 됐다.",
+    "citation_text": "이홍종, 2015",
+    "offset": [
+     187,
+     196
+    ],
+    "authors": [
+     "이홍종"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "뿐만 아니라 트럼프 정부와 바이든 정부를 모두 경험하면서 한국의 방위 비 분담금 확대라는 미국의 요구에 13.9% 인상안으로 타결시키며 갈등을 완화시키고, 전시작전권 문제도 조건부 전환 원칙을 유지하며 한국군의 주도권을 확보하고자 했다.(”올해 한-미 방위비 분담금 13.9% 오른다“, 2021) 이렇게 문재인 정부에서는 한국의 자주국방을 강화, 자율성을 확대하는 계기를 마련했다.",
+    "raw": "뿐만 아니라 트럼프 정부와 바이든 정부를 모두 경험하면서 한국의 방위 비 분담금 확대라는 미국의 요구에 13.9% 인상안으로 타결시키며 갈등을 완화시키고, 전시작전권 문제도 조건부 전환 원칙을 유지하며 한국군의 주도권을 확보하고자 했다.(”올해 한-미 방위비 분담금 13.9% 오른다“, 2021) 이렇게 문재인 정부에서는 한국의 자주국방을 강화, 자율성을 확대하는 계기를 마련했다.",
+    "citation_text": "(”올해 한-미 방위비 분담금 13.9% 오른다“, 2021)",
+    "offset": [
+     132,
+     166
+    ],
+    "authors": [
+     "”올해 한-미 방위비 분담금 13.9% 오른다“"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u25_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_4",
+    "kind": "parenthetical",
+    "sentence": "김대중, 노무현 정부의 대북 포용정책을 계승해서, 북한과 대화와 협력을 통해 비핵화를실현하고 더 나아가 항구적 평화 체제를 구축하기 위해 남북한 간 지속 가능한 협력을 강화시키는 것을 목표로 삼았다.(김강녕, 2019) 이를 위해 여러 조치가 취해졌다.",
+    "raw": "김대중, 노무현 정부의 대북 포용정책을 계승해서, 북한과 대화와 협력을 통해 비핵화를실현하고 더 나아가 항구적 평화 체제를 구축하기 위해 남북한 간 지속 가능한 협력을 강화시키는 것을 목표로 삼았다.(김강녕, 2019) 이를 위해 여러 조치가 취해졌다.",
+    "citation_text": "(김강녕, 2019)",
+    "offset": [
+     111,
+     122
+    ],
+    "authors": [
+     "김강녕"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_3",
+    "kind": "parenthetical",
+    "sentence": "윤석열 정부가 집권하면서 문재인 정부와는 차별화된 대미, 대북 정책을 제시했다.(薑龍範, 金可, 2023, pp. 5-13.) ‘한미동맹 강화’와 ‘글로벌 협력 확대’를 표방하며 미국에 핵우산 및 확장억제 강화를 요청하고, 미국의 전략자산 한반도 배치 확대 및 한미 핵협의 그룹(NCG)을 신설, 한미 연합훈련 확대 등 안보협력 강화를 추진했다.",
+    "raw": "윤석열 정부가 집권하면서 문재인 정부와는 차별화된 대미, 대북 정책을 제시했다.(薑龍範, 金可, 2023, pp. 5-13.) ‘한미동맹 강화’와 ‘글로벌 협력 확대’를 표방하며 미국에 핵우산 및 확장억제 강화를 요청하고, 미국의 전략자산 한반도 배치 확대 및 한미 핵협의 그룹(NCG)을 신설, 한미 연합훈련 확대 등 안보협력 강화를 추진했다.",
+    "citation_text": "(薑龍範, 金可, 2023, pp. 5-13.)",
+    "offset": [
+     44,
+     70
+    ],
+    "authors": [
+     "薑龍範"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 10,
+    "uid": "u9_3",
+    "kind": "parenthetical",
+    "sentence": "그런데 윤석열 정부는 미국의 이러한 전략에 적극 호응하는 조치들을 취하면서 ‘전략적 명확성’의 방향으로 전환했고,(박병광, 2023, p. 1) 한국은 자국의 최대 교역국 중국을 견제하는 상황이 되었다.",
+    "raw": "그런데 윤석열 정부는 미국의 이러한 전략에 적극 호응하는 조치들을 취하면서 ‘전략적 명확성’의 방향으로 전환했고,(박병광, 2023, p. 1) 한국은 자국의 최대 교역국 중국을 견제하는 상황이 되었다.",
+    "citation_text": "(박병광, 2023, p. 1)",
+    "offset": [
+     63,
+     80
+    ],
+    "authors": [
+     "박병광"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "‘담대한 구상’은 기존 보수 정부의 대북 정책 기조를 계승한 것으로, 그 내용은 북한이 비핵화를 실현할 경우 단계적으로 경제, 식량, 에너지, 인프라 등의 지원을 제공하겠다는 것이다.(한종욱, 2023) 비핵화를 전제 조건으로 하는 기존 보수 정부의 제안과 크게 다르지 않고, 북한도 자국의 제재 완화 및 단계적 접근 요구가 반영되지 않았다는 점에서 크게 반발했다.",
+    "raw": "‘담대한 구상’은 기존 보수 정부의 대북 정책 기조를 계승한 것으로, 그 내용은 북한이 비핵화를 실현할 경우 단계적으로 경제, 식량, 에너지, 인프라 등의 지원을 제공하겠다는 것이다.(한종욱, 2023) 비핵화를 전제 조건으로 하는 기존 보수 정부의 제안과 크게 다르지 않고, 북한도 자국의 제재 완화 및 단계적 접근 요구가 반영되지 않았다는 점에서 크게 반발했다.",
+    "citation_text": "(한종욱, 2023)",
+    "offset": [
+     102,
+     113
+    ],
+    "authors": [
+     "한종욱"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "중국은 압박 전략을 통해 한국 정부에 영향을 미치고자 했고, 이는 양국 교역의 감소로 나타났다.(Luce, 2021)",
+    "raw": "중국은 압박 전략을 통해 한국 정부에 영향을 미치고자 했고, 이는 양국 교역의 감소로 나타났다.(Luce, 2021)",
+    "citation_text": "(Luce, 2021)",
+    "offset": [
+     53,
+     65
+    ],
+    "authors": [
+     "Luce"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u26_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_3",
+    "kind": "parenthetical",
+    "sentence": "뿐만 아니라 한반도 평화체제 건설을 위한 4자회담에서도 성과를 얻을수 있기를 희망한다고 표명했다.(“江主席與金大中總統會談”, 1998) 주룽지 전총리 역시 한국 방문 시 김대중 전 대통령과의 회담에서 김대중 정부의 북한과의 관계 개선에 지지를 표명했고, 지속적인 발전에 대한 희망을 표명했으며한반도 평화 구축에 대해서도 지지를 표명했다.(“朱鎔基總理同韓國總統金大中舉行會談”, 2000)",
+    "raw": "뿐만 아니라 한반도 평화체제 건설을 위한 4자회담에서도 성과를 얻을수 있기를 희망한다고 표명했다.(“江主席與金大中總統會談”, 1998) 주룽지 전총리 역시 한국 방문 시 김대중 전 대통령과의 회담에서 김대중 정부의 북한과의 관계 개선에 지지를 표명했고, 지속적인 발전에 대한 희망을 표명했으며한반도 평화 구축에 대해서도 지지를 표명했다.(“朱鎔基總理同韓國總統金大中舉行會談”, 2000)",
+    "citation_text": "(“江主席與金大中總統會談”, 1998)",
+    "offset": [
+     54,
+     75
+    ],
+    "authors": [
+     "“江主席與金大中總統會談”"
+    ],
+    "year": "1998",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 16,
+    "uid": "u15_3",
+    "kind": "parenthetical",
+    "sentence": "뿐만 아니라 한반도 평화체제 건설을 위한 4자회담에서도 성과를 얻을수 있기를 희망한다고 표명했다.(“江主席與金大中總統會談”, 1998) 주룽지 전총리 역시 한국 방문 시 김대중 전 대통령과의 회담에서 김대중 정부의 북한과의 관계 개선에 지지를 표명했고, 지속적인 발전에 대한 희망을 표명했으며한반도 평화 구축에 대해서도 지지를 표명했다.(“朱鎔基總理同韓國總統金大中舉行會談”, 2000)",
+    "raw": "뿐만 아니라 한반도 평화체제 건설을 위한 4자회담에서도 성과를 얻을수 있기를 희망한다고 표명했다.(“江主席與金大中總統會談”, 1998) 주룽지 전총리 역시 한국 방문 시 김대중 전 대통령과의 회담에서 김대중 정부의 북한과의 관계 개선에 지지를 표명했고, 지속적인 발전에 대한 희망을 표명했으며한반도 평화 구축에 대해서도 지지를 표명했다.(“朱鎔基總理同韓國總統金大中舉行會談”, 2000)",
+    "citation_text": "(“朱鎔基總理同韓國總統金大中舉行會談”, 2000)",
+    "offset": [
+     188,
+     215
+    ],
+    "authors": [
+     "“朱鎔基總理同韓國總統金大中舉行會談”"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u25_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "parenthetical",
+    "sentence": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "raw": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "citation_text": "(김애경, 2024)",
+    "offset": [
+     95,
+     106
+    ],
+    "authors": [
+     "김애경"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "narrative",
+    "sentence": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "raw": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "citation_text": "공동성명(2005)",
+    "offset": [
+     157,
+     167
+    ],
+    "authors": [
+     "공동성명"
+    ],
+    "year": "2005",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "narrative",
+    "sentence": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "raw": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "citation_text": "합의(2007)",
+    "offset": [
+     174,
+     182
+    ],
+    "authors": [
+     "합의"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "narrative",
+    "sentence": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "raw": "중국은 당시 소극적인 태도를 취하던 제1차 북핵 위기 때와는 다르게 적극적으로 셔틀외교 펼치며, 북핵 문제 논의를 위해 양자 간, 다자 간회담을 성사시키기 위해 노력했다.(김애경, 2024) 중국 주도의 6자회담은 2003년 8월부터 2007년 9월까지 6차례 개최했고, 9·19 공동성명(2005), 2·13 합의(2007) 및 10·3합의(2007)를 도출해 냈다.",
+    "citation_text": "10·3합의(2007)",
+    "offset": [
+     185,
+     197
+    ],
+    "authors": [
+     "10·3합의"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_4",
+    "kind": "parenthetical",
+    "sentence": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "raw": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "citation_text": "전병곤, 2011",
+    "offset": [
+     97,
+     106
+    ],
+    "authors": [
+     "전병곤"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_4",
+    "kind": "parenthetical",
+    "sentence": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "raw": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "citation_text": "이상숙, 2010",
+    "offset": [
+     108,
+     117
+    ],
+    "authors": [
+     "이상숙"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_4",
+    "kind": "parenthetical",
+    "sentence": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "raw": "당시 2차례의 핵실험으로 중국 역시 대북 제재에 찬성하며 경색 국면에 진입했던 북중 양국 관계가 천안함, 연평도 사건을 계기로 다시 협조 국면에 돌입했다는 평가까지 나왔다.(전병곤, 2011; 이상숙, 2010) 북한의 도발에 대한 중국의 공식적인 입장은 “남북한 양측 모두 한반도의 평화와 안정에 유리하도록 노력해야 하기를 희망한다”였다.(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "citation_text": "(“外交部：中方對朝鮮半島炮擊事件表示關注”, 2010)",
+    "offset": [
+     190,
+     219
+    ],
+    "authors": [
+     "“外交部：中方對朝鮮半島炮擊事件表示關注”"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_5",
+    "kind": "parenthetical",
+    "sentence": "이명박 정부는 중국의 협력을 얻어내지 못했다.(羅潔, 於美華, 張璉瑰,, 2010)",
+    "raw": "이명박 정부는 중국의 협력을 얻어내지 못했다.(羅潔, 於美華, 張璉瑰,, 2010)",
+    "citation_text": "(羅潔, 於美華, 張璉瑰,, 2010)",
+    "offset": [
+     25,
+     46
+    ],
+    "authors": [
+     "羅潔"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_3",
+    "kind": "parenthetical",
+    "sentence": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "raw": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "citation_text": "高飛, 2014",
+    "offset": [
+     146,
+     154
+    ],
+    "authors": [
+     "高飛"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_3",
+    "kind": "parenthetical",
+    "sentence": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "raw": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "citation_text": "“國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014",
+    "offset": [
+     156,
+     187
+    ],
+    "authors": [
+     "“國際社會高度評價習近平訪韓: 展現中國真誠善意”"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_3",
+    "kind": "parenthetical",
+    "sentence": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "raw": "2013년 박근혜 전 대통령의 중국방문, 2014년 시진핑 주석의 북한보다 앞서 한국 단독 방문 및 박근혜 전 대통령의 2015년 중국의 전승절 열병식 참석 등 양국 정상의 상호방문에 중국은 양국 간 전략적 상호신뢰를 심화시키고, 관계를 격상시켰다고 평가했다.(高飛, 2014; “國際社會高度評價習近平訪韓: 展現中國真誠善意”, 2014) 시진핑 주석의 당시 방한에 대해 미국의 매체는 ‘미국의 동맹을 약화’시키기 위한 것이라고까지 평가했다.(Perlez, 2014) 특히 박근혜 전 대통령은 이견이 있음에도 불구하고 전승절 기념식에 참석함으로써, 한국 정부가 미중 사이에서 균형 외교를 추구한다는 평가를 받기도 했다.",
+    "citation_text": "(Perlez, 2014)",
+    "offset": [
+     246,
+     260
+    ],
+    "authors": [
+     "Perlez"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 31,
+      "num": null,
+      "uid": "u26_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "parenthetical",
+    "sentence": "상황이 이처럼 급반전된 것은 고고도미사일방어 (THAAD, 이하 사드)체계 배치 문제를 두고, 그 목적에 대해 한중 양국의 인식이 첨예하게 대립됐기 때문이다.(Matsuo, 2023) 한국에 사드 배치 가능성에 대한 언급이 시작됐을 때부터 중국은 민관을 불문하고 다양한 방식으로 강하게 반대입장을 표명했다.",
+    "raw": "상황이 이처럼 급반전된 것은 고고도미사일방어 (THAAD, 이하 사드)체계 배치 문제를 두고, 그 목적에 대해 한중 양국의 인식이 첨예하게 대립됐기 때문이다.(Matsuo, 2023) 한국에 사드 배치 가능성에 대한 언급이 시작됐을 때부터 중국은 민관을 불문하고 다양한 방식으로 강하게 반대입장을 표명했다.",
+    "citation_text": "(Matsuo, 2023)",
+    "offset": [
+     88,
+     102
+    ],
+    "authors": [
+     "Matsuo"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u26_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_1",
+    "kind": "parenthetical",
+    "sentence": "박근혜 정부 시기인 2013년-2016년에는 89.13%(2013년), 90.2%(2014년), 91.34%(2015년), 92.72%(2016년)까지 증가했다.(KOTRA, 2010-2016)",
+    "raw": "박근혜 정부 시기인 2013년-2016년에는 89.13%(2013년), 90.2%(2014년), 91.34%(2015년), 92.72%(2016년)까지 증가했다.(KOTRA, 2010-2016)",
+    "citation_text": "(KOTRA, 2010-2016)",
+    "offset": [
+     90,
+     108
+    ],
+    "authors": [
+     "KOTRA"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_2",
+    "kind": "parenthetical",
+    "sentence": "이에 앞서 중국은 2017년 3월 북핵 문제, 북한의 도발 해결 방안으로 한미와 북한에 ‘食豆(雙暫停), 食豆(雙軌並行)’을 제시했다.(“中國外交部發言人華春瑩舉行例行記者會”, 2017) 그런데 문재인 정부가 출범하고 얼마나 되지 않은 9월에 북한이 제6차 핵실험을 단행해 사드를 추가 배치했다.",
+    "raw": "이에 앞서 중국은 2017년 3월 북핵 문제, 북한의 도발 해결 방안으로 한미와 북한에 ‘食豆(雙暫停), 食豆(雙軌並行)’을 제시했다.(“中國外交部發言人華春瑩舉行例行記者會”, 2017) 그런데 문재인 정부가 출범하고 얼마나 되지 않은 9월에 북한이 제6차 핵실험을 단행해 사드를 추가 배치했다.",
+    "citation_text": "(“中國外交部發言人華春瑩舉行例行記者會”, 2017)",
+    "offset": [
+     75,
+     103
+    ],
+    "authors": [
+     "“中國外交部發言人華春瑩舉行例行記者會”"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 21,
+    "uid": "u20_2",
+    "kind": "parenthetical",
+    "sentence": "(“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”, 2022; “안보리 대북제재, 중·러반대로 첫 부결”, 2022)",
+    "raw": "(“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”, 2022; “안보리 대북제재, 중·러반대로 첫 부결”, 2022)",
+    "citation_text": "“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”, 2022",
+    "offset": [
+     1,
+     37
+    ],
+    "authors": [
+     "“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 21,
+    "uid": "u20_2",
+    "kind": "parenthetical",
+    "sentence": "(“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”, 2022; “안보리 대북제재, 중·러반대로 첫 부결”, 2022)",
+    "raw": "(“유엔 안보리에서 대북 제재 결의안 처음으로 부결됐다”, 2022; “안보리 대북제재, 중·러반대로 첫 부결”, 2022)",
+    "citation_text": "“안보리 대북제재, 중·러반대로 첫 부결”, 2022",
+    "offset": [
+     39,
+     68
+    ],
+    "authors": [
+     "“안보리 대북제재"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 21,
+    "uid": "u20_3",
+    "kind": "parenthetical",
+    "sentence": "(“중-러, ‘미국의 한반도 정책’ 건제 못박아…북과 연대 강화”, 2024) 이처럼 윤석열 정부 출범 이후 중국은 직간접적으로 북한의 입장을 지지하는 정책을 취하며, 한국 정부 정책에 대해서는 명시적으로 비협력적인 입장을 취했다.",
+    "raw": "(“중-러, ‘미국의 한반도 정책’ 건제 못박아…북과 연대 강화”, 2024) 이처럼 윤석열 정부 출범 이후 중국은 직간접적으로 북한의 입장을 지지하는 정책을 취하며, 한국 정부 정책에 대해서는 명시적으로 비협력적인 입장을 취했다.",
+    "citation_text": "(“중-러, ‘미국의 한반도 정책’ 건제 못박아…북과 연대 강화”, 2024)",
+    "offset": [
+     0,
+     43
+    ],
+    "authors": [
+     "‘미국의 한반도 정책’ 건제 못박아…북과 연대 강화”"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

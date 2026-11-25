@@ -270,6 +270,7 @@ def _snapshot(doc, dd):
         "volume": val("volume"), "issue": val("issue"), "pages": val("pages"),
         "authors": [x for x in aus if x], "affiliations": affs,
         "qc_level": q.get("level") or "", "qc_issues": list(q.get("issues") or []),
+        "language": q.get("language"),
     }
 
 
@@ -298,14 +299,17 @@ def find_pdfs(doc, up_root=None):
     return out
 
 
-def archive_docs(docs, note="", out_root=None, up_root=None, arch_root=None,
-                 meta_note=None):
+def archive_docs(docs, note="", reason="", out_root=None, up_root=None, arch_root=None,
+                 meta_note=None, meta_reason=None):
     """归档一批文档。返回 {ok: [doc], skipped: [(doc, 原因)], warnings: [(doc, 原因)]}。
 
     不删任何东西: PDF 与 out/ 产物都是移动。同一 doc 命中多个 PDF 时只移第一个,
     其余原样留在 uploads 并记 warning(可能是用户自己下载了两份, 不该替他删)。
 
     meta_note: {doc: 单篇批注}, 覆盖 note。
+    reason: 归档原因(批量单值, 如 "质检红-原文证据缺失"/"重复版本"); meta_reason 逐篇覆盖。
+            与 note 分离——note 是工作台备注(杂项), reason 回答"当初为什么归档"
+            (2026-11-24 用户实锤: 归档清单里定位不到原因)。
     """
     out_root = out_root or OUT_DIR
     up_root = up_root or UP_DIR
@@ -313,6 +317,7 @@ def archive_docs(docs, note="", out_root=None, up_root=None, arch_root=None,
     items = idx["items"]
     res = {"ok": [], "skipped": [], "warnings": []}
     meta_note = meta_note or {}
+    meta_reason = meta_reason or {}
 
     for raw in docs:
         doc = norm_doc(raw)
@@ -376,6 +381,7 @@ def archive_docs(docs, note="", out_root=None, up_root=None, arch_root=None,
 
         items[doc] = {
             "doc": doc, "archived_at": _now(), "note": meta_note.get(doc, note or ""),
+            "reason": meta_reason.get(doc, reason or ""),
             "sha256": digest, "size": size, "pdf_name": pdf_name,
             "has_out": has_out,
         }
@@ -435,7 +441,7 @@ def list_items(arch_root=None, q=""):
 
         def hit(it):
             blob = " ".join(str(it.get(k) or "") for k in
-                            ("doc", "title", "title_en", "journal", "note"))
+                            ("doc", "title", "title_en", "journal", "note", "reason"))
             blob += " " + " ".join(it.get("authors") or [])
             return fq in _fold(blob)
         items = [it for it in items if hit(it)]
@@ -447,18 +453,19 @@ def export_markdown(items):
     """已确认文献清单: 可直接贴进交付文档/参考文献附录。"""
     L = ["# 已归档文献清单", "",
          "共 %d 篇 · 导出 %s" % (len(items), datetime.datetime.now().strftime("%Y-%m-%d %H:%M")), "",
-         "| # | 标题 | 作者 | 刊名 | 年 | 卷(期) | 页码 | 归档时间 | 备注 |",
-         "|---|---|---|---|---|---|---|---|---|"]
+         "| # | 标题 | 作者 | 刊名 | 年 | 卷(期) | 页码 | 归档时间 | 归档原因 | 备注 |",
+         "|---|---|---|---|---|---|---|---|---|---|"]
     for i, it in enumerate(items, 1):
         def c(v):
             return str(v or "").replace("|", "\\|").replace("\n", " ")
         vol = c(it.get("volume"))
         if it.get("issue"):
             vol += "(%s)" % it["issue"]
-        L.append("| %d | %s | %s | %s | %s | %s | %s | %s | %s |" % (
+        L.append("| %d | %s | %s | %s | %s | %s | %s | %s | %s | %s |" % (
             i, c(it.get("title")), c(", ".join(it.get("authors") or [])),
             c(it.get("journal")), c(it.get("year")), vol, c(it.get("pages")),
-            c((it.get("archived_at") or "").replace("T", " ")[:16]), c(it.get("note"))))
+            c((it.get("archived_at") or "").replace("T", " ")[:16]),
+            c(it.get("reason")), c(it.get("note"))))
     return "\n".join(L) + "\n"
 
 
@@ -466,7 +473,7 @@ def export_csv(items):
     buf = io.StringIO()
     w = csv.writer(buf)
     w.writerow(["doc", "标题", "作者", "刊名", "年", "卷", "期", "页码",
-                "质检", "缺项", "归档时间", "备注", "sha256"])
+                "质检", "缺项", "归档时间", "归档原因", "备注", "sha256"])
     for it in items:
         w.writerow([it.get("doc"), it.get("title"), ", ".join(it.get("authors") or []),
                     it.get("journal"), it.get("year"), it.get("volume"), it.get("issue"),
@@ -474,7 +481,7 @@ def export_csv(items):
                     "通过" if not it.get("qc_issues") else "缺 " + "/".join(it.get("qc_issues") or []),
                     "/".join(it.get("qc_issues") or []),
                     (it.get("archived_at") or "").replace("T", " "),
-                    it.get("note"), it.get("sha256")])
+                    it.get("reason"), it.get("note"), it.get("sha256")])
     return buf.getvalue()
 
 
@@ -528,7 +535,7 @@ def _selftest():
         chk("无关标题不命中", _title_ratio("Particle Physics in the LHC Era", _t) < TITLE_HIT)
 
         # 归档
-        r = archive_docs([doc], note="单测批注", out_root=outs, up_root=ups, arch_root=arch)
+        r = archive_docs([doc], note="单测批注", reason="单测原因", out_root=outs, up_root=ups, arch_root=arch)
         chk("归档成功", r["ok"] == [doc], r)
         chk("out 已移走", not os.path.isdir(dd))
         chk("产物落位", os.path.isdir(os.path.join(arch, doc, "out")))
@@ -537,6 +544,8 @@ def _selftest():
         it = item_of(doc, arch) or {}
         chk("题录快照", (it.get("title") or "").startswith("A Study of Test Archiving"), it.get("title"))
         chk("批注落库", it.get("note") == "单测批注", it.get("note"))
+        chk("原因落库", it.get("reason") == "单测原因", it.get("reason"))
+        chk("语言落库", bool(it.get("language")))
         chk("hash 落库", bool(it.get("sha256")))
         chk("索引已写", os.path.isfile(os.path.join(arch, "index.json")))
         chk("is_archived", is_archived(doc, arch))
@@ -607,6 +616,7 @@ def _cli(argv):
     ap.add_argument("--add", action="store_true", help="归档给定 doc")
     ap.add_argument("--restore", action="store_true", help="恢复给定 doc")
     ap.add_argument("--note", default="", help="归档批注")
+    ap.add_argument("--reason", default="", help="归档原因(如: 证据缺失/重复版本/合格入库)")
     ap.add_argument("--check", metavar="PDF", help="判重演练: 只看会不会拦, 不动文件")
     ap.add_argument("--list", action="store_true", help="列出已归档")
     ap.add_argument("--export", metavar="PATH", help="导出清单(.md/.csv)")
@@ -635,7 +645,7 @@ def _cli(argv):
             print(("  OK  " if ok else "  SKIP") + " %s: %s" % (d, msg))
         return 0
     if a.add and a.docs:
-        r = archive_docs(a.docs, note=a.note)
+        r = archive_docs(a.docs, note=a.note, reason=a.reason)
         print("归档 %d 篇" % len(r["ok"]))
         for d in r["ok"]:
             print("  OK   " + d)

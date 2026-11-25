@@ -232,7 +232,11 @@ python ner_lite.py all                     # out/ 下所有带 unified/ 的文�
 python stages.py list 13563525        # 阶段表 + 该文档当前哪些能跑
 python stages.py 13563525 refs,front  # 只重跑两段元数据(秒级)
 python stages.py 13563525 all         # 全链(与 pipeline.main 等效)
+python stages.py --ws 俄葡法 --batch fr_01,fr_02 m3,refs,front,abs,issue,cspan,viewer,index
+                                      # 收敛链重跑指定工作区的一篇子集
 ```
+
+**工作区**：`stages.py` / `failures.py` / `meta_diff.py` 都认 `--ws <名或路径>`；不设时按 `--ws > KCI_WS_ROOT 环境变量 > GUI 当前工作区(.gui_prefs.json) > 主库` 解析，开跑前打印一行结果——CLI 与 GUI 看到的永远是同一个库。
 
 | 分组 | 阶段 |
 | --- | --- |
@@ -331,6 +335,8 @@ unify.py           跨引擎归并 -> unified/ + 汇总指标（已冻结）
 metadata.py        结构化元数据 CLI（11 行壳；实现在 metapy/）
 ner_lite.py        实体抽取（基金 / 软件 / 数据集）：LLM 提名，代码定位
 regress.py         参考文献质量检查（截断、作者、页拼接）
+guardmap.py        守卫影响面查询：改守卫前查"谁在用它"（`--top` 看最共享的守卫排行）
+golden.py          黄金样本回归集：修好的篇目存标准答案，改完代码秒级验证没改坏
 test_pipeline.py   unified 新旧判定、数据保全与查看器回归测试
 requirements.txt   渲染运行时依赖（站点包 + Pillow）
 channels.json      标定 + 模型默认值（无机密）

@@ -1,0 +1,2301 @@
+{
+ "doc": "13571798",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571798",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "중국은 과거 400만 명에 달하던 병력집약 구조를 220만 명 수준으로 슬림한 구조로 전환했고 추가적인 병력감축도 계획하고 있다. 러시아 역시 국방개혁을 통해 해공군 부대 수를 50%, 육군 부대의 90% 정도를 줄이는 과감한 구조조정을 단행하면서 장교 정원을 약 60%나 줄이는 개혁을 추진했다(“병역자원 감소로 ‘부대구조 개편’ 선택 아닌 필수.”『국방일보』(2019. 09. 04.)).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.7,
+     1219.0,
+     1000.1,
+     1307.0
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "중국은 과거 400만 명에 달하던 병력집약 구조를 220만 명 수준으로 슬림한 구조로 전환했고 추가적인 병력감축도 계획하고 있다. 러시아 역시 국방개혁을 통해 해공군 부대 수를 50%",
+     "육군 부대의 90% 정도를 줄이는 과감한 구조조정을 단행하면서 장교 정원을 약 60%나 줄이는 개혁을 추진했다"
+    ],
+    "authors_raw": "중국은 과거 400만 명에 달하던 병력집약 구조를 220만 명 수준으로 슬림한 구조로 전환했고 추가적인 병력감축도 계획하고 있다. 러시아 역시 국방개혁을 통해 해공군 부대 수를 50%, 육군 부대의 90% 정도를 줄이는 과감한 구조조정을 단행하면서 장교 정원을 약 60%나 줄이는 개혁을 추진했다",
+    "et_al": false,
+    "year": "2019",
+    "title": "병역자원 감소로 ‘부대구조 개편’ 선택 아닌 필수.",
+    "source": "『국방일보』(2019. 09. 04.))",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "기존 병력 중심에서 기술 중심으로 한국군이 변화한다면 이를 위한 정책의 중요도 또한 과거와 비교해 달라질 것이다. 즉 과거에 우선순위였던 정책이 미래에는 우선순위가 아닌 정책이 될 수 있다. 이런 의미에서 정책의 중요도가 상대적으로 변화할 것으로 판단된다.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.7,
+     1219.0,
+     1000.1,
+     1307.0
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방자원 배분은 국익을 위해 국가전략에서 요구되는 군사적 책임을 달성하기 위하여, 군사능력(military capability)을 발전시키고 유지할 수 있도록 국가자원을 효과적이고 효율적으로 배분하는 것으로 정의할 수 있다(Sean C. Sullivan. \"Defense Resource Allocation: The Formal Process in U.S. Defense Planning.\" Naval War College faculty paper 8, (April 2009), p. 1.).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.7,
+     1219.0,
+     1000.1,
+     1307.0
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "국방자원 배분은 국익을 위해 국가전략에서 요구되는 군사적 책임을 달성하기 위하여",
+     "군사능력(military capability)을 발전시키고 유지할 수 있도록 국가자원을 효과적이고 효율적으로 배분하는 것으로 정의할 수 있다(Sean C. Sullivan"
+    ],
+    "authors_raw": "국방자원 배분은 국익을 위해 국가전략에서 요구되는 군사적 책임을 달성하기 위하여, 군사능력(military capability)을 발전시키고 유지할 수 있도록 국가자원을 효과적이고 효율적으로 배분하는 것으로 정의할 수 있다(Sean C. Sullivan",
+    "et_al": false,
+    "year": "2009",
+    "title": "Defense Resource Allocation: The Formal Process in U.S. Defense Planning.",
+    "source": "Naval War College faculty paper 8, (April 2009)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "정정길(1989). 정책학원론. 서울: 대영문화사, 남궁근(2012). 정책학. 파주: 법문사.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1330.1,
+     758.4,
+     1362.2
+    ],
+    "uid": "u2_6",
+    "authors": [
+     "정정길"
+    ],
+    "authors_raw": "정정길",
+    "et_al": false,
+    "year": "2012",
+    "title": "정책학. 파주: 법문사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "임길섭 등(2020). 국방정책 개론. 서울: 한국국방연구원.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1330.1,
+     758.4,
+     1362.2
+    ],
+    "uid": "u2_6",
+    "authors": [
+     "임길섭",
+     "등"
+    ],
+    "authors_raw": "임길섭 등",
+    "et_al": false,
+    "year": "2020",
+    "title": "국방정책 개론. 서울: 한국국방연구원",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "차영구·황병무(2002). 국방정책의 이론과 실제. 서울: 도서출판 오름.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1330.1,
+     758.4,
+     1362.2
+    ],
+    "uid": "u2_6",
+    "authors": [
+     "차영구",
+     "황병무"
+    ],
+    "authors_raw": "차영구·황병무",
+    "et_al": false,
+    "year": "2002",
+    "title": "국방정책의 이론과 실제. 서울: 도서출판 오름",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "합동참모본부. 합동·연합작전 군사용어사전. 서울: 합동참모본부, 2014, p. 66.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1330.1,
+     758.4,
+     1362.2
+    ],
+    "uid": "u2_6",
+    "authors": [
+     "합동참모본부. 합동",
+     "연합작전 군사용어사전. 서울: 합동참모본부"
+    ],
+    "authors_raw": "합동참모본부. 합동·연합작전 군사용어사전. 서울: 합동참모본부",
+    "et_al": false,
+    "year": "2014",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "행정학 사전, http://terms.naver.com/entry.naver?docId=1140838&cid=40942&categoryId=31645(검색일: 2022. 5. 16).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1330.1,
+     758.4,
+     1362.2
+    ],
+    "uid": "u2_6",
+    "authors": [
+     "행정학 사전",
+     "http://terms.naver.com/entry.naver?docId=1140838&cid=40942&categoryId=31645(검색일:"
+    ],
+    "authors_raw": "행정학 사전, http://terms.naver.com/entry.naver?docId=1140838&cid=40942&categoryId=31645(검색일:",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "한용섭(2018) 국방정책론 서울<sub>:</sub> 박영사",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     145.9,
+     1365.3,
+     573.8,
+     1419.2
+    ],
+    "uid": "u3_8",
+    "authors": [
+     "한용섭"
+    ],
+    "authors_raw": "한용섭",
+    "et_al": false,
+    "year": "2018",
+    "title": "국방정책론 서울<sub>:</sub> 박영사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "국방대학교(2002)<sub>.</sub> 국방정책과 제도<sub>.</sub> 서울<sub>:</sub> 국방대학교<sub>.</sub>",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     145.9,
+     1365.3,
+     573.8,
+     1419.2
+    ],
+    "uid": "u3_8",
+    "authors": [
+     "국방대학교"
+    ],
+    "authors_raw": "국방대학교",
+    "et_al": false,
+    "year": "2002",
+    "title": "<sub>.</sub> 국방정책과 제도<sub>.</sub> 서울<sub>:</sub> 국방대학교<sub>.</sub>",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "합동참모<sup>본</sup>부(2014)<sub>.</sub> p<sub>.</sub> 66<sub>.</sub>",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1334.0,
+     687.7,
+     1388.7
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "합동참모<sup>본</sup>부"
+    ],
+    "authors_raw": "합동참모<sup>본</sup>부",
+    "et_al": false,
+    "year": "2014",
+    "title": "<sub>.</sub> p<sub>.</sub> 66<sub>.</sub>",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "차영구⋅황병무(2002) 국방정책의 이론과 실제 서울<sub>:</sub> 도서출판 오름",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1334.0,
+     687.7,
+     1388.7
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "차영구⋅황병무"
+    ],
+    "authors_raw": "차영구⋅황병무",
+    "et_al": false,
+    "year": "2002",
+    "title": "국방정책의 이론과 실제 서울<sub>:</sub> 도서출판 오름",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "한용섭(2018) 국방정책론 서울<sub>:</sub> 박영사",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1334.0,
+     687.7,
+     1388.7
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "한용섭"
+    ],
+    "authors_raw": "한용섭",
+    "et_al": false,
+    "year": "2018",
+    "title": "국방정책론 서울<sub>:</sub> 박영사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "홍성표(2006)<sub>.</sub> 미국의 국방정책론<sub>.</sub> 서울<sub>:</sub> 국방대학교<sub>.</sub>",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     145.5,
+     1334.0,
+     687.7,
+     1388.7
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "홍성표"
+    ],
+    "authors_raw": "홍성표",
+    "et_al": false,
+    "year": "2006",
+    "title": "<sub>.</sub> 미국의 국방정책론<sub>.</sub> 서울<sub>:</sub> 국방대학교<sub>.</sub>",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "국방정책의 목표는 비군사를 포함한 군사위주의 수단을 사용하여 국가목표를 달성하는 데 있음. 그리고 이를 위해 포함해야 할 주요사항은 병력, 장비, 군사비, 군사과학, 제도와 관리, 대내외적 안보환경과 군사정책 등이 있음 (국방대학교, 2002, pp. 96-104).",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     146.2,
+     1339.8,
+     1000.1,
+     1421.1
+    ],
+    "uid": "u6_9",
+    "authors": [
+     "국방정책의 목표는 비군사를 포함한 군사위주의 수단을 사용하여 국가목표를 달성하는 데 있음. 그리고 이를 위해 포함해야 할 주요사항은 병력"
+    ],
+    "authors_raw": "국방정책의 목표는 비군사를 포함한 군사위주의 수단을 사용하여 국가목표를 달성하는 데 있음. 그리고 이를 위해 포함해야 할 주요사항은 병력",
+    "et_al": false,
+    "year": "2002",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "96-104",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "Saaty(2008)는 일관성 비율이 0.1 미만이면 쌍대비교는 합리적인 일관성을 갖는 것으로 판단하고, 0.2 미만일 경우 용납할 수 있는 수준의 일관성을 구비한 것으로 판단하였다. 또한, 일관성 비율이 0.2 이상이면 일관성이 부족하여 재조사가 필요하다고 제안한다(박현 · 고길곤 · 유서현, 2000, 예비타당성조사 수행을 위한 다기준분석 방안 연구(II). 한국개발연구원 공공투자관리센터 연구보고서. p.43).",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     144.1,
+     1309.8,
+     1000.1,
+     1421.4
+    ],
+    "uid": "u9_9",
+    "authors": [
+     "Saaty"
+    ],
+    "authors_raw": "Saaty",
+    "et_al": false,
+    "year": "2008",
+    "title": "는 일관성 비율이 0.1 미만이면 쌍대비교는 합리적인 일관성을 갖는 것으로 판단하고",
+    "source": "0.2 미만일 경우 용납할 수 있는 수준의 일관성을 구비한 것으로 판단하였다. 또한",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "이재옥·정연오(2020). 전력소요결정을 위한 단위기능분석체계. 국방논단. 서울: 한국국방연구원.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     145.5,
+     1395.6,
+     882.9,
+     1419.5
+    ],
+    "uid": "u10_7",
+    "authors": [
+     "이재옥",
+     "정연오"
+    ],
+    "authors_raw": "이재옥·정연오",
+    "et_al": false,
+    "year": "2020",
+    "title": "전력소요결정을 위한 단위기능분석체계. 국방논단. 서울: 한국국방연구원",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "군사전략은 국가적 목표 달성을 위해 전시에 군사력을 운용하고, 평시에 이를 위한 군사력을 건설하는 데 근간이 된다. 김정익(2013). 군사전략 3대 요소의 이론과 적용. 국방논단, p. 1.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     145.5,
+     1367.5,
+     996.0,
+     1421.1
+    ],
+    "uid": "u11_5",
+    "authors": [
+     "군사전략은 국가적 목표 달성을 위해 전시에 군사력을 운용하고",
+     "평시에 이를 위한 군사력을 건설하는 데 근간이 된다. 김정익"
+    ],
+    "authors_raw": "군사전략은 국가적 목표 달성을 위해 전시에 군사력을 운용하고, 평시에 이를 위한 군사력을 건설하는 데 근간이 된다. 김정익",
+    "et_al": false,
+    "year": "2013",
+    "title": "군사전략 3대 요소의 이론과 적용. 국방논단",
+    "source": "p. 1",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "현익재·김동민·김선숙·김영곤·박민섭(2021). 국방환경 변화에 부합한 미래 해군 병과체계 개선 연구. 한국국방연구원 보고서. https://www.kida.re.kr/cmm/viewBoardImageFile.do?idx=34516",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     145.5,
+     1367.5,
+     997.9,
+     1419.5
+    ],
+    "uid": "u12_7",
+    "authors": [
+     "현익재",
+     "김동민",
+     "김선숙",
+     "김영곤",
+     "박민섭"
+    ],
+    "authors_raw": "현익재·김동민·김선숙·김영곤·박민섭",
+    "et_al": false,
+    "year": "2021",
+    "title": "국방환경 변화에 부합한 미래 해군 병과체계 개선 연구. 한국국방연구원 보고서. https://www.kida.re.kr/cmm/viewBoardImageFile.do?idx=34516",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "박은규 · 조아름 · 서현주(2021). MZ세대 직업가치관 변화 분석: 10년간(2010~2019) 변화를 중심으로 한국고용정보원 보고서.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1280.9,
+     999.8,
+     1419.5
+    ],
+    "uid": "u13_6",
+    "authors": [
+     "박은규",
+     "조아름",
+     "서현주"
+    ],
+    "authors_raw": "박은규 · 조아름 · 서현주",
+    "et_al": false,
+    "year": "2021",
+    "title": "MZ세대 직업가치관 변화 분석: 10년간(2010~2019) 변화를 중심으로 한국고용정보원 보고서",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "신기술이 적용된 민간의 제품을 방위사업청에서 획득하고 군에서 시범 운용하여 군사적 활용성을 확인하며 그 결과를 민간에 피드백한다. 그리고 군사적 활용성이 확인된 제품은 군 소요에 따라 전력화를 추진한다(출처: 방위사업청 홈페이지).",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1280.9,
+     999.8,
+     1419.5
+    ],
+    "uid": "u13_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 21,
+   "per_page": {
+    "2": 3,
+    "3": 5,
+    "4": 2,
+    "6": 4,
+    "7": 1,
+    "10": 1,
+    "11": 1,
+    "12": 1,
+    "13": 1,
+    "14": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "3": {
+     "markers": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+     ],
+     "collected": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+     ]
+    },
+    "4": {
+     "markers": [
+      "9",
+      "10"
+     ],
+     "collected": [
+      "9",
+      "10"
+     ]
+    },
+    "6": {
+     "markers": [
+      "11",
+      "12",
+      "13",
+      "14"
+     ],
+     "collected": [
+      "11",
+      "12",
+      "13",
+      "14"
+     ]
+    },
+    "7": {
+     "markers": [
+      "15"
+     ],
+     "collected": [
+      "15"
+     ]
+    },
+    "10": {
+     "markers": [
+      "16"
+     ],
+     "collected": [
+      "16"
+     ]
+    },
+    "11": {
+     "markers": [
+      "17"
+     ],
+     "collected": [
+      "17"
+     ]
+    },
+    "12": {
+     "markers": [
+      "18"
+     ],
+     "collected": [
+      "18"
+     ]
+    },
+    "13": {
+     "markers": [
+      "19"
+     ],
+     "collected": [
+      "19"
+     ]
+    },
+    "14": {
+     "markers": [
+      "20",
+      "21"
+     ],
+     "collected": [
+      "20",
+      "21"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, W. H. (2009). Delphi and AHP analysis on the critical success factors (CSFs) of social work supervision. [Doctoral dissertation, Seoul Women<sup>’</sup>s University]\nde FSM Russo, R., & Camanho, R. (2015). Criteria in AHP: a systematic review of literature. Procedia Computer Science, 55, 1123-1132. https://doi.org/10.1016/j.procs.2015.07.081",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Choi W. H"
+    ],
+    "authors_raw": "Choi, W. H",
+    "et_al": false,
+    "year": "2015",
+    "title": "Criteria in AHP: a systematic review of literature. Procedia Computer Science",
+    "source": "55",
+    "volume": null,
+    "issue": null,
+    "pages": "1123-1132",
+    "doi": "10.1016/j.procs.2015.07.081",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Forman, E. H., & Gass, S. I. (2001). The analytic hierarchy process—an exposition. Operations Research, 49(4), 469-486. https://doi.org/10.1287/opre.49.4.469.11231",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Forman E. H",
+     "Gass S. I"
+    ],
+    "authors_raw": "Forman, E. H., & Gass, S. I",
+    "et_al": false,
+    "year": "2001",
+    "title": "The analytic hierarchy process—an exposition. Operations Research",
+    "source": "49(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "469-486",
+    "doi": "10.1287/opre.49.4.469.11231",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ishizaka, A., & Labib, A. (2011). Review of the main developments in the analytic hierarchy process. Expert Systems with Applications, 38(11), 14336-14345. https://doi.org/10.1016/ j.eswa.2011.04.143",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Ishizaka A",
+     "Labib A"
+    ],
+    "authors_raw": "Ishizaka, A., & Labib, A",
+    "et_al": false,
+    "year": "2011",
+    "title": "Review of the main developments in the analytic hierarchy process. Expert Systems with Applications",
+    "source": "38(11)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, K. B., Kim, J. K., Park, K. H., & Park, C. T. (2016). Policy sciences. Seoul: Daeyoung.",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kang K. B",
+     "Kim J. K",
+     "Park K. H",
+     "Park C. T"
+    ],
+    "authors_raw": "Kang, K. B., Kim, J. K., Park, K. H., & Park, C. T",
+    "et_al": false,
+    "year": "2016",
+    "title": "Policy sciences. Seoul: Daeyoung",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, Y. (2022). The enhancement of civilian military employees system for Improving the reserve forces management efficiency in Korean military. Journal of Advances in Military Studies, 5(1), 49-77. https://doi.org/10.37944/jams.v5i1.136",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kang Y"
+    ],
+    "authors_raw": "Kang, Y",
+    "et_al": false,
+    "year": "2022",
+    "title": "The enhancement of civilian military employees system for Improving the reserve forces management efficiency in Korean military. Journal of Advances in Military Studies",
+    "source": "5(1)",
+    "volume": "5",
+    "issue": null,
+    "pages": "49-77",
+    "doi": "10.37944/jams.v5i1.136",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. H., Kang, D. W., & Kang, B. C. (2022). Instrument development for measuring determinants in defense R&D policy. Journal of Advances in Military Studies, 5(3), 43-65. https://doi.org/10.37944/jams.v5i3.171",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim J. H",
+     "Kang D. W",
+     "Kang B. C"
+    ],
+    "authors_raw": "Kim, J. H., Kang, D. W., & Kang, B. C",
+    "et_al": false,
+    "year": "2022",
+    "title": "Instrument development for measuring determinants in defense R&D policy. Journal of Advances in Military Studies",
+    "source": "5(3)",
+    "volume": "5",
+    "issue": null,
+    "pages": "43-65",
+    "doi": "10.37944/jams.v5i3.171",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ko, S. S. (2020). <sup>‘</sup>The Inconvenient Truth<sup>’</sup> in the Command System of the Royal Navy in the Late 19th Century: A Focusing on the Collision between H.M.S. Victoria and H.M.S. Camperdown in 1893. Korea Journal of Military Affairs, 8, 185-211. https://doi.org/ 10.33528/kjma.2020.12.8.185",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Ko S. S"
+    ],
+    "authors_raw": "Ko, S. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "<sup>‘</sup>The Inconvenient Truth<sup>’</sup> in the Command System of the Royal Navy in the Late 19th Century: A Focusing on the Collision between H.M.S. Victoria and H.M.S. Camperdown in 1893. Korea Journal of Military Affairs",
+    "source": "8",
+    "volume": null,
+    "issue": null,
+    "pages": "185-211",
+    "doi": "10.33528/kjma.2020.12.8.185",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. C. (2012). Statistical concepts of Analytic Hierarchy Process (AHP). [Doctoral dissertation, Korea University]",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Lee J. C"
+    ],
+    "authors_raw": "Lee, J. C",
+    "et_al": false,
+    "year": "2012",
+    "title": "Statistical concepts of Analytic Hierarchy Process (AHP). [Doctoral dissertation",
+    "source": "Korea University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, M. S., & Park, S. H. (2023). A Study on the Direction of the Military Personnel Act Revisions for the Implementation of Defense Vision 2050. The journal of Convergence on Culture Technology, 9(1), 401-405. https://doi.org/10.17703/JCCT.2023.9.1.401",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Lee M. S",
+     "Park S. H"
+    ],
+    "authors_raw": "Lee, M. S., & Park, S. H",
+    "et_al": false,
+    "year": "2023",
+    "title": "A Study on the Direction of the Military Personnel Act Revisions for the Implementation of Defense Vision 2050. The journal of Convergence on Culture Technology",
+    "source": "9(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "401-405",
+    "doi": "10.17703/JCCT.2023.9.1.401",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Miller, G. A. (1956). The magical number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review, 63(2), 81-97. https://doi.org/10.1037/ h0043158",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Miller G. A"
+    ],
+    "authors_raw": "Miller, G. A",
+    "et_al": false,
+    "year": "1956",
+    "title": "The magical number seven",
+    "source": "plus or minus two: Some limits on our capacity for processing information. Psychological Review",
+    "volume": null,
+    "issue": null,
+    "pages": "81-97",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, H. G., (2021). A Study on Differences in Perception and Performance Impact on the Factors that Activate the Innovation Cluster : Focusing on Daedeok Innopolis. [Doctoral dissertation, Chungnam National University]",
+    "page": 16,
+    "box": [
+     143.8,
+     540.2,
+     1000.1,
+     904.7
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Park H. G"
+    ],
+    "authors_raw": "Park, H. G",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on Differences in Perception and Performance Impact on the Factors that Activate the Innovation Cluster : Focusing on Daedeok Innopolis. [Doctoral dissertation",
+    "source": "Chungnam National University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, Y. S. (2021). A study on the improvement of the future branch system: Focusing on army weapon systems and combat branches. Journal of Advances in Military Studies, 4(3), 1-19. https://doi.org/10.37944/jams.v4i3.110",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Park Y. S"
+    ],
+    "authors_raw": "Park, Y. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A study on the improvement of the future branch system: Focusing on army weapon systems and combat branches. Journal of Advances in Military Studies",
+    "source": "4(3)",
+    "volume": "4",
+    "issue": null,
+    "pages": "1-19",
+    "doi": "10.37944/jams.v4i3.110",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ryu, K. D., & Kim, W. J. (2018). A Study on Contact Center Evaluation Model Using AHP and Content Analysis. Journal of the Korea Academia-Industrial cooperation Society, 19(5), 106-116. https://doi.org/10.5762/KAIS.2018.19.5.106",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Ryu K. D",
+     "Kim W. J"
+    ],
+    "authors_raw": "Ryu, K. D., & Kim, W. J",
+    "et_al": false,
+    "year": "2018",
+    "title": "A Study on Contact Center Evaluation Model Using AHP and Content Analysis. Journal of the Korea Academia-Industrial cooperation Society",
+    "source": "19(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "106-116",
+    "doi": "10.5762/KAIS.2018.19.5.106",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Saaty T. L. (2008). Decision making with the analytic hierarchy process. International Journal of Services Sciences, 1(1), 83-98. https://doi.org/10.1504/IJSSci.2008.01759",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Saaty T. L"
+    ],
+    "authors_raw": "Saaty T. L",
+    "et_al": false,
+    "year": "2008",
+    "title": "Decision making with the analytic hierarchy process. International Journal of Services Sciences",
+    "source": "1(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "83-98",
+    "doi": "10.1504/IJSSci.2008.01759",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Satty, T. L. (1980). The Analytical Hierarchy Process: Planning, Priority Setting, Resource Allocation. New York: McGraw-Hill.",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Satty T. L"
+    ],
+    "authors_raw": "Satty, T. L",
+    "et_al": false,
+    "year": "1980",
+    "title": "The Analytical Hierarchy Process: Planning",
+    "source": "Priority Setting",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Vaidya, O. S., & Kumar, S. (2006). Analytic hierarchy process: An overview of applications. European Journal of Operational Research, 169(1), 1-29. https://doi.org/10.1016/j.ejor. 2004.04.028",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Vaidya O. S",
+     "Kumar S"
+    ],
+    "authors_raw": "Vaidya, O. S., & Kumar, S",
+    "et_al": false,
+    "year": "2006",
+    "title": "Analytic hierarchy process: An overview of applications. European Journal of Operational Research",
+    "source": "169(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-29",
+    "doi": "10.1016/j.ejor",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wallenius, J., Dyer, J. S., Fishburn, P. C., Steuer, R. E., Zionts, S., & Deb, K. (2008). Multiple criteria decision making, multiattribute utility theory: Recent accomplishments and what lies ahead. Management science, 54(7), 1336-1349. https://doi.org/10.1287/mnsc.1070.0838",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Wallenius J",
+     "Dyer J. S",
+     "Fishburn P. C",
+     "Steuer R. E",
+     "Zionts S",
+     "Deb K"
+    ],
+    "authors_raw": "Wallenius, J., Dyer, J. S., Fishburn, P. C., Steuer, R. E., Zionts, S., & Deb, K",
+    "et_al": false,
+    "year": "2008",
+    "title": "Multiple criteria decision making",
+    "source": "multiattribute utility theory: Recent accomplishments and what lies ahead. Management science",
+    "volume": null,
+    "issue": null,
+    "pages": "1336-1349",
+    "doi": "10.1287/mnsc.1070.0838",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Won, K. C., Kim, Y. P., Kim, M. S., Ha, T. G., Lee, Y. Y., Lee, H. J., (2021). Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies, 4(2), 37-58. https://doi.org/10.37944/jams.v4i2.113",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Won K. C",
+     "Kim Y. P",
+     "Kim M. S",
+     "Ha T. G",
+     "Lee Y. Y",
+     "Lee H. J"
+    ],
+    "authors_raw": "Won, K. C., Kim, Y. P., Kim, M. S., Ha, T. G., Lee, Y. Y., Lee, H. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies",
+    "source": "4(2)",
+    "volume": "4",
+    "issue": null,
+    "pages": "21-35",
+    "doi": "10.37944/jams.v4i2.113",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yu, K. K. (2010). Analysis on Priority of Success Factors in the Provincial Sports Event through AHP Method. Korean Journal of Sport Management, 15(1), 91-102. UCI : G704-001367. 2010.15.1.009 원고 접수일 2023년 01월 02일\n원고수정일2023년04월19일\n게재확정일 2023년 04월 28일",
+    "page": 17,
+    "box": [
+     144.9,
+     540.2,
+     998.3,
+     606.6
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Yu K. K"
+    ],
+    "authors_raw": "Yu, K. K",
+    "et_al": false,
+    "year": "2010",
+    "title": "Analysis on Priority of Success Factors in the Provincial Sports Event through AHP Method. Korean Journal of Sport Management",
+    "source": "15(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "91-102",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Analysis of future defense policy priorities with AHP",
+   "page": 1,
+   "box": [
+    257.3,
+    393.7,
+    907.7,
+    429.3
+   ],
+   "uid": "u0_6",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Dongmin",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     436.5,
+     454.4,
+     725.2,
+     483.1
+    ]
+   },
+   {
+    "name": "Bae, Kwanpyo",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     436.5,
+     454.4,
+     725.2,
+     483.1
+    ]
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "Future defense systems cannot maintain the large-scale military force they currently have owing to population decline. Accordingly, the paradigm of military force construction and operation must change from being quantity-to quality-oriented. These changes render the effects of existing defense policies ineffective and highlight that the policies need to be updated. This study analyzes the preferred defense policy in the future defense environment using AHP. This is because efficient allocation and utilization of limited resources and rational decision-making according to policy priorities and in accordance with the paradigm shift in the construction and operation of future defense systems are necessary. The results reveal that the most important policy priority is utilizing science and technology effectively in the future defense. In addition, the policy priorities should be given to policies that focus on the development of weapons systems and acquisition of skilled manpower.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Future defense systems cannot maintain the large-scale military force they currently have owing to population decline. Accordingly, the paradigm of military force construction and operation must change from being quantity-to quality-oriented. These changes render the effects of existing defense policies ineffective and highlight that the policies need to be updated. This study analyzes the preferred defense policy in the future defense environment using AHP. This is because efficient allocation and utilization of limited resources and rational decision-making according to policy priorities and in accordance with the paradigm shift in the construction and operation of future defense systems are necessary. The results reveal that the most important policy priority is utilizing science and technology effectively in the future defense. In addition, the policy priorities should be given to policies that focus on the development of weapons systems and acquisition of skilled manpower.",
+   "page": 1,
+   "box": [
+    190.5,
+    541.0,
+    309.4,
+    569.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_8"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : high-tech science and technology armed force, defense policy, AHP analysis, priority of policy, weapon power required, excellent manpower acquisition"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "99-118",
+   "uid": "u0_4",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "첨단과학기술군",
+   "국방정책",
+   "AHP 분석",
+   "정책 우선순위",
+   "전력소요",
+   "국방인력정책"
+  ],
+  "keywords_en": [
+   "high-tech science and technology armed force",
+   "defense policy",
+   "AHP analysis",
+   "priority of policy",
+   "weapon power required",
+   "excellent manpower acquisition"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "현재 한국군도 4차 산업혁명 변화 흐름에 맞춰 첨단과학기술의도입과 활용을 확대하고 있다(Won et al., 2021).",
+    "raw": "현재 한국군도 4차 산업혁명 변화 흐름에 맞춰 첨단과학기술의도입과 활용을 확대하고 있다(Won et al., 2021).",
+    "citation_text": "(Won et al., 2021)",
+    "offset": [
+     48,
+     66
+    ],
+    "authors": [
+     "Won et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "정책집행에 필요한 국방자원(resource : 예산, 인력, 물자 등)은 한정되므로 자원의 효율적 배분과 활용이 중요하다(e.g., Kim, Kang, & Kang, 2022).",
+    "raw": "정책집행에 필요한 국방자원(resource : 예산, 인력, 물자 등)은 한정되므로 자원의 효율적 배분과 활용이 중요하다(e.g., Kim, Kang, & Kang, 2022).",
+    "citation_text": "(e.g., Kim, Kang, & Kang, 2022)",
+    "offset": [
+     67,
+     98
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "특히, 군사혁신기술을 적용한 무기체계는 재래식 무기체계와 비교하면 고가 장비로 구성되기 때문에 자원의 효율적 배분이 더욱 필요하다 (Kang, Y., 2022).",
+    "raw": "특히, 군사혁신기술을 적용한 무기체계는 재래식 무기체계와 비교하면 고가 장비로 구성되기 때문에 자원의 효율적 배분이 더욱 필요하다 (Kang, Y., 2022).",
+    "citation_text": "(Kang, Y., 2022)",
+    "offset": [
+     73,
+     89
+    ],
+    "authors": [
+     "Kang"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "(Kang et al., 2016).",
+    "raw": "(Kang et al., 2016).",
+    "citation_text": "(Kang et al., 2016)",
+    "offset": [
+     0,
+     19
+    ],
+    "authors": [
+     "Kang et al."
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "이를 통해 본 연구는 분해된 요인에 대한 쌍대비교를 통해 중요도를 도출하여 (Choi, 2009) 국방자원 배분과 합리적 의사결정을 지원할 수 정책적 우선순위를 제시하였다는 점에서 학술적 의의가 있다고 볼 수 있다.",
+    "raw": "이를 통해 본 연구는 분해된 요인에 대한 쌍대비교를 통해 중요도를 도출하여 (Choi, 2009) 국방자원 배분과 합리적 의사결정을 지원할 수 정책적 우선순위를 제시하였다는 점에서 학술적 의의가 있다고 볼 수 있다.",
+    "citation_text": "(Choi, 2009)",
+    "offset": [
+     42,
+     54
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "이러한 측면에서 행정학 분야에서는 정책을 “정부 또는 공공기관이 공적 목표를 달성하기 위해 마련한 장기적인 행동 지침”으로 정의하고 있다.⁸) 또한, 공공정책 측면에서 정책 범위를 정부기관이 공익실현을 위하여 정책목표, 정책수단, 정책대상자를 특정하여 수립하는 방침 또는 지침으로 규정할 수도 있다(임길섭 등, 2020).",
+    "raw": "이러한 측면에서 행정학 분야에서는 정책을 “정부 또는 공공기관이 공적 목표를 달성하기 위해 마련한 장기적인 행동 지침”으로 정의하고 있다.⁸) 또한, 공공정책 측면에서 정책 범위를 정부기관이 공익실현을 위하여 정책목표, 정책수단, 정책대상자를 특정하여 수립하는 방침 또는 지침으로 규정할 수도 있다(임길섭 등, 2020).",
+    "citation_text": "(임길섭 등, 2020)",
+    "offset": [
+     166,
+     179
+    ],
+    "authors": [
+     "임길섭 등"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "적 활동으로 볼 수도 있다(차영구, 황병무, 2002).",
+    "raw": "적 활동으로 볼 수도 있다(차영구, 황병무, 2002).",
+    "citation_text": "(차영구, 황병무, 2002)",
+    "offset": [
+     14,
+     30
+    ],
+    "authors": [
+     "차영구"
+    ],
+    "year": "2002",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "이 경우 비교 척도가 다르거나 비교 척도가 아예 없다면 정량적 의사결정 기법을 통해 비교 대상을 합리적으로 비교하여 판단할 수 없다(Yu, 2010).",
+    "raw": "이 경우 비교 척도가 다르거나 비교 척도가 아예 없다면 정량적 의사결정 기법을 통해 비교 대상을 합리적으로 비교하여 판단할 수 없다(Yu, 2010).",
+    "citation_text": "(Yu, 2010)",
+    "offset": [
+     73,
+     83
+    ],
+    "authors": [
+     "Yu"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "대안의 우선순위를 평가하고, 원하는 대안의 전체 순위를 도출하기 위해 모든 기준을 합산하는 기준 자체에 대한 우선순위의 생성은 어렵다(de FSM Russo & Camanho, 2015).",
+    "raw": "대안의 우선순위를 평가하고, 원하는 대안의 전체 순위를 도출하기 위해 모든 기준을 합산하는 기준 자체에 대한 우선순위의 생성은 어렵다(de FSM Russo & Camanho, 2015).",
+    "citation_text": "(de FSM Russo & Camanho, 2015)",
+    "offset": [
+     74,
+     104
+    ],
+    "authors": [
+     "de FSM Russo & Camanho"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "narrative",
+    "sentence": "이런 정량적 분석기법의 한계를 보완하기 위해 Saaty(1980)는 계층분석방법(Analytic Hierarchy Process, AHP)을 개발하였다.",
+    "raw": "이런 정량적 분석기법의 한계를 보완하기 위해 Saaty(1980)는 계층분석방법(Analytic Hierarchy Process, AHP)을 개발하였다.",
+    "citation_text": "Saaty(1980)",
+    "offset": [
+     25,
+     36
+    ],
+    "authors": [
+     "Saaty"
+    ],
+    "year": "1980",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "raw": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "citation_text": "e.g., Forman & Gass, 2001",
+    "offset": [
+     92,
+     117
+    ],
+    "authors": [
+     "Forman & Gass"
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "raw": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "citation_text": "Vaidya & Kumar, 2006",
+    "offset": [
+     119,
+     139
+    ],
+    "authors": [
+     "Vaidya & Kumar"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "raw": "AHP 방법은 대안의 구조화, 복잡성, 측정 및 합성의 기능적 측면을 가지고 있어, 많은 연구는 이러한 기능적 측면을 고려하여 대안의 우선순위 분석에 적용하고 있다(e.g., Forman & Gass, 2001; Vaidya & Kumar, 2006; Wallenius et al., 2008).",
+    "citation_text": "Wallenius et al., 2008",
+    "offset": [
+     141,
+     163
+    ],
+    "authors": [
+     "Wallenius et al."
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_7",
+    "kind": "parenthetical",
+    "sentence": "AHP는 다수 대안(alternatives) 사이의 쌍대비교(pairwise comparison) 방식에 의한 가중치 설정으로 각 대안의 중요도(weight)를 구하는 의사결정 방법이다(Ishizaka & Labib, 2011).",
+    "raw": "AHP는 다수 대안(alternatives) 사이의 쌍대비교(pairwise comparison) 방식에 의한 가중치 설정으로 각 대안의 중요도(weight)를 구하는 의사결정 방법이다(Ishizaka & Labib, 2011).",
+    "citation_text": "(Ishizaka & Labib, 2011)",
+    "offset": [
+     103,
+     127
+    ],
+    "authors": [
+     "Ishizaka & Labib"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "narrative",
+    "sentence": "쌍대비교의 과정에서 신뢰할 만한 평가척도가 필요하며, AHP에서는 Saaty(1980)가 제안한 9점 척도가 많이 이용되고 있다(Yu, 2010).",
+    "raw": "쌍대비교의 과정에서 신뢰할 만한 평가척도가 필요하며, AHP에서는 Saaty(1980)가 제안한 9점 척도가 많이 이용되고 있다(Yu, 2010).",
+    "citation_text": "Saaty(1980)",
+    "offset": [
+     37,
+     48
+    ],
+    "authors": [
+     "Saaty"
+    ],
+    "year": "1980",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "쌍대비교의 과정에서 신뢰할 만한 평가척도가 필요하며, AHP에서는 Saaty(1980)가 제안한 9점 척도가 많이 이용되고 있다(Yu, 2010).",
+    "raw": "쌍대비교의 과정에서 신뢰할 만한 평가척도가 필요하며, AHP에서는 Saaty(1980)가 제안한 9점 척도가 많이 이용되고 있다(Yu, 2010).",
+    "citation_text": "(Yu, 2010)",
+    "offset": [
+     71,
+     81
+    ],
+    "authors": [
+     "Yu"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "narrative",
+    "sentence": "상대적 중요성의 정도를 평가하는 9점 척도는 평가자의 판단에 따라 한 값을 부여하며, Miller(1956)는 9점을 가장 높은 점수로 1점을 가장 낮은 점수로 부여할 것을 제안하였다.",
+    "raw": "상대적 중요성의 정도를 평가하는 9점 척도는 평가자의 판단에 따라 한 값을 부여하며, Miller(1956)는 9점을 가장 높은 점수로 1점을 가장 낮은 점수로 부여할 것을 제안하였다.",
+    "citation_text": "Miller(1956)",
+    "offset": [
+     48,
+     60
+    ],
+    "authors": [
+     "Miller"
+    ],
+    "year": "1956",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "쌍대비교행렬 식에서 $\\lambda_{max}$는 항상 $n$보다 크거나 같으며, $\\lambda_{max}$가 $n$에 가까울수록 쌍대비교행렬은 일관성을 갖는다(Ryu & Kim, 2018).",
+    "raw": "쌍대비교행렬 식에서 $\\lambda_{max}$는 항상 $n$보다 크거나 같으며, $\\lambda_{max}$가 $n$에 가까울수록 쌍대비교행렬은 일관성을 갖는다(Ryu & Kim, 2018).",
+    "citation_text": "(Ryu & Kim, 2018)",
+    "offset": [
+     90,
+     107
+    ],
+    "authors": [
+     "Ryu & Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Saaty(1980)는 CR 값이 0.1보다 클 경우 전문가 판단의 일관성에 문제가 있음을 지적하였다.",
+    "raw": "Saaty(1980)는 CR 값이 0.1보다 클 경우 전문가 판단의 일관성에 문제가 있음을 지적하였다.",
+    "citation_text": "Saaty(1980)",
+    "offset": [
+     0,
+     11
+    ],
+    "authors": [
+     "Saaty"
+    ],
+    "year": "1980",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 13,
+    "uid": "u12_5",
+    "kind": "parenthetical",
+    "sentence": "그래서 4차 산업혁명과 국방개혁 등의 환경변화 속에서 첨단과학기술군으로 진화하기 위해서는 업무에 대한 객관적인 분석과 과학화 훈련 등을 지원하는 조직과 전문인력이 확보되어야 한다(Won et al., 2021).",
+    "raw": "그래서 4차 산업혁명과 국방개혁 등의 환경변화 속에서 첨단과학기술군으로 진화하기 위해서는 업무에 대한 객관적인 분석과 과학화 훈련 등을 지원하는 조직과 전문인력이 확보되어야 한다(Won et al., 2021).",
+    "citation_text": "(Won et al., 2021)",
+    "offset": [
+     99,
+     117
+    ],
+    "authors": [
+     "Won et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "최근 사회적으로 인구감소로 군의 우수 인력의 확보를 위한 민간 영역과의 경쟁이 더욱 심해질 것이고, 병역자원 부족으로 인력활용의 어려움이 지속될 것으로 전망하고 있다(e.g., Ko, 2020).",
+    "raw": "최근 사회적으로 인구감소로 군의 우수 인력의 확보를 위한 민간 영역과의 경쟁이 더욱 심해질 것이고, 병역자원 부족으로 인력활용의 어려움이 지속될 것으로 전망하고 있다(e.g., Ko, 2020).",
+    "citation_text": "(e.g., Ko, 2020)",
+    "offset": [
+     92,
+     108
+    ],
+    "authors": [
+     "Ko"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "현재 장교의 경우 계급정년으로 인해 미래가 불안한 군 복무를 수행하고 있어 정년연장 및 정년보장 등과 같은 인사제도의 변화가 요구된다(Lee & Park, 2023).",
+    "raw": "현재 장교의 경우 계급정년으로 인해 미래가 불안한 군 복무를 수행하고 있어 정년연장 및 정년보장 등과 같은 인사제도의 변화가 요구된다(Lee & Park, 2023).",
+    "citation_text": "(Lee & Park, 2023)",
+    "offset": [
+     74,
+     92
+    ],
+    "authors": [
+     "Lee & Park"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

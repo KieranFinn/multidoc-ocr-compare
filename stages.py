@@ -31,11 +31,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 if HERE not in sys.path:
     sys.path.insert(0, HERE)
 
+import workspaces
+
 OUT = os.path.join(HERE, "out")
 UP = os.path.join(HERE, "uploads")
-# 工作区覆盖(2026-11-19, 与 failures.py/meta_diff.py 同口径): KCI_WS_ROOT=E:/KCI11_17 时
-# CLI 批量指向该工作区; GUI 走显式 out_root 且不设此环境变量, 行为不变。
-WS = os.environ.get("KCI_WS_ROOT") or ""
+# 工作区覆盖(2026-11-24 收敛口径, 三 CLI 共用 workspaces.resolve_ws_root):
+#   --ws 显式值 > KCI_WS_ROOT 环境变量 > GUI 当前工作区(.gui_prefs.json) > 主库。
+# 导入期只读环境变量(GUI 走显式 out_root 且不设此变量, 行为不变); --ws 与 prefs 缺省
+# 只在 _main(CLI 入口)解析, 解析后调 _apply_ws 重指 OUT/UP。
+WS = (os.environ.get("KCI_WS_ROOT") or "").replace("\\", "/")
 if WS:
     OUT = os.path.join(WS, "out")
     UP = os.path.join(WS, "uploads")
@@ -326,6 +330,16 @@ def doc_dir_of(doc, out_root=None):
     return os.path.join(out_root or OUT, doc)
 
 
+def _apply_ws(root):
+    """CLI --ws 应用: 重指 WS/OUT/UP。GUI 路径从不调用(走显式 out_root)。
+    WS 键斜杠归一为正斜杠——台账环比按字符串相等, 环境变量(手敲正斜杠)与
+    resolve 的 abspath(反斜杠)必须是同一个键。"""
+    global WS, OUT, UP
+    WS = root.replace("\\", "/")
+    OUT = os.path.join(root, "out") if root else os.path.join(HERE, "out")
+    UP = os.path.join(root, "uploads") if root else os.path.join(HERE, "uploads")
+
+
 def availability(doc, out_root=None):
     """{id: (可跑, 缺什么)}——GUI 置灰与 CLI 拒跑共用同一判据。"""
     dd = doc_dir_of(doc, out_root)
@@ -564,6 +578,29 @@ def _main(argv):
         python stages.py serve                     起浏览器工作台
         python stages.py ui                        起桌面工作台
     """
+    # --ws 工作区(2026-11-24): --ws > KCI_WS_ROOT > .gui_prefs.json 当前 > 主库, 口径与
+    # failures/meta_diff 相同(workspaces.resolve_ws_root)。只在 CLI 入口解析, GUI 导入
+    # 本模块不受影响。
+    # 台账 ws 键必须斜杠归一(E:/x 与 E:\x 同库): 环比按字符串相等, 环境变量时代
+    # 手敲正斜杠, resolve 的 abspath 返回反斜杠, 不归一的话同一库会被当两个工作区
+    # (2026-11-24 round 12 "首轮记录无对比" 实锤)。
+    ws_val = None
+    if "--ws" in argv:
+        i = argv.index("--ws")
+        if i + 1 >= len(argv):
+            print("--ws 需要一个工作区名或路径")
+            return 2
+        ws_val = argv[i + 1]
+        del argv[i:i + 2]
+    try:
+        _root, _name, _src = workspaces.resolve_ws_root(explicit=ws_val, here=HERE)
+    except ValueError as e:
+        print(str(e))
+        return 2
+    if ws_val is not None or _root:
+        _apply_ws(_root)
+        print("[工作区] %s (%s) · 来源 %s" % (_name, _root or os.path.join(HERE), _src))
+
     if not argv or argv[0] in ("list", "-l"):
         doc = argv[1] if len(argv) > 1 else None
         avail = availability(doc) if doc else {}

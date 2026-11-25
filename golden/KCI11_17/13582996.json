@@ -1,0 +1,2193 @@
+{
+ "doc": "13582996",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582996",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박효길. (2021). 암호화폐 대격변 글로벌 주요국, CBDC에 주목하다. 매일일보. (07.18.22).",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "박효길"
+    ],
+    "authors_raw": "박효길",
+    "et_al": false,
+    "year": "2021",
+    "title": "암호화폐 대격변 글로벌 주요국",
+    "source": "CBDC에 주목하다. 매일일보. (07.18.22)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이민석. (2022). 미국 러시아 SWIFT 퇴출 발표, 유럽 국가들과 함께 추가 제재. 조선일보. (02.27.22).",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "이민석"
+    ],
+    "authors_raw": "이민석",
+    "et_al": false,
+    "year": "2022",
+    "title": "미국 러시아 SWIFT 퇴출 발표",
+    "source": "유럽 국가들과 함께 추가 제재. 조선일보. (02.27.22)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "황태희·서정건·전아영. (2017). 미국 경제제재 분석: 효과성과 특수성을 중심으로. 한국정치학회보, 51(4): 191-216.",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "황태희",
+     "서정건",
+     "전아영"
+    ],
+    "authors_raw": "황태희·서정건·전아영",
+    "et_al": false,
+    "year": "2017",
+    "title": "미국 경제제재 분석: 효과성과 특수성을 중심으로. 한국정치학회보",
+    "source": "51(4): 191-216",
+    "volume": null,
+    "issue": null,
+    "pages": "191-216",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Arnold, A. (2016). The True Costs of Financial Sanctions. Survival, 58 (3): 77-100.",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "Arnold A"
+    ],
+    "authors_raw": "Arnold, A",
+    "et_al": false,
+    "year": "2016",
+    "title": "The True Costs of Financial Sanctions. Survival",
+    "source": "58 (3): 77-100",
+    "volume": null,
+    "issue": null,
+    "pages": "77-100",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bank of Russia. (2021). Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation.\n______. (2015). Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation.\n______. (2014). Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation.\n______. (2013). Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation.\n______. (2012). Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation.",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "Bank",
+     "of",
+     "Russia"
+    ],
+    "authors_raw": "Bank of Russia",
+    "et_al": false,
+    "year": "2012",
+    "title": "Bank of Russia Foreign Exchange Asset Management Report. The Central Bank of the Russian Federation",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bergeijk, P.A.G. van and C. van Marrewijk. (1994). “Economic Sanctions: A hidden Cost of the New World Order.” in Chatterij, Manas, A. (Ed). *Economics of International Security: Essays in Honour of Jan Tinbergen*. London: MacMillan.",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "Bergeijk",
+     "P.A.G. van",
+     "C. van Marrewijk"
+    ],
+    "authors_raw": "Bergeijk, P.A.G. van and C. van Marrewijk",
+    "et_al": false,
+    "year": "1994",
+    "title": "Economic Sanctions: A hidden Cost of the New World Order.",
+    "source": "in Chatterij, Manas, A. (Ed). Economics of International Security: Essays in Honour of Jan Tinbergen. London: MacMillan",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bhusari, M. and Nikoladze, M. (2022). Russia and China: Partners in De-dollarization. *Econographics*. (https://www.atlanticcouncil.org/blogs/econographics/russia-and-china-partners-in-dedollarization/), (검색일: 2",
+    "page": 35,
+    "box": [
+     105.2,
+     551.6,
+     793.0,
+     687.5
+    ],
+    "uid": "u34_2",
+    "authors": [
+     "Bhusari M",
+     "Nikoladze M"
+    ],
+    "authors_raw": "Bhusari, M. and Nikoladze, M",
+    "et_al": false,
+    "year": "2022",
+    "title": "Econographics",
+    "source": "). Russia and China: Partners in De-dollarization. Econographics. (https://www.atlanticcouncil.org/blogs/econographics/russia-and-china-partners-in-dedollarization/), (검색일: 2",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Goezde, C. K. (2017). The Impacts of Financial Sanctions on Policy Spa ce: The Cases of Iran and Russia. Middle East Technical Universit y. (http://etd.lib.metu.edu.tr/upload/12620931/index.pdf), (검색일: 20 22년 1월 14일).",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Goezde C. K"
+    ],
+    "authors_raw": "Goezde, C. K",
+    "et_al": false,
+    "year": "2017",
+    "title": "The Impacts of Financial Sanctions on Policy Spa ce: The Cases of Iran and Russia. Middle East Technical Universit y. (http://etd.lib.metu.edu.tr/upload/12620931/index.pdf)",
+    "source": "(검색일: 20 22년 1월 14일)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Davidson, P. (1984). Reviving Keynes's revolution. Journal of Post Keyn esian Economics, 4(4): 561-575.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Davidson P"
+    ],
+    "authors_raw": "Davidson, P",
+    "et_al": false,
+    "year": "1984",
+    "title": "Reviving Keynes's revolution. Journal of Post Keyn esian Economics",
+    "source": "4(4): 561-575",
+    "volume": null,
+    "issue": null,
+    "pages": "561-575",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "DeVroey, M. (1991). Der Markt-von wegen einfach.. PROKLA Heft, 82: 7-22.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "DeVroey M"
+    ],
+    "authors_raw": "DeVroey, M",
+    "et_al": false,
+    "year": "1991",
+    "title": "Der Markt-von wegen einfach.. PROKLA Heft",
+    "source": "82: 7-22",
+    "volume": null,
+    "issue": null,
+    "pages": "7-22",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Drezner, D. W. (2015). Targeted Sanctions in a World of Global Finance. International Interactions, 41(4): 755-764.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Drezner D. W"
+    ],
+    "authors_raw": "Drezner, D. W",
+    "et_al": false,
+    "year": "2015",
+    "title": "Targeted Sanctions in a World of Global Finance. International Interactions",
+    "source": "41(4): 755-764",
+    "volume": null,
+    "issue": null,
+    "pages": "755-764",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Drezner, D. W. (1999). The Sanctions Paradox: Economic Statecraft and International Relations. Cambridge: Cambridge University Press.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Drezner D. W"
+    ],
+    "authors_raw": "Drezner, D. W",
+    "et_al": false,
+    "year": "1999",
+    "title": "The Sanctions Paradox: Economic Statecraft and International Relations. Cambridge: Cambridge University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gharehgozli, O. (2017). An estimation of the economic cost of recent san ctions on Iran using the synthetic control method. Economic Letters, 157: 141-144.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Gharehgozli O"
+    ],
+    "authors_raw": "Gharehgozli, O",
+    "et_al": false,
+    "year": "2017",
+    "title": "An estimation of the economic cost of recent san ctions on Iran using the synthetic control method. Economic Letters",
+    "source": "157: 141-144",
+    "volume": null,
+    "issue": null,
+    "pages": "141-144",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gibson, D. (2020). 2019 Year-End Sanctions Update. Econographics.(http s://www.gibsondunn.com/wp-content/uploads/2020/01/2019-year-end-s anctions-update.pdf), (검색일: 2021년 1월 13일).",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Gibson D"
+    ],
+    "authors_raw": "Gibson, D",
+    "et_al": false,
+    "year": "2020",
+    "title": "2019 Year-End Sanctions Update. Econographics.(http s://www.gibsondunn.com/wp-content/uploads/2020/01/2019-year-end-s anctions-update.pdf)",
+    "source": "(검색일: 2021년 1월 13일)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Heinrich, M. (1991). Die Wissenschaft vom Wert. Hamburg: VSA.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Heinrich M"
+    ],
+    "authors_raw": "Heinrich, M",
+    "et_al": false,
+    "year": "1991",
+    "title": "Die Wissenschaft vom Wert. Hamburg: VSA",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hufbauer, G. C. and Elliott, K. A. (1990). Economic Sanctions Reconsid ered: History and current policy. Peterson Institute.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Hufbauer G. C",
+     "Elliott K. A"
+    ],
+    "authors_raw": "Hufbauer, G. C. and Elliott, K. A",
+    "et_al": false,
+    "year": "1990",
+    "title": "Economic Sanctions Reconsid ered: History and current policy. Peterson Institute",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hufbauer, G. C., Schott J., Elliot, K. A., and Oeff, B. (2008). Economic Sanctions Reconsidered: History and current policy. 3rd edition. W ashington DC: Peterson Institute for International Economics.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Hufbauer G. C",
+     "Schott J",
+     "Elliot K. A",
+     "Oeff B"
+    ],
+    "authors_raw": "Hufbauer, G. C., Schott J., Elliot, K. A., and Oeff, B",
+    "et_al": false,
+    "year": "2008",
+    "title": "Economic Sanctions Reconsidered: History and current policy. 3rd edition. W ashington DC: Peterson Institute for International Economics",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jermano, J. (2018). Economic and Financial Sanctions in U.S. National S ecurity Strategy. PRISM, 7(4): 64-73.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Jermano J"
+    ],
+    "authors_raw": "Jermano, J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Economic and Financial Sanctions in U.S. National S ecurity Strategy. PRISM",
+    "source": "7(4): 64-73",
+    "volume": null,
+    "issue": null,
+    "pages": "64-73",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Katzman, K. (2022). Iran Sanctions. CRS Report. RS20871. Congressiona 1 Research Service.",
+    "page": 36,
+    "box": [
+     111.1,
+     720.5,
+     793.0,
+     822.3
+    ],
+    "uid": "u35_1",
+    "authors": [
+     "Katzman K"
+    ],
+    "authors_raw": "Katzman, K",
+    "et_al": false,
+    "year": "2022",
+    "title": "Iran Sanctions. CRS Report. RS20871. Congressiona 1 Research Service",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, B. R. (2016). The Conditions for Sanctions Success: A Comparison of the Iranian and North Korean Cases. *Korean Journal of Defense Analysis*, 28(1): 139-161.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Kwon B. R"
+    ],
+    "authors_raw": "Kwon, B. R",
+    "et_al": false,
+    "year": "2016",
+    "title": "Korean Journal of Defense Analysis",
+    "source": "). The Conditions for Sanctions Success: A Comparison of the Iranian and North Korean Cases. Korean Journal of Defense Analysis, 28(1): 139-161",
+    "volume": null,
+    "issue": null,
+    "pages": "139-161",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Martin, L. L. (1992). *Coercive Cooperation: Explaining Multilateral Economic Sanctions*. Princeton: Princeton University Press.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Martin L. L"
+    ],
+    "authors_raw": "Martin, L. L",
+    "et_al": false,
+    "year": "1992",
+    "title": "Coercive Cooperation: Explaining Multilateral Economic Sanctions",
+    "source": "). Coercive Cooperation: Explaining Multilateral Economic Sanctions. Princeton: Princeton University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Nelson, R. M. and Karen M. S. (2021). De-Dollarization Efforts in China and Russia. IF11885. *Congressional Research Service*.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Nelson R. M",
+     "Karen M. S"
+    ],
+    "authors_raw": "Nelson, R. M. and Karen M. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "Congressional Research Service",
+    "source": "). De-Dollarization Efforts in China and Russia. IF11885. Congressional Research Service",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Nelson, R. M. and Liana W. R. (2018). *Digital Currencies: Sanctions Evasion Risks*. IF10825. *Congressional Research Service*.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Nelson R. M",
+     "Liana W. R"
+    ],
+    "authors_raw": "Nelson, R. M. and Liana W. R",
+    "et_al": false,
+    "year": "2018",
+    "title": "Digital Currencies: Sanctions Evasion Risks",
+    "source": "). Digital Currencies: Sanctions Evasion Risks. IF10825. Congressional Research Service",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Margulescu, S. (2019). Challenges for the Global Financial System. *Global Economic Observer*. 7(1): 69-79.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Margulescu S"
+    ],
+    "authors_raw": "Margulescu, S",
+    "et_al": false,
+    "year": "2019",
+    "title": "Global Economic Observer",
+    "source": "). Challenges for the Global Financial System. Global Economic Observer. 7(1): 69-79",
+    "volume": null,
+    "issue": null,
+    "pages": "69-79",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "McDowell, D. (2021). Financial sanctions and political risk in the international currency system. *Review of International Political Economy*, 28(3): 635-661.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "McDowell D"
+    ],
+    "authors_raw": "McDowell, D",
+    "et_al": false,
+    "year": "2021",
+    "title": "Review of International Political Economy",
+    "source": "). Financial sanctions and political risk in the international currency system. Review of International Political Economy, 28(3): 635-661",
+    "volume": null,
+    "issue": null,
+    "pages": "635-661",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Pape, R. (1997). Why Sanctions Do Not Work. *International Security*, 22(2): 90-136.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Pape R"
+    ],
+    "authors_raw": "Pape, R",
+    "et_al": false,
+    "year": "1997",
+    "title": "International Security",
+    "source": "). Why Sanctions Do Not Work. International Security, 22(2): 90-136",
+    "volume": null,
+    "issue": null,
+    "pages": "90-136",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Popescu, D. (2016). Iran, Saudi Arabia and Gold. *Goldbroker*. (https://goldbroker.com/news/iran-saudi-arabia-and-gold-906), (검색일: 2022년 1월 13일).",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Popescu D"
+    ],
+    "authors_raw": "Popescu, D",
+    "et_al": false,
+    "year": "2016",
+    "title": "Goldbroker",
+    "source": "). Iran, Saudi Arabia and Gold. Goldbroker. (https://goldbroker.com/news/iran-saudi-arabia-and-gold-906), (검색일: 2022년 1월 13일)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Popper, N., Oleg, and Ana V. H. (2018). Russian and Venezuela's Plan to Side step Sanctions: Virtual Currencies. *The New York Times*. (January 3, 2018).",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Popper N",
+     "Oleg",
+     "Ana V. H"
+    ],
+    "authors_raw": "Popper, N., Oleg, and Ana V. H",
+    "et_al": false,
+    "year": "2018",
+    "title": "The New York Times",
+    "source": "). Russian and Venezuela's Plan to Side step Sanctions: Virtual Currencies. The New York Times. (January 3",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Roche, D. (2022). Will U.S. Sanctions be 'Suicide of the Dollar?' Spanish Newspaper Asks. *Newsweek*. (March 29, 2022).",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Roche D"
+    ],
+    "authors_raw": "Roche, D",
+    "et_al": false,
+    "year": "2022",
+    "title": "Newsweek",
+    "source": "). Will U.S. Sanctions be 'Suicide of the Dollar?' Spanish Newspaper Asks. Newsweek. (March 29",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rotblat, C. (2017). Weaponizing the plumbbug: Dollar Diplomacy, Yuan Internationalization, and the Future of Financial Sanctions. *UCLA Journal of International Law & Foreign Affairs*, 21(2): 311-360.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Rotblat C"
+    ],
+    "authors_raw": "Rotblat, C",
+    "et_al": false,
+    "year": "2017",
+    "title": "UCLA Journal of International Law & Foreign Affairs",
+    "source": "). Weaponizing the plumbbug: Dollar Diplomacy, Yuan Internationalization, and the Future of Financial Sanctions. UCLA Journal of International Law & Foreign Affairs, 21(2): 311-360",
+    "volume": null,
+    "issue": null,
+    "pages": "311-360",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rosenberg, E., Daniel D., Solomon-Strauss, J., and Goldman, Z. K. (2016). The New Tools of Economic Warfare. Effects and Effectiveness of Cont mporary U.S. Financial Sanctions. Center for a New American Security. Schumacher, R. (2013). Deconstructing the Theory of Comparative Adva ntage. World Economic Review, 2: 83-105.",
+    "page": 37,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     750.5
+    ],
+    "uid": "u36_1",
+    "authors": [
+     "Rosenberg E",
+     "Daniel D",
+     "Solomon-Strauss J",
+     "Goldman Z. K"
+    ],
+    "authors_raw": "Rosenberg, E., Daniel D., Solomon-Strauss, J., and Goldman, Z. K",
+    "et_al": false,
+    "year": "2013",
+    "title": "Deconstructing the Theory of Comparative Adva ntage. World Economic Review",
+    "source": "2: 83-105",
+    "volume": null,
+    "issue": null,
+    "pages": "83-105",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Smeets, M. (2018). Can Economic Sanctions be effective?. Staff Working Paper ERSD. 03. WTO.",
+    "page": 38,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     457.9
+    ],
+    "uid": "u37_1",
+    "authors": [
+     "Smeets M"
+    ],
+    "authors_raw": "Smeets, M",
+    "et_al": false,
+    "year": "2018",
+    "title": "Can Economic Sanctions be effective?. Staff Working Paper ERSD. 03. WTO",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Staff, G. (2021). These Are the World’s Top Bitcoin Mining Countries.Globelynews. (https://globelynews.com/world/world-top-bitcoin-crypto-mining-countries/), (검색일: 2022년 1월 14일).",
+    "page": 38,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     457.9
+    ],
+    "uid": "u37_1",
+    "authors": [
+     "Staff G"
+    ],
+    "authors_raw": "Staff, G",
+    "et_al": false,
+    "year": "2021",
+    "title": "These Are the World’s Top Bitcoin Mining Countries.Globelynews. (https://globelynews.com/world/world-top-bitcoin-crypto-mining-countries/)",
+    "source": "(검색일: 2022년 1월 14일)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Taskinsoy, J. (2020). Diminishing Dollar Hegemony: What Wars and Sanctions Failed to Accomplish, COVID-19 Has. SSRN.(https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3570910), (검색일: 2022년 1월 14일).",
+    "page": 38,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     457.9
+    ],
+    "uid": "u37_1",
+    "authors": [
+     "Taskinsoy J"
+    ],
+    "authors_raw": "Taskinsoy, J",
+    "et_al": false,
+    "year": "2020",
+    "title": "Diminishing Dollar Hegemony: What Wars and Sanctions Failed to Accomplish",
+    "source": "COVID-19 Has. SSRN.(https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3570910)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Welt, C., Archick, K., Nelson, M.R., and Rennack, D. E. (2020). U.S. Sanct ions on Russia. CRS Report. R45415. Congressional Research Service.",
+    "page": 38,
+    "box": [
+     104.2,
+     355.4,
+     793.0,
+     457.9
+    ],
+    "uid": "u37_1",
+    "authors": [
+     "Welt C",
+     "Archick K",
+     "Nelson M.R",
+     "Rennack D. E"
+    ],
+    "authors_raw": "Welt, C., Archick, K., Nelson, M.R., and Rennack, D. E",
+    "et_al": false,
+    "year": "2020",
+    "title": "U.S. Sanct ions on Russia. CRS Report. R45415. Congressional Research Service",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "스위프트는 전 세계 200개국의 1만1천개 금융기관(중앙은행 포함)이 국제 거래 결제 때 쓰는 전산망이다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     105.0,
+     1127.8,
+     793.0,
+     1176.9
+    ],
+    "uid": "u3_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "OFAC(Office of Foreign Assets Control)은 미재무부 산하 기관으로 미국 금융규제의 감독과 시행을 총괄하고 있다. OFAC의 핵심수단은 SDN(Specially Designated Nationals) 리스트이다. 여기에는 미국의 금융제재를 통해 글로벌 금융시스템에서 배제하고자 하는 개인들, 기업 및 정부 기관들이 포함된다. 따라서 OFAC 리스트에 들어간다는 것은 달러기반의 글로벌 금융시스템에서 배제, 고립된다는 것을 의미한다. OFAC의 지시를 따르지 않는 기관들은 페널티(예를 들어 벌금)를 받게 된다.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     103.5,
+     1006.7,
+     795.7,
+     1178.3
+    ],
+    "uid": "u7_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "세컨더리 보이콧이란 제재 대상 국가와 거래하는 제3국의 기업, 은행, 정부, 개인 등에 대해서도 제재를 가하는 방안을 말한다. '2차 보이콧' 또는 '2차 제재'라고도 한다.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     104.2,
+     1104.8,
+     795.7,
+     1176.9
+    ],
+    "uid": "u8_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "여기서 언급하고 있는 多재화-多통화-多국가 모델은 리카르도(D. Ricardo)의 자유무역이론이 상정하고 있는 2 재화-2 국가 모델에 대한 기존의 비판을 응용하여 연구자가 재화, 통화 및 국가 변수들로 새롭게 구성해 낸 것임을 밝혀 둔다.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     109.3,
+     1080.9,
+     795.7,
+     1176.9
+    ],
+    "uid": "u11_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "금융제재를 받고 있는 많은 국가들 가운데 이란과 러시아를 선택한 이유는 이들이 금융제재를 받고 있는 대표적인 국가라는 측면도 있지만 동시에 고려된것은 통계적인 문제였다. 이란과 러시아 외에도 현재 금융제재를 받고 있는국가들은 북한, 베네수엘라, 터키, 파키스탄, 리비아, 콜롬비아, 콩고, 소말리아 등 수 많은 국가들이 있다. 하지만 이들 국가들의 통계자료에 대한 접근이어려웠던 관계로 분석 사례에서 제외될 수밖에 없었다.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     104.2,
+     1029.2,
+     796.2,
+     1178.3
+    ],
+    "uid": "u12_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "2018년 경제제재 재부과로 인해 복원된 내용은 다음과 같은 것들이 있다. ① 이란 정부의 미국 달러화 은행권 매수 내지 취득에 대한 제재, ② 이란의 금, 기타 귀금속 무역에 대한 제재, ③ 이란으로부터 또는 이란으로의 직·간접적 판매, 공금, 이전에 대한 제재, ④ 이란의 항만, 선박 및 조선 부문에 대한 제재, ⑤ 외국 금융기관에 대한 이란중앙은행 및 2012년 국방수권법 제1245조에 의거한 제재, ⑦ 이란중앙은행 및 이란 금융기관에 대한 금융 전신문 서비 스 제공에 대한 제재. ⑧ 제재법(CISADA)에 의거한 이란 에너지 분야에 대한 제재 등이다.",
+    "page": 15,
+    "page_end": 16,
+    "box": [
+     102.8,
+     169.8,
+     795.7,
+     1178.3
+    ],
+    "uid": "u14_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "미국과 패권전쟁을 벌이고 있는 중국은 위안화의 국제화를 통해 달러 시스템에 도전을 하고 있을 뿐만 아니라 미국과 같이 경제제재를 증가시키고 있는 특징을 보이고 있다. 중국의 경제제재와 관련하여서는 (조형진 2021)을 참조할 것.",
+    "page": 29,
+    "page_end": 29,
+    "box": [
+     102.1,
+     1078.8,
+     795.7,
+     1178.9
+    ],
+    "uid": "u28_3",
+    "authors": [
+     "미국과 패권전쟁을 벌이고 있는 중국은 위안화의 국제화를 통해 달러 시스템에 도전을 하고 있을 뿐만 아니라 미국과 같이 경제제재를 증가시키고 있는 특징을 보이고 있다. 중국의 경제제재와 관련하여서는 (조형진"
+    ],
+    "authors_raw": "미국과 패권전쟁을 벌이고 있는 중국은 위안화의 국제화를 통해 달러 시스템에 도전을 하고 있을 뿐만 아니라 미국과 같이 경제제재를 증가시키고 있는 특징을 보이고 있다. 중국의 경제제재와 관련하여서는 (조형진",
+    "et_al": false,
+    "year": "2021",
+    "title": "을 참조할 것",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "본래 세계 최대 비트코인 채굴국은 중국(65%)이었다. 하지만 중국이 2021년 5월 가상화폐 채굴과 거래를 전면 금지하고 채굴장을 폐쇄하는 등 대대적 단속에 나서면서 미국, 러시아, 카자흐스탄 등이 세계 최대 채굴국으로 부상하게 되었다.",
+    "page": 29,
+    "page_end": 29,
+    "box": [
+     104.2,
+     838.0,
+     796.2,
+     1223.2
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "본래",
+     "세계",
+     "최대",
+     "비트코인",
+     "채굴국은",
+     "중국(65%)이었다",
+     "하지만",
+     "중국이"
+    ],
+    "authors_raw": "본래 세계 최대 비트코인 채굴국은 중국(65%)이었다. 하지만 중국이",
+    "et_al": false,
+    "year": "2021",
+    "title": "년 5월 가상화폐 채굴과 거래를 전면 금지하고 채굴장을 폐쇄하는 등 대대적 단속에 나서면서 미국",
+    "source": "러시아",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 8,
+   "per_page": {
+    "4": 1,
+    "8": 1,
+    "9": 1,
+    "12": 1,
+    "13": 1,
+    "15": 1,
+    "29": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "4": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "8": {
+     "markers": [
+      "2"
+     ],
+     "collected": [
+      "2"
+     ]
+    },
+    "9": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "12": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ],
+     "dup_dropped": [
+      "4"
+     ]
+    },
+    "13": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "15": {
+     "markers": [
+      "6"
+     ],
+     "collected": [
+      "6"
+     ]
+    },
+    "29": {
+     "markers": [
+      "7",
+      "8"
+     ],
+     "collected": [
+      "7",
+      "8"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "The Effects of Financial Sanctions on Dollar Hegemony Order",
+   "page": 1,
+   "box": [
+    102.0,
+    204.3,
+    792.8,
+    292.9
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Young-bin, Hahn",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.0,
+     352.3,
+     262.6,
+     403.4
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Sogang University",
+   "Institute of Political Studies"
+  ],
+  "abstract": {
+   "value": "The purpose of this study is to verify the practical validity of financial sanctions, which has recently emerged as the most powerful form of economic sanctions preferred by U.S. foreign policy tool. Based on the theoretical discussion, analyse this study the trend of de-dollarization appearing in connection with financial sanctions and argue that the effectiveness of financial sanctions erode the dollar financial hegemony, which is the source of its power can be degraded, so that its effectiveness could not be so great as most people likely think about.\nAfter World War II, there has been an increasing tendency in the international community to favor economic sanctions over the use of military force as an effective means of foreign policy. Among these economic sanctions, a distinct feature that has recently appeared is the remarkable increase in the frequency of use of financial sanctions. The country that favors financial sanctions most is the United States. The reason is that they believe that the power of their own dollar financial hegemony can exert deadly pressure on other countries. Financial sanctions favored by the United States are said to have increased the effectiveness of sanctions by upgrading the pressure of sanctions to the next level. Nevertheless, financial sanctions have a side that underestimates the cost. This problem is found in the signs that the backlash from not only countries subject to financial sanctions but also many countries with interests in these countries is leading to a tendency to de-dollarization. This study will try to see how likely this de-dollarization trend is to offset the effectiveness of financial sanctions.\n* This work was supported by 2019 Ministry of Education of the Republic of korea and the National Research Foundation of Korea(2019S1A5B5A07086758)\n** Senior Researcher, Institute of Political Studies, Sogang University. E-mail: deltapavonis@paran.com",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The purpose of this study is to verify the practical validity of financial sanctions, which has recently emerged as the most powerful form of economic sanctions preferred by U.S. foreign policy tool. Based on the theoretical discussion, analyse this study the trend of de-dollarization appearing in connection with financial sanctions and argue that the effectiveness of financial sanctions erode the dollar financial hegemony, which is the source of its power can be degraded, so that its effectiveness could not be so great as most people likely think about.",
+   "page": 1,
+   "box": [
+    102.0,
+    462.0,
+    173.0,
+    483.6
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: Economic Sanctions, Financial Sanctions, Dollar Hegemony, U.S.A., Iran, Russia, De-dollarization"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "117-154",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "Economic Sanctions",
+   "Financial Sanctions",
+   "Dollar Hegemony",
+   "U.S.A.",
+   "Iran",
+   "Russia",
+   "De-dollarization"
+  ],
+  "keywords_en": [
+   "Economic Sanctions",
+   "Financial Sanctions",
+   "Dollar Hegemony",
+   "U.S.A",
+   "Iran",
+   "Russia",
+   "De-dollarization"
+  ],
+  "citation_spans": [
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "9.11 테러가 발생한 직후 미국은 테러리스트들을 돕는 비국가행위자들의 불법적인 금융활동을 표적삼아 금융제재를 단행하였으며2002년 이란의 우라늄 농축시설의 존재가 밝혀지자 이란의 자산을 동결하고 국제 금융시스템으로부터 이란을 배제시키려는 금융제재 조치를 지속적으로 강화시켜 2015년 금융제재의 대표적인 성공사례로 평가받는 포괄적공동행동계획(JCPOA) 합의를 이끌어 내었다(Kwon 2016;황태희 외 2017).",
+    "raw": "9.11 테러가 발생한 직후 미국은 테러리스트들을 돕는 비국가행위자들의 불법적인 금융활동을 표적삼아 금융제재를 단행하였으며2002년 이란의 우라늄 농축시설의 존재가 밝혀지자 이란의 자산을 동결하고 국제 금융시스템으로부터 이란을 배제시키려는 금융제재 조치를 지속적으로 강화시켜 2015년 금융제재의 대표적인 성공사례로 평가받는 포괄적공동행동계획(JCPOA) 합의를 이끌어 내었다(Kwon 2016;황태희 외 2017).",
+    "citation_text": "Kwon 2016",
+    "offset": [
+     211,
+     220
+    ],
+    "authors": [
+     "Kwon"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "북한이 핵실험에 박차를 가했던 2005년에는 애국법(Patriot Act, 2001)에 따라 방코델타아시아은행(BDA)에 예치되어 있던북한의 자산을 동결하는 조치를 취하였으며 이후 2013년에는 SWIFT에연결된 유일한 북한 은행을 제재하는 등 북한에도 금융제재의 강도와범위를 확대시켰다.",
+    "raw": "북한이 핵실험에 박차를 가했던 2005년에는 애국법(Patriot Act, 2001)에 따라 방코델타아시아은행(BDA)에 예치되어 있던북한의 자산을 동결하는 조치를 취하였으며 이후 2013년에는 SWIFT에연결된 유일한 북한 은행을 제재하는 등 북한에도 금융제재의 강도와범위를 확대시켰다.",
+    "citation_text": "(Patriot Act, 2001)",
+    "offset": [
+     28,
+     47
+    ],
+    "authors": [
+     "Patriot Act"
+    ],
+    "year": "2001",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "이 비용의 문제는 이번 러시아 금융제재에 대하여 한 저널리스트가 기고한 ‘달러에 대한 자살행위?’라는 기사 제목에서 드러나듯이 달러금융패권질서의 잠식가능성에 대한 것이다(Roche 2022).",
+    "raw": "이 비용의 문제는 이번 러시아 금융제재에 대하여 한 저널리스트가 기고한 ‘달러에 대한 자살행위?’라는 기사 제목에서 드러나듯이 달러금융패권질서의 잠식가능성에 대한 것이다(Roche 2022).",
+    "citation_text": "(Roche 2022)",
+    "offset": [
+     94,
+     106
+    ],
+    "authors": [
+     "Roche"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 28,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "그러나 1980년대 중반 이후부터 그 효과성에 대해 의문의 눈초리를 보이기 시작하더니 1991년 이후부터는 이라크에 대한 제재 실패의 교훈을 바탕으로 경제제재가 잘 작동되지 않을 뿐만 아니라 오히려 제재와 연관된 모든 국가들을 망칠 뿐이라는 비관론적인 인식이 전문가들 사이에서 광범위하게 퍼져 있는 상황이었다(Pape 1997; Martin 1992; Bergeijk and van Marrewijk 1994).",
+    "raw": "그러나 1980년대 중반 이후부터 그 효과성에 대해 의문의 눈초리를 보이기 시작하더니 1991년 이후부터는 이라크에 대한 제재 실패의 교훈을 바탕으로 경제제재가 잘 작동되지 않을 뿐만 아니라 오히려 제재와 연관된 모든 국가들을 망칠 뿐이라는 비관론적인 인식이 전문가들 사이에서 광범위하게 퍼져 있는 상황이었다(Pape 1997; Martin 1992; Bergeijk and van Marrewijk 1994).",
+    "citation_text": "Pape 1997",
+    "offset": [
+     173,
+     182
+    ],
+    "authors": [
+     "Pape"
+    ],
+    "year": "1997",
+    "linked_refs": [
+     {
+      "index": 25,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "그러나 1980년대 중반 이후부터 그 효과성에 대해 의문의 눈초리를 보이기 시작하더니 1991년 이후부터는 이라크에 대한 제재 실패의 교훈을 바탕으로 경제제재가 잘 작동되지 않을 뿐만 아니라 오히려 제재와 연관된 모든 국가들을 망칠 뿐이라는 비관론적인 인식이 전문가들 사이에서 광범위하게 퍼져 있는 상황이었다(Pape 1997; Martin 1992; Bergeijk and van Marrewijk 1994).",
+    "raw": "그러나 1980년대 중반 이후부터 그 효과성에 대해 의문의 눈초리를 보이기 시작하더니 1991년 이후부터는 이라크에 대한 제재 실패의 교훈을 바탕으로 경제제재가 잘 작동되지 않을 뿐만 아니라 오히려 제재와 연관된 모든 국가들을 망칠 뿐이라는 비관론적인 인식이 전문가들 사이에서 광범위하게 퍼져 있는 상황이었다(Pape 1997; Martin 1992; Bergeijk and van Marrewijk 1994).",
+    "citation_text": "Martin 1992",
+    "offset": [
+     184,
+     195
+    ],
+    "authors": [
+     "Martin"
+    ],
+    "year": "1992",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "효과성에 커다란 불신을 가지고 있는 페이프 경우에는 5% 정도의 성공률만이 존재한다고 주장할 만큼 금융제재가 일반화되기 전까지는 경제제재의 효과성에 대해 부정적인 시각이 주를 이루어왔다(Pape 1997).",
+    "raw": "효과성에 커다란 불신을 가지고 있는 페이프 경우에는 5% 정도의 성공률만이 존재한다고 주장할 만큼 금융제재가 일반화되기 전까지는 경제제재의 효과성에 대해 부정적인 시각이 주를 이루어왔다(Pape 1997).",
+    "citation_text": "(Pape 1997)",
+    "offset": [
+     103,
+     114
+    ],
+    "authors": [
+     "Pape"
+    ],
+    "year": "1997",
+    "linked_refs": [
+     {
+      "index": 25,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_2",
+    "kind": "parenthetical",
+    "sentence": "그리고 이러한 연구들을 바탕으로 일반적으로 제재를 가하는 제재국의 비용이 클수록, 다자적 제재일수록, 피제재국의 정치제도가 민주주의에 가까울수록, 제재국과 피제재국간의 상호무역의존도가 높을수록, 금융제재를 사용할수록 성공확률이 높아진다는 주장들을 제시하여 왔었다(Drezner 1999; Martin1992).",
+    "raw": "그리고 이러한 연구들을 바탕으로 일반적으로 제재를 가하는 제재국의 비용이 클수록, 다자적 제재일수록, 피제재국의 정치제도가 민주주의에 가까울수록, 제재국과 피제재국간의 상호무역의존도가 높을수록, 금융제재를 사용할수록 성공확률이 높아진다는 주장들을 제시하여 왔었다(Drezner 1999; Martin1992).",
+    "citation_text": "Drezner 1999",
+    "offset": [
+     147,
+     159
+    ],
+    "authors": [
+     "Drezner"
+    ],
+    "year": "1999",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u35_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "하지만 이 이론은 오래전부터 현실과는 매우 동vaner진 추상적인 모델이라고 비판되어져 왔었다(DeVroy 1991; Schumacher 2013).",
+    "raw": "하지만 이 이론은 오래전부터 현실과는 매우 동vaner진 추상적인 모델이라고 비판되어져 왔었다(DeVroy 1991; Schumacher 2013).",
+    "citation_text": "DeVroy 1991",
+    "offset": [
+     53,
+     64
+    ],
+    "authors": [
+     "DeVroy"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u35_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "하지만 이 이론은 오래전부터 현실과는 매우 동vaner진 추상적인 모델이라고 비판되어져 왔었다(DeVroy 1991; Schumacher 2013).",
+    "raw": "하지만 이 이론은 오래전부터 현실과는 매우 동vaner진 추상적인 모델이라고 비판되어져 왔었다(DeVroy 1991; Schumacher 2013).",
+    "citation_text": "Schumacher 2013",
+    "offset": [
+     66,
+     81
+    ],
+    "authors": [
+     "Schumacher"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 12,
+    "uid": "u11_2",
+    "kind": "parenthetical",
+    "sentence": "많은 전문가들은 자유무역이론이 상정하고 있는 시장모델이 화폐라는 변수 없이 구성된 모델이라고 비판하여 왔었다(Davidson 1984; Heinrich 1991).",
+    "raw": "많은 전문가들은 자유무역이론이 상정하고 있는 시장모델이 화폐라는 변수 없이 구성된 모델이라고 비판하여 왔었다(Davidson 1984; Heinrich 1991).",
+    "citation_text": "Davidson 1984",
+    "offset": [
+     61,
+     74
+    ],
+    "authors": [
+     "Davidson"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u35_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_2",
+    "kind": "parenthetical",
+    "sentence": "많은 전문가들은 자유무역이론이 상정하고 있는 시장모델이 화폐라는 변수 없이 구성된 모델이라고 비판하여 왔었다(Davidson 1984; Heinrich 1991).",
+    "raw": "많은 전문가들은 자유무역이론이 상정하고 있는 시장모델이 화폐라는 변수 없이 구성된 모델이라고 비판하여 왔었다(Davidson 1984; Heinrich 1991).",
+    "citation_text": "Heinrich 1991",
+    "offset": [
+     76,
+     89
+    ],
+    "authors": [
+     "Heinrich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u35_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_2",
+    "kind": "parenthetical",
+    "sentence": "그런데 이번에 러시아 중앙은행 외환보유고 동결과 함께 SWIFT 배제를 금융제재 내용에 포함시킴으로써 러시아를 국제금융시스템에서 완전히 퇴출시킨 것이다(이민석 2022).",
+    "raw": "그런데 이번에 러시아 중앙은행 외환보유고 동결과 함께 SWIFT 배제를 금융제재 내용에 포함시킴으로써 러시아를 국제금융시스템에서 완전히 퇴출시킨 것이다(이민석 2022).",
+    "citation_text": "(이민석 2022)",
+    "offset": [
+     84,
+     94
+    ],
+    "authors": [
+     "이민석"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u34_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 24,
+    "uid": "u23_2",
+    "kind": "parenthetical",
+    "sentence": "한 기사에 의하면 2007년 외환보유고의 10% 정도를 금으로 보유하고 있던 이란은 2009년 외환보유고의 15%를 금으로 전환하는 조치를 통해 2010년에 이르면 금보유량을 최고치로 끌어 올렸으며 제재가 절정에 달한 2015년에도 외환보유고에 약 500톤을 비축하여 다른 중동국가들과 비교하여 월등히 많은 수준의 금을 보유하고 있는 것으로 나타났다(Popescu 2016).",
+    "raw": "한 기사에 의하면 2007년 외환보유고의 10% 정도를 금으로 보유하고 있던 이란은 2009년 외환보유고의 15%를 금으로 전환하는 조치를 통해 2010년에 이르면 금보유량을 최고치로 끌어 올렸으며 제재가 절정에 달한 2015년에도 외환보유고에 약 500톤을 비축하여 다른 중동국가들과 비교하여 월등히 많은 수준의 금을 보유하고 있는 것으로 나타났다(Popescu 2016).",
+    "citation_text": "(Popescu 2016)",
+    "offset": [
+     195,
+     209
+    ],
+    "authors": [
+     "Popescu"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 25,
+    "uid": "u24_3",
+    "kind": "parenthetical",
+    "sentence": "이란의 경우 금과 마찬가지로 통계자료의 부재로 인해 정확한 추세를 파악하기는 어렵지만 핵개발 문제가 대두된 이후 UN과 세계 여타 국가들이 제재에 동참하면서 제재가 강화된 시점인 2006년 40%에 달하였던 달러의 비중이 2007년 20%로 급감하였다는 사실을 볼 때 이란이 달러의 비중을 줄이려는 노력을 하였음을 추론해 볼 수 있다(Popescu 2016).",
+    "raw": "이란의 경우 금과 마찬가지로 통계자료의 부재로 인해 정확한 추세를 파악하기는 어렵지만 핵개발 문제가 대두된 이후 UN과 세계 여타 국가들이 제재에 동참하면서 제재가 강화된 시점인 2006년 40%에 달하였던 달러의 비중이 2007년 20%로 급감하였다는 사실을 볼 때 이란이 달러의 비중을 줄이려는 노력을 하였음을 추론해 볼 수 있다(Popescu 2016).",
+    "citation_text": "(Popescu 2016)",
+    "offset": [
+     186,
+     200
+    ],
+    "authors": [
+     "Popescu"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u36_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 29,
+    "uid": "u28_2",
+    "kind": "parenthetical",
+    "sentence": "러시아는 전세계 비트코인 채굴의 11.2%를 차지하고 연간 암호화폐 거래규모가 약 50억 달러에 이를 정도로 현재 미국 및 카자흐 스탄과 함께 세계 3대 비트코인 채굴국을 형성하고 있다(Staff 2021).⑧) 또한 2022년에는 이란과 마찬가지로 CBDC인 디지털 루블화의 시범 사업도 계획하고 있는 상황이다.",
+    "raw": "러시아는 전세계 비트코인 채굴의 11.2%를 차지하고 연간 암호화폐 거래규모가 약 50억 달러에 이를 정도로 현재 미국 및 카자흐 스탄과 함께 세계 3대 비트코인 채굴국을 형성하고 있다(Staff 2021).⑧) 또한 2022년에는 이란과 마찬가지로 CBDC인 디지털 루블화의 시범 사업도 계획하고 있는 상황이다.",
+    "citation_text": "(Staff 2021)",
+    "offset": [
+     103,
+     115
+    ],
+    "authors": [
+     "Staff"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 32,
+      "num": null,
+      "uid": "u37_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 29,
+    "uid": "u28_2",
+    "kind": "parenthetical",
+    "sentence": "중국은 이미 2014년부터 디지털위안화(DCEP) 도입을 검토하였고 2019년부터는 여러 도시에서 디지털위안화 시범사업을 성공적으로 시행함으로써 세계에서 가장 먼저 중앙은행이 발행하는 법정 디지털 화폐를 정식으로 유통하는 국가가 될 가능성이 클 것이라고 예상되고 있다(박효길 2021).",
+    "raw": "중국은 이미 2014년부터 디지털위안화(DCEP) 도입을 검토하였고 2019년부터는 여러 도시에서 디지털위안화 시범사업을 성공적으로 시행함으로써 세계에서 가장 먼저 중앙은행이 발행하는 법정 디지털 화폐를 정식으로 유통하는 국가가 될 가능성이 클 것이라고 예상되고 있다(박효길 2021).",
+    "citation_text": "(박효길 2021)",
+    "offset": [
+     149,
+     159
+    ],
+    "authors": [
+     "박효길"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u34_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

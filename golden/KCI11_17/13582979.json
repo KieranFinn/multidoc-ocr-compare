@@ -1,0 +1,443 @@
+{
+ "doc": "13582979",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582979",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박소희.(2022). 제20차 당 대회로 본 중국의 미중 전략경쟁 대응 전략. 월간 KIET 산업경제 vol.290.",
+    "page": 31,
+    "box": [
+     104.2,
+     291.8,
+     792.0,
+     357.5
+    ],
+    "uid": "u30_3",
+    "authors": [
+     "박소희"
+    ],
+    "authors_raw": "박소희",
+    "et_al": false,
+    "year": "2022",
+    "title": "제20차 당 대회로 본 중국의 미중 전략경쟁 대응 전략. 월간 KIET 산업경제 vol.290",
+    "source": null,
+    "volume": "290",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "주장환.(2022). 중국 엘리트 정치 동학 변화에 관한 연구: 제20차 공산당 전국대표대회와 제20기 중앙위원회 1차 전체회의를 중심으로, 21 세기정치학회보 vol. 32.",
+    "page": 31,
+    "box": [
+     104.2,
+     402.9,
+     793.0,
+     502.3
+    ],
+    "uid": "u30_5",
+    "authors": [
+     "주장환"
+    ],
+    "authors_raw": "주장환",
+    "et_al": false,
+    "year": "2022",
+    "title": ". 중국 엘리트 정치 동학 변화에 관한 연구: 제20차 공산당 전국대표대회와 제20기 중앙위원회 1차 전체회의를 중심으로",
+    "source": "21 세기정치학회보 vol. 32",
+    "volume": "32",
+    "issue": "32",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_jrnl",
+    "container_title": "21 세기정치학회보 vol",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "성균중국연구소.(2022). 중국공산당 제20차 전국대표대회 - 중국식 현대화 추진을 위한 시진핑 친정체제 구축, SICS 연구보고서 22-03.",
+    "page": 31,
+    "box": [
+     105.2,
+     512.0,
+     791.0,
+     580.6
+    ],
+    "uid": "u30_6",
+    "authors": [
+     "성균중국연구소"
+    ],
+    "authors_raw": "성균중국연구소",
+    "et_al": false,
+    "year": "2022",
+    "title": "중국공산당 제20차 전국대표대회 - 중국식 현대화 추진을 위한 시진핑 친정체제 구축",
+    "source": "SICS 연구보고서 22-03",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Heather Froehlich.(2015). Corpus Analysis with Antconc. Programming Historian. https://programminghistorian.org/en/lessons/corpus-analysis-with-antco nc",
+    "page": 31,
+    "box": [
+     104.2,
+     660.1,
+     793.0,
+     906.8
+    ],
+    "uid": "u30_8",
+    "authors": [
+     "Heather",
+     "Froehlich"
+    ],
+    "authors_raw": "Heather Froehlich",
+    "et_al": false,
+    "year": "2015",
+    "title": "Corpus Analysis with Antconc. Programming Historian. https://programminghistorian.org/en/lessons/corpus-analysis-with-antco nc",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Laurence Anthony.(2012). AntConc(Windows, Macintosh OS X, and Linux).https://www.laurenceanthony.net/software/antconc/releases/Ant Conc335/help.pdf Manuscript: Jan 22, 2023; Review completed: Jan 28, 2023; Accepted: Feb 03, 2023",
+    "page": 31,
+    "box": [
+     104.2,
+     660.1,
+     793.0,
+     906.8
+    ],
+    "uid": "u30_8",
+    "authors": [
+     "Laurence",
+     "Anthony.(2012)",
+     "AntConc(Windows"
+    ],
+    "authors_raw": "Laurence Anthony.(2012). AntConc(Windows",
+    "et_al": false,
+    "year": "2023",
+    "title": "Macintosh OS X",
+    "source": "and Linux).https://www.laurenceanthony.net/software/antconc/releases/Ant Conc335/help.pdf Manuscript: Jan 22",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [],
+  "footnote_ref_validation": {
+   "entry_count": 0,
+   "per_page": {},
+   "num_borrowed": [],
+   "per_page_detail": {},
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "An Analysis of the 20th National Congress Report through Text-mining Methods",
+   "page": 1,
+   "box": [
+    102.0,
+    205.4,
+    792.8,
+    292.9
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kwon, Dokyung",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.0,
+     353.4,
+     709.7,
+     402.3
+    ]
+   },
+   {
+    "name": "Kim, Jungsoo",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.0,
+     353.4,
+     709.7,
+     402.3
+    ]
+   },
+   {
+    "name": "Park, Jihyun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.0,
+     353.4,
+     709.7,
+     402.3
+    ]
+   }
+  ],
+  "affiliations": [
+   "Pusan National University",
+   "Jeonbuk National University",
+   "Green Carbon Research Center"
+  ],
+  "abstract": {
+   "value": "The 20th National Congress of the Chinese Communist Party (hereafter referred to as “the 20th National Congress”) was under the global spotlight long before it was held for seven days from 16 to 22 October 2022. People wondered whether Xi Jinping would secure a third term as China’s leader or whether he would lay the foundations to be in power forever during the third term. In Korea, the press and media questioned whether the event would become the “crowning of Emperor Xi (Xi Huangdi),” whose power rivaled that of the first emperor in China, Shi Hunagdi, and featured the scene where Hu Jintao was forced to leave the venue during the Congress. On the other hand, many Korean academics focused more on how Xi would organize the Politburo and its Standing Committee and whether the outline of his heirs would appear during the event. This tendency in academia in turn worsened the media’s concerns.\nThis paper presents a quantitative analysis of the 20th National Congress Report, as opposed to an analysis of Xi’s political intentions at the event. The National Congress Report outlines the Party’s visions, goals, and strategies for the next five years in politics, economy, society, culture, foreign affairs, and relationship with Taiwan. The authoritative document is rich in narrative and logic and deserves academic study. This research analyzes the 18th, 19th, and 20th Reports by identifying their keywords and regular expressions and checking their frequency and percentage through text-mining methods. This approach enables the quantification and visualization of the significant changes in the Party’s sovereign vision over the fifteen years of Xi’s rule from 2013 to\n* This research was supported by \"Research Base Construction Fund Support Program\" funded by Jeonbuk National University in 2021.\n** Kim, Jungsoo. Jeonbuk National University. E-mail: jungkim@jbnu.ac.kr\n텍스트 마이닝을 활용한 중국공산당 20차 당대회 보고문 분석",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The 20th National Congress of the Chinese Communist Party (hereafter referred to as “the 20th National Congress”) was under the global spotlight long before it was held for seven days from 16 to 22 October 2022. People wondered whether Xi Jinping would secure a third term as China’s leader or whether he would lay the foundations to be in power forever during the third term. In Korea, the press and media questioned whether the event would become the “crowning of Emperor Xi (Xi Huangdi),” whose power rivaled that of the first emperor in China, Shi Hunagdi, and featured the scene where Hu Jintao was forced to leave the venue during the Congress. On the other hand, many Korean academics focused more on how Xi would organize the Politburo and its Standing Committee and whether the outline of his heirs would appear during the event. This tendency in academia in turn worsened the media’s concerns.\nThis paper presents a quantitative analysis of the 20th National Congress Report, as opposed to an analysis of Xi’s political intentions at the event. The National Congress Report outlines the Party’s visions, goals, and strategies for the next five years in politics, economy, society, culture, foreign affairs, and relationship with Taiwan. The authoritative document is rich in narrative and logic and deserves academic study. This research analyzes the 18th, 19th, and 20th Reports by identifying their keywords and regular expressions and checking their frequency and percentage through text-mining methods. This approach enables the quantification and visualization of the significant changes in the Party’s sovereign vision over the fifteen years of Xi’s rule from 2013 to",
+   "page": 1,
+   "box": [
+    102.0,
+    462.8,
+    173.0,
+    483.6
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "Keywords 20th Party Congress reports, 18th Congress reports, 19th Party Congress reports, text mining, XiJinping"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 7,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "115-145",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "20th Party Congress reports",
+   "18th Congress reports",
+   "19th Party Congress reports",
+   "text mining",
+   "XiJinping"
+  ],
+  "keywords_en": [
+   "20th Party Congress reports",
+   "18th Congress reports",
+   "19th Party Congress reports",
+   "text mining",
+   "XiJinping"
+  ],
+  "citation_spans": [
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "2022년 가을에 치러진 20차 당대회의 주요 쟁점은 인사와 노선으로 정리된다(양갑용, 2022).",
+    "raw": "2022년 가을에 치러진 20차 당대회의 주요 쟁점은 인사와 노선으로 정리된다(양갑용, 2022).",
+    "citation_text": "(양갑용, 2022)",
+    "offset": [
+     43,
+     54
+    ],
+    "authors": [
+     "양갑용"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u30_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "2) 키워드 분석: 참조 코퍼스 어휘와의 비교를 통해 특정 문건에서 특별하게 자주 쓰인(혹은 쓰이지 않은) 어휘를 추출(Laurence Anthony, 2012)해 특정 문건, 특정 어휘의 상대적인 중요도를 분석하는 방법.",
+    "raw": "2) 키워드 분석: 참조 코퍼스 어휘와의 비교를 통해 특정 문건에서 특별하게 자주 쓰인(혹은 쓰이지 않은) 어휘를 추출(Laurence Anthony, 2012)해 특정 문건, 특정 어휘의 상대적인 중요도를 분석하는 방법.",
+    "citation_text": "(Laurence Anthony, 2012)",
+    "offset": [
+     66,
+     90
+    ],
+    "authors": [
+     "Laurence Anthony"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u30_8"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "핵심도란 ‘참조 말뭉치에서의 빈도와 비교할때 목표 텍스트에서 어휘의 빈도’(Heather Froehlich, 2015)를 말한다.편의상 아래 표의 핵심도 수치는 소수점 이하 생략하지만, 실제 분석에서는 소수점 이하 2자리까지의 수치를 사용했다.",
+    "raw": "핵심도란 ‘참조 말뭉치에서의 빈도와 비교할때 목표 텍스트에서 어휘의 빈도’(Heather Froehlich, 2015)를 말한다.편의상 아래 표의 핵심도 수치는 소수점 이하 생략하지만, 실제 분석에서는 소수점 이하 2자리까지의 수치를 사용했다.",
+    "citation_text": "(Heather Froehlich, 2015)",
+    "offset": [
+     41,
+     66
+    ],
+    "authors": [
+     "Heather Froehlich"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u30_8"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

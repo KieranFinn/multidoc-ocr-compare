@@ -1,0 +1,1546 @@
+{
+ "doc": "13578215",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13578215",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": 1,
+    "style": "numbered",
+    "raw": "양희원·정성문·이정동(2012), “지식기반 사회회계행렬 작성 방안 연구”, 「생산성연구], 26(3), pp. 257-285.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "양희원",
+     "정성문",
+     "이정동"
+    ],
+    "authors_raw": "양희원·정성문·이정동",
+    "et_al": false,
+    "year": "2012",
+    "title": "지식기반 사회회계행렬 작성 방안 연구",
+    "source": "「생산성연구], 26(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "257-285",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 2,
+    "style": "numbered",
+    "raw": "엄익천 · 황원식(2022), “R&D 투자의 사회 · 경제적 파급효과 분석: 공공 R&D 투자와 민간 R&D 투자의 비교”, 「산업연구」，6(1), pp. 123-153.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "엄익천",
+     "황원식"
+    ],
+    "authors_raw": "엄익천 · 황원식",
+    "et_al": false,
+    "year": "2022",
+    "title": "산업연구",
+    "source": "「산업연구」，6(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "123-153",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_book",
+    "container_title": null,
+    "publisher": "pp. 123-153.",
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 3,
+    "style": "numbered",
+    "raw": "한국과학기술기획평가원(2023), 「2021년도 연구개발활동조사보고서」, 기관 2022-058.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "한국과학기술기획평가원"
+    ],
+    "authors_raw": "한국과학기술기획평가원",
+    "et_al": false,
+    "year": "2023",
+    "title": "2021년도 연구개발활동조사보고서",
+    "source": "기관 2022-058",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_book",
+    "container_title": null,
+    "publisher": "기관 2022-058.",
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 4,
+    "style": "numbered",
+    "raw": "황승진(2022), “경남지역 소재부품장비산업의 연구개발투자효과-2014~2019년 연구개발투자 효과를 중심으로-”, 「지역산업연구」，45(2), pp. 315-340.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "황승진"
+    ],
+    "authors_raw": "황승진",
+    "et_al": false,
+    "year": "2022",
+    "title": "지역산업연구",
+    "source": "「지역산업연구」，45(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "315-340",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_book",
+    "container_title": null,
+    "publisher": "pp. 315-340.",
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 5,
+    "style": "numbered",
+    "raw": "Armington, P. (1969), “A theory of demand for products distinguished by place of production”, IMF Staff Paper 16, pp. 159-178.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Armington P"
+    ],
+    "authors_raw": "Armington, P",
+    "et_al": false,
+    "year": "1969",
+    "title": "A theory of demand for products distinguished by place of production",
+    "source": "IMF Staff Paper 16",
+    "volume": null,
+    "issue": null,
+    "pages": "159-178",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 6,
+    "style": "numbered",
+    "raw": "Diao, X., T. Roe and E. Yeldan(1999), “Strategic policies and growth: an applied model of R&D-driven endogenous growth”, Journal of Development Economics, 60, pp. 343-380.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Diao X",
+     "T. Roe",
+     "E. Yeldan"
+    ],
+    "authors_raw": "Diao, X., T. Roe and E. Yeldan",
+    "et_al": false,
+    "year": "1999",
+    "title": "Strategic policies and growth: an applied model of R&D-driven endogenous growth",
+    "source": "Journal of Development Economics, 60",
+    "volume": null,
+    "issue": null,
+    "pages": "343-380",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 7,
+    "style": "numbered",
+    "raw": "Diukanova, O. and M. Chioncel(2021), “A GDP impact assessment of R&D investments in Romania using the CGE model Rhomolo”, JCR Working Papers on Territorial Modelling and Analysis No, 10/2021, European Commission.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Diukanova O",
+     "M. Chioncel"
+    ],
+    "authors_raw": "Diukanova, O. and M. Chioncel",
+    "et_al": false,
+    "year": "2021",
+    "title": "A GDP impact assessment of R&D investments in Romania using the CGE model Rhomolo",
+    "source": "JCR Working Papers on Territorial Modelling and Analysis No, 10/2021, European Commission",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 8,
+    "style": "numbered",
+    "raw": "Guellec, D., B. van Pottelsberghe de la Potterie (2004), “From R&D to productivity growth: do the institutional settings and the source of funds of R&D matter?”, Oxford Bulletin of Economics and Statistics, 66(3), pp. 353-378.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Guellec D",
+     "B. van Pottelsberghe de la Potterie"
+    ],
+    "authors_raw": "Guellec, D., B. van Pottelsberghe de la Potterie",
+    "et_al": false,
+    "year": "2004",
+    "title": "From R&D to productivity growth: do the institutional settings and the source of funds of R&D matter?",
+    "source": "Oxford Bulletin of Economics and Statistics, 66(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "353-378",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 9,
+    "style": "numbered",
+    "raw": "Hauknes, J. and M. Knell(2009), “Embodied knowledge and sectoral linkages: An input-output approach to the interaction of high- and low-tech industries”, Research Policy, 38(3), pp. 459-469.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Hauknes J",
+     "M. Knell"
+    ],
+    "authors_raw": "Hauknes, J. and M. Knell",
+    "et_al": false,
+    "year": "2009",
+    "title": "Embodied knowledge and sectoral linkages: An input-output approach to the interaction of high- and low-tech industries",
+    "source": "Research Policy, 38(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "459-469",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 10,
+    "style": "numbered",
+    "raw": "Hong, C. and J.-D. Lee (2016), “Macroeconomic effects of R&D tax credits on small and medium enterprises”, Economic Systems Research, 28(4), pp. 467-481.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Hong C",
+     "J.-D. Lee"
+    ],
+    "authors_raw": "Hong, C. and J.-D. Lee",
+    "et_al": false,
+    "year": "2016",
+    "title": "Macroeconomic effects of R&D tax credits on small and medium enterprises",
+    "source": "Economic Systems Research, 28(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "467-481",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 11,
+    "style": "numbered",
+    "raw": "Huang, M. C., M.-H. Liou and Y. Iwaki (2021), “The impact of R&D and innovation on global supply chain transition: GTAP analysis on Japan's public R&D investment”, Journal of Social and Economic Development, 23(Suppl 3), pp. 447-467.",
+    "page": 32,
+    "box": [
+     198.9,
+     654.1,
+     916.7,
+     753.4
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Huang M. C",
+     "M.-H. Liou",
+     "Y. Iwaki"
+    ],
+    "authors_raw": "Huang, M. C., M.-H. Liou and Y. Iwaki",
+    "et_al": false,
+    "year": "2021",
+    "title": "The impact of R&D and innovation on global supply chain transition: GTAP analysis on Japan's public R&D investment",
+    "source": "Journal of Social and Economic Development, 23(Suppl 3)",
+    "volume": null,
+    "issue": null,
+    "pages": "447-467",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 12,
+    "style": "numbered",
+    "raw": "Hwang, W.-S., C. Hong, I. Oh and Y. Yeo (2022), “Assessing the economy-wide impacts of public R&D support options based on a computable general equilibrium model: focusing on types of fiscal incentives and beneficiaries”, *Applied Economics*, 54(40), pp. 4664-4680.",
+    "page": 33,
+    "box": [
+     198.9,
+     343.8,
+     917.4,
+     508.4
+    ],
+    "uid": "u32_0",
+    "authors": [
+     "Hwang",
+     "W.-S",
+     "C. Hong",
+     "I. Oh",
+     "Y. Yeo"
+    ],
+    "authors_raw": "Hwang, W.-S., C. Hong, I. Oh and Y. Yeo",
+    "et_al": false,
+    "year": "2022",
+    "title": "Assessing the economy-wide impacts of public R&D support options based on a computable general equilibrium model: focusing on types of fiscal incentives and beneficiaries",
+    "source": "Applied Economics, 54(40)",
+    "volume": null,
+    "issue": null,
+    "pages": "4664-4680",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 13,
+    "style": "numbered",
+    "raw": "Hwang, W.-S., Y. Yeo, I. Oh and C. Hong (2021), “CGE analysis of R&D investment policy considering trade-offs between economic growth and stability”, *Science and Public Policy*, 48(3), pp. 295-308.",
+    "page": 33,
+    "box": [
+     198.9,
+     343.8,
+     917.4,
+     508.4
+    ],
+    "uid": "u32_0",
+    "authors": [
+     "Hwang",
+     "W.-S",
+     "Y. Yeo",
+     "I. Oh",
+     "C. Hong"
+    ],
+    "authors_raw": "Hwang, W.-S., Y. Yeo, I. Oh and C. Hong",
+    "et_al": false,
+    "year": "2021",
+    "title": "CGE analysis of R&D investment policy considering trade-offs between economic growth and stability",
+    "source": "Science and Public Policy, 48(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "295-308",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 14,
+    "style": "numbered",
+    "raw": "Romer, P. M. (1990), “Endogenous technological change”, *Journal of Political Economy*, 98, S71-S102.",
+    "page": 33,
+    "box": [
+     198.9,
+     343.8,
+     917.4,
+     508.4
+    ],
+    "uid": "u32_0",
+    "authors": [
+     "Romer P. M"
+    ],
+    "authors_raw": "Romer, P. M",
+    "et_al": false,
+    "year": "1990",
+    "title": "Endogenous technological change",
+    "source": "Journal of Political Economy, 98, S71-S102",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": 15,
+    "style": "numbered",
+    "raw": "Scherer, F. M. (1982), “Inter-industry technology flows in the United States”, *Research Policy*, 11, pp. 227-245.",
+    "page": 33,
+    "box": [
+     198.9,
+     343.8,
+     917.4,
+     508.4
+    ],
+    "uid": "u32_0",
+    "authors": [
+     "Scherer F. M"
+    ],
+    "authors_raw": "Scherer, F. M",
+    "et_al": false,
+    "year": "1982",
+    "title": "Inter-industry technology flows in the United States",
+    "source": "Research Policy, 11",
+    "volume": null,
+    "issue": null,
+    "pages": "227-245",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "2023년 6월 28일 개최된 국가재정전략회의에서는 “나눠먹기, 갈라먹기식 R&D를 원점에서 재검토할 필요성”이 제기되었다(https://news.mt.co.kr/mtview.php?no=2023070216460373847, 머니투데이, 2023년 7월 3일자 온라인 기사 참고).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     190.6,
+     1254.0,
+     917.3,
+     1326.0
+    ],
+    "uid": "u1_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2023",
+    "title": "나눠먹기, 갈라먹기식 R&D를 원점에서 재검토할 필요성",
+    "source": "이 제기되었다(https://news.mt.co.kr/mtview.php?no=2023070216460373847, 머니투데이",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "공공 R&D 집약도는 ‘총공공R&D투자액/국내총생산(GDP)’을 의미한다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     190.6,
+     1231.6,
+     918.0,
+     1325.7
+    ],
+    "uid": "u2_2",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "산업수명주기에서 철강산업이 성숙기라면, 반도체산업은 성장기에 위치한다. 또한 OECD의 기술집약도에 따른 기술수준을 비교해 볼 경우 철강산업이 중저위기술이라면, 반도체산업은 고위기술에 해당한다(황승진, 2022, p. 338).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     190.6,
+     1231.6,
+     918.0,
+     1325.7
+    ],
+    "uid": "u2_2",
+    "authors": [
+     "산업수명주기에서 철강산업이 성숙기라면"
+    ],
+    "authors_raw": "산업수명주기에서 철강산업이 성숙기라면",
+    "et_al": false,
+    "year": "2022",
+    "title": "반도체산업은 성장기에 위치한다. 또한 OECD의 기술집약도에 따른 기술수준을 비교해 볼 경우 철강산업이 중저위기술이라면",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "한국은행 경제통계시스템(https://ecos.bok.or.kr/)에서 공표한다.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     189.7,
+     1299.7,
+     670.6,
+     1326.7
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "한국은행",
+     "경제통계시스템(https://ecos.bok.or.kr/)에서",
+     "공표한다"
+    ],
+    "authors_raw": "한국은행 경제통계시스템(https://ecos.bok.or.kr/)에서 공표한다",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "https://www.ntis.go.kr/rndsts/Main.do",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     190.5,
+     1279.4,
+     490.4,
+     1325.7
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "https://www.ntis.go.kr/rndsts/Main.do"
+    ],
+    "authors_raw": "https://www.ntis.go.kr/rndsts/Main.do",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "https://stat.kpc.or.kr",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     190.5,
+     1279.4,
+     490.4,
+     1325.7
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "https://stat.kpc.or.kr"
+    ],
+    "authors_raw": "https://stat.kpc.or.kr",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "산업 의 노동 이동탄력성(labor mobility elasticity)은",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     190.5,
+     1084.5,
+     600.8,
+     1110.4
+    ],
+    "uid": "u12_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "즉, 지식의 이동탄력성은 0이 된다. $$ \\sigma_i^L = \\frac{\\text{전체 노동공급}(L)\\text{과 산업 } i\\text{의 노동}(L_i)\\text{ 비율의 } \\%\\text{변화}\\left(\\%\\text{change}\\frac{L_i}{L}\\right)}{\\text{전산업 평균임금}(P^L)\\text{과 산업 } i\\text{의 평균임금}(P_i^L)\\text{ 비율의 } \\%\\text{변화}\\left(\\%\\text{change}\\frac{P^L}{P_i^L}\\right)} $$ () ()电ange %change  pL P i 처럼 표현할 수 있다. 즉, 전 산업의 평균임금 대비 특정 산업의 임금이 변화할 경우, 이러한 변화 대비 해당 산업 노동공급의 변화가 얼마나 발생하는지를 뜻한다. 가령 반도체산업의 노동 이동탄력성이 –0.5라면, 전 산업 평균임금 대비 반도체산업의 평균임금이 2% 상승하였을 경우 반도체산업의 노동공급이 1% 증가함을 의미한다.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     190.5,
+     1302.0,
+     468.5,
+     1325.7
+    ],
+    "uid": "u12_10",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "https://www.ntis.go.kr/ThMain.do 10ai",
+    "page": 15,
+    "page_end": 17,
+    "box": [
+     190.5,
+     1300.5,
+     461.3,
+     1326.7
+    ],
+    "uid": "u14_3",
+    "authors": [
+     "https://www.ntis.go.kr/ThMain.do",
+     "10ai"
+    ],
+    "authors_raw": "https://www.ntis.go.kr/ThMain.do 10ai",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "투입계수 $a_{j,i}$는 산업 $i$에서 사용하는 산업 $j$에서 생산한 중간재의 비중을 의미한다.",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     190.6,
+     1252.3,
+     915.8,
+     1325.2
+    ],
+    "uid": "u16_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "모수 $\\eta$와 $\\zeta$는 패널분석을 통해 0.228(p-value=0.041)과 0.199(p-value=0.024)로 추정되어 이러한 추정값을 모형에 적용하였다.",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     190.6,
+     1252.3,
+     915.8,
+     1325.2
+    ],
+    "uid": "u16_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "연산일반균형 모형에서는 일반적으로 모든 재화의 가격을 기준연도에서 1이라고 가정한다. 생산량 (quantity)에 가격(price)을 곱하면 가치(value)로 변환할 수 있다.",
+    "page": 25,
+    "page_end": 25,
+    "box": [
+     190.6,
+     1280.4,
+     919.4,
+     1329.5
+    ],
+    "uid": "u24_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 12,
+   "per_page": {
+    "2": 1,
+    "3": 2,
+    "6": 1,
+    "10": 2,
+    "13": 2,
+    "15": 1,
+    "17": 2,
+    "25": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "3": {
+     "markers": [
+      "2",
+      "3"
+     ],
+     "collected": [
+      "2",
+      "3"
+     ]
+    },
+    "6": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "10": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5",
+      "6"
+     ]
+    },
+    "13": {
+     "markers": [
+      "7",
+      "8"
+     ],
+     "collected": [
+      "7",
+      "8"
+     ]
+    },
+    "15": {
+     "markers": [
+      "9"
+     ],
+     "collected": [
+      "9"
+     ]
+    },
+    "17": {
+     "markers": [
+      "10",
+      "11"
+     ],
+     "collected": [
+      "10",
+      "11"
+     ]
+    },
+    "25": {
+     "markers": [
+      "12"
+     ],
+     "collected": [
+      "12"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "공공 R&D 투자의 경제적 파급효과 분석: 철강산업과 반도체산업을 중심으로",
+   "page": 1,
+   "box": [
+    273.7,
+    197.9,
+    834.9,
+    287.5
+   ],
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": "An CGE Analysis of Economic Effects of Public R&D Investments: Focusing on Steel and Semiconductor Industries",
+   "page": 40,
+   "box": [
+    259.5,
+    309.4,
+    848.0,
+    428.2
+   ],
+   "uid": "u39_1",
+   "confidence": {
+    "level": "mid",
+    "source": "tail_matter"
+   }
+  },
+  "authors": [
+   {
+    "name": "엄익천",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     725.7,
+     359.3,
+     918.4,
+     390.7
+    ],
+    "uid": "u0_1",
+    "page": 1
+   },
+   {
+    "name": "황원식",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     725.7,
+     359.3,
+     918.4,
+     390.7
+    ],
+    "uid": "u0_1",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "<sup>*</sup> 전북대학교 경제학부"
+  ],
+  "abstract": {
+   "value": "본 연구에서는 우리나라의 핵심 산업에 대한 공공 R&D 투자의 포트폴리오 변화가 국가 경제에 미치는 파급효과를 사전적으로 분석해 보고자 한다. 이를 위해 개별 산업 단위의 모의실험이 가능한 연산일반균형 모형을 구축하였다. 특히 본 연구에서는 특정한 산업(철강과 반도체)의 공공 R&D 투자 효과 분석에 초점을 맞추었다는 점에서 기존 연구들과 명확한 차별성을 갖는다. 분석 결과, 철강산업에 대한 공공 R&D 투자 비중을 과거보다 증가시켰을 경우, 경제 전반에 긍정적인 영향을 주었다. 반면, 반도체산업에 대한 공공 R&D 투자 비중을 증가시켰을 경우, 경제성장률은 높아지다가 다시 감소하는 추이를 보였다. 이는 반도체산업에 대한 공공 R&D 투자의 최적점이 존재하며, 그 이상의 투자는 오히려 특정 산업에 대한 자원의 불균형적 집중을 유발하여 경제성장에 부정적인 영향을 주게 됨을 의미한다.\n핵심주제어: R&D, 연산일반균형, 철강산업, 반도체산업JEL 번호: L52, C68",
+   "page": 1,
+   "box": [
+    230.2,
+    527.2,
+    881.8,
+    819.0
+   ],
+   "confidence": {
+    "level": "low",
+    "source": "regex",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Um, Ik-Cheon* · Hwang, Won-Sik**\nThe aim of this study is to analyze effects of portfolio changes in public R&D investments on the Korean economy. To that end, we developed a computable general equilibrium model that enables industry-specific simulations. This study is distinguished from others in that it focused on public R&D investments of two major sectors in Korea: steel and semiconductor industries. The simulation results show that an increase of public R&D investment in the steel industry has a positive effect on the whole economy. On the other hand, an increase of public R&D investment in the semiconductor industry has a positive effect to some extent, but gives a negative effect on the national economy. This implies that there is an optimal point of public R&D investment in each industry.",
+   "page": 40,
+   "box": [
+    191.3,
+    201.1,
+    313.5,
+    234.4
+   ],
+   "from_tail": true,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u39_0"
+   }
+  },
+  "keywords_lines": [
+   "Key words: R&D, Computable General Equilibrium, Steel Industry, Semiconductor Industry. JEL Code: L52, C68."
+  ],
+  "journal": {
+   "value": "산업연구",
+   "uid": "u0_7",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2024,
+   "uid": "u0_7",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 8,
+   "uid": "u0_7",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_7",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "112-151",
+   "uid": null,
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "R&D",
+   "연산일반균형",
+   "철강산업",
+   "반도체산업JEL 번호: L52",
+   "C68"
+  ],
+  "keywords_en": [
+   "R&D",
+   "Computable General Equilibrium",
+   "Steel Industry",
+   "Semiconductor Industry. JEL Code: L52",
+   "C68"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_2",
+    "kind": "parenthetical",
+    "sentence": "2021년 기준 우리나라의 총 R&D 투자액은 102조 원 이상으로 세계 5위며, 이 중에서 정부·공공재원은 약 24%인 24조 950억 원으로 집계되었다(한국과학기술기획평가원, 2023).",
+    "raw": "2021년 기준 우리나라의 총 R&D 투자액은 102조 원 이상으로 세계 5위며, 이 중에서 정부·공공재원은 약 24%인 24조 950억 원으로 집계되었다(한국과학기술기획평가원, 2023).",
+    "citation_text": "(한국과학기술기획평가원, 2023)",
+    "offset": [
+     86,
+     105
+    ],
+    "authors": [
+     "한국과학기술기획평가원"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": 3,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_1",
+    "kind": "narrative",
+    "sentence": "Diao et al. (1999)은 처음으로 Romer (1990)의 내생적 성장이론에 기반을 둔 R&D 기반 연산일반균형 모형을 구축해서 전략적인 무역정책과 R&D 촉진정책이 장기적인 경제성장과 사회후생에 미치는 영향을 연구하였다.",
+    "raw": "Diao et al. (1999)은 처음으로 Romer (1990)의 내생적 성장이론에 기반을 둔 R&D 기반 연산일반균형 모형을 구축해서 전략적인 무역정책과 R&D 촉진정책이 장기적인 경제성장과 사회후생에 미치는 영향을 연구하였다.",
+    "citation_text": "Diao et al. (1999)",
+    "offset": [
+     0,
+     18
+    ],
+    "authors": [
+     "Diao et al."
+    ],
+    "year": "1999",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": 6,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_1",
+    "kind": "narrative",
+    "sentence": "Diao et al. (1999)은 처음으로 Romer (1990)의 내생적 성장이론에 기반을 둔 R&D 기반 연산일반균형 모형을 구축해서 전략적인 무역정책과 R&D 촉진정책이 장기적인 경제성장과 사회후생에 미치는 영향을 연구하였다.",
+    "raw": "Diao et al. (1999)은 처음으로 Romer (1990)의 내생적 성장이론에 기반을 둔 R&D 기반 연산일반균형 모형을 구축해서 전략적인 무역정책과 R&D 촉진정책이 장기적인 경제성장과 사회후생에 미치는 영향을 연구하였다.",
+    "citation_text": "Romer (1990)",
+    "offset": [
+     25,
+     37
+    ],
+    "authors": [
+     "Romer"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": 14,
+      "uid": "u32_0"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "narrative",
+    "sentence": "Hong and Lee (2016)는 연산일반균형 모형을 이용하여 국내 기업 규모별 혁신 역량 증대 정책의 효과를 분석하였다.",
+    "raw": "Hong and Lee (2016)는 연산일반균형 모형을 이용하여 국내 기업 규모별 혁신 역량 증대 정책의 효과를 분석하였다.",
+    "citation_text": "Lee (2016)",
+    "offset": [
+     9,
+     19
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": 10,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "Diukanova and Chioncel (2021)은 루마니아를 대상으로 2021년부터 2027년까지의 정책 사이클 동안 R&D 투자의 경제적 영향을 연구하였다.",
+    "raw": "Diukanova and Chioncel (2021)은 루마니아를 대상으로 2021년부터 2027년까지의 정책 사이클 동안 R&D 투자의 경제적 영향을 연구하였다.",
+    "citation_text": "Chioncel (2021)",
+    "offset": [
+     14,
+     29
+    ],
+    "authors": [
+     "Chioncel"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": 7,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "narrative",
+    "sentence": "Huang et al. (2021)은 GTAP(global trade analysis project) 모형과 자국의 경제 분석 모형(SPIAS-e)을 연동하여 일본의 공공 R&D 투자가 전 세계 공급망에 미치는 영향을 분석하였다.",
+    "raw": "Huang et al. (2021)은 GTAP(global trade analysis project) 모형과 자국의 경제 분석 모형(SPIAS-e)을 연동하여 일본의 공공 R&D 투자가 전 세계 공급망에 미치는 영향을 분석하였다.",
+    "citation_text": "Huang et al. (2021)",
+    "offset": [
+     0,
+     19
+    ],
+    "authors": [
+     "Huang et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": 11,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "narrative",
+    "sentence": "Hwang et al. (2021)의 연구에서는 민간 R&D 투자와 공공 R&D 투자의 경제적 효과를 분석하기 위해 우리나라를 대상으로 한 재귀적 동태 연산일반균형 모형을 구축하였다.",
+    "raw": "Hwang et al. (2021)의 연구에서는 민간 R&D 투자와 공공 R&D 투자의 경제적 효과를 분석하기 위해 우리나라를 대상으로 한 재귀적 동태 연산일반균형 모형을 구축하였다.",
+    "citation_text": "Hwang et al. (2021)",
+    "offset": [
+     0,
+     19
+    ],
+    "authors": [
+     "Hwang et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": 13,
+      "uid": "u32_0"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Hwang et al.(2022)은 한국 경제에 초점을 맞춘 연산일반균형 모형을 구축하고, R&D 지원정책의 경제적 효과를 정량적으로 비교하였다.",
+    "raw": "Hwang et al.(2022)은 한국 경제에 초점을 맞춘 연산일반균형 모형을 구축하고, R&D 지원정책의 경제적 효과를 정량적으로 비교하였다.",
+    "citation_text": "Hwang et al.(2022)",
+    "offset": [
+     0,
+     18
+    ],
+    "authors": [
+     "Hwang et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": 12,
+      "uid": "u32_0"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_0",
+    "kind": "narrative",
+    "sentence": "엄익천 · 황원식(2022)은 소득분배의 관점에서 공공 R&D 투자의 사회 · 경제적 파급효과를 분석하였다.",
+    "raw": "엄익천 · 황원식(2022)은 소득분배의 관점에서 공공 R&D 투자의 사회 · 경제적 파급효과를 분석하였다.",
+    "citation_text": "황원식(2022)",
+    "offset": [
+     6,
+     15
+    ],
+    "authors": [
+     "황원식"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": 2,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_2",
+    "kind": "parenthetical",
+    "sentence": "$\\delta_R$은 지식자본의 감가상각률을 나타내는데, 모든 산업에 공통적으로 매년 15%의 감가상각이 발생한다고 가정하였다(Guellec and van Pottelsberghe de la Potterie, 2004: 373).",
+    "raw": "$\\delta_R$은 지식자본의 감가상각률을 나타내는데, 모든 산업에 공통적으로 매년 15%의 감가상각이 발생한다고 가정하였다(Guellec and van Pottelsberghe de la Potterie, 2004: 373).",
+    "citation_text": "(Guellec and van Pottelsberghe de la Potterie, 2004: 373)",
+    "offset": [
+     70,
+     127
+    ],
+    "authors": [
+     "Guellec and van Pottelsberghe de la Potterie"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": 8,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_5",
+    "kind": "parenthetical",
+    "sentence": "따라서 많은 연구(Scherer, 1982; Hauknes and Knell, 2009)에서 지식과 기술의 흐름을 나타내는 가중치로 산업 간 투입계수(a_{j,i})10를 사용한다.",
+    "raw": "따라서 많은 연구(Scherer, 1982; Hauknes and Knell, 2009)에서 지식과 기술의 흐름을 나타내는 가중치로 산업 간 투입계수(a_{j,i})10를 사용한다.",
+    "citation_text": "Scherer, 1982",
+    "offset": [
+     10,
+     23
+    ],
+    "authors": [
+     "Scherer"
+    ],
+    "year": "1982",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": 15,
+      "uid": "u32_0"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_5",
+    "kind": "parenthetical",
+    "sentence": "따라서 많은 연구(Scherer, 1982; Hauknes and Knell, 2009)에서 지식과 기술의 흐름을 나타내는 가중치로 산업 간 투입계수(a_{j,i})10를 사용한다.",
+    "raw": "따라서 많은 연구(Scherer, 1982; Hauknes and Knell, 2009)에서 지식과 기술의 흐름을 나타내는 가중치로 산업 간 투입계수(a_{j,i})10를 사용한다.",
+    "citation_text": "Hauknes and Knell, 2009",
+    "offset": [
+     25,
+     48
+    ],
+    "authors": [
+     "Hauknes and Knell"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": 9,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1661 @@
+{
+ "doc": "13571770",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571770",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "Perry, D. (2025). Russia lost over 100 attack helicopters in first two years of Ukraine war, study suggests. FlightGlobal, 2025.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     151.5,
+     1310.1,
+     1000.5,
+     1421.1
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "Neumann, N. (2024, February 8). US Army cancels FARA helicopter programmes, redirects funds to UAS and Black Hawk procurement. Shephard Media.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     151.5,
+     1310.1,
+     1000.5,
+     1421.1
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "LOI (Level of Interoperability)는 유인 조종사가 무인기를 어느 수준까지 통제할 수 있는지를 구분한 단계로, LOI-1은 위치·상태 확인, LOI-2는 센서영상 수신, LOI-3은 페이로드 제어, LOI-4는 비행경로 통제, LOI-5는 임무 전반의 완전 통제를 의미한다.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     152.3,
+     1339.8,
+     1000.1,
+     1421.1
+    ],
+    "uid": "u4_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "Army Technology. (2025, January 21). British Army exploring uncrewed “mules” to boost Apache lethality.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "Army",
+     "Technology"
+    ],
+    "authors_raw": "Army Technology",
+    "et_al": false,
+    "year": "2025",
+    "title": null,
+    "source": "January 21). British Army exploring uncrewed “mules” to boost Apache lethality",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "ambiguous_quote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "Military & Aerospace Electronics. (2021, January 15). Army chooses L3Harris for avionics to enable the AH-64E Apache helicopter to control two kinds of UAVs.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "GA-ASI. (2025, May 1). MQ-1C Gray Eagle ER featured at Project Convergence Capstone 5. https://www.- ga-asi.com/ga-asi-mq-1c-gray-eagle-er-featured-at-us-army-s-pc-c5",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "GA-ASI"
+    ],
+    "authors_raw": "GA-ASI",
+    "et_al": false,
+    "year": "2025",
+    "title": "May 1). MQ-1C Gray Eagle ER featured at Project Convergence Capstone 5. https://www.- ga-asi.com/ga-asi-mq-1c-gray-eagle-er-featured-at-us-army-s-pc-c5",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "Vertical Mag. (2025, February 21). Inside the British Army's cutting-edge AH-64E Apache fleet.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "Army Technology. (2025, January 21). British Army exploring uncrewed “mules” to boost Apache",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "Army",
+     "Technology"
+    ],
+    "authors_raw": "Army Technology",
+    "et_al": false,
+    "year": "2025",
+    "title": null,
+    "source": "January 21). British Army exploring uncrewed “mules” to boost Apache",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "ambiguous_quote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "무인항공기(UAV) 지상통제체계(GCS)와 유인항공 플랫폼 간 데이터 교환⋅제어를 표준화하는 규격",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.7,
+     1278.8,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "Voigt, A., Donkels, A., & Fettig, K. (2019). Manned-unmanned teaming cooperative formation flight-a project review. Retrieved from https://elib.dlr.de",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.8,
+     1277.6,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u6_3",
+    "authors": [
+     "Voigt A",
+     "Donkels A",
+     "Fettig K"
+    ],
+    "authors_raw": "Voigt, A., Donkels, A., & Fettig, K",
+    "et_al": false,
+    "year": "2019",
+    "title": "Manned-unmanned teaming cooperative formation flight-a project review. Retrieved from https://elib.dlr.de",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "Lee, H. J., Moon, B. H., Kwag, C., Maw, A. A., & Lee, J. W. (2023). Mission Planning of Manned-Unmanned Aircraft Teaming based on Reinforcement Learning: Suppression of Enemy Air Defences (SEAD) Mission. Retrieved from https://eucass.eu",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.8,
+     1277.6,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u6_3",
+    "authors": [
+     "Lee H. J",
+     "Moon B. H",
+     "Kwag C",
+     "Maw A. A",
+     "Lee J. W"
+    ],
+    "authors_raw": "Lee, H. J., Moon, B. H., Kwag, C., Maw, A. A., & Lee, J. W",
+    "et_al": false,
+    "year": "2023",
+    "title": "Mission Planning of Manned-Unmanned Aircraft Teaming based on Reinforcement Learning: Suppression of Enemy Air Defences (SEAD) Mission. Retrieved from https://eucass.eu",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "RAND Corporation, Glenn, R. W. (2022). Heavy Matter: Urban Operations’ Density of Challenges. Santa Monica, CA: RAND Corporation.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.8,
+     1277.6,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u6_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "“센서높이”는 가시선 분석의 기준 높이로 사용된다. 탐지센서는 무기체계의 가장 높은 곳에 위치하므로 탐지 및피탐지 무기체계의 가시선 분석은 피탐지 표적의 가장 높은 부분을 고려한다. 또한 모델에서는 고도뿐만 아니라지형지물의 높이도 적용하여 높이 속성이 있는 지형지물(도심/산림/일반지역)의 내부 또는 건너편의 표적을 볼 수있는지를 모의한다. (입력데이터 구축지침서(Ⅰ) p.28, p.220 참조). 항공기 센서 높이 = 센서 높이 + 마스트 높이 * (제1저자) 광운대학교 방위사업학과 박사과정(항공우주연구원 전문위원), lbh25505@gmail.com ** (교신저자) 광운대학교 경영학부, 교수, sjjeong@kw.ac.kr, https://orcid.org/0000-0001-8094-4674.",
+    "page": 10,
+    "page_end": 24,
+    "box": [
+     143.8,
+     1309.8,
+     1001.3,
+     1422.2
+    ],
+    "uid": "u9_5",
+    "authors": [
+     "“센서높이”는 가시선 분석의 기준 높이로 사용된다. 탐지센서는 무기체계의 가장 높은 곳에 위치하므로 탐지 및피탐지 무기체계의 가시선 분석은 피탐지 표적의 가장 높은 부분을 고려한다. 또한 모델에서는 고도뿐만 아니라지형지물의 높이도 적용하여 높이 속성이 있는 지형지물(도심/산림/일반지역)의 내부 또는 건너편의 표적을 볼 수있는지를 모의한다. (입력데이터 구축지침서(Ⅰ) p.28",
+     "p.220 참조). 항공기 센서 높이 = 센서 높이 + 마스트 높이"
+    ],
+    "authors_raw": "“센서높이”는 가시선 분석의 기준 높이로 사용된다. 탐지센서는 무기체계의 가장 높은 곳에 위치하므로 탐지 및피탐지 무기체계의 가시선 분석은 피탐지 표적의 가장 높은 부분을 고려한다. 또한 모델에서는 고도뿐만 아니라지형지물의 높이도 적용하여 높이 속성이 있는 지형지물(도심/산림/일반지역)의 내부 또는 건너편의 표적을 볼 수있는지를 모의한다. (입력데이터 구축지침서(Ⅰ) p.28, p.220 참조). 항공기 센서 높이 = 센서 높이 + 마스트 높이",
+    "et_al": false,
+    "year": null,
+    "title": "센서높이”는 가시선 분석의 기준 높이로 사용된다. 탐지센서는 무기체계의 가장 높은 곳에 위치하므로 탐지 및피탐지 무기체계의 가시선 분석은 피탐지 표적의 가장 높은 부분을 고려한다. 또한 모델에서는 고도뿐만 아니라지형지물의 높이도 적용하여 높이 속성이 있는 지형지물(도심/산림/일반지역)의 내부 또는 건너편의 표적을 볼 수있는지를 모의한다. (입력데이터 구축지침서(Ⅰ) p.28, p.220 참조). 항공기 센서 높이 = 센서 높이 + 마스트 높이",
+    "source": "(제1저자) 광운대학교 방위사업학과 박사과정(항공우주연구원 전문위원), lbh25505@gmail.com",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "remnant_quote",
+    "layout": "en_journal",
+    "container_title": "(제1저자) 광운대학교 방위사업학과 박사과정(항공우주연구원 전문위원), lbh25505@gmail.com",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 13,
+   "per_page": {
+    "3": 2,
+    "5": 1,
+    "6": 6,
+    "7": 3,
+    "10": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "3": {
+     "markers": [
+      "1",
+      "2"
+     ],
+     "collected": [
+      "1",
+      "2"
+     ]
+    },
+    "5": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "6": {
+     "markers": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+     ],
+     "collected": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+     ]
+    },
+    "7": {
+     "markers": [
+      "10",
+      "11",
+      "12"
+     ],
+     "collected": [
+      "10",
+      "11",
+      "12"
+     ]
+    },
+    "10": {
+     "markers": [
+      "13"
+     ],
+     "collected": [
+      "13"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Driessen, T., & Schulte, A. (2025, May). Conceptual Approach to Single Seat Tactical Helicopters in MUM-T Operations: An Operational Pilot's Perspective. In 2025 IEEE 5th International Conference on Human-Machine Systems (ICHMS) (pp. 447-452). IEEE. https://doi.org/- 10.1109/ICHMS65439.2025.11154325",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Driessen T",
+     "Schulte A"
+    ],
+    "authors_raw": "Driessen, T., & Schulte, A",
+    "et_al": false,
+    "year": "2025",
+    "title": "May). Conceptual Approach to Single Seat Tactical Helicopters in MUM-T Operations: An Operational Pilot's Perspective. In 2025 IEEE 5th International Conference on Human-Machine Systems (ICHMS) (pp. 447-452). IEEE. https://doi.org/- 10.1109/ICHMS65439.2025.11154325",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "447-452",
+    "doi": "10.1109/ICHMS65439.2025.11154325",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, S., Lee, S., Kim, J., Shim, S., & Kim, K. (2024). A study on the application of mission engineering for creating a ground combat MUM-T operational concept. Journal of the Korea Defense Industry Association, 31(1), 67–79. https://doi.org/10.52798/KADIS.2024.31.1.6",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Hwang S",
+     "Lee S",
+     "Kim J",
+     "Shim S",
+     "Kim K"
+    ],
+    "authors_raw": "Hwang, S., Lee, S., Kim, J., Shim, S., & Kim, K",
+    "et_al": false,
+    "year": "2024",
+    "title": "A study on the application of mission engineering for creating a ground combat MUM-T operational concept. Journal of the Korea Defense Industry Association",
+    "source": "31(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "67-79",
+    "doi": "10.52798/KADIS.2024.31.1.6",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jang, S. G. (2025). Development Direction of AI-based Manned-Unmanned Complex System(MUM-T) from the Perspective of Robot Ecosystem. Military Research and Development, 19(2), 225-251. https://doi.org/10.70857/MRD.2025.19.2.225",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Jang S. G"
+    ],
+    "authors_raw": "Jang, S. G",
+    "et_al": false,
+    "year": "2025",
+    "title": "Development Direction of AI-based Manned-Unmanned Complex System(MUM-T) from the Perspective of Robot Ecosystem. Military Research and Development",
+    "source": "19(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "225-251",
+    "doi": "10.70857/MRD.2025.19.2.225",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jeong, B., Lee, K. S., & Koo, B. J. (2024). Development Direction of Manned and Unmanned Complex Combat System to Respond to the Future Battlefield: Focusing on ICT. Journal of Information Technology Applications & Management, 31(4), 47-61. https://doi.org/10.21219/jitam.2024.31.4.047",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Jeong B",
+     "Lee K. S",
+     "Koo B. J"
+    ],
+    "authors_raw": "Jeong, B., Lee, K. S., & Koo, B. J",
+    "et_al": false,
+    "year": "2024",
+    "title": "Development Direction of Manned and Unmanned Complex Combat System to Respond to the Future Battlefield: Focusing on ICT. Journal of Information Technology Applications & Management",
+    "source": "31(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "47-61",
+    "doi": "10.21219/jitam.2024.31.4.047",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jo, S., Choi, Y., Oh, J., Myung, H., & Lim, H. (2023). Simulation for SEAD mission with MUM-T. Journal of the Korea Institute of Military Science and Technology, 26(5), 409–421. https://doi.org/10.9766/KIMST.2023.26.5.409",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Jo S",
+     "Choi Y",
+     "Oh J",
+     "Myung H",
+     "Lim H"
+    ],
+    "authors_raw": "Jo, S., Choi, Y., Oh, J., Myung, H., & Lim, H",
+    "et_al": false,
+    "year": "2023",
+    "title": "Simulation for SEAD mission with MUM-T. Journal of the Korea Institute of Military Science and Technology",
+    "source": "26(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "409-421",
+    "doi": "10.9766/KIMST.2023.26.5.409",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jo, S., Kim, J., Park, J., Kim, S., Kim, M., & Moon, H. (2017). Defense Modeling & Simulation. Seoul: Kyomunsa. pp. 124.",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Jo S",
+     "Kim J",
+     "Park J",
+     "Kim S",
+     "Kim M",
+     "Moon H"
+    ],
+    "authors_raw": "Jo, S., Kim, J., Park, J., Kim, S., Kim, M., & Moon, H",
+    "et_al": false,
+    "year": "2017",
+    "title": "Defense Modeling & Simulation. Seoul: Kyomunsa. pp. 124",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, B., Park, M., & Choi, E. (2019). Development of a simulation environment for validating manned–unmanned aerial vehicle teaming operations. Journal of Aerospace System Engineering, 13(6), 36–42. https://doi.org/10.20910/JASE.2019.13.6.36",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Kang B",
+     "Park M",
+     "Choi E"
+    ],
+    "authors_raw": "Kang, B., Park, M., & Choi, E",
+    "et_al": false,
+    "year": "2019",
+    "title": "Development of a simulation environment for validating manned–unmanned aerial vehicle teaming operations. Journal of Aerospace System Engineering",
+    "source": "13(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "36-42",
+    "doi": "10.20910/JASE.2019.13.6.36",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. W., & Choi, G. E. (2024). Level and program analytics of MUM-T system. International Journal of Aeronautical and Space Sciences, 25(2), 593-604. https://doi.org/10.1007/s42405-023-00675-4",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Kim B. W",
+     "Choi G. E"
+    ],
+    "authors_raw": "Kim, B. W., & Choi, G. E",
+    "et_al": false,
+    "year": "2024",
+    "title": "Level and program analytics of MUM-T system. International Journal of Aeronautical and Space Sciences",
+    "source": "25(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "593-604",
+    "doi": "10.1007/s42405-023-00675-4",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S., & Kim, Y. (2023). Development of an MUM-T integrated simulation platform. IEEE Access, 11, 21519-21533. https://doi.org/10.1109/ACCESS.2023.3248096",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Kim S",
+     "Kim Y"
+    ],
+    "authors_raw": "Kim, S., & Kim, Y",
+    "et_al": false,
+    "year": "2023",
+    "title": "Development of an MUM-T integrated simulation platform. IEEE Access",
+    "source": "11",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1109/ACCESS.2023.3248096",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, C., Ryu, H., & Kim, D. (2024). Operational effectiveness of small armed helicopter MUM-T using simulation. Journal of Korea Defense Management Analysis Society, 50(1), 83–92. Retrieved from https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiI d=ART003078021",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Lee C",
+     "Ryu H",
+     "Kim D"
+    ],
+    "authors_raw": "Lee, C., Ryu, H., & Kim, D",
+    "et_al": false,
+    "year": "2024",
+    "title": "Operational effectiveness of small armed helicopter MUM-T using simulation. Journal of Korea Defense Management Analysis Society",
+    "source": "50(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "83-92",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rossetti, L. (2020). Manned–Unmanned Teaming: A great opportunity or mission overload? JAPCC Journal, 29. https://www.japcc.org/articles/manned-unmanned-teaming/",
+    "page": 22,
+    "box": [
+     144.1,
+     228.6,
+     999.0,
+     1160.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Rossetti L"
+    ],
+    "authors_raw": "Rossetti, L",
+    "et_al": false,
+    "year": "2020",
+    "title": "Manned–Unmanned Teaming: A great opportunity or mission overload? JAPCC Journal",
+    "source": "29. https://www.japcc.org/articles/manned-unmanned-teaming/",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Roth, G., & Schulte, A. (2021). A Prototype to Support Mission-Planning with Shared Unmanned Systems in Multi-User Manned-Unmanned Teaming Applications. In AIAA SCITECH 2022 Forum (p. 2526). https://doi.org/10.2514/6.2022-2526",
+    "page": 23,
+    "box": [
+     147.0,
+     228.6,
+     996.0,
+     529.6
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Roth G",
+     "Schulte A"
+    ],
+    "authors_raw": "Roth, G., & Schulte, A",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Prototype to Support Mission-Planning with Shared Unmanned Systems in Multi-User Manned-Unmanned Teaming Applications. In AIAA SCITECH 2022 Forum (p. 2526). https://doi.org/10.2514/6.2022-2526",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.2514/6.2022-2526",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, I. T., Kim, D. W., Kim, M. G., & Yoo, I. J. (2023). A Study on Development Plan of Defense Aerial MUM-T System based on Technology Level Assessment. *Journal of Korea Academia-Industrial cooperation Society*, 24(4), 560-566. https://doi.org/10.5762/KAIS.2023.24.4.560",
+    "page": 23,
+    "box": [
+     147.0,
+     228.6,
+     996.0,
+     529.6
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Shin I. T",
+     "Kim D. W",
+     "Kim M. G",
+     "Yoo I. J"
+    ],
+    "authors_raw": "Shin, I. T., Kim, D. W., Kim, M. G., & Yoo, I. J",
+    "et_al": false,
+    "year": "2023",
+    "title": "Journal of Korea Academia-Industrial cooperation Society",
+    "source": "). A Study on Development Plan of Defense Aerial MUM-T System based on Technology Level Assessment. Journal of Korea Academia-Industrial cooperation Society, 24(4), 560-566. https://doi.org/10.5762/KAIS.2023.24.4.560",
+    "volume": null,
+    "issue": null,
+    "pages": "560-566",
+    "doi": "10.5762/KAIS.2023.24.4.560",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Szári, N. (2024). Combat Helicopters and Drones in the Russian-Ukrainian Conflict:–Challenges and Transformations. *Hadtudományi Szemle*, 17(2), 33-44. https://doi.org/10.32563/hsz.2024.2.3",
+    "page": 23,
+    "box": [
+     147.0,
+     228.6,
+     996.0,
+     529.6
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Szári",
+     "N"
+    ],
+    "authors_raw": "Szári, N",
+    "et_al": false,
+    "year": "2024",
+    "title": "Hadtudományi Szemle",
+    "source": "). Combat Helicopters and Drones in the Russian-Ukrainian Conflict:–Challenges and Transformations. Hadtudományi Szemle, 17(2), 33-44. https://doi.org/10.32563/hsz.2024.2.3",
+    "volume": null,
+    "issue": null,
+    "pages": "33-44",
+    "doi": "10.32563/hsz.2024.2.3",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Simulation-based analysis of operational effectiveness using army weapon effectiveness analysis model of attack helicopter through manned-unmanned teaming (MUM-T) in plain, urban, and mountainous terrains environments",
+   "page": 1,
+   "box": [
+    144.1,
+    392.9,
+    999.8,
+    582.7
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Lee, Bohyung",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     403.2,
+     612.7,
+     740.8,
+     642.1
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Jeong, Seokjae",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     403.2,
+     612.7,
+     740.8,
+     642.1
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM",
+   "Kwangwoon University",
+   "Department of Defense Acquisition Program",
+   "Institute (KARI)",
+   "Department of Business Administration"
+  ],
+  "abstract": {
+   "value": "This study quantitatively analyzed the operational effectiveness of helicopter Manned–Unmanned Teaming (MUM-T) across plains, urban, and mountainous environments. To this end, the Army Weapon Effectiveness Analysis Model (AWAM) was enhanced to conduct integrated simulations of attack helicopters operating in concert with reconnaissance-and-loitering (suicide) unmanned aerial vehicles (UAVs). The survivability of helicopters and the tank destruction rate were compared between manned-only operations and combined manned–unmanned operations. The analysis showed that MUM-T operations outperformed manned-only operations in every terrain type. In plains, the tank destruction rate increased by 1.13 and helicopter survivability by 1.04. In urban terrain, the tank destruction rate rose by a factor of 5.07 and helicopter survivability by 1.91, while in mountainous terrain they increased by factors of 3.96 and 1.62, respectively. These results are attributed to the advance deployment of UAVs, which suppressed enemy air-defense weapons and provided real-time target data to support precision strikes. Given that more than 90 percent of the Korean Peninsula consists of mountainous and urban areas, building MUM-T capabilities into future attack-helicopter forces is essential. In particular, systematic comparison and validation are required for various operational models—such as helicopter–vertical-takeoff-and-landing (VTOL) drone teaming, helicopter–Air-Launched Effects (ALE) teaming, and hybrid helicopter–VTOL–ALE configurations—while simultaneously securing key technological infrastructures, including real-time sensor-to-shooter networks, AI-based situational awareness and decision-support systems, and high-reliability data links. By incorporating terrain variables—plains, urban, and mountainous—into simulation experiments, this research provides empirical evidence of MUM-T’s operational benefits and offers foundational data to guide the Republic of Korea military's force development and doctrinal advancement of manned–unmanned teaming systems.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study quantitatively analyzed the operational effectiveness of helicopter Manned–Unmanned Teaming (MUM-T) across plains, urban, and mountainous environments. To this end, the Army Weapon Effectiveness Analysis Model (AWAM) was enhanced to conduct integrated simulations of attack helicopters operating in concert with reconnaissance-and-loitering (suicide) unmanned aerial vehicles (UAVs). The survivability of helicopters and the tank destruction rate were compared between manned-only operations and combined manned–unmanned operations. The analysis showed that MUM-T operations outperformed manned-only operations in every terrain type. In plains, the tank destruction rate increased by 1.13 and helicopter survivability by 1.04. In urban terrain, the tank destruction rate rose by a factor of 5.07 and helicopter survivability by 1.91, while in mountainous terrain they increased by factors of 3.96 and 1.62, respectively. These results are attributed to the advance deployment of UAVs, which suppressed enemy air-defense weapons and provided real-time target data to support precision strikes. Given that more than 90 percent of the Korean Peninsula consists of mountainous and urban areas, building MUM-T capabilities into future attack-helicopter forces is essential. In particular, systematic comparison and validation are required for various operational models—such as helicopter–vertical-takeoff-and-landing (VTOL) drone teaming, helicopter–Air-Launched Effects (ALE) teaming, and hybrid helicopter–VTOL–ALE configurations—while simultaneously securing key technological infrastructures, including real-time sensor-to-shooter networks, AI-based situational awareness and decision-support systems, and high-reliability data links. By incorporating terrain variables—plains, urban, and mountainous—into simulation experiments, this research provides empirical evidence of MUM-T’s operational benefits and offers foundational data to guide the Republic of Korea military's force development and doctrinal advancement of manned–unmanned teaming systems.",
+   "page": 1,
+   "box": [
+    189.0,
+    690.0,
+    309.4,
+    718.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : Helicopter Manned–Unmanned Teaming (MUM-T), helicopter survivability, tank destruction rate, simulation, MUM-T Development Strategy"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 8,
+   "uid": "u1_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "43-66",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "헬기 유⋅무인 복합체계",
+   "헬기 생존율",
+   "전차 파괴율",
+   "시뮬레이션",
+   "MUM-T 구축방안"
+  ],
+  "keywords_en": [
+   "Helicopter Manned–Unmanned Teaming (MUM-T)",
+   "helicopter survivability",
+   "tank destruction rate",
+   "simulation",
+   "MUM-T Development Strategy"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "raw": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "citation_text": "Driessen & Schulte, 2025",
+    "offset": [
+     78,
+     102
+    ],
+    "authors": [
+     "Driessen & Schulte"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "raw": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "citation_text": "Jang, 2025",
+    "offset": [
+     104,
+     114
+    ],
+    "authors": [
+     "Jang"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "raw": "해당 체계는 유인과 무인 항공기의 통합 운용을 통해 정찰, 표적획득, 정밀타격 등 다양한 작전 임무의 효율성과 치명성을 극대화하는 개념이다(Driessen & Schulte, 2025; Jang, 2025; Jeong, Lee, & Koo, 2024).",
+    "citation_text": "Jeong, Lee, & Koo, 2024",
+    "offset": [
+     116,
+     139
+    ],
+    "authors": [
+     "Jeong"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "특히, 우크라이나-러시아 전쟁에서 대공 공격의 맨패즈에 의해 다수의 러시아 유인� 琴(Ka-52, Mi-24, Mi-28N 등)가 피격되거나 격추되면서 유인 플랫폼 단독의 운용 생존성 한계로 인해 MUM-T 체계의 필요성이 강조되고 있다(Szári, 2024).",
+    "raw": "특히, 우크라이나-러시아 전쟁에서 대공 공격의 맨패즈에 의해 다수의 러시아 유인� 琴(Ka-52, Mi-24, Mi-28N 등)가 피격되거나 격추되면서 유인 플랫폼 단독의 운용 생존성 한계로 인해 MUM-T 체계의 필요성이 강조되고 있다(Szári, 2024).",
+    "citation_text": "(Szári, 2024)",
+    "offset": [
+     132,
+     145
+    ],
+    "authors": [
+     "Szári"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "narrative",
+    "sentence": "et al.(2024)은 MUM-T 운용 효과를 시뮬레이션 분석을 통해 유인� 琴 단독 운용은 적 방공망에 취약해 생존성이 낮지만, 무인기를 선투입하여 위협 요소를 제거하면 작전 지속성과 효율성이 크게 향상될 수 있다는 점을 제시하였다.",
+    "raw": "et al.(2024)은 MUM-T 운용 효과를 시뮬레이션 분석을 통해 유인� 琴 단독 운용은 적 방공망에 취약해 생존성이 낮지만, 무인기를 선투입하여 위협 요소를 제거하면 작전 지속성과 효율성이 크게 향상될 수 있다는 점을 제시하였다.",
+    "citation_text": "al.(2024)",
+    "offset": [
+     3,
+     12
+    ],
+    "authors": [
+     "al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "이는 단순한 병행 운용을 넘어, 유인 플랫폼이 무인 시스템의 센서나 비행경로를 직접 통제·감독할 수 있는 수준까지 포함하며, 다양한 상호운용성 수준(Levels of Interoperability, LOI³)을 통해 운영 효율과 유연성을 확보하는 차세대 운용 개념이다(Kim & Choi, 2024).",
+    "raw": "이는 단순한 병행 운용을 넘어, 유인 플랫폼이 무인 시스템의 센서나 비행경로를 직접 통제·감독할 수 있는 수준까지 포함하며, 다양한 상호운용성 수준(Levels of Interoperability, LOI³)을 통해 운영 효율과 유연성을 확보하는 차세대 운용 개념이다(Kim & Choi, 2024).",
+    "citation_text": "(Kim & Choi, 2024)",
+    "offset": [
+     149,
+     167
+    ],
+    "authors": [
+     "Kim & Choi"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Rossetti(2020)는 미 육군 항공센터(USAACE)의 정의를 인용하여 MUM-T를 ‘병력과 유·무인 공중·지상 플랫폼, 로倒, 센서를 동기화 운용하여 상황인식·치명성·생존성을 높이는 체계’로 규정하였다.",
+    "raw": "Rossetti(2020)는 미 육군 항공센터(USAACE)의 정의를 인용하여 MUM-T를 ‘병력과 유·무인 공중·지상 플랫폼, 로倒, 센서를 동기화 운용하여 상황인식·치명성·생존성을 높이는 체계’로 규정하였다.",
+    "citation_text": "Rossetti(2020)",
+    "offset": [
+     0,
+     14
+    ],
+    "authors": [
+     "Rossetti"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "다만 조종사가 다수의 무인기를 통제할 때 발생하는 인지 과부하, 상황인식 저하, 공간지각 손실 등 HMI(인간-기계 인터페이스) 과제를 동시에 해결해야 한다는 한계도 지적하였다(Rossetti, 2020).",
+    "raw": "다만 조종사가 다수의 무인기를 통제할 때 발생하는 인지 과부하, 상황인식 저하, 공간지각 손실 등 HMI(인간-기계 인터페이스) 과제를 동시에 해결해야 한다는 한계도 지적하였다(Rossetti, 2020).",
+    "citation_text": "(Rossetti, 2020)",
+    "offset": [
+     98,
+     114
+    ],
+    "authors": [
+     "Rossetti"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Hwang et al.(2024) 연구는 임무공학(Mission Engineering) 방법론을 활용하여 2040년 지상전 보병(전투차량)대대 수준의 MUM-T 운용개념 아키텍처를 제시하였다.",
+    "raw": "Hwang et al.(2024) 연구는 임무공학(Mission Engineering) 방법론을 활용하여 2040년 지상전 보병(전투차량)대대 수준의 MUM-T 운용개념 아키텍처를 제시하였다.",
+    "citation_text": "Hwang et al.(2024)",
+    "offset": [
+     0,
+     18
+    ],
+    "authors": [
+     "Hwang et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "al.(2024)은 소형무장헬기(LAH)와 UAV를 결합한 모의를 통해 유인 헬기 단독 운용은 적 방공망에 취약하나 무인기를 선투입하여 표적을 식별하고, SEAD 임무 수행에서 생존성과 임무 효율에 관한 유의한 향상을 정량적으로 분석하였다.",
+    "raw": "al.(2024)은 소형무장헬기(LAH)와 UAV를 결합한 모의를 통해 유인 헬기 단독 운용은 적 방공망에 취약하나 무인기를 선투입하여 표적을 식별하고, SEAD 임무 수행에서 생존성과 임무 효율에 관한 유의한 향상을 정량적으로 분석하였다.",
+    "citation_text": "al.(2024)",
+    "offset": [
+     0,
+     9
+    ],
+    "authors": [
+     "al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "Kang et al.(2019) 연구는 X-Plane 기반 유인기 시뮬레이터와 HILS 무인기 모듈을 연동한 지상 통합 시뮬레이션 환경을 구축하여 비행시험 이전 단계에서 통신 지연, 링크 안정성, 인터페이스 표준화를 검증함으로써 실증 과정의 위험과 비용에 관한 경감을 밝혔다.",
+    "raw": "Kang et al.(2019) 연구는 X-Plane 기반 유인기 시뮬레이터와 HILS 무인기 모듈을 연동한 지상 통합 시뮬레이션 환경을 구축하여 비행시험 이전 단계에서 통신 지연, 링크 안정성, 인터페이스 표준화를 검증함으로써 실증 과정의 위험과 비용에 관한 경감을 밝혔다.",
+    "citation_text": "Kang et al.(2019)",
+    "offset": [
+     0,
+     17
+    ],
+    "authors": [
+     "Kang et al."
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "또한 Jo et al.(2023)은 SEAD 시나리오 모의를 통해 무인기를 탐지 · 교란 · 표적지시 임무에 활용하고, 유인기는 원거리 타격에 집중할 때 생존성과 효율성이 높아진다는 점을 확인하였다.",
+    "raw": "또한 Jo et al.(2023)은 SEAD 시나리오 모의를 통해 무인기를 탐지 · 교란 · 표적지시 임무에 활용하고, 유인기는 원거리 타격에 집중할 때 생존성과 효율성이 높아진다는 점을 확인하였다.",
+    "citation_text": "Jo et al.(2023)",
+    "offset": [
+     3,
+     18
+    ],
+    "authors": [
+     "Jo et al."
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "narrative",
+    "sentence": "Roth et al.(2021)은 다사용자 환경에서 임무계획 지원 도구를 시뮬레이션으로 검증하여 상황인식 공유와 자산 배분이 팀 효율을 높이는 데 기여함을 보였으며, Lee, H.",
+    "raw": "Roth et al.(2021)은 다사용자 환경에서 임무계획 지원 도구를 시뮬레이션으로 검증하여 상황인식 공유와 자산 배분이 팀 효율을 높이는 데 기여함을 보였으며, Lee, H.",
+    "citation_text": "Roth et al.(2021)",
+    "offset": [
+     0,
+     17
+    ],
+    "authors": [
+     "Roth et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "narrative",
+    "sentence": "et al.(2023)11)은 강화학습 기반 시뮬레이션을 통해 UAV 재머와 SAM 위협이 혼재된 환경에서 유·무인 협업 정책을 학습시켜 임무 성공률과 생존성을 향상시킬 수 있음을 입증하였다.",
+    "raw": "et al.(2023)11)은 강화학습 기반 시뮬레이션을 통해 UAV 재머와 SAM 위협이 혼재된 환경에서 유·무인 협업 정책을 학습시켜 임무 성공률과 생존성을 향상시킬 수 있음을 입증하였다.",
+    "citation_text": "al.(2023)",
+    "offset": [
+     3,
+     12
+    ],
+    "authors": [
+     "al."
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_1",
+    "kind": "narrative",
+    "sentence": "아울러 Kim & Kim(2023)은 전 규모 헬기 시뮬레이터와 다수의 PX4 UAV를 연동한 통합 시뮬레이션 플랫폼을 구축하여 편대 비행 및 경로 추종 시나리오에서 정량적 지표를 도출하고 조종사 상황인식 및 알고리즘 검증을 동시에 지원할 수 있는 환경을 제시하였다.",
+    "raw": "아울러 Kim & Kim(2023)은 전 규모 헬기 시뮬레이터와 다수의 PX4 UAV를 연동한 통합 시뮬레이션 플랫폼을 구축하여 편대 비행 및 경로 추종 시나리오에서 정량적 지표를 도출하고 조종사 상황인식 및 알고리즘 검증을 동시에 지원할 수 있는 환경을 제시하였다.",
+    "citation_text": "Kim(2023)",
+    "offset": [
+     10,
+     19
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_6",
+    "kind": "parenthetical",
+    "sentence": "본 연구는 유·무인 복합체계와 유인기 단독 임무 수행의 효과를 정량적으로 비교하기 위해 AWAM(Army Weapon effectiveness Analysis Model)을 일부 보완하여 분석모델로 활용하였다(i.e., Jo, Kim, Park, Kim, & Kim, 2017)(Table 1).",
+    "raw": "본 연구는 유·무인 복합체계와 유인기 단독 임무 수행의 효과를 정량적으로 비교하기 위해 AWAM(Army Weapon effectiveness Analysis Model)을 일부 보완하여 분석모델로 활용하였다(i.e., Jo, Kim, Park, Kim, & Kim, 2017)(Table 1).",
+    "citation_text": "(i.e., Jo, Kim, Park, Kim, & Kim, 2017)",
+    "offset": [
+     116,
+     155
+    ],
+    "authors": [
+     "Jo"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 22,
+    "uid": "u21_3",
+    "kind": "parenthetical",
+    "sentence": "(2025, May).",
+    "raw": "(2025, May).",
+    "citation_text": "(2025, May)",
+    "offset": [
+     0,
+     11
+    ],
+    "authors": [
+     "May"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

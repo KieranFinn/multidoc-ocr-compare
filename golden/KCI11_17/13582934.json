@@ -1,0 +1,1188 @@
+{
+ "doc": "13582934",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582934",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "유정호. (2009). 한국의 고속성장에서 정부의 역할, 한국경제포럼. 2집 3호 57-72 서울: 한국경제학회",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "유정호"
+    ],
+    "authors_raw": "유정호",
+    "et_al": false,
+    "year": "2009",
+    "title": ". 한국의 고속성장에서 정부의 역할",
+    "source": "한국경제포럼. 2집 3호 57-72 서울: 한국경제학회",
+    "volume": null,
+    "issue": null,
+    "pages": "57-72",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_agency",
+    "container_title": null,
+    "publisher": "한국경제포럼. 2집 3호 57-72 서울: 한국경제학회",
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Alacevice, Michele (2021), *Albert O. Hirschman, An intellectual Biography*, Cambridge University Press, New York",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Alacevice",
+     "Michele"
+    ],
+    "authors_raw": "Alacevice, Michele",
+    "et_al": false,
+    "year": "2021",
+    "title": "Albert O. Hirschman, An intellectual Biography",
+    "source": "), Albert O. Hirschman, An intellectual Biography, Cambridge University Press, New York",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chiavo-Campo, Salvatore. (1978), The Simple Measurement of Structural Change: A Note. *Economic Record*, 54: 261-263.",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Chiavo-Campo",
+     "Salvatore"
+    ],
+    "authors_raw": "Chiavo-Campo, Salvatore",
+    "et_al": false,
+    "year": "1978",
+    "title": "Economic Record",
+    "source": "), The Simple Measurement of Structural Change: A Note. Economic Record, 54: 261-263",
+    "volume": null,
+    "issue": null,
+    "pages": "261-263",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Han, Hongyul (2022). Structural Change as a Source of Growth: An Empirical Evidence from OECD countries, *Analyses and Alternatives*. No.1 Vol 6. 195-222",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Han",
+     "Hongyul"
+    ],
+    "authors_raw": "Han, Hongyul",
+    "et_al": false,
+    "year": "2022",
+    "title": "Analyses and Alternatives",
+    "source": "). Structural Change as a Source of Growth: An Empirical Evidence from OECD countries, Analyses and Alternatives",
+    "volume": "6",
+    "issue": "1",
+    "pages": "195-222",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Sen, Amatyr(1999), *Development as freedom*, Oxford University Press",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Sen",
+     "Amatyr"
+    ],
+    "authors_raw": "Sen, Amatyr",
+    "et_al": false,
+    "year": "1999",
+    "title": "Development as freedom",
+    "source": "), Development as freedom, Oxford University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Dietrich, Andreas (2012) Does growth cause structural change, or is it the other way around? A dynamic panel data analysis for seven OECD countries, *Empirical Economics*, 43(3): 915-944",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Dietrich",
+     "Andreas"
+    ],
+    "authors_raw": "Dietrich, Andreas",
+    "et_al": false,
+    "year": "2012",
+    "title": "Empirical Economics",
+    "source": ") Does growth cause structural change, or is it the other way around? A dynamic panel data analysis for seven OECD countries, Empirical Economics, 43(3): 915-944",
+    "volume": null,
+    "issue": null,
+    "pages": "915-944",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Struyven, Daan & Hatzius, Jan (2022), Is the World Deglobalizing? in (De)globalization Ahead?, *Global Macro Research*, No.108, Goldman Sachs\nManuscript: May 07, 2025; Review completed: May 28, 2025; Accepted: Jun 6, 2025",
+    "page": 28,
+    "box": [
+     111.0,
+     453.4,
+     792.7,
+     582.0
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Struyven",
+     "Daan",
+     "Hatzius",
+     "Jan"
+    ],
+    "authors_raw": "Struyven, Daan & Hatzius, Jan",
+    "et_al": false,
+    "year": "2025",
+    "title": "Global Macro Research",
+    "source": null,
+    "volume": null,
+    "issue": "108",
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "물론 ‘질적 향상’이라는 개념은 추상적이고 주관적인 측면이 강한 것으로 간주할 수 있다. 그럼에도 불구하고 경제학적 관점에서만 바라본다면 ‘고도화한 산업’ 및 ‘높은 소득과 노동조건’을 의미하는 것으로 간주해도 무방할 것이다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     104.2,
+     1006.8,
+     795.3,
+     1105.9
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "W.A.Lewis가 노벨경제학상을 수상하였을 때 Hirshann은 프린스턴대 고등경제원에 소속해 있었다. Michele Alacevich(Albert O. Hirschman. An Intellectual Biography)가 쓴 전기에는 명시적 증거는 없지만 당시 Hirshman의 실망한 분위기를 잘 전달하고 있는데 그는 특히 미국의 학문적 풍토와의 차이 때문으로 인식한 것으로 보인다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     104.2,
+     1006.8,
+     795.3,
+     1105.9
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "이는 허식만 계열의 접근방식을 포함한 수정주의적 이론이 항상 성공적이라고 말하는 것도, 교과서적 정부의 실패 가능성을 외면하는 것도 아니다. 오로지 구조고도화와 관련하여 실천적 유효성을 상대적으로 평가한 것이다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     104.2,
+     1006.8,
+     795.3,
+     1105.9
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "성장과 구조변화와 관련한 기존 연구에 대한 조사는 Han(2022)의 연구가 정리한 내용을 참조하기 바란다..",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     103.4,
+     1129.8,
+     795.3,
+     1176.3
+    ],
+    "uid": "u3_4",
+    "authors": [
+     "성장과",
+     "구조변화와",
+     "관련한",
+     "기존",
+     "연구에",
+     "대한",
+     "조사는",
+     "Han"
+    ],
+    "authors_raw": "성장과 구조변화와 관련한 기존 연구에 대한 조사는 Han",
+    "et_al": false,
+    "year": "2022",
+    "title": "의 연구가 정리한 내용을 참조하기 바란다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "미국의 바이든 행정부의 산업정책은 첨단 산업을 대상으로 하고 있지만 그 정책수단들은 여기서 열거한 범위에 완벽히 속하고 있다. 최근 트럼프 행정부의 관세정책은 비록 일시적 ‘엄포’에 머문다고 할지라도 정책수단의 범위가 한정적임을 말해준다.",
+    "page": 5,
+    "page_end": 6,
+    "box": [
+     105.0,
+     1154.8,
+     792.7,
+     1178.3
+    ],
+    "uid": "u4_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "구체적 사례를 들자면 환율의 변화가 구조변화를 지연하거나 역전시킬 가능성을 생각할 수 있다. 예를 들어 가격경쟁력에 크게 의존하는 수출 위주 산업의 사양화 과정에서 일시적인 외환위기와 글로벌 금융위기와 같은 환율변동으로 인하여 그 속도가 크게 둔화하거나 역전되는 경우도 있다. 이러한 상황은 매우 극적인 사례이지만, 일상적으로 시행되고 있는 정부의 구조조정과정의 원활화 정책의 강도가 정치사회적 환경에 반응한다는 점을 고려해야 할 것이다.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     104.2,
+     907.9,
+     795.9,
+     1054.8
+    ],
+    "uid": "u9_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "한국과 일본의 산업화 기간의 격차를 생각하면 위 그림은 보다 면밀한 검토가 필요하다. 즉, 한국이 산업정책을 통하여 중화학공업 중심의 산업구조를 거의 갖춘 것은 80년대 중 후반임을 감안하면 위 그림의 비교 기간을 조정할 필요가 있다. 그러나 측정 기간을 4, 5년으로 늘렸을 때도 3년과 별다른 차이가 없다는 점에서 3년간의 구조변화 측정치를 사용해도 무방한 것으로 판단된다.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     104.2,
+     1056.2,
+     797.0,
+     1178.3
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "엄밀한 의미에서 무역의존도에는 일정한 한도(limit)가 존재할 수밖에 없으며 이에 증가 율이 체감하는 것은 어쩌면 그 한도에 접근하는 과정으로 해석할 수 있다. 달리 말하면 세계화는 무한히 확대하는 것이 아니라 일종의 정상상태에 수렴하는 과정으로 볼 수 있다.",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     102.7,
+     1080.9,
+     797.1,
+     1176.3
+    ],
+    "uid": "u17_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "간단한 사례로는 섬유 및 의류의 무역은 외견상 상품무역으로 나타나지만 실제로는 매우 많은 서비스가 포함된 거래라고 할 수 있다. 예를 들어 미국이 중남미 국가로부터 수입하는 의류제품의 부가가치에는 미국 유명 의류회사의 디자인, 회계, 법률, 물류 및 유통 등의 서비스가 내재된 것으로 보아야 한다. 이는 넓은 범위에 걸쳐 가전제품에도 해당된다. 즉, 현대 제조생산활동에 있어서 서비스 요소가 전방 및 후방에 투입되는 비중이 높아지고 있으며 이는 특히 사업서비스 분야의 확대를 결과하는 원인이 되고 있다.",
+    "page": 20,
+    "page_end": 20,
+    "box": [
+     103.4,
+     860.0,
+     795.3,
+     1174.4
+    ],
+    "uid": "u19_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "최근 트럼프의 보호무역주의적 정책에 따라 글로벌공급망의 구조가 본질적으로 변화할 것이라는 예측이 제기된다. 글로벌공급망 구조의 변화가 발생하더라도 그 방향이 한 경제 내에서 생산과정을 모두 진행한다는 의미는 아니다. 중국에 대한 봉쇄가 이루어진다고 할지라도 생산활동 전체가 미국으로 이전할 것으로 상상하기 힘들기 때문이다. 오히려 이 과정에서 국제적 분업 구조에 따른 새로운 가치사슬이 형성될 것으로 보아야 할 것이며 이 과정은 오히려 서비스무역의 역할을 더욱 증대시킬 것으로 보아야 할 것이다.",
+    "page": 20,
+    "page_end": 20,
+    "box": [
+     103.4,
+     860.0,
+     795.3,
+     1174.4
+    ],
+    "uid": "u19_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "이 역시 Hirshman이 사용한 용어로서, 개도국의 발전에 가장 부족한 요소가 바로 한 공동체가 변화를 위하여 투자하고자 하는 결심이라고 보았다.",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     103.4,
+     1130.5,
+     794.9,
+     1178.3
+    ],
+    "uid": "u21_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "이러한 정책의 또 다른 배경에는 당시 김대중 대통령의 독점적 구조의 한국경제에 대한 인식이 자리한 것으로 보인다. 즉, 독점적 재벌 중심 경제로 인한 한국경제의 비효율성이 외환위기의 주요 원인이었다는 인식에서 중소벤처기업의 활성화를 통하여 독점을 완화하려고 하였다.",
+    "page": 23,
+    "page_end": 23,
+    "box": [
+     105.0,
+     957.9,
+     794.9,
+     1176.9
+    ],
+    "uid": "u22_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "물론 유정호(2009)와 같이 한국경제의 성장과 구조변화의 요인으로서 산업정책보다 국제분업구조의 효과적 편입이라는 시장중심적 해석도 있으며 이 역시 충분히 유효할 뿐만 아니라 신고전학과의 주류적 견해이기도 하다. 다만 본 연구에서는 산업정책이 결정적 요인이었다는 주장보다는 거의 매 정부마다 산업정책이 수행되었음에도 일부 시기에만 구조변화에 유효하였다는 사실을 강조한다.",
+    "page": 23,
+    "page_end": 23,
+    "box": [
+     105.0,
+     957.9,
+     794.9,
+     1176.9
+    ],
+    "uid": "u22_3",
+    "authors": [
+     "물론",
+     "유정호"
+    ],
+    "authors_raw": "물론 유정호",
+    "et_al": false,
+    "year": "2009",
+    "title": "와 같이 한국경제의 성장과 구조변화의 요인으로서 산업정책보다 국제분업구조의 효과적 편입이라는 시장중심적 해석도 있으며 이 역시 충분히 유효할 뿐만 아니라 신고전학과의 주류적 견해이기도 하다. 다만 본 연구에서는 산업정책이 결정적 요인이었다는 주장보다는 거의 매 정부마다 산업정책이 수행되었음에도 일부 시기에만 구조변화에 유효하였다는 사실을 강조한다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "일본의 산업정책에 대한 역사적 고찰과 자세한 내용은 한국개발연구원에서 발간한 이재형의 “일본의 산업정책의 패러다임 변화와 시사점(2018)”을 참조할 것",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     104.2,
+     1129.7,
+     792.7,
+     1178.3
+    ],
+    "uid": "u23_4",
+    "authors": [
+     "일본의 산업정책에 대한 역사적 고찰과 자세한 내용은 한국개발연구원에서 발간한 이재형의"
+    ],
+    "authors_raw": "일본의 산업정책에 대한 역사적 고찰과 자세한 내용은 한국개발연구원에서 발간한 이재형의",
+    "et_al": false,
+    "year": "2018",
+    "title": "일본의 산업정책의 패러다임 변화와 시사점(2018)",
+    "source": "을 참조할 것",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 14,
+   "per_page": {
+    "3": 3,
+    "4": 1,
+    "5": 1,
+    "10": 2,
+    "18": 1,
+    "20": 2,
+    "22": 1,
+    "23": 2,
+    "24": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "3": {
+     "markers": [
+      "1",
+      "2",
+      "3"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "4": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "5": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "10": {
+     "markers": [
+      "6",
+      "7"
+     ],
+     "collected": [
+      "6",
+      "7"
+     ]
+    },
+    "18": {
+     "markers": [
+      "8"
+     ],
+     "collected": [
+      "8"
+     ]
+    },
+    "20": {
+     "markers": [
+      "9",
+      "10"
+     ],
+     "collected": [
+      "9",
+      "10"
+     ]
+    },
+    "22": {
+     "markers": [
+      "11"
+     ],
+     "collected": [
+      "11"
+     ]
+    },
+    "23": {
+     "markers": [
+      "12",
+      "13"
+     ],
+     "collected": [
+      "12",
+      "13"
+     ]
+    },
+    "24": {
+     "markers": [
+      "14"
+     ],
+     "collected": [
+      "14"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "A Note on the Speed of Structural Changes and Economic Growth: Cases of Korea and Japan",
+   "page": 1,
+   "box": [
+    102.7,
+    205.4,
+    792.7,
+    342.1
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Hongyul Han",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.7,
+     403.4,
+     241.7,
+     452.3
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Hanyang University",
+   "Department of Economics"
+  ],
+  "abstract": {
+   "value": "Economic development is a dynamic process involving both structural transformation and economic growth. Therefore the speed of structural change carries significant implications as it shapes the relative economic performance of nations. The current stagnant economic situations of Japan and Korea can largely be attributed to the slowing speed of structural change. This study traces structural change in both countries since the 1970s. The study identifies a notable deceleration of structural changes in both economies since the 2000s. The finding suggests that both economies have failed to upgrade their industrial structures significantly while the world economy has experienced industrial and technological transformation. This study also confirmed that the speed of structural change strongly influences economic growth. As the speed of structural changes reflects the capacity of an economy to allocate resource efficiently, it could be a good candidate index for innovation. Therefore growth stagnation in both economies may be an inevitable result of delayed structural transformation, suggesting that Korea and Japan may face the “ advanced income trap”. While both countries have pursued industrial policy reform in one way or another, those efforts appear ineffective in producing real change when measured by the speed of industry structure in this study.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Economic development is a dynamic process involving both structural transformation and economic growth. Therefore the speed of structural change carries significant implications as it shapes the relative economic performance of nations. The current stagnant economic situations of Japan and Korea can largely be attributed to the slowing speed of structural change. This study traces structural change in both countries since the 1970s. The study identifies a notable deceleration of structural changes in both economies since the 2000s. The finding suggests that both economies have failed to upgrade their industrial structures significantly while the world economy has experienced industrial and technological transformation. This study also confirmed that the speed of structural change strongly influences economic growth. As the speed of structural changes reflects the capacity of an economy to allocate resource efficiently, it could be a good candidate index for innovation. Therefore growth stagnation in both economies may be an inevitable result of delayed structural transformation, suggesting that Korea and Japan may face the “ advanced income trap”. While both countries have pursued industrial policy reform in one way or another, those efforts appear ineffective in producing real change when measured by the speed of industry structure in this study.",
+   "page": 1,
+   "box": [
+    102.7,
+    512.3,
+    171.9,
+    533.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: Economic Development, Industry Structure, Growth Rate, Trade Structure, Korea, Japan"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u1_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 9,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "7-34",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "Economic Development",
+   "Industry Structure",
+   "Growth Rate",
+   "Trade Structure",
+   "Korea",
+   "Japan"
+  ],
+  "keywords_en": [
+   "Economic Development",
+   "Industry Structure",
+   "Growth Rate",
+   "Trade Structure",
+   "Korea",
+   "Japan"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "narrative",
+    "sentence": "경제발전의 목표가 공동체 구성원의 전반적 자유 확대라는 Sen(1999)의 정의는 유효하다.",
+    "raw": "경제발전의 목표가 공동체 구성원의 전반적 자유 확대라는 Sen(1999)의 정의는 유효하다.",
+    "citation_text": "Sen(1999)",
+    "offset": [
+     31,
+     40
+    ],
+    "authors": [
+     "Sen"
+    ],
+    "year": "1999",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "narrative",
+    "sentence": "Rodrik(2022)이 전통적 제조업 중심 산업정책을 넘어 서비스업을 포괄하는 현대적 산업정책의 필요성을 강조한 배경이기도 하다.",
+    "raw": "Rodrik(2022)이 전통적 제조업 중심 산업정책을 넘어 서비스업을 포괄하는 현대적 산업정책의 필요성을 강조한 배경이기도 하다.",
+    "citation_text": "Rodrik(2022)",
+    "offset": [
+     0,
+     12
+    ],
+    "authors": [
+     "Rodrik"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "본 연구에서는 Schiavo-Campo(1978)의 단순한 계산식을 변형하여 사용하였다(식.1).",
+    "raw": "본 연구에서는 Schiavo-Campo(1978)의 단순한 계산식을 변형하여 사용하였다(식.1).",
+    "citation_text": "Campo(1978)",
+    "offset": [
+     16,
+     27
+    ],
+    "authors": [
+     "Campo"
+    ],
+    "year": "1978",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_1",
+    "kind": "narrative",
+    "sentence": "구조변화가 성장률에 양(+)의 인과적 효과가 있음을 상정하고 있다는 사실은 Han(2022)의 연구에서 대체로 실증적으로 확인된 바 있다.",
+    "raw": "구조변화가 성장률에 양(+)의 인과적 효과가 있음을 상정하고 있다는 사실은 Han(2022)의 연구에서 대체로 실증적으로 확인된 바 있다.",
+    "citation_text": "Han(2022)",
+    "offset": [
+     42,
+     51
+    ],
+    "authors": [
+     "Han"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_1",
+    "kind": "narrative",
+    "sentence": "Struyven & Hatzius(2022)의 연구가 소개하는 바와 같이 국경 간 인터넷 대역폭이 2008년 이후 100배 이상 증가하였다는 사실이 그 증거의 하나이다.",
+    "raw": "Struyven & Hatzius(2022)의 연구가 소개하는 바와 같이 국경 간 인터넷 대역폭이 2008년 이후 100배 이상 증가하였다는 사실이 그 증거의 하나이다.",
+    "citation_text": "Hatzius(2022)",
+    "offset": [
+     11,
+     24
+    ],
+    "authors": [
+     "Hatzius"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 24,
+    "uid": "u23_2",
+    "kind": "narrative",
+    "sentence": "예컨대 산업 기술 진흥법(2000)은 일본의 '산업기술 및기술 관리 능력'을 향상시키고 기업, 학계, 정부의 R&D 네트워크를 강화하는것을 목표로 삼았다.",
+    "raw": "예컨대 산업 기술 진흥법(2000)은 일본의 '산업기술 및기술 관리 능력'을 향상시키고 기업, 학계, 정부의 R&D 네트워크를 강화하는것을 목표로 삼았다.",
+    "citation_text": "진흥법(2000)",
+    "offset": [
+     10,
+     19
+    ],
+    "authors": [
+     "진흥법"
+    ],
+    "year": "2000",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 24,
+    "uid": "u23_2",
+    "kind": "narrative",
+    "sentence": "또한 공공 연구소와 대학의 연구 성과와 특허권을 기업에 이전하는 것을 촉진하기 위해 '대학에서 민간사업자로의 기술이전 촉진에관한 법률(1998년)'과 '산업 활성화 특별조치법(1999년)' 그리고 산업기술진흥법(2000)이 도입되었다.",
+    "raw": "또한 공공 연구소와 대학의 연구 성과와 특허권을 기업에 이전하는 것을 촉진하기 위해 '대학에서 민간사업자로의 기술이전 촉진에관한 법률(1998년)'과 '산업 활성화 특별조치법(1999년)' 그리고 산업기술진흥법(2000)이 도입되었다.",
+    "citation_text": "산업기술진흥법(2000)",
+    "offset": [
+     110,
+     123
+    ],
+    "authors": [
+     "산업기술진흥법"
+    ],
+    "year": "2000",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 25,
+    "uid": "u24_1",
+    "kind": "narrative",
+    "sentence": "그러나 이재형(2018)의 연구에서 정리하다시피 일본 내에서도 산업정책의 역할이 과장된 측면이 있다는 평가가 많다.",
+    "raw": "그러나 이재형(2018)의 연구에서 정리하다시피 일본 내에서도 산업정책의 역할이 과장된 측면이 있다는 평가가 많다.",
+    "citation_text": "이재형(2018)",
+    "offset": [
+     4,
+     13
+    ],
+    "authors": [
+     "이재형"
+    ],
+    "year": "2018",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1837 @@
+{
+ "doc": "13571812",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571812",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "육군본부(2017). 야전교범 1-1 <sup>｢</sup>군사용어<sup>｣</sup>. 서울. 147.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     962.6,
+     1391.4
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "육군본부"
+    ],
+    "authors_raw": "육군본부",
+    "et_al": false,
+    "year": "2017",
+    "title": "야전교범 1-1 <sup>｢</sup>군사용어<sup>｣</sup>. 서울. 147",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "무형전투력. 교리적 정의 - 전투원의 정신력, 사기, 군기, 교리, 훈련수준 등으로 전장에서는 의지, 투지력과 같은전투의지로 구체화 된다(야전교범 기준-3-1 ｢전술｣. 서울. 1-5), 본 논문에서의 정의는 KCTC 전투현장에서 나타난임무수행능력, 전투지휘능력, 전장군기, 훈련수준, 부대사기로 한정함.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     962.6,
+     1391.4
+    ],
+    "uid": "u1_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "e-나라지표. 국방비 예산추이. 2017∼2021. https://www.index.go.kr/potal/main/EachDtlPageDetail.do?idx_cd=1699",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     962.6,
+     1391.4
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "e-나라지표",
+     "국방비",
+     "예산추이"
+    ],
+    "authors_raw": "e-나라지표. 국방비 예산추이",
+    "et_al": false,
+    "year": "2021",
+    "title": "https://www.index.go.kr/potal/main/EachDtlPageDetail.do?idx_cd=1699",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "여단급 전투력으로 한정한 이유 : 1) 보병여단 전투단은 제병협동작전이 기본이며 제한된 연합 및 협동작전을 시행하고 전투수행기능, 리더십, 교육훈련, 군기, 사기 등 모든 무형전투력이 발휘되는 제대, 2) KCTC 훈련에 실질적인 유 · 무형전투력이 참여하는 최상위 제대.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     150.7,
+     1250.7,
+     999.0,
+     1387.1
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "공격작전으로 한정한 이유 : 1) 훈련통제 및 평가 집단이 공격작전과 방어작전이 상이하여 데이터의 신뢰성 훼손 우려, 2) 공격작전이 전투의 3요소(시간, 공간, 전투력) 차이를 방어작전을 보다 명확하게 확인 가능, 3) 사용된 평가 데이터 분석과 시뮬레이션 시행 소요 과다(공격작전 분석 6개월 소요).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     150.7,
+     1250.7,
+     999.0,
+     1387.1
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "육군 작전계획 검증 프로그램 비전 21 : 군단~여단급 제대의 작전계획을 검증할 수 있도록 육군에서 개발(육군 교육사령부. 전투발전분석실. 비전 21 모델소개 및 작전계획 모의분석 절차, 2022).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     150.7,
+     1250.7,
+     999.0,
+     1387.1
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "합동참모본부.(2021). 합동교범 10-2 「합동·연합작전 군사용어사전. 278.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     150.7,
+     1250.7,
+     999.0,
+     1387.1
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "METL(Mission Essential Task List) 임무필수과업목록. 편제상 임무, 작전계획, 상급부대 지휘관지침 등을 고려해 필수적으로 훈련해야 할 부대훈련과업을 모은 목록. NAVER 어학사전. 2022.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.0,
+     1309.0,
+     999.8,
+     1418.0
+    ],
+    "uid": "u5_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "비젼21. 육군 작전계획 검증 프로그램. 군단∼여단급 제대의 작전계획을 검증할 수 있도록 육군에서 개발한 프로그램.(육군.교육사령부.전투발전분석실.비젼21모델소개 및 작전계획 모의분석 절차.2022).",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     150.0,
+     1309.0,
+     999.8,
+     1418.0
+    ],
+    "uid": "u5_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "작전지역 : 여단의 공격개시선부터 진출이 통제되는 통제선까지의 전체 넓이.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     144.1,
+     1393.7,
+     752.2,
+     1419.5
+    ],
+    "uid": "u8_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "작전지역 : 여단의 공격개시선부터 진출이 통제되는 통제선까지의 전체 넓이.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1393.7,
+     753.3,
+     1420.0
+    ],
+    "uid": "u10_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "육군본부(2017), 야전교범 기준-3-1 <sup>｢</sup>전술<sup>｣</sup>. 1-5.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1359.4,
+     531.3,
+     1392.3
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "육군본부"
+    ],
+    "authors_raw": "육군본부",
+    "et_al": false,
+    "year": "2017",
+    "title": "야전교범 기준-3-1 <sup>｢</sup>전술<sup>｣</sup>. 1-5",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1-5",
+    "doi": null,
+    "lang": "?",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "육군본부(2017). 야전교범 1-1 <sup>｢</sup>군사용어<sup>｣</sup>. 147.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1359.4,
+     531.3,
+     1392.3
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "육군본부"
+    ],
+    "authors_raw": "육군본부",
+    "et_al": false,
+    "year": "2017",
+    "title": "야전교범 1-1 <sup>｢</sup>군사용어<sup>｣</sup>. 147",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "?",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "합동참모본부(2021). 합동교범 10-2 ｢합동.연합작전 군사용어사전｣. 278.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1359.4,
+     531.3,
+     1392.3
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "합동참모본부"
+    ],
+    "authors_raw": "합동참모본부",
+    "et_al": false,
+    "year": "2021",
+    "title": "합동교범 10-2 ｢합동.연합작전 군사용어사전｣. 278",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "한국국방연구원(KIDA : Korea Institute for Defense Analyses). 안보환경, 군사전략<sup>⋅</sup>군사력 건설, 무기체계 획득, 인력<sup>⋅</sup>자원 관리 등 국방정책 전반에 관해 체계적으로 연구⋅분석함으로써 합리적인 국방정책 수립에 기여하고자 설립한정부출연 연구기관(https://www.kida.re.kr/index.do).",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     146.2,
+     1341.2,
+     998.3,
+     1419.5
+    ],
+    "uid": "u14_6",
+    "authors": [
+     "한국국방연구원(KIDA : Korea Institute for Defense Analyses). 안보환경",
+     "군사전략<sup>⋅</sup>군사력 건설",
+     "무기체계 획득",
+     "인력<sup>⋅</sup>자원 관리 등 국방정책 전반에 관해 체계적으로 연구⋅분석함으로써 합리적인 국방정책 수립에 기여하고자 설립한정부출연 연구기관(https://www.kida.re.kr/index.do)"
+    ],
+    "authors_raw": "한국국방연구원(KIDA : Korea Institute for Defense Analyses). 안보환경, 군사전략<sup>⋅</sup>군사력 건설, 무기체계 획득, 인력<sup>⋅</sup>자원 관리 등 국방정책 전반에 관해 체계적으로 연구⋅분석함으로써 합리적인 국방정책 수립에 기여하고자 설립한정부출연 연구기관(https://www.kida.re.kr/index.do)",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "육군 교육사령부. 자료실. <sup>｢</sup>BROOKINGS. Iraq Index<sup>｣</sup>. CAUSE OF DEATH FOR US TROOPS. September. 2010.",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     142.7,
+     1365.3,
+     995.6,
+     1419.5
+    ],
+    "uid": "u17_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "국민건강보험 블로그(2022). 건강한 의식주. 역사적 전쟁과 함께 한 전염병, 감염병. (https://m.blog.naver.com/nhicblog).",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     142.7,
+     1365.3,
+     995.6,
+     1419.5
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "국민건강보험",
+     "블로그"
+    ],
+    "authors_raw": "국민건강보험 블로그",
+    "et_al": false,
+    "year": "2022",
+    "title": "건강한 의식주. 역사적 전쟁과 함께 한 전염병",
+    "source": "감염병. (https://m.blog.naver.com/nhicblog)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "라스푸티차(러시아어 : распýтица, 영어 : rasputitsa)는 비나 눈의 융해로 진흡이 생겨 겨울이 되기 전 비포장도로에서 해빙기 여행을 하기가 어려워지는데, 이렇게 1년에 두 번, 봄과 가을에 볼 수 있는 현상의 러시아어 용어",
+    "page": 21,
+    "page_end": 21,
+    "box": [
+     143.2,
+     1366.4,
+     998.3,
+     1419.2
+    ],
+    "uid": "u20_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "고든설리반, 마이클하프(2019). 전쟁과 경영. 지식노마드.",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     143.2,
+     1386.1,
+     811.6,
+     1440.4
+    ],
+    "uid": "u21_9",
+    "authors": [
+     "고든설리반",
+     "마이클하프"
+    ],
+    "authors_raw": "고든설리반, 마이클하프",
+    "et_al": false,
+    "year": "2019",
+    "title": "전쟁과 경영. 지식노마드",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 19,
+   "per_page": {
+    "2": 3,
+    "3": 4,
+    "6": 2,
+    "9": 1,
+    "11": 1,
+    "14": 3,
+    "15": 1,
+    "18": 2,
+    "21": 1,
+    "22": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "3": {
+     "markers": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ],
+     "collected": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ]
+    },
+    "6": {
+     "markers": [
+      "8",
+      "9"
+     ],
+     "collected": [
+      "8",
+      "9"
+     ]
+    },
+    "9": {
+     "markers": [
+      "10"
+     ],
+     "collected": [
+      "10"
+     ]
+    },
+    "11": {
+     "markers": [
+      "11"
+     ],
+     "collected": [
+      "11"
+     ]
+    },
+    "14": {
+     "markers": [
+      "12",
+      "13",
+      "14"
+     ],
+     "collected": [
+      "12",
+      "13",
+      "14"
+     ]
+    },
+    "15": {
+     "markers": [
+      "15"
+     ],
+     "collected": [
+      "15"
+     ]
+    },
+    "18": {
+     "markers": [
+      "16",
+      "17"
+     ],
+     "collected": [
+      "16",
+      "17"
+     ]
+    },
+    "21": {
+     "markers": [
+      "18"
+     ],
+     "collected": [
+      "18"
+     ]
+    },
+    "22": {
+     "markers": [
+      "19"
+     ],
+     "collected": [
+      "19"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bae, S. H., Ku, X. Y., Park, C. B., & Kim, J. S. (2020). A Latent Topic Modeling approach for Subject Summarization of Research on the Military Art and Science in South Korea. Korean Journal of Military Art and Science, 76(2), 181-216. https://doi.org/10. 31066/kjmas.2020.76.2.008",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Bae S. H",
+     "Ku X. Y",
+     "Park C. B",
+     "Kim J. S"
+    ],
+    "authors_raw": "Bae, S. H., Ku, X. Y., Park, C. B., & Kim, J. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Latent Topic Modeling approach for Subject Summarization of Research on the Military Art and Science in South Korea. Korean Journal of Military Art and Science",
+    "source": "76(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "181-216",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Dalsjö, R., Jonsson, M., & Norberg, J. (2022). A Brutal Examination: Russian Military Capability in Light of the Ukraine War. Survival, 64(3), 7-28. https://doi.org/10.1080/00396338. 2022.2078044",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Dalsjö",
+     "R",
+     "Jonsson M",
+     "Norberg J"
+    ],
+    "authors_raw": "Dalsjö, R., Jonsson, M., & Norberg, J",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Brutal Examination: Russian Military Capability in Light of the Ukraine War. Survival",
+    "source": "64(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "7-28",
+    "doi": "10.1080/00396338",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Han, J. W., Shin, S. M., Baek, E. S., Kim, B. J., & Park, K. S. (2020). A Study on Introducing Safety & Health Management System to the Navy Force to Prevent the Losses by Non-combat Accidents. Korean Journal of Hazardous Materials, 8(1), 86-91. https://www. kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId= ART002605073",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Han J. W",
+     "Shin S. M",
+     "Baek E. S",
+     "Kim B. J",
+     "Park K. S"
+    ],
+    "authors_raw": "Han, J. W., Shin, S. M., Baek, E. S., Kim, B. J., & Park, K. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on Introducing Safety & Health Management System to the Navy Force to Prevent the Losses by Non-combat Accidents. Korean Journal of Hazardous Materials",
+    "source": "8(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "86-91",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hill, R. R., & Miller, J. O. (2017, December). A history of United States military simulation. In 2017 Winter Simulation Conference (WSC) (pp. 346-364). IEEE. https://doi.org/10.1109/ WSC.2017.8247799",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Hill R. R",
+     "Miller J. O"
+    ],
+    "authors_raw": "Hill, R. R., & Miller, J. O",
+    "et_al": false,
+    "year": "2017",
+    "title": "December). A history of United States military simulation. In 2017 Winter Simulation Conference (WSC) (pp. 346-364). IEEE. https://doi.org/10.1109/ WSC.2017.8247799",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "346-364",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. S., Ryu, Y. J., & Kim, J. S. (2014). Mediating Effects of Team Cohesion on the Relationship between Emotional Leadership and Organizational Commitment: A Case of IT Service Firm. Journal of Korea Service Management Society, 15(5), 131-169. https://doi.org/10.15706/jksms.2014.15.5.006",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim J. S",
+     "Ryu Y. J",
+     "Kim J. S"
+    ],
+    "authors_raw": "Kim, J. S., Ryu, Y. J., & Kim, J. S",
+    "et_al": false,
+    "year": "2014",
+    "title": "Mediating Effects of Team Cohesion on the Relationship between Emotional Leadership and Organizational Commitment: A Case of IT Service Firm. Journal of Korea Service Management Society",
+    "source": "15(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "131-169",
+    "doi": "10.15706/jksms.2014.15.5.006",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. K. (2016). A Methodology to analyze the Effects of Self-efficacy formed through the Digital Game experiences on improvement of the Military Morale Combat Power. [Doctoral dissertation, Kwangwoon University].",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim Y. K"
+    ],
+    "authors_raw": "Kim, Y. K",
+    "et_al": false,
+    "year": "2016",
+    "title": "A Methodology to analyze the Effects of Self-efficacy formed through the Digital Game experiences on improvement of the Military Morale Combat Power. [Doctoral dissertation",
+    "source": "Kwangwoon University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. K., Jung, H. W. (2014). The effects of digital game experiences on improvement of the military fighting strength. Journal of The Korean Society for Computer Game, 27(3), 89-99. https://doi.org/10.22819/kscg.2014.27.3.011",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim Y. K",
+     "Jung H. W"
+    ],
+    "authors_raw": "Kim, Y. K., Jung, H. W",
+    "et_al": false,
+    "year": "2014",
+    "title": "The effects of digital game experiences on improvement of the military fighting strength. Journal of The Korean Society for Computer Game",
+    "source": "27(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "89-99",
+    "doi": "10.22819/kscg.2014.27.3.011",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. S. (2019). The Study on the Effects of Intangible Combat Power on Battle: The Degree of Importance of Intangible Combat Power Components based on Empirical Data. [Doctoral dissertation, Kwangwoon University].",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim Y. S"
+    ],
+    "authors_raw": "Kim, Y. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "The Study on the Effects of Intangible Combat Power on Battle: The Degree of Importance of Intangible Combat Power Components based on Empirical Data. [Doctoral dissertation",
+    "source": "Kwangwoon University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y., & Park, J. (2020). The Study on the Recognition of Important Degree by Intangible Combat Power Components. Journal of Advances in Military Studies, 3(1), 75-92.",
+    "page": 23,
+    "box": [
+     146.2,
+     885.8,
+     997.9,
+     1126.6
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim Y",
+     "Park J"
+    ],
+    "authors_raw": "Kim, Y., & Park, J",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Study on the Recognition of Important Degree by Intangible Combat Power Components. Journal of Advances in Military Studies",
+    "source": "3(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "75-92",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. H. (2020). The effect of the quality of the military<sup>’</sup>s feeding system on meal service satisfaction and intangible combat power: Focusing on soldiers<sup>’</sup> behavioral intangible combat power. Journal of Advances in Military Studies, 3(3), 69-89. https://doi.org/10.37944/ jams.v3i3.81",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee S. H"
+    ],
+    "authors_raw": "Lee, S. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "The effect of the quality of the military<sup>’</sup>s feeding system on meal service satisfaction and intangible combat power: Focusing on soldiers<sup>’</sup> behavioral intangible combat power. Journal of Advances in Military Studies",
+    "source": "3(3)",
+    "volume": "3",
+    "issue": null,
+    "pages": "69-89",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. H. (2021). A study on three presentation of philosophy and application of military education and training in Taekwondo. Korean Journal of Military Art and Science, 77(1), 343-365. https://doi.org/10.31066/kjmas.2021.77.1.013",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee S. H"
+    ],
+    "authors_raw": "Lee, S. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "A study on three presentation of philosophy and application of military education and training in Taekwondo. Korean Journal of Military Art and Science",
+    "source": "77(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "343-365",
+    "doi": "10.31066/kjmas.2021.77.1.013",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lim, J. W., Choi, B. W., & Yim, D. S. (2021). A Study on the Methodology for Combat Experimental Testing of Future Infantry Units using Simulation. Journal of Korea Academia-Industrial cooperation Society, 22(3), 429-438. https://doi.org/10.5762/KAIS. 2021.22.3.429",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lim J. W",
+     "Choi B. W",
+     "Yim D. S"
+    ],
+    "authors_raw": "Lim, J. W., Choi, B. W., & Yim, D. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Methodology for Combat Experimental Testing of Future Infantry Units using Simulation. Journal of Korea Academia-Industrial cooperation Society",
+    "source": "22(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "429-438",
+    "doi": "10.5762/KAIS",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, H. A. (2022). Military-oriented Education method for mental health care in wartime and normal time. Journal of Spiritual & Mental Force Enhancement, 68, 257-305. https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearc hBean.artiId=ART002810786",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Oh H. A"
+    ],
+    "authors_raw": "Oh, H. A",
+    "et_al": false,
+    "year": "2022",
+    "title": "Military-oriented Education method for mental health care in wartime and normal time. Journal of Spiritual & Mental Force Enhancement",
+    "source": "68",
+    "volume": null,
+    "issue": null,
+    "pages": "257-305",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, J. G., & Kim, J. H. (2022). Military application study of BCI technology using brain waves in Republic of Korea Army: Focusing on personal firearms. Journal of Advances in Military Studies, 5(1), 35-48. https://doi.org/10.37944/jams.v5i1.115",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Oh J. G",
+     "Kim J. H"
+    ],
+    "authors_raw": "Oh, J. G., & Kim, J. H",
+    "et_al": false,
+    "year": "2022",
+    "title": "Military application study of BCI technology using brain waves in Republic of Korea Army: Focusing on personal firearms. Journal of Advances in Military Studies",
+    "source": "5(1)",
+    "volume": "5",
+    "issue": null,
+    "pages": "35-48",
+    "doi": "10.37944/jams.v5i1.115",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Won, K. C., Kim, Y. P., Kim, M. S., Ha, T. G., Lee, Y. Y., & Lee, H. J. (2021). Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies, 4(2), 37-58. https://doi.org/10.37944/jams.v4i2.113",
+    "page": 24,
+    "box": [
+     145.9,
+     400.3,
+     1001.1,
+     887.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Won K. C",
+     "Kim Y. P",
+     "Kim M. S",
+     "Ha T. G",
+     "Lee Y. Y",
+     "Lee H. J"
+    ],
+    "authors_raw": "Won, K. C., Kim, Y. P., Kim, M. S., Ha, T. G., Lee, Y. Y., & Lee, H. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies",
+    "source": "4(2)",
+    "volume": "4",
+    "issue": null,
+    "pages": "21-35",
+    "doi": "10.37944/jams.v4i2.113",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "A Study on the Combat Effect and Components of Intangible Combat Force: Focusing on Korea Combat Training Center (KCTC) combat training and combat simulation data analysis",
+   "page": 1,
+   "box": [
+    155.3,
+    392.1,
+    987.0,
+    511.8
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Jangryul",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     437.5,
+     535.7,
+     725.2,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Jeong, Sukjae",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     437.5,
+     535.7,
+     725.2,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "Department Acquisition Program",
+   "Department of Business Administration",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "The purpose of this study is to derive the combat effect of intangible combat power on the battle field numerically and to confirm the importance of the components of intangible combat power on the derived combat effect. Nearly half of the defense spending is used every year to improve defense capabilities for the construction of tangible combat forces, but the expenditure for the construction of intangible forces is insignificant. The reason why it is passive in building intangible combat power is that tangible combat power can be identified as a numerical value, but the increase or decrease in intangible combat power cannot be identified. This imbalance in the construction of tangible and intangible combat forces is very likely to halve the integrated exercise of combat power in the actual battlefield. Therefore, for the construction of balanced combat power, research is urgently needed to confirm the importance of quantifying and deriving combat effects on how intangible combat power exerts in combat. In this study, the combat effect of intangible combat power was analyzed in terms of space, time, and combat power, and the difference in combat results of computer simulation (Vision 21) with the same conditions as KCTC combat training was assumed and compared. As a result of the analysis, it was confirmed that the combat effect of the intangible combat force exerted at the KCTC combat site was 28.7%, which did not exert a combat effect of 71.3%. The importance of the components of intangible combat force that affect the combat effect of the intangible combat force derived in this way was analyzed by a statistical analysis program applying linear regression analysis. As a result of the analysis, it was possible to confirm the needs and priorities of future education and training through the complementary needs and rankings according to the importance of the components.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The purpose of this study is to derive the combat effect of intangible combat power on the battle field numerically and to confirm the importance of the components of intangible combat power on the derived combat effect. Nearly half of the defense spending is used every year to improve defense capabilities for the construction of tangible combat forces, but the expenditure for the construction of intangible forces is insignificant. The reason why it is passive in building intangible combat power is that tangible combat power can be identified as a numerical value, but the increase or decrease in intangible combat power cannot be identified. This imbalance in the construction of tangible and intangible combat forces is very likely to halve the integrated exercise of combat power in the actual battlefield. Therefore, for the construction of balanced combat power, research is urgently needed to confirm the importance of quantifying and deriving combat effects on how intangible combat power exerts in combat. In this study, the combat effect of intangible combat power was analyzed in terms of space, time, and combat power, and the difference in combat results of computer simulation (Vision 21) with the same conditions as KCTC combat training was assumed and compared. As a result of the analysis, it was confirmed that the combat effect of the intangible combat force exerted at the KCTC combat site was 28.7%, which did not exert a combat effect of 71.3%. The importance of the components of intangible combat force that affect the combat effect of the intangible combat force derived in this way was analyzed by a statistical analysis program applying linear regression analysis. As a result of the analysis, it was possible to confirm the needs and priorities of future education and training through the complementary needs and rankings according to the importance of the components.",
+   "page": 1,
+   "box": [
+    190.5,
+    611.2,
+    310.5,
+    637.9
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : intangible combat power, combat effect, combat simulation, linear regression analysis"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u1_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "47-71",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "무형전투력",
+   "전투효과",
+   "전투 시뮬레이션",
+   "선형회귀분석"
+  ],
+  "keywords_en": [
+   "intangible combat power",
+   "combat effect",
+   "combat simulation",
+   "linear regression analysis"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "parenthetical",
+    "sentence": "결국, 무형전투력은 증감에 따른 명확한 수치 확인이 가능하다면 유형전투력과 총합을 통해 온전한 전투력을 높일 수 있으므로 무형전투력 건설(Bae, Ku, Park, & Kim, 2020)에 대한 관심이 필요한 시점이다.",
+    "raw": "결국, 무형전투력은 증감에 따른 명확한 수치 확인이 가능하다면 유형전투력과 총합을 통해 온전한 전투력을 높일 수 있으므로 무형전투력 건설(Bae, Ku, Park, & Kim, 2020)에 대한 관심이 필요한 시점이다.",
+    "citation_text": "(Bae, Ku, Park, & Kim, 2020)",
+    "offset": [
+     76,
+     104
+    ],
+    "authors": [
+     "Bae"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "이런 현실적 제약으로 본 연구는 실제 전투와 가장 유사한 전투환경과 조건을 구축한 여단급 과학화전투훈련인 KCTC(Korea Combat Training Center : Won et al., 2021) 전투훈련을 실제 전투상황으로 조작적 정의하고 유·무형전투력을 분석하고자 한다.",
+    "raw": "이런 현실적 제약으로 본 연구는 실제 전투와 가장 유사한 전투환경과 조건을 구축한 여단급 과학화전투훈련인 KCTC(Korea Combat Training Center : Won et al., 2021) 전투훈련을 실제 전투상황으로 조작적 정의하고 유·무형전투력을 분석하고자 한다.",
+    "citation_text": "(Korea Combat Training Center : Won et al., 2021)",
+    "offset": [
+     63,
+     112
+    ],
+    "authors": [
+     "Korea Combat Training Center : Won et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_6",
+    "kind": "parenthetical",
+    "sentence": "무형전투력에 관한 국내 연구는 게임(Kim & Jung, 2014), 급식(Lee, S.",
+    "raw": "무형전투력에 관한 국내 연구는 게임(Kim & Jung, 2014), 급식(Lee, S.",
+    "citation_text": "(Kim & Jung, 2014)",
+    "offset": [
+     19,
+     37
+    ],
+    "authors": [
+     "Kim & Jung"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "narrative",
+    "sentence": "(2019), Kim and Park (2020)의 무형전투력 영향에 관련 연구는 KCTC 전투훈련 평가 과제를 기준으로 무형전투력 구성요소를 정립하고, 군사전문가 집단이 생각하는 구성요소의 중요도와 KCTC 훈련평가로 도출한 중요도를 비교하여 전투력 수준 평가체계 구축을 시도하였다.",
+    "raw": "(2019), Kim and Park (2020)의 무형전투력 영향에 관련 연구는 KCTC 전투훈련 평가 과제를 기준으로 무형전투력 구성요소를 정립하고, 군사전문가 집단이 생각하는 구성요소의 중요도와 KCTC 훈련평가로 도출한 중요도를 비교하여 전투력 수준 평가체계 구축을 시도하였다.",
+    "citation_text": "Park (2020)",
+    "offset": [
+     16,
+     27
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_3",
+    "kind": "parenthetical",
+    "sentence": "시뮬레이션 결과의 신뢰성을 높이고자 각 전투훈련별 시뮬레이션 30회를 반복 실시하였다 (e.g., Lim, Choi, & Yim, 2021).",
+    "raw": "시뮬레이션 결과의 신뢰성을 높이고자 각 전투훈련별 시뮬레이션 30회를 반복 실시하였다 (e.g., Lim, Choi, & Yim, 2021).",
+    "citation_text": "(e.g., Lim, Choi, & Yim, 2021)",
+    "offset": [
+     48,
+     78
+    ],
+    "authors": [
+     "Lim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_5",
+    "kind": "parenthetical",
+    "sentence": "그 중 무형전투력이 전투에 미치는 영향에 관한 연구(Kim, 2019; Kim & Park, 2020)에서는 KCTC의 평가요소를 기준으로 ① 임무수행능력, ② 전장리더십, ③ 전장군기, ④ 훈련수준으로 분류하여 연구하였고 본 연구 역시 KCTC 훈련결과 및 평가결과를 적용하기에 참고하였다.",
+    "raw": "그 중 무형전투력이 전투에 미치는 영향에 관한 연구(Kim, 2019; Kim & Park, 2020)에서는 KCTC의 평가요소를 기준으로 ① 임무수행능력, ② 전장리더십, ③ 전장군기, ④ 훈련수준으로 분류하여 연구하였고 본 연구 역시 KCTC 훈련결과 및 평가결과를 적용하기에 참고하였다.",
+    "citation_text": "Kim, 2019",
+    "offset": [
+     29,
+     38
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_5",
+    "kind": "parenthetical",
+    "sentence": "그 중 무형전투력이 전투에 미치는 영향에 관한 연구(Kim, 2019; Kim & Park, 2020)에서는 KCTC의 평가요소를 기준으로 ① 임무수행능력, ② 전장리더십, ③ 전장군기, ④ 훈련수준으로 분류하여 연구하였고 본 연구 역시 KCTC 훈련결과 및 평가결과를 적용하기에 참고하였다.",
+    "raw": "그 중 무형전투력이 전투에 미치는 영향에 관한 연구(Kim, 2019; Kim & Park, 2020)에서는 KCTC의 평가요소를 기준으로 ① 임무수행능력, ② 전장리더십, ③ 전장군기, ④ 훈련수준으로 분류하여 연구하였고 본 연구 역시 KCTC 훈련결과 및 평가결과를 적용하기에 참고하였다.",
+    "citation_text": "Kim & Park, 2020",
+    "offset": [
+     40,
+     56
+    ],
+    "authors": [
+     "Kim & Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_3",
+    "kind": "parenthetical",
+    "sentence": "그리고 1 · 2차 세계대전 간 전장관리 분야인 위생관리 미흡으로 각종 전염병이 발생하였으며 전염병에 의한 비전투손실 사망자가 전체 사망자의 약 33%¹⁷였다(e.g., Haller, 2011).",
+    "raw": "그리고 1 · 2차 세계대전 간 전장관리 분야인 위생관리 미흡으로 각종 전염병이 발생하였으며 전염병에 의한 비전투손실 사망자가 전체 사망자의 약 33%¹⁷였다(e.g., Haller, 2011).",
+    "citation_text": "(e.g., Haller, 2011)",
+    "offset": [
+     88,
+     108
+    ],
+    "authors": [
+     "Haller"
+    ],
+    "year": "2011",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 19,
+    "uid": "u18_1",
+    "kind": "parenthetical",
+    "sentence": "전투에서 승리하기 위해서는 전투원 개개인이 갖추어야 할 가장 기본적인 전투역량인 개인화기 사격술(Oh & Kim, 2022)과 전투체력을 포괄하는 훈련수준 유지가 필수적인 요소이다.",
+    "raw": "전투에서 승리하기 위해서는 전투원 개개인이 갖추어야 할 가장 기본적인 전투역량인 개인화기 사격술(Oh & Kim, 2022)과 전투체력을 포괄하는 훈련수준 유지가 필수적인 요소이다.",
+    "citation_text": "(Oh & Kim, 2022)",
+    "offset": [
+     53,
+     69
+    ],
+    "authors": [
+     "Oh & Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "특히, 팀 응집력은 불확실하고 예측하기 힘든 환경에서 집단 자부심이나 과업몰입을 유도하여 구성원의 사회적 결속을 높일 수 있으므로 집단의 사기(morale)를 결정하는 결정 요인이라고 볼 수 있다(Kim, Ryu, & Kim, 2014).",
+    "raw": "특히, 팀 응집력은 불확실하고 예측하기 힘든 환경에서 집단 자부심이나 과업몰입을 유도하여 구성원의 사회적 결속을 높일 수 있으므로 집단의 사기(morale)를 결정하는 결정 요인이라고 볼 수 있다(Kim, Ryu, & Kim, 2014).",
+    "citation_text": "(Kim, Ryu, & Kim, 2014)",
+    "offset": [
+     109,
+     132
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 22,
+    "uid": "u21_2",
+    "kind": "parenthetical",
+    "sentence": "(e.g., Dalsjö, Jonsson, & Norberg, 2022).",
+    "raw": "(e.g., Dalsjö, Jonsson, & Norberg, 2022).",
+    "citation_text": "(e.g., Dalsjö, Jonsson, & Norberg, 2022)",
+    "offset": [
+     0,
+     40
+    ],
+    "authors": [
+     "Dalsjö"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 22,
+    "uid": "u21_2",
+    "kind": "parenthetical",
+    "sentence": "이처럼 드러난 유형전투력 만으로 적과 아군의 우열을 판단하거나 지휘관의 직관으로 판단한 무형전투력을 유형전투력에 더하여 통합된 전투력이라 여기고 전투에 임한다면 전승을 보장받기 힘들 것이다\n본 연구에서 제시한 KCTC 전투훈련과 전투 시뮬레이션 분석을 통한 무형전투력의 전투효과는 실제 전투에서 무형전투력의 전투효과와 다를 수 있어 부대의 무형전투력 수준과 전투효과를 정확한 수치로 도출하는 것이 어렵다(Hill & Miller, 2017).",
+    "raw": "이처럼 드러난 유형전투력 만으로 적과 아군의 우열을 판단하거나 지휘관의 직관으로 판단한 무형전투력을 유형전투력에 더하여 통합된 전투력이라 여기고 전투에 임한다면 전승을 보장받기 힘들 것이다\n본 연구에서 제시한 KCTC 전투훈련과 전투 시뮬레이션 분석을 통한 무형전투력의 전투효과는 실제 전투에서 무형전투력의 전투효과와 다를 수 있어 부대의 무형전투력 수준과 전투효과를 정확한 수치로 도출하는 것이 어렵다(Hill & Miller, 2017).",
+    "citation_text": "(Hill & Miller, 2017)",
+    "offset": [
+     225,
+     246
+    ],
+    "authors": [
+     "Hill & Miller"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 23,
+    "uid": "u22_2",
+    "kind": "parenthetical",
+    "sentence": "(2017, December).",
+    "raw": "(2017, December).",
+    "citation_text": "(2017, December)",
+    "offset": [
+     0,
+     16
+    ],
+    "authors": [
+     "December"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

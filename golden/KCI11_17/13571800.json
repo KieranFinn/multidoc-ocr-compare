@@ -1,0 +1,817 @@
+{
+ "doc": "13571800",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571800",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "프로젝트의 성공 여부는 프로젝트 관리자의 리더십에 따라 좌우될 수 있다(Podgórska & Pichlak, 2019). 이와 일맥상통하게 Cho, M. K.(2015)은 개인역량 중 하나를 리더십으로 제시하고 관리자뿐만 아니라 모든 구성원에게 필요하다고 강조하였으며, Lee, S. B.(2017)은 관리자의 리더십이 프로젝트 성과를 높이는 영향관계를 실증연구를 통해 검증하였다.",
+    "page": 5,
+    "box": [
+     147.0,
+     1043.1,
+     1000.1,
+     1182.0
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "프로젝트의",
+     "성공",
+     "여부는",
+     "프로젝트",
+     "관리자의",
+     "리더십에",
+     "따라",
+     "좌우될",
+     "수",
+     "있다(Podgórska",
+     "Pichlak"
+    ],
+    "authors_raw": "프로젝트의 성공 여부는 프로젝트 관리자의 리더십에 따라 좌우될 수 있다(Podgórska & Pichlak",
+    "et_al": false,
+    "year": "2017",
+    "title": "은 관리자의 리더십이 프로젝트 성과를 높이는 영향관계를 실증연구를 통해 검증하였다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "의사소통능력은 한국산업인력공단에서 제정한 NCS16)직업기초능력의 하나로 “직종이나 직위에 상관없이 모든 직업인에게 공통적으로 요구되는 능력 및 자질”이다. Ko(2010)는 국제프로젝트의 15) HRD(Human Resource Development) 용어사전, (사)한국기업교육학회, 2010 https://terms.naver.com/entry.naver?docId=2178278&cid=51072&categoryId=51072\n16) NCS(National Competency Standards) : 국가직무능력표준으로 산업현장에서 직무를 수행하는데 필요한 능력(지식, 기술, 태도)을 국가가 표준화한 것.",
+    "page": 5,
+    "box": [
+     147.0,
+     1043.1,
+     1000.1,
+     1182.0
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "의사소통능력은",
+     "한국산업인력공단에서",
+     "제정한",
+     "NCS16)직업기초능력의",
+     "하나로"
+    ],
+    "authors_raw": "의사소통능력은 한국산업인력공단에서 제정한 NCS16)직업기초능력의 하나로",
+    "et_al": false,
+    "year": "2010",
+    "title": "직종이나 직위에 상관없이 모든 직업인에게 공통적으로 요구되는 능력 및 자질",
+    "source": "이다. Ko(2010)는 국제프로젝트의 15) HRD(Human Resource Development) 용어사전, (사)한국기업교육학회",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "그 외에도 외국어 능력은 언어능력으로 “의사소통을 하는 기본적인 도구”라고 할 수 있다. Lee, S. J. (2016)은 UN 등 주요 국제기구 채용공고문에 기재된 요구역량 빈도분석을 통해 ‘어학’능력이 타 요구역량에 비해 월등히 많이 기재되어 있었다고 언급하며, 이는 국제협력업무에 있어 외국어 능력이 기본적인 역량이라고 설명하였다. 또한, 국제공동연구 수행 시 연구원 간 언어적 소통이 원활할수록 프로젝트 성과가 좋아질 수 있다.17)",
+    "page": 6,
+    "box": [
+     144.7,
+     365.9,
+     1000.1,
+     538.8
+    ],
+    "uid": "u5_3",
+    "authors": [
+     "그",
+     "외에도",
+     "외국어",
+     "능력은",
+     "언어능력으로"
+    ],
+    "authors_raw": "그 외에도 외국어 능력은 언어능력으로",
+    "et_al": false,
+    "year": "2016",
+    "title": "의사소통을 하는 기본적인 도구",
+    "source": "라고 할수 있다. Lee, S. J. (2016)은 UN 등 주요 국제기구 채용공고문에 기재된 요구역량 빈도분석을 통해 ‘어학’능력이 타 요구역량에 비해 월등히 많이 기재되어 있었다고 언급하며, 이는 국제협력업무에 있어 외국어 능력이 기본적인 역량이라고 설명하였다. 또한, 국제공동연구 수행 시 연구원 간 언어적 소통이 원활할수록 프로젝트 성과가 좋아질 수 있다.17)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "상호관계는 연구에 참여하는 연구조직 간의 사전에 구축된 관계로 Kim, D. I. (2010)은 첨단기술 분야의 기업일수록 R&D 파트너십을 적극적으로 형성하며, 이러한 국제공동 R&D 네트워크와 교류 정도가 프로젝트 성과에 영향을 준다고 하였다. Hyun, Y. J. (2017)은 국가별 문화의 차이가 집단속 개인들에게 영향을 주며, 이는 곧 프로젝트 성과에도 영향을 미치는 요소임을 증명하였다.",
+    "page": 6,
+    "box": [
+     144.7,
+     828.7,
+     1000.1,
+     964.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "상호관계는 연구에 참여하는 연구조직 간의 사전에 구축된 관계로 Kim",
+     "D. I"
+    ],
+    "authors_raw": "상호관계는 연구에 참여하는 연구조직 간의 사전에 구축된 관계로 Kim, D. I",
+    "et_al": false,
+    "year": "2017",
+    "title": "은 국가별 문화의 차이가 집단속 개인들에게 영향을 주며",
+    "source": "이는 곧 프로젝트 성과에도 영향을 미치는 요소임을 증명하였다",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "비용절감과 기간단축은 일반적으로 프로젝트 성과 향상 요소로 국제기술협력 추진 시에 더욱 중요한 요소로 평가할 수 있다. 방위사업청에서 작성한 「국제기술협력 기본계획(2013)」에 따르면 핵심기술 국제기술협력은 막대한 비용수반 및 개발소요기간을 보다 효율적으로 해결하기 위해 상호 비교 우위분야를 융합하여 공동이익을 추구하는 과정이라고 할 수 있다. 또한 「국방기술 연구개발업무처리지침」 제48조 국제기술협력 추진원칙에는 예산절감, 우수기술의 조기 확보 등의 효과를 분석하여 프로젝트를 선정할 것을 명시하고 있다. 이러한 국제기술협력의 취지를 바탕으로 기술확보 측면에서 비용절감과 기간단축이 중요한 요소임을 알 수 있다.",
+    "page": 6,
+    "box": [
+     144.7,
+     970.6,
+     1000.1,
+     1214.4
+    ],
+    "uid": "u5_7",
+    "authors": [
+     "비용절감과",
+     "기간단축은",
+     "일반적으로",
+     "프로젝트",
+     "성과",
+     "향상",
+     "요소로",
+     "국제기술협력",
+     "추진",
+     "시에",
+     "더욱",
+     "중요한",
+     "요소로",
+     "평가할",
+     "수",
+     "있다",
+     "방위사업청에서",
+     "작성한"
+    ],
+    "authors_raw": "비용절감과 기간단축은 일반적으로 프로젝트 성과 향상 요소로 국제기술협력 추진 시에 더욱 중요한 요소로 평가할 수 있다. 방위사업청에서 작성한",
+    "et_al": false,
+    "year": "2013",
+    "title": "」에 따르면 핵심기술 국제기술협력은 막대한 비용수반 및 개발소요기간을 보다 효율적으로 해결하기 위해 상호 비교 우위분야를 융합하여 공동이익을 추구하는 과정이라고 할 수 있다. 또한",
+    "source": "에 따르면 핵심기술 국제기술협력은 막대한 비용수반 및 개발소요기간을 보다 효율적으로 해결하기 위해 상호 비교 우위분야를 융합하여 공동이익을 추구하는 과정이라고 할수 있다. 또한 「국방기술 연구개발업무처리지침」 제48조 국제기술협력 추진원칙에는 예산절감, 우수기술의 조기 확보 등의 효과를 분석하여 프로젝트를 선정할 것을 명시하고 있다. 이러한 국제기술협력의 취지를 바탕으로 기술확보 측면에서 비용절감과 기간단축이 중요한 요소임을 알수 있다",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_chapter",
+    "container_title": "국방기술 연구개발업무처리지침",
+    "publisher": "우수기술의 조기 확보 등의 효과를 분석하여 프로젝트를 선정할 것을 명시하고 있다. 이러한 국제기술협력의 취지를 바탕으로 기술확보 측면에서 비용절감과 기간단축이 중요한 요소임을 알 수 있다.",
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "방위사업청에서 관리하는 모든 개별 사업은 “프로젝트”18)로 PMBOK19)을 통해 프로젝트는 “고 17) 유성재 외 (1999). 한국의 국제공동연구 현황 및 전략 방향. 정책연구. 과학기술정책연구원.\n18) 프로젝트는 표준국어대사전에 “연구나 사업. 또는 그 계획 “으로 명시되어 있으며, 영어사전에서는”사업, 연구과제,",
+    "page": 6,
+    "box": [
+     165.7,
+     1291.7,
+     999.0,
+     1317.2
+    ],
+    "uid": "u5_9",
+    "authors": [
+     "방위사업청에서",
+     "관리하는",
+     "모든",
+     "개별",
+     "사업은",
+     "“프로젝트”18)로",
+     "PMBOK19)을",
+     "통해",
+     "프로젝트는",
+     "“고",
+     "17)",
+     "유성재"
+    ],
+    "authors_raw": "방위사업청에서 관리하는 모든 개별 사업은 “프로젝트”18)로 PMBOK19)을 통해 프로젝트는 “고 17) 유성재 외",
+    "et_al": true,
+    "year": "1999",
+    "title": null,
+    "source": "). 한국의 국제공동연구 현황 및 전략 방향. 정책연구. 과학기술정책연구원. 18) 프로젝트는 표준국어대사전에 “연구나 사업. 또는 그 계획 “으로 명시되어 있으며, 영어사전에서는”사업, 연구과제",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "ambiguous_quote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, D. H. (2016)는 획득 분야 전문성과 리더십이 국방 분야 연구개발 프로젝트 성과에 영향을 미친다고 하였으며, Cho, M. K. (2015)은 국가연구개발사업의 프로젝트 성과에 연구책임자의 리더십 역량과 의사소통 역량, 그리고 연구개발인력의 개인역량이 영향을 미친다는 것을 PMBOK 지식 영역관리를 바탕으로 분석하였다. 이외에도 Kil (2017)은 연구개발 프로젝트에 참여하는 연구책임자 및 참여연구원의 개인역량이 프로젝트 성과에 영향을 미친다는 것을 증명하였다. 이러한 선행연구를 바탕으로 다음과 같은 연구가설을 설정하였다.",
+    "page": 8,
+    "box": [
+     145.5,
+     327.3,
+     1000.1,
+     534.6
+    ],
+    "uid": "u7_4",
+    "authors": [
+     "Lee D. H"
+    ],
+    "authors_raw": "Lee, D. H",
+    "et_al": false,
+    "year": "2017",
+    "title": "은 연구개발 프로젝트에 참여하는 연구책임자 및 참여연구원의 개인역량이 프로젝트 성과에 영향을 미친다는 것을 증명하였다. 이러한 선행연구를 바탕으로 다음과 같은 연구가설을 설정하였다",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang(2015)은 정부정책, 조직, 기업환경의 변화나 제도 및 법규의 미비 또는 충돌, 복잡한 의사결정 시스템 등 외부환경 위험요인이 사업에 내재한 위험에 영향을 미치며, 잘못된 원가 및 비용분석, 예산책정 등의 외부요인도 국방연구개발사업 성과에 영향을 미친다고 하였다. Kim, D. I.(2010)은 연구조직의 국제공동 R&D 협력수준 중 네트워크 정도와 교류 정도가 성과에 미치는 영향에 대해 한국의 국가연구개발사업을 중심으로 실증분석하였다. 유성재 외(1999)는 상대국 법, 규정 등 연구시스템의 이해정도와 정부의 연구지원 체계가 연구성과에 영향을 미친다고 하였으며, Lee &Chung(2013)은 기술의 중요도, 기술격차 및 기술성숙도가 해당 목표기술의 국제협력 필요성에 대한 결정요인으로 주장하였다. 방위사업청에서 발간한 ｢국제기술협력 기본계획(2013)｣에서는 상대국과 네트워크를 구축하는 방법으로 인력교환제도를 제시하고 있으며, 국제기술협력이 막대한 비용과 개발소요기간, 기술상의 제약을 효율적으로 해결하기 위해 추진하는 것임을 명시하고 있다.이러한 선행연구를 바탕으로 다음과 같은 가설을 설정하였다.",
+    "page": 8,
+    "box": [
+     145.5,
+     896.5,
+     1000.1,
+     1280.7
+    ],
+    "uid": "u7_11",
+    "authors": [
+     "Hwang"
+    ],
+    "authors_raw": "Hwang",
+    "et_al": false,
+    "year": "2013",
+    "title": "｣에서는 상대국과 네트워크를 구축하는 방법으로 인력교환제도를 제시하고 있으며",
+    "source": "국제기술협력이 막대한 비용과 개발소요기간",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "방위사업청, 국제기술협력 기본계획, 2013.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "방위사업청 훈령 제65호('07.10.30., 제정) 방위사업관리규정 제78조(무기체계 연구개발사업 구분)",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "방위사업청 지침 제2012-2호(2012.1.3.) 핵심기술 국제기술협력 업무지침",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "방위사업청",
+     "지침",
+     "제"
+    ],
+    "authors_raw": "방위사업청 지침 제",
+    "et_al": false,
+    "year": "2012",
+    "title": "1.3.) 핵심기술 국제기술협력 업무지침",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "국방기술 연구개발 소개(책자), 방위사업청, 2021.10.27.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "'21-'35 핵심기술기획서 일반본(책자), 방위사업청, 2021.3.22. 발간",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "'21-'35 핵심기술기획서 일반본(책자)"
+    ],
+    "authors_raw": "'21-'35 핵심기술기획서 일반본(책자), 방위사업청",
+    "et_al": false,
+    "year": "2021",
+    "title": "3.22. 발간",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "정기현(2002.02.01.). 국제협력 연구개발 발전방안. 국방과기술, 2(276), 10-21",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.1,
+     1245.2,
+     712.8,
+     1303.8
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "정기현"
+    ],
+    "authors_raw": "정기현",
+    "et_al": false,
+    "year": "2002",
+    "title": "02.01.). 국제협력 연구개발 발전방안. 국방과기술",
+    "source": "2(276)",
+    "volume": null,
+    "issue": null,
+    "pages": "10-21",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "VIF : Variance Inflation Factor<sub>,</sub> <sup>분산</sup>팽<sup>창</sup>지수 <sup>*</sup> (제<sub>1</sub>저자) 광운대학교 방위사업학과 박사과정(방위사업청 헬기사업부 소형무장헬기체계팀) <sub>woong019</sub>@<sub>gma</sub>il<sub>com</sub>https://orcid org/0000<sub>-</sub>0003<sub>-</sub>0382<sub>-</sub>0541 <sup>**</sup> (교<sup>신</sup>저자) <sup>광운</sup>대학교 국제통<sup>상</sup>학부<sub>,</sub> 교수<sub>,</sub> srshim@kw<sub>.</sub>ac<sub>.</sub>kr<sub>,</sub> https://orcid<sub>.</sub>org/0000<sub>-</sub>0001<sub>-</sub>5167<sub>-</sub>656X<sub>.</sub>",
+    "page": 14,
+    "page_end": 21,
+    "box": [
+     144.7,
+     1395.9,
+     510.5,
+     1424.7
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "VIF : Variance Inflation Factor<sub>",
+     "</sub> <sup>분산</sup>팽<sup>창</sup>지수 <sup>"
+    ],
+    "authors_raw": "VIF : Variance Inflation Factor<sub>,</sub> <sup>분산</sup>팽<sup>창</sup>지수 <sup>",
+    "et_al": false,
+    "year": null,
+    "title": "</sup> (제<sub>1</sub>저자) 광운대학교 방위사업학과 박사과정(방위사업청 헬기사업부 소형무장헬기체계팀) <sub>woong019</sub>@<sub>gma</sub>il<sub>com</sub>https://orcid org/0000<sub>-</sub>0003<sub>-</sub>0382<sub>-</sub>0541 <sup>",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 7,
+   "per_page": {
+    "2": 6,
+    "14": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "dup_dropped": [
+      "6"
+     ]
+    },
+    "14": {
+     "markers": [
+      "20"
+     ],
+     "collected": [
+      "20"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "Critical success factors of government-led international technological cooperation for national defense core-technology R&D projects",
+   "page": 1,
+   "box": [
+    179.2,
+    393.1,
+    962.9,
+    510.7
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Lee, Jaiwoong",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     431.4,
+     535.7,
+     730.3,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Shim, Sangryul",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     431.4,
+     535.7,
+     730.3,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "Department of International Trade",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "In the defense core technology field, it is important to secure core technologies at a pace that is in line with the pace of technological development, which has become more advanced over time. However, the pace of technological advancement is faster than ever, and the need for weapons systems with new technologies is increasing. Nevertheless, it can be said that independently securing core technologies in all fields is almost impossible, considering the required costs and duration. International technology cooperation can overcome these cost and period constraints, and strengthen relations between countries. International technology cooperation in the field of defense core technology has began to overcome difficulties in independent development; however, the sharing and joint development of key defense-related technologies among countries has encountered various difficulties. Therefore, in this study, the factors affecting the performance (quantitative and qualitative) of core technology R&D projects in the defense sector were divided into individual competencies (professional skills, communication skills, leadership, and foreign language skills) and external factors (legal system, interrelationship, cost reduction, and period reduction), and research models and hypotheses were established. This hypothesis was verified through a survey and a multiple regression analysis. The analysis revealed that the derived influencing factors had a positive (+) effect on project performance, confirming that both individual competency and external factors are important in project performance.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "In the defense core technology field, it is important to secure core technologies at a pace that is in line with the pace of technological development, which has become more advanced over time. However, the pace of technological advancement is faster than ever, and the need for weapons systems with new technologies is increasing. Nevertheless, it can be said that independently securing core technologies in all fields is almost impossible, considering the required costs and duration. International technology cooperation can overcome these cost and period constraints, and strengthen relations between countries. International technology cooperation in the field of defense core technology has began to overcome difficulties in independent development; however, the sharing and joint development of key defense-related technologies among countries has encountered various difficulties. Therefore, in this study, the factors affecting the performance (quantitative and qualitative) of core technology R&D projects in the defense sector were divided into individual competencies (professional skills, communication skills, leadership, and foreign language skills) and external factors (legal system, interrelationship, cost reduction, and period reduction), and research models and hypotheses were established. This hypothesis was verified through a survey and a multiple regression analysis. The analysis revealed that the derived influencing factors had a positive (+) effect on project performance, confirming that both individual competency and external factors are important in project performance.",
+   "page": 1,
+   "box": [
+    190.5,
+    623.5,
+    311.5,
+    651.4
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : defense core technology, international technology cooperation, international joint research and development, project performance"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "77-97",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "국방핵심기술",
+   "국제기술협력",
+   "국제공동연구개발",
+   "프로젝트 성과"
+  ],
+  "keywords_en": [
+   "defense core technology",
+   "international technology cooperation",
+   "international joint research and development",
+   "project performance"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "전 세계적인 국방예산의 축소와 무기체계의 첨단화 및 이에 따른 획득비용의 증가로 인해 국제기술협력의 필요성은 증대되고 있다(Lee & Chung, 2013).",
+    "raw": "전 세계적인 국방예산의 축소와 무기체계의 첨단화 및 이에 따른 획득비용의 증가로 인해 국제기술협력의 필요성은 증대되고 있다(Lee & Chung, 2013).",
+    "citation_text": "(Lee & Chung, 2013)",
+    "offset": [
+     68,
+     87
+    ],
+    "authors": [
+     "Lee & Chung"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u5_7"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

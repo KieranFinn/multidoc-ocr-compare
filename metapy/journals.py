@@ -74,6 +74,14 @@ FAMILIES = [
                 "期以月代(是否入免卷名单待用户拍板)",
     },
     {
+        "key": "syeon", "names": ["산업연구"], "doi_prefix": None,
+        "layout": "页脚刊例 'N 산업연구 | YYYY년 제V권 제N호'(可迟到第 29 页); 文献条目为 ·/• "
+                  "项目符号体例且 unify 常合并成整块(30+ 条); 正文混韩英引用",
+        "extractor": "issue 页脚刊例守卫(issue.py: 页脚放行/clean_jname); refs._blocks_to_entries "
+                     "行首点号剥除(2026-11-24, 13578215 实证 15 条)",
+        "gaps": "无",
+    },
+    {
         "key": "jnah", "names": ["유라시아문화"], "doi_prefix": "10.47527/jnah",
         "layout": "통권 '제 N 집' 编号(页眉/页脚), DOI 四段为 年.期.집.文号(riks 式, 期∈{2,8})",
         "extractor": "issue._YIV_RIKS 白名单(jnah, 2026-11-18 增补)",
@@ -91,7 +99,10 @@ FAMILIES = [
         "layout": "多行英文刊头: 'JAMS / JOURNAL OF ADVANCES IN MILITARY STUDIES' + "
                   "'YYYY, Vol. N, No. M, pp.-pp.' + DOI; OCR 常把刊头粘连成 "
                   "'J A JAMS M S JOURNAL OFADVANCES…'",
-        "extractor": "issue._latin_jname 的 JAMS 归一分支 + _YEAR_VOL 年卷期行",
+        "extractor": "issue._latin_jname 的 JAMS 归一分支 + _YEAR_VOL 年卷期行; "
+                     "front en_line 分支 '姓, 名' **保持印刷形**(2026-11-24 用户拍板, "
+                     "原'名 姓'归一已撤——存值须与原文/KCI著录/Crossref 一致, 实证 13571795 "
+                     "Crossref family=Mun; 同族 58 篇)",
         "gaps": "无",
     },
     {

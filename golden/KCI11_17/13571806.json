@@ -1,0 +1,2362 @@
+{
+ "doc": "13571806",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571806",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "대한민국 정책브리핑(2022). 윤석열 대통령 주재 방산 수출전략회의 관련 브리핑. https://www2.korea.kr/news/policy NewsView.do?newsId=148908739",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1250.7,
+     1000.1,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "대한민국",
+     "정책브리핑"
+    ],
+    "authors_raw": "대한민국 정책브리핑",
+    "et_al": false,
+    "year": "2022",
+    "title": "윤석열 대통령 주재 방산 수출전략회의 관련 브리핑. https://www2.korea.kr/news/policy NewsView.do?newsId=148908739",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "경남신문(2022. 11. 24). 윤 대통령 “방위산업, 국가선도산업으로 적극 뒷받침”. http://www.knnews.co.kr/news/articleView.php?idxno=1390845",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1250.7,
+     1000.1,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "경남신문"
+    ],
+    "authors_raw": "경남신문",
+    "et_al": false,
+    "year": "2022",
+    "title": "방위산업, 국가선도산업으로 적극 뒷받침",
+    "source": "http://www.knnews.co.kr/news/articleView.php?idxno=1390845",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "2019년 실적 기준으로 경남 소재 업체의 방산 매출액 비중은 43.7%, 방산 종사자 수 비중은 약 46.1%를 차지함.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1250.7,
+     1000.1,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "방산 혁신클러스터 사업은 지역거점의 관계 기관 · 업체가 협력하는 방위산업 생태계를 조성하고, 지자체의 중소벤처기업 육성을 통해 무기체계 소재 · 부품 국산화를 촉진하고 지역인재를 육성하여 지역경제 발전과 일자리 창출, 국내 방위산업 경쟁력 향상 등의 다양한 효과를 창출하기 위해 방위사업청이 지난 2020년 최초로 시행하는 핵심사업임.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1250.7,
+     1000.1,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "경남연구원(2019). 경남의 방위산업 기반 및 방위산업 진흥기관 설치 필요성. p.22. https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE09326130&googleIPSandBox=false&mark=0&useDate=&ipRange=false&accessId=Y&language=ko_KR&hasTopBanner=true",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     159.5,
+     1362.5,
+     997.9,
+     1421.1
+    ],
+    "uid": "u2_7",
+    "authors": [
+     "경남"
+    ],
+    "authors_raw": "경남연구원",
+    "et_al": false,
+    "year": "2019",
+    "title": "경남의 방위산업 기반 및 방위산업 진흥기관 설치 필요성. p.22. https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE09326130&googleIPSandBox=false&mark=0&useDate=&ipRange=false&accessId=Y&language=ko_KR&hasTopBanner=true",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "갤럽 조사기관을 통해 2021.4.16. ~7.30일 간 경상남도 및 창원특례시 소재 490개 방산업체의 경영실태와 지원소요 등을 조사함.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     159.5,
+     1362.5,
+     997.9,
+     1421.1
+    ],
+    "uid": "u2_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "2017년 방사청은 체계업체를 정점으로 하여 2차 협력업체까지 방위산업 범주로 간주하고, 국내 방위산업에 종사하는 업체가 약 3,446개 사로 구성되어 있다고 제시한 바 있음(자료: 유형곤 외, “2017년 방위산업 실태조사”, 2018.3.)",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1366.7,
+     999.8,
+     1420.8
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2018",
+    "title": "2017년 방위산업 실태조사",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "<sup>방위사업법</sup> <sup>영문버전</sup>. https://www.law.go.kr/LSW/lsInfoP.do?vSct=%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97% 85%EB%B2%95&viewCls=engLsInfoR&urlMode=engLsInfoR&chrClsCd=010202&lsId=010107&efYd=&lsiSeq=92323#00 00",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1222.5,
+     999.0,
+     1333.1
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "<sup>방위사업법</sup>",
+     "<sup>영문버전</sup>",
+     "https://www.law.go.kr/LSW/lsInfoP.do?vSct=%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97%",
+     "85%EB%B2%95&viewCls=engLsInfoR&urlMode=engLsInfoR&chrClsCd=010202&lsId=010107&efYd=&lsiSeq=92323#00",
+     "00"
+    ],
+    "authors_raw": "<sup>방위사업법</sup> <sup>영문버전</sup>. https://www.law.go.kr/LSW/lsInfoP.do?vSct=%EB%B0%A9%EC%9C%84%EC%82%AC%EC%97% 85%EB%B2%95&viewCls=engLsInfoR&urlMode=engLsInfoR&chrClsCd=010202&lsId=010107&efYd=&lsiSeq=92323#00 00",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "<sup>방</sup>위사업<sup>청</sup>(2022.3.21.). <sup>방</sup>위<sup>산</sup>업 <sup>경쟁</sup>력 <sup>강</sup>화<sup>를</sup> 위<sup>한</sup> <sup>국방중소</sup>벤처기업 지<sup>원</sup>. https://www.korea.kr/news/pressRelease View.do?newsId=156500045",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1222.5,
+     999.0,
+     1333.1
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "<sup>방</sup>위사업<sup>청</sup>"
+    ],
+    "authors_raw": "<sup>방</sup>위사업<sup>청</sup>",
+    "et_al": false,
+    "year": "2022",
+    "title": "3.21.). <sup>방</sup>위<sup>산</sup>업 <sup>경쟁</sup>력 <sup>강</sup>화<sup>를</sup> 위<sup>한</sup> <sup>국방중소</sup>벤처기업 지<sup>원</sup>. https://www.korea.kr/news/pressRelease View.do?newsId=156500045",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "<sup>관</sup>계부처 합<sup>동</sup>(2021.9.9.). <sup>국방</sup> <sup>신산</sup>업 육<sup>성을</sup> <sup>통한</sup> <sup>일</sup>자<sup>리</sup> <sup>창</sup>출. 제21차 <sup>일</sup>자<sup>리</sup>위<sup>원</sup>회 의<sup>결안건</sup>. https://policy. nl.go.kr/search/searchDetail.do?rec_key=SH2_PLC20210282894",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1222.5,
+     999.0,
+     1333.1
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "<sup>관</sup>계부처",
+     "합<sup>동</sup>"
+    ],
+    "authors_raw": "<sup>관</sup>계부처 합<sup>동</sup>",
+    "et_al": false,
+    "year": "2021",
+    "title": "9.9.). <sup>국방</sup> <sup>신산</sup>업 육<sup>성을</sup> <sup>통한</sup> <sup>일</sup>자<sup>리</sup> <sup>창</sup>출. 제21차 <sup>일</sup>자<sup>리</sup>위<sup>원</sup>회 의<sup>결안건</sup>. https://policy. nl.go.kr/search/searchDetail.do?rec_key=SH2_PLC20210282894",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "<sup>산</sup>업<sup>통상</sup>자<sup>원부</sup>(2021.8.11.). <sup>정부부</sup>처가 힘<sup>을</sup> <sup>모</sup>아 <sup>방위산</sup>업의 <sup>활</sup>력<sup>을</sup> <sup>불</sup>어<sup>넣</sup>다. http://www.motie.go.kr/motie/ne/ presse/press2/bbs/bbsView.do?bbs_seq_n=164440&bbs_cd_n=81&currentPage=11&search_key_n=title_v&cate_n=&dept_v= &search_val_v=",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1222.5,
+     999.0,
+     1333.1
+    ],
+    "uid": "u4_5",
+    "authors": [
+     "<sup>산</sup>업<sup>통상</sup>자<sup>원부</sup>"
+    ],
+    "authors_raw": "<sup>산</sup>업<sup>통상</sup>자<sup>원부</sup>",
+    "et_al": false,
+    "year": "2021",
+    "title": "8.11.). <sup>정부부</sup>처가 힘<sup>을</sup> <sup>모</sup>아 <sup>방위산</sup>업의 <sup>활</sup>력<sup>을</sup> <sup>불</sup>어<sup>넣</sup>다. http://www.motie.go.kr/motie/ne/ presse/press2/bbs/bbsView.do?bbs_seq_n=164440&bbs_cd_n=81&currentPage=11&search_key_n=title_v&cate_n=&dept_v= &search_val_v=",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "방위사업청(2021,3.11). 한국산 우선구매 추진으로 세계 방산시장 정조준. https://www.dapa.go.kr/dapa/na/ntt/selectNttInfo.do?bbsId=326&nttSn=36162&menuId=678; 21년 국방 중소 및 벤처기업 지원 시책. https://www.youtube.com/watch?v=uKDSZii4EwI",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     143.8,
+     1337.5,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2021",
+    "title": "3.11). 한국산 우선구매 추진으로 세계 방산시장 정조준. https://www.dapa.go.kr/dapa/na/ntt/selectNttInfo.do?bbsId=326&nttSn=36162&menuId=678; 21년 국방 중소 및 벤처기업 지원 시책. https://www.youtube.com/watch?v=uKDSZii4EwI",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "방위사업청(2021). ｢’21년 국방 중소 및 벤처기업 지원시책｣ 발표 자료.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.2,
+     1364.2,
+     910.0,
+     1419.5
+    ],
+    "uid": "u6_4",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2021",
+    "title": "｢’21년 국방 중소 및 벤처기업 지원시책｣ 발표 자료",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "<sup>산</sup>학<sup>연</sup> <sup>주관</sup> <sup>비율을</sup> 49%(2021<sup>년</sup>) <sup>→</sup> 57%(2022<sup>년</sup>) <sup>→</sup> 61%(2023<sup>년</sup>) <sup>→</sup> 80%(2026<sup>년</sup>) 확<sup>대하는</sup> 목<sup>표</sup>임.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.2,
+     1364.2,
+     910.0,
+     1419.5
+    ],
+    "uid": "u6_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "방위사업청, 「21년 국방 중소 및 벤처기업 지원시책」 발표 자료, 2021.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     145.5,
+     1277.6,
+     997.9,
+     1335.1
+    ],
+    "uid": "u7_5",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2021",
+    "title": "21년 국방 중소 및 벤처기업 지원시책",
+    "source": "발표 자료",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "대한민국 정책브리핑(2022.11.4). 2022년 방산 수출 수주액 170억 불 규모 달성. https://www.korea.kr/news/pressReleaseView.do?newsId=156534765",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     145.5,
+     1277.6,
+     997.9,
+     1335.1
+    ],
+    "uid": "u7_5",
+    "authors": [
+     "대한민국",
+     "정책브리핑"
+    ],
+    "authors_raw": "대한민국 정책브리핑",
+    "et_al": false,
+    "year": "2022",
+    "title": "11.4). 2022년 방산 수출 수주액 170억 불 규모 달성. https://www.korea.kr/news/pressReleaseView.do?newsId=156534765",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "정성민, 조성진, 조윤철(2018). 국내 방위산업의 국제경쟁력 향상 방안에 관한 연구: 자료 포락 분석 및 맘 트위스트 생산성 분석을 중심으로 국방과 기술, 476, 88-103. https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE07538208&googleIPSandBox=false&mark=0&useDate=&ipRange=false&accessId=Y&language=ko_KR&hasTopBanner=true",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     145.5,
+     1277.6,
+     997.9,
+     1335.1
+    ],
+    "uid": "u7_5",
+    "authors": [
+     "정성민",
+     "조성진",
+     "조윤철"
+    ],
+    "authors_raw": "정성민, 조성진, 조윤철",
+    "et_al": false,
+    "year": "2018",
+    "title": "국내 방위산업의 국제경쟁력 향상 방안에 관한 연구: 자료 포락 분석 및맘 트위스트 생산성 분석을 중심으로 국방과 기술",
+    "source": "476",
+    "volume": null,
+    "issue": null,
+    "pages": "88-103",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "한국은행(2020). 경남지역 방위산업의 현황과 육성방안.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1336.7,
+     995.6,
+     1417.7
+    ],
+    "uid": "u10_6",
+    "authors": [
+     "한국은행"
+    ],
+    "authors_raw": "한국은행",
+    "et_al": false,
+    "year": "2020",
+    "title": "경남지역 방위산업의 현황과 육성방안",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "경남도민신문(2022.10.31). (창간 12주년) 경남 방위산업 집중 육성. http://www.gndomin.com/news/articleView.html?idxno=331665",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1336.7,
+     995.6,
+     1417.7
+    ],
+    "uid": "u10_6",
+    "authors": [
+     "경남도민신문"
+    ],
+    "authors_raw": "경남도민신문",
+    "et_al": false,
+    "year": "2022",
+    "title": "10.31). (창간 12주년) 경남 방위산업 집중 육성. http://www.gndomin.com/news/articleView.html?idxno=331665",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "idomin.com(2022.05.26.). “방산 중소기업 처지 반영한 지자체 지원 절실” https://www.idomin.com/news/articleView.html?idxno=795070",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     143.2,
+     1369.5,
+     1001.1,
+     1430.9
+    ],
+    "uid": "u11_9",
+    "authors": [
+     "idomin.com"
+    ],
+    "authors_raw": "idomin.com",
+    "et_al": false,
+    "year": "2022",
+    "title": "방산 중소기업 처지 반영한 지자체 지원 절실",
+    "source": "https://www.idomin.com/news/articleView.html?idxno=795070",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "창업산업진흥원(2021). 2021년 국내외 방위산업 동향 및 지역 발전과제 연구.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     143.2,
+     1393.7,
+     745.9,
+     1420.0
+    ],
+    "uid": "u12_4",
+    "authors": [
+     "창업산업진흥원"
+    ],
+    "authors_raw": "창업산업진흥원",
+    "et_al": false,
+    "year": "2021",
+    "title": "2021년 국내외 방위산업 동향 및 지역 발전과제 연구",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "권태환(2022). 우크라이나 사태 관련 일본의 대응과 시사점. 군사논단, 109, 70-89. https://kiss.kstudy.com/thesis/thesis-view.asp?key=3935944",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     143.2,
+     1194.4,
+     997.9,
+     1274.5
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "권태환"
+    ],
+    "authors_raw": "권태환",
+    "et_al": false,
+    "year": "2022",
+    "title": "우크라이나 사태 관련 일본의 대응과 시사점. 군사논단",
+    "source": "109",
+    "volume": null,
+    "issue": null,
+    "pages": "70-89",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "방위사업청(2022). 22-36 국방기술기획서. https://dtims.dtaq.re.kr/vps/OINF_searchBookList10.do",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     143.2,
+     1194.4,
+     997.9,
+     1274.5
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2022",
+    "title": "22-36 국방기술기획서. https://dtims.dtaq.re.kr/vps/OINF_searchBookList10.do",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "22-36",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "이상수(2015). 맞춤형 방산 전문인력 양성 교육 시행. 국방과 기술, (432), 20-23. https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE06096206",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     143.2,
+     1194.4,
+     997.9,
+     1274.5
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "이상수"
+    ],
+    "authors_raw": "이상수",
+    "et_al": false,
+    "year": "2015",
+    "title": "맞춤형 방산 전문인력 양성 교육 시행. 국방과 기술",
+    "source": "(432)",
+    "volume": null,
+    "issue": null,
+    "pages": "20-23",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "현재 한국방위산업진흥회는 국가 인적자원개발 전소시업 사업의 일환으로 방산 분야 업체 재직자의 방산 직무능력 향상을 위한 교육사업을 시행하고 있고, ADD도 국방과학기술 아카데미를 통해 방산분야 전문기술인력 양성을 위한 전문기술교육을 시행하고 있다. 방사칭은 방산 분야 기업의 인력난과 청년 취업난을 해소하기 위해 대출 미취업청년에게 방산 현장실무 중심의 전문교육을 실시하여 방산 전문인력으로 양성하고 취업 연계를 지원하는 ‘방위산업전문인력 양성사업’, 우주, 인공지능 등 첨단 분야 고급인력 양성을 위한 계약학과를 시행하고 있다.",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     143.2,
+     1194.4,
+     997.9,
+     1274.5
+    ],
+    "uid": "u17_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "Maintenance(유지), Repair(보수) and Overhaul/Operation(운영)",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "장원준, 송재필(2019). 국내 방위 관련 산업클러스터 비교분석과 정책 과제. 월간 KIET 산업경제, 249, 39-51. https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE11135514&googleIPSandBox=false&mark=0&useDate=&ipRange=false&accessId=Y&language=ko_KR&hasTopBanner=true",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [
+     "장원준",
+     "송재필"
+    ],
+    "authors_raw": "장원준, 송재필",
+    "et_al": false,
+    "year": "2019",
+    "title": "국내 방위 관련 산업클러스터 비교분석과 정책 과제. 월간 KIET 산업경제",
+    "source": "249",
+    "volume": null,
+    "issue": null,
+    "pages": "39-51",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "이해종(2021). 방산 강국 진입 기초체력을 위한 창정비 패러다임 변화 MRO(Maintenance, Repair, Overhaul)를 넘어 AMRO (Advanced MRO)로!. 국방과 기술, (512), 132-141. https://www.dbpia.co.kr/pdf/pdfView.do?nodeId=NODE10608977&googleIPSandBox=false&mark=0&useDate=&ipRange=false&accessg1=Y&language=ko_KR&hasTopBanner=true",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [
+     "이해종"
+    ],
+    "authors_raw": "이해종",
+    "et_al": false,
+    "year": "2021",
+    "title": "방산 강국 진입 기초체력을 위한 창정비 패러다임 변화 MRO(Maintenance",
+    "source": "Repair",
+    "volume": null,
+    "issue": null,
+    "pages": "132-141",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "창원시와 국방과학연구소 업무협약을 통해 지역 해양 방산 기반 시설 구축을 위한 첨단함정연구센터 구축(2027년) 예정이며, 진해 첨단산업연구단지 조성을 통해 중소형 특수선반 고도화 지원, 스마트제조, 금속소재 실증 테스트베드 등의 인프라를 구축할 예정임.",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "창업산업진흥원(2022.3). 창원산업동향 브리프, 43. http://www.cwip.or.kr/bbs/download.php?bo_table=b0308&wr_id=51&no=1",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [
+     "창업산업진흥원"
+    ],
+    "authors_raw": "창업산업진흥원",
+    "et_al": false,
+    "year": "2022",
+    "title": "3). 창원산업동향 브리프",
+    "source": "43. http://www.cwip.or.kr/bbs/download.php?bo_table=b0308&wr_id=51&no=1",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "31",
+    "raw": "방위사업청(2022.1.6). 무기체계 국외도입 시 국내업체 참여도 높인다 : 무기체계 제안서 평가제도 개선. https://www.korea.kr/news/pressReleaseView.do?newsId=156490594 * 본 논문은 재단법인 창원산업진흥원에서 수행된 연구결과 중 일부 내용을 발췌하여 작성됨(2021년).",
+    "page": 19,
+    "page_end": 24,
+    "box": [
+     143.2,
+     1135.0,
+     999.0,
+     1302.3
+    ],
+    "uid": "u18_4",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2022",
+    "title": "1.6). 무기체계 국외도입 시 국내업체 참여도 높인다 : 무기체계 제안서 평가제도 개선. https://www.korea.kr/news/pressReleaseView.do?newsId=156490594 * 본 논문은 재단법인 창원산업진흥원에서 수행된 연구결과 중 일부 내용을 발췌하여 작성됨(2021년",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 31,
+   "per_page": {
+    "2": 4,
+    "3": 2,
+    "4": 1,
+    "5": 4,
+    "6": 1,
+    "7": 2,
+    "8": 3,
+    "11": 2,
+    "12": 1,
+    "13": 1,
+    "18": 4,
+    "19": 6
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    "3": {
+     "markers": [
+      "5",
+      "6"
+     ],
+     "collected": [
+      "5",
+      "6"
+     ]
+    },
+    "4": {
+     "markers": [
+      "7"
+     ],
+     "collected": [
+      "7"
+     ]
+    },
+    "5": {
+     "markers": [
+      "8",
+      "9",
+      "10",
+      "11"
+     ],
+     "collected": [
+      "8",
+      "9",
+      "10",
+      "11"
+     ]
+    },
+    "6": {
+     "markers": [
+      "12"
+     ],
+     "collected": [
+      "12"
+     ]
+    },
+    "7": {
+     "markers": [
+      "14"
+     ],
+     "collected": [
+      "13",
+      "14"
+     ]
+    },
+    "8": {
+     "markers": [
+      "15",
+      "16",
+      "17"
+     ],
+     "collected": [
+      "15",
+      "16",
+      "17"
+     ]
+    },
+    "11": {
+     "markers": [
+      "18",
+      "19"
+     ],
+     "collected": [
+      "18",
+      "19"
+     ]
+    },
+    "12": {
+     "markers": [
+      "20"
+     ],
+     "collected": [
+      "20"
+     ]
+    },
+    "13": {
+     "markers": [
+      "21"
+     ],
+     "collected": [
+      "21"
+     ]
+    },
+    "18": {
+     "markers": [
+      "22",
+      "23",
+      "24",
+      "25"
+     ],
+     "collected": [
+      "22",
+      "23",
+      "24",
+      "25"
+     ]
+    },
+    "19": {
+     "markers": [
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31"
+     ],
+     "collected": [
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, G. I. (2020). Study on the Direction of Defense Industry Enlargement and Integration to Strengthen Defense Industry Company Competitiveness. Journal of the Korea Association of Defense Industry Studies, 27(1), 15-28. https://doi.org/10.52798/KADIS.2020.27.1.2",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Choi G. I"
+    ],
+    "authors_raw": "Choi, G. I",
+    "et_al": false,
+    "year": "2020",
+    "title": "Study on the Direction of Defense Industry Enlargement and Integration to Strengthen Defense Industry Company Competitiveness. Journal of the Korea Association of Defense Industry Studies",
+    "source": "27(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "15-28",
+    "doi": "10.52798/KADIS.2020.27.1.2",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, G. I., & Chae, W. S. (2018). Diagnosing and Analyzing the Punishment Status of Corruption in Defense Acquisition. Journal of the Korea Association of Defense Industry Studies, 25(4), 13-31. https://doi.org/10.52798/KADIS.2018.25.4.2",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Choi G. I",
+     "Chae W. S"
+    ],
+    "authors_raw": "Choi, G. I., & Chae, W. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "Diagnosing and Analyzing the Punishment Status of Corruption in Defense Acquisition. Journal of the Korea Association of Defense Industry Studies",
+    "source": "25(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "13-31",
+    "doi": "10.52798/KADIS.2018.25.4.2",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Enright, M. J., & Roberts, B. H. (2001). Regional clustering in Australia. Australian Journal of Management, 26(1_suppl), 65-85. https://doi.org/10.1177/031289620102601",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Enright M. J",
+     "Roberts B. H"
+    ],
+    "authors_raw": "Enright, M. J., & Roberts, B. H",
+    "et_al": false,
+    "year": "2001",
+    "title": "Regional clustering in Australia. Australian Journal of Management",
+    "source": "26(1_suppl)",
+    "volume": null,
+    "issue": null,
+    "pages": "65-85",
+    "doi": "10.1177/031289620102601",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ikram, A., Su, Q., Fiaz, M., & Rehman, R. U. (2018). Cluster strategy and supply chain management: The road to competitiveness for emerging economies. Benchmarking: An International Journal, 25(5), 1302-1318. https://doi.org/10.1108/BIJ-06-2015-0059",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Ikram A",
+     "Su Q",
+     "Fiaz M",
+     "Rehman R. U"
+    ],
+    "authors_raw": "Ikram, A., Su, Q., Fiaz, M., & Rehman, R. U",
+    "et_al": false,
+    "year": "2018",
+    "title": "Cluster strategy and supply chain management: The road to competitiveness for emerging economies. Benchmarking: An International Journal",
+    "source": "25(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "1302-1318",
+    "doi": "10.1108/BIJ-06-2015-0059",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kharub, M., & Sharma, R. K. (2016). Investigating the role of porter diamond determinants for competitiveness in MSMEs. International Journal for Quality Research, 10(3), 471. https://doi.org/10.18421/IJQR10.03-02",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Kharub M",
+     "Sharma R. K"
+    ],
+    "authors_raw": "Kharub, M., & Sharma, R. K",
+    "et_al": false,
+    "year": "2016",
+    "title": "Investigating the role of porter diamond determinants for competitiveness in MSMEs. International Journal for Quality Research",
+    "source": "10(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.18421/IJQR10.03-02",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D. J., & Kim, T. J. (2014). A Study on the Direction of Regional Industrial Policy for Regional Development: Focusing on the Correlation Analysis between Industrial agglomeration and Competitiveness of Regional Strategic Industries on Chungnam Province. Journal of The Korean Regional Development Association, 26(3), 31-50. UCI : G704-000688.2014.26.3.008",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Kim D. J",
+     "Kim T. J"
+    ],
+    "authors_raw": "Kim, D. J., & Kim, T. J",
+    "et_al": false,
+    "year": "2014",
+    "title": "A Study on the Direction of Regional Industrial Policy for Regional Development: Focusing on the Correlation Analysis between Industrial agglomeration and Competitiveness of Regional Strategic Industries on Chungnam Province. Journal of The Korean Regional Development Association",
+    "source": "26(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "31-50",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, K. S. (2005). Representative of Sample and Efficiency of Estimation. Survey Research, 6(1), 39-62. UCI : G704-001342.2005.6.1.004",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Kim K. S"
+    ],
+    "authors_raw": "Kim, K. S",
+    "et_al": false,
+    "year": "2005",
+    "title": "Representative of Sample and Efficiency of Estimation. Survey Research",
+    "source": "6(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "39-62",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. S. (2012). Characteristics of Korea’s Cluster Policy and Evolution to the New Theory of Regional Industrial Ecosystem. Journal of the Korean Regional Science Association, 28(4), 23-43. UCI : G704-000510.2012.28.4.006",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Kim Y. S"
+    ],
+    "authors_raw": "Kim, Y. S",
+    "et_al": false,
+    "year": "2012",
+    "title": "Characteristics of Korea’s Cluster Policy and Evolution to the New Theory of Regional Industrial Ecosystem. Journal of the Korean Regional Science Association",
+    "source": "28(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "23-43",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, M. J., Park, Y. M., Kye, Y. G., Shin, J. H., & Cho, H. J. (2022). A Study on the Calculation of Life Cycle Cost of Weapon System Using Modeling and Simulation at the R&D Phase. Journal of Korea Academia-Industrial Cooperation Society, 23(3), 285-294. https://doi. org/10.5762/KAIS.2022.23.3.285",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Kwon M. J",
+     "Park Y. M",
+     "Kye Y. G",
+     "Shin J. H",
+     "Cho H. J"
+    ],
+    "authors_raw": "Kwon, M. J., Park, Y. M., Kye, Y. G., Shin, J. H., & Cho, H. J",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Calculation of Life Cycle Cost of Weapon System Using Modeling and Simulation at the R&D Phase. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "23(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "285-294",
+    "doi": "10.5762/KAIS.2022.23.3.285",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. H., & Jeong, S. J. (2021). A study on the improvement plan for weapon system R&D test & evaluation judgment. Military Research and Development, 15(2), 111-142. https:// Lee, J. K. (2021). A Study on the ISA Characteristics of Policy Fields Affecting the Development of Korean Defense Industry. Journal of the Korea Association of Defense Industry Studies, 28(2), 25-40. https://doi.org/10.52798/KADIS.2021.28.2.3",
+    "page": 21,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     1000.5
+    ],
+    "uid": "u20_3",
+    "authors": [
+     "Lee J. H",
+     "Jeong S. J"
+    ],
+    "authors_raw": "Lee, J. H., & Jeong, S. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the ISA Characteristics of Policy Fields Affecting the Development of Korean Defense Industry. Journal of the Korea Association of Defense Industry Studies",
+    "source": "28(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "111-142",
+    "doi": "10.52798/KADIS.2021.28.2.3",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, B., & Yoo, Y. M. (2022). A Study on Enhancing National Competitiveness of China’s Eco-friendly Automobile Industry: Focusing on the Porter’s Diamond Model. Journal of Economics Studies, 40(2), 149-168. https://doi.org/10.30776/JES.40.2.6",
+    "page": 22,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     674.2
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Oh B",
+     "Yoo Y. M"
+    ],
+    "authors_raw": "Oh, B., & Yoo, Y. M",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on Enhancing National Competitiveness of China’s Eco-friendly Automobile Industry: Focusing on the Porter’s Diamond Model. Journal of Economics Studies",
+    "source": "40(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "149-168",
+    "doi": "10.30776/JES.40.2.6",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Porter, M. E. (1990). The Competitive Advantage of Nations, Harvard Business Review. Retrieved from https://www.economie.ens.fr/IMG/pdf/porter_1990_-_the_competitive_ advantage_of_nations.pdf.",
+    "page": 22,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     674.2
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Porter M. E"
+    ],
+    "authors_raw": "Porter, M. E",
+    "et_al": false,
+    "year": "1990",
+    "title": "The Competitive Advantage of Nations",
+    "source": "Harvard Business Review. Retrieved from https://www.economie.ens.fr/IMG/pdf/porter_1990_-_the_competitive_ advantage_of_nations.pdf",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Porter, M. E. (1998). Clusters and the new economics of competition, Harvard Business Review, Retrieved from https://hbr.org/1998/11/clusters-and-the-new-economics-of-competition.",
+    "page": 22,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     674.2
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Porter M. E"
+    ],
+    "authors_raw": "Porter, M. E",
+    "et_al": false,
+    "year": "1998",
+    "title": "Clusters and the new economics of competition",
+    "source": "Harvard Business Review",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Son, W. S. & Kim, J. S. (2022). Assessment of Raw Materials Supply Chain Risk: a case study from Korean Defense Industry (2011 to 2020). Journal of International Trade and Insurance, 23(4), 129-152. https://doi.org/10.22875/jiti.2022.23.4.008",
+    "page": 22,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     674.2
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Son W. S",
+     "Kim J. S"
+    ],
+    "authors_raw": "Son, W. S. & Kim, J. S",
+    "et_al": false,
+    "year": "2022",
+    "title": "Assessment of Raw Materials Supply Chain Risk: a case study from Korean Defense Industry (2011 to 2020). Journal of International Trade and Insurance",
+    "source": "23(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "129-152",
+    "doi": "10.22875/jiti.2022.23.4.008",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Won, J. H. (2020). A Study on the Selection Model of Promising Export Items Applicable to the Defense SMEs. Journal of Korea Academia-Industrial Cooperation Society, 21(7), 321-330. https://doi.org/10.5762/KAIS.2020.21.7.321",
+    "page": 22,
+    "box": [
+     143.8,
+     400.3,
+     1000.1,
+     674.2
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "Won J. H"
+    ],
+    "authors_raw": "Won, J. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Selection Model of Promising Export Items Applicable to the Defense SMEs. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "21(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "321-330",
+    "doi": "10.5762/KAIS.2020.21.7.321",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Development plan based on analyzing the actual conditions of Korea's defense base area: Focusing on Gyeongsangnam-do and Changwon",
+   "page": 1,
+   "box": [
+    189.0,
+    392.3,
+    970.8,
+    510.7
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Jang, Sangguk",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     456.3,
+     534.6,
+     708.5,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Choi, Giil",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     456.3,
+     534.6,
+     708.5,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Chosun University",
+   "Department of Military Science",
+   "Sangji University",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "This study aims to derive a customized development plan for the defense base area centered on the Gyeongsangnam-do and Changwon special cities, which are representative bases in the domestic defense industry. The areas account for more than 40% of the defense sales and the number of employees based on domestic defense companies. Their status and importance increased as they were selected as the first defense innovation cluster pilot project in Korea by the Defense Acquisition Program Administration. For the research method, management performance (sales, R&D investment, number of employees, exports) and difficulties factors were analyzed by targeting 490 defense companies located in Gyeongnam from 2018 to 2021. Based on the results, considerable strengths and opportunity factors were derived in the fields of industry composition, defense supply chain, parts localization, workforce training, and cooperation networks, and the creation of a favorable management environment for defense SMEs was suggested. In the future, to facilitate the localization of defense materials and parts through the defense innovation cluster project, and to establish an effective mid- to long-term defense industry promotion strategy, an accurate analysis of the current situation and competitiveness of defense companies in the Gyeongnam region is required.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study aims to derive a customized development plan for the defense base area centered on the Gyeongsangnam-do and Changwon special cities, which are representative bases in the domestic defense industry. The areas account for more than 40% of the defense sales and the number of employees based on domestic defense companies. Their status and importance increased as they were selected as the first defense innovation cluster pilot project in Korea by the Defense Acquisition Program Administration. For the research method, management performance (sales, R&D investment, number of employees, exports) and difficulties factors were analyzed by targeting 490 defense companies located in Gyeongnam from 2018 to 2021. Based on the results, considerable strengths and opportunity factors were derived in the fields of industry composition, defense supply chain, parts localization, workforce training, and cooperation networks, and the creation of a favorable management environment for defense SMEs was suggested. In the future, to facilitate the localization of defense materials and parts through the defense innovation cluster project, and to establish an effective mid- to long-term defense industry promotion strategy, an accurate analysis of the current situation and competitiveness of defense companies in the Gyeongnam region is required.",
+   "page": 1,
+   "box": [
+    190.5,
+    623.5,
+    310.5,
+    651.4
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: defense industry base area, actual condition survey, region industry innovation cluster, small and medium-sized defense companies"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 3,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "67-90",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "방산 거점권역",
+   "실태조사",
+   "지역혁신클러스터",
+   "방산 중소기업"
+  ],
+  "keywords_en": [
+   "defense industry base area",
+   "actual condition survey",
+   "region industry innovation cluster",
+   "small and medium-sized defense companies"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "초기 방위산업은 중화학 공업과 동시에 소총과 탄약 제작의 국산화로 시작하여 50여 년의 세월이 지난 오늘날에는 T-50 고등훈련기와 K-2 전차를 생산하는 수준으로 급성장하고 있다(Choi & Chae, 2018).",
+    "raw": "초기 방위산업은 중화학 공업과 동시에 소총과 탄약 제작의 국산화로 시작하여 50여 년의 세월이 지난 오늘날에는 T-50 고등훈련기와 K-2 전차를 생산하는 수준으로 급성장하고 있다(Choi & Chae, 2018).",
+    "citation_text": "(Choi & Chae, 2018)",
+    "offset": [
+     100,
+     119
+    ],
+    "authors": [
+     "Choi & Chae"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "그러나 한국 방위산업은 내수시장 위주의 경영과 수출 품목 제약, 일관성 없는 방산 정책 등의 요인으로 인해 정부와 민간 영역을 통합하는 방산 산업화 정책과 방산 제도 체계화가 여전히 미흡한 실정이다(Lee, 2021).",
+    "raw": "그러나 한국 방위산업은 내수시장 위주의 경영과 수출 품목 제약, 일관성 없는 방산 정책 등의 요인으로 인해 정부와 민간 영역을 통합하는 방산 산업화 정책과 방산 제도 체계화가 여전히 미흡한 실정이다(Lee, 2021).",
+    "citation_text": "(Lee, 2021)",
+    "offset": [
+     110,
+     121
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "방위산업은 국가방위에서 필요한 군사력 건설을 뒷받침하는 산업으로 한 국가가 자국 안보를 보장하고 영토를 수호하는 국가전략 목표하에 군을 운영하는 데 소요되는 물자를 연구개발·생산·공급하는 모두 산업 활동 주체이다(Choi, 2020).",
+    "raw": "방위산업은 국가방위에서 필요한 군사력 건설을 뒷받침하는 산업으로 한 국가가 자국 안보를 보장하고 영토를 수호하는 국가전략 목표하에 군을 운영하는 데 소요되는 물자를 연구개발·생산·공급하는 모두 산업 활동 주체이다(Choi, 2020).",
+    "citation_text": "(Choi, 2020)",
+    "offset": [
+     118,
+     130
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "특히, 해당 산업은 최근 방산 수출 규모의 급성장¹⁶)에 따라 국가의 신성장동력 산업¹⁷)으로 인식되고 있으나 여전히 국방력과 국방 기술 측면에서 선진국 대비 격차가 존재하고, 특정 대기업의 체계업체가 차지하는 수출비중과 비교하여 중소기업의 수출액 비중은 5% 내외로 나타났다(Won, 2020).",
+    "raw": "특히, 해당 산업은 최근 방산 수출 규모의 급성장¹⁶)에 따라 국가의 신성장동력 산업¹⁷)으로 인식되고 있으나 여전히 국방력과 국방 기술 측면에서 선진국 대비 격차가 존재하고, 특정 대기업의 체계업체가 차지하는 수출비중과 비교하여 중소기업의 수출액 비중은 5% 내외로 나타났다(Won, 2020).",
+    "citation_text": "(Won, 2020)",
+    "offset": [
+     154,
+     165
+    ],
+    "authors": [
+     "Won"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "이런 산업적 요구에 따라 경남지역의 방산 혁신클러스터는 지리적 집중으로 산업 내 업체 간의 경쟁력 강화를 촉진하고(Porter, 1998), 지역 산업을 육성하는 정책을 추진하여 운영하고 있다.",
+    "raw": "이런 산업적 요구에 따라 경남지역의 방산 혁신클러스터는 지리적 집중으로 산업 내 업체 간의 경쟁력 강화를 촉진하고(Porter, 1998), 지역 산업을 육성하는 정책을 추진하여 운영하고 있다.",
+    "citation_text": "(Porter, 1998)",
+    "offset": [
+     63,
+     77
+    ],
+    "authors": [
+     "Porter"
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "지역 산업정책(Kim & Kim, 2014)으로 경남지역 내 특화된 산업을 전략적으로 육성하여 투자 및 고용 창출이 증가하여 경제성장을 촉진하는 원동력으로 작용하고 있다.",
+    "raw": "지역 산업정책(Kim & Kim, 2014)으로 경남지역 내 특화된 산업을 전략적으로 육성하여 투자 및 고용 창출이 증가하여 경제성장을 촉진하는 원동력으로 작용하고 있다.",
+    "citation_text": "(Kim & Kim, 2014)",
+    "offset": [
+     7,
+     24
+    ],
+    "authors": [
+     "Kim & Kim"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "실제 업체와 방산 관련 정부 기관 간의 상호 정보교류나 시험·실험 장비의 공동 활용 등이 가능하여 비용 절감의 긍정적 효과(Enright & Roberts, 2001)가 나타날 수 있다.",
+    "raw": "실제 업체와 방산 관련 정부 기관 간의 상호 정보교류나 시험·실험 장비의 공동 활용 등이 가능하여 비용 절감의 긍정적 효과(Enright & Roberts, 2001)가 나타날 수 있다.",
+    "citation_text": "(Enright & Roberts, 2001)",
+    "offset": [
+     68,
+     93
+    ],
+    "authors": [
+     "Enright & Roberts"
+    ],
+    "year": "2001",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "특히, 방위사업청의 부품국산화 확대 정책으로 방산 중소·벤처 기업으로서 정부의 투자가 증가할 것으로 예상되어 실패나 시장진입 위험 가능성을 낮을 수 있는 효과를 얻을 수 있다(i.e., Ikram, Su, Fiaz, & Rehman, 2018).",
+    "raw": "특히, 방위사업청의 부품국산화 확대 정책으로 방산 중소·벤처 기업으로서 정부의 투자가 증가할 것으로 예상되어 실패나 시장진입 위험 가능성을 낮을 수 있는 효과를 얻을 수 있다(i.e., Ikram, Su, Fiaz, & Rehman, 2018).",
+    "citation_text": "(i.e., Ikram, Su, Fiaz, & Rehman, 2018)",
+    "offset": [
+     97,
+     136
+    ],
+    "authors": [
+     "Ikram"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_7",
+    "kind": "parenthetical",
+    "sentence": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "raw": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "citation_text": "Kharub & Sharma, 2016",
+    "offset": [
+     25,
+     46
+    ],
+    "authors": [
+     "Kharub & Sharma"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_7",
+    "kind": "parenthetical",
+    "sentence": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "raw": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "citation_text": "Oh & Yoo, 2022",
+    "offset": [
+     48,
+     62
+    ],
+    "authors": [
+     "Oh & Yoo"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_7",
+    "kind": "parenthetical",
+    "sentence": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "raw": "이에 따라 본 연구는 포터의 다이아몬드 모형(Kharub & Sharma, 2016; Oh & Yoo, 2022; Poter, 1990)을 중심으로 최근 방위산업의 환경변화를 법적 환경, 기술 환경, 산업환경, 획득 환경, 협력 환경, 관리 환경으로 구분하고, 각 사례를 종합적으로 검토하여 국내 방위산업의 국가경쟁력 결정요인을 제시하였다(Figure 5).",
+    "citation_text": "Poter, 1990",
+    "offset": [
+     64,
+     75
+    ],
+    "authors": [
+     "Poter"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_3",
+    "kind": "parenthetical",
+    "sentence": "한편, 한국은 방산 분야의 부품 수입 의존도가 높아 국가안보 위협 요소로 작용할 수 있다(Son & Kim, 2022).",
+    "raw": "한편, 한국은 방산 분야의 부품 수입 의존도가 높아 국가안보 위협 요소로 작용할 수 있다(Son & Kim, 2022).",
+    "citation_text": "(Son & Kim, 2022)",
+    "offset": [
+     49,
+     66
+    ],
+    "authors": [
+     "Son & Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_4",
+    "kind": "parenthetical",
+    "sentence": "방위산업 범주가 기존 방위사업청 소관 개발 및 양산 위주에서 운영유지(MRO) 단계로 확대되고 있어(Kwon, Park, Kye, Shin, & Cho, 2022) 경남지역은 산업 환경 측면에서 미래 방위산업의 중요한 거점으로 발전할 필요가 있다.",
+    "raw": "방위산업 범주가 기존 방위사업청 소관 개발 및 양산 위주에서 운영유지(MRO) 단계로 확대되고 있어(Kwon, Park, Kye, Shin, & Cho, 2022) 경남지역은 산업 환경 측면에서 미래 방위산업의 중요한 거점으로 발전할 필요가 있다.",
+    "citation_text": "(Kwon, Park, Kye, Shin, & Cho, 2022)",
+    "offset": [
+     55,
+     91
+    ],
+    "authors": [
+     "Kwon"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "parenthetical",
+    "sentence": "또한, 창원 지역은 방산기업 외에 군 관련 인프라(육군 종합정비창, 해군 정비창 등)가 확보되어 있어 생산 가능 능력을 갖추고 있으며, 지원산업 측면에서 연구센터 및 실험·시험 기반 구축29)을 추진하고 있어 추후 발전이 높다.30) 예를 들어 무기체계 획득사업에서 시험평가는 개발 성과의 신뢰성을 확보하는 핵심 과정으로 첨단무기의 성능평가에 대한 새로운 시험평가가 요구되고 있어(Lee & Jeong, 2021) 해당 지역의 실험·시험 기반은 관련 및 지원산업 부문(Poter, 1990)에서 경쟁력으로 작용할 수 있을 것이다.",
+    "raw": "또한, 창원 지역은 방산기업 외에 군 관련 인프라(육군 종합정비창, 해군 정비창 등)가 확보되어 있어 생산 가능 능력을 갖추고 있으며, 지원산업 측면에서 연구센터 및 실험·시험 기반 구축29)을 추진하고 있어 추후 발전이 높다.30) 예를 들어 무기체계 획득사업에서 시험평가는 개발 성과의 신뢰성을 확보하는 핵심 과정으로 첨단무기의 성능평가에 대한 새로운 시험평가가 요구되고 있어(Lee & Jeong, 2021) 해당 지역의 실험·시험 기반은 관련 및 지원산업 부문(Poter, 1990)에서 경쟁력으로 작용할 수 있을 것이다.",
+    "citation_text": "(Lee & Jeong, 2021)",
+    "offset": [
+     212,
+     231
+    ],
+    "authors": [
+     "Lee & Jeong"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u20_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "parenthetical",
+    "sentence": "또한, 창원 지역은 방산기업 외에 군 관련 인프라(육군 종합정비창, 해군 정비창 등)가 확보되어 있어 생산 가능 능력을 갖추고 있으며, 지원산업 측면에서 연구센터 및 실험·시험 기반 구축29)을 추진하고 있어 추후 발전이 높다.30) 예를 들어 무기체계 획득사업에서 시험평가는 개발 성과의 신뢰성을 확보하는 핵심 과정으로 첨단무기의 성능평가에 대한 새로운 시험평가가 요구되고 있어(Lee & Jeong, 2021) 해당 지역의 실험·시험 기반은 관련 및 지원산업 부문(Poter, 1990)에서 경쟁력으로 작용할 수 있을 것이다.",
+    "raw": "또한, 창원 지역은 방산기업 외에 군 관련 인프라(육군 종합정비창, 해군 정비창 등)가 확보되어 있어 생산 가능 능력을 갖추고 있으며, 지원산업 측면에서 연구센터 및 실험·시험 기반 구축29)을 추진하고 있어 추후 발전이 높다.30) 예를 들어 무기체계 획득사업에서 시험평가는 개발 성과의 신뢰성을 확보하는 핵심 과정으로 첨단무기의 성능평가에 대한 새로운 시험평가가 요구되고 있어(Lee & Jeong, 2021) 해당 지역의 실험·시험 기반은 관련 및 지원산업 부문(Poter, 1990)에서 경쟁력으로 작용할 수 있을 것이다.",
+    "citation_text": "(Poter, 1990)",
+    "offset": [
+     261,
+     274
+    ],
+    "authors": [
+     "Poter"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

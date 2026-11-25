@@ -1,0 +1,2313 @@
+{
+ "doc": "13571820",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571820",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "국방부(2018a). 국방개혁 2.0. 국방부, p. 29.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1309.0,
+     997.9,
+     1419.5
+    ],
+    "uid": "u1_7",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2018",
+    "title": "국방개혁 2.0. 국방부",
+    "source": "p. 29",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "예비전력관리기구는 전·평시 동원자원 관리집행 및 예비군훈련기구를 운영하는 동원지원단과 동원보충대대, 예비군훈련대, 예비군지역대, 지역예비군부대, 직장예비군부대 등을 말한다. 예비전력관리 업무담당자 인사관리 훈령. 국방부훈령 제2506호(2020. 12. 30).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1309.0,
+     997.9,
+     1419.5
+    ],
+    "uid": "u1_7",
+    "authors": [
+     "예비전력관리기구는 전",
+     "평시 동원자원 관리집행 및 예비군훈련기구를 운영하는 동원지원단과 동원보충대대"
+    ],
+    "authors_raw": "예비전력관리기구는 전·평시 동원자원 관리집행 및 예비군훈련기구를 운영하는 동원지원단과 동원보충대대",
+    "et_al": false,
+    "year": "2020",
+    "title": "예비군훈련대",
+    "source": null,
+    "volume": null,
+    "issue": "2506",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방개혁에 관한 법률. 법률 제14609호(2017. 3. 21) 제13조(민간인력의 활용 확대).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.0,
+     1395.6,
+     788.7,
+     1419.5
+    ],
+    "uid": "u2_8",
+    "authors": [
+     "국방개혁에 관한 법률. 법률 제14609호"
+    ],
+    "authors_raw": "국방개혁에 관한 법률. 법률 제14609호",
+    "et_al": false,
+    "year": "2017",
+    "title": "3. 21) 제13조(민간인력의 활용 확대",
+    "source": null,
+    "volume": null,
+    "issue": "14609",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "국방부(2020). 2020 국방백서, 국방부, p. 101.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1395.3,
+     511.6,
+     1420.0
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2020",
+    "title": "2020 국방백서",
+    "source": "국방부",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "육군본부(2001). 군무원 인사실무. 육군본부, p. 14.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     151.5,
+     1389.2,
+     812.6,
+     1443.5
+    ],
+    "uid": "u4_4",
+    "authors": [
+     "육군본부"
+    ],
+    "authors_raw": "육군본부",
+    "et_al": false,
+    "year": "2001",
+    "title": "군무원 인사실무. 육군본부",
+    "source": "p. 14",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "국가공무원법. 법률 제18308호(2021. 7. 20). 제2조(공무원의 구분).",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.2,
+     1305.9,
+     970.8,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "국가공무원법",
+     "법률",
+     "제18308호"
+    ],
+    "authors_raw": "국가공무원법. 법률 제18308호",
+    "et_al": false,
+    "year": "2021",
+    "title": "7. 20). 제2조(공무원의 구분",
+    "source": null,
+    "volume": null,
+    "issue": "18308",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "군무원인사법 시행령. 대통령령 제32155호(2021. 11. 30). [별표 1] 일반군무원의 계급별 직무의 종류별 명칭.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.2,
+     1305.9,
+     970.8,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "군무원인사법",
+     "시행령",
+     "대통령령",
+     "제32155호"
+    ],
+    "authors_raw": "군무원인사법 시행령. 대통령령 제32155호",
+    "et_al": false,
+    "year": "2021",
+    "title": "11. 30). [별표 1] 일반군무원의 계급별 직무의 종류별 명칭",
+    "source": null,
+    "volume": null,
+    "issue": "32155",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "직군(Occupational Group)은 직무의 성질이 유사한 직렬의 군(법제치, 2010. 법령용어한영사전, p. 372).",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.2,
+     1305.9,
+     970.8,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "직군(Occupational",
+     "Group)은",
+     "직무의",
+     "성질이",
+     "유사한",
+     "직렬의",
+     "군(법제치"
+    ],
+    "authors_raw": "직군(Occupational Group)은 직무의 성질이 유사한 직렬의 군(법제치",
+    "et_al": false,
+    "year": "2010",
+    "title": "법령용어한영사전",
+    "source": "p. 372",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "직렬(Series of Class)은 직무의 종류가 유사하고 그 책임과 곤란성의 정도가 상이한 직급의 군(법제치, 2010. 법령용어한영사전, p. 372).",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.2,
+     1305.9,
+     970.8,
+     1359.4
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "직렬(Series",
+     "of",
+     "Class)은",
+     "직무의",
+     "종류가",
+     "유사하고",
+     "그",
+     "책임과",
+     "곤란성의",
+     "정도가",
+     "상이한",
+     "직급의",
+     "군(법제치"
+    ],
+    "authors_raw": "직렬(Series of Class)은 직무의 종류가 유사하고 그 책임과 곤란성의 정도가 상이한 직급의 군(법제치",
+    "et_al": false,
+    "year": "2010",
+    "title": "법령용어한영사전",
+    "source": "p. 372",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "국방부(2018b). 예비군 50년사. 국방부, pp. 139~172.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     144.1,
+     1280.9,
+     997.9,
+     1418.0
+    ],
+    "uid": "u6_7",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2018",
+    "title": "예비군 50년사. 국방부",
+    "source": "pp. 139~172",
+    "volume": null,
+    "issue": null,
+    "pages": "139-172",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "①동원지원단은 동원전력사령부 예하에 편성하여 평시에는 동원보충대대 자원관리와 동원훈련, 전시에는 동원보충대대를 창설하여 전방증원 임무를 수행하는 부대를 말한다. ②예비군훈련대는 지역 내 예비군훈련을 전담하는 부대로서, 국방개혁에 따른 군 구조 개편에 따라 전국 시·군·구 단위의 대대급 예비군훈련장을 광역시·도 단위 연대급 예비군훈련장으로 통합하여 과학화된 시설·장비와 전문교관을 운용하여 예비군훈련을 하고 있다.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     144.1,
+     1280.9,
+     997.9,
+     1418.0
+    ],
+    "uid": "u6_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "예비군법. 법률 제16585호(2019. 11. 26) 제14조의2(예비군부대 지휘관의 임무 및 결격사유).",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1303.8,
+     853.2,
+     1336.1
+    ],
+    "uid": "u7_7",
+    "authors": [
+     "예비군법",
+     "법률",
+     "제16585호"
+    ],
+    "authors_raw": "예비군법. 법률 제16585호",
+    "et_al": false,
+    "year": "2019",
+    "title": "11. 26) 제14조의2(예비군부대 지휘관의 임무 및 결격사유",
+    "source": null,
+    "volume": null,
+    "issue": "16585",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "한국국방연구원(2021). 2022 국방정책 환경 전망 및 과제. 한국국방연구원.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1303.8,
+     853.2,
+     1336.1
+    ],
+    "uid": "u7_7",
+    "authors": [
+     "한국국방"
+    ],
+    "authors_raw": "한국국방연구원",
+    "et_al": false,
+    "year": "2021",
+    "title": "2022 국방정책 환경 전망 및 과제. 한국국방연구원",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "조선일보. 北 ‘광 사정권’ 화성-12형 실전배치 확인. https://www.chosun.com/politics/north_korea (검색일: 2022. 1. 31); 연합뉴스. 북 ‘괴물ICBM’ 화성-17형 쏟 듯...사정 1만5천여km 美 전역 타격권. https://news.naver.com/main/read.naver.mode (검색일: 2022. 3. 24).",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1303.8,
+     853.2,
+     1336.1
+    ],
+    "uid": "u7_7",
+    "authors": [
+     "조선일보",
+     "北",
+     "‘광",
+     "사정권’",
+     "화성-12형",
+     "실전배치",
+     "확인",
+     "https://www.chosun.com/politics/north_korea",
+     "(검색일:"
+    ],
+    "authors_raw": "조선일보. 北 ‘광 사정권’ 화성-12형 실전배치 확인. https://www.chosun.com/politics/north_korea (검색일:",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "통계청 보도자료(2021. 12. 9). 장래인구추계: 2020~2070년.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     144.1,
+     1364.2,
+     688.5,
+     1419.5
+    ],
+    "uid": "u8_8",
+    "authors": [
+     "통계청",
+     "보도자료"
+    ],
+    "authors_raw": "통계청 보도자료",
+    "et_al": false,
+    "year": "2021",
+    "title": "12. 9). 장래인구추계: 2020~2070년",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "행정안전부. 주민등록 인구통계. https://mois.go.kr(검색일: 2022. 1. 10).",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     144.1,
+     1364.2,
+     688.5,
+     1419.5
+    ],
+    "uid": "u8_8",
+    "authors": [
+     "행정안전부",
+     "주민등록",
+     "인구통계",
+     "https://mois.go.kr(검색일:"
+    ],
+    "authors_raw": "행정안전부. 주민등록 인구통계. https://mois.go.kr(검색일:",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "국방부(MND: Ministry of National Defense)(2022a). 2022년 예산 및 기금운용계획 개요. 국방부.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1394.5,
+     870.5,
+     1420.8
+    ],
+    "uid": "u9_9",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "국방부(2022b). 국방비전 2050. 국방부; 육군본부(2019). 육군비전 2050. 육군본부.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1364.2,
+     771.0,
+     1419.5
+    ],
+    "uid": "u10_8",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2019",
+    "title": "육군비전 2050. 육군본부",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "국방부(2018a). 국방개혁 2.0. 국방부, p. 1.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     144.1,
+     1364.2,
+     771.0,
+     1419.5
+    ],
+    "uid": "u10_8",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2018",
+    "title": "국방개혁 2.0. 국방부",
+    "source": "p. 1",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "국방부(2020). 2020 국방백서. 국방부, pp. 96~99.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     144.7,
+     1365.9,
+     863.3,
+     1419.5
+    ],
+    "uid": "u11_6",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2020",
+    "title": "2020 국방백서. 국방부",
+    "source": "pp. 96~99",
+    "volume": null,
+    "issue": null,
+    "pages": "96-99",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "정진섭 외(2021). 미래 예비전력 부대의 구조 및 편성에 관한 연구. 육군본부 정책연구보고서.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     144.7,
+     1365.9,
+     863.3,
+     1419.5
+    ],
+    "uid": "u11_6",
+    "authors": [
+     "정진섭"
+    ],
+    "authors_raw": "정진섭 외",
+    "et_al": true,
+    "year": "2021",
+    "title": "미래 예비전력 부대의 구조 및 편성에 관한 연구. 육군본부 정책연구보고서",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "육군본부 내부자료(2021. 10. 25).",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     145.5,
+     1394.5,
+     424.0,
+     1423.6
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "육군본부",
+     "내부자료"
+    ],
+    "authors_raw": "육군본부 내부자료",
+    "et_al": false,
+    "year": "2021",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "2021년 국방부 및 육군본부 국정감사 자료(2021. 10. 5/10. 8).",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     144.1,
+     1365.3,
+     823.5,
+     1419.5
+    ],
+    "uid": "u14_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2021",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "국방조직 및 정원관리 훈령. 국방부훈령 제2510호(2021. 1. 7) [별표 9] 군무원 편제기준.",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     144.1,
+     1365.3,
+     823.5,
+     1419.5
+    ],
+    "uid": "u14_8",
+    "authors": [
+     "국방조직 및 정원관리 훈령. 국방부훈령 제2510호"
+    ],
+    "authors_raw": "국방조직 및 정원관리 훈령. 국방부훈령 제2510호",
+    "et_al": false,
+    "year": "2021",
+    "title": "1. 7) [별표 9] 군무원 편제기준",
+    "source": null,
+    "volume": null,
+    "issue": "2510",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "국방동원정보체계(Defense Mobilization Information System)는 국방부로부터 예하부대까지 동원계획, 자원관리, 동원집행 및 업무자동차화 처리, 지휘관 결심 지원 등 동원준비태세 향상을 위해 예비전력 능력을 정예화시킬 목적으로 만든 정보체계이다.",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.1,
+     1339.0,
+     997.9,
+     1421.1
+    ],
+    "uid": "u15_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "군무원인사법 시행령. 대통령령 제32155호(2021. 11. 30) 제37조(인사교류).",
+    "page": 20,
+    "page_end": 20,
+    "box": [
+     142.4,
+     1393.7,
+     726.1,
+     1421.1
+    ],
+    "uid": "u19_6",
+    "authors": [
+     "군무원인사법",
+     "시행령",
+     "대통령령",
+     "제32155호"
+    ],
+    "authors_raw": "군무원인사법 시행령. 대통령령 제32155호",
+    "et_al": false,
+    "year": "2021",
+    "title": "11. 30) 제37조(인사교류",
+    "source": null,
+    "volume": null,
+    "issue": "32155",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "예비역 간부 및 예비전력관리 업무담당자 인사관리 규정. 육군규정 520(2021. 5. 1).",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     144.1,
+     1364.5,
+     790.5,
+     1419.5
+    ],
+    "uid": "u21_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "국가공무원법. 법률 제18308호(2021. 7. 20). 제50조(인재개발) 제1항.",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     144.1,
+     1364.5,
+     790.5,
+     1419.5
+    ],
+    "uid": "u21_5",
+    "authors": [
+     "국가공무원법",
+     "법률",
+     "제18308호"
+    ],
+    "authors_raw": "국가공무원법. 법률 제18308호",
+    "et_al": false,
+    "year": "2021",
+    "title": "7. 20). 제50조(인재개발) 제1항",
+    "source": null,
+    "volume": null,
+    "issue": "18308",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "국방대학교 직무교육원 직무과정 교육운영 예규. 5-직무-예01(2020. 5. 22).",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     144.1,
+     1364.2,
+     720.7,
+     1419.5
+    ],
+    "uid": "u23_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "국방대학교(2021). 2021년도 직무교육과정 운영계획. 국방대학교.",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     144.1,
+     1364.2,
+     720.7,
+     1419.5
+    ],
+    "uid": "u23_5",
+    "authors": [
+     "국방대학교"
+    ],
+    "authors_raw": "국방대학교",
+    "et_al": false,
+    "year": "2021",
+    "title": "2021년도 직무교육과정 운영계획. 국방대학교",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 30,
+   "per_page": {
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "5": 1,
+    "6": 4,
+    "7": 2,
+    "8": 3,
+    "9": 2,
+    "10": 1,
+    "11": 2,
+    "12": 2,
+    "14": 1,
+    "15": 2,
+    "16": 1,
+    "20": 1,
+    "22": 2,
+    "24": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2"
+     ],
+     "collected": [
+      "1",
+      "2"
+     ]
+    },
+    "3": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "4": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "5": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "6": {
+     "markers": [
+      "6",
+      "7",
+      "8",
+      "9"
+     ],
+     "collected": [
+      "6",
+      "7",
+      "8",
+      "9"
+     ]
+    },
+    "7": {
+     "markers": [
+      "10",
+      "11"
+     ],
+     "collected": [
+      "10",
+      "11"
+     ]
+    },
+    "8": {
+     "markers": [
+      "12",
+      "13",
+      "14"
+     ],
+     "collected": [
+      "12",
+      "13",
+      "14"
+     ]
+    },
+    "9": {
+     "markers": [
+      "15",
+      "16"
+     ],
+     "collected": [
+      "15",
+      "16"
+     ]
+    },
+    "10": {
+     "markers": [
+      "17"
+     ],
+     "collected": [
+      "17"
+     ]
+    },
+    "11": {
+     "markers": [
+      "18",
+      "19"
+     ],
+     "collected": [
+      "18",
+      "19"
+     ]
+    },
+    "12": {
+     "markers": [
+      "20",
+      "21"
+     ],
+     "collected": [
+      "20",
+      "21"
+     ]
+    },
+    "14": {
+     "markers": [
+      "22"
+     ],
+     "collected": [
+      "22"
+     ]
+    },
+    "15": {
+     "markers": [
+      "23",
+      "24"
+     ],
+     "collected": [
+      "23",
+      "24"
+     ]
+    },
+    "16": {
+     "markers": [
+      "25"
+     ],
+     "collected": [
+      "25"
+     ]
+    },
+    "20": {
+     "markers": [
+      "26"
+     ],
+     "collected": [
+      "26"
+     ]
+    },
+    "22": {
+     "markers": [
+      "27",
+      "28"
+     ],
+     "collected": [
+      "27",
+      "28"
+     ]
+    },
+    "24": {
+     "markers": [
+      "29",
+      "30"
+     ],
+     "collected": [
+      "29",
+      "30"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Babette, E. Bensoussan., & Craig, S. Fleisher. (2015). Analysis Without Paralysis: 12 Tools to Make Better Strategic Decisions (2nd ed.). New Jersey: FT Press. IBSN-13: 978- 0-13-442629-7",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Babette",
+     "E. Bensoussan",
+     "Craig",
+     "S. Fleisher"
+    ],
+    "authors_raw": "Babette, E. Bensoussan., & Craig, S. Fleisher",
+    "et_al": false,
+    "year": "2015",
+    "title": "Analysis Without Paralysis: 12 Tools to Make Better Strategic Decisions (2nd ed.). New Jersey: FT Press. IBSN-13: 978- 0-13-442629-7",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bae, J. H., & Park, J. H. (2013). A Study on the Possibility of Terror in South Korea Through STEEP Analysis. The Korean Association of Police Science Review, 15(4), UCI: G704- 002121.2013.15.4.007",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Bae J. H",
+     "Park J. H"
+    ],
+    "authors_raw": "Bae, J. H., & Park, J. H",
+    "et_al": false,
+    "year": "2013",
+    "title": "A Study on the Possibility of Terror in South Korea Through STEEP Analysis. The Korean Association of Police Science Review",
+    "source": "15(4)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cho, G. H., Kim, C. J., & Son, H. B. (2020). A Study on the Necessity and Organization of Korean Modularized Unit Structure, 66, 82. KRINS Policy Research Report(2020. 10)",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Cho"
+    ],
+    "authors_raw": "Cho",
+    "et_al": false,
+    "year": "2020",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, B. O., & Kang, Y. K. (2018). Development strategy of Reserve forces of ROK army using SWOT analysis: focused on the education and training. Korean Journal of Military Art and Science, 74(1), 239-266. https://doi.org/10.31066/kjmas.2018.74.1.010",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Choi B. O",
+     "Kang Y. K"
+    ],
+    "authors_raw": "Choi, B. O., & Kang, Y. K",
+    "et_al": false,
+    "year": "2018",
+    "title": "Development strategy of Reserve forces of ROK army using SWOT analysis: focused on the education and training. Korean Journal of Military Art and Science",
+    "source": "74(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "239-266",
+    "doi": "10.31066/kjmas.2018.74.1.010",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, W. D. (2015). A Study on the Organizational Commitment of Civilian Military Employees. [Master’s Thesis, Seoul University]. Seoul.",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Choi W. D"
+    ],
+    "authors_raw": "Choi, W. D",
+    "et_al": false,
+    "year": "2015",
+    "title": "A Study on the Organizational Commitment of Civilian Military Employees. [Master’s Thesis",
+    "source": "Seoul University]. Seoul",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, Y. S. (2021). A Study on the Policy Development of Civilian Military Employees in the Army. Journal of the Korea Academia-Industrial Cooperation Society, 22(10), https://doi.org/10.5762/KAIS.2021.22.10.534",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Choi Y. S"
+    ],
+    "authors_raw": "Choi, Y. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Policy Development of Civilian Military Employees in the Army. Journal of the Korea Academia-Industrial Cooperation Society",
+    "source": "22(10)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.5762/KAIS.2021.22.10.534",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, Y. S. (2022). A Study on the Policy Development of Civilian Military Employees in the Army [Doctoral dissertation, Konyang University]. Nonsan.",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Choi Y. S"
+    ],
+    "authors_raw": "Choi, Y. S",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Policy Development of Civilian Military Employees in the Army [Doctoral dissertation",
+    "source": "Konyang University]. Nonsan",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, G. H., Kim. J. T., & Jung, C. W. (2012). A Study on the Development Direction of Coordination and Integration of Civilian Military Employees Occupations and Personnel Management, KIDA Research Report 2012-3266",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Jung G. H",
+     "Kim. J. T",
+     "Jung C. W"
+    ],
+    "authors_raw": "Jung, G. H., Kim. J. T., & Jung, C. W",
+    "et_al": false,
+    "year": "2012",
+    "title": "A Study on the Development Direction of Coordination and Integration of Civilian Military Employees Occupations and Personnel Management",
+    "source": "KIDA Research Report 2012-3266",
+    "volume": null,
+    "issue": null,
+    "pages": "2012-3266",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, Y. G., Kim, T. S. (2019). Evaluation of the Shaping Elite Reserve Forces of the ROK Armed Forces and Future-Oriented Policy Direction: Focused on the Defense Reform 2.0 Reserve Forces Policy. Journal of Northeast Asian Studies, 24(3), 31-56. https://doi.org/ 10 21807/JNAS 2019 09 92 031",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Kang Y. G",
+     "Kim T. S"
+    ],
+    "authors_raw": "Kang, Y. G., Kim, T. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "Evaluation of the Shaping Elite Reserve Forces of the ROK Armed Forces and Future-Oriented Policy Direction: Focused on the Defense Reform 2.0 Reserve Forces Policy. Journal of Northeast Asian Studies",
+    "source": "24(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "31-56",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D. W. (2016). A Study on Efficient Utilization Plan of National Defense Resource. Studies in Social Sciences, 23(4), 77-94. UCI: G704-SER000014006.2016.23.4.004",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Kim D. W"
+    ],
+    "authors_raw": "Kim, D. W",
+    "et_al": false,
+    "year": "2016",
+    "title": "A Study on Efficient Utilization Plan of National Defense Resource. Studies in Social Sciences",
+    "source": "23(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "77-94",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, G. H., & Hong, S. J. (2021). Problems and Future Orientations of the Civilian Military Employees System. KIDA Defense Issues & Analyses 1850.",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Kim G. H",
+     "Hong S. J"
+    ],
+    "authors_raw": "Kim, G. H., & Hong, S. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Problems and Future Orientations of the Civilian Military Employees System. KIDA Defense Issues & Analyses 1850",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, G. H., Kim, I. G., Jung, C. W., Lee, E. J., & Hong, S. J. (2020). Research on the Direction of Development of Civilian Military Employees Policy according to Defense Reform, 20-23. KIDA Research Report 2020-4459.",
+    "page": 27,
+    "box": [
+     143.8,
+     291.8,
+     1001.1,
+     983.0
+    ],
+    "uid": "u26_3",
+    "authors": [
+     "Kim G. H",
+     "Kim I. G",
+     "Jung C. W",
+     "Lee E. J",
+     "Hong S. J"
+    ],
+    "authors_raw": "Kim, G. H., Kim, I. G., Jung, C. W., Lee, E. J., & Hong, S. J",
+    "et_al": false,
+    "year": "2020",
+    "title": "Research on the Direction of Development of Civilian Military Employees Policy according to Defense Reform",
+    "source": "20-23. KIDA Research Report 2020-4459",
+    "volume": null,
+    "issue": null,
+    "pages": "20-23",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. H., Kwak, Y. K., & Youn, C. S. (2020). A Study on the Leadership Capacity Enhancement of Reserve Commanders. Journal of Lifelong Education Leadership, 7(2), 63-81. http://scholar.dkyobobook.co.kr/searchDetail.laf?barcode=4010028167067",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Kim S. H",
+     "Kwak Y. K",
+     "Youn C. S"
+    ],
+    "authors_raw": "Kim, S. H., Kwak, Y. K., & Youn, C. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Leadership Capacity Enhancement of Reserve Commanders. Journal of Lifelong Education Leadership",
+    "source": "7(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "63-81",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, B. C. (2011). A Study on the Effective Management of Civilian Defense Manpower: Focus on Military Civilians. GRI REVIEW, 13(3).",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Lee B. C"
+    ],
+    "authors_raw": "Lee, B. C",
+    "et_al": false,
+    "year": "2011",
+    "title": "A Study on the Effective Management of Civilian Defense Manpower: Focus on Military Civilians. GRI REVIEW",
+    "source": "13(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. G. (2014). A Study on Policy Alternatives for Improving Social Welfare and Morale of the Korean Reserve Forces [Doctoral dissertation, Konyang University]. Nonsan",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Lee J. G"
+    ],
+    "authors_raw": "Lee, J. G",
+    "et_al": false,
+    "year": "2014",
+    "title": "A Study on Policy Alternatives for Improving Social Welfare and Morale of the Korean Reserve Forces [Doctoral dissertation",
+    "source": "Konyang University]. Nonsan",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, H. (2019). Personnel System to Improve the Professionalism of Civilian Military Employees. KIDA Defense Issues & Analyses, 1779. https://www.kida.re.kr/frt/board/frtNormalBoard Detail.do?sidx=382&idx=1838&depth=4",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Oh H"
+    ],
+    "authors_raw": "Oh, H",
+    "et_al": false,
+    "year": "2019",
+    "title": "Personnel System to Improve the Professionalism of Civilian Military Employees. KIDA Defense Issues & Analyses",
+    "source": "1779. https://www.kida.re.kr/frt/board/frtNormalBoard Detail.do?sidx=382&idx=1838&depth=4",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, D. W. (2016). The Interchange of the Civilian Military Employees Policy Assessment. The Quarterly Journal of Defense Policy Studies, 32(2). https://doi.org/10.22883/jdps. 2016. 32.2.006",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Shin D. W"
+    ],
+    "authors_raw": "Shin, D. W",
+    "et_al": false,
+    "year": "2016",
+    "title": "The Interchange of the Civilian Military Employees Policy Assessment. The Quarterly Journal of Defense Policy Studies",
+    "source": "32(2). https://doi.org/10.22883/jdps. 2016. 32.2.006",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.22883/jdps",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, S. B. (2021). Optimized operation of regional reserve forces in a changing future security environment. Journal of Advances in Military Studies 4(3), 38-39. https://doi.org 10.37944/jams.v4i3.121",
+    "page": 28,
+    "box": [
+     151.6,
+     291.8,
+     1000.1,
+     634.8
+    ],
+    "uid": "u27_2",
+    "authors": [
+     "Yang S. B"
+    ],
+    "authors_raw": "Yang, S. B",
+    "et_al": false,
+    "year": "2021",
+    "title": "Optimized operation of regional reserve forces in a changing future security environment. Journal of Advances in Military Studies 4(3)",
+    "source": "38-39. https://doi.org 10.37944/jams.v4i3.121",
+    "volume": "4",
+    "issue": null,
+    "pages": "38-39",
+    "doi": "10.37944/jams.v4i3.121",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "The enhancement of civilian military employees system for improving the reserve forces management efficiency in Korean military",
+   "page": 1,
+   "box": [
+    165.7,
+    393.1,
+    995.6,
+    471.0
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kang, Yonggu",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     515.7,
+     495.1,
+     649.7,
+     524.8
+    ]
+   }
+  ],
+  "affiliations": [
+   "Korea National Defense University",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "The importance of reserve forces is increasing owing to changes in the security environment, such as the promotion of Defense Reform 2.0 and a sharp decrease in military service resources, however, questions are raised as to whether the current system of reserve forces management civilian military employees has appropriate efficiency. As a result of the study, a plan to improve its efficiency was suggested that it is necessary to adjust reserve forces management civilian military employees in a series of multilevel class and to redesign the personnel management system. The measures proposed in the study are required to be promoted for the future trend of development of unit structure and manpower structure of reserve forces units, equity with general civilian military employees. In addition, it should be promoted by comprehensively considering the possibility of meeting the budget. In the follow-up study, if future research is conducted on the role of policy departments to optimize personnel management of reserve forces management civilian military employees and ways to form public consensus essential for system improvement, a comprehensive framework will be established.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The importance of reserve forces is increasing owing to changes in the security environment, such as the promotion of Defense Reform 2.0 and a sharp decrease in military service resources, however, questions are raised as to whether the current system of reserve forces management civilian military employees has appropriate efficiency. As a result of the study, a plan to improve its efficiency was suggested that it is necessary to adjust reserve forces management civilian military employees in a series of multilevel class and to redesign the personnel management system. The measures proposed in the study are required to be promoted for the future trend of development of unit structure and manpower structure of reserve forces units, equity with general civilian military employees. In addition, it should be promoted by comprehensively considering the possibility of meeting the budget. In the follow-up study, if future research is conducted on the role of policy departments to optimize personnel management of reserve forces management civilian military employees and ways to form public consensus essential for system improvement, a comprehensive framework will be established.",
+   "page": 1,
+   "box": [
+    190.5,
+    591.1,
+    310.5,
+    618.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : civilian military employees in reserve forces management, Act on the Management of Civilian Military Employees, multiple personnel rank systems, personnel management practice, job education and training program"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "49-77",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "예비전력관리 군무원",
+   "군무원인사법",
+   "직급 다단계",
+   "인사관리제도",
+   "직무교육"
+  ],
+  "keywords_en": [
+   "multiple personnel rank systems",
+   "personnel management practice",
+   "job education and training program"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "D., 2015), 직종 조정통합과 인사관리(Jung et al., 2012; Oh, H., 2019), 정책발전 소요(Choi, Y.",
+    "raw": "D., 2015), 직종 조정통합과 인사관리(Jung et al., 2012; Oh, H., 2019), 정책발전 소요(Choi, Y.",
+    "citation_text": "Jung et al., 2012",
+    "offset": [
+     25,
+     42
+    ],
+    "authors": [
+     "Jung et al."
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "D., 2015), 직종 조정통합과 인사관리(Jung et al., 2012; Oh, H., 2019), 정책발전 소요(Choi, Y.",
+    "raw": "D., 2015), 직종 조정통합과 인사관리(Jung et al., 2012; Oh, H., 2019), 정책발전 소요(Choi, Y.",
+    "citation_text": "Oh, H., 2019",
+    "offset": [
+     44,
+     56
+    ],
+    "authors": [
+     "Oh"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u27_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "이를 위해 Ⅱ장에서는 예비전력관리군무원제도에 관한 이론적 배경을 고찰하고, Ⅲ장에서는 STEEP(사회, 기술, 환경, 경제, 정치⋅정책) 분석기법(Bae & Park, 2013; Bensoussan & Fleisher, 2015)을 통해 각 요인이 예비전력 분야에미치는 영향을 살펴보고 함의를 도출하였다.",
+    "raw": "이를 위해 Ⅱ장에서는 예비전력관리군무원제도에 관한 이론적 배경을 고찰하고, Ⅲ장에서는 STEEP(사회, 기술, 환경, 경제, 정치⋅정책) 분석기법(Bae & Park, 2013; Bensoussan & Fleisher, 2015)을 통해 각 요인이 예비전력 분야에미치는 영향을 살펴보고 함의를 도출하였다.",
+    "citation_text": "Bae & Park, 2013",
+    "offset": [
+     82,
+     98
+    ],
+    "authors": [
+     "Bae & Park"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "이를 위해 Ⅱ장에서는 예비전력관리군무원제도에 관한 이론적 배경을 고찰하고, Ⅲ장에서는 STEEP(사회, 기술, 환경, 경제, 정치⋅정책) 분석기법(Bae & Park, 2013; Bensoussan & Fleisher, 2015)을 통해 각 요인이 예비전력 분야에미치는 영향을 살펴보고 함의를 도출하였다.",
+    "raw": "이를 위해 Ⅱ장에서는 예비전력관리군무원제도에 관한 이론적 배경을 고찰하고, Ⅲ장에서는 STEEP(사회, 기술, 환경, 경제, 정치⋅정책) 분석기법(Bae & Park, 2013; Bensoussan & Fleisher, 2015)을 통해 각 요인이 예비전력 분야에미치는 영향을 살펴보고 함의를 도출하였다.",
+    "citation_text": "Bensoussan & Fleisher, 2015",
+    "offset": [
+     100,
+     127
+    ],
+    "authors": [
+     "Bensoussan & Fleisher"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_7",
+    "kind": "parenthetical",
+    "sentence": "Presidential Decree No. 32155 (November 30, 2021).",
+    "raw": "Presidential Decree No. 32155 (November 30, 2021).",
+    "citation_text": "(November 30, 2021)",
+    "offset": [
+     30,
+     49
+    ],
+    "authors": [
+     "November 30"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_8",
+    "kind": "narrative",
+    "sentence": "*source: MND (2018).",
+    "raw": "*source: MND (2018).",
+    "citation_text": "MND (2018)",
+    "offset": [
+     9,
+     19
+    ],
+    "authors": [
+     "MND"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 10,
+    "uid": "u9_10",
+    "kind": "narrative",
+    "sentence": "*source: MND (2020).",
+    "raw": "*source: MND (2020).",
+    "citation_text": "MND (2020)",
+    "offset": [
+     9,
+     19
+    ],
+    "authors": [
+     "MND"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 10,
+    "uid": "u9_10",
+    "kind": "narrative",
+    "sentence": "2020 Defense White Paper (p. 289); MND (2022a).",
+    "raw": "2020 Defense White Paper (p. 289); MND (2022a).",
+    "citation_text": "MND (2022a)",
+    "offset": [
+     35,
+     46
+    ],
+    "authors": [
+     "MND"
+    ],
+    "year": "2022a",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u26_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

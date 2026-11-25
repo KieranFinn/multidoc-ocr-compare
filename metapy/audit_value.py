@@ -52,7 +52,7 @@ _INST_TAIL = re.compile(
 # 非机构: 出版社/期刊/项目名 —— 出现在机构行里必是误检(6 条实证里有 2 条属此类)
 _INST_BAD = re.compile(
     u"(?:Press\\b|Publishing\\b|Publications\\b|출판|출판사|"
-    u"\\bProject\\b|\\bProgram(?:me)?\\b|\\bInitiative\\b|학회\\s*발표|\\b발표\\b|"
+    u"\\bProject\\b|\\bInitiative\\b|학회\\s*발표|\\b발표\\b|"
     u"\\bSeries\\b|\\bWorking\\s+Paper)", re.I)
 
 # 句子特征: 机构署名不是句子; 摘要/致谢被当机构时几乎必命中
@@ -256,11 +256,13 @@ def _title(c):
                       "题名以句末终结词收尾/含句内句号, 更像正文段落",
                       "1536751: 真题名 '통합문법: 주제·초점과 시점' 被正文段压过"))
 
-    # 长度离群 —— 语料内韩文题名普遍 15–60 折合字; 超 120 基本是段落
+    # 长度离群 —— 韩文题名普遍 15–60 折合字, 超 120 基本是段落; 拉丁题名(英刊)体量大
+    # 是常态(13571811 系 193 折合字实证), 阈值放宽到 240。
+    _lim = 240 if _hangul_ratio(t) < 0.2 else 120
     f = _fold(t)
-    if len(f) > 120:
+    if len(f) > _lim:
         out.append(_f("V-TITLE-LONG", "%d 字" % len(f),
-                      "题名折合长度 %d > 120, 超常识区间" % len(f)))
+                      "题名折合长度 %d > %d, 超常识区间" % (len(f), _lim)))
 
     # 是 running 页眉(刊名+卷期+日期)
     if re.search(u"(?:제?\\s*\\d+\\s*권|Vol\\.?\\s*\\d+|No\\.?\\s*\\d+|통권|\\|)", t) \
@@ -320,7 +322,9 @@ def _authors(c):
             if re.search(u"[가-힣]\\s+[가-힣]", n) or len(f) > 20 \
                     or (_hangul_ratio(n) < 0.2 and len(n.split()) > 5):
                 out.append(_f("V-AUTH-PHRASE", n[:50], "作者名是短语/长串, 非人名形态"))
-            if _NAME_BAD_PUNCT.search(n):
+            # 拉丁'姓, 名'是合法印刷形(2026-11-24 用户拍板, 13571795 'Mun, Jonghyeon' 与
+            # 原文/KCI著录/Crossref注册一致), 该形态里的逗号不算坏标点。
+            if _NAME_BAD_PUNCT.search(n) and not re.match(r"^[A-Z][A-Za-z\-']+, [A-Z]", n):
                 out.append(_f("V-AUTH-PUNCT", n[:50], "作者名含标点, 像从长行里切坏的片段"))
 
     # 同一作者重复 —— 切分把同一行的词切了两遍
@@ -858,6 +862,37 @@ def _selftest():
                                        "국제법상 실효적 점유의 요건을 검토한다."},
                 "keywords": ["독도", "실효적 점유", "영역권원"]},
          "제9권 제1호"),
+        # 拉丁'姓, 名'印刷形必须沉默(2026-11-24 用户拍板; 13571795 原文 'Mun, Jonghyeon',
+        # Crossref family=Mun; 无逗号西式序 'Yongsik Hong' 同样合法 = l3)
+        ("l5", {"title": {"value": "Technology trends in deep learning networks"},
+                "authors": [{"name": "Mun, Jonghyeon"}, {"name": "Sohn, Chaebong"}],
+                "affiliations": ["Kwangwoon University"],
+                "year": {"value": "2023"}, "volume": {"value": "6"},
+                "issue": {"value": "2"}, "pages": {"value": "185-200"},
+                "abstract": {"value": "With the recent announcement of the Defense "
+                                      "Innovation 4.0 Basic Plan by the Ministry of "
+                                      "National Defense, the role and operational scope "
+                                      "of drones are expanding as a key force in "
+                                      "AI-based, unmanned, and autonomous systems."},
+                "keywords": ["drones", "computer vision", "deep learning network"]},
+         "Vol. 6 No. 2"),
+        # 英刊机构/题名不得误报(2026-11-24 修, KCI11_17 29 篇实证): 'Acquisition Program' 是
+        # 国防部采办研修院的合法机构名(_INST_BAD 的 Program 词误杀 22 例, 已移除该词);
+        # 拉丁题名 240 折合字内是常态(_TITLE-LONG 原 120 阈值误杀 4 例, 按文字系统分档)。
+        ("l6", {"title": {"value": "Simulation-based analysis of operational effectiveness using "
+                                   "army weapon effectiveness analysis model of attack helicopter "
+                                   "and manned-unmanned teaming for near future battlefield "
+                                   "environments with extended scenario coverage"},
+                "authors": [{"name": "Mun, Jonghyeon"}],
+                "affiliations": ["INSTITUTE OF DEFENSE ACQUISITION PROGRAM"],
+                "year": {"value": "2023"}, "volume": {"value": "6"},
+                "issue": {"value": "2"}, "pages": {"value": "185-200"},
+                "abstract": {"value": "With the recent announcement of the Defense Innovation "
+                                      "4.0 Basic Plan by the Ministry of National Defense, the "
+                                      "role and operational scope of drones are expanding as a "
+                                      "key force in AI-based systems."},
+                "keywords": ["drones", "computer vision"]},
+         "Vol. 6 No. 2"),
     ]
     for doc, meta, corpus in legit:
         c = Ctx(doc, None, meta=meta, corpus=corpus)

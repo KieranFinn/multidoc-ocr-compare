@@ -1,0 +1,1722 @@
+{
+ "doc": "13571809",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571809",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "The Atlantic (2022.9.21.). Putin Is Cornered. https://www.theatlantic.com/ideas/archive/2022/09/zelensky-ukraine-west-military-aid-supplies/671485/",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1248.3,
+     999.8,
+     1364.2
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "The",
+     "Atlantic"
+    ],
+    "authors_raw": "The Atlantic",
+    "et_al": false,
+    "year": "2022",
+    "title": "9.21.). Putin Is Cornered. https://www.theatlantic.com/ideas/archive/2022/09/zelensky-ukraine-west-military-aid-supplies/671485/",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "국방혁신 4.0은 2022년 5월 3일, 제20대 대통령직 인수위원회가 발표한 110대 국정과제에 포함된 윤석열 정부의 국방개혁안임. 이것은 인공지능(AI) · 무인 · 로봇 등 4차 산업혁명 과학기술 기반의 핵심 첨단전력을 확보 · 운용해 한국군을 경쟁우의의 AI 과학기술강군으로 거듭나도록 하는 것을 목표로 △ 국방 연구개발(R&D) · 전력증강체계 △ 국방과학기술 △ 군사전략 및 작전개념 △ 군 구조 · 운영 등 국방 전 분야를 재설계 · 개조한다는 계획임.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1248.3,
+     999.8,
+     1364.2
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "2020 국방백서 : https://www.mnd.go.kr/cop/pblictn/selectPublicationUser.do?siteId=mnd&componentId=14&categoryId=15&publicationSeq=897&pageIndex=1&id=mnd_040501000000",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1248.3,
+     999.8,
+     1364.2
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2020",
+    "title": "국방백서 : https://www.mnd.go.kr/cop/pblictn/selectPublicationUser.do?siteId=mnd&componentId=14&categoryId=15&publicationSeq=897&pageIndex=1&id=mnd_040501000000",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "육군규정 320 『전투준비태세 평가 규정』(2021. 7. 1.) p. 4. 내용을 정리하였음.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1336.1,
+     997.9,
+     1418.0
+    ],
+    "uid": "u3_5",
+    "authors": [
+     "육군규정",
+     "320"
+    ],
+    "authors_raw": "육군규정 320",
+    "et_al": false,
+    "year": "2021",
+    "title": "전투준비태세 평가 규정",
+    "source": "(2021. 7. 1.)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "전투준비태세 최초보고서 및 군단급 이하 종합보고서와 작전사 종합보고서는 III급 비밀, 합참 종합보고서는 II급 비밀로 분류함.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1336.1,
+     997.9,
+     1418.0
+    ],
+    "uid": "u3_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "국방부 훈령 제2606호 『전투준비태세 평가 업무 훈령』 (2021. 12. 16.) p. 1. * “부대 수준”은 전투준비태세 평가 결과 보고서 작성 시점에서 피평가부대의 평시 전투준비태세를 평가한 것을 말함.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     151.5,
+     1340.3,
+     997.9,
+     1420.0
+    ],
+    "uid": "u4_7",
+    "authors": [
+     "국방부 훈령 제2606호"
+    ],
+    "authors_raw": "국방부 훈령 제2606호",
+    "et_al": false,
+    "year": "2021",
+    "title": "전투준비태세 평가 업무 훈령",
+    "source": "(2021. 12. 16.)",
+    "volume": null,
+    "issue": "2606",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "육군 규정 320(2021). 전투준비태세 평가 규정. p. 10 내용을 정리함.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.0,
+     1364.2,
+     722.2,
+     1419.5
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "육군",
+     "규정",
+     "320"
+    ],
+    "authors_raw": "육군 규정 320",
+    "et_al": false,
+    "year": "2021",
+    "title": "전투준비태세 평가 규정. p. 10 내용을 정리함",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "METL : 임무필수과제목록(Mission Essential Task List), 전후반기 추진현황",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.0,
+     1364.2,
+     722.2,
+     1419.5
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "육군 규정 320 『전투준비태세 평가 규정』.(2021), p. 16 내용을 정리하였음.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     151.5,
+     1393.7,
+     730.3,
+     1420.8
+    ],
+    "uid": "u6_6",
+    "authors": [
+     "육군",
+     "규정",
+     "320"
+    ],
+    "authors_raw": "육군 규정 320",
+    "et_al": false,
+    "year": "2021",
+    "title": "전투준비태세 평가 규정",
+    "source": "(2021)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "육군본부(2020.12.7.). 육군 야전교범 운용-7-1 교육훈련관리. pp. 5-8 내용을 정리하였음.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     152.3,
+     1393.0,
+     828.0,
+     1421.4
+    ],
+    "uid": "u7_6",
+    "authors": [
+     "육군본부"
+    ],
+    "authors_raw": "육군본부",
+    "et_al": false,
+    "year": "2020",
+    "title": "12.7.). 육군 야전교범 운용-7-1 교육훈련관리. pp. 5-8 내용을 정리하였음",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "5-8",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "전장응급정비(BDAR : Battlefield Damaged Assessment & Repair)는 전장에서 무능화된 장비에 대해 빠른시간 내 최소한의 전투기능을 보유할 수 있도록 하거나 자체 기동이 가능하도록 하는 제반적인 조치들을 말함.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     144.1,
+     1309.0,
+     997.9,
+     1419.5
+    ],
+    "uid": "u8_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "Bloomberg (2022.9.22). Ukraine Seizes Dozens of Russian Tanks Left by Fleeing Fordes. https://www.bloomberg.com/news/articles/2022-09-21/ukraine-seizes-dozens-of-russian-tanks-left-by-fleeing-forces",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     144.1,
+     1309.0,
+     997.9,
+     1419.5
+    ],
+    "uid": "u8_7",
+    "authors": [
+     "Bloomberg"
+    ],
+    "authors_raw": "Bloomberg",
+    "et_al": false,
+    "year": "2022",
+    "title": "9.22). Ukraine Seizes Dozens of Russian Tanks Left by Fleeing Fordes. https://www.bloomberg.com/news/articles/2022-09-21/ukraine-seizes-dozens-of-russian-tanks-left-by-fleeing-forces",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "“Army TIGER”는 첨단과학기술이 집약된 플랫폼 기반으로 육군의 싸우는 개념과 수단을 혁신하여 미래전의 전승을 보장하기 위한 미래 육군 군사혁신의 모델임. 여기서 “TIGER”는 첨단과학기술(4차 산업혁명 기술)로 강화된 지상군의 혁신적 변혁(TIGER : Transformative Innovation of Ground forces Enhanced by the 4th industrial Revolution technology)을 의미함.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1303.8,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u9_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": "Army TIGER",
+    "source": "는 첨단과학기술이 집약된 플랫폼 기반으로 육군의 싸우는 개념과 수단을 혁신하여 미래전의 전승을 보장하기 위한 미래 육군 군사혁신의 모델임. 여기서 “TIGER”는 첨단과학기술(4차 산업혁명 기술)로 강화된 지상군의 혁신적 변혁(TIGER : Transformative Innovation of Ground forces Enhanced by the 4th industrial Revolution technology)을 의미함",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "“Army TIGER 체계”란 첨단과학기술을 기반으로 모든 전투플랫폼을 기동화 · 네트워크화 · 지능화하여 미래의 다양한 불특정 위협에 더 빠르고 치명적으로 대응하기 위한 미래지상전투체계임.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1303.8,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u9_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": "Army TIGER 체계",
+    "source": "란 첨단과학기술을 기반으로 모든 전투플랫폼을 기동화 · 네트워크화 · 지능화하여 미래의 다양한 불특정 위협에 더 빠르고 치명적으로 대응하기 위한 미래지상전투체계임",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "Van Creveld, M. (1982). Fighting power: German and US Army performance, 1939-1945 (No. 32). Praeger. 2003 reprint edition.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1303.8,
+     1000.5,
+     1364.2
+    ],
+    "uid": "u9_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "<sup>육군본부</sup>(2020.12.7.). <sup>육군</sup> <sup>야전교범</sup> <sup>운용</sup>-7-1 <sup>교육훈련관리</sup>. pp. 4-1<sup>∼</sup>4-24. <sup>내용을</sup> <sup>정리함</sup>.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     144.1,
+     1394.5,
+     835.6,
+     1420.8
+    ],
+    "uid": "u11_7",
+    "authors": [
+     "<sup>육군본부</sup>"
+    ],
+    "authors_raw": "<sup>육군본부</sup>",
+    "et_al": false,
+    "year": "2020",
+    "title": "12.7.). <sup>육군</sup> <sup>야전교범</sup> <sup>운용</sup>-7-1 <sup>교육훈련관리</sup>. pp. 4-1<sup>∼</sup>4-24. <sup>내용을</sup> <sup>정리함</sup>",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "SCT(Supporting Collective Task, 지<sup>원</sup>과업) : 육<sup>군</sup>에서 임<sup>무필수</sup>과업(MET) <sup>달성을</sup> <sup>위</sup>하여 <sup>수행</sup>해<sup>야</sup> <sup>할</sup> 과제임.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     151.6,
+     1394.5,
+     978.0,
+     1420.8
+    ],
+    "uid": "u12_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 17,
+   "per_page": {
+    "2": 3,
+    "4": 2,
+    "5": 1,
+    "6": 2,
+    "7": 1,
+    "8": 1,
+    "9": 2,
+    "10": 3,
+    "12": 1,
+    "13": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "4": {
+     "markers": [
+      "4",
+      "5"
+     ],
+     "collected": [
+      "4",
+      "5"
+     ]
+    },
+    "5": {
+     "markers": [
+      "6"
+     ],
+     "collected": [
+      "6"
+     ]
+    },
+    "6": {
+     "markers": [
+      "7",
+      "8"
+     ],
+     "collected": [
+      "7",
+      "8"
+     ]
+    },
+    "7": {
+     "markers": [
+      "9"
+     ],
+     "collected": [
+      "9"
+     ]
+    },
+    "8": {
+     "markers": [
+      "10"
+     ],
+     "collected": [
+      "10"
+     ]
+    },
+    "9": {
+     "markers": [
+      "11",
+      "12"
+     ],
+     "collected": [
+      "11",
+      "12"
+     ]
+    },
+    "10": {
+     "markers": [
+      "13",
+      "14",
+      "15"
+     ],
+     "collected": [
+      "13",
+      "14",
+      "15"
+     ]
+    },
+    "12": {
+     "markers": [
+      "16"
+     ],
+     "collected": [
+      "16"
+     ]
+    },
+    "13": {
+     "markers": [
+      "17"
+     ],
+     "collected": [
+      "17"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Deli, L. (2022). ASSESSING MILITARY READINESS IN NATIONAL ARMY OF REPUBLIC OF MOLDOVA’S UNITS-METHODS AND CHALLENCES. Journal of Defense Resources Management, 13(1), 106-138. https://www.proquest.com/docview/2682862502/ fulltextPDF/19FBA96BA0284746PQ/1?accountid=27788",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Deli L"
+    ],
+    "authors_raw": "Deli, L",
+    "et_al": false,
+    "year": "2022",
+    "title": "ASSESSING MILITARY READINESS IN NATIONAL ARMY OF REPUBLIC OF MOLDOVA’S UNITS-METHODS AND CHALLENCES. Journal of Defense Resources Management",
+    "source": "13(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "106-138",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Go. S. S. (2020). A Study on the Development Direction of the Reorganization of Korean Military Forces in the Reduction of Military Service Resources. The Korean Military, 8, 185-211. https://doi.org/10.33528/kjma.2020.12.8.185",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Go",
+     "S",
+     "S"
+    ],
+    "authors_raw": "Go. S. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Development Direction of the Reorganization of Korean Military Forces in the Reduction of Military Service Resources. The Korean Military",
+    "source": "8",
+    "volume": null,
+    "issue": null,
+    "pages": "185-211",
+    "doi": "10.33528/kjma.2020.12.8.185",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Handayani, S. H., Widana, I. D. K. K., Samudro, E. G. & Mayori, E. (2022). The Influence of Psychological Well Being and Servant Leadership Toward Combat Readiness of The 469TH Paskhas Command Battalion Soldiers in Carrying Out the Operation Task. Technium Social Sciences Journal, 32, 519-532. https://doi.org/10.47577/tssj.v32i1.6627",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Handayani S. H",
+     "Widana",
+     "I. D. K. K",
+     "Samudro E. G",
+     "Mayori E"
+    ],
+    "authors_raw": "Handayani, S. H., Widana, I. D. K. K., Samudro, E. G. & Mayori, E",
+    "et_al": false,
+    "year": "2022",
+    "title": "The Influence of Psychological Well Being and Servant Leadership Toward Combat Readiness of The 469TH Paskhas Command Battalion Soldiers in Carrying Out the Operation Task. Technium Social Sciences Journal",
+    "source": "32",
+    "volume": "32",
+    "issue": null,
+    "pages": "519-532",
+    "doi": "10.47577/tssj.v32i1.6627",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jang, S. G., & Kim, Y. H. (2022). A Study on the Establishment of the Military Spirit of the Korean Army. Military Research and Development, 16(1), 97-121. http://www.riss.kr/ search/detail/DetailView.do?p_mat_type=1a0202e37d52c72d&control_no=e81dd3662d2f7335 e9810257f7042666&keyword=%ED%95%9C%EA%B5%AD%EA%B5%B0%EC%9D%98%2 0%EA%B5%B0%EC%9D%B8%EC%A0%95%EC%8B%A0%20%EC%A0%95%EB%A6% BD%EC%97%90%20%EA%B4%80%ED%95%9C%20%EA%B3%A0%EC%B0%B0",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Jang S. G",
+     "Kim Y. H"
+    ],
+    "authors_raw": "Jang, S. G., & Kim, Y. H",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Establishment of the Military Spirit of the Korean Army. Military Research and Development",
+    "source": "16(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "97-121",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jeong, I. S. (2019). South Korea’s Countermeasures for Pseudo-denuclearization of North Korea. Journal of Northeast Asian Studies, 24(2), 55-78. https://doi.org/10.21807/JNAS.2019.06. 91.055",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Jeong I. S"
+    ],
+    "authors_raw": "Jeong, I. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "South Korea’s Countermeasures for Pseudo-denuclearization of North Korea. Journal of Northeast Asian Studies",
+    "source": "24(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "55-78",
+    "doi": "10.21807/JNAS.2019.06",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, C., & Kim, J. (2021). Diagnosis of the problems in Korean military force development systems. Journal of Advances in Military Studies, 4(2), 1-20. https://doi.org/10.37944/ jams.v4i2.104",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kang C",
+     "Kim J"
+    ],
+    "authors_raw": "Kang, C., & Kim, J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Diagnosis of the problems in Korean military force development systems. Journal of Advances in Military Studies",
+    "source": "4(2)",
+    "volume": "4",
+    "issue": null,
+    "pages": "1-20",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, K. M., Park, S. J., Kim, J. W., & Kim, H. D. (2018). Application of Augmented Reality Technology to small-unit’s field training and Legal System Analysis. Journal of the Korea Institute of Information and Communication Engineering, 22(7), 963-969. https://doi.org/10.6109/jkiice.2018.22.7.963",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim K. M",
+     "Park S. J",
+     "Kim J. W",
+     "Kim H. D"
+    ],
+    "authors_raw": "Kim, K. M., Park, S. J., Kim, J. W., & Kim, H. D",
+    "et_al": false,
+    "year": "2018",
+    "title": "Application of Augmented Reality Technology to small-unit’s field training and Legal System Analysis. Journal of the Korea Institute of Information and Communication Engineering",
+    "source": "22(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "963-969",
+    "doi": "10.6109/jkiice.2018.22.7.963",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. S., & Park, J. J. (2020). The Study on the Recognition of Important Degree by Intangible Combat Power Components. Journal of Advances in Military Studies, 3(1), 75-92. https://doi.org/10.37944/jams.v3i1.68 Kim. K. C. (2022). Analysis of Russia’s Operation in the Ukrainian War. STRATEGIC STUDIES, 29(2), 75-117. https://doi.org/10.46226/jss.2022.07.29.2.75",
+    "page": 18,
+    "box": [
+     143.8,
+     364.4,
+     1001.1,
+     1141.9
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim Y. S",
+     "Park J. J"
+    ],
+    "authors_raw": "Kim, Y. S., & Park, J. J",
+    "et_al": false,
+    "year": "2022",
+    "title": "Analysis of Russia’s Operation in the Ukrainian War. STRATEGIC STUDIES",
+    "source": "29(2)",
+    "volume": "3",
+    "issue": null,
+    "pages": "75-92",
+    "doi": "10.37944/jams.v3i1.68",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kudelia, S. (2022). The Ukrainian State under Russian Aggression: Resilience and Resistance. Current History, 121(837), 251-257. https://doi.org/10.1525/curh.2022.121.837.251",
+    "page": 19,
+    "box": [
+     144.9,
+     364.4,
+     1000.1,
+     606.6
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "Kudelia S"
+    ],
+    "authors_raw": "Kudelia, S",
+    "et_al": false,
+    "year": "2022",
+    "title": "The Ukrainian State under Russian Aggression: Resilience and Resistance. Current History",
+    "source": "121(837)",
+    "volume": null,
+    "issue": null,
+    "pages": "251-257",
+    "doi": "10.1525/curh.2022.121.837.251",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park. M. C. (2020). A Proposal for the Army’s Restructuring Plan as the Core of Defense Reform: a review of the unit and force structure considering various factors of change. Strategic Research, 27(3), 123-178. https://doi.org/13.46226/jss.2020.11.27.3.123",
+    "page": 19,
+    "box": [
+     144.9,
+     364.4,
+     1000.1,
+     606.6
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "Park",
+     "M",
+     "C"
+    ],
+    "authors_raw": "Park. M. C",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Proposal for the Army’s Restructuring Plan as the Core of Defense Reform: a review of the unit and force structure considering various factors of change. Strategic Research",
+    "source": "27(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "123-178",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin. C. B. (2022). The Russia-Ukrainian War from the perspective of Building Military Power Based on Asymmetry Creation: Focusing on the 1st Stage Operation (Beginning of War - D+40 Days). Review of Korean Military Studies, 22, 105-127. https://doi.org/10.34166/ rokms.2022.11.2.105.",
+    "page": 19,
+    "box": [
+     144.9,
+     364.4,
+     1000.1,
+     606.6
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "Shin",
+     "C",
+     "B"
+    ],
+    "authors_raw": "Shin. C. B",
+    "et_al": false,
+    "year": "2022",
+    "title": "The Russia-Ukrainian War from the perspective of Building Military Power Based on Asymmetry Creation: Focusing on the 1st Stage Operation (Beginning of War - D+40 Days). Review of Korean Military Studies",
+    "source": "22",
+    "volume": null,
+    "issue": null,
+    "pages": "105-127",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Veebel, V., & Ploom, I. (2019). Are the Baltic States and NATO on the right path in deterring Russia in the Baltic?. Defense & Security Analysis, 35(4), 406-422. https://doi.org/10. 1080/14751798.2019.1675947",
+    "page": 19,
+    "box": [
+     144.9,
+     364.4,
+     1000.1,
+     606.6
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "Veebel V",
+     "Ploom I"
+    ],
+    "authors_raw": "Veebel, V., & Ploom, I",
+    "et_al": false,
+    "year": "2019",
+    "title": "Are the Baltic States and NATO on the right path in deterring Russia in the Baltic?. Defense & Security Analysis",
+    "source": "35(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "406-422",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Won, K., Kim, Y., Kim, M., Ha, T., Lee, Y., & Lee, H. (2021). Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies, 4(2), 37-58. https://doi.org/10.37944/jams.v4i2.113",
+    "page": 19,
+    "box": [
+     144.9,
+     364.4,
+     1000.1,
+     606.6
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "Won K",
+     "Kim Y",
+     "Kim M",
+     "Ha T",
+     "Lee Y",
+     "Lee H"
+    ],
+    "authors_raw": "Won, K., Kim, Y., Kim, M., Ha, T., Lee, Y., & Lee, H",
+    "et_al": false,
+    "year": "2021",
+    "title": "Future and development direction (21-35) of M&S for building up to the hyper-army in Republic of Korea Army: Focusing on fostering high-tech armed forces. Journal of Advances in Military Studies",
+    "source": "4(2)",
+    "volume": "4",
+    "issue": null,
+    "pages": "21-35",
+    "doi": "10.37944/jams.v4i2.113",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Improvement of combat readiness for Republic of Korea Army",
+   "page": 1,
+   "box": [
+    190.5,
+    393.1,
+    971.2,
+    429.3
+   ],
+   "uid": "u0_6",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Seo, Hoseok",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     441.8,
+     453.7,
+     721.8,
+     483.1
+    ],
+    "uid": "u0_7",
+    "page": 1
+   },
+   {
+    "name": "Jeong, Sukjae",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     441.8,
+     453.7,
+     721.8,
+     483.1
+    ],
+    "uid": "u0_7",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "Department of Business Administration"
+  ],
+  "abstract": {
+   "value": "The Russian invasion of Ukraine highlights the importance of strengthening combat readiness in the military. The purpose of this study was to devise a policy implementation that can ensure the appropriateness of the evaluation using the improvement elements of the current combat readiness evaluation in the Korean Army. To do so, the acts and regulations of combat readiness assessment and application cases in field units were analyzed, and the necessary improvements of elements were derived by collecting expert opinions using a Delphi survey. The analysis revealed that the weights for each evaluation element through the analytic hierarchy process survey were presented to assess the quantitative elements (troops, equipment, supplies, and competency) at the C-level, and the use of a judgment process was suggested to assist the commander in reasonably determining the level of qualitative evaluation factors when evaluating the grade (final decision of the level of combat readiness of the unit) at the mission assessment (MA-level). The results of this study can be applied to the assessment of combat readiness level to identify the poor elements of the field units objectively and report them accurately to the upper unit. Future, research must study topics related to the elaboration of assessment elements that can ensure the accuracy and reliability of the evaluation of combat readiness in terms of organizational competency development.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The Russian invasion of Ukraine highlights the importance of strengthening combat readiness in the military. The purpose of this study was to devise a policy implementation that can ensure the appropriateness of the evaluation using the improvement elements of the current combat readiness evaluation in the Korean Army. To do so, the acts and regulations of combat readiness assessment and application cases in field units were analyzed, and the necessary improvements of elements were derived by collecting expert opinions using a Delphi survey. The analysis revealed that the weights for each evaluation element through the analytic hierarchy process survey were presented to assess the quantitative elements (troops, equipment, supplies, and competency) at the C-level, and the use of a judgment process was suggested to assist the commander in reasonably determining the level of qualitative evaluation factors when evaluating the grade (final decision of the level of combat readiness of the unit) at the mission assessment (MA-level). The results of this study can be applied to the assessment of combat readiness level to identify the poor elements of the field units objectively and report them accurately to the upper unit. Future, research must study topics related to the elaboration of assessment elements that can ensure the accuracy and reliability of the evaluation of combat readiness in terms of organizational competency development.",
+   "page": 1,
+   "box": [
+    190.5,
+    541.0,
+    310.5,
+    569.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_8"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : combat readiness assessment, tangible and intangible combat power, army training and education, Delphi survey, analytic hierarchy process (AHP)"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 3,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "131-153",
+   "uid": "u0_4",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "전투준비태세 평가",
+   "유형과 무형전투력",
+   "군사교육훈련",
+   "델파이 설문",
+   "계층분석법"
+  ],
+  "keywords_en": [
+   "combat readiness assessment",
+   "tangible and intangible combat power",
+   "army training and education",
+   "Delphi survey",
+   "analytic hierarchy process (AHP)"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "최근 러시아의 우크라이나 침공 사건을 통해 국가가 독립 유지와 생존 보장차원에서 외부 위협에 대한 독자적인 자국 방위가 가능한 군사력 보유와 건설의 중요성이 재차 강조되고 있다(Kang & Kim, 2021).",
+    "raw": "최근 러시아의 우크라이나 침공 사건을 통해 국가가 독립 유지와 생존 보장차원에서 외부 위협에 대한 독자적인 자국 방위가 가능한 군사력 보유와 건설의 중요성이 재차 강조되고 있다(Kang & Kim, 2021).",
+    "citation_text": "(Kang & Kim, 2021)",
+    "offset": [
+     98,
+     116
+    ],
+    "authors": [
+     "Kang & Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "그동안 세계 제2대 군사 강대국 러시아 군은 첨단무기체계와 장비가 투입되었으나 전쟁 전략과 작전수행 과정에서 전투준비태세가 충분히 완비되어있지 않은 상태에서 공격을 감행하여 전투에서 고전하고 있으며, 우크라이나 군의 저항으로 장기전 양상에 직면하고 있다(Kim, 2022; Shin, 2022).",
+    "raw": "그동안 세계 제2대 군사 강대국 러시아 군은 첨단무기체계와 장비가 투입되었으나 전쟁 전략과 작전수행 과정에서 전투준비태세가 충분히 완비되어있지 않은 상태에서 공격을 감행하여 전투에서 고전하고 있으며, 우크라이나 군의 저항으로 장기전 양상에 직면하고 있다(Kim, 2022; Shin, 2022).",
+    "citation_text": "Kim, 2022",
+    "offset": [
+     142,
+     151
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "그동안 세계 제2대 군사 강대국 러시아 군은 첨단무기체계와 장비가 투입되었으나 전쟁 전략과 작전수행 과정에서 전투준비태세가 충분히 완비되어있지 않은 상태에서 공격을 감행하여 전투에서 고전하고 있으며, 우크라이나 군의 저항으로 장기전 양상에 직면하고 있다(Kim, 2022; Shin, 2022).",
+    "raw": "그동안 세계 제2대 군사 강대국 러시아 군은 첨단무기체계와 장비가 투입되었으나 전쟁 전략과 작전수행 과정에서 전투준비태세가 충분히 완비되어있지 않은 상태에서 공격을 감행하여 전투에서 고전하고 있으며, 우크라이나 군의 저항으로 장기전 양상에 직면하고 있다(Kim, 2022; Shin, 2022).",
+    "citation_text": "Shin, 2022",
+    "offset": [
+     153,
+     163
+    ],
+    "authors": [
+     "Shin"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u18_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "raw": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "citation_text": "Jang & Kim, 2022",
+    "offset": [
+     245,
+     261
+    ],
+    "authors": [
+     "Jang & Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "raw": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "citation_text": "Won, Kim, Kim, Ha, Lee, & Lee, 2021",
+    "offset": [
+     263,
+     298
+    ],
+    "authors": [
+     "Won"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u18_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "raw": "반면, 러시아는 전쟁 중에 장병뿐만 아니라 지휘관까지 전장을 이탈하면서 전력이 약화되고, 심지어 각종 무기를 탈취당하거나 유기하는 상태까지 발생하고 있으며 자국의 군 내 비리로 각종 장비의 유지보수 해이와 탄약 및 부품 등의 비축량 불일치 등이 나타나고 있다.1) 이런 전황(戰況)에 비추어 볼 때, 유형 전투력뿐만 아니라 전투 투입 군인의 전투의지와 사기 등의 무형 전투력을 확보하기 위한 평시 전투준비태세 강화가 더욱 중요해지고 있다(Jang & Kim, 2022; Won, Kim, Kim, Ha, Lee, & Lee, 2021; Veebel & Ploom, 2019).",
+    "citation_text": "Veebel & Ploom, 2019",
+    "offset": [
+     300,
+     320
+    ],
+    "authors": [
+     "Veebel & Ploom"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "raw": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "citation_text": "(Go, 2020)",
+    "offset": [
+     196,
+     206
+    ],
+    "authors": [
+     "Go"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "raw": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "citation_text": "(Park, 2020)",
+    "offset": [
+     215,
+     227
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u18_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "raw": "한국군은 6·25 전쟁과 베트남전 파병 이후로 전쟁을 직접 경험한 적이 없지만, 북한의 군사적 위협에 대비하고, 주변국의 군사적 증강 및 영향력 확대에 능동적으로 대응하고자 국방개혁 2.0(현국방개혁 4.02))을 추진하는 등 국방력 강화를 위해 노력하고 있다.3) 그러나 이런 정책 추진에도 불구하고 현재 한국군은 인구절벽 시대로 인해 병역자원 부족(Go, 2020), 복무기간 단축(Park, 2020), 한정된 국방예산 배분(Jeong, 2019) 등의 사회경제적 변화로 병력구조와 전투력에 문제가 발생할 수 있다.",
+    "citation_text": "(Jeong, 2019)",
+    "offset": [
+     240,
+     253
+    ],
+    "authors": [
+     "Jeong"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "또한, 군 훈련 시행에 따른 민원(대민피해, 소음발생 등)이나 안전사고 발생으로 야전부대의 전투준비태세 유지활동이 위축되고 있는 실정이다(Kim, Park, Kim, & Kim, 2018).",
+    "raw": "또한, 군 훈련 시행에 따른 민원(대민피해, 소음발생 등)이나 안전사고 발생으로 야전부대의 전투준비태세 유지활동이 위축되고 있는 실정이다(Kim, Park, Kim, & Kim, 2018).",
+    "citation_text": "(Kim, Park, Kim, & Kim, 2018)",
+    "offset": [
+     76,
+     105
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "이러한 상황은 군의 전투력, 사기 등을 감소시킬 수 있으므로 현시점에서 전투에 참여하고 주어진 임무를 완수할 수 있는 군의 능력이 매우 중요하고(Handayani, Widana, Samudro, & Mayori, 2022), 군의 활동",
+    "raw": "이러한 상황은 군의 전투력, 사기 등을 감소시킬 수 있으므로 현시점에서 전투에 참여하고 주어진 임무를 완수할 수 있는 군의 능력이 매우 중요하고(Handayani, Widana, Samudro, & Mayori, 2022), 군의 활동",
+    "citation_text": "(Handayani, Widana, Samudro, & Mayori, 2022)",
+    "offset": [
+     80,
+     124
+    ],
+    "authors": [
+     "Handayani"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "과 준비과정을 개선하기 위해 지속적인 피드백을 제공할 수 있는 전투준비태세 평가가 필수적으로 요구된다(Deli, 2022).",
+    "raw": "과 준비과정을 개선하기 위해 지속적인 피드백을 제공할 수 있는 전투준비태세 평가가 필수적으로 요구된다(Deli, 2022).",
+    "citation_text": "(Deli, 2022)",
+    "offset": [
+     56,
+     68
+    ],
+    "authors": [
+     "Deli"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "최근 러시아-우크라이나 전쟁을 살펴보면, 러시아의 압도적인 화력과 장비 보유에도 전투 패배를 거ut하는 이유가 무형전투력 면에서 우크라이나군이 우위에 있기 때문이다(Kudelia, 2022).",
+    "raw": "최근 러시아-우크라이나 전쟁을 살펴보면, 러시아의 압도적인 화력과 장비 보유에도 전투 패배를 거ut하는 이유가 무형전투력 면에서 우크라이나군이 우위에 있기 때문이다(Kudelia, 2022).",
+    "citation_text": "(Kudelia, 2022)",
+    "offset": [
+     91,
+     106
+    ],
+    "authors": [
+     "Kudelia"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u18_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_6",
+    "kind": "narrative",
+    "sentence": "Kim and Park(2020)",
+    "raw": "Kim and Park(2020)",
+    "citation_text": "Park(2020)",
+    "offset": [
+     8,
+     18
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u18_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

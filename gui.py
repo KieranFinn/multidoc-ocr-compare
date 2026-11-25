@@ -17,7 +17,7 @@ import shutil
 import threading
 import time
 import tkinter as tk
-from tkinter import filedialog, messagebox, scrolledtext, ttk
+from tkinter import filedialog, messagebox, scrolledtext, simpledialog, ttk
 
 import archive
 import qc
@@ -1406,10 +1406,17 @@ class App(tk.Tk):
         msg += "\n\nPDF 与 out/ 产物会移到 archive/，之后可在「已归档…」里恢复。"
         if not messagebox.askokcancel("确认归档", msg, parent=self):
             return
+        # 归档原因(2026-11-24): 与备注分离落库——备注是工作台杂项批注, 原因回答"当初
+        # 为什么归档"; 不填也能归档, 但清单里会一直缺这一列的锚点(用户实锤定位不到)。
+        reason = simpledialog.askstring(
+            "归档原因",
+            "这批文献为什么归档？\n\n可空。示例：质检红-原文证据缺失 / 重复版本 / 合格入库。\n"
+            "会写进归档清单的「归档原因」列。",
+            parent=self) or ""
         try:
             r = archive.archive_docs(docs, out_root=self.workspace.out,
                                      up_root=self.workspace.uploads, arch_root=self.workspace.archive,
-                                     meta_note=self._notes)
+                                     meta_note=self._notes, reason=reason)
         except Exception as e:
             messagebox.showerror("归档失败", str(e), parent=self)
             return
@@ -1663,8 +1670,9 @@ class ArchiveWindow(tk.Toplevel):
     都与工作台不同, 混在同一张表里会让"归档"看起来只是打了个标(用户 2026-11-13 要求能查看)。
     """
 
-    COLS = (("title", 330, "标题"), ("journal", 130, "刊名"), ("year", 56, "年"),
-            ("qc", 130, "质检"), ("when", 130, "归档时间"), ("note", 180, "备注"))
+    COLS = (("title", 300, "标题"), ("journal", 120, "刊名"), ("year", 50, "年"),
+            ("language", 50, "语言"), ("qc", 130, "质检(归档时)"), ("when", 126, "归档时间"),
+            ("reason", 150, "归档原因"), ("note", 150, "备注"))
 
     def __init__(self, app):
         tk.Toplevel.__init__(self, app)
@@ -1696,7 +1704,7 @@ class ArchiveWindow(tk.Toplevel):
                                  selectmode="extended")
         for cid, w, txt in (("doc", 210, "文档"),) + self.COLS:
             self.tree.heading(cid, text=txt)
-            anchor = "w" if cid in ("doc", "title", "journal", "qc") else "center"
+            anchor = "w" if cid in ("doc", "title", "journal", "qc", "reason") else "center"
             self.tree.column(cid, width=w, anchor=anchor)
         self.tree.tag_configure("qc_bad", foreground="#b03030")
         self._archive_column_base = {"doc": 110}
@@ -1734,12 +1742,20 @@ class ArchiveWindow(tk.Toplevel):
         self.tree.delete(*self.tree.get_children())
         for it in self.items:
             miss = it.get("qc_issues") or []
-            qtxt = "✔ 通过" if not miss else "✘ 缺 " + "/".join(miss)
+            if not miss:
+                qtxt = "✔ 通过"
+            else:
+                # 与工作台质检列同口径(✘ N 项 前四项): 两处看到同一篇不再长得不一样
+                head = "/".join(miss[:4]) + ("…" if len(miss) > 4 else "")
+                qtxt = "✘ %d 项 %s" % (len(miss), head)
+            # 老索引无 reason 字段: 退备注, 再退 "—"(2026-11-24 之前的归档只有 note)
+            reason = it.get("reason") or it.get("note") or "—"
             self.tree.insert("", "end", iid=it["doc"], tags=("qc_bad",) if miss else (),
                              values=(it.get("doc"), it.get("title") or "",
                                      it.get("journal") or "", it.get("year") or "",
+                                     it.get("language") or "",
                                      qtxt, (it.get("archived_at") or "").replace("T", " ")[:16],
-                                     it.get("note") or ""))
+                                     reason, it.get("note") or ""))
         n_bad = sum(1 for it in self.items if it.get("qc_issues"))
         self.cnt.configure(text="共 %d 篇%s" % (
             len(self.items), "，其中 %d 篇有缺项" % n_bad if n_bad else ""))

@@ -1,0 +1,3299 @@
+{
+ "doc": "13571797",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571797",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "2",
+    "raw": "교수자 커뮤니케이션 기대치는 피교수자가 교수자에 대해 잘 알지 못하는 학기 초(3월 초순)에 조사하였고, 경험치는 교수자와의 커뮤니케이션을 상당부분 경험한 시기인 중간고사 이후(4월 하순)에 조사하였다.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     143.2,
+     219.9,
+     1000.1,
+     1391.4
+    ],
+    "uid": "u7_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "왜도(skewness): 분포의 수평적 비대칭 정도를 나타내는 척도로서 왜도 값이 ‘0’이면 좌우대칭(정규) 분포를 가지고, ‘0’보다 작으면 음의 왜도, ‘0’보다 크면 양의 왜도를 가진다. 그 절대값이 클수록 분포의 비대칭 정도가 크다고 관단하며, 절대값이 ‘3’ 미만이면 기준에 부합한다.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     143.2,
+     219.9,
+     1000.1,
+     1391.4
+    ],
+    "uid": "u7_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "첨도(kurtosis): 분포의 수직적 비대칭 정도를 나타내는 척도로서 첨도 값이 '0'이면 상하대칭(정규) 분포를 가지고 <sub>‘0’</sub>보다 작으면 음의 첨도 <sub>‘0’</sub>보다 크면 양의 첨도를 가진다 그 절대값이 클수록 분포의 비대칭 정도가 크다고판단하며 절대값이 <sub>‘7’</sub> 미만이면 기준에 부합한다",
+    "page": 8,
+    "page_end": 9,
+    "box": [
+     143.2,
+     219.9,
+     1000.1,
+     1391.4
+    ],
+    "uid": "u7_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "계수는 0~1의 값을 가지며, 일반적으로 0.6 이상이면 그 결과를 수용할 수 있다.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     151.5,
+     1336.1,
+     997.9,
+     1419.5
+    ],
+    "uid": "u8_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "타당성 검증은 KMO 및 Bartlett 검정, Eigenvalue 및 요인적재량을 이용하여 수행하며, 일반적으로 KMO ≥ 0.6, Bartlett 유의확률(p) ≤ 0.05, Eigenvalue ≥ 1, 요인적재량 ≥ 0.6 이면 그 결과를 수용할 수 있다.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     151.5,
+     1336.1,
+     997.9,
+     1419.5
+    ],
+    "uid": "u8_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "해당 문항의 측정 결과는 요인적재량 미달로 분석되었으므로 이후 상관관계 · 다중회귀분석에서 제외하였다.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     151.5,
+     1393.0,
+     975.3,
+     1420.0
+    ],
+    "uid": "u10_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "일반적으로 공차 허용범위는 0.1 이상, 분산쟁창요인(Variation Inflation Factor) 허용범위는 10 이하이다.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     152.3,
+     1365.3,
+     932.3,
+     1418.0
+    ],
+    "uid": "u13_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "‘2’에 근접할수록 오차의 자기 상관성이 낮고, 일반적인 허용범위는 ‘0~4’이다.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     152.3,
+     1365.3,
+     932.3,
+     1418.0
+    ],
+    "uid": "u13_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 8,
+   "per_page": {
+    "8": 3,
+    "9": 2,
+    "11": 1,
+    "14": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "8": {
+     "markers": [
+      "2",
+      "3",
+      "4"
+     ],
+     "collected": [
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    "9": {
+     "markers": [
+      "5",
+      "6"
+     ],
+     "collected": [
+      "5",
+      "6"
+     ]
+    },
+    "11": {
+     "markers": [
+      "7"
+     ],
+     "collected": [
+      "7"
+     ]
+    },
+    "14": {
+     "markers": [
+      "8",
+      "9"
+     ],
+     "collected": [
+      "8",
+      "9"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "A study on the effect of the violation of communication expectations between military professors and cadets on class interest and engagement",
+   "page": 1,
+   "box": [
+    165.0,
+    392.1,
+    997.5,
+    511.8
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Lee, Jeongyeol",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     510.5,
+     535.7,
+     653.2,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM",
+   "Defence Force Research Center"
+  ],
+  "abstract": {
+   "value": "This study aimed to find a way to enhance the education quality of military academies by analyzing how expectancy violations of communication between professors and cadets influence cadets' interest and engagement in class. This study was conducted as follows. First, a literature review of instructor communication and expectancy violation theories was conducted. Next, the instructor communication factor was measured using several authorized measurement scales targeting the cadets at KAAY. Finally, a number of three-step hierarchical regression analyses were conducted to derive implications regarding the effect of cadets' communication experiences and expectancy violations on cadets' interest and engagement in class. The results of these analyses are as follows. First, the analysis on how professors' communication expectancy violations affect cadets' interest in class revealed that expectancy violations of nonverbal friendliness had negative effects on emotional interest. Second, the analysis on how professors' communication expectancy violations affected cadets' engagement in class revealed that expectancy violations of professionalism had negative effects on interactive engagement, expectancy violations of nonverbal friendliness had negative effects on emotional engagement, and expectancy violations of validation had negative effects on interactive engagement. Finally, an analysis on the difference in how professors' communication expectancy violations affect cadets' interest and engagement in class revealed that the real experience of instructor communication affects cadets’ interest and engagement in class more than expectancy violations.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study aimed to find a way to enhance the education quality of military academies by analyzing how expectancy violations of communication between professors and cadets influence cadets' interest and engagement in class. This study was conducted as follows. First, a literature review of instructor communication and expectancy violation theories was conducted. Next, the instructor communication factor was measured using several authorized measurement scales targeting the cadets at KAAY. Finally, a number of three-step hierarchical regression analyses were conducted to derive implications regarding the effect of cadets' communication experiences and expectancy violations on cadets' interest and engagement in class. The results of these analyses are as follows. First, the analysis on how professors' communication expectancy violations affect cadets' interest in class revealed that expectancy violations of nonverbal friendliness had negative effects on emotional interest. Second, the analysis on how professors' communication expectancy violations affected cadets' engagement in class revealed that expectancy violations of professionalism had negative effects on interactive engagement, expectancy violations of nonverbal friendliness had negative effects on emotional engagement, and expectancy violations of validation had negative effects on interactive engagement. Finally, an analysis on the difference in how professors' communication expectancy violations affect cadets' interest and engagement in class revealed that the real experience of instructor communication affects cadets’ interest and engagement in class more than expectancy violations.",
+   "page": 1,
+   "box": [
+    190.5,
+    623.5,
+    310.5,
+    651.4
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : instructor communication, cadet, expectancy violation, class interest, class engagement"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "49-75",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "교수 커뮤니케이션",
+   "사관생도",
+   "기대위반",
+   "수업 흥미",
+   "수업 참여"
+  ],
+  "keywords_en": [
+   "instructor communication",
+   "cadet",
+   "expectancy violation",
+   "class interest",
+   "class engagement"
+  ],
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Aitken, J. E., & Neer, M. R. (1993). College student question-asking: The relationship of classroom communication apprehension and motivation. Southern Communication Journal, 59, 73-81. https://doi.org/10.1080/10417949309372923",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Aitken J. E",
+     "Neer M. R"
+    ],
+    "authors_raw": "Aitken, J. E., & Neer, M. R",
+    "et_al": false,
+    "year": "1993",
+    "title": "College student question-asking: The relationship of classroom communication apprehension and motivation. Southern Communication Journal",
+    "source": "59",
+    "volume": null,
+    "issue": null,
+    "pages": "73-81",
+    "doi": "10.1080/10417949309372923",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bae, H. S., Kwon, Y. S., & Kim, Y. J. (2012). Analysis of the Core Teaching Competency for Rotating Faculties at AFNA. Human Communication Research, 30(2), 103-120. UCI(KEPA) : I410-ECN-0102-2013-510-002471538",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Bae H. S",
+     "Kwon Y. S",
+     "Kim Y. J"
+    ],
+    "authors_raw": "Bae, H. S., Kwon, Y. S., & Kim, Y. J",
+    "et_al": false,
+    "year": "2012",
+    "title": "Analysis of the Core Teaching Competency for Rotating Faculties at AFNA. Human Communication Research",
+    "source": "30(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "103-120",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Burgoon, J. K. (1995). Cross-cultural and intercultural applications of expectancy violation theory. In R. L. Wiseman(Ed.), Intercultural communication theory (pp. 194-214). Sage Publications, Inc.",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Burgoon J. K"
+    ],
+    "authors_raw": "Burgoon, J. K",
+    "et_al": false,
+    "year": "1995",
+    "title": "Cross-cultural and intercultural applications of expectancy violation theory. In R. L. Wiseman(Ed.)",
+    "source": "Intercultural communication theory (pp. 194-214). Sage Publications",
+    "volume": null,
+    "issue": null,
+    "pages": "194-214",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Burgoon, J. K., & Hale, J. L. (1988). Nonverbal expectancy violations: Model elaboration and application to immediacy behaviors. Communication Monographs, 55(1), 58-79. https://doi.org/10.1080/03637758809376158",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Burgoon J. K",
+     "Hale J. L"
+    ],
+    "authors_raw": "Burgoon, J. K., & Hale, J. L",
+    "et_al": false,
+    "year": "1988",
+    "title": "Nonverbal expectancy violations: Model elaboration and application to immediacy behaviors. Communication Monographs",
+    "source": "55(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "58-79",
+    "doi": "10.1080/03637758809376158",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Burgoon, J. K., & Jones, S. B. (1976). Toward a theory of personal space expectations and their violations. Human Communication Research, 2(2), 131-146. https://doi.org/10.1111/ j.1468-2958.1976.tb00706.x",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Burgoon J. K",
+     "Jones S. B"
+    ],
+    "authors_raw": "Burgoon, J. K., & Jones, S. B",
+    "et_al": false,
+    "year": "1976",
+    "title": "Toward a theory of personal space expectations and their violations. Human Communication Research",
+    "source": "2(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "131-146",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chen, X. M., Lawler, E. M., & Venso, E. A. (2003). Improving teaching and learning: Students<sup>’</sup> perspectives. A Journal of Educational Development, 21(1), 238-254. https://doi.org/ 10.1002/j.2334-4822.2003.tb00391.x",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Chen X. M",
+     "Lawler E. M",
+     "Venso E. A"
+    ],
+    "authors_raw": "Chen, X. M., Lawler, E. M., & Venso, E. A",
+    "et_al": false,
+    "year": "2003",
+    "title": "Improving teaching and learning: Students<sup>’</sup> perspectives. A Journal of Educational Development",
+    "source": "21(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "238-254",
+    "doi": "10.1002/j.2334-4822.2003.tb00391.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chesebro, J. L., & McCroskey, J. C. (1998). The development of the teacher clarity short inventory (TCSI) to measure clear teaching in the classroom. Communication Research Reports, 15(3), 262-266. https://doi.org/10.1080/08824099809362122",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Chesebro J. L",
+     "McCroskey J. C"
+    ],
+    "authors_raw": "Chesebro, J. L., & McCroskey, J. C",
+    "et_al": false,
+    "year": "1998",
+    "title": "The development of the teacher clarity short inventory (TCSI) to measure clear teaching in the classroom. Communication Research Reports",
+    "source": "15(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "262-266",
+    "doi": "10.1080/08824099809362122",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cho, Y. K. (2018). The Effect of Teachers<sup>’</sup>Communication on Perception of Classroom Justice. Journal of Communication Research, 55(3), 211-248. https://doi.org/10.22174/jcr.2018. 55.3.211",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Cho Y. K"
+    ],
+    "authors_raw": "Cho, Y. K",
+    "et_al": false,
+    "year": "2018",
+    "title": "The Effect of Teachers<sup>’</sup>Communication on Perception of Classroom Justice. Journal of Communication Research",
+    "source": "55(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "211-248",
+    "doi": "10.22174/jcr.2018",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cho, Y. K. (2019). The effect of Expectancy Violations of Instructor Communication on Student Interest and Engagement. Journal of Communication Research, 56(3), 112-149. https://10.22174/jcr.2019.56.3.112",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Cho Y. K"
+    ],
+    "authors_raw": "Cho, Y. K",
+    "et_al": false,
+    "year": "2019",
+    "title": "The effect of Expectancy Violations of Instructor Communication on Student Interest and Engagement. Journal of Communication Research",
+    "source": "56(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "112-149",
+    "doi": "10.22174/jcr.2019.56.3.112",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Christophel, D. M. (1990). The relationships among teacher immediacy behaviors, student motivation, and learning. Communication Education, 39(4), 323-340. https://doi.org 10.1080/03634529009378813 Eison, J. A., Pollio, H. R., & Milton, O. (1986). Educational and personal characteristics of four different types of learning and grade oriented students. Contemporary Educational Psychology, 11(1), 54-67. https://doi.org/10.1016/0361-476X(86)90012-3",
+    "page": 22,
+    "box": [
+     143.8,
+     657.6,
+     1000.1,
+     1072.4
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Christophel D. M"
+    ],
+    "authors_raw": "Christophel, D. M",
+    "et_al": false,
+    "year": "1986",
+    "title": "Educational and personal characteristics of four different types of learning and grade oriented students. Contemporary Educational Psychology",
+    "source": "11(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "323-340",
+    "doi": "10.1080/03634529009378813",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ellis, K. (2000). Perceived teacher confirmation: The development and validation of an instrument and two studies of the relationship to cognitive and affective learning. Human Communication Research, 26(2), 264-291. https://doi.org/10.1111/j.1468-2958.2000.tb00758.x",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Ellis K"
+    ],
+    "authors_raw": "Ellis, K",
+    "et_al": false,
+    "year": "2000",
+    "title": "Perceived teacher confirmation: The development and validation of an instrument and two studies of the relationship to cognitive and affective learning. Human Communication Research",
+    "source": "26(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "264-291",
+    "doi": "10.1111/j.1468-2958.2000.tb00758.x",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Fassett, D. L., & Warren, J. T. (2010). The Sage handbook of communication and instruction(Ed.). Los Angeles, CA: Sage. https://us.sagepub.com/en-us/nam/the-sagehandbook-of-communication-and-instruction/book233338",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Fassett D. L",
+     "Warren J. T"
+    ],
+    "authors_raw": "Fassett, D. L., & Warren, J. T",
+    "et_al": false,
+    "year": "2010",
+    "title": "The Sage handbook of communication and instruction(Ed.). Los Angeles",
+    "source": "CA: Sage. https://us.sagepub.com/en-us/nam/the-sagehandbook-of-communication-and-instruction/book233338",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gass, R. H., & Seiter, J. S. (2018). Persuasion : Social Influence, and Compliance Gaining. New York, Routledge. https://doi.org/10.4324/9781315209302",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Gass R. H",
+     "Seiter J. S"
+    ],
+    "authors_raw": "Gass, R. H., & Seiter, J. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "Persuasion : Social Influence",
+    "source": "and Compliance Gaining. New York",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.4324/9781315209302",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gorham, J. (1988). The relationship between verbal teacher immediacy behaviors and student learning. Communication Education, 37, 40-53. https://doi.org/10.1080/03634528809378702",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Gorham J"
+    ],
+    "authors_raw": "Gorham, J",
+    "et_al": false,
+    "year": "1988",
+    "title": "The relationship between verbal teacher immediacy behaviors and student learning. Communication Education",
+    "source": "37",
+    "volume": null,
+    "issue": null,
+    "pages": "40-53",
+    "doi": "10.1080/03634528809378702",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hagenauera, G., & Voletb, S. E. (2014). Teacher-student relationship at university: an important yet under-researched field. Oxford Review of Education, 40(3), 370-388. https://doi.org/ 10.1080/03054985.2014.921613",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Hagenauera G",
+     "Voletb S. E"
+    ],
+    "authors_raw": "Hagenauera, G., & Voletb, S. E",
+    "et_al": false,
+    "year": "2014",
+    "title": "Teacher-student relationship at university: an important yet under-researched field. Oxford Review of Education",
+    "source": "40(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "370-388",
+    "doi": "10.1080/03054985.2014.921613",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Handelsman, M. M., Briggs, W. L., Sullivan, N., & Towler, A. (2005). A measure of college student course engagement. The Journal of Educational Research, 98(3), 184-192. https://doi.org/10.3200/JOER.98.3.184-192",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Handelsman M. M",
+     "Briggs W. L",
+     "Sullivan N",
+     "Towler A"
+    ],
+    "authors_raw": "Handelsman, M. M., Briggs, W. L., Sullivan, N., & Towler, A",
+    "et_al": false,
+    "year": "2005",
+    "title": "A measure of college student course engagement. The Journal of Educational Research",
+    "source": "98(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "184-192",
+    "doi": "10.3200/JOER.98.3.184-192",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Houser, M. L. (2005). Are we violating their expectations? Instructor communication expectations of traditional and nontraditional students, Communication Quarterly, 53(2), 213-228. https://doi.org/10.1080/01463370500090332",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Houser M. L"
+    ],
+    "authors_raw": "Houser, M. L",
+    "et_al": false,
+    "year": "2005",
+    "title": "Are we violating their expectations? Instructor communication expectations of traditional and nontraditional students",
+    "source": "Communication Quarterly",
+    "volume": null,
+    "issue": null,
+    "pages": "213-228",
+    "doi": "10.1080/01463370500090332",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Houser, M. L. (2006). Expectancy violations of instructor communication as predictors of motivation and learning: A comparison of traditional and nontraditional students. Communication Quarterly, 54(3), 331-349. https://doi.org/10.1080/01463370600878248",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Houser M. L"
+    ],
+    "authors_raw": "Houser, M. L",
+    "et_al": false,
+    "year": "2006",
+    "title": "Expectancy violations of instructor communication as predictors of motivation and learning: A comparison of traditional and nontraditional students. Communication Quarterly",
+    "source": "54(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "331-349",
+    "doi": "10.1080/01463370600878248",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Im, D. H., & Kim, S. N. (2018). The Influence of Communication Style of a Beauty College Professor on Student<sup>’</sup>s Academic Achievement. Journal of Beauty Art Management, 12(1), 69-89. UCI(KEPA) : I410-ECN-0102-2021-600-000982681",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Im D. H",
+     "Kim S. N"
+    ],
+    "authors_raw": "Im, D. H., & Kim, S. N",
+    "et_al": false,
+    "year": "2018",
+    "title": "The Influence of Communication Style of a Beauty College Professor on Student<sup>’</sup>s Academic Achievement. Journal of Beauty Art Management",
+    "source": "12(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "69-89",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Im, W. S., & Kim, Y. J. (2007). Analysis of the Professor<sup>’</sup>s Core Lecture Competency. Journal of Educational Administration and Policy, 25(4), 413-434. UCI : G704-000511.2007.25.4.013",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Im W. S",
+     "Kim Y. J"
+    ],
+    "authors_raw": "Im, W. S., & Kim, Y. J",
+    "et_al": false,
+    "year": "2007",
+    "title": "Analysis of the Professor<sup>’</sup>s Core Lecture Competency. Journal of Educational Administration and Policy",
+    "source": "25(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "413-434",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, J. H., Cho, J. S., & Lee, Y. B. (2021). A Mixed-method Research on No-contact Curriculum and learning in Korean Universities. Journal of Qualitative Inquirty, 7(1), 171-204. https://doi.org/10.30940/JQI.2021.7.1.171",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Jung J. H",
+     "Cho J. S",
+     "Lee Y. B"
+    ],
+    "authors_raw": "Jung, J. H., Cho, J. S., & Lee, Y. B",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Mixed-method Research on No-contact Curriculum and learning in Korean Universities. Journal of Qualitative Inquirty",
+    "source": "7(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "171-204",
+    "doi": "10.30940/JQI.2021.7.1.171",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kalman, Y. M., & Rafaeli, S. (2010). Online pauses and silence: Chronemic expectancy violations in written computer-mediated communication. Communication Research, 38, 54-69. https://doi.org/10.1177/0093650210378229",
+    "page": 23,
+    "box": [
+     143.8,
+     788.6,
+     1000.1,
+     993.8
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kalman Y. M",
+     "Rafaeli S"
+    ],
+    "authors_raw": "Kalman, Y. M., & Rafaeli, S",
+    "et_al": false,
+    "year": "2010",
+    "title": "Online pauses and silence: Chronemic expectancy violations in written computer-mediated communication. Communication Research",
+    "source": "38",
+    "volume": null,
+    "issue": null,
+    "pages": "54-69",
+    "doi": "10.1177/0093650210378229",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. K., & An, H. (2014). The relationship between Instructors<sup>’</sup> and students<sup>’</sup> Communication Characteristics and Educational Effects. Korean Journal of Communication Studies, 22(1), 65-93. UCI(KEPA) : I410-ECN-0102-2014-700-001475587",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kim J. K",
+     "An H"
+    ],
+    "authors_raw": "Kim, J. K., & An, H",
+    "et_al": false,
+    "year": "2014",
+    "title": "The relationship between Instructors<sup>’</sup> and students<sup>’</sup> Communication Characteristics and Educational Effects. Korean Journal of Communication Studies",
+    "source": "22(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "65-93",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, E. (2007). A Study on The Patterns of Interpersonal Communication of Teachers. Korean Journal of Communication Studies, 15(2), 109-138. UCI(KEPA) : I410-ECN-0102-2008- 710-002580748",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Lee E"
+    ],
+    "authors_raw": "Lee, E",
+    "et_al": false,
+    "year": "2007",
+    "title": "A Study on The Patterns of Interpersonal Communication of Teachers. Korean Journal of Communication Studies",
+    "source": "15(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "109-138",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Mazer, J. P. (2012). Development and validation of the student interest and engagement scales. Communication Methods and Measures, 6(2), 99-125. https://doi.org/10.1080/19312458. 2012.679244",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Mazer J. P"
+    ],
+    "authors_raw": "Mazer, J. P",
+    "et_al": false,
+    "year": "2012",
+    "title": "Development and validation of the student interest and engagement scales. Communication Methods and Measures",
+    "source": "6(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "99-125",
+    "doi": "10.1080/19312458",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "McCroskey, J. C. (2011). Communication apprehension : What have we learned in the last four decades. Human Communication, 12(2), 157-171. https://citeseerx.ist.psu.edu/document? repid=rep1&type=pdf&doi=6c8abb55b4fbe0e7be285c46c2de534519c437dd",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "McCroskey J. C"
+    ],
+    "authors_raw": "McCroskey, J. C",
+    "et_al": false,
+    "year": "2011",
+    "title": "Communication apprehension : What have we learned in the last four decades. Human Communication",
+    "source": "12(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "157-171",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "McCroskey, J. C., Valencic, K. M., & Richmond, V. P. (2004). Toward a general model of instructional communication. Communication Quarterly, 52(3), 197-210. https://doi.org/ 10.1080/01463370409370192",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "McCroskey J. C",
+     "Valencic K. M",
+     "Richmond V. P"
+    ],
+    "authors_raw": "McCroskey, J. C., Valencic, K. M., & Richmond, V. P",
+    "et_al": false,
+    "year": "2004",
+    "title": "Toward a general model of instructional communication. Communication Quarterly",
+    "source": "52(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "197-210",
+    "doi": "10.1080/01463370409370192",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Neuwirth, L. S., Jovic, S., & Mukherji, B. R. (2020). Reimagining higher education during and post-COVID-19: Challenges and opportunities. Journal of Adult and Continuing Educational, 27(2), 141-156. https://doi.org/10.1177/1477971420947738",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Neuwirth L. S",
+     "Jovic S",
+     "Mukherji B. R"
+    ],
+    "authors_raw": "Neuwirth, L. S., Jovic, S., & Mukherji, B. R",
+    "et_al": false,
+    "year": "2020",
+    "title": "Reimagining higher education during and post-COVID-19: Challenges and opportunities. Journal of Adult and Continuing Educational",
+    "source": "27(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "141-156",
+    "doi": "10.1177/1477971420947738",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Son, H. S., & Jin, S. A. (2021). The relationship between Instructors<sup>’</sup> and students<sup>’</sup> Communication Characteristics and Educational Effects. Culture and Convergence, 43(2), 15-34. https://doi.org/10.33645/cnc.2021.02.43.2.15",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Son H. S",
+     "Jin S. A"
+    ],
+    "authors_raw": "Son, H. S., & Jin, S. A",
+    "et_al": false,
+    "year": "2021",
+    "title": "The relationship between Instructors<sup>’</sup> and students<sup>’</sup> Communication Characteristics and Educational Effects. Culture and Convergence",
+    "source": "43(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "15-34",
+    "doi": "10.33645/cnc.2021.02.43.2.15",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, K. H., Kim, J. S., & Kim, J. S. (2017). Effects of Authentic Leadership on Organizational Commitment: A Case of Military Organization. Journal of Human Resource Management Research, 24(2), 1-26. https://doi.org/10.14396/jhrmr.2017.24.2.1",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Yang K. H",
+     "Kim J. S",
+     "Kim J. S"
+    ],
+    "authors_raw": "Yang, K. H., Kim, J. S., & Kim, J. S",
+    "et_al": false,
+    "year": "2017",
+    "title": "Effects of Authentic Leadership on Organizational Commitment: A Case of Military Organization. Journal of Human Resource Management Research",
+    "source": "24(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-26",
+    "doi": "10.14396/jhrmr.2017.24.2.1",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yoo, D. H., Choi, D. J., & Ku, H. G. (2022). A Study on Types and Characteristics of Musculoskeletal Injuries in Military Cadets. The Korean Society of Sports Science, 31(5), 1125-1132. https://doi.org/10.35159/kjss.2022.10.31.5.1125",
+    "page": 24,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     816.4
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Yoo D. H",
+     "Choi D. J",
+     "Ku H. G"
+    ],
+    "authors_raw": "Yoo, D. H., Choi, D. J., & Ku, H. G",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on Types and Characteristics of Musculoskeletal Injuries in Military Cadets. The Korean Society of Sports Science",
+    "source": "31(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "1125-1132",
+    "doi": "10.35159/kjss.2022.10.31.5.1125",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 기대가 충족되지 않으면 학생이 수업에 대한 흥미를 잃거나 적극적으로 참여하지 않을 수 있다(Cho, 2019).",
+    "raw": "이러한 기대가 충족되지 않으면 학생이 수업에 대한 흥미를 잃거나 적극적으로 참여하지 않을 수 있다(Cho, 2019).",
+    "citation_text": "(Cho, 2019)",
+    "offset": [
+     54,
+     65
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "게다가 학생인 사관생도는 아직 군대에 실전 배치되지 않은 20대 초반 인원으로 대학생과 비슷한 연령대이지만, 정예장교의 리더십 함양을 위한 군사훈련, 훈육, 체력단련 등을 받으면서(Yoo, Choi, & Ku, 2022) 집단 응집력(Yang, Kim, & Kim, 2017) 수준이 높아지기 때문에 교수-생도(학생) 간의 관계형성이 중요할 수 있다.",
+    "raw": "게다가 학생인 사관생도는 아직 군대에 실전 배치되지 않은 20대 초반 인원으로 대학생과 비슷한 연령대이지만, 정예장교의 리더십 함양을 위한 군사훈련, 훈육, 체력단련 등을 받으면서(Yoo, Choi, & Ku, 2022) 집단 응집력(Yang, Kim, & Kim, 2017) 수준이 높아지기 때문에 교수-생도(학생) 간의 관계형성이 중요할 수 있다.",
+    "citation_text": "(Yoo, Choi, & Ku, 2022)",
+    "offset": [
+     100,
+     123
+    ],
+    "authors": [
+     "Yoo"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 30,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "게다가 학생인 사관생도는 아직 군대에 실전 배치되지 않은 20대 초반 인원으로 대학생과 비슷한 연령대이지만, 정예장교의 리더십 함양을 위한 군사훈련, 훈육, 체력단련 등을 받으면서(Yoo, Choi, & Ku, 2022) 집단 응집력(Yang, Kim, & Kim, 2017) 수준이 높아지기 때문에 교수-생도(학생) 간의 관계형성이 중요할 수 있다.",
+    "raw": "게다가 학생인 사관생도는 아직 군대에 실전 배치되지 않은 20대 초반 인원으로 대학생과 비슷한 연령대이지만, 정예장교의 리더십 함양을 위한 군사훈련, 훈육, 체력단련 등을 받으면서(Yoo, Choi, & Ku, 2022) 집단 응집력(Yang, Kim, & Kim, 2017) 수준이 높아지기 때문에 교수-생도(학생) 간의 관계형성이 중요할 수 있다.",
+    "citation_text": "(Yang, Kim, & Kim, 2017)",
+    "offset": [
+     130,
+     154
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "narrative",
+    "sentence": "Houser(2006)는 일반적으로 교수자의 커뮤니케이션 요인 중 긍정적 위반가가 피교수자의 학습효과를 높일 수 있으나 교수자의 명료성에 대한 부정적 위반가로 인해 피교수자의 인지적 학습이 저하될 수 있다는 점을 밝혔다.",
+    "raw": "Houser(2006)는 일반적으로 교수자의 커뮤니케이션 요인 중 긍정적 위반가가 피교수자의 학습효과를 높일 수 있으나 교수자의 명료성에 대한 부정적 위반가로 인해 피교수자의 인지적 학습이 저하될 수 있다는 점을 밝혔다.",
+    "citation_text": "Houser(2006)",
+    "offset": [
+     0,
+     12
+    ],
+    "authors": [
+     "Houser"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "narrative",
+    "sentence": "Cho(2019)는 교수자의 커뮤니케이션에 대한 기대위반이 일반 대학생의 수업 흥미 및 참여에 미치는 영향을 분석하여 교수자의 커뮤니케이션 요인 중 비언어적 친근성에 관한 긍정적 기대위반이 수업 흥미와 참여에 미치는 긍정적 영향관계를 밝혔다.",
+    "raw": "Cho(2019)는 교수자의 커뮤니케이션에 대한 기대위반이 일반 대학생의 수업 흥미 및 참여에 미치는 영향을 분석하여 교수자의 커뮤니케이션 요인 중 비언어적 친근성에 관한 긍정적 기대위반이 수업 흥미와 참여에 미치는 긍정적 영향관계를 밝혔다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     0,
+     9
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "parenthetical",
+    "sentence": "또한, 교수자 커뮤니케이션 요인과 교육효과 측면에서 살펴보면, 피교수자에 대한 관심, 배려, 면담, 유머 등에 관한 교수자의 커뮤니케이션이 대학생의 수업 긴장과 스트레스를 감소시켜 학습효과가 향상될 수 있으며(Im & Kim, 2007), 수업환경을 고려하는 교수자의 유연 스타일과 학생 행위에 반응하는 교수자의 반응 스타일이 교육효과를 형성할 수 있다(Kim & An, 2014).",
+    "raw": "또한, 교수자 커뮤니케이션 요인과 교육효과 측면에서 살펴보면, 피교수자에 대한 관심, 배려, 면담, 유머 등에 관한 교수자의 커뮤니케이션이 대학생의 수업 긴장과 스트레스를 감소시켜 학습효과가 향상될 수 있으며(Im & Kim, 2007), 수업환경을 고려하는 교수자의 유연 스타일과 학생 행위에 반응하는 교수자의 반응 스타일이 교육효과를 형성할 수 있다(Kim & An, 2014).",
+    "citation_text": "(Im & Kim, 2007)",
+    "offset": [
+     116,
+     132
+    ],
+    "authors": [
+     "Im & Kim"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "parenthetical",
+    "sentence": "또한, 교수자 커뮤니케이션 요인과 교육효과 측면에서 살펴보면, 피교수자에 대한 관심, 배려, 면담, 유머 등에 관한 교수자의 커뮤니케이션이 대학생의 수업 긴장과 스트레스를 감소시켜 학습효과가 향상될 수 있으며(Im & Kim, 2007), 수업환경을 고려하는 교수자의 유연 스타일과 학생 행위에 반응하는 교수자의 반응 스타일이 교육효과를 형성할 수 있다(Kim & An, 2014).",
+    "raw": "또한, 교수자 커뮤니케이션 요인과 교육효과 측면에서 살펴보면, 피교수자에 대한 관심, 배려, 면담, 유머 등에 관한 교수자의 커뮤니케이션이 대학생의 수업 긴장과 스트레스를 감소시켜 학습효과가 향상될 수 있으며(Im & Kim, 2007), 수업환경을 고려하는 교수자의 유연 스타일과 학생 행위에 반응하는 교수자의 반응 스타일이 교육효과를 형성할 수 있다(Kim & An, 2014).",
+    "citation_text": "(Kim & An, 2014)",
+    "offset": [
+     197,
+     213
+    ],
+    "authors": [
+     "Kim & An"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_5",
+    "kind": "parenthetical",
+    "sentence": "국군간호사관학교의 사례에서도 교수자가 피교수자의 수업 참여를 촉진하는 발문(questioning), 열정과 배려의 리더십 발휘 등을 통해 수업을 진행하여 사관생도와의 상호작용이 증가하는 효과가 나타났다(Bae, Kwon & Kim, 2012).",
+    "raw": "국군간호사관학교의 사례에서도 교수자가 피교수자의 수업 참여를 촉진하는 발문(questioning), 열정과 배려의 리더십 발휘 등을 통해 수업을 진행하여 사관생도와의 상호작용이 증가하는 효과가 나타났다(Bae, Kwon & Kim, 2012).",
+    "citation_text": "(Bae, Kwon & Kim, 2012)",
+    "offset": [
+     112,
+     135
+    ],
+    "authors": [
+     "Bae"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "따라서 교수자는 일방적 강의를 통한 지식의 전달 방식에서 탈피하여 수업 과정에서 피교수자와의 적절한 커뮤니케이션을 통해 수업 참여도를 높여야 하고, 이를 통해 교수자와 피교수자 간의 쌍방향 커뮤니케이션을 증가시켜 학습효과와 수업 만족도를 높일 수 있으며, 교수자와 피교수자가 함께 수업환경을 조성하는 협력모델을 발전시킬 수 있다(Kim & An, 2014).",
+    "raw": "따라서 교수자는 일방적 강의를 통한 지식의 전달 방식에서 탈피하여 수업 과정에서 피교수자와의 적절한 커뮤니케이션을 통해 수업 참여도를 높여야 하고, 이를 통해 교수자와 피교수자 간의 쌍방향 커뮤니케이션을 증가시켜 학습효과와 수업 만족도를 높일 수 있으며, 교수자와 피교수자가 함께 수업환경을 조성하는 협력모델을 발전시킬 수 있다(Kim & An, 2014).",
+    "citation_text": "(Kim & An, 2014)",
+    "offset": [
+     183,
+     199
+    ],
+    "authors": [
+     "Kim & An"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "첫째, 커뮤니케이션 스타일은 교수자의 지식을 피교수자에게 전달하는 방식을 의미한다(Kim & An, 2014).",
+    "raw": "첫째, 커뮤니케이션 스타일은 교수자의 지식을 피교수자에게 전달하는 방식을 의미한다(Kim & An, 2014).",
+    "citation_text": "(Kim & An, 2014)",
+    "offset": [
+     45,
+     61
+    ],
+    "authors": [
+     "Kim & An"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "narrative",
+    "sentence": "이러한 맥락에서 Fassett & Warren(2010)는 초등학교 교사의 커뮤니케이션 스타일에 따라서 동일한 내용을 배우는 학생들이 인식하는 수업의 질이 달라진다는 점을 밝혔는데, 학생들은 교사가 학생에 대해 배려, 친근한 말, 편안한 분위기 등 섬세한 커뮤니케이션을 시도할 때 효율적인 수업으로 인식했으며, 즐거움과 웃음 유도, 부연 설명 등 수업 참여도 향상을 위해 노력할 때 긍정적인 효과를 느�다고 하였다(as cited in Kim & An, 2014).",
+    "raw": "이러한 맥락에서 Fassett & Warren(2010)는 초등학교 교사의 커뮤니케이션 스타일에 따라서 동일한 내용을 배우는 학생들이 인식하는 수업의 질이 달라진다는 점을 밝혔는데, 학생들은 교사가 학생에 대해 배려, 친근한 말, 편안한 분위기 등 섬세한 커뮤니케이션을 시도할 때 효율적인 수업으로 인식했으며, 즐거움과 웃음 유도, 부연 설명 등 수업 참여도 향상을 위해 노력할 때 긍정적인 효과를 느�다고 하였다(as cited in Kim & An, 2014).",
+    "citation_text": "Warren(2010)",
+    "offset": [
+     19,
+     31
+    ],
+    "authors": [
+     "Warren"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "이러한 맥락에서 Fassett & Warren(2010)는 초등학교 교사의 커뮤니케이션 스타일에 따라서 동일한 내용을 배우는 학생들이 인식하는 수업의 질이 달라진다는 점을 밝혔는데, 학생들은 교사가 학생에 대해 배려, 친근한 말, 편안한 분위기 등 섬세한 커뮤니케이션을 시도할 때 효율적인 수업으로 인식했으며, 즐거움과 웃음 유도, 부연 설명 등 수업 참여도 향상을 위해 노력할 때 긍정적인 효과를 느�다고 하였다(as cited in Kim & An, 2014).",
+    "raw": "이러한 맥락에서 Fassett & Warren(2010)는 초등학교 교사의 커뮤니케이션 스타일에 따라서 동일한 내용을 배우는 학생들이 인식하는 수업의 질이 달라진다는 점을 밝혔는데, 학생들은 교사가 학생에 대해 배려, 친근한 말, 편안한 분위기 등 섬세한 커뮤니케이션을 시도할 때 효율적인 수업으로 인식했으며, 즐거움과 웃음 유도, 부연 설명 등 수업 참여도 향상을 위해 노력할 때 긍정적인 효과를 느�다고 하였다(as cited in Kim & An, 2014).",
+    "citation_text": "(as cited in Kim & An, 2014)",
+    "offset": [
+     231,
+     259
+    ],
+    "authors": [
+     "as cited in Kim & An"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "이런 커뮤니케이션 불안감이 높으면 교수자와 소통이 제대로 이루어지지 않으며(McCroskey, 2011), 수업 중 커뮤니케이션 불안감이 높은 피교수자가 질문을 적게 하는 경향이 있다(Aitken & Neer, 1993).",
+    "raw": "이런 커뮤니케이션 불안감이 높으면 교수자와 소통이 제대로 이루어지지 않으며(McCroskey, 2011), 수업 중 커뮤니케이션 불안감이 높은 피교수자가 질문을 적게 하는 경향이 있다(Aitken & Neer, 1993).",
+    "citation_text": "(McCroskey, 2011)",
+    "offset": [
+     41,
+     58
+    ],
+    "authors": [
+     "McCroskey"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 25,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "이런 커뮤니케이션 불안감이 높으면 교수자와 소통이 제대로 이루어지지 않으며(McCroskey, 2011), 수업 중 커뮤니케이션 불안감이 높은 피교수자가 질문을 적게 하는 경향이 있다(Aitken & Neer, 1993).",
+    "raw": "이런 커뮤니케이션 불안감이 높으면 교수자와 소통이 제대로 이루어지지 않으며(McCroskey, 2011), 수업 중 커뮤니케이션 불안감이 높은 피교수자가 질문을 적게 하는 경향이 있다(Aitken & Neer, 1993).",
+    "citation_text": "(Aitken & Neer, 1993)",
+    "offset": [
+     102,
+     123
+    ],
+    "authors": [
+     "Aitken & Neer"
+    ],
+    "year": "1993",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "수업 중 교수자가 피교수자의 이야기를 경청하고, 호의적으로 질의응답을 진행하고, 질문 시간을 충분히 보장하는 적극적인 커뮤니케이션을 통해 교육효과를 높일 수 있으며, 피교수자에 대한 즉각적인 피드백, 적극적인 소통 노력 등이 교수자 커뮤니케이션을 증가시켜 교육의 생산성을 높이게 된다(Lee, 2007).",
+    "raw": "수업 중 교수자가 피교수자의 이야기를 경청하고, 호의적으로 질의응답을 진행하고, 질문 시간을 충분히 보장하는 적극적인 커뮤니케이션을 통해 교육효과를 높일 수 있으며, 피교수자에 대한 즉각적인 피드백, 적극적인 소통 노력 등이 교수자 커뮤니케이션을 증가시켜 교육의 생산성을 높이게 된다(Lee, 2007).",
+    "citation_text": "(Lee, 2007)",
+    "offset": [
+     158,
+     169
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "더 나아가 대학교육에서 교수자와 피교수자의 커뮤니케이션이 수업 만족도 향상에 영향을 미치며, 원만한 대학생활에 도움을 주어 학업의 중도 탈락을 예방할 수 있다(Hagenauera & Voletb, 2014).",
+    "raw": "더 나아가 대학교육에서 교수자와 피교수자의 커뮤니케이션이 수업 만족도 향상에 영향을 미치며, 원만한 대학생활에 도움을 주어 학업의 중도 탈락을 예방할 수 있다(Hagenauera & Voletb, 2014).",
+    "citation_text": "(Hagenauera & Voletb, 2014)",
+    "offset": [
+     88,
+     115
+    ],
+    "authors": [
+     "Hagenauera & Voletb"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "Im & Kim(2018)은 교수자 커뮤니케이션 유형을 언어적 · 비언어적 유형으로 구분하였으며, Cho(2018)는 교수자 커뮤니케이션 유형을 수사적(명료성 및 공신력) 유형과 관계적(라포 및 확인) 유형으로 구분하였다.",
+    "raw": "Im & Kim(2018)은 교수자 커뮤니케이션 유형을 언어적 · 비언어적 유형으로 구분하였으며, Cho(2018)는 교수자 커뮤니케이션 유형을 수사적(명료성 및 공신력) 유형과 관계적(라포 및 확인) 유형으로 구분하였다.",
+    "citation_text": "Kim(2018)",
+    "offset": [
+     5,
+     14
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "Im & Kim(2018)은 교수자 커뮤니케이션 유형을 언어적 · 비언어적 유형으로 구분하였으며, Cho(2018)는 교수자 커뮤니케이션 유형을 수사적(명료성 및 공신력) 유형과 관계적(라포 및 확인) 유형으로 구분하였다.",
+    "raw": "Im & Kim(2018)은 교수자 커뮤니케이션 유형을 언어적 · 비언어적 유형으로 구분하였으며, Cho(2018)는 교수자 커뮤니케이션 유형을 수사적(명료성 및 공신력) 유형과 관계적(라포 및 확인) 유형으로 구분하였다.",
+    "citation_text": "Cho(2018)",
+    "offset": [
+     55,
+     64
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "그리고 가장 최근에 국내 대학생을 대상으로 수행한 Cho(2019)의 연구에서는 교수자 커뮤니케이션 유형을 좀 더 구체적으로 구분하여 수사적(명료성, 전문성, 열의) 유형과 관계적(언어적 친근성, 비언어적 친근성, 확인) 유형으로 발전시켰다.",
+    "raw": "그리고 가장 최근에 국내 대학생을 대상으로 수행한 Cho(2019)의 연구에서는 교수자 커뮤니케이션 유형을 좀 더 구체적으로 구분하여 수사적(명료성, 전문성, 열의) 유형과 관계적(언어적 친근성, 비언어적 친근성, 확인) 유형으로 발전시켰다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     28,
+     37
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "첫째, 교수자 명료성은 교수자가 수업내용을 명확하게 전달하는가에 관한 것으로서 피교수자에게 지식을 전달하는 능력을 의미하며, 언어적 명료성(유창성)뿐만 아니라 구조의 명료성(조직화)도 포함한다(Chesebro & McCroskey, 1998).",
+    "raw": "첫째, 교수자 명료성은 교수자가 수업내용을 명확하게 전달하는가에 관한 것으로서 피교수자에게 지식을 전달하는 능력을 의미하며, 언어적 명료성(유창성)뿐만 아니라 구조의 명료성(조직화)도 포함한다(Chesebro & McCroskey, 1998).",
+    "citation_text": "(Chesebro & McCroskey, 1998)",
+    "offset": [
+     107,
+     135
+    ],
+    "authors": [
+     "Chesebro & McCroskey"
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "교수자의 명료성이 높을수록 학습효과, 수업 만족도, 수업 절차의 공정성에 긍정적인 영향을 미친다(Mazer, 2012).",
+    "raw": "교수자의 명료성이 높을수록 학습효과, 수업 만족도, 수업 절차의 공정성에 긍정적인 영향을 미친다(Mazer, 2012).",
+    "citation_text": "(Mazer, 2012)",
+    "offset": [
+     53,
+     66
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "교수자의 공신력은 학습효과, 수업 공정성 인식, 교수자 평가에 긍정적인 영향을 미친다(Gass & Seiter, 2018).",
+    "raw": "교수자의 공신력은 학습효과, 수업 공정성 인식, 교수자 평가에 긍정적인 영향을 미친다(Gass & Seiter, 2018).",
+    "citation_text": "(Gass & Seiter, 2018)",
+    "offset": [
+     47,
+     68
+    ],
+    "authors": [
+     "Gass & Seiter"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "교수자의 열의가 높을수록 피교수자의 학습동기와 수업 참여에 긍정적 영향을 미친다(Im & Kim, 2007).",
+    "raw": "교수자의 열의가 높을수록 피교수자의 학습동기와 수업 참여에 긍정적 영향을 미친다(Im & Kim, 2007).",
+    "citation_text": "(Im & Kim, 2007)",
+    "offset": [
+     44,
+     60
+    ],
+    "authors": [
+     "Im & Kim"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "이러한 교수자의 언어적 친근성은 학습효과에 긍정적인 영향을 미친다(Gorham, 1988).",
+    "raw": "이러한 교수자의 언어적 친근성은 학습효과에 긍정적인 영향을 미친다(Gorham, 1988).",
+    "citation_text": "(Gorham, 1988)",
+    "offset": [
+     36,
+     50
+    ],
+    "authors": [
+     "Gorham"
+    ],
+    "year": "1988",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "둘째, 교수자의 비언어적 친근성은 비언어적 수단을 통해 피교수자와 신체적 · 심리적으로 친밀감을 중대시키는 상호작용을 말하며, 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있기에 교육 커뮤니케이션 분야에서 효과적인 교수 행위로 평가된다(Cho, 2019).",
+    "raw": "둘째, 교수자의 비언어적 친근성은 비언어적 수단을 통해 피교수자와 신체적 · 심리적으로 친밀감을 중대시키는 상호작용을 말하며, 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있기에 교육 커뮤니케이션 분야에서 효과적인 교수 행위로 평가된다(Cho, 2019).",
+    "citation_text": "(Cho, 2019)",
+    "offset": [
+     173,
+     184
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "parenthetical",
+    "sentence": "이러한 현상은 피교수자가 교수자에게 지식 및 경험의 전달을 기대함과 동시에 이해 및 공감을 기대한다는 것을 뜻한다(Chen, Lawler, & Venso, 2003).",
+    "raw": "이러한 현상은 피교수자가 교수자에게 지식 및 경험의 전달을 기대함과 동시에 이해 및 공감을 기대한다는 것을 뜻한다(Chen, Lawler, & Venso, 2003).",
+    "citation_text": "(Chen, Lawler, & Venso, 2003)",
+    "offset": [
+     63,
+     92
+    ],
+    "authors": [
+     "Chen"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "이처럼 커뮤니케이션 기대위반 이론은 커뮤니케이션 상황에서 기대-위반의 현상을 해석 및 평가하는 과정을 설명한다(Kalman & Rafaeli, 2010).",
+    "raw": "이처럼 커뮤니케이션 기대위반 이론은 커뮤니케이션 상황에서 기대-위반의 현상을 해석 및 평가하는 과정을 설명한다(Kalman & Rafaeli, 2010).",
+    "citation_text": "(Kalman & Rafaeli, 2010)",
+    "offset": [
+     61,
+     85
+    ],
+    "authors": [
+     "Kalman & Rafaeli"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "먼저 기대는 ‘여자는 남자보다 약하다’ 등의 문화적 고정관념 개념인 ‘예측적 기대’와 ‘교수면 강의를 잘 할 것이다’와 같이 어떤 행위의 당위성에 대한 사람들의 일반적인 믿음을 나타내는 ‘규범적 기대’로 구분할 수 있다(Burgoon, 1995).",
+    "raw": "먼저 기대는 ‘여자는 남자보다 약하다’ 등의 문화적 고정관념 개념인 ‘예측적 기대’와 ‘교수면 강의를 잘 할 것이다’와 같이 어떤 행위의 당위성에 대한 사람들의 일반적인 믿음을 나타내는 ‘규범적 기대’로 구분할 수 있다(Burgoon, 1995).",
+    "citation_text": "(Burgoon, 1995)",
+    "offset": [
+     122,
+     137
+    ],
+    "authors": [
+     "Burgoon"
+    ],
+    "year": "1995",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "커뮤니케이션 기대위반 이론은 초기에 비언어적 행위에 적용되었고, 점차 언어적 행위와 기타 위반 행위로 확장하여 적용되었다(Burgoon & Hale, 1988).",
+    "raw": "커뮤니케이션 기대위반 이론은 초기에 비언어적 행위에 적용되었고, 점차 언어적 행위와 기타 위반 행위로 확장하여 적용되었다(Burgoon & Hale, 1988).",
+    "citation_text": "(Burgoon & Hale, 1988)",
+    "offset": [
+     67,
+     89
+    ],
+    "authors": [
+     "Burgoon & Hale"
+    ],
+    "year": "1988",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "Houser(2005)는 대학생을 일반 그룹과 만학 그룹으로 구분한 후 언어적 · 비언어적 친근성, 호감 추구, 명료성 차원에서 교수자 커뮤니케이션 기대위반을 연구하였다.",
+    "raw": "Houser(2005)는 대학생을 일반 그룹과 만학 그룹으로 구분한 후 언어적 · 비언어적 친근성, 호감 추구, 명료성 차원에서 교수자 커뮤니케이션 기대위반을 연구하였다.",
+    "citation_text": "Houser(2005)",
+    "offset": [
+     0,
+     12
+    ],
+    "authors": [
+     "Houser"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "narrative",
+    "sentence": "이후 Houser(2006)는 대학생을 구세대적 성향의 학생과 신세대적 성향의 학생으로 구분한 후 규범적 기대와 경험을 교수자의 즉각성, 명료성, 친화성 추구와 비교하여 인지 학습과 학습 동기에 미치는 영향을 분석한 결과, 모든 학생의 교수자 명료성에 대한 부정적 기대위반가는 인지 학습과 학습 동기에 부정적인 영향을 주고, 신세대적 성향을 가진 학생의 교수자 친화성 추구에 대한 긍정적 기대위반가는 인지 학습과 학습 동기에 부정적인 영향을 미치는 것으로 나타났다.",
+    "raw": "이후 Houser(2006)는 대학생을 구세대적 성향의 학생과 신세대적 성향의 학생으로 구분한 후 규범적 기대와 경험을 교수자의 즉각성, 명료성, 친화성 추구와 비교하여 인지 학습과 학습 동기에 미치는 영향을 분석한 결과, 모든 학생의 교수자 명료성에 대한 부정적 기대위반가는 인지 학습과 학습 동기에 부정적인 영향을 주고, 신세대적 성향을 가진 학생의 교수자 친화성 추구에 대한 긍정적 기대위반가는 인지 학습과 학습 동기에 부정적인 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Houser(2006)",
+    "offset": [
+     3,
+     15
+    ],
+    "authors": [
+     "Houser"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "parenthetical",
+    "sentence": "성적 지향성은 학위취득과 취업에 유리한 좋은 성적으로 받기 위해 학습하는 성향인 반면, 학습 지향성은 수강 자체를 새로운 정보를 얻는 즐거운 기회로 생각하며 학습하는 성향을 뜻한다(Eison, Pollio, & Milton, 1986).",
+    "raw": "성적 지향성은 학위취득과 취업에 유리한 좋은 성적으로 받기 위해 학습하는 성향인 반면, 학습 지향성은 수강 자체를 새로운 정보를 얻는 즐거운 기회로 생각하며 학습하는 성향을 뜻한다(Eison, Pollio, & Milton, 1986).",
+    "citation_text": "(Eison, Pollio, & Milton, 1986)",
+    "offset": [
+     100,
+     131
+    ],
+    "authors": [
+     "Eison"
+    ],
+    "year": "1986",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_3",
+    "kind": "parenthetical",
+    "sentence": "피교수자의 성별, 학년 등 인구통계학적 요소와 교육 지향성은 교수자에 대한 기대에 영향을 미친다 (Burgoon & Jones, 1976).",
+    "raw": "피교수자의 성별, 학년 등 인구통계학적 요소와 교육 지향성은 교수자에 대한 기대에 영향을 미친다 (Burgoon & Jones, 1976).",
+    "citation_text": "(Burgoon & Jones, 1976)",
+    "offset": [
+     54,
+     77
+    ],
+    "authors": [
+     "Burgoon & Jones"
+    ],
+    "year": "1976",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "그 사례로서 교수자가 예습 및 복습, 양질의 시청각 자료 활용 등을 통해 수업내용의 명료성을 높이면 피교수자의 인지적 흥미가 증가하고, 그 외에 교수자의 확인(confirmation)도 인지적 흥미를 증가시킨다(Cho, 2018).",
+    "raw": "그 사례로서 교수자가 예습 및 복습, 양질의 시청각 자료 활용 등을 통해 수업내용의 명료성을 높이면 피교수자의 인지적 흥미가 증가하고, 그 외에 교수자의 확인(confirmation)도 인지적 흥미를 증가시킨다(Cho, 2018).",
+    "citation_text": "(Cho, 2018)",
+    "offset": [
+     117,
+     128
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "또한, 교수자가 피교수자와 언어적⋅비언어적 친근성 향상을 위한 노력을 하면, 정서적 흥미가 증가한다(Mazer, 2012).",
+    "raw": "또한, 교수자가 피교수자와 언어적⋅비언어적 친근성 향상을 위한 노력을 하면, 정서적 흥미가 증가한다(Mazer, 2012).",
+    "citation_text": "(Mazer, 2012)",
+    "offset": [
+     55,
+     68
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "수업 참여와 관련하여 과거에는 피교수자가 공부에 사용하는 시간의 양에 비례하여 발생하는 것으로 보았지만 최근에는 피교수자의 정서 및 의도 등 감정적 측면도 포함하여 발생하는 것으로 본다(Mazer, 2012).",
+    "raw": "수업 참여와 관련하여 과거에는 피교수자가 공부에 사용하는 시간의 양에 비례하여 발생하는 것으로 보았지만 최근에는 피교수자의 정서 및 의도 등 감정적 측면도 포함하여 발생하는 것으로 본다(Mazer, 2012).",
+    "citation_text": "(Mazer, 2012)",
+    "offset": [
+     103,
+     116
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "narrative",
+    "sentence": "이와 관련하여 Handelsman, Briggs, Sullivan, & Towler(2005)은 대학생의 수업 참여(기술적 참여, 정서적 참여, 상호작용적 참여, 성과적 참여)가 피교수자의 수업 참여도가 증가한다는 것을 제시하였다.",
+    "raw": "이와 관련하여 Handelsman, Briggs, Sullivan, & Towler(2005)은 대학생의 수업 참여(기술적 참여, 정서적 참여, 상호작용적 참여, 성과적 참여)가 피교수자의 수업 참여도가 증가한다는 것을 제시하였다.",
+    "citation_text": "Towler(2005)",
+    "offset": [
+     40,
+     52
+    ],
+    "authors": [
+     "Towler"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "narrative",
+    "sentence": "그 외에 Cho(2018)는 교수자의 확인(confirmation) 요인에 의해 피교수자의 수업 참여도가 증가한다는 점을 제시하였다.",
+    "raw": "그 외에 Cho(2018)는 교수자의 확인(confirmation) 요인에 의해 피교수자의 수업 참여도가 증가한다는 점을 제시하였다.",
+    "citation_text": "Cho(2018)",
+    "offset": [
+     5,
+     14
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "raw": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Cho, 2018",
+    "offset": [
+     25,
+     34
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "raw": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Houser, 2006",
+    "offset": [
+     36,
+     48
+    ],
+    "authors": [
+     "Houser"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "raw": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Im & Kim, 2007",
+    "offset": [
+     50,
+     64
+    ],
+    "authors": [
+     "Im & Kim"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "raw": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Lee, 2007",
+    "offset": [
+     66,
+     75
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "raw": "앞서 살펴본 대학생 대상의 국내·외 선행연구(Cho, 2018; Houser, 2006; Im & Kim, 2007; Lee, 2007; Mazer, 2012)에 따르면, 교수자의 커뮤니케이션과 그 기대위받이 피교수자의 수업 흥미와 참여에 영향을 미치는 것으로 나타났다.",
+    "citation_text": "Mazer, 2012",
+    "offset": [
+     77,
+     88
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "narrative",
+    "sentence": "특히, Cho(2019)는 교수자의 커뮤니케이션에 대한 경험과 기대위반의 효과가 각기 다르게 작용한다고 주장하였다.",
+    "raw": "특히, Cho(2019)는 교수자의 커뮤니케이션에 대한 경험과 기대위반의 효과가 각기 다르게 작용한다고 주장하였다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     4,
+     13
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "narrative",
+    "sentence": "이에 본 연구는 Cho(2019) 연구모형을 토대로 군 사관학교의 맥락에서 영향관계를 검증하기 위한 다음과 같은 연구가설을 제시한다.",
+    "raw": "이에 본 연구는 Cho(2019) 연구모형을 토대로 군 사관학교의 맥락에서 영향관계를 검증하기 위한 다음과 같은 연구가설을 제시한다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     9,
+     18
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_7",
+    "kind": "narrative",
+    "sentence": "주요 변인의 측정 결과에 대한 기초 검증을 통해 측정된 자료의 정규성 및 신뢰성을 확보하였으며, 기초 검증 시 1개의 요인을 1개의 문항으로 측정 결과에 대한 정규성(왜도,3) 첨도4) 검증을 수행하였고, 1개의 요인을 다수의 문항으로 측정한피교수자의 수업 흥미 측정은 인지적 흥미와 정서적 흥미로 구분하여 Mazer(2012)의 척도로 측",
+    "raw": "주요 변인의 측정 결과에 대한 기초 검증을 통해 측정된 자료의 정규성 및 신뢰성을 확보하였으며, 기초 검증 시 1개의 요인을 1개의 문항으로 측정 결과에 대한 정규성(왜도,3) 첨도4) 검증을 수행하였고, 1개의 요인을 다수의 문항으로 측정한피교수자의 수업 흥미 측정은 인지적 흥미와 정서적 흥미로 구분하여 Mazer(2012)의 척도로 측",
+    "citation_text": "Mazer(2012)",
+    "offset": [
+     172,
+     183
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_4",
+    "kind": "narrative",
+    "sentence": "명료성은 Chesebro & McCroskey(1998)가 개발한 ‘TCSI(Teacher Clarity Short Inventory)’ 척도로 측정하였다.",
+    "raw": "명료성은 Chesebro & McCroskey(1998)가 개발한 ‘TCSI(Teacher Clarity Short Inventory)’ 척도로 측정하였다.",
+    "citation_text": "McCroskey(1998)",
+    "offset": [
+     16,
+     31
+    ],
+    "authors": [
+     "McCroskey"
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_6",
+    "kind": "narrative",
+    "sentence": "다음으로 전문성의 측정은 McCroskey, Valencic, & Richmond(2004)의 교수자 공신력 측정 척도를 이용하였으며, 전문성 변인의 측정 결과와 신뢰성 및 타당성 검증 결과는 Table 5와 같다.",
+    "raw": "다음으로 전문성의 측정은 McCroskey, Valencic, & Richmond(2004)의 교수자 공신력 측정 척도를 이용하였으며, 전문성 변인의 측정 결과와 신뢰성 및 타당성 검증 결과는 Table 5와 같다.",
+    "citation_text": "Richmond(2004)",
+    "offset": [
+     37,
+     51
+    ],
+    "authors": [
+     "Richmond"
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_2",
+    "kind": "narrative",
+    "sentence": "마지막으로 열의의 측정은 Im & Kim(2007)의 열의 측정 척도를 사용하였으며 측정 결과와 신뢰성 및 타당성 검증 결과는 다음의 Table 6과 같다.",
+    "raw": "마지막으로 열의의 측정은 Im & Kim(2007)의 열의 측정 척도를 사용하였으며 측정 결과와 신뢰성 및 타당성 검증 결과는 다음의 Table 6과 같다.",
+    "citation_text": "Kim(2007)",
+    "offset": [
+     19,
+     28
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_4",
+    "kind": "narrative",
+    "sentence": "관계적 요인 경험 중, 언어적 · 비언어적 친근성은 Christophel(1990)의 척도로 측정하였으며 언어적 · 비언어적 친근성 변인의 신뢰성 및 타당성 검증 결과는 다음과 같다(Tables 7, 8).",
+    "raw": "관계적 요인 경험 중, 언어적 · 비언어적 친근성은 Christophel(1990)의 척도로 측정하였으며 언어적 · 비언어적 친근성 변인의 신뢰성 및 타당성 검증 결과는 다음과 같다(Tables 7, 8).",
+    "citation_text": "Christophel(1990)",
+    "offset": [
+     29,
+     46
+    ],
+    "authors": [
+     "Christophel"
+    ],
+    "year": "1990",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 13,
+    "uid": "u12_3",
+    "kind": "narrative",
+    "sentence": "다음으로 Ellis(2000)의 척도로 확인을 측정하였으며, 측정 결과와 신뢰성 및 타당성 검증 결과는 다음과 같다(Table 9).",
+    "raw": "다음으로 Ellis(2000)의 척도로 확인을 측정하였으며, 측정 결과와 신뢰성 및 타당성 검증 결과는 다음과 같다(Table 9).",
+    "citation_text": "Ellis(2000)",
+    "offset": [
+     5,
+     16
+    ],
+    "authors": [
+     "Ellis"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_5",
+    "kind": "narrative",
+    "sentence": "피교수자의 기대치 측정은 Cho(2019)가 개발한 척도를 이용하여 피교수자가 대학교수에게 얼마나 기대하는가를 각각 1개 문항으로 측정하였다.",
+    "raw": "피교수자의 기대치 측정은 Cho(2019)가 개발한 척도를 이용하여 피교수자가 대학교수에게 얼마나 기대하는가를 각각 1개 문항으로 측정하였다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     14,
+     23
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_6",
+    "kind": "parenthetical",
+    "sentence": "기대위반가 산출 시에는 각 커뮤니케이션 요인에 대한 경험치에서 기대치를 뺀 평균값으로 산출할 수 있다(Houser, 2006).",
+    "raw": "기대위반가 산출 시에는 각 커뮤니케이션 요인에 대한 경험치에서 기대치를 뺀 평균값으로 산출할 수 있다(Houser, 2006).",
+    "citation_text": "(Houser, 2006)",
+    "offset": [
+     56,
+     70
+    ],
+    "authors": [
+     "Houser"
+    ],
+    "year": "2006",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_5",
+    "kind": "narrative",
+    "sentence": "그래서 교수들은 비언어적 친근성에 대한 기대감을 생도에게 심어줄 수 있는 다양한 교수법을 적용해야 할 것이며, 이런 연구 결과는 교수자가 피교수자와 언어적 · 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)의 연구와 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있다는 Cho(2019)의 연구와 유사한 결과로 나타났다.",
+    "raw": "그래서 교수들은 비언어적 친근성에 대한 기대감을 생도에게 심어줄 수 있는 다양한 교수법을 적용해야 할 것이며, 이런 연구 결과는 교수자가 피교수자와 언어적 · 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)의 연구와 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있다는 Cho(2019)의 연구와 유사한 결과로 나타났다.",
+    "citation_text": "Mazer(2012)",
+    "offset": [
+     124,
+     135
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_5",
+    "kind": "narrative",
+    "sentence": "그래서 교수들은 비언어적 친근성에 대한 기대감을 생도에게 심어줄 수 있는 다양한 교수법을 적용해야 할 것이며, 이런 연구 결과는 교수자가 피교수자와 언어적 · 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)의 연구와 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있다는 Cho(2019)의 연구와 유사한 결과로 나타났다.",
+    "raw": "그래서 교수들은 비언어적 친근성에 대한 기대감을 생도에게 심어줄 수 있는 다양한 교수법을 적용해야 할 것이며, 이런 연구 결과는 교수자가 피교수자와 언어적 · 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)의 연구와 교수자의 비언어적 친근성은 피교수자에게 긍정적 감정과 교수자에 대한 호감 등의 친밀감을 부여함으로써 학습효과를 높일 수 있다는 Cho(2019)의 연구와 유사한 결과로 나타났다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     212,
+     221
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_5",
+    "kind": "narrative",
+    "sentence": "다만, Mazer(2012)의 연구에서 언어적 친근성 향상이 정서적 흥미를 증가시킨다고 밝힌 부분은 생도들에게는 해당하지 않았다.",
+    "raw": "다만, Mazer(2012)의 연구에서 언어적 친근성 향상이 정서적 흥미를 증가시킨다고 밝힌 부분은 생도들에게는 해당하지 않았다.",
+    "citation_text": "Mazer(2012)",
+    "offset": [
+     4,
+     15
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_6",
+    "kind": "narrative",
+    "sentence": "본 연구의 기초 검증 결과, 생도의 전문성(평균 3.97), 언어적 친근성(평균 3.96), 비언어적 친근성(평균 4.14), 확인(평균 3.90) 경험치는 Cho(2019)가 일반 대학생을 대상으로 분석한 전문성(평균 3.95), 언어적 친근성(평균 3.45), 비언어적 친근성(평균 3.97), 확인",
+    "raw": "본 연구의 기초 검증 결과, 생도의 전문성(평균 3.97), 언어적 친근성(평균 3.96), 비언어적 친근성(평균 4.14), 확인(평균 3.90) 경험치는 Cho(2019)가 일반 대학생을 대상으로 분석한 전문성(평균 3.95), 언어적 친근성(평균 3.45), 비언어적 친근성(평균 3.97), 확인",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     88,
+     97
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "narrative",
+    "sentence": "이러한 맥락에서 Gass & Seiter(2018)는 교수자의 공신력이 학습효과, 수업 공정성 인식, 교수자 평가에 긍정적인 영향을 미친다고 하였다.",
+    "raw": "이러한 맥락에서 Gass & Seiter(2018)는 교수자의 공신력이 학습효과, 수업 공정성 인식, 교수자 평가에 긍정적인 영향을 미친다고 하였다.",
+    "citation_text": "Seiter(2018)",
+    "offset": [
+     16,
+     28
+    ],
+    "authors": [
+     "Seiter"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "narrative",
+    "sentence": "또한 Chen et al.(2003)은 교수자의 확인은 교수평가와 신뢰도, 수업 참여 및 만족도, 수업 공정성 인식에 긍정적인 영향을 미친다고 하였고, Cho(2018)도 교수자의 확인이 피교수자의 수업 참여를 증가시킨다고 하였다.",
+    "raw": "또한 Chen et al.(2003)은 교수자의 확인은 교수평가와 신뢰도, 수업 참여 및 만족도, 수업 공정성 인식에 긍정적인 영향을 미친다고 하였고, Cho(2018)도 교수자의 확인이 피교수자의 수업 참여를 증가시킨다고 하였다.",
+    "citation_text": "Chen et al.(2003)",
+    "offset": [
+     3,
+     20
+    ],
+    "authors": [
+     "Chen et al."
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "narrative",
+    "sentence": "또한 Chen et al.(2003)은 교수자의 확인은 교수평가와 신뢰도, 수업 참여 및 만족도, 수업 공정성 인식에 긍정적인 영향을 미친다고 하였고, Cho(2018)도 교수자의 확인이 피교수자의 수업 참여를 증가시킨다고 하였다.",
+    "raw": "또한 Chen et al.(2003)은 교수자의 확인은 교수평가와 신뢰도, 수업 참여 및 만족도, 수업 공정성 인식에 긍정적인 영향을 미친다고 하였고, Cho(2018)도 교수자의 확인이 피교수자의 수업 참여를 증가시킨다고 하였다.",
+    "citation_text": "Cho(2018)",
+    "offset": [
+     85,
+     94
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_2",
+    "kind": "narrative",
+    "sentence": "편, 이러한 결과는 교수자가 피교수자와 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)와 Cho(2019)의 연구 결과와 상반되는 결과이고, 일반적인 상식에도 배치되는 측면이 있으므로 향후 추가 연구가 필요할 것이다.",
+    "raw": "편, 이러한 결과는 교수자가 피교수자와 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)와 Cho(2019)의 연구 결과와 상반되는 결과이고, 일반적인 상식에도 배치되는 측면이 있으므로 향후 추가 연구가 필요할 것이다.",
+    "citation_text": "Mazer(2012)",
+    "offset": [
+     57,
+     68
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_2",
+    "kind": "narrative",
+    "sentence": "편, 이러한 결과는 교수자가 피교수자와 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)와 Cho(2019)의 연구 결과와 상반되는 결과이고, 일반적인 상식에도 배치되는 측면이 있으므로 향후 추가 연구가 필요할 것이다.",
+    "raw": "편, 이러한 결과는 교수자가 피교수자와 비언어적 친근성 향상을 위해 노력하면 정서적 흥미가 증가한다는 Mazer(2012)와 Cho(2019)의 연구 결과와 상반되는 결과이고, 일반적인 상식에도 배치되는 측면이 있으므로 향후 추가 연구가 필요할 것이다.",
+    "citation_text": "Cho(2019)",
+    "offset": [
+     70,
+     79
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "먼저 본 연구와 동일한 분야의 연구 결과(Mazer, 2012; Cho, 2019)에서 확인 분야의 교수 커뮤니케이션 경험과 기대위반이 수업 흥미와 참여에 전반적으로 정비례한다고 밝힌 것과 상반되는 결과이다.",
+    "raw": "먼저 본 연구와 동일한 분야의 연구 결과(Mazer, 2012; Cho, 2019)에서 확인 분야의 교수 커뮤니케이션 경험과 기대위반이 수업 흥미와 참여에 전반적으로 정비례한다고 밝힌 것과 상반되는 결과이다.",
+    "citation_text": "Mazer, 2012",
+    "offset": [
+     23,
+     34
+    ],
+    "authors": [
+     "Mazer"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "먼저 본 연구와 동일한 분야의 연구 결과(Mazer, 2012; Cho, 2019)에서 확인 분야의 교수 커뮤니케이션 경험과 기대위반이 수업 흥미와 참여에 전반적으로 정비례한다고 밝힌 것과 상반되는 결과이다.",
+    "raw": "먼저 본 연구와 동일한 분야의 연구 결과(Mazer, 2012; Cho, 2019)에서 확인 분야의 교수 커뮤니케이션 경험과 기대위반이 수업 흥미와 참여에 전반적으로 정비례한다고 밝힌 것과 상반되는 결과이다.",
+    "citation_text": "Cho, 2019",
+    "offset": [
+     36,
+     45
+    ],
+    "authors": [
+     "Cho"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "반면, 일부 연구와는 유사한 결과를 나타낸 것으로 볼 수 있는데, 이는 코로나-19 환경의 강의 양상과 특징 연구(Neuwirth, Jovic, & Mukherji, 2020)에서 대학생들이 개인 활동에 대한 정보 등이 노출되는 현상에 대한 거부감이 존재한다고 밝힌 것과 유사한 결과이다.",
+    "raw": "반면, 일부 연구와는 유사한 결과를 나타낸 것으로 볼 수 있는데, 이는 코로나-19 환경의 강의 양상과 특징 연구(Neuwirth, Jovic, & Mukherji, 2020)에서 대학생들이 개인 활동에 대한 정보 등이 노출되는 현상에 대한 거부감이 존재한다고 밝힌 것과 유사한 결과이다.",
+    "citation_text": "(Neuwirth, Jovic, & Mukherji, 2020)",
+    "offset": [
+     63,
+     98
+    ],
+    "authors": [
+     "Neuwirth"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 27,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "또한, 포스트 코로나 시대 대학교육 탐색 연구(Son & Jin, 2021)에서 대면수업과 질적인 차이가 거의 없다고 인식되는 실시간 강의에 대해 대학생들이 선호하지 않는 이유는 ‘본인의 존재를 드러내야 하는 부담감’인 반면, 비대면 강의를 선호하는 이유는 ‘타인을 신경쓰지 않아’",
+    "raw": "또한, 포스트 코로나 시대 대학교육 탐색 연구(Son & Jin, 2021)에서 대면수업과 질적인 차이가 거의 없다고 인식되는 실시간 강의에 대해 대학생들이 선호하지 않는 이유는 ‘본인의 존재를 드러내야 하는 부담감’인 반면, 비대면 강의를 선호하는 이유는 ‘타인을 신경쓰지 않아’",
+    "citation_text": "(Son & Jin, 2021)",
+    "offset": [
+     25,
+     42
+    ],
+    "authors": [
+     "Son & Jin"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 21,
+    "uid": "u20_2",
+    "kind": "parenthetical",
+    "sentence": "그리고 비대면 대학 교육과정과 수업 연구(Jung, Cho, & Lee, 2021)에서 대학생의 수업 집중과 참여도를 높이기 위해서는 그들의 사적영역을 침해하지 않는 기술적인 방법을 적용해야 한다는 주장과도 유사하다고 볼 수 있다.",
+    "raw": "그리고 비대면 대학 교육과정과 수업 연구(Jung, Cho, & Lee, 2021)에서 대학생의 수업 집중과 참여도를 높이기 위해서는 그들의 사적영역을 침해하지 않는 기술적인 방법을 적용해야 한다는 주장과도 유사하다고 볼 수 있다.",
+    "citation_text": "(Jung, Cho, & Lee, 2021)",
+    "offset": [
+     22,
+     46
+    ],
+    "authors": [
+     "Jung"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

@@ -1,0 +1,1784 @@
+{
+ "doc": "13571795",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571795",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "국방기술진흥연구소(2022.03.24.). 미래국방 2030 기술전략 : 드론(DRONE).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1365.3,
+     720.7,
+     1421.1
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "국방기술진흥연구소"
+    ],
+    "authors_raw": "국방기술진흥연구소",
+    "et_al": false,
+    "year": "2022",
+    "title": "03.24.). 미래국방 2030 기술전략 : 드론(DRONE",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "한국드론혁신협회(KDIA)(2021.02.16.). 드론봇 전투체계발전방안연구.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1365.3,
+     720.7,
+     1421.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "이승재, 이근동, 이수웅, 고종국, 유원영(2018). 딥러닝 기반 객체 분류 및 검출 기술 분석 및 동향. 전자통신동향분석,33(4), 33-42.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     154.5,
+     1339.8,
+     996.8,
+     1418.5
+    ],
+    "uid": "u2_7",
+    "authors": [
+     "이승재",
+     "이근동",
+     "이수웅",
+     "고종국",
+     "유원영"
+    ],
+    "authors_raw": "이승재, 이근동, 이수웅, 고종국, 유원영",
+    "et_al": false,
+    "year": "2018",
+    "title": "딥러닝 기반 객체 분류 및 검출 기술 분석 및 동향. 전자통신동향분석",
+    "source": "33(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "33-42",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "김은희, 이경하, 성원경. (2020). 딥 러닝 모델의 경량화 기술 동향. 정보과학회지, 38(8), 18-29.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     154.5,
+     1339.8,
+     996.8,
+     1418.5
+    ],
+    "uid": "u2_7",
+    "authors": [
+     "김은희",
+     "이경하",
+     "성원경"
+    ],
+    "authors_raw": "김은희, 이경하, 성원경",
+    "et_al": false,
+    "year": "2020",
+    "title": "딥 러닝 모델의 경량화 기술 동향. 정보과학회지",
+    "source": "38(8)",
+    "volume": null,
+    "issue": null,
+    "pages": "18-29",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 4,
+   "per_page": {
+    "2": 2,
+    "3": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2"
+     ],
+     "collected": [
+      "1",
+      "2"
+     ]
+    },
+    "3": {
+     "markers": [
+      "3",
+      "4"
+     ],
+     "collected": [
+      "3",
+      "4"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ali, S., Siddique, A., Ateş, H. F., & Güntürk, B. K. (2021). Improved YOLOv4 for aerial object detection. In 2021 29th Signal Processing and Communications Applications Conference (SIU) (pp. 1-4). IEEE. https://ieeexplore.ieee.org/abstract/document/9478027",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Ali S",
+     "Siddique A",
+     "Ateş",
+     "H. F",
+     "Güntürk",
+     "B. K"
+    ],
+    "authors_raw": "Ali, S., Siddique, A., Ateş, H. F., & Güntürk, B. K",
+    "et_al": false,
+    "year": "2021",
+    "title": "Improved YOLOv4 for aerial object detection. In 2021 29th Signal Processing and Communications Applications Conference (SIU) (pp. 1-4). IEEE. https://ieeexplore.ieee.org/abstract/document/9478027",
+    "source": null,
+    "volume": "4",
+    "issue": null,
+    "pages": "1-4",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bochkovskiy, A., Wang, C. Y., & Liao, H. Y. M. (2020). Yolov4: Optimal speed and accuracy of object detection. https://doi.org/10.48550/arXiv.2004.10934",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Bochkovskiy A",
+     "Wang C. Y",
+     "Liao H. Y. M"
+    ],
+    "authors_raw": "Bochkovskiy, A., Wang, C. Y., & Liao, H. Y. M",
+    "et_al": false,
+    "year": "2020",
+    "title": "Yolov4: Optimal speed and accuracy of object detection. https://doi.org/10.48550/arXiv.2004.10934",
+    "source": null,
+    "volume": "4",
+    "issue": null,
+    "pages": null,
+    "doi": "10.48550/arXiv.2004.10934",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Du, D., Qi, Y., Yu, H., Yang, Y., Duan, K., Li, G., ... & Tian, Q. (2018). The unmanned aerial vehicle benchmark: Object detection and tracking. In Proceedings of the European conference on computer vision (ECCV) (pp. 370-386). Retrieved from https://openaccess.thecvf.com/ content_ECCV_2018/html/Dawei_Du_The_Unmanned_Aerial_ECCV_2018_paper.html",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Du D",
+     "Qi Y",
+     "Yu H",
+     "Yang Y",
+     "Duan K",
+     "Li G",
+     "Tian Q"
+    ],
+    "authors_raw": "Du, D., Qi, Y., Yu, H., Yang, Y., Duan, K., Li, G., ... & Tian, Q",
+    "et_al": false,
+    "year": "2018",
+    "title": "The unmanned aerial vehicle benchmark: Object detection and tracking. In Proceedings of the European conference on computer vision (ECCV) (pp. 370-386). Retrieved from https://openaccess.thecvf.com/ content_ECCV_2018/html/Dawei_Du_The_Unmanned_Aerial_ECCV_2018_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "370-386",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Duan, K., Bai, S., Xie, L., Qi, H., Huang, Q., & Tian, Q. (2019). Centernet: Keypoint triplets for object detection. In Proceedings of the IEEE/CVF international conference on computer vision (pp. 6569-6578). https://openaccess.thecvf.com/content_ICCV_2019/html/Duan_ CenterNet_Keypoint_Triplets_for_Object_Detection_ICCV_2019_paper.html",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Duan K",
+     "Bai S",
+     "Xie L",
+     "Qi H",
+     "Huang Q",
+     "Tian Q"
+    ],
+    "authors_raw": "Duan, K., Bai, S., Xie, L., Qi, H., Huang, Q., & Tian, Q",
+    "et_al": false,
+    "year": "2019",
+    "title": "Centernet: Keypoint triplets for object detection. In Proceedings of the IEEE/CVF international conference on computer vision (pp. 6569-6578). https://openaccess.thecvf.com/content_ICCV_2019/html/Duan_ CenterNet_Keypoint_Triplets_for_Object_Detection_ICCV_2019_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "6569-6578",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Girshick, R. (2015). Fast r-cnn. In Proceedings of the IEEE international conference on computer vision (pp. 1440-1448). https://openaccess.thecvf.com/content_iccv_2015/html/Girshick_ Fast_R-CNN_ICCV_2015_paper.html",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Girshick R"
+    ],
+    "authors_raw": "Girshick, R",
+    "et_al": false,
+    "year": "2015",
+    "title": "Fast r-cnn. In Proceedings of the IEEE international conference on computer vision (pp. 1440-1448). https://openaccess.thecvf.com/content_iccv_2015/html/Girshick_ Fast_R-CNN_ICCV_2015_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1440-1448",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Girshick, R., Donahue, J., Darrell, T., & Malik, J. (2014). Rich feature hierarchies for accurate object detection and semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 580-587). https://openaccess.thecvf.com/ content_cvpr_2014/html/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.html",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Girshick R",
+     "Donahue J",
+     "Darrell T",
+     "Malik J"
+    ],
+    "authors_raw": "Girshick, R., Donahue, J., Darrell, T., & Malik, J",
+    "et_al": false,
+    "year": "2014",
+    "title": "Rich feature hierarchies for accurate object detection and semantic segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 580-587). https://openaccess.thecvf.com/ content_cvpr_2014/html/Girshick_Rich_Feature_Hierarchies_2014_CVPR_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "580-587",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Guo, J., Han, K., Wang, Y., Zhang, C., Yang, Z., Wu, H., ... & Xu, C. (2020). Hit-detector: Hierarchical trinity architecture search for object detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 11405-11414). https://openaccess.thecvf.com/content_CVPR_2020/html/Guo_HitDetector_Hierarchical_Tr inity_Architecture_Search_for_Object_Detection_CVPR_2020_paper.html",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "Guo J",
+     "Han K",
+     "Wang Y",
+     "Zhang C",
+     "Yang Z",
+     "Wu H",
+     "Xu C"
+    ],
+    "authors_raw": "Guo, J., Han, K., Wang, Y., Zhang, C., Yang, Z., Wu, H., ... & Xu, C",
+    "et_al": false,
+    "year": "2020",
+    "title": "Hit-detector: Hierarchical trinity architecture search for object detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 11405-11414). https://openaccess.thecvf.com/content_CVPR_2020/html/Guo_HitDetector_Hierarchical_Tr inity_Architecture_Search_for_Object_Detection_CVPR_2020_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In Proceedings of the IEEE conference on com puter vision and pattern recognition (pp. 770-778). https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_ Learning_CVPR_2016_paper.html\nHoward, A. G., Zhu, M., Chen, B., Kalenichenko, D., Wang, W., Weyand, T., ... & Adam, H.",
+    "page": 13,
+    "box": [
+     143.8,
+     807.1,
+     1001.1,
+     1046.4
+    ],
+    "uid": "u12_3",
+    "authors": [
+     "He K",
+     "Zhang X",
+     "Ren S",
+     "Sun J"
+    ],
+    "authors_raw": "He, K., Zhang, X., Ren, S., & Sun, J",
+    "et_al": false,
+    "year": "2016",
+    "title": "Deep residual learning for image recognition. In Proceedings of the IEEE conference on com puter vision and pattern recognition (pp. 770-778). https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_ Learning_CVPR_2016_paper.html Howard",
+    "source": "A. G",
+    "volume": null,
+    "issue": null,
+    "pages": "770-778",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hussain, M. (2023). YOLO-v1 to YOLO-v8, the Rise of YOLO and Its Complementary Nature toward Digital Manufacturing and Industrial Defect Detection. Machines, 11(7), 677. https://doi.org/10.3390/machines11070677",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Hussain M"
+    ],
+    "authors_raw": "Hussain, M",
+    "et_al": false,
+    "year": "2023",
+    "title": "YOLO-v1 to YOLO-v8",
+    "source": "the Rise of YOLO and Its Complementary Nature toward Digital Manufacturing and Industrial Defect Detection. Machines",
+    "volume": "1",
+    "issue": null,
+    "pages": null,
+    "doi": "10.3390/machines11070677",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Iandola, F. N., Han, S., Moskewicz, M. W., Ashraf, K., Dally, W. J., & Keutzer, K. (2016). SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 0.5 MB model size. https://doi.org/10.48550/arXiv.1602.07360",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Iandola F. N",
+     "Han S",
+     "Moskewicz M. W",
+     "Ashraf K",
+     "Dally W. J",
+     "Keutzer K"
+    ],
+    "authors_raw": "Iandola, F. N., Han, S., Moskewicz, M. W., Ashraf, K., Dally, W. J., & Keutzer, K",
+    "et_al": false,
+    "year": "2016",
+    "title": "SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and< 0.5 MB model size. https://doi.org/10.48550/arXiv.1602.07360",
+    "source": null,
+    "volume": "1602",
+    "issue": null,
+    "pages": null,
+    "doi": "10.48550/arXiv.1602.07360",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Law, H., & Deng, J. (2018). Cornernet: Detecting objects as paired keypoints. In Proceedings of the European conference on computer vision (ECCV) (pp. 734-750). https://openaccess. thecvf. com/content_ECCV_2018/html/Hei_Law_CornerNet_Detecting_Objects_ECCV_2018_paper.html",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Law H",
+     "Deng J"
+    ],
+    "authors_raw": "Law, H., & Deng, J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Cornernet: Detecting objects as paired keypoints. In Proceedings of the European conference on computer vision (ECCV) (pp. 734-750). https://openaccess. thecvf. com/content_ECCV_2018/html/Hei_Law_CornerNet_Detecting_Objects_ECCV_2018_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "734-750",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. W., Kim, J. Y., Kim, J. K., & Kwon, C. H. (2021). A Study on Realtime Drone Object Detection Using On-board Deep Learning. Journal of the Korean Society for Aeronautical & Space Sciences, 49(10), 883-892. https://doi.org/10.5139/JKSAS.2021.49.10.883",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Lee J. W",
+     "Kim J. Y",
+     "Kim J. K",
+     "Kwon C. H"
+    ],
+    "authors_raw": "Lee, J. W., Kim, J. Y., Kim, J. K., & Kwon, C. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on Realtime Drone Object Detection Using On-board Deep Learning. Journal of the Korean Society for Aeronautical & Space Sciences",
+    "source": "49(10)",
+    "volume": null,
+    "issue": null,
+    "pages": "883-892",
+    "doi": "10.5139/JKSAS.2021.49.10.883",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lin, T. Y., Dollár, P., Girshick, R., He, K., Hariharan, B., & Belongie, S. (2017). Feature pyramid networks for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 2117-2125). https://openaccess.thecvf.com/content_cvpr_ 2017/html/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.html",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Lin T. Y",
+     "Dollár",
+     "P",
+     "Girshick R",
+     "He K",
+     "Hariharan B",
+     "Belongie S"
+    ],
+    "authors_raw": "Lin, T. Y., Dollár, P., Girshick, R., He, K., Hariharan, B., & Belongie, S",
+    "et_al": false,
+    "year": "2017",
+    "title": "Feature pyramid networks for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 2117-2125). https://openaccess.thecvf.com/content_cvpr_ 2017/html/Lin_Feature_Pyramid_Networks_CVPR_2017_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "2117-2125",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Liu, L., Ouyang, W., Wang, X., Fieguth, P., Chen, J., Liu, X., & Pietikäinen, M. (2020). Deep learning for generic object detection: A survey. International Journal of Computer Vision, 128, 261-318. https://doi.org/10.1007/s11263-019-01247-4",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Liu L",
+     "Ouyang W",
+     "Wang X",
+     "Fieguth P",
+     "Chen J",
+     "Liu X",
+     "Pietikäinen",
+     "M"
+    ],
+    "authors_raw": "Liu, L., Ouyang, W., Wang, X., Fieguth, P., Chen, J., Liu, X., & Pietikäinen, M",
+    "et_al": false,
+    "year": "2020",
+    "title": "Deep learning for generic object detection: A survey. International Journal of Computer Vision",
+    "source": "128",
+    "volume": null,
+    "issue": null,
+    "pages": "261-318",
+    "doi": "10.1007/s11263-019-01247-4",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Liu, S., Qi, L., Qin, H., Shi, J., & Jia, J. (2018). Path aggregation network for instance segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 8759-8768). https://openaccess.thecvf.com/content_cvpr_2018/html/Liu_ Path_Aggregation_Network_CVPR_2018_paper.html",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Liu S",
+     "Qi L",
+     "Qin H",
+     "Shi J",
+     "Jia J"
+    ],
+    "authors_raw": "Liu, S., Qi, L., Qin, H., Shi, J., & Jia, J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Path aggregation network for instance segmentation. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 8759-8768). https://openaccess.thecvf.com/content_cvpr_2018/html/Liu_ Path_Aggregation_Network_CVPR_2018_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "8759-8768",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C. Y., & Berg, A. C. (2016). Ssd: Single shot multibox detector. In Computer Vision–ECCV 2016: 14th European Conference, Amsterdam, The Netherlands, October 11–14, 2016, Proceedings, Part I 14 (pp. 21-37). Springer International Publishing. https://link.springer.com/chapter/10.1007/ 978-3-319-46448-0_2",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Liu W",
+     "Anguelov D",
+     "Erhan D",
+     "Szegedy C",
+     "Reed S",
+     "Fu C. Y",
+     "Berg A. C"
+    ],
+    "authors_raw": "Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C. Y., & Berg, A. C",
+    "et_al": false,
+    "year": "2016",
+    "title": "Ssd: Single shot multibox detector. In Computer Vision–ECCV 2016: 14th European Conference",
+    "source": "Amsterdam",
+    "volume": "2016",
+    "issue": null,
+    "pages": "21-37",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Pal, S. K., Pramanik, A., Maiti, J., & Mitra, P. (2021). Deep learning in multi-object detection and tracking: state of the art. Applied Intelligence, 51, 6400-6429. https://doi.org/10. 1007/s10489-021-02293-7",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Pal S. K",
+     "Pramanik A",
+     "Maiti J",
+     "Mitra P"
+    ],
+    "authors_raw": "Pal, S. K., Pramanik, A., Maiti, J., & Mitra, P",
+    "et_al": false,
+    "year": "2021",
+    "title": "Deep learning in multi-object detection and tracking: state of the art. Applied Intelligence",
+    "source": "51",
+    "volume": null,
+    "issue": null,
+    "pages": "6400-6429",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Redmon, J., & Farhadi, A. (2018). Yolov3: An incremental improvement. https://doi.org/10.48550/ arXiv.1804.02767",
+    "page": 14,
+    "box": [
+     143.8,
+     612.7,
+     1001.1,
+     1098.7
+    ],
+    "uid": "u13_2",
+    "authors": [
+     "Redmon J",
+     "Farhadi A"
+    ],
+    "authors_raw": "Redmon, J., & Farhadi, A",
+    "et_al": false,
+    "year": "2018",
+    "title": "Yolov3: An incremental improvement. https://doi.org/10.48550/ arXiv.1804.02767",
+    "source": null,
+    "volume": "3",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You only look once: Unified, real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788). https://www.cv-foundation.org/openaccess/content_ cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Redmon J",
+     "Divvala S",
+     "Girshick R",
+     "Farhadi A"
+    ],
+    "authors_raw": "Redmon, J., Divvala, S., Girshick, R., & Farhadi, A",
+    "et_al": false,
+    "year": "2016",
+    "title": "You only look once: Unified",
+    "source": "real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788). https://www.cv-foundation.org/openaccess/content_ cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+    "volume": null,
+    "issue": null,
+    "pages": "779-788",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ren, S., He, K., Girshick, R., & Sun, J. (2015). Faster r-cnn: Towards real-time object detection with region proposal networks. Advances in neural information processing systems, 28. https://proceedings.neurips.cc/paper_files/paper/2015/hash/14bfa6bb14875e45bba028a21ed3 8046-Abstract.html",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Ren S",
+     "He K",
+     "Girshick R",
+     "Sun J"
+    ],
+    "authors_raw": "Ren, S., He, K., Girshick, R., & Sun, J",
+    "et_al": false,
+    "year": "2015",
+    "title": "Faster r-cnn: Towards real-time object detection with region proposal networks. Advances in neural information processing systems",
+    "source": "28. https://proceedings.neurips.cc/paper_files/paper/2015/hash/14bfa6bb14875e45bba028a21ed3 8046-Abstract.html",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Simonyan, K., & Zisserman, A. (2014). Very deep convolutional networks for large-scale image recognition. https://doi.org/10.48550/arXiv.1409.1556",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Simonyan K",
+     "Zisserman A"
+    ],
+    "authors_raw": "Simonyan, K., & Zisserman, A",
+    "et_al": false,
+    "year": "2014",
+    "title": "Very deep convolutional networks for large-scale image recognition. https://doi.org/10.48550/arXiv.1409.1556",
+    "source": null,
+    "volume": "1409",
+    "issue": null,
+    "pages": null,
+    "doi": "10.48550/arXiv.1409.1556",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Tan, M., & Le, Q. (2019). Efficientnet: Rethinking model scaling for convolutional neural networks. In International conference on machine learning (pp. 6105-6114). PMLR. https://proceedings.mlr.press/v97/tan19a.html?ref=jina-ai-gmbh.ghost.io",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Tan M",
+     "Le Q"
+    ],
+    "authors_raw": "Tan, M., & Le, Q",
+    "et_al": false,
+    "year": "2019",
+    "title": "Efficientnet: Rethinking model scaling for convolutional neural networks. In International conference on machine learning (pp. 6105-6114). PMLR. https://proceedings.mlr.press/v97/tan19a.html?ref=jina-ai-gmbh.ghost.io",
+    "source": null,
+    "volume": "97",
+    "issue": null,
+    "pages": "6105-6114",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Tan, M., Pang, R., & Le, Q. V. (2020). Efficientdet: Scalable and efficient object detection. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 10781-10790). https://openaccess.thecvf.com/content_CVPR_2020/html/Tan_EfficientDet_ Scalable_and_Efficient_Object_Detection_CVPR_2020_paper.html",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Tan M",
+     "Pang R",
+     "Le Q. V"
+    ],
+    "authors_raw": "Tan, M., Pang, R., & Le, Q. V",
+    "et_al": false,
+    "year": "2020",
+    "title": "Efficientdet: Scalable and efficient object detection. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 10781-10790). https://openaccess.thecvf.com/content_CVPR_2020/html/Tan_EfficientDet_ Scalable_and_Efficient_Object_Detection_CVPR_2020_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wu, X., Li, W., Hong, D., Tao, R., & Du, Q. (2021). Deep learning for unmanned aerial vehicle-based object detection and tracking: a survey. IEEE Geoscience and Remote Sensing Magazine, 10(1), 91-124. https://doi.org/10.1109/MGRS.2021.3115137",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Wu X",
+     "Li W",
+     "Hong D",
+     "Tao R",
+     "Du Q"
+    ],
+    "authors_raw": "Wu, X., Li, W., Hong, D., Tao, R., & Du, Q",
+    "et_al": false,
+    "year": "2021",
+    "title": "Deep learning for unmanned aerial vehicle-based object detection and tracking: a survey. IEEE Geoscience and Remote Sensing Magazine",
+    "source": "10(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "91-124",
+    "doi": "10.1109/MGRS.2021.3115137",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Xie, S., Girshick, R., Dollár, P., Tu, Z., & He, K. (2017). Aggregated residual transformations for deep neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1492-1500). https:openaccess.thecvf.com/content_cvpr_2017/html/ Xie_Aggregated_Residual_Transformations_CVPR_2017_paper.html",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Xie S",
+     "Girshick R",
+     "Dollár",
+     "P",
+     "Tu Z",
+     "He K"
+    ],
+    "authors_raw": "Xie, S., Girshick, R., Dollár, P., Tu, Z., & He, K",
+    "et_al": false,
+    "year": "2017",
+    "title": "Aggregated residual transformations for deep neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1492-1500). https:openaccess.thecvf.com/content_cvpr_2017/html/ Xie_Aggregated_Residual_Transformations_CVPR_2017_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1492-1500",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Zhang, S., Wen, L., Bian, X., Lei, Z., & Li, S. Z. (2018). Single-shot refinement neural network for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 4203-4212). https://openaccess.thecvf.com/content_cvpr_2018/ html/Zhang_Single-Shot_Refinement_Neural_CVPR_2018_paper.html",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Zhang S",
+     "Wen L",
+     "Bian X",
+     "Lei Z",
+     "Li S. Z"
+    ],
+    "authors_raw": "Zhang, S., Wen, L., Bian, X., Lei, Z., & Li, S. Z",
+    "et_al": false,
+    "year": "2018",
+    "title": "Single-shot refinement neural network for object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 4203-4212). https://openaccess.thecvf.com/content_cvpr_2018/ html/Zhang_Single-Shot_Refinement_Neural_CVPR_2018_paper.html",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "4203-4212",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Zhu, L., Lee, F., Cai, J., Yu, H., & Chen, Q. (2022). An improved feature pyramid network for object detection. Neurocomputing, 483(28), 127-139. https://doi.org/10.1016/j.neucom.2022.02.016",
+    "page": 15,
+    "box": [
+     144.9,
+     612.7,
+     1000.1,
+     853.4
+    ],
+    "uid": "u14_2",
+    "authors": [
+     "Zhu L",
+     "Lee F",
+     "Cai J",
+     "Yu H",
+     "Chen Q"
+    ],
+    "authors_raw": "Zhu, L., Lee, F., Cai, J., Yu, H., & Chen, Q",
+    "et_al": false,
+    "year": "2022",
+    "title": "An improved feature pyramid network for object detection. Neurocomputing",
+    "source": "483(28)",
+    "volume": null,
+    "issue": null,
+    "pages": "127-139",
+    "doi": "10.1016/j.neucom.2022.02.016",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Technology trends in deep learning networks for real-time object detection in drone environment",
+   "page": 1,
+   "box": [
+    156.0,
+    396.8,
+    985.5,
+    471.0
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Mun, Jonghyeon",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     387.6,
+     496.0,
+     756.7,
+     524.8
+    ]
+   },
+   {
+    "name": "Sohn, Chaebong",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     387.6,
+     496.0,
+     756.7,
+     524.8
+    ]
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "Department of Electronic Communication Engineering",
+   "Department of Defense Acquisition Program Division",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "With the recent announcement of the Defense Innovation 4.0 Basic Plan by the Ministry of National Defense, the role and operational scope of drones are expanding as a key force in AI-based, unmanned, and autonomous systems. Consequently, the significance of real-time object detection technology is emphasized as drones take on diverse missions, including delivering, analyzing, and assessing real-time, target-related information. The emergence of recent deep learning has led to substantial advancements in the field of computer vision, particularly in object detection. Deep learning-based object detection is actively being researched, with a focus on algorithms suited for embedded and mobile environments such as drones. This research predominantly aims to develop deep learning-based object detection models that ensure real-time performance and accurately identify objects’ various forms and sizes. Recent object-detection models have been categorized into backbone networks, neck networks, and head networks. By utilizing these three network components, design considerations can be tailored to fulfill the requirements of drone operations. In this paper, we investigate the technology trends of deep learning network models that can be loaded into drones for real-time object detection. Thus we contribute to strengthening effective drone operation in military operations and supporting research and decision-making processes.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "With the recent announcement of the Defense Innovation 4.0 Basic Plan by the Ministry of National Defense, the role and operational scope of drones are expanding as a key force in AI-based, unmanned, and autonomous systems. Consequently, the significance of real-time object detection technology is emphasized as drones take on diverse missions, including delivering, analyzing, and assessing real-time, target-related information. The emergence of recent deep learning has led to substantial advancements in the field of computer vision, particularly in object detection. Deep learning-based object detection is actively being researched, with a focus on algorithms suited for embedded and mobile environments such as drones. This research predominantly aims to develop deep learning-based object detection models that ensure real-time performance and accurately identify objects’ various forms and sizes. Recent object-detection models have been categorized into backbone networks, neck networks, and head networks. By utilizing these three network components, design considerations can be tailored to fulfill the requirements of drone operations. In this paper, we investigate the technology trends of deep learning network models that can be loaded into drones for real-time object detection. Thus we contribute to strengthening effective drone operation in military operations and supporting research and decision-making processes.",
+   "page": 1,
+   "box": [
+    190.5,
+    583.6,
+    309.4,
+    610.8
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : drones, computer vision, deep learning network, real-time object detection"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 6,
+   "uid": "u1_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "185-200",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "drones",
+   "computer vision",
+   "deep learning network",
+   "real-time object detection"
+  ],
+  "keywords_en": [
+   "drones",
+   "computer vision",
+   "deep learning network",
+   "real-time object detection"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "4차 산업혁명시대에 드론 산업이 급격하게 발전하면서 최근 국방 분야도 아군의 인력 손실이 없이 저비용으로 실시간 표적 관련 정보를 전달, 분석, 판단할 수 있는 첨단 정보 수집과 무력 투사 수단으로써 드론의 운용이 증가하고 있다.1) 또한, 높은 기동성과 접근성 갖춘 드론을 활용한 효과적이고 유연한 데이터 수집이 가능하여 컴퓨터 비전 및 원격 탐사 분야에서 드론을 이용한 연구가 활성화되면서 드론을 이용한 객체 인식 기술이 적극적으로 적용되고 있다(Wu et al., 2021).",
+    "raw": "4차 산업혁명시대에 드론 산업이 급격하게 발전하면서 최근 국방 분야도 아군의 인력 손실이 없이 저비용으로 실시간 표적 관련 정보를 전달, 분석, 판단할 수 있는 첨단 정보 수집과 무력 투사 수단으로써 드론의 운용이 증가하고 있다.1) 또한, 높은 기동성과 접근성 갖춘 드론을 활용한 효과적이고 유연한 데이터 수집이 가능하여 컴퓨터 비전 및 원격 탐사 분야에서 드론을 이용한 연구가 활성화되면서 드론을 이용한 객체 인식 기술이 적극적으로 적용되고 있다(Wu et al., 2021).",
+    "citation_text": "(Wu et al., 2021)",
+    "offset": [
+     251,
+     268
+    ],
+    "authors": [
+     "Wu et al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u14_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "이러한 객체 탐지 기술은 컴퓨터 비전에서 가장 중요하고 핵심적인 분야 중 하나이다(Liu et al.,2020).",
+    "raw": "이러한 객체 탐지 기술은 컴퓨터 비전에서 가장 중요하고 핵심적인 분야 중 하나이다(Liu et al.,2020).",
+    "citation_text": "(Liu et al.,2020)",
+    "offset": [
+     45,
+     62
+    ],
+    "authors": [
+     "Liu et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "또한 큰규모의 다양한 벤치마크 데이터 세트와 GPU를 이용한 향상된 컴퓨팅 성능을 기반으로 뛰어난 성능을 갖는 딥러닝 기반의 객체 탐지 기술들이 제안되고 있다(Pal, Pramanik, Maiti, & Mitra, 2021).하지만 일반적으로 제한된 시점만을 갖는 영상과는 달리, 드론으로 촬영된 항공 영상에는 작은 크기의 객체가 불균일하게 다수 존재하며 드론에 탑재된 카메라의 움직임에 의해 객체가 급격하게이동 및 회전하게 된다.",
+    "raw": "또한 큰규모의 다양한 벤치마크 데이터 세트와 GPU를 이용한 향상된 컴퓨팅 성능을 기반으로 뛰어난 성능을 갖는 딥러닝 기반의 객체 탐지 기술들이 제안되고 있다(Pal, Pramanik, Maiti, & Mitra, 2021).하지만 일반적으로 제한된 시점만을 갖는 영상과는 달리, 드론으로 촬영된 항공 영상에는 작은 크기의 객체가 불균일하게 다수 존재하며 드론에 탑재된 카메라의 움직임에 의해 객체가 급격하게이동 및 회전하게 된다.",
+    "citation_text": "(Pal, Pramanik, Maiti, & Mitra, 2021)",
+    "offset": [
+     88,
+     125
+    ],
+    "authors": [
+     "Pal"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "이외에도 모터의 진동에 의한 흔들림, 주변 환경에 따른 조도 변화 및 폐색등으로 인해 드론으로 촬영된 항공 영상에서의 객체 탐지 기술은 매우 도전적이고 복잡하다(Du etal., 2018).",
+    "raw": "이외에도 모터의 진동에 의한 흔들림, 주변 환경에 따른 조도 변화 및 폐색등으로 인해 드론으로 촬영된 항공 영상에서의 객체 탐지 기술은 매우 도전적이고 복잡하다(Du etal., 2018).",
+    "citation_text": "(Du etal., 2018)",
+    "offset": [
+     89,
+     105
+    ],
+    "authors": [
+     "Du etal."
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "또한 드론의 비행시간, 배터리 소모 등의 비행 성능에 미치는 영향을 최소화해야 하므로제한된 컴퓨팅 자원을 통해 빠른 처리 속도를 보장함과 동시에 객체 인식 성능을 최대화할 수 있는객체 탐지 모델이 요구된다(Lee, Kim, Kim, & Kwon, 2021).",
+    "raw": "또한 드론의 비행시간, 배터리 소모 등의 비행 성능에 미치는 영향을 최소화해야 하므로제한된 컴퓨팅 자원을 통해 빠른 처리 속도를 보장함과 동시에 객체 인식 성능을 최대화할 수 있는객체 탐지 모델이 요구된다(Lee, Kim, Kim, & Kwon, 2021).",
+    "citation_text": "(Lee, Kim, Kim, & Kwon, 2021)",
+    "offset": [
+     114,
+     143
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "각 구성 요소의 조합에 따라 다양한 객체 탐지 모델이 제시되고 있다(Guo et al., 2020).",
+    "raw": "각 구성 요소의 조합에 따라 다양한 객체 탐지 모델이 제시되고 있다(Guo et al., 2020).",
+    "citation_text": "(Guo et al., 2020)",
+    "offset": [
+     37,
+     55
+    ],
+    "authors": [
+     "Guo et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_6",
+    "kind": "parenthetical",
+    "sentence": "백본 네트워크는 객체 탐지에서 높은 탐지 정확도와 연산 효율성을 위해 입력 이미지로부터 높은 수준의 특징을 추출하는 역할을 한다(Lee, Kim, Kim, & Kwon, 2021).",
+    "raw": "백본 네트워크는 객체 탐지에서 높은 탐지 정확도와 연산 효율성을 위해 입력 이미지로부터 높은 수준의 특징을 추출하는 역할을 한다(Lee, Kim, Kim, & Kwon, 2021).",
+    "citation_text": "(Lee, Kim, Kim, & Kwon, 2021)",
+    "offset": [
+     71,
+     100
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_6",
+    "kind": "parenthetical",
+    "sentence": "대표적으로 ImageNet 데이터셋을 통해 사전에 학습된 VGGNet, ResNet, ResNeXt 등이 있으며, 이후 백본 네트워크의 높은 정확도를 얻기 위해 더 깊고 복잡한 모델들이 제안되었다(Bochkovskiy, Wang, & Liao, 2020).",
+    "raw": "대표적으로 ImageNet 데이터셋을 통해 사전에 학습된 VGGNet, ResNet, ResNeXt 등이 있으며, 이후 백본 네트워크의 높은 정확도를 얻기 위해 더 깊고 복잡한 모델들이 제안되었다(Bochkovskiy, Wang, & Liao, 2020).",
+    "citation_text": "(Bochkovskiy, Wang, & Liao, 2020)",
+    "offset": [
+     109,
+     142
+    ],
+    "authors": [
+     "Bochkovskiy"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_6",
+    "kind": "parenthetical",
+    "sentence": "기존의 백본 네트워크만으로 항공 영상과 같이 작은 물체를 포함하는 이미지에서 객체를 정확히탐지하는데 한계를 보인다(Ali et al., 2019).",
+    "raw": "기존의 백본 네트워크만으로 항공 영상과 같이 작은 물체를 포함하는 이미지에서 객체를 정확히탐지하는데 한계를 보인다(Ali et al., 2019).",
+    "citation_text": "(Ali et al., 2019)",
+    "offset": [
+     63,
+     81
+    ],
+    "authors": [
+     "Ali et al."
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_6",
+    "kind": "parenthetical",
+    "sentence": "이러한 넥 네트워크를 통해 이미지 내 존재하는 다양한 크기의 객체를 인식하기 위한 딥러닝 기반 객체 탐지 모델의 구성 요소로써 쓰인다(Zhu et al., 2022).",
+    "raw": "이러한 넥 네트워크를 통해 이미지 내 존재하는 다양한 크기의 객체를 인식하기 위한 딥러닝 기반 객체 탐지 모델의 구성 요소로써 쓰인다(Zhu et al., 2022).",
+    "citation_text": "(Zhu et al., 2022)",
+    "offset": [
+     74,
+     92
+    ],
+    "authors": [
+     "Zhu et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u14_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 문제점을 개선하기 위해 이후 제안된 Fast R-CNN(Girshick, 2015)은 기존의 R-CNN과 달리 먼저 전체 이미지에 대해 합성곱 신경망을 거쳐 피처맥을 생성한다.",
+    "raw": "이러한 문제점을 개선하기 위해 이후 제안된 Fast R-CNN(Girshick, 2015)은 기존의 R-CNN과 달리 먼저 전체 이미지에 대해 합성곱 신경망을 거쳐 피처맥을 생성한다.",
+    "citation_text": "(Girshick, 2015)",
+    "offset": [
+     34,
+     50
+    ],
+    "authors": [
+     "Girshick"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "그 이후 제안된 Faster R-CNN(Ren et al., 2015)에서는 기존의 후보 영역 제안 알고리즘을 GPU 연산이 가능한 합성곱 신경망 기반의 후보 영역 제안 네트워크 (Region Proposal Network, RPN) 로 대체하였다.",
+    "raw": "그 이후 제안된 Faster R-CNN(Ren et al., 2015)에서는 기존의 후보 영역 제안 알고리즘을 GPU 연산이 가능한 합성곱 신경망 기반의 후보 영역 제안 네트워크 (Region Proposal Network, RPN) 로 대체하였다.",
+    "citation_text": "(Ren et al., 2015)",
+    "offset": [
+     21,
+     39
+    ],
+    "authors": [
+     "Ren et al."
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u14_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_4",
+    "kind": "parenthetical",
+    "sentence": "현재까지도 정확성, 실시간성, 효율성 등 측면에서 여러 차례로 모델과 알고리즘이 업데이트되고 있으며, 최근 업데이트된 버전으로는 YOLO-v8까지 발표가 되었다 (Hussain, 2023).",
+    "raw": "현재까지도 정확성, 실시간성, 효율성 등 측면에서 여러 차례로 모델과 알고리즘이 업데이트되고 있으며, 최근 업데이트된 버전으로는 YOLO-v8까지 발표가 되었다 (Hussain, 2023).",
+    "citation_text": "(Hussain, 2023)",
+    "offset": [
+     90,
+     105
+    ],
+    "authors": [
+     "Hussain"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_4",
+    "kind": "parenthetical",
+    "sentence": "& Farhadi, 2018)의 경우에 피처맥의 크기를 세 가지로 나누어 작은 객체에 대한 탐지 성능을 개선했으며, YOLO-v5 (Hussain, 2023)의 경우에는 경량화 모델 기법을 통해 정확도를 유지한 채 모델의 크기와 속도에 대한 효율성을 증대시켰다.",
+    "raw": "& Farhadi, 2018)의 경우에 피처맥의 크기를 세 가지로 나누어 작은 객체에 대한 탐지 성능을 개선했으며, YOLO-v5 (Hussain, 2023)의 경우에는 경량화 모델 기법을 통해 정확도를 유지한 채 모델의 크기와 속도에 대한 효율성을 증대시켰다.",
+    "citation_text": "(Hussain, 2023)",
+    "offset": [
+     73,
+     88
+    ],
+    "authors": [
+     "Hussain"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u13_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_2",
+    "kind": "parenthetical",
+    "sentence": "이후 이런 한계를 개선한 CenterNet(Duan et al., 2019)은 객체의 중심점을 기준으로 객체를 탐지하는 방법을 제안하였다.",
+    "raw": "이후 이런 한계를 개선한 CenterNet(Duan et al., 2019)은 객체의 중심점을 기준으로 객체를 탐지하는 방법을 제안하였다.",
+    "citation_text": "(Duan et al., 2019)",
+    "offset": [
+     23,
+     42
+    ],
+    "authors": [
+     "Duan et al."
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u12_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

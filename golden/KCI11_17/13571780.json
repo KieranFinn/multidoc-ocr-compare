@@ -1,0 +1,2953 @@
+{
+ "doc": "13571780",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571780",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "임수근(2022.11.27.). 우크라전쟁, 2차 대전 이후 최대 소모전...무기<sup>⋅</sup>탄약 생산에 불똥. YTN.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1309.0,
+     997.9,
+     1390.2
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "임수근"
+    ],
+    "authors_raw": "임수근",
+    "et_al": false,
+    "year": "2022",
+    "title": "11.27.). 우크라전쟁",
+    "source": "2차 대전 이후 최대 소모전...무기<sup>⋅</sup>탄약 생산에 불똥. YTN",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "이순민(2023.05.23.). 귤현동 탄약부대, 이전 후보지 찾는다. https://www.incheonilbo.com/news/articleView.html?idxno=1195015",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1309.0,
+     997.9,
+     1390.2
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "이순민"
+    ],
+    "authors_raw": "이순민",
+    "et_al": false,
+    "year": "2023",
+    "title": "05.23.). 귤현동 탄약부대",
+    "source": "이전 후보지 찾는다. https://www.incheonilbo.com/news/articleView.html?idxno=1195015",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방부(2022). 2022년도 성과관리 시행계획(p.92). https://www.evaluation.go.kr/upload2/atch/eval/202208291217 50397.pdf",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1309.0,
+     997.9,
+     1390.2
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2022",
+    "title": "2022년도 성과관리 시행계획(p.92). https://www.evaluation.go.kr/upload2/atch/eval/202208291217 50397.pdf",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "국유재산 기부 대 양여 사업관리 지침(기획재정부훈령 제389호, 2018.9.6.).",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1309.0,
+     997.9,
+     1390.2
+    ],
+    "uid": "u1_6",
+    "authors": [
+     "국유재산 기부 대 양여 사업관리 지침(기획재정부훈령 제389호"
+    ],
+    "authors_raw": "국유재산 기부 대 양여 사업관리 지침(기획재정부훈령 제389호",
+    "et_al": false,
+    "year": "2018",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": "389",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "2차 세계대전 당시 무기 제조 기술이 세계 최고 수준이었던 독일의 전쟁 영향 롬멜은 “전쟁이나 전투에 있어서 승패는 전장에 참여하는 병력 규모에 의해 결정되는 것이 아니라, 전투가 시작되기 전에 보유한 탄약에 의해 결정된다.”라고 했다(김병규, 2022).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.0,
+     1340.4,
+     1000.1,
+     1420.0
+    ],
+    "uid": "u2_5",
+    "authors": [
+     "2차",
+     "세계대전",
+     "당시",
+     "무기",
+     "제조",
+     "기술이",
+     "세계",
+     "최고",
+     "수준이었던",
+     "독일의",
+     "전쟁",
+     "영향",
+     "롬멜은"
+    ],
+    "authors_raw": "2차 세계대전 당시 무기 제조 기술이 세계 최고 수준이었던 독일의 전쟁 영향 롬멜은",
+    "et_al": false,
+    "year": "2022",
+    "title": "전쟁이나 전투에 있어서 승패는 전장에 참여하는 병력 규모에 의해 결정되는 것이 아니라, 전투가 시작되기 전에 보유한 탄약에 의해 결정된다.",
+    "source": "라고 했다(김병규",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "나종철, 백인성, 김윤호, 노우주(2012). 북한의 미사일 위협에 대비한 우리의 탄약기술 동향과 발전방향. 국방과 기술, 400, 80-99.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1281.9,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u3_4",
+    "authors": [
+     "나종철",
+     "백인성",
+     "김윤호",
+     "노우주"
+    ],
+    "authors_raw": "나종철, 백인성, 김윤호, 노우주",
+    "et_al": false,
+    "year": "2012",
+    "title": "북한의 미사일 위협에 대비한 우리의 탄약기술 동향과 발전방향. 국방과 기술",
+    "source": "400",
+    "volume": null,
+    "issue": null,
+    "pages": "80-99",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "이러한 임무를 담당하고 있는 것이 전방지역에는 탄약보급소(ASP Ammunition Supply Point : 전투와 훈련에 사용되는 탄약을 저장하고 관리하는 중대급 규모의 탄약부대)이며, 후방지역에는 탄약장이다. 폭발에 대비하여 안전거리를 확보해야 하므로 탄약보급소는 대략 00만 평 규모로, 탄약장은 대략 000만 평 정도의 부지를 점유하고 있음.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1281.9,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u3_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "000ASP : 안전거리 약 75% 감소로 주변 민간지역과의 안전기준 미충족 해소가 가능함.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     146.9,
+     1334.7,
+     838.6,
+     1391.4
+    ],
+    "uid": "u4_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "고가탄약 수명연장방안 연구결과(기품원)로 유도탄 상대습도 40% 유지할 경우에 1.48배 탄약수명 연장 효과가 있는 것으로 확인됨.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     146.9,
+     1334.7,
+     838.6,
+     1391.4
+    ],
+    "uid": "u4_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "국방 탄약 및 폭발물 안전관리 훈령(국방부 훈령 제1794호, 2015.5.21.).",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     146.9,
+     1334.7,
+     838.6,
+     1391.4
+    ],
+    "uid": "u4_7",
+    "authors": [
+     "국방 탄약 및 폭발물 안전관리 훈령(국방부 훈령 제1794호"
+    ],
+    "authors_raw": "국방 탄약 및 폭발물 안전관리 훈령(국방부 훈령 제1794호",
+    "et_al": false,
+    "year": "2015",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": "1794",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "국방부(2021). 전평시 효율적인 탄약지원을 위한 스마트물류체계 적용방안 연구. 국방부 연구보고서.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     147.0,
+     1395.6,
+     922.4,
+     1421.1
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2021",
+    "title": "전평시 효율적인 탄약지원을 위한 스마트물류체계 적용방안 연구. 국방부 연구보고서",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "Ammunition Stockpile Reliability Program : 저장 탄약의 사용 가능성, 안전성, 성능 등을 평가하여 탄약의 정비<sup>⋅</sup>개수<sup>⋅</sup>보급 등의 결정을 위한 자료를 제공하여 탄약의 신뢰성을 확보하기 위해 실시하는 종합적인 평가 시스템",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     938.2,
+     1000.1,
+     1421.4
+    ],
+    "uid": "u9_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "황진섭, 김준(2024). IoT 기술을 접목한 군 차량 위치 상태 감시체계 개발 사례. 한국통신학회지(정보와통신), 민국IT융합 최신연구, 25-30.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     147.0,
+     1311.2,
+     1000.1,
+     1417.7
+    ],
+    "uid": "u10_2",
+    "authors": [
+     "황진섭",
+     "김준"
+    ],
+    "authors_raw": "황진섭, 김준",
+    "et_al": false,
+    "year": "2024",
+    "title": "IoT 기술을 접목한 군 차량 위치 상태 감시체계 개발 사례. 한국통신학회지(정보와통신)",
+    "source": "민국IT융합 최신연구",
+    "volume": null,
+    "issue": null,
+    "pages": "25-30",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "최선락, 김용, 임진한(2020). 국방 군수와 빅데이터의 만남 · · [최적, 예측 중심] 으로 도약을 준비한다.(Ⅱ). 국방과 기술, (498), 120-133.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     147.0,
+     1311.2,
+     1000.1,
+     1417.7
+    ],
+    "uid": "u10_2",
+    "authors": [
+     "최선락",
+     "김용",
+     "임진한"
+    ],
+    "authors_raw": "최선락, 김용, 임진한",
+    "et_al": false,
+    "year": "2020",
+    "title": "국방 군수와 빅데이터의 만남 · · [최적",
+    "source": "예측 중심] 으로 도약을 준비한다.(Ⅱ). 국방과 기술",
+    "volume": null,
+    "issue": null,
+    "pages": "120-133",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "홍종현, 김강현(2020). 스마트 국방혁신의 군수분야 과제. 국방논단, 제1800호(20-17), 1-9.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     144.1,
+     1394.5,
+     842.4,
+     1420.8
+    ],
+    "uid": "u11_4",
+    "authors": [
+     "홍종현",
+     "김강현"
+    ],
+    "authors_raw": "홍종현, 김강현",
+    "et_al": false,
+    "year": "2020",
+    "title": "스마트 국방혁신의 군수분야 과제. 국방논단",
+    "source": "제1800호(20-17)",
+    "volume": null,
+    "issue": "1800",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "정재웅(2024.03.08.). NATO 규정을 통해 본 지하형탄약고 구조 개선방향. 국방논단, 제1981(24-9), 1-10.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     143.2,
+     1365.3,
+     947.2,
+     1419.5
+    ],
+    "uid": "u12_5",
+    "authors": [
+     "정재웅"
+    ],
+    "authors_raw": "정재웅",
+    "et_al": false,
+    "year": "2024",
+    "title": "03.08.). NATO 규정을 통해 본 지하형탄약고 구조 개선방향. 국방논단",
+    "source": "제1981(24-9)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "국방부(2022.08.29.). 2022년도 성과관리 시행계획.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     143.2,
+     1365.3,
+     947.2,
+     1419.5
+    ],
+    "uid": "u12_5",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2022",
+    "title": "08.29.). 2022년도 성과관리 시행계획",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "국방부(2021)., 전평시 효율적인 탄약지원을 위한 스마트물류체계 적용방안 연구. 국방부 연구보고서.",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1395.3,
+     925.7,
+     1420.8
+    ],
+    "uid": "u13_8",
+    "authors": [
+     "국방부"
+    ],
+    "authors_raw": "국방부",
+    "et_al": false,
+    "year": "2021",
+    "title": "전평시 효율적인 탄약지원을 위한 스마트물류체계 적용방안 연구. 국방부 연구보고서",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 18,
+   "per_page": {
+    "2": 4,
+    "3": 1,
+    "4": 2,
+    "5": 3,
+    "6": 1,
+    "10": 1,
+    "11": 2,
+    "12": 1,
+    "13": 2,
+    "14": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ]
+    },
+    "3": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "4": {
+     "markers": [
+      "6",
+      "7"
+     ],
+     "collected": [
+      "6",
+      "7"
+     ]
+    },
+    "5": {
+     "markers": [
+      "8",
+      "9",
+      "10"
+     ],
+     "collected": [
+      "8",
+      "9",
+      "10"
+     ]
+    },
+    "6": {
+     "markers": [
+      "11"
+     ],
+     "collected": [
+      "11"
+     ]
+    },
+    "10": {
+     "markers": [
+      "12"
+     ],
+     "collected": [
+      "12"
+     ]
+    },
+    "11": {
+     "markers": [
+      "13",
+      "14"
+     ],
+     "collected": [
+      "13",
+      "14"
+     ]
+    },
+    "12": {
+     "markers": [
+      "15"
+     ],
+     "collected": [
+      "15"
+     ]
+    },
+    "13": {
+     "markers": [
+      "16",
+      "17"
+     ],
+     "collected": [
+      "16",
+      "17"
+     ]
+    },
+    "14": {
+     "markers": [
+      "18"
+     ],
+     "collected": [
+      "18"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ahn, H. C., Kim, J. H., Kim, K. J., & Park, Y. J. (2020). The Study on the Necessity for Implementation of Underground-type Ammunition Storage Facility. Journal of the Korea Institute of Building Construction, 20(1), 19-23. UCI: I410-ECN-0102-2021-500-000974720",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Ahn H. C",
+     "Kim J. H",
+     "Kim K. J",
+     "Park Y. J"
+    ],
+    "authors_raw": "Ahn, H. C., Kim, J. H., Kim, K. J., & Park, Y. J",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Study on the Necessity for Implementation of Underground-type Ammunition Storage Facility. Journal of the Korea Institute of Building Construction",
+    "source": "20(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "19-23",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ahn, N., Kim, J., Kim, M., & Lee, J. (2019). Case study on quality prediction of the ammunition stockpile reliability program based on a small amount of discontinuous data. Journal of Advances in Military Studies, 2(1), 1-14. https://doi.org/10.37944/jams.v2i1.39",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Ahn N",
+     "Kim J",
+     "Kim M",
+     "Lee J"
+    ],
+    "authors_raw": "Ahn, N., Kim, J., Kim, M., & Lee, J",
+    "et_al": false,
+    "year": "2019",
+    "title": "Case study on quality prediction of the ammunition stockpile reliability program based on a small amount of discontinuous data. Journal of Advances in Military Studies",
+    "source": "2(1)",
+    "volume": "2",
+    "issue": null,
+    "pages": "1-14",
+    "doi": "10.37944/jams.v2i1.39",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Baek. J. U., Park, S. W., Park, Y. J. (2020). Safety Distance of Underground-type Ammunition Storage Facility. Journal of the Korea Institute of Building Construction, 20(1), 13-18. UCI: I410-ECN-0102-2021-500-000974715",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Baek. J. U",
+     "Park S. W",
+     "Park Y. J"
+    ],
+    "authors_raw": "Baek. J. U., Park, S. W., Park, Y. J",
+    "et_al": false,
+    "year": "2020",
+    "title": "Safety Distance of Underground-type Ammunition Storage Facility. Journal of the Korea Institute of Building Construction",
+    "source": "20(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "13-18",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, J. G., Kim, B. K., & Chang, Y. S. (2022). Building plan research of Smart Ammunition Logistics System based on the 4th industrial technology. Journal of Internet Computing and Services, 23(1), 135-145. https://doi.org/10.7472/jksii.2022.23.1.135",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Choi J. G",
+     "Kim B. K",
+     "Chang Y. S"
+    ],
+    "authors_raw": "Choi, J. G., Kim, B. K., & Chang, Y. S",
+    "et_al": false,
+    "year": "2022",
+    "title": "Building plan research of Smart Ammunition Logistics System based on the 4th industrial technology. Journal of Internet Computing and Services",
+    "source": "23(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "135-145",
+    "doi": "10.7472/jksii.2022.23.1.135",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, K., Oh, S., & Sohn, C. (2020). Application of OpenPose and deep learning for intelligent surveillance reconnaissance system. Journal of Advances in Military Studies, 3(3), 113-132. https://doi.org/10.37944/jams.v3i3.80",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Choi K",
+     "Oh S",
+     "Sohn C"
+    ],
+    "authors_raw": "Choi, K., Oh, S., & Sohn, C",
+    "et_al": false,
+    "year": "2020",
+    "title": "Application of OpenPose and deep learning for intelligent surveillance reconnaissance system. Journal of Advances in Military Studies",
+    "source": "3(3)",
+    "volume": "3",
+    "issue": null,
+    "pages": "113-132",
+    "doi": "10.37944/jams.v3i3.80",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, S. C., Bae, Y. H., & Kim. D. E. (2005). A Study on the Development of ASRP for Improvement of the Stockpile Ammunition Reliability. Journal of the Korea Institute of Military Science and Technology, 8(4), 32-40. UCI: G704-001584.2005.8.4.001",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Choi S. C",
+     "Bae Y. H",
+     "Kim. D. E"
+    ],
+    "authors_raw": "Choi, S. C., Bae, Y. H., & Kim. D. E",
+    "et_al": false,
+    "year": "2005",
+    "title": "A Study on the Development of ASRP for Improvement of the Stockpile Ammunition Reliability. Journal of the Korea Institute of Military Science and Technology",
+    "source": "8(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "32-40",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, S. H., & Lee, S. B. (2017). Analysis of \\triangle \\triangleGuided Missile Inspection Period Based on Storage Reliability. Journal of Korea Academia-Industrial cooperation Society, 18(4), 592-598. https://doi.org/10.5762/KAIS.2017.18.4.592",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Jung S. H",
+     "Lee S. B"
+    ],
+    "authors_raw": "Jung, S. H., & Lee, S. B",
+    "et_al": false,
+    "year": "2017",
+    "title": "Analysis of \\triangle \\triangleGuided Missile Inspection Period Based on Storage Reliability. Journal of Korea Academia-Industrial cooperation Society",
+    "source": "18(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "592-598",
+    "doi": "10.5762/KAIS.2017.18.4.592",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. K. (2022a). Logistics Development Plan for Underground Ammunition Depots based on Network. Journal of Internet Computing and Services, 23(3), 137-146. https://doi.org/10.7472/ jksii.2022.23.3.137",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim"
+    ],
+    "authors_raw": "Kim",
+    "et_al": false,
+    "year": "2022",
+    "title": "B. K. (2022a). Logistics Development Plan for Underground Ammunition Depots based on Network. Journal of Internet Computing and Services",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "137-146",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. K. (2022b). A study on the smartization of underground ammunition storage using the 4th Industrial revolution technology. [Doctoral dissertation, Kwangwoon University.",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim B. K"
+    ],
+    "authors_raw": "Kim, B. K",
+    "et_al": false,
+    "year": "2022",
+    "title": "A study on the smartization of underground ammunition storage using the 4th Industrial revolution technology. [Doctoral dissertation",
+    "source": "Kwangwoon University",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D. H. (2003). De-humidification and Ventilation Design of Underground Ammunition Depot, Journal of the Korean Tunnel Underground Space Society, 5(2), 71-81. Retrieved from https://www.apub.kr/ebook/jkta/tunnel_5-2/tunnel_5-2.pdf",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim D. H"
+    ],
+    "authors_raw": "Kim, D. H",
+    "et_al": false,
+    "year": "2003",
+    "title": "De-humidification and Ventilation Design of Underground Ammunition Depot",
+    "source": "Journal of the Korean Tunnel Underground Space Society",
+    "volume": null,
+    "issue": null,
+    "pages": "71-81",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. H., Lee, H. K., Park, H. K., Park, C. S., & Kwak, J. S. (2004). Studies on ASP Ammo Issue using Simulation. Journal of the Military Operations Research Society of Korea, 30(1), 92-106. Retrieved from https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sere ArticleSearchBean.artiId=ART001178110",
+    "page": 16,
+    "box": [
+     144.7,
+     783.7,
+     1000.1,
+     1194.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim J. H",
+     "Lee H. K",
+     "Park H. K",
+     "Park C. S",
+     "Kwak J. S"
+    ],
+    "authors_raw": "Kim, J. H., Lee, H. K., Park, H. K., Park, C. S., & Kwak, J. S",
+    "et_al": false,
+    "year": "2004",
+    "title": "Studies on ASP Ammo Issue using Simulation. Journal of the Military Operations Research Society of Korea",
+    "source": "30(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "92-106",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. S., Joo, E. W., & Joo, I. H. (2023). Analysis of Perception Types on Research and Development Programs of Creative and Challenging Defense Science and Technology using Q Methodology. Journal of the Korea Association of Defense Industry Studies, 30(2), 89-109. https://doi.org/10.52798/KADIS.2023.30.2.7",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Kim J. S",
+     "Joo E. W",
+     "Joo I. H"
+    ],
+    "authors_raw": "Kim, J. S., Joo, E. W., & Joo, I. H",
+    "et_al": false,
+    "year": "2023",
+    "title": "Analysis of Perception Types on Research and Development Programs of Creative and Challenging Defense Science and Technology using Q Methodology. Journal of the Korea Association of Defense Industry Studies",
+    "source": "30(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "89-109",
+    "doi": "10.52798/KADIS.2023.30.2.7",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. Y., & Moon, S. A. (2020). A Study of Army Ammunition Supply Chain Resilience in Wartime. Korean Journal of Logistics, 28(6), 71-83. https://doi.org/10.15735/kls.2020.28.6.006",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Kim J. Y",
+     "Moon S. A"
+    ],
+    "authors_raw": "Kim, J. Y., & Moon, S. A",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study of Army Ammunition Supply Chain Resilience in Wartime. Korean Journal of Logistics",
+    "source": "28(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "71-83",
+    "doi": "10.15735/kls.2020.28.6.006",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, K., Ahn, H., & Park, Y. J. (2021). Future and Innovative Design Requirements Applying Industry 4.0 Technologies on Underground Ammunition Storage. Applied System Innovation, 4(1), 22. https://doi.org/10.3390/asi4010022",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Kim K",
+     "Ahn H",
+     "Park Y. J"
+    ],
+    "authors_raw": "Kim, K., Ahn, H., & Park, Y. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Future and Innovative Design Requirements Applying Industry 4.0 Technologies on Underground Ammunition Storage. Applied System Innovation",
+    "source": "4(1)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.3390/asi4010022",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. J., & Cho, H. C. (2020). Detecting Location of Fire in Video Stream Environment using Deep Learning. The Transactions of the Korean Institute of Electrical Engineers, 69(3), 474-479. https://doi.org/10.5370/KIEE.2020.69.3.474",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Kim Y. J",
+     "Cho H. C"
+    ],
+    "authors_raw": "Kim, Y. J., & Cho, H. C",
+    "et_al": false,
+    "year": "2020",
+    "title": "Detecting Location of Fire in Video Stream Environment using Deep Learning. The Transactions of the Korean Institute of Electrical Engineers",
+    "source": "69(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "474-479",
+    "doi": "10.5370/KIEE.2020.69.3.474",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lai, H. H. (2020). Applicability of a design assessment and management for the current ammunition depots in Taiwan. Applied Sciences, 10(3), 1041. https://doi.org/10.3390/app10031041",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Lai H. H"
+    ],
+    "authors_raw": "Lai, H. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "Applicability of a design assessment and management for the current ammunition depots in Taiwan. Applied Sciences",
+    "source": "10(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.3390/app10031041",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, C. H., Choi, S. W., Kang, T. H., Jeon, J. O., & Ahn, C. J. (2019). Investigation for Applicability of Bluetooth Mesh Networking in Underground Space. TUNNEL AND UNDERGROUND SPACE, 29(6), 367-378. DOI : 10.7474/TUS.2019.29.6.367",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Lee C. H",
+     "Choi S. W",
+     "Kang T. H",
+     "Jeon J. O",
+     "Ahn C. J"
+    ],
+    "authors_raw": "Lee, C. H., Choi, S. W., Kang, T. H., Jeon, J. O., & Ahn, C. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "Investigation for Applicability of Bluetooth Mesh Networking in Underground Space. TUNNEL AND UNDERGROUND SPACE",
+    "source": "29(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "367-378",
+    "doi": "10.7474/TUS.2019.29.6.367",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, E. J. (2021). A Study on Application and Utilization method of Smart Logistics. Journal of International Trade and Insurance, 22(1), 69-84. https://doi.org/10.22875/jiti.2021.22.1.005",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Lee E. J"
+    ],
+    "authors_raw": "Lee, E. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on Application and Utilization method of Smart Logistics. Journal of International Trade and Insurance",
+    "source": "22(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "69-84",
+    "doi": "10.22875/jiti.2021.22.1.005",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, W. J., & Son, C. H. (2022). Study on Upgrading the Scientific Boundary Monitoring System: Focusing on Image Data Analysis. Journal of the Korea Academia-Industrial cooperation Society, 23(6), 144-150. https://doi.org/10.5762/KAIS.2022.23.6.144",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Lee W. J",
+     "Son C. H"
+    ],
+    "authors_raw": "Lee, W. J., & Son, C. H",
+    "et_al": false,
+    "year": "2022",
+    "title": "Study on Upgrading the Scientific Boundary Monitoring System: Focusing on Image Data Analysis. Journal of the Korea Academia-Industrial cooperation Society",
+    "source": "23(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "144-150",
+    "doi": "10.5762/KAIS.2022.23.6.144",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ministry of National Defense (MND). (2019). Ammunition and Explosives Safety Management Guidelines.",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Ministry",
+     "of",
+     "National",
+     "Defense",
+     "(MND)"
+    ],
+    "authors_raw": "Ministry of National Defense (MND)",
+    "et_al": false,
+    "year": "2019",
+    "title": "Ammunition and Explosives Safety Management Guidelines",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ministry of National Defense (MND). (2021). A Study on the Application of Smart Logistics System for Efficient Ammunition Support in War and Peace time.",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Ministry",
+     "of",
+     "National",
+     "Defense",
+     "(MND)"
+    ],
+    "authors_raw": "Ministry of National Defense (MND)",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Application of Smart Logistics System for Efficient Ammunition Support in War and Peace time",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, S. W., Jun, J. H., Choi, H. S., & Park, Y. J. (2020). Study for Reducing Safety Distance by Installing Ammunition Storage Facility in Underground. Journal of the Korea Institute of Building Construction, 20(3), 253-260. https://doi.org/10.5345/JKIBC.2020.20.3.253",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Park S. W",
+     "Jun J. H",
+     "Choi H. S",
+     "Park Y. J"
+    ],
+    "authors_raw": "Park, S. W., Jun, J. H., Choi, H. S., & Park, Y. J",
+    "et_al": false,
+    "year": "2020",
+    "title": "Study for Reducing Safety Distance by Installing Ammunition Storage Facility in Underground. Journal of the Korea Institute of Building Construction",
+    "source": "20(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "253-260",
+    "doi": "10.5345/JKIBC.2020.20.3.253",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, S. W., Kim. K. J., & Park. Y. J. (2019). Safety Evaluation Method for Ground Ammunition and Explosive Storage Facilities due to Underground Tunnel Blast. Journal of the Korea",
+    "page": 17,
+    "box": [
+     146.2,
+     825.6,
+     1000.1,
+     995.3
+    ],
+    "uid": "u16_1",
+    "authors": [
+     "Park S. W",
+     "Kim. K. J",
+     "Park. Y. J"
+    ],
+    "authors_raw": "Park, S. W., Kim. K. J., & Park. Y. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "Safety Evaluation Method for Ground Ammunition and Explosive Storage Facilities due to Underground Tunnel Blast. Journal of the Korea",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Institute of Building Construction, 19(4), 331-339. https://doi.org/10.5345/JKIBC.2019.19.4.331",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Institute of Building Construction"
+    ],
+    "authors_raw": "Institute of Building Construction",
+    "et_al": false,
+    "year": "2019",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "331-339",
+    "doi": "10.5345/JKIBC.2019.19.4.331",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Republic of Korea Army (ROKA). (2014). Field manual about ammunition unit.",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Republic",
+     "of",
+     "Korea",
+     "Army",
+     "(ROKA)"
+    ],
+    "authors_raw": "Republic of Korea Army (ROKA)",
+    "et_al": false,
+    "year": "2014",
+    "title": "Field manual about ammunition unit",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Republic of Korea Army (ROKA). (2015). Field manual on ammunition duty.",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Republic",
+     "of",
+     "Korea",
+     "Army",
+     "(ROKA)"
+    ],
+    "authors_raw": "Republic of Korea Army (ROKA)",
+    "et_al": false,
+    "year": "2015",
+    "title": "Field manual on ammunition duty",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Saaty, T. L. (2008). Decision making with the analytic hierarchy process. International Journal of Services Sciences, 1(1), 83-98. https://doi.org/10.1504/IJSSCI.2008.017590",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Saaty T. L"
+    ],
+    "authors_raw": "Saaty, T. L",
+    "et_al": false,
+    "year": "2008",
+    "title": "Decision making with the analytic hierarchy process. International Journal of Services Sciences",
+    "source": "1(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "83-98",
+    "doi": "10.1504/IJSSCI.2008.017590",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shim, Y. J., Choi, J. S., & Park, S. H. (2020). A Study on the Improvement of Reliability Analysis Model for the Guided Missile System. In Proceedings of the Korean Society for Quality management conference, 107-107.",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Shim Y. J",
+     "Choi J. S",
+     "Park S. H"
+    ],
+    "authors_raw": "Shim, Y. J., Choi, J. S., & Park, S. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Improvement of Reliability Analysis Model for the Guided Missile System. In Proceedings of the Korean Society for Quality management conference",
+    "source": "107-107",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, H. J. (2020). A Study on Trends in the Use of Logistics Technology based on the 4th Industrial Revolution. The e-Business Studies, 21(2), 17-27. https://doi.org/10.20462/TeBS.2020.04.21.2.17",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Shin H. J"
+    ],
+    "authors_raw": "Shin, H. J",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on Trends in the Use of Logistics Technology based on the 4th Industrial Revolution. The e-Business Studies",
+    "source": "21(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "17-27",
+    "doi": "10.20462/TeBS.2020.04.21.2.17",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wang, G., Cao, A., Wang, X., Yu, R., Huang, X., & Lin, J. (2021). Numerical simulation of the dynamic responses and damage of underground cavern under multiple explosion sources. Engineering Failure Analysis, 120, 105085. https://doi.org/10.1016/j.engfailanal.2020.105085",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Wang G",
+     "Cao A",
+     "Wang X",
+     "Yu R",
+     "Huang X",
+     "Lin J"
+    ],
+    "authors_raw": "Wang, G., Cao, A., Wang, X., Yu, R., Huang, X., & Lin, J",
+    "et_al": false,
+    "year": "2021",
+    "title": "Numerical simulation of the dynamic responses and damage of underground cavern under multiple explosion sources. Engineering Failure Analysis",
+    "source": "120",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1016/j.engfailanal.2020.105085",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wang, Y. W., Yang, Y. Z., Zou, G. W., Dong, H., & Huo, Y. (2021). Pressure relief of underground ammunition storage under missile accidental ignition. Defence Technology, 17(3), 1081-1093. https://doi.org/10.1016/j.dt.2021.01.002",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Wang Y. W",
+     "Yang Y. Z",
+     "Zou G. W",
+     "Dong H",
+     "Huo Y"
+    ],
+    "authors_raw": "Wang, Y. W., Yang, Y. Z., Zou, G. W., Dong, H., & Huo, Y",
+    "et_al": false,
+    "year": "2021",
+    "title": "Pressure relief of underground ammunition storage under missile accidental ignition. Defence Technology",
+    "source": "17(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "1081-1093",
+    "doi": "10.1016/j.dt.2021.01.002",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Zhou, Y., Teo, T. Y., & Cai, J. G. (2017). Rock engineering practice for development of underground caverns in Singapore. In GeoSS 10th Anniversary Conference, Singapore. Retrieved from https://www.researchgate.net/profile/Yingxin-Zhou/publication/321480353_Rock_Engineering_Practice_for_Development_of_Underground_Caverns_in_Singapore/links/5a237a9b4585155dd41cc04/Rock-Engineering-Practice-for-Development-of-Underground-Caverns-in-Singapore.pdf",
+    "page": 18,
+    "box": [
+     143.8,
+     333.5,
+     1000.1,
+     675.3
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Zhou Y",
+     "Teo T. Y",
+     "Cai J. G"
+    ],
+    "authors_raw": "Zhou, Y., Teo, T. Y., & Cai, J. G",
+    "et_al": false,
+    "year": "2017",
+    "title": "Rock engineering practice for development of underground caverns in Singapore. In GeoSS 10th Anniversary Conference",
+    "source": "Singapore. Retrieved from https://www.researchgate.net/profile/Yingxin-Zhou/publication/321480353_Rock_Engineering_Practice_for_Development_of_Underground_Caverns_in_Singapore/links/5a237a9b4585155dd41cc04/Rock-Engineering-Practice-for-Development-of-Underground-Caverns-in-Singapore.pdf",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Smartization strategy for underground ammunition depots toward the adoption of the technologies of the Fourth Industrial Revolution",
+   "page": 1,
+   "box": [
+    169.5,
+    395.3,
+    972.0,
+    511.8
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Byungkyoo",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     399.0,
+     536.3,
+     744.9,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Lee, Sukjun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     399.0,
+     536.3,
+     744.9,
+     564.9
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Kwangwoon University",
+   "Department of Business Administration",
+   "Sungkyunkwan University",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "Due to economic changes and population growth, the facilities in military need to be changed, and in particular, ammunition depots for wartime occupy a large number of sites, so management policies need to be improved. The Ministry of National Defense is presenting the design of the underground ammunition depot according to the guidelines, but concrete improvements are needed in consideration of wartime preparation. Our study aims to explore the importance and priorities of how to utilize the technology of the 4th Industrial Revolution necessary for smartization of underground ammunition depots for implementing Defense Innovation 4.0. To this end, the present study conducted an AHP analysis based on the criteria (guard, safety, environment, logistics system, equipment facilities, and life management) to be considered as a smartization plan for underground ammunition depots, and the need to apply it in the relative importance of AI, IoT, big data, cloud, and robots was confirmed. As a result of the analysis, this paper has shown that it is necessary to strengthen the safety and guard-related systems of underground ammunition depots in the future, and to monitor the condition of ammunition using IoT and AI and pursue efficient operation. This study provides practical and academical considerations for future research. priority determination and policy implementation using the 4th Industrial Revolution technology are required for the effective construction and operation of smart underground ammunition depots. Subsequent studies need to expand the underground ammunition depot in consideration of the characteristics of the weapon system, taking into account the safety and availability considering the total cycle.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Due to economic changes and population growth, the facilities in military need to be changed, and in particular, ammunition depots for wartime occupy a large number of sites, so management policies need to be improved. The Ministry of National Defense is presenting the design of the underground ammunition depot according to the guidelines, but concrete improvements are needed in consideration of wartime preparation. Our study aims to explore the importance and priorities of how to utilize the technology of the 4th Industrial Revolution necessary for smartization of underground ammunition depots for implementing Defense Innovation 4.0. To this end, the present study conducted an AHP analysis based on the criteria (guard, safety, environment, logistics system, equipment facilities, and life management) to be considered as a smartization plan for underground ammunition depots, and the need to apply it in the relative importance of AI, IoT, big data, cloud, and robots was confirmed. As a result of the analysis, this paper has shown that it is necessary to strengthen the safety and guard-related systems of underground ammunition depots in the future, and to monitor the condition of ammunition using IoT and AI and pursue efficient operation. This study provides practical and academical considerations for future research. priority determination and policy implementation using the 4th Industrial Revolution technology are required for the effective construction and operation of smart underground ammunition depots. Subsequent studies need to expand the underground ammunition depot in consideration of the characteristics of the weapon system, taking into account the safety and availability considering the total cycle.",
+   "page": 1,
+   "box": [
+    189.0,
+    615.8,
+    309.4,
+    642.0
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : ammunition management, smartization of underground ammunition depot, technology of the forth Industrial Revolution, analytic hierarchy process (AHP)"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2024,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 7,
+   "uid": "u1_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "23-41",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "탄약관리",
+   "지하형 탄약고의 스마트화",
+   "4차 산업혁명 기술",
+   "계층화분석기법"
+  ],
+  "keywords_en": [
+   "ammunition management",
+   "smartization of underground ammunition depot",
+   "technology of the forth Industrial Revolution",
+   "analytic hierarchy process (AHP)"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이런 점에서 탄약은 전시에 긴급히 필요하다고 해서 단기간에 확보하기가 매우 제한적이며, 탄약은 생산 직후에 장기간 보관하여 사용되므로 저장기간이 경과하면서 저장 탄약고의 온도·습도 변화에 따라 성능이 저하될 수 있다 (Park, Kim, & Park, 2019).",
+    "raw": "이런 점에서 탄약은 전시에 긴급히 필요하다고 해서 단기간에 확보하기가 매우 제한적이며, 탄약은 생산 직후에 장기간 보관하여 사용되므로 저장기간이 경과하면서 저장 탄약고의 온도·습도 변화에 따라 성능이 저하될 수 있다 (Park, Kim, & Park, 2019).",
+    "citation_text": "(Park, Kim, & Park, 2019)",
+    "offset": [
+     121,
+     146
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u16_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "실제 2015년에 국방부와 지방자치단체 OO시는 상호 합의각서를 체결하여 기부 대 양여방식4)으로 지하형 탄약고를 신축하였고, 2017년 국방부는 OO시로부터 지하형 탄약고를 기부받아 현재까지 안전·시설 측면에서 문제점 없이 정상 운영하고 있다(Ahn, Kim, Kim, & Park, 2020).",
+    "raw": "실제 2015년에 국방부와 지방자치단체 OO시는 상호 합의각서를 체결하여 기부 대 양여방식4)으로 지하형 탄약고를 신축하였고, 2017년 국방부는 OO시로부터 지하형 탄약고를 기부받아 현재까지 안전·시설 측면에서 문제점 없이 정상 운영하고 있다(Ahn, Kim, Kim, & Park, 2020).",
+    "citation_text": "(Ahn, Kim, Kim, & Park, 2020)",
+    "offset": [
+     136,
+     165
+    ],
+    "authors": [
+     "Ahn"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "하지만, 현재 운용 지하형 탄약고는 기존 지상형 탄약고의 관리 시스템을 대부분 그대로 준용하면서 일부 CCTV 활용한 경계, 정맥 인식 출입관리, 온·습도 모니터링 등만 추가로 설치하여 운용하고 있어(Choi, Kim, & Chang, 2022) 탄약 관련 온·습도 및 공기질, 화재 감시 등을 모니터링하고 안전하게 관리하는 과학화 시스템 환경 구축이 미흡한 실정이다.",
+    "raw": "하지만, 현재 운용 지하형 탄약고는 기존 지상형 탄약고의 관리 시스템을 대부분 그대로 준용하면서 일부 CCTV 활용한 경계, 정맥 인식 출입관리, 온·습도 모니터링 등만 추가로 설치하여 운용하고 있어(Choi, Kim, & Chang, 2022) 탄약 관련 온·습도 및 공기질, 화재 감시 등을 모니터링하고 안전하게 관리하는 과학화 시스템 환경 구축이 미흡한 실정이다.",
+    "citation_text": "(Choi, Kim, & Chang, 2022)",
+    "offset": [
+     111,
+     137
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 탄약고 내 압력 및 온도 변화 및 지형에 따른 탄약고 내 우발적 폭발로 인한 잔해물에 대한 안전거리 부족, 보관 탄약의 우발적 점화, 외부 열 및 정전기 자극에 따른 추진제의 자연발화나 폭발 등이 발생할 가능성이 있다(e.g., Wang, Yang, Zou, Dong, & Huo, 2021).",
+    "raw": "예를 들어 탄약고 내 압력 및 온도 변화 및 지형에 따른 탄약고 내 우발적 폭발로 인한 잔해물에 대한 안전거리 부족, 보관 탄약의 우발적 점화, 외부 열 및 정전기 자극에 따른 추진제의 자연발화나 폭발 등이 발생할 가능성이 있다(e.g., Wang, Yang, Zou, Dong, & Huo, 2021).",
+    "citation_text": "(e.g., Wang, Yang, Zou, Dong, & Huo, 2021)",
+    "offset": [
+     127,
+     169
+    ],
+    "authors": [
+     "Wang"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "parenthetical",
+    "sentence": "이를 위해 본 연구는 선행연구의 결과(Kim, 2022b)를 토대로 스마트 지하형 탄약고가 갖추어야 할 필수요소를 도출하기 위해 현장 확인, 관련 자료 검토, 정책 및 야전부대의 의견 청취 과정을 진행하였다.",
+    "raw": "이를 위해 본 연구는 선행연구의 결과(Kim, 2022b)를 토대로 스마트 지하형 탄약고가 갖추어야 할 필수요소를 도출하기 위해 현장 확인, 관련 자료 검토, 정책 및 야전부대의 의견 청취 과정을 진행하였다.",
+    "citation_text": "(Kim, 2022b)",
+    "offset": [
+     20,
+     32
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_1",
+    "kind": "narrative",
+    "sentence": "해당 과정을 통해 Kim(2022b) 연구에서 도출한 6개(하위 세부 21개) 기준을 토대로 전문가 20명에게 지하형 탄약고 신축 시 적용할 수 있는 4차 산업혁명 관련 기술 대안을 검토하고, AHP 분석을 진행하였다.",
+    "raw": "해당 과정을 통해 Kim(2022b) 연구에서 도출한 6개(하위 세부 21개) 기준을 토대로 전문가 20명에게 지하형 탄약고 신축 시 적용할 수 있는 4차 산업혁명 관련 기술 대안을 검토하고, AHP 분석을 진행하였다.",
+    "citation_text": "Kim(2022b)",
+    "offset": [
+     10,
+     20
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "특히, 탄약저장 과정에서 초기 성능과 품질이 보장되어야 하고, 위험에 대비한 안전이 확보되어야 하므로 전시 작전계획을 고려하여 많은 양의 탄약을 전방과 후방지역에 분산하여 저장하고 있다(Kim & Moon, 2020).⁷)\n군은 탄약의 품질·성능 보장 및 장기간 저장의 목적으로 탄약고(지상형, 지하형)를 건설하여 운용하고 있다.",
+    "raw": "특히, 탄약저장 과정에서 초기 성능과 품질이 보장되어야 하고, 위험에 대비한 안전이 확보되어야 하므로 전시 작전계획을 고려하여 많은 양의 탄약을 전방과 후방지역에 분산하여 저장하고 있다(Kim & Moon, 2020).⁷)\n군은 탄약의 품질·성능 보장 및 장기간 저장의 목적으로 탄약고(지상형, 지하형)를 건설하여 운용하고 있다.",
+    "citation_text": "(Kim & Moon, 2020)",
+    "offset": [
+     103,
+     121
+    ],
+    "authors": [
+     "Kim & Moon"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "narrative",
+    "sentence": "6) 나종철, 백인성, 김윤호, 노우주(2012).",
+    "raw": "6) 나종철, 백인성, 김윤호, 노우주(2012).",
+    "citation_text": "노우주(2012)",
+    "offset": [
+     18,
+     27
+    ],
+    "authors": [
+     "노우주"
+    ],
+    "year": "2012",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "그래서 군은 평시·전시에 소총탄을 제외하고 대부분의 탄약을 운반하거나 수송할 때에 지게차, 유압크레인 등을 특수 제작한 탄약 취급 장비를 반드시 사용해야 한다(Kim et al., 2004; Kim, 2022a).",
+    "raw": "그래서 군은 평시·전시에 소총탄을 제외하고 대부분의 탄약을 운반하거나 수송할 때에 지게차, 유압크레인 등을 특수 제작한 탄약 취급 장비를 반드시 사용해야 한다(Kim et al., 2004; Kim, 2022a).",
+    "citation_text": "Kim et al., 2004",
+    "offset": [
+     89,
+     105
+    ],
+    "authors": [
+     "Kim et al."
+    ],
+    "year": "2004",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "그래서 군은 평시·전시에 소총탄을 제외하고 대부분의 탄약을 운반하거나 수송할 때에 지게차, 유압크레인 등을 특수 제작한 탄약 취급 장비를 반드시 사용해야 한다(Kim et al., 2004; Kim, 2022a).",
+    "raw": "그래서 군은 평시·전시에 소총탄을 제외하고 대부분의 탄약을 운반하거나 수송할 때에 지게차, 유압크레인 등을 특수 제작한 탄약 취급 장비를 반드시 사용해야 한다(Kim et al., 2004; Kim, 2022a).",
+    "citation_text": "Kim, 2022a",
+    "offset": [
+     107,
+     117
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022a",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 전시 상황에서 군은 탄약저장시설 내에 보관된 탄약을 전방 전투지역으로 운송차량을 활용하여 수송하게 되지만, 상황에 따른 작전계획 변경으로 수송과정에서 수송 요구 목적지와 수량 등의 변동이 발생할 수 있어 불출 및 수송관리에 효율화가 요구된다(e.g., Choi, Kim, & Chang, 2022).",
+    "raw": "예를 들어 전시 상황에서 군은 탄약저장시설 내에 보관된 탄약을 전방 전투지역으로 운송차량을 활용하여 수송하게 되지만, 상황에 따른 작전계획 변경으로 수송과정에서 수송 요구 목적지와 수량 등의 변동이 발생할 수 있어 불출 및 수송관리에 효율화가 요구된다(e.g., Choi, Kim, & Chang, 2022).",
+    "citation_text": "(e.g., Choi, Kim, & Chang, 2022)",
+    "offset": [
+     140,
+     172
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_5",
+    "kind": "parenthetical",
+    "sentence": "지하형 탄약고 구축 시 안전거리 확보를 위한 격실 규모, 탄약고 상부 두께 등에 대한 기본적인 안전 요건의 구비를 강조하였다(Park, Baek, & Park, 2020).",
+    "raw": "지하형 탄약고 구축 시 안전거리 확보를 위한 격실 규모, 탄약고 상부 두께 등에 대한 기본적인 안전 요건의 구비를 강조하였다(Park, Baek, & Park, 2020).",
+    "citation_text": "(Park, Baek, & Park, 2020)",
+    "offset": [
+     69,
+     95
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_5",
+    "kind": "parenthetical",
+    "sentence": "이런 지하형 탄약고를 활용할 경우 안전거리 위반을 해소할 수 있어 민원 발생 해소가 가능하며, 또한 부족한 저장능력 확보를 통해 소요부지 감소가 가능하여 지상형 탄약고와 비교하여 비용적 효과가 높다고 볼 수 있다(Park, Jun, Choi, & Park, 2020).",
+    "raw": "이런 지하형 탄약고를 활용할 경우 안전거리 위반을 해소할 수 있어 민원 발생 해소가 가능하며, 또한 부족한 저장능력 확보를 통해 소요부지 감소가 가능하여 지상형 탄약고와 비교하여 비용적 효과가 높다고 볼 수 있다(Park, Jun, Choi, & Park, 2020).",
+    "citation_text": "(Park, Jun, Choi, & Park, 2020)",
+    "offset": [
+     118,
+     149
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_1",
+    "kind": "parenthetical",
+    "sentence": "인프라 구축이 가능할 것이다(Kim, 2022a).",
+    "raw": "인프라 구축이 가능할 것이다(Kim, 2022a).",
+    "citation_text": "(Kim, 2022a)",
+    "offset": [
+     15,
+     27
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022a",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_1",
+    "kind": "parenthetical",
+    "sentence": "게다가 지하형 탄약고의 운영 확대 및 대형화에 따라 부적절한 관리에 따른 우발적 폭발 위험로 인력 및 장비 손실의 위험(Lai, 2020)에 대비하여 탄약저장시설과 각종 인프라에 다양한 전자통신 기술(센서, 클라우드, 빅데이터, 정밀제어 등)을 융합한 운영 관리의 효율성을 확보할 필요가 있다.",
+    "raw": "게다가 지하형 탄약고의 운영 확대 및 대형화에 따라 부적절한 관리에 따른 우발적 폭발 위험로 인력 및 장비 손실의 위험(Lai, 2020)에 대비하여 탄약저장시설과 각종 인프라에 다양한 전자통신 기술(센서, 클라우드, 빅데이터, 정밀제어 등)을 융합한 운영 관리의 효율성을 확보할 필요가 있다.",
+    "citation_text": "(Lai, 2020)",
+    "offset": [
+     66,
+     77
+    ],
+    "authors": [
+     "Lai"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u16_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_1",
+    "kind": "parenthetical",
+    "sentence": "다음 검사단계는 검사장비의 자동화와 검사 절차 표준화가 요구되며, 이후 정비 안전성과 신속하고 정확한 출고관리가 가능하도록 안전(safety), 보안(security), 통합(integrity) 차원에서 스마트화를 추진해야할 것이다(Ahn et al., 2020).",
+    "raw": "다음 검사단계는 검사장비의 자동화와 검사 절차 표준화가 요구되며, 이후 정비 안전성과 신속하고 정확한 출고관리가 가능하도록 안전(safety), 보안(security), 통합(integrity) 차원에서 스마트화를 추진해야할 것이다(Ahn et al., 2020).",
+    "citation_text": "(Ahn et al., 2020)",
+    "offset": [
+     129,
+     147
+    ],
+    "authors": [
+     "Ahn et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "해당 분야는 각종 교범 및 지침서, 국방정책, 적용사례 등에 제시된 내용을 참조하여 전문가 의견수렴 등을 통해 세부항목 21개로 도출하였다(Table 2)(Kim, 2022b).",
+    "raw": "해당 분야는 각종 교범 및 지침서, 국방정책, 적용사례 등에 제시된 내용을 참조하여 전문가 의견수렴 등을 통해 세부항목 21개로 도출하였다(Table 2)(Kim, 2022b).",
+    "citation_text": "(Kim, 2022b)",
+    "offset": [
+     86,
+     98
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "본 연구의 목적인 지하형 탄약고 구축을 위한 스마트화 방안 도출을 위해 사전에 도출한 6개 항목(경계, 안전, 환경, 물류체계, 장비설비, 수명관리)에 관한 의사결정 요소(Kim, 2022a)를 4차 산업혁명 기술과 연계하여 분류하고 구조화할 수 있는 계층구조를 설계하였다(Figure 1).",
+    "raw": "본 연구의 목적인 지하형 탄약고 구축을 위한 스마트화 방안 도출을 위해 사전에 도출한 6개 항목(경계, 안전, 환경, 물류체계, 장비설비, 수명관리)에 관한 의사결정 요소(Kim, 2022a)를 4차 산업혁명 기술과 연계하여 분류하고 구조화할 수 있는 계층구조를 설계하였다(Figure 1).",
+    "citation_text": "(Kim, 2022a)",
+    "offset": [
+     95,
+     107
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022a",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "특히 전문가를 통한 다수의 기준에 기반한 대안의 우선순위를 선정하기 위해 의사결정 요소와 상호 관련성이 있는 계층과 요소를 분리한다(Saaty, 2008).",
+    "raw": "특히 전문가를 통한 다수의 기준에 기반한 대안의 우선순위를 선정하기 위해 의사결정 요소와 상호 관련성이 있는 계층과 요소를 분리한다(Saaty, 2008).",
+    "citation_text": "(Saaty, 2008)",
+    "offset": [
+     73,
+     86
+    ],
+    "authors": [
+     "Saaty"
+    ],
+    "year": "2008",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_1",
+    "kind": "parenthetical",
+    "sentence": "안전 항목에 대한 높은 가중치는 군의 지하형 탄약고에 저장된 상당량의 탄약은 고위험 물질로 시설이나 병력뿐만 아니라 주변 지역에 대한 피해가 발생할 수 있는 위험성(Baek, Park, & Park, 2020)에 기인한 것으로 볼 수 있다.",
+    "raw": "안전 항목에 대한 높은 가중치는 군의 지하형 탄약고에 저장된 상당량의 탄약은 고위험 물질로 시설이나 병력뿐만 아니라 주변 지역에 대한 피해가 발생할 수 있는 위험성(Baek, Park, & Park, 2020)에 기인한 것으로 볼 수 있다.",
+    "citation_text": "(Baek, Park, & Park, 2020)",
+    "offset": [
+     91,
+     117
+    ],
+    "authors": [
+     "Baek"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_1",
+    "kind": "parenthetical",
+    "sentence": "또한, 다음 순으로 경계 항목은 전략적 물자인 탄약이 적 특수부대나 적 포격, 적 항공기 폭격 등의 주요 표적 대상이 될 수 있어 평시와 전시에도 완벽한 경계를 중시한 결과로 볼 수 있다(e.g., Lee & Son, 2022).",
+    "raw": "또한, 다음 순으로 경계 항목은 전략적 물자인 탄약이 적 특수부대나 적 포격, 적 항공기 폭격 등의 주요 표적 대상이 될 수 있어 평시와 전시에도 완벽한 경계를 중시한 결과로 볼 수 있다(e.g., Lee & Son, 2022).",
+    "citation_text": "(e.g., Lee & Son, 2022)",
+    "offset": [
+     104,
+     127
+    ],
+    "authors": [
+     "Lee & Son"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 10,
+    "uid": "u9_2",
+    "kind": "parenthetical",
+    "sentence": "그래서 전시 작전계획 기준으로 탄약을 확보하고, 탄약관리 기준에 의한 관리와 주기적인 저장탄약신뢰성평가(ASRP¹²)를 토대로 수명관리가 이루어져야 할 것이다(e.g., Ahn et al., 2019).",
+    "raw": "그래서 전시 작전계획 기준으로 탄약을 확보하고, 탄약관리 기준에 의한 관리와 주기적인 저장탄약신뢰성평가(ASRP¹²)를 토대로 수명관리가 이루어져야 할 것이다(e.g., Ahn et al., 2019).",
+    "citation_text": "(e.g., Ahn et al., 2019)",
+    "offset": [
+     88,
+     112
+    ],
+    "authors": [
+     "Ahn et al."
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_4",
+    "kind": "parenthetical",
+    "sentence": "이는 IoT를 통해 탄약관리 과정에서 많은 양의 운용 및 관리 데이터 정보를 공유 및 교환할 수 있으며, 해당 데이터 기반의 AI 알고리즘을 활용하여 스마트화 추진의 필요성을 제시한 것으로 볼 수 있다(e.g., Choi, Kim, & Chang, 2022).",
+    "raw": "이는 IoT를 통해 탄약관리 과정에서 많은 양의 운용 및 관리 데이터 정보를 공유 및 교환할 수 있으며, 해당 데이터 기반의 AI 알고리즘을 활용하여 스마트화 추진의 필요성을 제시한 것으로 볼 수 있다(e.g., Choi, Kim, & Chang, 2022).",
+    "citation_text": "(e.g., Choi, Kim, & Chang, 2022)",
+    "offset": [
+     112,
+     144
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_7",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 IoT(사물인터넷) 기술을 군 부대의 임무관리체계에 접목하여 군의 관리가 필요한 기반기설에서 화재탐지, 경보대피, 분실방지 등에 관한 실시간 탐지 및 즉각적 대응이 필요하다(Kim, Ahn, & Park, 2021).",
+    "raw": "예를 들어 IoT(사물인터넷) 기술을 군 부대의 임무관리체계에 접목하여 군의 관리가 필요한 기반기설에서 화재탐지, 경보대피, 분실방지 등에 관한 실시간 탐지 및 즉각적 대응이 필요하다(Kim, Ahn, & Park, 2021).",
+    "citation_text": "(Kim, Ahn, & Park, 2021)",
+    "offset": [
+     102,
+     126
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u16_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_1",
+    "kind": "narrative",
+    "sentence": "Choi et al.(2022) 연구는 군의 탄약물류 개선차원에서 유무선 기반 현장자동화, 3D 기반의 저장공간 관리 및 전시 불출 개선 등의 스마트 탄약물류체계 구축 방안을 제시하였으며, 해당 방안을 뒷받침하는 결과로 볼 수 있다.",
+    "raw": "Choi et al.(2022) 연구는 군의 탄약물류 개선차원에서 유무선 기반 현장자동화, 3D 기반의 저장공간 관리 및 전시 불출 개선 등의 스마트 탄약물류체계 구축 방안을 제시하였으며, 해당 방안을 뒷받침하는 결과로 볼 수 있다.",
+    "citation_text": "Choi et al.(2022)",
+    "offset": [
+     0,
+     17
+    ],
+    "authors": [
+     "Choi et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "향후 지하형 탄약고 스마트화 구현은 우선적으로 안전(safety)과 경계(guard) 분야에서 탄약안전관리시스템 고도화, 자동인식기술 적용방안, 화재 및 폭발감시 대응체계 등18) 관련 정책을 추진할수 있도록 화재감지경보시스템, GOP경계과학화시스템, 지능형 CCTV, AI 기술의 영상인식기법 등을 적용할 필요가 있다(Kim & Cho, 2020).",
+    "raw": "향후 지하형 탄약고 스마트화 구현은 우선적으로 안전(safety)과 경계(guard) 분야에서 탄약안전관리시스템 고도화, 자동인식기술 적용방안, 화재 및 폭발감시 대응체계 등18) 관련 정책을 추진할수 있도록 화재감지경보시스템, GOP경계과학화시스템, 지능형 CCTV, AI 기술의 영상인식기법 등을 적용할 필요가 있다(Kim & Cho, 2020).",
+    "citation_text": "(Kim & Cho, 2020)",
+    "offset": [
+     178,
+     195
+    ],
+    "authors": [
+     "Kim & Cho"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 탄약고 내부의 센서를 통한 주요 탄약 관리 및 데이터 기반 지능형 분석체계 적용(Choi, Kim, & Chang, 2022), 저장 탄약의 DB화를 통해 검사장비, 검사결과 보고서의 자동화(Ahn, Kim, Kim, & Park, 2020)로 탄약관리와 운용의 효율성을 제고할 수 있을 것이다.",
+    "raw": "예를 들어 탄약고 내부의 센서를 통한 주요 탄약 관리 및 데이터 기반 지능형 분석체계 적용(Choi, Kim, & Chang, 2022), 저장 탄약의 DB화를 통해 검사장비, 검사결과 보고서의 자동화(Ahn, Kim, Kim, & Park, 2020)로 탄약관리와 운용의 효율성을 제고할 수 있을 것이다.",
+    "citation_text": "(Choi, Kim, & Chang, 2022)",
+    "offset": [
+     50,
+     76
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 탄약고 내부의 센서를 통한 주요 탄약 관리 및 데이터 기반 지능형 분석체계 적용(Choi, Kim, & Chang, 2022), 저장 탄약의 DB화를 통해 검사장비, 검사결과 보고서의 자동화(Ahn, Kim, Kim, & Park, 2020)로 탄약관리와 운용의 효율성을 제고할 수 있을 것이다.",
+    "raw": "예를 들어 탄약고 내부의 센서를 통한 주요 탄약 관리 및 데이터 기반 지능형 분석체계 적용(Choi, Kim, & Chang, 2022), 저장 탄약의 DB화를 통해 검사장비, 검사결과 보고서의 자동화(Ahn, Kim, Kim, & Park, 2020)로 탄약관리와 운용의 효율성을 제고할 수 있을 것이다.",
+    "citation_text": "(Ahn, Kim, Kim, & Park, 2020)",
+    "offset": [
+     112,
+     141
+    ],
+    "authors": [
+     "Ahn"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "끝으로 본 연구는 선행연구(Kim,2022b)를 확장하여 지하형 탄약고 스마트화 구축에 요구되는 4차 산업혁명 관련 기술의 적용에 관한 우선순위 도출과 정책적 실행에 활용할 수 있는 대안을 도출하였다.",
+    "raw": "끝으로 본 연구는 선행연구(Kim,2022b)를 확장하여 지하형 탄약고 스마트화 구축에 요구되는 4차 산업혁명 관련 기술의 적용에 관한 우선순위 도출과 정책적 실행에 활용할 수 있는 대안을 도출하였다.",
+    "citation_text": "(Kim,2022b)",
+    "offset": [
+     14,
+     25
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022b",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "또한, 최근 새로운 무기체계는 복합한 기술적 시스템 운용이 요구되면서(Kim, Joo, & Joo, 2023)3 첨단유도무기 내 유도탄의 지능화가 증가에 따라 해당 무기체계 특성(단거리, 중거리 등)을 감안한 탄약관리 차원(e.g.,Jung & Lee, 2017)에서 지하형 탄약고 구축에 필요한 기술적 요소를 연구할 필요가 있다.",
+    "raw": "또한, 최근 새로운 무기체계는 복합한 기술적 시스템 운용이 요구되면서(Kim, Joo, & Joo, 2023)3 첨단유도무기 내 유도탄의 지능화가 증가에 따라 해당 무기체계 특성(단거리, 중거리 등)을 감안한 탄약관리 차원(e.g.,Jung & Lee, 2017)에서 지하형 탄약고 구축에 필요한 기술적 요소를 연구할 필요가 있다.",
+    "citation_text": "(Kim, Joo, & Joo, 2023)",
+    "offset": [
+     38,
+     61
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u16_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "또한, 최근 새로운 무기체계는 복합한 기술적 시스템 운용이 요구되면서(Kim, Joo, & Joo, 2023)3 첨단유도무기 내 유도탄의 지능화가 증가에 따라 해당 무기체계 특성(단거리, 중거리 등)을 감안한 탄약관리 차원(e.g.,Jung & Lee, 2017)에서 지하형 탄약고 구축에 필요한 기술적 요소를 연구할 필요가 있다.",
+    "raw": "또한, 최근 새로운 무기체계는 복합한 기술적 시스템 운용이 요구되면서(Kim, Joo, & Joo, 2023)3 첨단유도무기 내 유도탄의 지능화가 증가에 따라 해당 무기체계 특성(단거리, 중거리 등)을 감안한 탄약관리 차원(e.g.,Jung & Lee, 2017)에서 지하형 탄약고 구축에 필요한 기술적 요소를 연구할 필요가 있다.",
+    "citation_text": "(e.g.,Jung & Lee, 2017)",
+    "offset": [
+     124,
+     147
+    ],
+    "authors": [
+     "Jung & Lee"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "즉, 무기체계의 총수명주기를 고려한 신뢰도 수준을 유지하기 위해 평가요소인 장기 저장과 사용가능성 등(Shin, Choi, & Park, 2020)을 분석의 고려요소로 포함하여 확장할 필요가 있다.",
+    "raw": "즉, 무기체계의 총수명주기를 고려한 신뢰도 수준을 유지하기 위해 평가요소인 장기 저장과 사용가능성 등(Shin, Choi, & Park, 2020)을 분석의 고려요소로 포함하여 확장할 필요가 있다.",
+    "citation_text": "(Shin, Choi, & Park, 2020)",
+    "offset": [
+     56,
+     82
+    ],
+    "authors": [
+     "Shin"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 28,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

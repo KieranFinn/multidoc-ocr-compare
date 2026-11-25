@@ -1016,6 +1016,24 @@ def selftest():
     else:
         print("FAIL [yield-coverage-guard] %s %s %s %s %s cov=%s"
               % (_g1["state"], _g2["state"], _g3["state"], _g4["state"], _g5["state"], _cov))
+    # 行首点号项目符号体例(2026-11-24, 산업연구 13578215 实证): 整块 30+ 条曾被 AY_HEAD
+    # 行首断言零命中而 0 条目(ref_yield_guard RED); 剥行首 ·/• 后按 authoryear 头行切,
+    # 行内作者簇的 '·'(양희원·정성문)必须原样保留。
+    _bul = (u"·양희원·정성문·이정동(2012), “지식기반 사회회계행렬 작성 방안 연구”, "
+            u"「생산성연구」, 26(3), pp. 257-285.\n"
+            u"• 엄익천 ·황원식(2022), “R&D 투자의 사회·경제적 파급효과 분석”, "
+            u"「산업연구」, 6(1), pp. 123-153.\n"
+            u"·Armington, P.(1969), “A theory of demand for products”, "
+            u"IMF Staff Paper 16, pp. 159-178.")
+    _be = _blocks_to_entries([{"p": 0, "col": 0,
+                               "u": dict(_uu("bb", "Text", _bul), review=False,
+                                         confidence={"level": "mid"}), "t": _bul}])
+    if len(_be) == 3 and _be[0]["text"].startswith(u"양희원·정성문·이정동(2012)") \
+            and _be[1]["text"].startswith(u"엄익천 ·황원식(2022)") \
+            and _be[2]["text"].startswith("Armington, P.(1969)"):
+        n_ok += 1
+    else:
+        print("FAIL [bullet-dot-refs] %s" % ([e["text"][:30] for e in _be],))
     # 跨渠道借号(2026-11-13, 13563538 #7/#9 实证): 四个夹逼例——能借的必须借到,
     # 已收过的号/不连续的号/碎片 一律不借(宁可留缺口, 不许造重复与垃圾)。
     _bt = u"장한업, 「20세기 상호문화 담론들에 대한 비교 고찰」, 『비교교육연구』28(3), 2018, 265~289쪽."
@@ -1543,12 +1561,17 @@ def _blocks_to_entries(blocks):
     {"p","col","u","t"}; 返回条目 dict 列表(可能为空)。"""
     out = []
     for b in sorted(blocks, key=lambda x: (x["p"], x["col"], x["u"]["box"][3])):
-        bstyle = "bracketed" if re.search(r"(?m)^\s*\[\s*\d{1,3}\s*\]", b["t"]) else (
-            "numbered" if re.search(r"(?m)^\s*\d{1,3}\s*[.、]\s", b["t"]) else "authoryear")
-        pieces = _split_entries_block(b["t"], bstyle)
+        # 行首项目符号剥除(2026-11-24, 산업연구 13578215 实证): '·양희원·정성문·이정동(2012), …'
+        # 每条以 ·/• 起头的体例会让 AY_HEAD 行首断言零命中, 整块(30+ 条)误当一条被拒。
+        # 只剥行首——行内的 '·' 是韩文作者簇分隔(양희원·정성문), 不能动。这是 refs 段内的
+        # 体例归一, 不放宽 AY_HEAD 本身(那条还被 cspan/audit 共用, 动它=牵一发动全身)。
+        bt = re.sub(r"(?m)^\s*[·•▪◦]\s*", "", b["t"])
+        bstyle = "bracketed" if re.search(r"(?m)^\s*\[\s*\d{1,3}\s*\]", bt) else (
+            "numbered" if re.search(r"(?m)^\s*\d{1,3}\s*[.、]\s", bt) else "authoryear")
+        pieces = _split_entries_block(bt, bstyle)
         glued = None
-        if bstyle in ("numbered", "authoryear") and len(_fold(b["t"])) >= 200:
-            g = _split_glued(b["t"])
+        if bstyle in ("numbered", "authoryear") and len(_fold(bt)) >= 200:
+            g = _split_glued(bt)
             if g and len(g) > len(pieces):
                 glued = g   # 批次2: 作者簇再切分仅在'锚数>已有段数'时启用
         for num, etext in ([(None, s) for s in glued] if glued else pieces):

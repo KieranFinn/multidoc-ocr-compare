@@ -1,0 +1,2019 @@
+{
+ "doc": "13571771",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571771",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "방위사업법(법률 제20996호, 시행 2025.7.22.) 제3조(정의).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "방위사업법(법률 제20996호",
+     "시행"
+    ],
+    "authors_raw": "방위사업법(법률 제20996호, 시행",
+    "et_al": false,
+    "year": "2025",
+    "title": "7.22.) 제3조(정의",
+    "source": null,
+    "volume": null,
+    "issue": "20996",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "총사업비 분석은 사업타당성조사를 통해 사업 추진 여부와 적정성을 검증하고 평가하여 최초 총사업비가 확정된사업을 대상으로 진행한다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방사업 총사업비 관리지침(2024.6.10.). 제27조(총사업비 조정 요구).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "국방사업 총사업비 관리지침"
+    ],
+    "authors_raw": "국방사업 총사업비 관리지침",
+    "et_al": false,
+    "year": "2024",
+    "title": "6.10.). 제27조(총사업비 조정 요구",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "하광룡, 이현주(2016.12.5.). 방위력개선사업 총사업비분석 전문기관 역할 및 발전을 위한 제언. 주간국방논단, 제1648-1호(16-5), 1-7.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "하광룡",
+     "이현주"
+    ],
+    "authors_raw": "하광룡, 이현주",
+    "et_al": false,
+    "year": "2016",
+    "title": "12.5.). 방위력개선사업 총사업비분석 전문기관 역할 및 발전을 위한 제언. 주간국방논단",
+    "source": "제1648-1호(16-5)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "방위사업청(2025.1). 2024년 자체평가 결과보고서(주요정책 부문).",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "방위사업청"
+    ],
+    "authors_raw": "방위사업청",
+    "et_al": false,
+    "year": "2025",
+    "title": "1). 2024년 자체평가 결과보고서(주요정책 부문",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "한국국방연구원(2023.12.20.). 2024 국방정책 환경 전망과 과제.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1276.7,
+     708.5,
+     1357.8
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "한국국방"
+    ],
+    "authors_raw": "한국국방연구원",
+    "et_al": false,
+    "year": "2023",
+    "title": "12.20.). 2024 국방정책 환경 전망과 과제",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "21세기군사연구소(2012.12). 방위력개선사업 분석평가서 작성 및 활용 방안 연구.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     152.3,
+     1394.5,
+     791.8,
+     1421.1
+    ],
+    "uid": "u3_8",
+    "authors": [
+     "21세기군사연구소"
+    ],
+    "authors_raw": "21세기군사연구소",
+    "et_al": false,
+    "year": "2012",
+    "title": "12). 방위력개선사업 분석평가서 작성 및 활용 방안 연구",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "국방사업 총사업비 관리지침, '24.6.10. 시행 제13조(사업타당성조사) 국방부장관 및 방위사업청장은 국방사업 중 「방위사업법」 제14조의2의 규정에 따라 대규모 신규사업에 대한 예산을 편성하기 위하여 사업 착수 이전에 사업의 추진과 관련된 사항을 투명하고 공정하게 점검하는 사업타당성조사를 실시하여야 한다. 제27조(총사업비 조정 요구) ① 국방부장관 및 방위사업청장은 기획재정부장관이 확정하여 통보한 사업규모, 사업기간 및 총사업비 등에 변경이 필요한 경우에는 총사업비 조정요구서(별표 6)를 첨부하여 총사업비 조정 요구를 연중 수시로 할 수 있다. ② 총사업비 조정요구서 제출시 사업목적의 중대한 변경, 사업단가, 사업물량 또는 규모, ROC수준, 탐색개발 및 체계개발 시기 또는 해외 구매시기, 생산시기 또는 전력화 시기 등에 변경이 있는 경우 그 변경내용 및 사유를 명확히 알 수 있는 소명자료를 함께 제출하여야 한다.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1279.9,
+     1000.1,
+     1388.7
+    ],
+    "uid": "u4_4",
+    "authors": [
+     "국방사업 총사업비 관리지침"
+    ],
+    "authors_raw": "국방사업 총사업비 관리지침",
+    "et_al": false,
+    "year": null,
+    "title": "방위사업법",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_book",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "총사업비는 사업추진이 결정되고 최초 예산이 확정된 사업의 추진에 소요되는 국가, 지방자치단체 민간이 부담하는 금액이 포함된 모든 사업비용을 합한 금액이다. 기획재정부는 국가재정법제 50조에 의거, 국가 예산 또는 기금으로 시행하는 대규모사업의 총사업비를 합리적으로 조정관리하기 위해 총사업비관리제도를 운영하고 있다.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1279.9,
+     1000.1,
+     1388.7
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "국방사업 총사업비 관리지침(기획재정부, 2024, 4.1) 제14조",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     150.0,
+     1279.9,
+     1000.1,
+     1388.7
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "국방사업 총사업비 관리지침(기획재정부, 2024, 4.1) 제22조 ③국방부장관 및 방위사업청장은 이미 사업타당성조사를 거친 사업 중 본격적인 양산단계로 접어드는 사업에 대해서는 양산에 필요한 예산요구에 앞서 사업타당성조사시 추정한 양산단계에서의 총사업비 등에 대한 큰 변화가 없는지 등에 대한 검토를 위해 한국국방연구원 등 전문연구기관에 심층검토를 의뢰할 수 있고, 이를 근거로 예산 및 총사업비 협의 등을 요구할 수 있다.",
+    "page": 5,
+    "page_end": 6,
+    "box": [
+     150.0,
+     1279.9,
+     1000.1,
+     1388.7
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "한국국방연구원(2024.12). 2025 국방정책 환경 전망과 과제. 112p.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.3,
+     1279.9,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "한국국방"
+    ],
+    "authors_raw": "한국국방연구원",
+    "et_al": false,
+    "year": "2024",
+    "title": "12). 2025 국방정책 환경 전망과 과제. 112p",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "2013년까지는 기획재정부가 자체적으로 총사업비관리를 수행하였으나, 2014년부터 기재부 요청에 따라 한국국방연구원에서 주요 사업에 대한 총사업비분석을 수행하고 있다.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.3,
+     1279.9,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "국방사업 재정수용성 검토·고려요소 분석, 2014년부터 2020년까지 7년간 종료사업 73개 사업기준으로 최초 총사업비의 합은 24조 9,308억 원이었으나, 종료 시점의 총사업비 합은 36조 9,185억 원으로 금액 기준으로 무려 48%나 증가하였다.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     149.3,
+     1279.9,
+     997.9,
+     1359.4
+    ],
+    "uid": "u5_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "안광수. (2022). 국방 분야 사업타당성조사 제도의 의의와 발전방향: 국방연구개발사업 중심으로. KISTEP InI, 26-33.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     144.1,
+     1368.2,
+     997.9,
+     1427.8
+    ],
+    "uid": "u6_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "하태정, 황석원, 장진규, 진성만, 하리다, 손수아, 배용호(2021). 국가 난제 해결을 위한 과학기술 관점의 경제⋅사회시스템 혁신전략 연구(3차년도): 제1권 국방기획관리제도.",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     151.6,
+     1368.4,
+     1000.5,
+     1421.4
+    ],
+    "uid": "u7_6",
+    "authors": [
+     "하태정",
+     "황석원",
+     "장진규",
+     "진성만",
+     "하리다",
+     "손수아",
+     "배용호"
+    ],
+    "authors_raw": "하태정, 황석원, 장진규, 진성만, 하리다, 손수아, 배용호",
+    "et_al": false,
+    "year": "2021",
+    "title": "국가 난제 해결을 위한 과학기술 관점의 경제⋅사회시스템 혁신전략 연구(3차년도): 제1권 국방기획관리제도",
+    "source": null,
+    "volume": "1",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "방위사업관리규정(방위사업청훈령 제896호, 시행 2025.2.12.). 제89조(기본설계 결과에 따른 조치).",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     143.8,
+     1337.1,
+     995.6,
+     1418.0
+    ],
+    "uid": "u8_3",
+    "authors": [
+     "방위사업관리규정(방위사업청훈령 제896호",
+     "시행"
+    ],
+    "authors_raw": "방위사업관리규정(방위사업청훈령 제896호, 시행",
+    "et_al": false,
+    "year": "2025",
+    "title": "2.12.). 제89조(기본설계 결과에 따른 조치",
+    "source": null,
+    "volume": null,
+    "issue": "896",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "박상건, 김태부(2020). 효율적인 함정 무기체계 획득을 위한 함정 획득제도 개선방안 연구. 국방과 기술, 493호, 62-71.",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     143.8,
+     1337.1,
+     995.6,
+     1418.0
+    ],
+    "uid": "u8_3",
+    "authors": [
+     "박상건"
+    ],
+    "authors_raw": "박상건, 김태부",
+    "et_al": false,
+    "year": "2020",
+    "title": "효율적인 함정 무기체계 획득을 위한 함정 획득제도 개선방안 연구. 국방과 기술",
+    "source": "493호",
+    "volume": null,
+    "issue": null,
+    "pages": "62-71",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "조택영(2025.04.23). “KDDX 공동개발 방식, 비효율적”: 임박한 사업자 선정…\"철저히 사업수행 관점 · 기술적 검토돼야\". 프라임경제.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1281.9,
+     1000.5,
+     1418.0
+    ],
+    "uid": "u9_5",
+    "authors": [
+     "조택영"
+    ],
+    "authors_raw": "조택영",
+    "et_al": false,
+    "year": "2025",
+    "title": "KDDX 공동개발 방식, 비효율적",
+    "source": "임박한 사업자 선정…\"철저히 사업수행 관점 · 기술적 검토돼야\". 프라임경제",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "Arena, M. V., Blickstein, I., Blickstein, O., & Grammich, C. A. (2006). Why has the cost of Navy ships risen?: A macroscopic examination of the trends in US Naval ship costs over the past several decades (Vol. 484). Rand Corporation.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     143.2,
+     1281.9,
+     1000.5,
+     1418.0
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "최초 총사업비 확정을 위한 초기 분석은 전체 재료비를 유사실적 대비 톤수 비율을 반영하며, 일부 중량효과나 물가상승률로 보정하여 사업진행에 따라 세부 항목별 비용자료를 최신화할 수 있다.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     144.7,
+     1368.4,
+     997.9,
+     1419.5
+    ],
+    "uid": "u12_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "방위사업청에서는 청 예규 제 730호(21.7.23) 「분석평가업무 실무지침」에서 위임된 비용분석 기준으로 매년 2~3% 수준으로 제시하고 있음 * (제1저자) 광운대학교, 방위사업학과 박사과정(한국국방연구원, 선임 연구원), soona97@kida.re.kr, https://orcid.org/0009-0008-8161-1300.",
+    "page": 15,
+    "page_end": 21,
+    "box": [
+     143.8,
+     1366.7,
+     1000.5,
+     1421.1
+    ],
+    "uid": "u14_7",
+    "authors": [
+     "방위사업청에서는",
+     "청",
+     "예규",
+     "제",
+     "730호(21.7.23)"
+    ],
+    "authors_raw": "방위사업청에서는 청 예규 제 730호(21.7.23)",
+    "et_al": false,
+    "year": null,
+    "title": "분석평가업무 실무지침",
+    "source": "에서 위임된 비용분석 기준으로 매년 2~3% 수준으로 제시하고 있음 * (제1저자) 광운대학교, 방위사업학과 박사과정(한국국방연구원, 선임 연구원), soona97@kida.re.kr, https://orcid.org/0009-0008-8161-1300",
+    "volume": null,
+    "issue": "730",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 22,
+   "per_page": {
+    "3": 6,
+    "4": 1,
+    "5": 4,
+    "6": 3,
+    "7": 1,
+    "8": 1,
+    "9": 2,
+    "10": 2,
+    "13": 1,
+    "15": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "3": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ]
+    },
+    "4": {
+     "markers": [
+      "7"
+     ],
+     "collected": [
+      "7"
+     ]
+    },
+    "5": {
+     "markers": [
+      "8",
+      "9",
+      "10",
+      "11"
+     ],
+     "collected": [
+      "8",
+      "9",
+      "10",
+      "11"
+     ]
+    },
+    "6": {
+     "markers": [
+      "12",
+      "13",
+      "14"
+     ],
+     "collected": [
+      "12",
+      "13",
+      "14"
+     ]
+    },
+    "7": {
+     "markers": [
+      "15"
+     ],
+     "collected": [
+      "15"
+     ]
+    },
+    "8": {
+     "markers": [
+      "16"
+     ],
+     "collected": [
+      "16"
+     ]
+    },
+    "9": {
+     "markers": [
+      "17",
+      "18"
+     ],
+     "collected": [
+      "17",
+      "18"
+     ]
+    },
+    "10": {
+     "markers": [
+      "19",
+      "20"
+     ],
+     "collected": [
+      "19",
+      "20"
+     ]
+    },
+    "13": {
+     "markers": [
+      "21"
+     ],
+     "collected": [
+      "21"
+     ]
+    },
+    "15": {
+     "markers": [
+      "22"
+     ],
+     "collected": [
+      "22"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cheon, K. H., & Park, J. N. (2022). A Study on the Reliability Improvement of Cost Analysis of Defense Force Improvement Project - Focusing on R&D in domestic. Journal of Korea Academia-Industrial Cooperation Society, 23(11), 631-640. https://doi.org/10.5762/KAIS.2022.- 23.11.631",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Cheon K. H",
+     "Park J. N"
+    ],
+    "authors_raw": "Cheon, K. H., & Park, J. N",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Reliability Improvement of Cost Analysis of Defense Force Improvement Project - Focusing on R&D in domestic. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "23(11)",
+    "volume": null,
+    "issue": null,
+    "pages": "631-640",
+    "doi": "10.5762/KAIS.2022.-",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, S. M., Kim, K. H., Park, J. T., Hwang, J. H., & Kim, K. M. (2022). Research on the Management Scheme of Requirements for Basic Design Vessel System. Journal of Korea Academia-Industrial cooperation Society, 23(12), 64-71. https://doi.org/10.5762/KAIS.2022.23.12.64",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Choi S. M",
+     "Kim K. H",
+     "Park J. T",
+     "Hwang J. H",
+     "Kim K. M"
+    ],
+    "authors_raw": "Choi, S. M., Kim, K. H., Park, J. T., Hwang, J. H., & Kim, K. M",
+    "et_al": false,
+    "year": "2022",
+    "title": "Research on the Management Scheme of Requirements for Basic Design Vessel System. Journal of Korea Academia-Industrial cooperation Society",
+    "source": "23(12)",
+    "volume": null,
+    "issue": null,
+    "pages": "64-71",
+    "doi": "10.5762/KAIS.2022.23.12.64",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gibbens, T., Wanigarathna, N., King, D., & Tree, M. (2024). Investigating the contractor's financial risk under a fixed-price contract during crisis time: The case of the COVID-19 pandemic. Journal of Legal Affairs and Dispute Resolution in Engineering and Construction, 16(3), 05024001. https://doi.org/10.1061/JLADAH.LADR-1117",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Gibbens T",
+     "Wanigarathna N",
+     "King D",
+     "Tree M"
+    ],
+    "authors_raw": "Gibbens, T., Wanigarathna, N., King, D., & Tree, M",
+    "et_al": false,
+    "year": "2024",
+    "title": "Investigating the contractor's financial risk under a fixed-price contract during crisis time: The case of the COVID-19 pandemic. Journal of Legal Affairs and Dispute Resolution in Engineering and Construction",
+    "source": "16(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1061/JLADAH.LADR-1117",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, J. O., Oh, H. S., Choi, B. W., & YIM, D. S. (2020). A Methodology for Analyzing on the Correlation of Factors Affecting the Acquisition of Military Weapons Systems :Focused on Factor Analysis of Naval Ship Acquisition Delay Cases. Journal of Korean Society of Industrial and Systems Engineering, 43(4), 48-58. https://doi.org/10.11627/jkise.2020.43.4.048",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Hwang J. O",
+     "Oh H. S",
+     "Choi B. W",
+     "YIM D. S"
+    ],
+    "authors_raw": "Hwang, J. O., Oh, H. S., Choi, B. W., & YIM, D. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Methodology for Analyzing on the Correlation of Factors Affecting the Acquisition of Military Weapons Systems :Focused on Factor Analysis of Naval Ship Acquisition Delay Cases. Journal of Korean Society of Industrial and Systems Engineering",
+    "source": "43(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "48-58",
+    "doi": "10.11627/jkise.2020.43.4.048",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, M. S. (2024). A Study on R&D Cost Management Improvement Plans for Defense Core Technology: Focusing on Defense Cost. Journal of Korea Academia-Industrial Cooperation Society, 25(7), 387-395. https://doi.org/10.5762/KAIS.2024.25.7.387",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kang M. S"
+    ],
+    "authors_raw": "Kang, M. S",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on R&D Cost Management Improvement Plans for Defense Core Technology: Focusing on Defense Cost. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "25(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "387-395",
+    "doi": "10.5762/KAIS.2024.25.7.387",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. J., & Choi, S. O. (2024). A Study on Machine Leaning-Based Prediction to Forecast Cost Variance in Defense Acquisition Programs. Journal of Korea Academia-Industrial Cooperation Society, 25(9), 442-456. https://doi.org/10.5762/KAIS.2024.25.9.442",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim B. J",
+     "Choi S. O"
+    ],
+    "authors_raw": "Kim, B. J., & Choi, S. O",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on Machine Leaning-Based Prediction to Forecast Cost Variance in Defense Acquisition Programs. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "25(9)",
+    "volume": null,
+    "issue": null,
+    "pages": "442-456",
+    "doi": "10.5762/KAIS.2024.25.9.442",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. W., Kwon, J. G., Beak, Y. K., & Seo, H. P. (2024). A Study of Development and Utilization of a Standardized and Expanded Ship Work Breakdown Structure on Naval Surface Ships. Journal of Korea Academia-Industrial Cooperation Society, 25(2), 152-163. https://doi.org/- 10.5762/KAIS.2024.25.12.152",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Kim J. W",
+     "Kwon J. G",
+     "Beak Y. K",
+     "Seo H. P"
+    ],
+    "authors_raw": "Kim, J. W., Kwon, J. G., Beak, Y. K., & Seo, H. P",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study of Development and Utilization of a Standardized and Expanded Ship Work Breakdown Structure on Naval Surface Ships. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "25(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "152-163",
+    "doi": "10.5762/KAIS.2024.25.12.152",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, H. M., Kim, J. H., & Paek, J. O. (2020). The Total Program Cost Management Current State, Prob lems and Improvements of the Defense R & D Program. Public Policy Review, 34(1), 75-100. DOI : 10.17327/ippa.2020.34.1.004",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lee H. M",
+     "Kim J. H",
+     "Paek J. O"
+    ],
+    "authors_raw": "Lee, H. M., Kim, J. H., & Paek, J. O",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Total Program Cost Management Current State",
+    "source": "Prob lems and Improvements of the Defense R & D Program. Public Policy Review",
+    "volume": null,
+    "issue": null,
+    "pages": "75-100",
+    "doi": "10.17327/ippa.2020.34.1.004",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lim, J. O., & Park, C. G. (2022). Analysis of Determinants of Defense Budget in Korea. Korean Journal of Military Art and Science, 78(2), 289-424. https://doi.org/10.31066/kjmas.2022.78.2.014 Nassar, A., & Elbisy, A. (2024). Evaluation of Factors Leading to Time Delays and Cost Overruns in Marine Construction Projects. Engineering, Technology & Applied Science Research, 14(5), 16095-16102.",
+    "page": 18,
+    "box": [
+     144.1,
+     331.4,
+     999.8,
+     1092.2
+    ],
+    "uid": "u17_3",
+    "authors": [
+     "Lim J. O",
+     "Park C. G"
+    ],
+    "authors_raw": "Lim, J. O., & Park, C. G",
+    "et_al": false,
+    "year": "2024",
+    "title": "Evaluation of Factors Leading to Time Delays and Cost Overruns in Marine Construction Projects. Engineering",
+    "source": "Technology & Applied Science Research",
+    "volume": null,
+    "issue": null,
+    "pages": "289-424",
+    "doi": "10.31066/kjmas.2022.78.2.014",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, J. N., Kim, J. Y., & Cheon, K. H. (2024). A Study on Advancement of Cost Analysis in Weapon Systems Acquisition Program. Journal of Korea Academia-Industrial Cooperation Society, 25(7), 465-473. https://doi.org/10.5762/KAIS.2024.25.7.465",
+    "page": 19,
+    "box": [
+     146.2,
+     331.4,
+     997.9,
+     501.7
+    ],
+    "uid": "u18_1",
+    "authors": [
+     "Park J. N",
+     "Kim J. Y",
+     "Cheon K. H"
+    ],
+    "authors_raw": "Park, J. N., Kim, J. Y., & Cheon, K. H",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on Advancement of Cost Analysis in Weapon Systems Acquisition Program. Journal of Korea Academia-Industrial Cooperation Society",
+    "source": "25(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "465-473",
+    "doi": "10.5762/KAIS.2024.25.7.465",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Simons, H. (2014). 22 Case Study Research: In-Depth Understanding in Context. The Oxford handbook of qualitative research, 455-470. https://doi.org/10.1093/oxfordhb/9780190847388.013.29",
+    "page": 19,
+    "box": [
+     146.2,
+     331.4,
+     997.9,
+     501.7
+    ],
+    "uid": "u18_1",
+    "authors": [
+     "Simons H"
+    ],
+    "authors_raw": "Simons, H",
+    "et_al": false,
+    "year": "2014",
+    "title": "22 Case Study Research: In-Depth Understanding in Context. The Oxford handbook of qualitative research",
+    "source": "455-470. https://doi.org/10.1093/oxfordhb/9780190847388.013.29",
+    "volume": null,
+    "issue": null,
+    "pages": "455-470",
+    "doi": "10.1093/oxfordhb/9780190847388.013.29",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Welde, M., Engebø, A., Gulichsen, S., Waage Prebensen, F., & Holst Volden, G. (2025). Evaluating defence projects–success may be a multidimensional measure. A case study of a logistics support vessel. Defence Studies, 25(3), 568-586. https://doi.org/10.1080/14702436.2025.2461459 원 고 접 수 일 2025년 03월 31일원 고 수 정 일 2025년 10월 22일게 재 확 정 일 2025년 10월 30일",
+    "page": 19,
+    "box": [
+     146.2,
+     331.4,
+     997.9,
+     501.7
+    ],
+    "uid": "u18_1",
+    "authors": [
+     "Welde M",
+     "Engebø",
+     "A",
+     "Gulichsen S",
+     "Waage Prebensen",
+     "F",
+     "Holst Volden",
+     "G"
+    ],
+    "authors_raw": "Welde, M., Engebø, A., Gulichsen, S., Waage Prebensen, F., & Holst Volden, G",
+    "et_al": false,
+    "year": "2025",
+    "title": "Evaluating defence projects–success may be a multidimensional measure. A case study of a logistics support vessel. Defence Studies",
+    "source": "25(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "568-586",
+    "doi": "10.1080/14702436.2025.2461459",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Improvements in total project cost analysis for naval ship acquisitions",
+   "page": 1,
+   "box": [
+    317.2,
+    395.0,
+    825.5,
+    482.5
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Son, Soona",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     187.5,
+     513.8,
+     955.0,
+     1328.5
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Kim, Jungsu",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     187.5,
+     513.8,
+     955.0,
+     1328.5
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM",
+   "Department of Defense Acquisition Program",
+   "Institute for Defense Analyses"
+  ],
+  "abstract": {
+   "value": "In defense force improvement programs, requests for total project cost (TPC) increases—arising from deviations from the initially planned budget—can hinder the initiation of new projects and negatively affect overall force modernization. This research investigates three cases of naval acquisition programs in Korea—the Jangbogo-III Batch-I, Ulsan-class Batch-III, and KDDX naval projects. These cases were selected due to significant total project cost increases primarily driven by escalating material costs during their implementation phases. Naval projects are distinct from general weapon system acquisitions; they are long-term endeavors that progress through conceptual design, basic design, system development (including detailed design and lead ship construction), and subsequent mass production of follow-on ships. Our analysis reveals that cost increases in these naval acquisition programs were predominantly caused by design modifications resulting from evolving operational performance requirements from the Navy, occurring either after the initial conceptual design phase or following lead ship construction. Furthermore, annual price fluctuations over the extended project durations significantly contributed to the overall cost escalation. These findings align with observations that inflation can affect defense spending, even when contract spending appears stable. To improve the effectiveness of TPC analysis, we propose that the initial total project costs for approved programs should be meticulously managed. it should be managed similarly to the defense mid-term planning framework, by maintaining cost estimates and rationales at the contract-item and detailed cost-element levels from the initial TPC confirmation stage. And strengthening data sharing and coordination between Integrated Product Teams (IPTs) and cost and contract management teams is necessary to enhance the efficiency of TPC analysis for ship acquisition programs. Finally, there is a pressing need to stimulate academic research that rigorously analyzes the major variable factors and their root causes that may emerge during actual project implementation stages.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "방위력개선사업은 군사력을 개선하기 위한 무기체계의 구매 및 신규 개발·성능개량 등을 포함한 연구개발과 이에 수반되는 시설의 설치 등을 행하는 사업이다.1) 이 사업은 실제 착수 후에 여러 요인으로 인해 총사업비 증액이 지속하여 발생하고 있다(Kim & Choi, 2024). 관련 변동요인을 살펴보면, 첨단무기체계의 연구개발부터 생산까지 장기간 사업기간과 변경된 소요기획에 따라 사전 예산 산정을 위한 적정비용 추정분석의 불확실성(Park, Kim, & Cheon, 2024), 국내 연구개발 장려와 방위산업 보호 육성의 목적에 따른 무기체계 개발비용의 방산원가 산정 방식의 적용(Kang, 2024) 등이 원인으로 나타났다. 주로 복잡한 기술과 과제 특성상 설계변경이나 안보 상황과 국방 정책상 변화, 외부적인 경제환경 변화(물가 상승, 환율 변동) 등이 주요 요인이다(i.e., Welde et al., 2025). 그래서 총사업비 분석2)은 사업진행 단계에서 총사업비의 변동 사유(예 : 사업목적의 중대한 변경, ROC 수준 및 체계개발 시기 등의 변경)가 발생하여 조정 요구에 관한 적절성을 검토한다.3) 이 분석은 일반적인 비용분석과 달리 사업 착수 후 사업을 진행하면서 최초 대비 계획변경이나 계약 발생 및 사업 구체화 등을 근거로 사업예산의 증액 요구의 사유(예 : 변경된 계획, 절차 및 근거 등)에 관한 합리적 근거 제시가 요구하며, 요구금액에 관한 판단에서 불확실성 요소를 최소화하여 기획재정부와 조정협의를 지원하는 역할을 담당한다.4)",
+   "page": 1,
+   "box": [
+    189.0,
+    591.1,
+    309.4,
+    618.1
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : Defense force improvement projects, Planning, Programming, Budgeting, Execution, Evaluation System (PPBEES), feasibility study, total project cost analysis, case study"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 8,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "21-41",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "방위력개선사업",
+   "국방기획관리제도",
+   "사업타당성조사",
+   "총사업비분석",
+   "함정사업",
+   "사례연구"
+  ],
+  "keywords_en": [
+   "Defense force improvement projects",
+   "Planning",
+   "Programming",
+   "Budgeting",
+   "Execution",
+   "Evaluation System (PPBEES)",
+   "feasibility study",
+   "total project cost analysis",
+   "case study"
+  ],
+  "citation_spans": [
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "방위력개선사업은 군사력을 개선하기 위한 무기체계의 구매 및 신규 개발·성능개량 등을 포함한 연구개발과 이에 수반되는 시설의 설치 등을 행하는 사업이다.1) 이 사업은 실제 착수 후에 여러 요인으로 인해 총사업비 증액이 지속하여 발생하고 있다(Kim & Choi, 2024).",
+    "raw": "방위력개선사업은 군사력을 개선하기 위한 무기체계의 구매 및 신규 개발·성능개량 등을 포함한 연구개발과 이에 수반되는 시설의 설치 등을 행하는 사업이다.1) 이 사업은 실제 착수 후에 여러 요인으로 인해 총사업비 증액이 지속하여 발생하고 있다(Kim & Choi, 2024).",
+    "citation_text": "(Kim & Choi, 2024)",
+    "offset": [
+     134,
+     152
+    ],
+    "authors": [
+     "Kim & Choi"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "관련 변동요인을 살펴보면, 첨단무기체계의 연구개발부터 생산까지 장기간 사업기간과 변경된 소요기획에 따라 사전 예산 산정을 위한 적정비용 추정분석의 불확실성(Park, Kim, & Cheon, 2024), 국내 연구개발 장려와 방위산업 보호 육성의 목적에 따른 무기체계 개발비용의 방산원가 산정 방식의 적용(Kang, 2024) 등이 원인으로 나타났다.",
+    "raw": "관련 변동요인을 살펴보면, 첨단무기체계의 연구개발부터 생산까지 장기간 사업기간과 변경된 소요기획에 따라 사전 예산 산정을 위한 적정비용 추정분석의 불확실성(Park, Kim, & Cheon, 2024), 국내 연구개발 장려와 방위산업 보호 육성의 목적에 따른 무기체계 개발비용의 방산원가 산정 방식의 적용(Kang, 2024) 등이 원인으로 나타났다.",
+    "citation_text": "(Park, Kim, & Cheon, 2024)",
+    "offset": [
+     86,
+     112
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "관련 변동요인을 살펴보면, 첨단무기체계의 연구개발부터 생산까지 장기간 사업기간과 변경된 소요기획에 따라 사전 예산 산정을 위한 적정비용 추정분석의 불확실성(Park, Kim, & Cheon, 2024), 국내 연구개발 장려와 방위산업 보호 육성의 목적에 따른 무기체계 개발비용의 방산원가 산정 방식의 적용(Kang, 2024) 등이 원인으로 나타났다.",
+    "raw": "관련 변동요인을 살펴보면, 첨단무기체계의 연구개발부터 생산까지 장기간 사업기간과 변경된 소요기획에 따라 사전 예산 산정을 위한 적정비용 추정분석의 불확실성(Park, Kim, & Cheon, 2024), 국내 연구개발 장려와 방위산업 보호 육성의 목적에 따른 무기체계 개발비용의 방산원가 산정 방식의 적용(Kang, 2024) 등이 원인으로 나타났다.",
+    "citation_text": "(Kang, 2024)",
+    "offset": [
+     170,
+     182
+    ],
+    "authors": [
+     "Kang"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_2",
+    "kind": "parenthetical",
+    "sentence": "주로 복잡한 기술과 과제 특성상 설계변경이나 안보 상황과 국방 정책상 변화, 외부적인 경제환경 변화(물가 상승, 환율 변동) 등이 주요 요인이다(i.e., Welde et al., 2025).",
+    "raw": "주로 복잡한 기술과 과제 특성상 설계변경이나 안보 상황과 국방 정책상 변화, 외부적인 경제환경 변화(물가 상승, 환율 변동) 등이 주요 요인이다(i.e., Welde et al., 2025).",
+    "citation_text": "(i.e., Welde et al., 2025)",
+    "offset": [
+     80,
+     106
+    ],
+    "authors": [
+     "Welde et al."
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u18_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "총사업비 증액 요구는 국방 사업에 관한 재정지출의 효율성 측면에서 특정 사업에서 초기 계획된 총사업비에 대비한 증가로 신규 사업 추진에 지장을 주어 국방전력화에 부정적 영향을 미칠 수 있다(Lee, Kim, & Paek, 2020).",
+    "raw": "총사업비 증액 요구는 국방 사업에 관한 재정지출의 효율성 측면에서 특정 사업에서 초기 계획된 총사업비에 대비한 증가로 신규 사업 추진에 지장을 주어 국방전력화에 부정적 영향을 미칠 수 있다(Lee, Kim, & Paek, 2020).",
+    "citation_text": "(Lee, Kim, & Paek, 2020)",
+    "offset": [
+     105,
+     129
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "특히, 함정사업은 다른 무기체계 사업과 달리 연구개발부터 후속함 건조 단계에 20년 이상이 소요되어 총사업비 규모가 크고(Hwang, Oh, Choi, & Yim, 2020), 총사업비 변동이 전체 사업의 성패를 좌우할 수 있으므로 함정사업의 총사업비관리는 국방재정의 효율화 측면에서 중요하다.",
+    "raw": "특히, 함정사업은 다른 무기체계 사업과 달리 연구개발부터 후속함 건조 단계에 20년 이상이 소요되어 총사업비 규모가 크고(Hwang, Oh, Choi, & Yim, 2020), 총사업비 변동이 전체 사업의 성패를 좌우할 수 있으므로 함정사업의 총사업비관리는 국방재정의 효율화 측면에서 중요하다.",
+    "citation_text": "(Hwang, Oh, Choi, & Yim, 2020)",
+    "offset": [
+     67,
+     97
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_7",
+    "kind": "parenthetical",
+    "sentence": "특히, 국방예산은 군사력 유지를 위한 국가안보의 수단적 특수성을 고려하여 국방정책을 실현할 수 있도록 결정되어야 한다(Lim & Park, 2022).",
+    "raw": "특히, 국방예산은 군사력 유지를 위한 국가안보의 수단적 특수성을 고려하여 국방정책을 실현할 수 있도록 결정되어야 한다(Lim & Park, 2022).",
+    "citation_text": "(Lim & Park, 2022)",
+    "offset": [
+     65,
+     83
+    ],
+    "authors": [
+     "Lim & Park"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "정기준을 명시하고 있다.⁸) 그래서 예산 편성으로 대규모 예산 사업에 대해 정책성 · 경제성(비용효과성) · 기술성(실현가능성) · 수행 능력 측면에서 사업 추진 여부에 관한 타당성을 검증하는 사업타당성조사가 필수적이며, 해당 조사결과는 사업계획 확정과 예산집행 결정에 활용한다(Cheon & Park, 2022).",
+    "raw": "정기준을 명시하고 있다.⁸) 그래서 예산 편성으로 대규모 예산 사업에 대해 정책성 · 경제성(비용효과성) · 기술성(실현가능성) · 수행 능력 측면에서 사업 추진 여부에 관한 타당성을 검증하는 사업타당성조사가 필수적이며, 해당 조사결과는 사업계획 확정과 예산집행 결정에 활용한다(Cheon & Park, 2022).",
+    "citation_text": "(Cheon & Park, 2022)",
+    "offset": [
+     155,
+     175
+    ],
+    "authors": [
+     "Cheon & Park"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "국방사업의 예산화 과정에서 객관적 검토를 위해 예비타당성조사 제도와 유사한 사업타당성조사 제도가 도입되었다(Lee, Kim, & Paek, 2020).",
+    "raw": "국방사업의 예산화 과정에서 객관적 검토를 위해 예비타당성조사 제도와 유사한 사업타당성조사 제도가 도입되었다(Lee, Kim, & Paek, 2020).",
+    "citation_text": "(Lee, Kim, & Paek, 2020)",
+    "offset": [
+     59,
+     83
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "군사력의 질적·양적 향상을 위해 신규 무기체계 도입, 첨단기술에 관한 연구개발, 기존 장비의 성능 개량 등의 방위력개선사업은 한정적인 국방예산을 효율적으로 분배·활용하여 무기체계 획득을 목표로 한다(Park, Kim, & Cheon, 2024).",
+    "raw": "군사력의 질적·양적 향상을 위해 신규 무기체계 도입, 첨단기술에 관한 연구개발, 기존 장비의 성능 개량 등의 방위력개선사업은 한정적인 국방예산을 효율적으로 분배·활용하여 무기체계 획득을 목표로 한다(Park, Kim, & Cheon, 2024).",
+    "citation_text": "(Park, Kim, & Cheon, 2024)",
+    "offset": [
+     110,
+     136
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "이런 목표 달성을 위해 예산편성에서 비용분석이 중요하며 신뢰성 높은 비용추정으로 총사업비를 관리하는 것이 필요하다(Cheon & Park, 2022).",
+    "raw": "이런 목표 달성을 위해 예산편성에서 비용분석이 중요하며 신뢰성 높은 비용추정으로 총사업비를 관리하는 것이 필요하다(Cheon & Park, 2022).",
+    "citation_text": "(Cheon & Park, 2022)",
+    "offset": [
+     63,
+     83
+    ],
+    "authors": [
+     "Cheon & Park"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "Cheon & Park(2022) 연구는 특정 무기체계의 유도장치에 관한 비용 데이터를 적용한 분석결과를 토대로 비용분석의 신뢰성 하락의 주요 원인은 비용데이터 수집과 관리의 체계성을 제시하였다.",
+    "raw": "Cheon & Park(2022) 연구는 특정 무기체계의 유도장치에 관한 비용 데이터를 적용한 분석결과를 토대로 비용분석의 신뢰성 하락의 주요 원인은 비용데이터 수집과 관리의 체계성을 제시하였다.",
+    "citation_text": "Park(2022)",
+    "offset": [
+     8,
+     18
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "narrative",
+    "sentence": "Kim & Choi(2024) 연구는 사업비 계획과 집행의 효율화를 위해 사업비 변동을 예측하는 머신러닝 기반 모델 구축을 제시하였다.",
+    "raw": "Kim & Choi(2024) 연구는 사업비 계획과 집행의 효율화를 위해 사업비 변동을 예측하는 머신러닝 기반 모델 구축을 제시하였다.",
+    "citation_text": "Choi(2024)",
+    "offset": [
+     6,
+     16
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "parenthetical",
+    "sentence": "이런 연구는 방위력개선사업의 총사업비 데이터를 활용하여 현황을 파악할 수 있으나 총사업비 변동이 발생하는 맥락적 이해(contextual understanding, Simons, 2014)가 제한적이다.",
+    "raw": "이런 연구는 방위력개선사업의 총사업비 데이터를 활용하여 현황을 파악할 수 있으나 총사업비 변동이 발생하는 맥락적 이해(contextual understanding, Simons, 2014)가 제한적이다.",
+    "citation_text": "(contextual understanding, Simons, 2014)",
+    "offset": [
+     65,
+     105
+    ],
+    "authors": [
+     "contextual understanding"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u18_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "parenthetical",
+    "sentence": "특히, 현행 국방사업 총사업비관리는 특정 무기체계의 개발부터 양산단계까지의 비용을 체계적으로 관리하지 못하여(Lee et al., 2020) 사업착수 이후에 총사업비가 증가하게 되므로 이후 연구는 재정지출의 효율성을 달성하기 위해 신규사업과 양산사업을 포함하여 분석할 필요가 있다.",
+    "raw": "특히, 현행 국방사업 총사업비관리는 특정 무기체계의 개발부터 양산단계까지의 비용을 체계적으로 관리하지 못하여(Lee et al., 2020) 사업착수 이후에 총사업비가 증가하게 되므로 이후 연구는 재정지출의 효율성을 달성하기 위해 신규사업과 양산사업을 포함하여 분석할 필요가 있다.",
+    "citation_text": "(Lee et al., 2020)",
+    "offset": [
+     60,
+     78
+    ],
+    "authors": [
+     "Lee et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "탐색개발에서 기본설계, 체계개발은 상세설계와 선도함 건조 단계로 진행되고 (Choi, Kim, Park, Hwang, & Kim, 2022; Kim, Kwon, Beak, & Seo, 2024), 탐색개발부터 선도함 건조에 7년에서 10년 이상의 사업기간이 걸리며 15년 이상이 소요되는 장기 대형사업이 많다.",
+    "raw": "탐색개발에서 기본설계, 체계개발은 상세설계와 선도함 건조 단계로 진행되고 (Choi, Kim, Park, Hwang, & Kim, 2022; Kim, Kwon, Beak, & Seo, 2024), 탐색개발부터 선도함 건조에 7년에서 10년 이상의 사업기간이 걸리며 15년 이상이 소요되는 장기 대형사업이 많다.",
+    "citation_text": "Choi, Kim, Park, Hwang, & Kim, 2022",
+    "offset": [
+     42,
+     77
+    ],
+    "authors": [
+     "Choi"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_2",
+    "kind": "parenthetical",
+    "sentence": "탐색개발에서 기본설계, 체계개발은 상세설계와 선도함 건조 단계로 진행되고 (Choi, Kim, Park, Hwang, & Kim, 2022; Kim, Kwon, Beak, & Seo, 2024), 탐색개발부터 선도함 건조에 7년에서 10년 이상의 사업기간이 걸리며 15년 이상이 소요되는 장기 대형사업이 많다.",
+    "raw": "탐색개발에서 기본설계, 체계개발은 상세설계와 선도함 건조 단계로 진행되고 (Choi, Kim, Park, Hwang, & Kim, 2022; Kim, Kwon, Beak, & Seo, 2024), 탐색개발부터 선도함 건조에 7년에서 10년 이상의 사업기간이 걸리며 15년 이상이 소요되는 장기 대형사업이 많다.",
+    "citation_text": "Kim, Kwon, Beak, & Seo, 2024",
+    "offset": [
+     79,
+     107
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_2",
+    "kind": "parenthetical",
+    "sentence": "이런 무기획득 사업은 초기 개념설계 이후 기본설계 과정에서 해군의 요구성능 변화로 설계가 구체화되면 수정 비용이 증가하며 $ ^{19} $20), 장기간 사업추진으로 인해 연간 물가변동 요인이 사업비 상승에 영향을 미치게 된다(Nassar & Elbisy, 2024).",
+    "raw": "이런 무기획득 사업은 초기 개념설계 이후 기본설계 과정에서 해군의 요구성능 변화로 설계가 구체화되면 수정 비용이 증가하며 $ ^{19} $20), 장기간 사업추진으로 인해 연간 물가변동 요인이 사업비 상승에 영향을 미치게 된다(Nassar & Elbisy, 2024).",
+    "citation_text": "(Nassar & Elbisy, 2024)",
+    "offset": [
+     126,
+     149
+    ],
+    "authors": [
+     "Nassar & Elbisy"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 6,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_4",
+    "kind": "parenthetical",
+    "sentence": "지난 20-21년 COVID-19 팬데믹기간에 국내외 물가는 전례가 없는 상승률이 나타났다(i.e., Gibbens, Wanigarathna, King, & Tree,2024).",
+    "raw": "지난 20-21년 COVID-19 팬데믹기간에 국내외 물가는 전례가 없는 상승률이 나타났다(i.e., Gibbens, Wanigarathna, King, & Tree,2024).",
+    "citation_text": "(i.e., Gibbens, Wanigarathna, King, & Tree,2024)",
+    "offset": [
+     50,
+     98
+    ],
+    "authors": [
+     "Gibbens"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u17_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

@@ -5,9 +5,10 @@
 title_en 被覆写、英文标题误当作者等一批回归 —— 没有前后对照就是拆东墙补西墙。
 本工具把那次临时搓的对照流程固化:
 
-  python meta_diff.py snapshot [--tag NAME]   # 全库 metadata.json 打快照(zip)
-  python meta_diff.py diff [--tag NAME]       # 当前状态 vs 快照: 逐字段 diff + QC 等级迁移
+  python meta_diff.py snapshot [--tag NAME] [--ws 名或路径]   # 全库 metadata.json 打快照(zip)
+  python meta_diff.py diff [--tag NAME] [--ws 名或路径]       # 当前状态 vs 快照: 逐字段 diff + QC 等级迁移
                                               # 输出 _meta_diff_<tag>.json + 控制台摘要
+  # 工作区解析: --ws > KCI_WS_ROOT 环境变量 > GUI 当前工作区(.gui_prefs.json) > 主库。
 
 用法(改 metapy/front.py|issue.py 任何守卫后):
   1. snapshot(改动前)
@@ -31,14 +32,25 @@ from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out")
 sys.path.insert(0, HERE)
-# 工作区覆盖(2026-11-19, 与 failures.py 同口径): KCI_WS_ROOT=E:/KCI11_17 时对照/质检指向该工作区;
-# 快照 tag 默认带工作区名前缀, 防止与主库快照互相误选。ner_root 必须跟工作区走, 否则 QC 闸
-# 会把已被本区 NER 满足的"机构"误判为缺失(failures.py 同款 bug)。
-WS = os.environ.get("KCI_WS_ROOT") or ""
+# 工作区覆盖(2026-11-24 收敛口径, 与 stages/failures.py 同): --ws 显式值 >
+# KCI_WS_ROOT 环境变量 > GUI 当前工作区(.gui_prefs.json) > 主库。
+# 快照 tag 默认带工作区名前缀, 防止互相误选; ner_root 必须跟工作区走, 否则 QC 闸会把
+# 已被本区 NER 满足的"机构"误判为缺失(failures.py 同款 bug, 2026-11-19 实锤)。
+WS = (os.environ.get("KCI_WS_ROOT") or "").replace("\\", "/")
 if WS:
     OUT = os.path.join(WS, "out")
 NER_TRIAL = os.path.join(WS if WS else HERE, "out_llm_trial")
 WS_PREFIX = (os.path.basename(WS.rstrip("/\\")) + "-") if WS else ""
+
+
+def _apply_ws(root):
+    """CLI --ws 应用: 重指 OUT/NER_TRIAL/WS_PREFIX(快照 tag 前缀随工作区名)。"""
+    global WS, OUT, NER_TRIAL, WS_PREFIX
+    WS = root.replace("\\", "/")
+    OUT = os.path.join(root, "out") if root else os.path.join(HERE, "out")
+    NER_TRIAL = os.path.join(root, "out_llm_trial") if root \
+        else os.path.join(HERE, "out_llm_trial")
+    WS_PREFIX = (os.path.basename(root.rstrip("/\\")) + "-") if root else ""
 
 FIELDS = ("title", "title_en", "authors", "affiliations",
           "journal", "journal_en", "year", "volume", "issue", "pages",
@@ -136,11 +148,24 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["snapshot", "diff"])
     ap.add_argument("--tag", default=None)
+    ap.add_argument("--ws", default=None, help="工作区名或路径; 缺省 环境变量KCI_WS_ROOT > GUI当前工作区 > 主库")
     a = ap.parse_args()
+    root, name, src = _resolve(a.ws)
+    if a.ws is not None or root:
+        _apply_ws(root)
+        print("[工作区] %s (%s) · 来源 %s" % (name, root or HERE, src))
     if a.cmd == "snapshot":
         snapshot(a.tag)
     else:
         diff(a.tag)
+
+
+def _resolve(explicit):
+    import workspaces
+    try:
+        return workspaces.resolve_ws_root(explicit=explicit, here=HERE)
+    except ValueError as e:
+        raise SystemExit(str(e))
 
 
 if __name__ == "__main__":

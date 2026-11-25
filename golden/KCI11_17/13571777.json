@@ -1,0 +1,3646 @@
+{
+ "doc": "13571777",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571777",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "국방 군수 분야의 다양한 데이터의 수집, 저장, 활용을 위한 기술을 구축하는 것임",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "무인 체계(센싱-네트워킹-빅데이터 · AI)는 상태모니터링과 원격관리 등 고신뢰성 확보가 핵심요소임",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방군수통합정보체계(DELIS : Defense Logistics Integrated Information System의 약어)는 장비/정비, 탄약, 물자 등의 국방 군수 분야의 각종 데이터를 관리하는 정보체계로 본 연구에서는 무기체계와 관련된 장비/정비의 군수 데이터를 중심으로 연구하였음",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "군수 빅데이터, 수출형 K 방산 정보체계 구축은 민군 부처 사업추진을 협의 중임.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "국방부 주관 개념연구(2회/20년,21년)를 통해 군수 데이터 추진전략(안)을 마련하였음",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "최선락, 김용(2022. 4). 무기체계 센서 데이터 활용 및 군수 데이터 댐 구축 추진전략 소개. 국방과 기술, 제518호, 84-93.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     150.0,
+     1221.5,
+     930.3,
+     1333.1
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "최선락",
+     "김용"
+    ],
+    "authors_raw": "최선락, 김용",
+    "et_al": false,
+    "year": "2022",
+    "title": "4). 무기체계 센서 데이터 활용 및 군수 데이터 댐 구축 추진전략 소개. 국방과 기술",
+    "source": "제518호",
+    "volume": null,
+    "issue": "518",
+    "pages": "84-93",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_5seg",
+    "container_title": null,
+    "publisher": "84-93.",
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "본 연구는 국방부 주관으로 시행한 군수 빅데이터 수집/분석체계 구축 BPR/ISP('20.10.16.~'21.12.9.), 국방빅데이터 선도사업(센서 데이터 기반 TAS-815K CBM+체계구축, '21.12.27.~'22.7.25.)의 연구내용을 기반으로 수정 · 보완하여 연구논문으로 발전시킨 것임을 밝힘",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     141.8,
+     222.1,
+     1002.4,
+     1245.2
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "예지 정비 기술개발 및 융합 플랫폼 구축 자료('21.12.1., 국방부), pp. 요약-1., 논자 재정리",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     141.8,
+     222.1,
+     1002.4,
+     1245.2
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "영문약어 등의 기술(표기)은 선행연구 논문의 제목을 여과하지 않고 원문을 적용하여 기술하였음",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     141.8,
+     222.1,
+     1002.4,
+     1245.2
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "진단, 예측(예지) 관련 용어 설명을 아래와 같음",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     141.8,
+     222.1,
+     1002.4,
+     1245.2
+    ],
+    "uid": "u2_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "무기체계 센서 데이터 기술 수준 및 적용 가능성(’21.4.2., 국방부), pp. 3., 논자 재정리",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     142.7,
+     1393.0,
+     837.0,
+     1423.0
+    ],
+    "uid": "u3_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "차륜형 장갑차 센서 데이터(80여개 항목) 수집장치 부착 및 초도배치('17.12.)",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "차륜형 장갑차 센서 데이터(300여개 항목) 확대방안 실험사업 추진('21년)",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "주요 함정 통합 기관제어 감시장치 고장예측 시범사업 진행('16년~'17년)",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "신형기종 비행기록장치 저장자료를 활용한 건전성 판단('16년~)",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "국방핵심기술과제(무기체계 CBM+ 특화연구센터)로 기술개발을 추진 중임('23년~'28년)",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "장비별 운용계획에 따라 도태 진행 중, 도태 예정, 성능개량 중인 체계는 센서 데이터를 수집하는 것이 불필요하거나 제한될 수 있음",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     144.7,
+     1277.7,
+     764.6,
+     1330.1
+    ],
+    "uid": "u4_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "정도현, 정성필, 김용(2022.6.9.). 주 체계와 가동시간이 다른 기동장비 엔진오일의 실시간 수명예측. 2022 한국군사과학기술학회 종합학술대회 논문집, 110.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     142.7,
+     694.2,
+     999.0,
+     1364.2
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "정도현",
+     "정성필",
+     "김용"
+    ],
+    "authors_raw": "정도현, 정성필, 김용",
+    "et_al": false,
+    "year": "2022",
+    "title": "6.9.). 주 체계와 가동시간이 다른 기동장비 엔진오일의 실시간 수명예측. 2022 한국군사과학기술학회 종합학술대회 논문집",
+    "source": "110",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 BPR/ISP 결과보고(’21.12.9., 국방부), pp. 220-225., 논자 재정리",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     142.7,
+     694.2,
+     999.0,
+     1364.2
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "“고장 후 정비 또는 닦고, 조이고, 기름치자” 시대에서 “CBM”으로 진화 중(고장 정비 → 시간제정비(TBM) →상태기반정비(CBM) → 상태기반예측정비(CBM+)로 정비 트렌드 변화 중)임",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     142.7,
+     694.2,
+     999.0,
+     1364.2
+    ],
+    "uid": "u5_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": "고장 후 정비 또는 닦고, 조이고, 기름치자",
+    "source": "시대에서 “CBM”으로 진화 중(고장 정비 → 시간제정비(TBM) →상태기반정비(CBM) → 상태기반예측정비(CBM+)로 정비 트렌드 변화 중)임",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "출처: 예지정비 기술개발 및 융합 플랫폼 구축 자료(’21.12.1., 국방부), pp. 5., 논자 재정리",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.2,
+     1365.3,
+     933.0,
+     1419.5
+    ],
+    "uid": "u6_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고(’21.12.9., 국방부), pp. 23., 논자 재정리",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     143.2,
+     1365.3,
+     933.0,
+     1419.5
+    ],
+    "uid": "u6_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 BPR/ISP 결과보고('21.12.9., 국방부), pp. 220-225., 논자 재정리",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1165.0,
+     999.0,
+     1251.8
+    ],
+    "uid": "u7_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "군수 빅데이터 수집/분석체계 구축 BPR/ISP 사업 시 무기체계 센서 데이터 수집 · 분석의 가능성을 검토하기 위해 00부대를 대상으로 동계기간(21.2.22.~24.)에 K9A1자주포를 대상으로 실기동 전 · 후에 생성되는 엔진부 센서 데이터 등을 수집 · 분석한 전투 실험결과 내용을 요약 기술하였음",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1165.0,
+     999.0,
+     1251.8
+    ],
+    "uid": "u7_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "이를 통해 기존 무기체계는 전자식 장비를 중심으로 경미한 성능개량을 통해 적용할 수 있고, 신규 무기체계에 대해서는 센서 데이터 활용 및 반영을 위한 근거를 마련할 수가 있을 것임. 그러나 전력화 배치된 현용 무기체계를 대상으로 한 CBM+기술의 실증에 있어서 데이터 수집을 위한 별도 센서 개발 및 데이터 수집장치 제작과 부착 필요, 통신 네트워크 관련 국방부 보안규정에 명시된 각종 요구사항 충족 필요 등 기반요소가 충분하지 못하여 요구되는 센서 데이터의 양의 확보와 수집을 위한 기반요소 확보의 어려움 등으로 세부 구성품, 부품 등에 대한 CBM+기술의 세부적인 실증에는 일부 제한이 있었음",
+    "page": 8,
+    "page_end": 8,
+    "box": [
+     144.1,
+     1165.0,
+     999.0,
+     1251.8
+    ],
+    "uid": "u7_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고(’21.12.9., 국방부), pp. 221., 논자 재정리",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     143.2,
+     1395.6,
+     942.6,
+     1420.0
+    ],
+    "uid": "u8_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "K9A1자주포 전투 실험결과에 대한 “주체계와 가동시간이 다른 기동장비 엔진오일의 실시간 수명예측” 관련 학술대회 발표자료를 요약 기술하였음(정도현 외 2, 2022 한국군사과학기술학회 종합학술대회, '22.6.9., pp. 110.)",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     148.2,
+     1337.1,
+     999.8,
+     1421.4
+    ],
+    "uid": "u9_7",
+    "authors": [
+     "K9A1자주포",
+     "전투",
+     "실험결과에",
+     "대한"
+    ],
+    "authors_raw": "K9A1자주포 전투 실험결과에 대한",
+    "et_al": false,
+    "year": "2022",
+    "title": "주체계와 가동시간이 다른 기동장비 엔진오일의 실시간 수명예측",
+    "source": "관련 학술대회 발표자료를 요약 기술하였음(정도현 외 2",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "기동과 연계한 엔진부에 대한 센서 데이터 활용",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     148.2,
+     1337.1,
+     999.8,
+     1421.4
+    ],
+    "uid": "u9_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "자동차의 엔진, 자동변속기, ABS 등의 상태를 컴퓨터로 제어하는 장치임",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     143.2,
+     223.0,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u10_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     143.2,
+     223.0,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u10_5",
+    "authors": [
+     "출처: 한국자동차",
+     "자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-"
+    ],
+    "authors_raw": "출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-",
+    "et_al": false,
+    "year": "2021",
+    "title": "-0002348 : 엔진오일 상태 예측 기술",
+    "source": "냉각수 온도상승속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "31",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고(’21.12.9., 국방부), pp. 244., 논자 재정리",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     143.2,
+     223.0,
+     1000.5,
+     1419.5
+    ],
+    "uid": "u10_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "32",
+    "raw": "한국자동차연구원, 엔진오일 상태 예측 기술 특허(특허번호 : KR 10-2021-0002348) 참고, 논자 재정리",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     143.2,
+     1222.5,
+     952.8,
+     1277.6
+    ],
+    "uid": "u11_5",
+    "authors": [
+     "한국자동차",
+     "엔진오일 상태 예측 기술 특허(특허번호 : KR 10-"
+    ],
+    "authors_raw": "한국자동차연구원, 엔진오일 상태 예측 기술 특허(특허번호 : KR 10-",
+    "et_al": false,
+    "year": "2021",
+    "title": "-0002348) 참고",
+    "source": "논자 재정리",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "33",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부), pp. 225., 논자 재정리",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     143.2,
+     1222.5,
+     952.8,
+     1277.6
+    ],
+    "uid": "u11_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "34",
+    "raw": "단, 세부적인 상관성 확보를 위한 더 많은 양의 데이터 축적과 추가적인 연구 실증이 필요함",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     143.2,
+     1222.5,
+     952.8,
+     1277.6
+    ],
+    "uid": "u11_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "35",
+    "raw": "오일압력의 기울기가 달라 오일의 건전성을 판단할 수도 있으나 제한치 내에서 작동되거나 예측의 목표인 엔진 및 구성품에 대한 영향성의 내용이 없으면 건전성을 세부적으로 판단하기에는 제한되기 때문에 본 실증 사례가 무기체계별 핵심 구성품 들과의 영향성에 대해 전체를 대표할 수 없기에 별도의 세부적인 상관관계 등에 대한 연구가 별도로 필요한. 이와 관련해 국방핵심기술과제(무기체계 CBM+특화연구센터) 추진 시 연구 수행 무기체계 연구실별로 관련 사항의 적용과 개발내용으로 과제가 반영되어 있음을 확인함",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     143.2,
+     1222.5,
+     952.8,
+     1277.6
+    ],
+    "uid": "u11_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "36",
+    "raw": "2021년형 올 뉴 투싼(NX4) 차량의 11종 15개의 센서 데이터를 계측함",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     144.1,
+     1251.8,
+     997.9,
+     1388.7
+    ],
+    "uid": "u12_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "37",
+    "raw": "자동차는 제품군 특성상 군의 기동무기체계와 유사하며, BIT(Built In Test), OBD-II(On-board Diagnosis-II) 등 관련된 데이터 수집장치가 부착되어 실용화되고 있음. 이러한 기술적 관점에서 군의 무기체계에의 센서 데이터 용량을 산정시 기동무기체계를 기준으로 참고가 될 수 있음. 단, 군별 운용되는 무기체계별 설계 및 구조적 차이가 있기 때문에 일률적으로 적용되기에는 제한됨을 밝힘",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     144.1,
+     1251.8,
+     997.9,
+     1388.7
+    ],
+    "uid": "u12_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "38",
+    "raw": "군수 빅데이터 수집/분석체계 구축 BPR/ISP 최종보고회('21.12.9., 국방부), pp. 40., 논자 재정리",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     144.1,
+     1251.8,
+     997.9,
+     1388.7
+    ],
+    "uid": "u12_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "39",
+    "raw": "3KB/s × 3,600s/hr × 12hr = 130MB; 데이터 생성량은 *.xls 기준으로 적용이 되었고, 80가지 센서 데이터를 적용 시 일일 기준 약 1.7GB로 확인함. 일일 운용으로 생성되는 데이터 용량이 GB급으로 무선통신 방식보다는 USB 저장장치를 이용한 직결방식이 유리할 것으로 판단함",
+    "page": 13,
+    "page_end": 14,
+    "box": [
+     144.1,
+     1251.8,
+     997.9,
+     1388.7
+    ],
+    "uid": "u12_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "40",
+    "raw": "1.7GB/일 × 4대 × 100일/년 × 6개월 = 340GB/운용부대 PC 1대(for 6개월); 1.7GB/일 × 1,600대 × 100일/년 × 5년 = 1,360TB/50대 = 27.2TB / 수집부대 PC 1대(for 2년)",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     142.4,
+     223.0,
+     1001.3,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "41",
+    "raw": "단, 효율적인 CBM+를 위한 센서 데이터 수집을 위해서는 실시간으로 생성되는 무기체계별 대용량의 센서 데이터 중 필요한 데이터와 불필요한 데이터를 구분하여 최적화가 필요하다. 이를 위한 기술로 edge computing 기술 적용이 필요하고, 해당 기술은 무기체계 CBM+특화연구센터 공통기반기술에 연구 과제로 반영되어 있음",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     142.4,
+     223.0,
+     1001.3,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "42",
+    "raw": "군수 빅데이터 수집/분석체계 구축 BPR/ISP 최종보고회('21.12.9., 국방부), pp. 41., 논자 재정리",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     142.4,
+     223.0,
+     1001.3,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "43",
+    "raw": "관련된 실증은 국방빅데이터 선도사업“센서 데이터 기반 TAS-815K CBM+체계구축”(21.12.27.~22.7.25.) 내용임",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     142.4,
+     223.0,
+     1001.3,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [
+     "관련된 실증은 국방빅데이터 선도사업"
+    ],
+    "authors_raw": "관련된 실증은 국방빅데이터 선도사업",
+    "et_al": false,
+    "year": null,
+    "title": "센서 데이터 기반 TAS-815K CBM+체계구축",
+    "source": "(21.12.27.~22.7.25.) 내용임",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "44",
+    "raw": "출처: 000-0000 CBM+체계 구축사업 완료 보고(’22.8.12., 국방부), pp. 12., 논자 재정리",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     142.4,
+     1365.3,
+     846.0,
+     1419.5
+    ],
+    "uid": "u14_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "45",
+    "raw": "장비 1대당 비용을 기준으로 함",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     142.4,
+     1365.3,
+     846.0,
+     1419.5
+    ],
+    "uid": "u14_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "46",
+    "raw": "단, 타 무기체계 적용 시에는 운용특성, 환경 등을 고려하여 네트워크 운용방식을 결정해야 함",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.7,
+     1222.5,
+     999.0,
+     1334.7
+    ],
+    "uid": "u15_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "47",
+    "raw": "무선 방식에 의한 송수신체계 구축은 근거리 무선망(Blue-tooth, Wifi 등), 원거리 무선망(LTE, 국방망 등) 등에대한 보안성, 구축비용 등의 세부적인 검증이 필요함",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.7,
+     1222.5,
+     999.0,
+     1334.7
+    ],
+    "uid": "u15_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "48",
+    "raw": "신뢰도(Reliability), 가용도(Availability), 정비도(Maintainability)와 관련한 무기체계의 고장빈도, 전투 준비태세,정비업무량의 정량적 값으로 표현한 것으로 전력 소요서에서 제시한 값을 의미함",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.7,
+     1222.5,
+     999.0,
+     1334.7
+    ],
+    "uid": "u15_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "49",
+    "raw": "센서 데이터에 대한 메타 데이터 속성과 센서값 단위, 수집시간, 데이터 타입, 유효값, 실효값 범위, 샘플 주파수등 센서 관련 실측데이터의 표준화 정의는 각 무기체계의 특성에 맞게 해야하며, 각 무기체계별 설계시 또는 연구를통해 데이터 표준화가 정의되어야 함",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     144.7,
+     1222.5,
+     999.0,
+     1334.7
+    ],
+    "uid": "u15_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "50",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 최종보고회(’21.12.9., 국방부), pp. 31., 논자 재정리",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     149.3,
+     1395.6,
+     954.3,
+     1425.8
+    ],
+    "uid": "u16_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "51",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 최종보고회(’21.12.9., 국방부), pp. 32., 논자 재정리",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     142.7,
+     1393.7,
+     950.5,
+     1422.2
+    ],
+    "uid": "u17_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "52",
+    "raw": "본 연구는 CBM+기술 확대를 위한 실증방법으로 00 무기체계의 엔진부에 데이터 수집장치를 부착하여, 센서데이터를 수집하고, 엔진사용시간에 따른 엔진오일점도를 고려한 교환시기를 확인하였다. 실증결과 내용이 기초적인 예측정비의 다양한 요소를 대표하기는 제한이 있으나, 기초적인 실증방법으로 유효하고 의미가 있다고 할 수 있음",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     145.5,
+     1141.7,
+     997.9,
+     1419.2
+    ],
+    "uid": "u18_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "53",
+    "raw": "무기체계별 CBM+기술을 개발 적용하기 위해서는 대상 무기체계별 특성을 반드시 고려하여 적용해야 할 관련기준 (CBM+를 수해할 대상과 목적 등) 마련이 우선 결정되야 할. CBM+를 기술적으로 못하는 것이 아니라 비효율적이고 효과가 미미하며 유지비용이 많기 때문에 시간제정비(TBM)를 유지할 수밖에 없는 품목도 다수 존재함에 따라 향후 연구 시에는 CBM+가 효과적인 품목의 세부적인 기준이 필요함. 또한, 설계 시 예상한 운용도와 CBM+를 통해 분석된 운용도에 차이가 발생하더라도 부품의 잔여 수명이 크게 변하지 않는 품목들이 다수 존재하기 때문에 적절한 기준과 부품선정 내용이 필요함. 이와 관련해 국방해심기술과제(무기체계 CBM+특화연구센터) 추진 시 연구 수행 무기체계 연구실별로 관련 사항의 적용과 개발내용으로 과제가 반영되어있음을 확인하였음",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     145.5,
+     1141.7,
+     997.9,
+     1419.2
+    ],
+    "uid": "u18_8",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "54",
+    "raw": "출처: 군수 빅데이터 구축 사업추진계획 책자('20.11.4., 국방부) pp.20-7., 논자 재정리",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     144.7,
+     1367.5,
+     822.0,
+     1390.0
+    ],
+    "uid": "u21_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "55",
+    "raw": "출처: 군수 빅데이터 구축사업 추진계획 책자('20.11.4., 국방부) 부록, 논자 재정리",
+    "page": 22,
+    "page_end": 22,
+    "box": [
+     144.7,
+     1396.7,
+     797.3,
+     1419.2
+    ],
+    "uid": "u21_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "56",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부) pp.233., 논자 재정리. CBM+기술개발 소요에 반영을 위한 무기체계별 도태 및 전력화 등 운용계획을 기초로 해당 무기체계의 전자화 수준, 기술적용 가능성, 기술개발 시 경계성 여부, 기술적용의 실효성, 기술의 확장성을 위한 유사무기체계를 대표할 수 있는 대표성 등 6가지 주요 선정기준을 적용하여 전문가 설문 등을 통해 최종 소요제기를 추진하였다.",
+    "page": 23,
+    "page_end": 23,
+    "box": [
+     142.7,
+     1310.4,
+     999.8,
+     1421.4
+    ],
+    "uid": "u22_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "57",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부) pp.28., 논자 재정리",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     139.6,
+     1365.3,
+     999.8,
+     1422.2
+    ],
+    "uid": "u23_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "58",
+    "raw": "Own Noise Analysis의 약어임",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     139.6,
+     1365.3,
+     999.8,
+     1422.2
+    ],
+    "uid": "u23_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "59",
+    "raw": "출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부) pp.228., 논자 재정리",
+    "page": 24,
+    "page_end": 24,
+    "box": [
+     139.6,
+     1365.3,
+     999.8,
+     1422.2
+    ],
+    "uid": "u23_4",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "60",
+    "raw": "출처: 무기체계 센서 데이터 기술 수준 및 적용 가능성 보고자료(국방부, '21.4.2) pp.27., 상온에서 측정한 엔진오일 (제1저자) 육군2672부대, 장비정비과장, jitong7@naver.com, https://orcid.org/0009-0003-0320-6645.",
+    "page": 24,
+    "page_end": 26,
+    "box": [
+     139.6,
+     1365.3,
+     999.8,
+     1422.2
+    ],
+    "uid": "u23_4",
+    "authors": [
+     "출처: 무기체계 센서 데이터 기술 수준 및 적용 가능성 보고자료(국방부",
+     "'21.4.2) pp.27",
+     "상온에서 측정한 엔진오일 (제1저자) 육군2672부대",
+     "장비정비과장",
+     "jitong7@naver.com",
+     "https://orcid.org/0009-0003-0320-6645"
+    ],
+    "authors_raw": "출처: 무기체계 센서 데이터 기술 수준 및 적용 가능성 보고자료(국방부, '21.4.2) pp.27., 상온에서 측정한 엔진오일 (제1저자) 육군2672부대, 장비정비과장, jitong7@naver.com, https://orcid.org/0009-0003-0320-6645",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 60,
+   "per_page": {
+    "2": 6,
+    "3": 4,
+    "4": 1,
+    "5": 6,
+    "6": 3,
+    "7": 2,
+    "8": 3,
+    "9": 1,
+    "10": 2,
+    "11": 3,
+    "12": 4,
+    "13": 4,
+    "14": 4,
+    "15": 2,
+    "16": 4,
+    "17": 1,
+    "18": 1,
+    "19": 2,
+    "22": 2,
+    "23": 1,
+    "24": 4
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ]
+    },
+    "3": {
+     "markers": [
+      "7",
+      "8",
+      "9",
+      "10"
+     ],
+     "collected": [
+      "7",
+      "8",
+      "9",
+      "10"
+     ]
+    },
+    "4": {
+     "markers": [
+      "11"
+     ],
+     "collected": [
+      "11"
+     ]
+    },
+    "5": {
+     "markers": [
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17"
+     ],
+     "collected": [
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17"
+     ]
+    },
+    "6": {
+     "markers": [
+      "18",
+      "19",
+      "20"
+     ],
+     "collected": [
+      "18",
+      "19",
+      "20"
+     ]
+    },
+    "7": {
+     "markers": [
+      "21",
+      "22"
+     ],
+     "collected": [
+      "21",
+      "22"
+     ]
+    },
+    "8": {
+     "markers": [
+      "23",
+      "24",
+      "25"
+     ],
+     "collected": [
+      "23",
+      "24",
+      "25"
+     ]
+    },
+    "9": {
+     "markers": [
+      "26"
+     ],
+     "collected": [
+      "26"
+     ]
+    },
+    "10": {
+     "markers": [
+      "27",
+      "28"
+     ],
+     "collected": [
+      "27",
+      "28"
+     ]
+    },
+    "11": {
+     "markers": [
+      "29",
+      "30",
+      "31"
+     ],
+     "collected": [
+      "29",
+      "30",
+      "31"
+     ]
+    },
+    "12": {
+     "markers": [
+      "32",
+      "33",
+      "34",
+      "35"
+     ],
+     "collected": [
+      "32",
+      "33",
+      "34",
+      "35"
+     ]
+    },
+    "13": {
+     "markers": [
+      "36",
+      "37",
+      "38",
+      "39"
+     ],
+     "collected": [
+      "36",
+      "37",
+      "38",
+      "39"
+     ]
+    },
+    "14": {
+     "markers": [
+      "40",
+      "41",
+      "42",
+      "43"
+     ],
+     "collected": [
+      "40",
+      "41",
+      "42",
+      "43"
+     ]
+    },
+    "15": {
+     "markers": [
+      "44",
+      "45"
+     ],
+     "collected": [
+      "44",
+      "45"
+     ]
+    },
+    "16": {
+     "markers": [
+      "46",
+      "47",
+      "48",
+      "49"
+     ],
+     "collected": [
+      "46",
+      "47",
+      "48",
+      "49"
+     ]
+    },
+    "17": {
+     "markers": [
+      "50"
+     ],
+     "collected": [
+      "50"
+     ]
+    },
+    "18": {
+     "markers": [
+      "51"
+     ],
+     "collected": [
+      "51"
+     ]
+    },
+    "19": {
+     "markers": [
+      "52",
+      "53"
+     ],
+     "collected": [
+      "52",
+      "53"
+     ]
+    },
+    "22": {
+     "markers": [
+      "54",
+      "55"
+     ],
+     "collected": [
+      "54",
+      "55"
+     ]
+    },
+    "23": {
+     "markers": [
+      "56"
+     ],
+     "collected": [
+      "56"
+     ]
+    },
+    "24": {
+     "markers": [
+      "57",
+      "58",
+      "59",
+      "60"
+     ],
+     "collected": [
+      "57",
+      "58",
+      "59",
+      "60"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Endharta, A. J., Kim, Y. S., Kim, J. W., Cho, I. H., & Park, Y. K. (2023). Study on Effectiveness of CBM+ in Weapons Systems through RAM-C Analysis. Journal of the Korea Academia-Industrial cooperation Society, 24(9), 249-256. https://doi.org/10.5762/KAIS.2023. 24.9.249",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Endharta A. J",
+     "Kim Y. S",
+     "Kim J. W",
+     "Cho I. H",
+     "Park Y. K"
+    ],
+    "authors_raw": "Endharta, A. J., Kim, Y. S., Kim, J. W., Cho, I. H., & Park, Y. K",
+    "et_al": false,
+    "year": "2023",
+    "title": "Study on Effectiveness of CBM+ in Weapons Systems through RAM-C Analysis. Journal of the Korea Academia-Industrial cooperation Society",
+    "source": "24(9)",
+    "volume": null,
+    "issue": null,
+    "pages": "249-256",
+    "doi": "10.5762/KAIS.2023",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jo, G. S. (2021). A Study on the Depot Maintenance Effects of CBM+ Model Application for Transmission in Tracked Vehicle with Missile System. [Doctoral dissertation, Daejeon University].",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Jo G. S"
+    ],
+    "authors_raw": "Jo, G. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Depot Maintenance Effects of CBM+ Model Application for Transmission in Tracked Vehicle with Missile System. [Doctoral dissertation",
+    "source": "Daejeon University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, S. P., & Yu, D. H. (2023). Prediction of Vehicle Engine Oil Viscosity Using OBDII Signal. International Journal of Automotive Technology, 24(2), 595-602. https://doi.org/10.1007/s12239- 023-0050-5",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Jung S. P",
+     "Yu D. H"
+    ],
+    "authors_raw": "Jung, S. P., & Yu, D. H",
+    "et_al": false,
+    "year": "2023",
+    "title": "Prediction of Vehicle Engine Oil Viscosity Using OBDII Signal. International Journal of Automotive Technology",
+    "source": "24(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "595-602",
+    "doi": "10.1007/s12239-",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D. H., Kang, S. W., Lee, J. H., Nam, K. M., Seong, S. H., & Lee, H. J. (2021). A Study on Applicability of Predictive Maintenance and Vibration Data Analysis by Fast Fourier Transform into Major Equipment of Submarine. Journal of the KNST, 4(1), 014-021. https://doi.org/ 10.31818/JKNST.2021.03.4.1.14",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim D. H",
+     "Kang S. W",
+     "Lee J. H",
+     "Nam K. M",
+     "Seong S. H",
+     "Lee H. J"
+    ],
+    "authors_raw": "Kim, D. H., Kang, S. W., Lee, J. H., Nam, K. M., Seong, S. H., & Lee, H. J",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on Applicability of Predictive Maintenance and Vibration Data Analysis by Fast Fourier Transform into Major Equipment of Submarine. Journal of the KNST",
+    "source": "4(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "014-021",
+    "doi": "10.31818/JKNST.2021.03.4.1.14",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D., & Bae, K. (2023). Analysis of future defense policy priorities with AHP. Journal of Advances in Military Studies, 6(1), 99-118. https://doi.org/10.37944/jams.v6i1.184",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim D",
+     "Bae K"
+    ],
+    "authors_raw": "Kim, D., & Bae, K",
+    "et_al": false,
+    "year": "2023",
+    "title": "Analysis of future defense policy priorities with AHP. Journal of Advances in Military Studies",
+    "source": "6(1)",
+    "volume": "6",
+    "issue": null,
+    "pages": "99-118",
+    "doi": "10.37944/jams.v6i1.184",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, G. Y., Hwang, J. K., Im, Y. K., & Ha, S. W. (2019). Roadmap Configuration for Technical Elements Acquisition of Military Fixed Wing Aircraft Parts PHM and Verification of Parts Selection Phase. Journal of The Korean Society for Aeronautical and Space Sciences, 47(9), 665-677. https://doi.org/10.5139/JKSAS.2019.47.9.665",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim G. Y",
+     "Hwang J. K",
+     "Im Y. K",
+     "Ha S. W"
+    ],
+    "authors_raw": "Kim, G. Y., Hwang, J. K., Im, Y. K., & Ha, S. W",
+    "et_al": false,
+    "year": "2019",
+    "title": "Roadmap Configuration for Technical Elements Acquisition of Military Fixed Wing Aircraft Parts PHM and Verification of Parts Selection Phase. Journal of The Korean Society for Aeronautical and Space Sciences",
+    "source": "47(9)",
+    "volume": null,
+    "issue": null,
+    "pages": "665-677",
+    "doi": "10.5139/JKSAS.2019.47.9.665",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. D., Choi, J. H., & Park, H. S. (2022). A study on Forecasting Initial Provisioning based on Machine-Learning. Journal of Korea Technology Innovation Society, 25(3), 477-493. https:// doi.org/10.35978/jktis.2022.6.25.3.477",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim J. D",
+     "Choi J. H",
+     "Park H. S"
+    ],
+    "authors_raw": "Kim, J. D., Choi, J. H., & Park, H. S",
+    "et_al": false,
+    "year": "2022",
+    "title": "A study on Forecasting Initial Provisioning based on Machine-Learning. Journal of Korea Technology Innovation Society",
+    "source": "25(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "477-493",
+    "doi": "10.35978/jktis.2022.6.25.3.477",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. M., Sin, T. H., & Lee, S. H. (2017). Measurement of the Engine Oil Deterioration of the Diesel Vehicle Using the Engine Oil Level Gauge. Transactions of Korean Soceity of Automotive Engineers, 25(1), 60-65. https://doi.org/10.7467/KSAE.2017.25.1.060",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim J. M",
+     "Sin T. H",
+     "Lee S. H"
+    ],
+    "authors_raw": "Kim, J. M., Sin, T. H., & Lee, S. H",
+    "et_al": false,
+    "year": "2017",
+    "title": "Measurement of the Engine Oil Deterioration of the Diesel Vehicle Using the Engine Oil Level Gauge. Transactions of Korean Soceity of Automotive Engineers",
+    "source": "25(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "60-65",
+    "doi": "10.7467/KSAE.2017.25.1.060",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. Y., Shim, H. S., Son, J. S., & Hwang, Y. Y. (2023). A Study on the Metadata Schema for the Collection of Sensor Data in Weapon Systems. Journal of Internet Computing and Services, 24(6), 161-169. https://doi.org/10.7472/jksii.2023.24.6.161",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim J. Y",
+     "Shim H. S",
+     "Son J. S",
+     "Hwang Y. Y"
+    ],
+    "authors_raw": "Kim, J. Y., Shim, H. S., Son, J. S., & Hwang, Y. Y",
+    "et_al": false,
+    "year": "2023",
+    "title": "A Study on the Metadata Schema for the Collection of Sensor Data in Weapon Systems. Journal of Internet Computing and Services",
+    "source": "24(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "161-169",
+    "doi": "10.7472/jksii.2023.24.6.161",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J., Kang, D., & Kang, B. (2022). Instrument development for measuring determinants in defense R&D policy. Journal of Advances in Military Studies, 5(3), 43-65. https://doi.org/10.37944/ jams.v5i3.171",
+    "page": 20,
+    "box": [
+     143.8,
+     719.2,
+     1001.1,
+     1020.4
+    ],
+    "uid": "u19_3",
+    "authors": [
+     "Kim J",
+     "Kang D",
+     "Kang B"
+    ],
+    "authors_raw": "Kim, J., Kang, D., & Kang, B",
+    "et_al": false,
+    "year": "2022",
+    "title": "Instrument development for measuring determinants in defense R&D policy. Journal of Advances in Military Studies",
+    "source": "5(3)",
+    "volume": "5",
+    "issue": null,
+    "pages": "43-65",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. G. (2023). Analysis of the current status of development of core technologies for defense AI and consideration of development plans. Journal of Korea Academia-Industrial cooperation Society, 24(7), 433-442. https://doi.org/10.5762/KAIS.2023.24.7.433",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Kim S. G"
+    ],
+    "authors_raw": "Kim, S. G",
+    "et_al": false,
+    "year": "2023",
+    "title": "Analysis of the current status of development of core technologies for defense AI and consideration of development plans. Journal of Korea Academia-Industrial cooperation Society",
+    "source": "24(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "433-442",
+    "doi": "10.5762/KAIS.2023.24.7.433",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, C., Lee, S. S., & Kim, J. M. (2012). The Calculation Model of Condition Based on Depot Maintenance Cycles. Journal of the Korea Association of Defense Industry Studies, 19(1), 1-21. UCI : G704-SER000001543.2012.19.1.004",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Kwon C",
+     "Lee S. S",
+     "Kim J. M"
+    ],
+    "authors_raw": "Kwon, C., Lee, S. S., & Kim, J. M",
+    "et_al": false,
+    "year": "2012",
+    "title": "The Calculation Model of Condition Based on Depot Maintenance Cycles. Journal of the Korea Association of Defense Industry Studies",
+    "source": "19(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-21",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. W., Lee, S. U., Park, G. J., & Hur, J. W. (2024). A Study on the Procedures for the Application of Korean Weapon System Condition Based Maintenance(CBM+). Journal of Korea Academia-Industrial cooperation Society, 25(5), 365-372. https://doi.org/10.5762/KAIS. 2024.25.5.365",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Lee S. W",
+     "Lee S. U",
+     "Park G. J",
+     "Hur J. W"
+    ],
+    "authors_raw": "Lee, S. W., Lee, S. U., Park, G. J., & Hur, J. W",
+    "et_al": false,
+    "year": "2024",
+    "title": "A Study on the Procedures for the Application of Korean Weapon System Condition Based Maintenance(CBM+). Journal of Korea Academia-Industrial cooperation Society",
+    "source": "25(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "365-372",
+    "doi": "10.5762/KAIS",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, K. W., Baek, C. H., Lee, K. H., & Lee, H. M. (2016). Research on Activation Plan of Condition Based Maintenance for Naval Weapons System. 2016 The Society for Aerospace System Engineering (SASE) Spring Conference.",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Oh K. W",
+     "Baek C. H",
+     "Lee K. H",
+     "Lee H. M"
+    ],
+    "authors_raw": "Oh, K. W., Baek, C. H., Lee, K. H., & Lee, H. M",
+    "et_al": false,
+    "year": "2016",
+    "title": "Research on Activation Plan of Condition Based Maintenance for Naval Weapons System. 2016 The Society for Aerospace System Engineering (SASE) Spring Conference",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, K. W., Hwang, J. H., Kwon, B. W., & Shin, I. S. (2023). A Study on Quality of Maintenance of Marine Unmanned Systems Considering Total Life Cycle. Journal of the Korea Society for Naval Science and technology, 6(4), 437-445. https://doi.org/10.31818/JKNST.2023.12.6.4.437",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Oh K. W",
+     "Hwang J. H",
+     "Kwon B. W",
+     "Shin I. S"
+    ],
+    "authors_raw": "Oh, K. W., Hwang, J. H., Kwon, B. W., & Shin, I. S",
+    "et_al": false,
+    "year": "2023",
+    "title": "A Study on Quality of Maintenance of Marine Unmanned Systems Considering Total Life Cycle. Journal of the Korea Society for Naval Science and technology",
+    "source": "6(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "437-445",
+    "doi": "10.31818/JKNST.2023.12.6.4.437",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, J. P. (2024). Analysis of factors causing changes in defense reform and tasks and prospects of “Defense Innovation 4.0”. Journal of Korea Maritime Security, 7(1), 61-84. https://doi.org/ 10.23270/kmsr.2024.7.1.003",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Park J. P"
+    ],
+    "authors_raw": "Park, J. P",
+    "et_al": false,
+    "year": "2024",
+    "title": "Defense Innovation 4.0",
+    "source": "Journal of Korea Maritime Security, 7(1), 61-84. https://doi.org/ 10.23270/kmsr.2024.7.1.003",
+    "volume": null,
+    "issue": null,
+    "pages": "61-84",
+    "doi": "10.23270/kmsr.2024.7.1.003",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, J. Y., & Jeong, Y. S. (2023). A Study on the Application of CBM+ FOR Next Generation UAV. The Korean Society for Aeronautical and Space Sciences (KSAS) 2023 Spring Conference.",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Park J. Y",
+     "Jeong Y. S"
+    ],
+    "authors_raw": "Park, J. Y., & Jeong, Y. S",
+    "et_al": false,
+    "year": "2023",
+    "title": "A Study on the Application of CBM+ FOR Next Generation UAV. The Korean Society for Aeronautical and Space Sciences (KSAS) 2023 Spring Conference",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, B. C. (2022.). A Study on the Application Methodology of CBM+ in the Early Stage of Design: Focused on the Case of Armored Vehicles. [Doctoral dissertation, Kumoh National Institute of Technology].",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Shin B. C"
+    ],
+    "authors_raw": "Shin, B. C",
+    "et_al": false,
+    "year": "2022",
+    "title": "A Study on the Application Methodology of CBM+ in the Early Stage of Design: Focused on the Case of Armored Vehicles. [Doctoral dissertation",
+    "source": "Kumoh National Institute of Technology]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yu, D. H., & Jung, S. P. (2020). How to predict engine oil and battery life using IoT. 2020 Transactions of KSAE Conference.",
+    "page": 21,
+    "box": [
+     145.5,
+     719.2,
+     999.0,
+     921.3
+    ],
+    "uid": "u20_1",
+    "authors": [
+     "Yu D. H",
+     "Jung S. P"
+    ],
+    "authors_raw": "Yu, D. H., & Jung, S. P",
+    "et_al": false,
+    "year": "2020",
+    "title": "How to predict engine oil and battery life using IoT. 2020 Transactions of KSAE Conference",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Feasibility and foundational elements of CBM+ technology application in weapon systems",
+   "page": 1,
+   "box": [
+    226.4,
+    396.1,
+    917.9,
+    472.1
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Yong",
+    "markers": [],
+    "affiliation": "Ajou University, Department of Mechanical Engineering",
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     302.1,
+     495.9,
+     839.7,
+     524.8
+    ]
+   },
+   {
+    "name": "Kim, Daewoong",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     302.1,
+     495.9,
+     839.7,
+     524.8
+    ]
+   },
+   {
+    "name": "Jeong, Dohyeon",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     302.1,
+     495.9,
+     839.7,
+     524.8
+    ]
+   }
+  ],
+  "affiliations": [
+   "Ajou University",
+   "Department of Mechanical Engineering",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "The maintenance strategies of weapon systems have evolved from corrective maintenance post-failure to time-based preventive maintenance, driven by the growing adoption of diagnostic technologies and data utilization. Currently, there is a transition to Condition-Based Maintenance (CBM) and, where applicable, Condition-Based Maintenance Plus (CBM+). This study investigated the feasibility of applying CBM+ technology using sensor data from weapon systems and explored methods for implementing the related foundational elements. First, the feasibility of CBM+ technology was confirmed by integrating data collection devices into the engine components of selected weapon systems, enabling sensor data collection and monitoring. Second, empirical evidence was gathered on the foundational elements necessary for the broader adoption of CBM+ technology. Practical application methods were proposed based on this evidence, including criteria for implementing CBM+ technology in major operational weapon systems, estimation of sensor data capacity, network methods for data transmission and collection, and the standardization of sensor data. The study’s findings are expected to provide reference points for selecting target weapon systems for the development and application of CBM+ technology, as well as outline essential foundational elements, such as security, networking, and data standardization, critical for leveraging related technologies.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The maintenance strategies of weapon systems have evolved from corrective maintenance post-failure to time-based preventive maintenance, driven by the growing adoption of diagnostic technologies and data utilization. Currently, there is a transition to Condition-Based Maintenance (CBM) and, where applicable, Condition-Based Maintenance Plus (CBM+). This study investigated the feasibility of applying CBM+ technology using sensor data from weapon systems and explored methods for implementing the related foundational elements. First, the feasibility of CBM+ technology was confirmed by integrating data collection devices into the engine components of selected weapon systems, enabling sensor data collection and monitoring. Second, empirical evidence was gathered on the foundational elements necessary for the broader adoption of CBM+ technology. Practical application methods were proposed based on this evidence, including criteria for implementing CBM+ technology in major operational weapon systems, estimation of sensor data capacity, network methods for data transmission and collection, and the standardization of sensor data. The study<sup>’</sup>s findings are expected to provide reference points for selecting target weapon systems for the development and application of CBM+ technology, as well as outline essential foundational elements, such as security, networking, and data standardization, critical for leveraging related technologies.",
+   "page": 1,
+   "box": [
+    189.8,
+    583.6,
+    309.4,
+    610.8
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : weapon system, condition-based maintenance plus (CBM+), sustainment, sensor data"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2024,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 7,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "29-54",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "무기체계",
+   "상태기반예측정비",
+   "지속지원",
+   "센서 데이터"
+  ],
+  "keywords_en": [
+   "weapon system",
+   "condition-based maintenance plus (CBM+)",
+   "sustainment",
+   "sensor data"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "최근 인구절벽(demographic cliff) 문제에 따른 병역자원 감소와 군수·행정인력의 점진적 감축에 직면하면서 군 내에 전문인력 확보의 어려움을 극복하기 위해 정보통신기술(ICT) 중심의 데이터 기반 스마트 국방혁신을 추진하고 있다(Kim & Bae, 2023).",
+    "raw": "최근 인구절벽(demographic cliff) 문제에 따른 병역자원 감소와 군수·행정인력의 점진적 감축에 직면하면서 군 내에 전문인력 확보의 어려움을 극복하기 위해 정보통신기술(ICT) 중심의 데이터 기반 스마트 국방혁신을 추진하고 있다(Kim & Bae, 2023).",
+    "citation_text": "(Kim & Bae, 2023)",
+    "offset": [
+     133,
+     150
+    ],
+    "authors": [
+     "Kim & Bae"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 7,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "그래서 현재 군은 미래 전투준비태세와 작전지속능력 수준을 유지할 수 있도록 전력화된 무기체계의 장비 목표가동률을 충족하고, 주어진 운용임무의 정상적 수행에 필요한 수리부속(Kim, Choi, & Park, 2022) 조달을 예측하는 지속적인 성능과 품질 개선 활동이 중요하다.",
+    "raw": "그래서 현재 군은 미래 전투준비태세와 작전지속능력 수준을 유지할 수 있도록 전력화된 무기체계의 장비 목표가동률을 충족하고, 주어진 운용임무의 정상적 수행에 필요한 수리부속(Kim, Choi, & Park, 2022) 조달을 예측하는 지속적인 성능과 품질 개선 활동이 중요하다.",
+    "citation_text": "(Kim, Choi, & Park, 2022)",
+    "offset": [
+     95,
+     120
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_4",
+    "kind": "parenthetical",
+    "sentence": "무기체계의 정비유형은 데이터 활용과 진단¹⁰) 기술의 점진적 확대에 따라 기존 고장 발생 시 조치하는 사후정비에서 시간제정비(TBM : Time Based Maintenance) 중심의 사전정비로 진행되었고, 현재는 상태기반정비(CBM) 또는 상태기반예측정비(CBM+)로 변하고 있다(Lee, Lee, Park, & Hur, 2024)(Table 1).",
+    "raw": "무기체계의 정비유형은 데이터 활용과 진단¹⁰) 기술의 점진적 확대에 따라 기존 고장 발생 시 조치하는 사후정비에서 시간제정비(TBM : Time Based Maintenance) 중심의 사전정비로 진행되었고, 현재는 상태기반정비(CBM) 또는 상태기반예측정비(CBM+)로 변하고 있다(Lee, Lee, Park, & Hur, 2024)(Table 1).",
+    "citation_text": "(Lee, Lee, Park, & Hur, 2024)",
+    "offset": [
+     158,
+     187
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "CBM+기술의 대표적 적용사례를 살펴보면, 1990년대 영국은 민간 항공기에 HUMS(Health and Usage Monitoring Systems)를 도입하여 헬기의 건전성을 확인하였고(Park & Jeong, 2023), 미 국방성은 운영유지비 절감과 가동률 향상을 위해 총수명주기 관리요소로 CBM+기술을 장비획득 시 적용·정비정책에 도입하였다(스트라이커 장갑차, AH-64(아파치 헬기), C-17(수송기), F-35(항공기)).",
+    "raw": "CBM+기술의 대표적 적용사례를 살펴보면, 1990년대 영국은 민간 항공기에 HUMS(Health and Usage Monitoring Systems)를 도입하여 헬기의 건전성을 확인하였고(Park & Jeong, 2023), 미 국방성은 운영유지비 절감과 가동률 향상을 위해 총수명주기 관리요소로 CBM+기술을 장비획득 시 적용·정비정책에 도입하였다(스트라이커 장갑차, AH-64(아파치 헬기), C-17(수송기), F-35(항공기)).",
+    "citation_text": "(Park & Jeong, 2023)",
+    "offset": [
+     105,
+     125
+    ],
+    "authors": [
+     "Park & Jeong"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 7,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "한편 무기체계 분야의 CBM 관련 연구동향을 살펴보면, 상태기반의 창정비 주기 산출모델 연구는 기존의 획일적인 창정비 주기가 아닌 장비별 상태 특성과 운용 환경을 고려한 개별적 적용 방안을 제안하였다(Kwon, Lee, & Kim, 2012).",
+    "raw": "한편 무기체계 분야의 CBM 관련 연구동향을 살펴보면, 상태기반의 창정비 주기 산출모델 연구는 기존의 획일적인 창정비 주기가 아닌 장비별 상태 특성과 운용 환경을 고려한 개별적 적용 방안을 제안하였다(Kwon, Lee, & Kim, 2012).",
+    "citation_text": "(Kwon, Lee, & Kim, 2012)",
+    "offset": [
+     111,
+     135
+    ],
+    "authors": [
+     "Kwon"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Oh et al.(2016)은 미 해군 함정관리의 상태기반 정비 시스템을 한국군 해군에 적용하는 방안으로 진동 관련 센서 데이터를 활용한 통합 상태기반 평가 시스템 (ICAS : Integrated Condition Assessment System)을 제시하였다.",
+    "raw": "Oh et al.(2016)은 미 해군 함정관리의 상태기반 정비 시스템을 한국군 해군에 적용하는 방안으로 진동 관련 센서 데이터를 활용한 통합 상태기반 평가 시스템 (ICAS : Integrated Condition Assessment System)을 제시하였다.",
+    "citation_text": "Oh et al.(2016)",
+    "offset": [
+     0,
+     15
+    ],
+    "authors": [
+     "Oh et al."
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "narrative",
+    "sentence": "Kim, Hwang, Im and Ha(2019)는 한국군에 운용하거나 연구개발 중인 항공기의 중요 구성품에 대해 미 F-35 전투기에 적용한 건전성 예측관리(PHM : Prognostics & Health Management) 기술의 적용방안을 연구하였다.",
+    "raw": "Kim, Hwang, Im and Ha(2019)는 한국군에 운용하거나 연구개발 중인 항공기의 중요 구성품에 대해 미 F-35 전투기에 적용한 건전성 예측관리(PHM : Prognostics & Health Management) 기술의 적용방안을 연구하였다.",
+    "citation_text": "Ha(2019)",
+    "offset": [
+     19,
+     27
+    ],
+    "authors": [
+     "Ha"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "al.(2021) 연구는 시간제정비(TBM)와 CBM 기술을 접목한 잠수함의 잔여 수명예측과 진동변화에 대한 자동저장 시스템을 활용한 예지 정비 적용방안을 제안하였다.",
+    "raw": "al.(2021) 연구는 시간제정비(TBM)와 CBM 기술을 접목한 잠수함의 잔여 수명예측과 진동변화에 대한 자동저장 시스템을 활용한 예지 정비 적용방안을 제안하였다.",
+    "citation_text": "al.(2021)",
+    "offset": [
+     0,
+     9
+    ],
+    "authors": [
+     "al."
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "그리고 Shin(2022)은 장갑차 설계 초기 단계에서 CBM+ 적용하는 업무 프로세스를 도출하였다.",
+    "raw": "그리고 Shin(2022)은 장갑차 설계 초기 단계에서 CBM+ 적용하는 업무 프로세스를 도출하였다.",
+    "citation_text": "Shin(2022)",
+    "offset": [
+     4,
+     14
+    ],
+    "authors": [
+     "Shin"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "CBM+ 적용한 효과성과 관련하여 Endharta et al.(2023)는 신뢰성 기반비용관리(RAM-C : Reliability(신뢰도), Availability(가용도), Maintainability(정비도), Cost(비용))에 무기체계의 상태기반정비 적용효과를 평가하였다.",
+    "raw": "CBM+ 적용한 효과성과 관련하여 Endharta et al.(2023)는 신뢰성 기반비용관리(RAM-C : Reliability(신뢰도), Availability(가용도), Maintainability(정비도), Cost(비용))에 무기체계의 상태기반정비 적용효과를 평가하였다.",
+    "citation_text": "Endharta et al.(2023)",
+    "offset": [
+     19,
+     40
+    ],
+    "authors": [
+     "Endharta et al."
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "narrative",
+    "sentence": "Jo(2021)는 유도무기 탑재 궤도 차량의 변속기에 CBM+ 모델 적용한 경우와 기존 TBM 모델의 비교를 통해 창정비 효과를 분석하였다.",
+    "raw": "Jo(2021)는 유도무기 탑재 궤도 차량의 변속기에 CBM+ 모델 적용한 경우와 기존 TBM 모델의 비교를 통해 창정비 효과를 분석하였다.",
+    "citation_text": "Jo(2021)",
+    "offset": [
+     0,
+     8
+    ],
+    "authors": [
+     "Jo"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "무기체계 운용과정에서 다양한 센서 데이터(온도, 습도, 풍속, 압력, 진동, 음향, 광량, 전류, 전압, 전자기장, 주파수 등)가 생성되며(Figure 2a), 이런 데이터를 수집·저장하고 조달·정비·보급 데이터 등과 결합하여 분석함으로써20) 해당 무기체계의 상태정보를 확인할 수 있다(Lee et al., 2024).",
+    "raw": "무기체계 운용과정에서 다양한 센서 데이터(온도, 습도, 풍속, 압력, 진동, 음향, 광량, 전류, 전압, 전자기장, 주파수 등)가 생성되며(Figure 2a), 이런 데이터를 수집·저장하고 조달·정비·보급 데이터 등과 결합하여 분석함으로써20) 해당 무기체계의 상태정보를 확인할 수 있다(Lee et al., 2024).",
+    "citation_text": "(Lee et al., 2024)",
+    "offset": [
+     160,
+     178
+    ],
+    "authors": [
+     "Lee et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_6",
+    "kind": "parenthetical",
+    "sentence": "이에 따라 엔진의 가동시간에 따른 엔진오일 교체 시기나 기동체계의 부하 조건에 따른 엔진오일의 오염 정도를 파악하기가 어렵다(Kim, Sin, & Lee, 2017).",
+    "raw": "이에 따라 엔진의 가동시간에 따른 엔진오일 교체 시기나 기동체계의 부하 조건에 따른 엔진오일의 오염 정도를 파악하기가 어렵다(Kim, Sin, & Lee, 2017).",
+    "citation_text": "(Kim, Sin, & Lee, 2017)",
+    "offset": [
+     69,
+     92
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_5",
+    "kind": "parenthetical",
+    "sentence": "29) 자동차의 엔진, 자동변속기, ABS 등의 상태를 컴퓨터로 제어하는 장치임\n30) 출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행 연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인 수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)\n31) 출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부), pp. 244., 논자 재정리상기한 엔진오일의 오염에 따른 냉각수 상승의 상관성에 기반하여 엔진오일의 점도 변화에 따른 엔진 냉각수 온도의 상승속도 관계를 통해 엔진오일의 수명시간을 예측한다(e.g., Yu & Jung, 2020) (Figure 4c).32)",
+    "raw": "29) 자동차의 엔진, 자동변속기, ABS 등의 상태를 컴퓨터로 제어하는 장치임\n30) 출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행 연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인 수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)\n31) 출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부), pp. 244., 논자 재정리상기한 엔진오일의 오염에 따른 냉각수 상승의 상관성에 기반하여 엔진오일의 점도 변화에 따른 엔진 냉각수 온도의 상승속도 관계를 통해 엔진오일의 수명시간을 예측한다(e.g., Yu & Jung, 2020) (Figure 4c).32)",
+    "citation_text": "(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)",
+    "offset": [
+     189,
+     273
+    ],
+    "authors": [
+     "냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_5",
+    "kind": "parenthetical",
+    "sentence": "29) 자동차의 엔진, 자동변속기, ABS 등의 상태를 컴퓨터로 제어하는 장치임\n30) 출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행 연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인 수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)\n31) 출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부), pp. 244., 논자 재정리상기한 엔진오일의 오염에 따른 냉각수 상승의 상관성에 기반하여 엔진오일의 점도 변화에 따른 엔진 냉각수 온도의 상승속도 관계를 통해 엔진오일의 수명시간을 예측한다(e.g., Yu & Jung, 2020) (Figure 4c).32)",
+    "raw": "29) 자동차의 엔진, 자동변속기, ABS 등의 상태를 컴퓨터로 제어하는 장치임\n30) 출처: 한국자동차연구원, 자동차/부품 상태 예측 기술개발 사례와 관련하여 엔진오일 상태 예측기술에 대한 선행 연구 시 제시된 엔진오일 오염도와 냉각수 상승속도에 따른 오염 정도의 상관관계에 관한 내용을 참고하여 기초적인 수준에서 실험적으로 확인하였다.(관련 특허 : KR 10-2021-0002348 : 엔진오일 상태 예측 기술, 냉각수 온도상승 속도 변화 데이터를 활용하여 엔진오일 수명예측이 가능)\n31) 출처: 군수 빅데이터 수집/분석체계 구축 BPR/ISP 결과보고('21.12.9., 국방부), pp. 244., 논자 재정리상기한 엔진오일의 오염에 따른 냉각수 상승의 상관성에 기반하여 엔진오일의 점도 변화에 따른 엔진 냉각수 온도의 상승속도 관계를 통해 엔진오일의 수명시간을 예측한다(e.g., Yu & Jung, 2020) (Figure 4c).32)",
+    "citation_text": "(e.g., Yu & Jung, 2020)",
+    "offset": [
+     437,
+     460
+    ],
+    "authors": [
+     "Yu & Jung"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u20_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 12,
+    "uid": "u11_4",
+    "kind": "narrative",
+    "sentence": "이런 연구결과를 통해 궤도형 기동체계 대상으로 엔진오일의 오염도를 파악하는 방법을 확인하였다.34) 실제 Jung and Yu(2023)는 승용자동차 대상으로 엔진오일의 오염도를 오일 점도 변화에 기반하여 엔진오일 오염도와 냉각수 온도의 상승률 간의 상관성을 밝혔다.",
+    "raw": "이런 연구결과를 통해 궤도형 기동체계 대상으로 엔진오일의 오염도를 파악하는 방법을 확인하였다.34) 실제 Jung and Yu(2023)는 승용자동차 대상으로 엔진오일의 오염도를 오일 점도 변화에 기반하여 엔진오일 오염도와 냉각수 온도의 상승률 간의 상관성을 밝혔다.",
+    "citation_text": "Yu(2023)",
+    "offset": [
+     68,
+     76
+    ],
+    "authors": [
+     "Yu"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u19_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

@@ -1,0 +1,2354 @@
+{
+ "doc": "13571807",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571807",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "계급과 직책에 따른 임무수행 능력 배양을 위한 교육을 담당하는 학교부대(기관)로써, 교육대상자의 병과 및 주특기에 따른 기초 및 전문지식에 관한 교육이 이뤄진다.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1336.1,
+     997.9,
+     1420.8
+    ],
+    "uid": "u1_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "교육사령부(1985). 교육훈련지침서. 교육사령부 : 대전 참조.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     152.3,
+     1336.1,
+     997.9,
+     1420.8
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "교육사령부"
+    ],
+    "authors_raw": "교육사령부",
+    "et_al": false,
+    "year": "1985",
+    "title": "교육훈련지침서. 교육사령부 : 대전 참조",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "육군 군사학교 교수역량에 관한 연구는 3편(김희곤, 2014: 권영성, 2017; 채성기, 2017)이 있으며 합동대, 간호교 등 해당 학교에 대한 연구로써 소령 계급, 여군과 같은 특수 신분에 국한되어 일반화하기가 제한된. 따라서 본 연구는 군사학교 교관 전체를 대상으로 역량모델링과 진단도구 개발을 진행하였다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     154.5,
+     1341.2,
+     997.9,
+     1418.0
+    ],
+    "uid": "u2_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "조직역량의 구성요소에는 가치관, 이념, 관습, 지식과 기술, 고유하고 독자적인 조직의 능력, 리더십, 의사결정 과정, 학습조직 등이 있는 것으로 밝히고 있다(강경석, 신동선, 2012; 신승인, 최은수, 2018). 본 연구에서는 이러한 조직역량 중에서 교수역량과 중첩되는 조직의 가치와 비전의 수용(김호정, 2002), 교수의 교육리더십 발휘(정미순, 2019), 학습조직 화를 통한 교수 역량개발(Senge, 1990)을 별도로 구분하여 ‘조직가치 구현역량’으로 구분하였다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     151.5,
+     1309.8,
+     1000.1,
+     1420.8
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "표 1~표 3은 박종옥(2021)의 연구 대상자와 동일하며 이해를 돕기 위해 동일하게 제시함.",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     152.3,
+     1394.5,
+     840.7,
+     1419.2
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "표",
+     "1~표",
+     "3은",
+     "박종옥"
+    ],
+    "authors_raw": "표 1~표 3은 박종옥",
+    "et_al": false,
+    "year": "2021",
+    "title": "의 연구 대상자와 동일하며 이해를 돕기 위해 동일하게 제시함",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "박종옥(2021)의 연구에서 ‘최종 역량의 구성요소’까지 밝혔으며, 본 연구는 동일 내용을 제외하고 진단도구 개발 및 검증결과를 중심으로 기술함.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     153.0,
+     1367.5,
+     999.8,
+     1427.8
+    ],
+    "uid": "u6_10",
+    "authors": [
+     "박종옥"
+    ],
+    "authors_raw": "박종옥",
+    "et_al": false,
+    "year": "2021",
+    "title": "의 연구에서 ‘최종 역량의 구성요소’까지 밝혔으며",
+    "source": "본 연구는 동일 내용을 제외하고 진단도구 개발 및 검증결과를 중심으로 기술함",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "우종필(2012). 구조방정식모델 개념과 이해. 한나래출판사: 서울 참조.",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     152.3,
+     1394.5,
+     668.8,
+     1425.8
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "우종필"
+    ],
+    "authors_raw": "우종필",
+    "et_al": false,
+    "year": "2012",
+    "title": "구조방정식모델 개념과 이해. 한나래출판사: 서울 참조",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "김원표(2017). 다시 쓰는 통계분석 구조방정식모델분석. 와이즈인컴퍼니 : 서울.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     153.8,
+     1366.7,
+     757.5,
+     1418.5
+    ],
+    "uid": "u10_6",
+    "authors": [
+     "김원표"
+    ],
+    "authors_raw": "김원표",
+    "et_al": false,
+    "year": "2017",
+    "title": "다시 쓰는 통계분석 구조방정식모델분석. 와이즈인컴퍼니 : 서울",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "AVE는 0.5 이상, CR은 0.7 이상일 때 수렴타당도가 높음.",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     153.8,
+     1366.7,
+     757.5,
+     1418.5
+    ],
+    "uid": "u10_6",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 9,
+   "per_page": {
+    "2": 2,
+    "3": 1,
+    "4": 1,
+    "6": 1,
+    "7": 1,
+    "10": 1,
+    "11": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2"
+     ],
+     "collected": [
+      "1",
+      "2"
+     ]
+    },
+    "3": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "4": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "6": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "7": {
+     "markers": [
+      "6"
+     ],
+     "collected": [
+      "6"
+     ]
+    },
+    "10": {
+     "markers": [
+      "7"
+     ],
+     "collected": [
+      "7"
+     ]
+    },
+    "11": {
+     "markers": [
+      "8",
+      "9"
+     ],
+     "collected": [
+      "8",
+      "9"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Baek, S. G., Shin, A. N., Kim, Y. K., Son, J. Y., Yoon, S. H. (2017). The Development and the Validation of Six Core Competencies Measurement Scale for High School Students in Korea. Journal of Educational Evaluation, 30(3), 363-395. https://www.kci.go.kr/kciportal/ ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002267946",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Baek S. G",
+     "Shin A. N",
+     "Kim Y. K",
+     "Son J. Y",
+     "Yoon S. H"
+    ],
+    "authors_raw": "Baek, S. G., Shin, A. N., Kim, Y. K., Son, J. Y., Yoon, S. H",
+    "et_al": false,
+    "year": "2017",
+    "title": "The Development and the Validation of Six Core Competencies Measurement Scale for High School Students in Korea. Journal of Educational Evaluation",
+    "source": "30(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "363-395",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chae, S. K. (2017). Development of diagnostic inventory and needs analysis for teaching competency of military university instructors. [Doctoral dissertation, Daejeon University].",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Chae S. K"
+    ],
+    "authors_raw": "Chae, S. K",
+    "et_al": false,
+    "year": "2017",
+    "title": "Development of diagnostic inventory and needs analysis for teaching competency of military university instructors. [Doctoral dissertation",
+    "source": "Daejeon University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hong, H. J. (2016). Identifying teaching competencies and Developing a diagnostic tool for Blended Learning in University. [Doctoral dissertation, Sookmyung Women’s University].",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Hong H. J"
+    ],
+    "authors_raw": "Hong, H. J",
+    "et_al": false,
+    "year": "2016",
+    "title": "Identifying teaching competencies and Developing a diagnostic tool for Blended Learning in University. [Doctoral dissertation",
+    "source": "Sookmyung Women’s University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, J. Y., & Byoun, S. Y. (2022). Assessing University Faculty’s Perceptions and Needs on Developing Teaching Competencies: An IPA Approach. The Journal of Humanities and Social science, 13(2), 1797-1810. https://doi.org/10.22143/HSS21.13.3.125",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Jung J. Y",
+     "Byoun S. Y"
+    ],
+    "authors_raw": "Jung, J. Y., & Byoun, S. Y",
+    "et_al": false,
+    "year": "2022",
+    "title": "Assessing University Faculty’s Perceptions and Needs on Developing Teaching Competencies: An IPA Approach. The Journal of Humanities and Social science",
+    "source": "13(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "1797-1810",
+    "doi": "10.22143/HSS21.13.3.125",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, M. S. (2019). The effect of principal’s transformational leadership on school organization competency : focusing on mediating effect of learning organization and professional learning community. [Doctoral dissertation, Korea Aerospace University].",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Jung M. S"
+    ],
+    "authors_raw": "Jung, M. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "The effect of principal’s transformational leadership on school organization competency : focusing on mediating effect of learning organization and professional learning community. [Doctoral dissertation",
+    "source": "Korea Aerospace University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, K. H., & Park, S. H. (2017). Development and Application of Teaching Competency Tool of University Teachers. The Journal of the Korea Contents Association, 17(9), 88-98. https://doi.org/10.5392/JKCA.2017.17.09.088",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kang K. H",
+     "Park S. H"
+    ],
+    "authors_raw": "Kang, K. H., & Park, S. H",
+    "et_al": false,
+    "year": "2017",
+    "title": "Development and Application of Teaching Competency Tool of University Teachers. The Journal of the Korea Contents Association",
+    "source": "17(9)",
+    "volume": null,
+    "issue": null,
+    "pages": "88-98",
+    "doi": "10.5392/JKCA.2017.17.09.088",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, K. S., & Shin, D. S. (2012). The Relationship among Principal-Teacher Exchange(LMX), Member’s Maturity, Team-Member Exchange(TMX), and School Organizational Competency. The Journal of Educational Administration, 30(3), 67-94. UCI : G704- 000511.2012.30.3.004",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kang K. S",
+     "Shin D. S"
+    ],
+    "authors_raw": "Kang, K. S., & Shin, D. S",
+    "et_al": false,
+    "year": "2012",
+    "title": "The Relationship among Principal-Teacher Exchange(LMX)",
+    "source": "Member’s Maturity",
+    "volume": null,
+    "issue": null,
+    "pages": "67-94",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kil, H. J., & Lee, S. H. (2021). Educational Needs Analysis of the Digital Competency Enhancement Education Instructors and Supporters. The Journal of Lifelong Education and HRD, 17(2), 85-109. https://doi.org/10.35637/klehrd.2021.17.2.004",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kil H. J",
+     "Lee S. H"
+    ],
+    "authors_raw": "Kil, H. J., & Lee, S. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "Educational Needs Analysis of the Digital Competency Enhancement Education Instructors and Supporters. The Journal of Lifelong Education and HRD",
+    "source": "17(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "85-109",
+    "doi": "10.35637/klehrd.2021.17.2.004",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, H. J. (2002). Effects of Organizational Culture on Organizational Commitment and Job Satisfaction in the Public Sector. Korean Public Administration Review, 36(4), 87-105. UCI : G704-000298.2002.36.4.005",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kim H. J"
+    ],
+    "authors_raw": "Kim, H. J",
+    "et_al": false,
+    "year": "2002",
+    "title": "Effects of Organizational Culture on Organizational Commitment and Job Satisfaction in the Public Sector. Korean Public Administration Review",
+    "source": "36(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "87-105",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ku, Y. H. (2020). Development of the Diagnostic Scale of Teaching Competency and Need Analysis : A Study on the Professors of P University. Journal of Education & Culture, 26(2), 99-128. https://doi.org/10.24159/joec.2020.26.2.99",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Ku Y. H"
+    ],
+    "authors_raw": "Ku, Y. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "Development of the Diagnostic Scale of Teaching Competency and Need Analysis : A Study on the Professors of P University. Journal of Education & Culture",
+    "source": "26(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "99-128",
+    "doi": "10.24159/joec.2020.26.2.99",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, J. S., & Jung, Y. J. (2018). Development of a training program for teaching methods based on competency diagnosis. Asia-pacific Journal of Multimedia Services Convergent with Art, Humanities, and Sociology, 8(2), 359-367. https://doi.org/10.35873/ajmahs.2018.8.2. 036",
+    "page": 16,
+    "box": [
+     144.9,
+     614.8,
+     1000.1,
+     1049.3
+    ],
+    "uid": "u15_3",
+    "authors": [
+     "Kwon J. S",
+     "Jung Y. J"
+    ],
+    "authors_raw": "Kwon, J. S., & Jung, Y. J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Development of a training program for teaching methods based on competency diagnosis. Asia-pacific Journal of Multimedia Services Convergent with Art",
+    "source": "Humanities",
+    "volume": null,
+    "issue": null,
+    "pages": "359-367",
+    "doi": "10.35873/ajmahs.2018.8.2",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, C., Park, J. R., & Park, B. M. (2021). A Case Study on the Competency-Based Assessment(CBA) for Faculty Development. Journal of Corporate Education and Talent Research, 23(1), 87-115. https://doi.org/10.46260/KSLP.23.1.4",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lee C",
+     "Park J. R",
+     "Park B. M"
+    ],
+    "authors_raw": "Lee, C., Park, J. R., & Park, B. M",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Case Study on the Competency-Based Assessment(CBA) for Faculty Development. Journal of Corporate Education and Talent Research",
+    "source": "23(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "87-115",
+    "doi": "10.46260/KSLP.23.1.4",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, H. A. (2019). Analysis of Professors’ Teaching Competencies and Needs to Improve programs for Teaching Competency Enhancement. The Journal of Learner-Centered Curriculum and Instruction, 19(8), 1-26. https://doi.org/10.22251/jlcci.2019.19.8.1",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lee H. A"
+    ],
+    "authors_raw": "Lee, H. A",
+    "et_al": false,
+    "year": "2019",
+    "title": "Analysis of Professors’ Teaching Competencies and Needs to Improve programs for Teaching Competency Enhancement. The Journal of Learner-Centered Curriculum and Instruction",
+    "source": "19(8)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-26",
+    "doi": "10.22251/jlcci.2019.19.8.1",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, J. W., Lee, S. Y., & Lee, J. S. (2006). Developing Value-based Measures of Corporate Competence in IS/IT. Entrue Journal of Information Technology, 4(2), 7-20. UCI : G704-001673.2006.5.1.008",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lee J. W",
+     "Lee S. Y",
+     "Lee J. S"
+    ],
+    "authors_raw": "Lee, J. W., Lee, S. Y., & Lee, J. S",
+    "et_al": false,
+    "year": "2006",
+    "title": "Developing Value-based Measures of Corporate Competence in IS/IT. Entrue Journal of Information Technology",
+    "source": "4(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "7-20",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, Y. R. (2018). Development of a Diagnostic Tool for Teaching Competency of Faculty. [Doctoral dissertation, Keimyung University].",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lee Y. R"
+    ],
+    "authors_raw": "Lee, Y. R",
+    "et_al": false,
+    "year": "2018",
+    "title": "Development of a Diagnostic Tool for Teaching Competency of Faculty. [Doctoral dissertation",
+    "source": "Keimyung University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, Y. S. (2020). Exploration of Virtual Reality Content element for adjustment resilience military life. Korean Academy of Military Social Welfare, 13(1), 125-146. https://www. kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId= ART002597176",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lee Y. S"
+    ],
+    "authors_raw": "Lee, Y. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "Exploration of Virtual Reality Content element for adjustment resilience military life. Korean Academy of Military Social Welfare",
+    "source": "13(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "125-146",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lim, E. G., Hong, Y. N., Kim, S. Y., & Kim, B. K. (2019). The Development and Validation of a Teaching Competency Scale in a University Environment. Journal of Educational Studies, 50(1), 1-23. https://doi.org/10.15854/jes.2019.3.50.1.1",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lim E. G",
+     "Hong Y. N",
+     "Kim S. Y",
+     "Kim B. K"
+    ],
+    "authors_raw": "Lim, E. G., Hong, Y. N., Kim, S. Y., & Kim, B. K",
+    "et_al": false,
+    "year": "2019",
+    "title": "The Development and Validation of a Teaching Competency Scale in a University Environment. Journal of Educational Studies",
+    "source": "50(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-23",
+    "doi": "10.15854/jes.2019.3.50.1.1",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lim, W. S. (2007). (The)study of core teaching competency model for the professor of higher education institution. [Doctoral dissertation, Gyeongsang National University].",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Lim W. S"
+    ],
+    "authors_raw": "Lim, W. S",
+    "et_al": false,
+    "year": "2007",
+    "title": "(The)study of core teaching competency model for the professor of higher education institution. [Doctoral dissertation",
+    "source": "Gyeongsang National University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Min, H. R., Kil, H. J., & Yoon, J. Y. (2020). The Development and the Validation of an Assessment Tool for the Professors’ Educational Competencies. The SNU Journal of Education Research, 29(3), 135-160. https://doi.org/10.54346/sjer.2020.29.3.135",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Min H. R",
+     "Kil H. J",
+     "Yoon J. Y"
+    ],
+    "authors_raw": "Min, H. R., Kil, H. J., & Yoon, J. Y",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Development and the Validation of an Assessment Tool for the Professors’ Educational Competencies. The SNU Journal of Education Research",
+    "source": "29(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "135-160",
+    "doi": "10.54346/sjer.2020.29.3.135",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Nam, C. W. (2020). World economic outlook for 2020 and 2021. In CESifo Forum. 21(2). https://www.econstor.eu/bitstream/10419/226405/1/CESifo-Forum-2020-02-p58-59.pdf",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Nam C. W"
+    ],
+    "authors_raw": "Nam, C. W",
+    "et_al": false,
+    "year": "2020",
+    "title": "World economic outlook for 2020 and 2021. In CESifo Forum. 21(2). https://www.econstor.eu/bitstream/10419/226405/1/CESifo-Forum-2020-02-p58-59.pdf",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "58-59",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, B. S., & Lee, S. B. (2018). A Case Study of Korea Polytechnics on Teaching Competency Modeling. Journal of Skills and Qualifications, 7(2), 1-27. https://www.kci.go.kr/kciportal/ ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002394341",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Park B. S",
+     "Lee S. B"
+    ],
+    "authors_raw": "Park, B. S., & Lee, S. B",
+    "et_al": false,
+    "year": "2018",
+    "title": "A Case Study of Korea Polytechnics on Teaching Competency Modeling. Journal of Skills and Qualifications",
+    "source": "7(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-27",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, J. O. (2021). Modeling of the Professors’ Teaching Competencies for Army Military School Instructors. Journal of Learner-Centered Curriculum and Instruction, 21(21), 937-956. https://doi.org/10.22251/jlcci.2021.21.21.937",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Park J. O"
+    ],
+    "authors_raw": "Park, J. O",
+    "et_al": false,
+    "year": "2021",
+    "title": "Modeling of the Professors’ Teaching Competencies for Army Military School Instructors. Journal of Learner-Centered Curriculum and Instruction",
+    "source": "21(21)",
+    "volume": null,
+    "issue": null,
+    "pages": "937-956",
+    "doi": "10.22251/jlcci.2021.21.21.937",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, S. J., Yi, H. S., & Kim, H. S. (2019). An Exploratory Study on the Analysis of the Digital Literacy Test Based on the Cognitive Diagnostic Theory. Journal of Korean Association for Educational Information and Media, 25(2), 373-402. https://doi.org/10.15833/KAFEIAM.25.2.373",
+    "page": 17,
+    "box": [
+     146.2,
+     672.2,
+     1000.1,
+     973.4
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "Park S. J",
+     "Yi H. S",
+     "Kim H. S"
+    ],
+    "authors_raw": "Park, S. J., Yi, H. S., & Kim, H. S",
+    "et_al": false,
+    "year": "2019",
+    "title": "An Exploratory Study on the Analysis of the Digital Literacy Test Based on the Cognitive Diagnostic Theory. Journal of Korean Association for Educational Information and Media",
+    "source": "25(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "373-402",
+    "doi": "10.15833/KAFEIAM.25.2.373",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Senge, P. (1990), The Fifth Discipline: The Art and Practice of the Learning Organization, Doubleday Currency, Boston, MA.",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Senge P"
+    ],
+    "authors_raw": "Senge, P",
+    "et_al": false,
+    "year": "1990",
+    "title": "The Fifth Discipline: The Art and Practice of the Learning Organization",
+    "source": "Doubleday Currency",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Seo, K. T., Cho, Y. G., Jang, S. P., & Sung, M. K. (2019). A Case Study on the Development of the Professor's Self-Competency Diagnostic Tool. Asia-pacific Journal of Multimedia Services Convergent with Art, Humanities, and Sociology, 9(3), 149-158. https://doi.org/10.35873/ajmahs.2019.9.3.014",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Seo K. T",
+     "Cho Y. G",
+     "Jang S. P",
+     "Sung M. K"
+    ],
+    "authors_raw": "Seo, K. T., Cho, Y. G., Jang, S. P., & Sung, M. K",
+    "et_al": false,
+    "year": "2019",
+    "title": "A Case Study on the Development of the Professor's Self-Competency Diagnostic Tool. Asia-pacific Journal of Multimedia Services Convergent with Art",
+    "source": "Humanities",
+    "volume": null,
+    "issue": null,
+    "pages": "149-158",
+    "doi": "10.35873/ajmahs.2019.9.3.014",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shin, S. I., & Choi, E. S. (2018). Structural Relationships among Secondary School Principals' Compassionate Rationalism Leadership, Communication in Organization, Learning Organization Culture, Teaching Competency and Active Participation Degree in Teacher Learning Communities. The Journal of Korean Teacher Education, 35(4), 41-70. https://doi.org/10.24211/tjkte.2018.35.4.41",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Shin S. I",
+     "Choi E. S"
+    ],
+    "authors_raw": "Shin, S. I., & Choi, E. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "Structural Relationships among Secondary School Principals' Compassionate Rationalism Leadership",
+    "source": "Communication in Organization",
+    "volume": null,
+    "issue": null,
+    "pages": "41-70",
+    "doi": "10.24211/tjkte.2018.35.4.41",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Song, H. D., Jang, S. Y., & Kim, Y. K. (2013). An Need Assessment of Faculty Member's Job Competencies According to the Level of Teaching Experience. Asian Journal of Education, 14(4), 149-179. https://doi.org/10.15753/aje.2013.14.4.007",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Song H. D",
+     "Jang S. Y",
+     "Kim Y. K"
+    ],
+    "authors_raw": "Song, H. D., Jang, S. Y., & Kim, Y. K",
+    "et_al": false,
+    "year": "2013",
+    "title": "An Need Assessment of Faculty Member's Job Competencies According to the Level of Teaching Experience. Asian Journal of Education",
+    "source": "14(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "149-179",
+    "doi": "10.15753/aje.2013.14.4.007",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Suh, S. S., Jang, Y. J., & Kim, H. D. (2008). Development of an Assessment Tool of Educational CEO's Information Competency based on Job Categories. JOURNAL OF THE KOREAN ASSOCIATION OF INFORMATION EDUCATION, 12(2), 173-182. UCI: G704-000854.2008.12.2.003",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Suh S. S",
+     "Jang Y. J",
+     "Kim H. D"
+    ],
+    "authors_raw": "Suh, S. S., Jang, Y. J., & Kim, H. D",
+    "et_al": false,
+    "year": "2008",
+    "title": "Development of an Assessment Tool of Educational CEO's Information Competency based on Job Categories. JOURNAL OF THE KOREAN ASSOCIATION OF INFORMATION EDUCATION",
+    "source": "12(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "173-182",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wong, L., Bliese, P., & McGurk, D. (2003). Military leadership: A context specific review. The Leadership Quarterly, 14(6), 657-692. https://doi.org/10.1016/j.leaqua.2003.08.001",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Wong L",
+     "Bliese P",
+     "McGurk D"
+    ],
+    "authors_raw": "Wong, L., Bliese, P., & McGurk, D",
+    "et_al": false,
+    "year": "2003",
+    "title": "Military leadership: A context specific review. The Leadership Quarterly",
+    "source": "14(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "657-692",
+    "doi": "10.1016/j.leaqua.2003.08.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, E. H. (2010). Development of a diagnostic inventory for teaching competency. [Doctoral dissertation, EWHA WOMANS University].",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Yang E. H"
+    ],
+    "authors_raw": "Yang, E. H",
+    "et_al": false,
+    "year": "2010",
+    "title": "Development of a diagnostic inventory for teaching competency. [Doctoral dissertation",
+    "source": "EWHA WOMANS University]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, E. H., & Chung, J. S. (2010). Needs Analysis for Improving Teaching Competency. Journal of Educational Technology, 26(2), 25-52. UCI: G704-000394.2010.26.2.002",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Yang E. H",
+     "Chung J. S"
+    ],
+    "authors_raw": "Yang, E. H., & Chung, J. S",
+    "et_al": false,
+    "year": "2010",
+    "title": "Needs Analysis for Improving Teaching Competency. Journal of Educational Technology",
+    "source": "26(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "25-52",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yang, M. S., Kim, J. K., Lee, S. S., & Kim, K. D. (2018). Development of Core Creativity Competence Scale in Secondary Education. Journal of Korean Association for Educational Information and Media, 24(1), 95-124. https://doi.org/10.15833/KAFEIAM.24.1.095",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Yang M. S",
+     "Kim J. K",
+     "Lee S. S",
+     "Kim K. D"
+    ],
+    "authors_raw": "Yang, M. S., Kim, J. K., Lee, S. S., & Kim, K. D",
+    "et_al": false,
+    "year": "2018",
+    "title": "Development of Core Creativity Competence Scale in Secondary Education. Journal of Korean Association for Educational Information and Media",
+    "source": "24(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "95-124",
+    "doi": "10.15833/KAFEIAM.24.1.095",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yoon, H. R. (2021). Study on the Instructors' Competence of Digital Literacy for Online Classes in the Untact Era. The Journal of Humanities and Social Science, 12(2), 2625-2638. https://doi.org/10.22143/HSS21.12.2.185",
+    "page": 18,
+    "box": [
+     144.9,
+     671.1,
+     1000.1,
+     1006.1
+    ],
+    "uid": "u17_2",
+    "authors": [
+     "Yoon H. R"
+    ],
+    "authors_raw": "Yoon, H. R",
+    "et_al": false,
+    "year": "2021",
+    "title": "Study on the Instructors' Competence of Digital Literacy for Online Classes in the Untact Era. The Journal of Humanities and Social Science",
+    "source": "12(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "2625-2638",
+    "doi": "10.22143/HSS21.12.2.185",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Development of a teaching competency diagnostic tool for army military school instructors",
+   "page": 1,
+   "box": [
+    177.7,
+    392.3,
+    985.4,
+    470.1
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Park, Jongok",
+    "markers": [],
+    "affiliation": "Institute for Vocational Education and Training)",
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     345.9,
+     494.0,
+     815.7,
+     524.8
+    ]
+   },
+   {
+    "name": "Lee, Sanghun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     345.9,
+     494.0,
+     815.7,
+     524.8
+    ]
+   },
+   {
+    "name": "Kang, Yongkwan",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "uid": "u0_6",
+    "page": 1,
+    "box": [
+     345.9,
+     494.0,
+     815.7,
+     524.8
+    ]
+   }
+  ],
+  "affiliations": [
+   "Institute for Vocational Education and Training)",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "The purpose of this study was to develop a teaching competency diagnosis tool for instructors working in army military schools to improve the quality of education and cultivate the competitiveness of the organization. To this end, previous research data related to the development of teaching competency diagnosis tools were collected and analyzed. Subsequently, focus group interviews and behavioral case interviews with excellent instructors at the Army Military School were conducted, and Delphi surveys were conducted with educational experts to organize teaching competency components and diagnostic tools temporarily. Next, to verify the validity of questionnaire items, a preliminary survey and a main survey were conducted with questionnaires administered to excellent instructors and ordinary instructors to confirm the validity and reliability of the teaching competency diagnosis tool. As a result of the study, four competencies (basic, class, organizational, and digital), 10 major competencies (attitude and attitude as educators, relationship formation, etc.), 25 sub-competencies (responsibility as instructors, initiative, etc.), and 65 behavioral indicators were selected. The diagnostic tools derived through this study are the competencies that instructors must have to perform their duties successfully in military schools. Therefore, our results not only provide information necessary for establishing instructor competency development policies but also contribute greatly to developing programs to strengthen teaching competency in military schools.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The purpose of this study was to develop a teaching competency diagnosis tool for instructors working in army military schools to improve the quality of education and cultivate the competitiveness of the organization. To this end, previous research data related to the development of teaching competency diagnosis tools were collected and analyzed. Subsequently, focus group interviews and behavioral case interviews with excellent instructors at the Army Military School were conducted, and Delphi surveys were conducted with educational experts to organize teaching competency components and diagnostic tools temporarily. Next, to verify the validity of questionnaire items, a preliminary survey and a main survey were conducted with questionnaires administered to excellent instructors and ordinary instructors to confirm the validity and reliability of the teaching competency diagnosis tool. As a result of the study, four competencies (basic, class, organizational, and digital), 10 major competencies (attitude and attitude as educators, relationship formation, etc.), 25 sub-competencies (responsibility as instructors, initiative, etc.), and 65 behavioral indicators were selected. The diagnostic tools derived through this study are the competencies that instructors must have to perform their duties successfully in military schools. Therefore, our results not only provide information necessary for establishing instructor competency development policies but also contribute greatly to developing programs to strengthen teaching competency in military schools.",
+   "page": 1,
+   "box": [
+    190.5,
+    583.4,
+    310.5,
+    610.8
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : competency modeling, military instructor, teaching competency, digital competency, organizational competency, development of a diagnostic instrument"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 3,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "155-177",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "역량모델링",
+   "군사 교관",
+   "교수역량",
+   "디지털역량",
+   "조직역량",
+   "진단도구 개발"
+  ],
+  "keywords_en": [
+   "competency modeling",
+   "military instructor",
+   "teaching competency",
+   "digital competency",
+   "organizational competency",
+   "development of a diagnostic instrument"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "그래서 교육 조직은 뛰어난 역량을 갖춘 교수자 발굴과 기존 교수자의 역량향상을 위해 노력하고 있다(Lee, Park, & Park, 2021).",
+    "raw": "그래서 교육 조직은 뛰어난 역량을 갖춘 교수자 발굴과 기존 교수자의 역량향상을 위해 노력하고 있다(Lee, Park, & Park, 2021).",
+    "citation_text": "(Lee, Park, & Park, 2021)",
+    "offset": [
+     54,
+     79
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "특히, 미국을 비롯한 OECD 국가는 국가경쟁력과 직결되는 고등교육기관인 대학교육 혁신을 기치로 시대가 요구하는 역량을 갖춘 교수자 양성을 위해 노력하고 있다(Min, Kil, & Yoon, 2020).",
+    "raw": "특히, 미국을 비롯한 OECD 국가는 국가경쟁력과 직결되는 고등교육기관인 대학교육 혁신을 기치로 시대가 요구하는 역량을 갖춘 교수자 양성을 위해 노력하고 있다(Min, Kil, & Yoon, 2020).",
+    "citation_text": "(Min, Kil, & Yoon, 2020)",
+    "offset": [
+     88,
+     112
+    ],
+    "authors": [
+     "Min"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "국내 대학도 국제적인 경쟁력을 갖춘 인재양성을 위해 대학교육의 질 제고 차원에서 교수자의 교수학습 역량 강화를 핵심요소로 인식하고 있다(Jung & Byoun, 2022).",
+    "raw": "국내 대학도 국제적인 경쟁력을 갖춘 인재양성을 위해 대학교육의 질 제고 차원에서 교수자의 교수학습 역량 강화를 핵심요소로 인식하고 있다(Jung & Byoun, 2022).",
+    "citation_text": "(Jung & Byoun, 2022)",
+    "offset": [
+     75,
+     95
+    ],
+    "authors": [
+     "Jung & Byoun"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "Ku(2020)는 ‘교육의 질은 교수의 질을 능가할 수 없다’라고 강조하였다.",
+    "raw": "Ku(2020)는 ‘교육의 질은 교수의 질을 능가할 수 없다’라고 강조하였다.",
+    "citation_text": "Ku(2020)",
+    "offset": [
+     0,
+     8
+    ],
+    "authors": [
+     "Ku"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "첫째, 대부분 연구는 기본역량과 수업(직무) 역량분석을 중점적으로 다루고 있으나(Ku, 2020), 조직구성원에게 영향을 미치는 조직역량이 거의 고려되지 않고 있다(Yang, & Chung, 2010).",
+    "raw": "첫째, 대부분 연구는 기본역량과 수업(직무) 역량분석을 중점적으로 다루고 있으나(Ku, 2020), 조직구성원에게 영향을 미치는 조직역량이 거의 고려되지 않고 있다(Yang, & Chung, 2010).",
+    "citation_text": "(Ku, 2020)",
+    "offset": [
+     44,
+     54
+    ],
+    "authors": [
+     "Ku"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "첫째, 대부분 연구는 기본역량과 수업(직무) 역량분석을 중점적으로 다루고 있으나(Ku, 2020), 조직구성원에게 영향을 미치는 조직역량이 거의 고려되지 않고 있다(Yang, & Chung, 2010).",
+    "raw": "첫째, 대부분 연구는 기본역량과 수업(직무) 역량분석을 중점적으로 다루고 있으나(Ku, 2020), 조직구성원에게 영향을 미치는 조직역량이 거의 고려되지 않고 있다(Yang, & Chung, 2010).",
+    "citation_text": "(Yang, & Chung, 2010)",
+    "offset": [
+     91,
+     112
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "최근 4차 산업혁명의 영향으로 급속히 발전한 에듀테크는 교수자에게 디지털역량을 요구하고 있다(Kil & Lee, 2021).",
+    "raw": "최근 4차 산업혁명의 영향으로 급속히 발전한 에듀테크는 교수자에게 디지털역량을 요구하고 있다(Kil & Lee, 2021).",
+    "citation_text": "(Kil & Lee, 2021)",
+    "offset": [
+     51,
+     68
+    ],
+    "authors": [
+     "Kil & Lee"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "대표적인 예로 유럽연합은 2006년부터 미래시대에 필수역량으로 디지털역량을 제시하였으며(Park, Yi, & Kim, 2019), 특히, COVID-19 영향으로 비대면 교육의 급속한 발전 속에서 교수자에게 보다 높은 수준의 디지털역량을 요구하고 있다(Yoon, 2021).",
+    "raw": "대표적인 예로 유럽연합은 2006년부터 미래시대에 필수역량으로 디지털역량을 제시하였으며(Park, Yi, & Kim, 2019), 특히, COVID-19 영향으로 비대면 교육의 급속한 발전 속에서 교수자에게 보다 높은 수준의 디지털역량을 요구하고 있다(Yoon, 2021).",
+    "citation_text": "(Park, Yi, & Kim, 2019)",
+    "offset": [
+     48,
+     71
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_4",
+    "kind": "parenthetical",
+    "sentence": "대표적인 예로 유럽연합은 2006년부터 미래시대에 필수역량으로 디지털역량을 제시하였으며(Park, Yi, & Kim, 2019), 특히, COVID-19 영향으로 비대면 교육의 급속한 발전 속에서 교수자에게 보다 높은 수준의 디지털역량을 요구하고 있다(Yoon, 2021).",
+    "raw": "대표적인 예로 유럽연합은 2006년부터 미래시대에 필수역량으로 디지털역량을 제시하였으며(Park, Yi, & Kim, 2019), 특히, COVID-19 영향으로 비대면 교육의 급속한 발전 속에서 교수자에게 보다 높은 수준의 디지털역량을 요구하고 있다(Yoon, 2021).",
+    "citation_text": "(Yoon, 2021)",
+    "offset": [
+     140,
+     152
+    ],
+    "authors": [
+     "Yoon"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 32,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "raw": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "citation_text": "Baek, Shin, Kim, Son, & Yoon, 2017",
+    "offset": [
+     75,
+     109
+    ],
+    "authors": [
+     "Baek"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "raw": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "citation_text": "Kwon & Jung, 2018",
+    "offset": [
+     111,
+     128
+    ],
+    "authors": [
+     "Kwon & Jung"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "raw": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "citation_text": "Lim, Hong, Kim, & Kim, 2019",
+    "offset": [
+     130,
+     157
+    ],
+    "authors": [
+     "Lim"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "raw": "일반적으로 교수역량은 ‘교수자가 성공적으로 교육을 실행하는데 필요한 전문적 지식, 기술, 태도, 가치 등이 결합된 행동’으로 정의한다(Baek, Shin, Kim, Son, & Yoon, 2017; Kwon & Jung, 2018; Lim, Hong, Kim, & Kim, 2019; Song, Jang, & Kim, 2013).",
+    "citation_text": "Song, Jang, & Kim, 2013",
+    "offset": [
+     159,
+     182
+    ],
+    "authors": [
+     "Song"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "narrative",
+    "sentence": "Kang and Park(2017)는 “기존의 수업이나 기초역량의 범위를 넘어서 21세기 급변하는 사회적 환경을 예측하거나 환경에 따른 다양한 필요역량”으로 정의하였다.",
+    "raw": "Kang and Park(2017)는 “기존의 수업이나 기초역량의 범위를 넘어서 21세기 급변하는 사회적 환경을 예측하거나 환경에 따른 다양한 필요역량”으로 정의하였다.",
+    "citation_text": "Park(2017)",
+    "offset": [
+     9,
+     19
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "raw": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "citation_text": "Lim, 2007",
+    "offset": [
+     44,
+     53
+    ],
+    "authors": [
+     "Lim"
+    ],
+    "year": "2007",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u16_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "raw": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "citation_text": "Yang & Chung, 2010",
+    "offset": [
+     55,
+     73
+    ],
+    "authors": [
+     "Yang & Chung"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 29,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "raw": "선행연구는 크게 ① 교수자로서의 기초소양과 수업역량으로서 교수역량을 나눈 연구(Lim, 2007; Yang & Chung, 2010), ② 수업의 전·중·후에 따라 필요한 역량 연구(Chae, 2017), 그리고 ③ 사이",
+    "citation_text": "(Chae, 2017)",
+    "offset": [
+     101,
+     113
+    ],
+    "authors": [
+     "Chae"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "raw": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "citation_text": "Hong, 2016",
+    "offset": [
+     34,
+     44
+    ],
+    "authors": [
+     "Hong"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "raw": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "citation_text": "Park & Lee, 2018",
+    "offset": [
+     46,
+     62
+    ],
+    "authors": [
+     "Park & Lee"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "raw": "버 대학이나 폴리텍대학 등의 다른 유형의 대학 교수역량 연구(Hong, 2016; Park & Lee, 2018), ④수업 운영에 있어 미래지향적, 혁신적인 수업을 위해 요구되는 교수역량 연구(강경희, 박선희, 2017)로 분류해 볼 수 있다.",
+    "citation_text": "(강경희, 박선희, 2017)",
+    "offset": [
+     107,
+     123
+    ],
+    "authors": [
+     "강경희"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u15_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "조직구성원이 함께 공유하는 조직문화는 복합적인 상호작용으로 시간의 흐름에 따라 축적되고 만들어지는 역사적인 체계이다(i.e., Wong, Bliese, & McGurk, 2003).",
+    "raw": "조직구성원이 함께 공유하는 조직문화는 복합적인 상호작용으로 시간의 흐름에 따라 축적되고 만들어지는 역사적인 체계이다(i.e., Wong, Bliese, & McGurk, 2003).",
+    "citation_text": "(i.e., Wong, Bliese, & McGurk, 2003)",
+    "offset": [
+     64,
+     100
+    ],
+    "authors": [
+     "Wong"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 28,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_5",
+    "kind": "parenthetical",
+    "sentence": "수림타당도를 판별하는 지표인 AVE(Average variance extracted: 평균분산추출)와 CR(Compositive reliability)은 구하는 공식은 다소 다르지만, 의미는 관측변수에 의해 잠재변수가 설명되는 정도로 동일하다.⁸) AVE는 0.424~0.685, CR은 0.725~0.838로 나타나 양호한 것으로 확인되었다.⁹) 단, ‘교육자로서의 자세 및 협력’의 AVE값이 .470로 기준인 0.5보다 조금 낮았으나, CR값이 .773으로 문제가 없었다(Yang, Kim, Lee, & Kim, 2018).",
+    "raw": "수림타당도를 판별하는 지표인 AVE(Average variance extracted: 평균분산추출)와 CR(Compositive reliability)은 구하는 공식은 다소 다르지만, 의미는 관측변수에 의해 잠재변수가 설명되는 정도로 동일하다.⁸) AVE는 0.424~0.685, CR은 0.725~0.838로 나타나 양호한 것으로 확인되었다.⁹) 단, ‘교육자로서의 자세 및 협력’의 AVE값이 .470로 기준인 0.5보다 조금 낮았으나, CR값이 .773으로 문제가 없었다(Yang, Kim, Lee, & Kim, 2018).",
+    "citation_text": "(Yang, Kim, Lee, & Kim, 2018)",
+    "offset": [
+     266,
+     295
+    ],
+    "authors": [
+     "Yang"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 31,
+      "num": null,
+      "uid": "u17_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

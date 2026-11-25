@@ -1,0 +1,1714 @@
+{
+ "doc": "13571772",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:27",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571772",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "이미지 내에 객체가 존재할 가능성이 높은 영역을 의미하며, 객체 탐지 시 이 영역에 집중하여 객체의 클래스 분류와 정밀화 수준을 향상시킴.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     154.5,
+     1283.5,
+     997.9,
+     1418.5
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "해당 데이터넷은 전체 클래스에서 약 120-150개 샘플이 존재하며, 본 연구는 클래스당 수 장 내외의 이미지로 학습이 이루어지는 Few-shot 학습 환경을 전제하므로 사용 데이터셋의 전체 분포 차이가 실험 결과에 직접적인 영향이 크지 않다고 판단하여 분석에 활용함.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     154.5,
+     1283.5,
+     997.9,
+     1418.5
+    ],
+    "uid": "u3_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "정밀도는 탐지한 객체 중 정답인 비율, 재현율은 실제 객체 중 모델이 올바르게 탐지한 비율을 의미함.",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     151.5,
+     1393.7,
+     954.0,
+     1422.2
+    ],
+    "uid": "u6_7",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 3,
+   "per_page": {
+    "4": 2,
+    "7": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "4": {
+     "markers": [
+      "1",
+      "2"
+     ],
+     "collected": [
+      "1",
+      "2"
+     ]
+    },
+    "7": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "Comparative analysis on few-shot models performance for improving object detection in the military Domain",
+   "page": 1,
+   "box": [
+    157.5,
+    395.0,
+    984.0,
+    471.0
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Junsub",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     405.2,
+     495.1,
+     737.6,
+     524.8
+    ],
+    "uid": "u0_6",
+    "page": 1
+   },
+   {
+    "name": "Choi, Dongnyeok",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     405.2,
+     495.1,
+     737.6,
+     524.8
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "The application of Object Detection (OD) techniques in the military and defense domain is often restricted by stringent security requirements and limited data availability. To overcome these challenges, the present study investigates the potential of Few-Shot Object Detection (FSOD) for military applications. A military vehicle image dataset, composed of real-world defense imagery, was constructed for this purpose. Four representative object detection models—YOLO, DETR, GLIP, and CD-ViTO—were fine-tuned under 1-shot, 5-shot, and 10-shot conditions. The model performance was evaluated using mean Average Precision (mAP). Notably, the CD-ViTO model's cross-domain generalization capability was further examined by comparing its performance on this military dataset against public benchmarks previously used in FSOD studies. Experimental results demonstrate that CD-ViTO achieved superior mAP scores, highlighting the viability of FSOD for efficient and accurate object detection in military and defense applications.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The application of Object Detection (OD) techniques in the military and defense domain is often restricted by stringent security requirements and limited data availability. To overcome these challenges, the present study investigates the potential of Few-Shot Object Detection (FSOD) for military applications. A military vehicle image dataset, composed of real-world defense imagery, was constructed for this purpose. Four representative object detection models—YOLO, DETR, GLIP, and CD-ViTO—were fine-tuned under 1-shot, 5-shot, and 10-shot conditions. The model performance was evaluated using mean Average Precision (mAP). Notably, the CD-ViTO model's cross-domain generalization capability was further examined by comparing its performance on this military dataset against public benchmarks previously used in FSOD studies. Experimental results demonstrate that CD-ViTO achieved superior mAP scores, highlighting the viability of FSOD for efficient and accurate object detection in military and defense applications.",
+   "page": 1,
+   "box": [
+    189.0,
+    583.6,
+    309.4,
+    609.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "high",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "Keywords : object detection, military domain, images of military vehicles, few-shot learning, model performance evaluation"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "volume": {
+   "value": 8,
+   "uid": "u1_1",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "1-13",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "객체 탐지",
+   "국방 도메인",
+   "군용 차량 이미지. 퓨샷 학습",
+   "모델 성능 평가"
+  ],
+  "keywords_en": [
+   "object detection",
+   "military domain",
+   "images of military vehicles",
+   "few-shot learning",
+   "model performance evaluation"
+  ],
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Alawi, A. E. B., & Mohammed, H. M. (2024, August). *The Role of YOLOv8 in Enhancing Strategic Military Equipment Detection*. In 2024 4th International Conference on Emerging Smart Technologies and Applications (eSmarTA) (pp. 1-5). IEEE. https://doi.org/10.1109/eSmarTA62850.2024.10638856",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Alawi A. E. B",
+     "Mohammed H. M"
+    ],
+    "authors_raw": "Alawi, A. E. B., & Mohammed, H. M",
+    "et_al": false,
+    "year": "2024",
+    "title": "The Role of YOLOv8 in Enhancing Strategic Military Equipment Detection",
+    "source": "August). *The Role of YOLO",
+    "volume": "8",
+    "issue": null,
+    "pages": "1-5",
+    "doi": "10.1109/eSmarTA62850.2024.10638856",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bae, J. Y., Park, D. H., Shin, H. J., Yoo, Y. S., Kim, D. W., Hur, D. H., Bae, S. H., Cheon, J. H., & Bae, S. H. (2024). Research on Local and Global Infrared Image Pre-Processing Methods for Deep Learning Based Guided Weapon Target Detection. *Journal of The Korea Society of Computer and Information*, 29(7), 41-51. https://doi.org/10.9708/jksci.2024.29.07.041",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Bae J. Y",
+     "Park D. H",
+     "Shin H. J",
+     "Yoo Y. S",
+     "Kim D. W",
+     "Hur D. H",
+     "Bae S. H",
+     "Cheon J. H",
+     "Bae S. H"
+    ],
+    "authors_raw": "Bae, J. Y., Park, D. H., Shin, H. J., Yoo, Y. S., Kim, D. W., Hur, D. H., Bae, S. H., Cheon, J. H., & Bae, S. H",
+    "et_al": false,
+    "year": "2024",
+    "title": "Journal of The Korea Society of Computer and Information",
+    "source": "). Research on Local and Global Infrared Image Pre-Processing Methods for Deep Learning Based Guided Weapon Target Detection. Journal of The Korea Society of Computer and Information, 29(7), 41-51. https://doi.org/10.9708/jksci.2024.29.07.041",
+    "volume": null,
+    "issue": null,
+    "pages": "41-51",
+    "doi": "10.9708/jksci.2024.29.07.041",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Baek, J. Y., Park, D. H., Shin, H. J., Yoo, Y. S., Kim, D. W., Hur, D. H., Bae, S. H., Cheon, J. H., & Bae, S. H. (2024). Research on Local and Global Infrared Image Pre-Processing Methods for Deep Learning Based Guided Weapon Target Detection. *Journal of The Korea Society of Computer and Information*, 29(7), 41-51. https://doi.org/10.9708/jksci.2024.29.07.041",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Baek J. Y",
+     "Park D. H",
+     "Shin H. J",
+     "Yoo Y. S",
+     "Kim D. W",
+     "Hur D. H",
+     "Bae S. H",
+     "Cheon J. H",
+     "Bae S. H"
+    ],
+    "authors_raw": "Baek, J. Y., Park, D. H., Shin, H. J., Yoo, Y. S., Kim, D. W., Hur, D. H., Bae, S. H., Cheon, J. H., & Bae, S. H",
+    "et_al": false,
+    "year": "2024",
+    "title": "Journal of The Korea Society of Computer and Information",
+    "source": "). Research on Local and Global Infrared Image Pre-Processing Methods for Deep Learning Based Guided Weapon Target Detection. Journal of The Korea Society of Computer and Information, 29(7), 41-51. https://doi.org/10.9708/jksci.2024.29.07.041",
+    "volume": null,
+    "issue": null,
+    "pages": "41-51",
+    "doi": "10.9708/jksci.2024.29.07.041",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bulat, A., Guerrero, R., Martinez, B., & Tzimiropoulos, G. (2023). *Fs-detr: Few-shot detection transformer with prompting and without re-training*. In Proceedings of the IEEE/CVF international conference on computer vision (pp. 11793-11802). https://openaccess.thecvf.com/content/ICCV2023/html/Bulat_FS-DETR_Few-Shot_DEtection_TRansformer_with_Prompting_and_without_Re-Training_ICCV_2023_paper.html",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Bulat A",
+     "Guerrero R",
+     "Martinez B",
+     "Tzimiropoulos G"
+    ],
+    "authors_raw": "Bulat, A., Guerrero, R., Martinez, B., & Tzimiropoulos, G",
+    "et_al": false,
+    "year": "2023",
+    "title": "Fs-detr: Few-shot detection transformer with prompting and without re-training",
+    "source": "). Fs-detr: Few-shot detection transformer with prompting and without re-training. In Proceedings of the IEEE/CVF international conference on computer vision (",
+    "volume": "2023",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., & Zagoruyko, S. (2020, August). *End-to-end object detection with transformers*. In European conference on computer vision (pp. 213-229). Cham: Springer International Publishing. https://doi.org/10.1007/978-3-030-58452-8_13",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Carion N",
+     "Massa F",
+     "Synnaeve G",
+     "Usunier N",
+     "Kirillov A",
+     "Zagoruyko S"
+    ],
+    "authors_raw": "Carion, N., Massa, F., Synnaeve, G., Usunier, N., Kirillov, A., & Zagoruyko, S",
+    "et_al": false,
+    "year": "2020",
+    "title": "End-to-end object detection with transformers",
+    "source": "August). End-to-end object detection with transformers. In European conference on computer vision (",
+    "volume": null,
+    "issue": null,
+    "pages": "213-229",
+    "doi": "10.1007/978-3-030-58452-8_13",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Fu, Y., Wang, Y., Pan, Y., Huai, L., Qiu, X., Shangguan, Z., ... & Jiang, X. (2024, September). *Cross-domain few-shot object detection via enhanced open-set object detector*. In European Conference on Computer Vision (pp. 247-264). Cham: Springer Nature Switzerland. https://doi.org/10.1007/978-3-031-73636-0_15",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Fu Y",
+     "Wang Y",
+     "Pan Y",
+     "Huai L",
+     "Qiu X",
+     "Shangguan Z",
+     "Jiang X"
+    ],
+    "authors_raw": "Fu, Y., Wang, Y., Pan, Y., Huai, L., Qiu, X., Shangguan, Z., ... & Jiang, X",
+    "et_al": false,
+    "year": "2024",
+    "title": "Cross-domain few-shot object detection via enhanced open-set object detector",
+    "source": "September). Cross-domain few-shot object detection via enhanced open-set object detector. In European Conference on Computer Vision (",
+    "volume": null,
+    "issue": null,
+    "pages": "247-264",
+    "doi": "10.1007/978-3-031-73636-0_15",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jocher, G., Chaurasia, A., & Qiu, J. (2023). YOLO by Ultralytics. Retrieved from https://github.com/ultralytics/ultralytics",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Jocher G",
+     "Chaurasia A",
+     "Qiu J"
+    ],
+    "authors_raw": "Jocher, G., Chaurasia, A., & Qiu, J",
+    "et_al": false,
+    "year": "2023",
+    "title": "YOLO by Ultralytics. Retrieved from https://github.com/ultralytics/ultralytics",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, S. H. (2022). *Research of Unidentified Tank Classification Using Few-Shot Learning*. Summer conference of Korean Institute of Communications and Information Sciences. 392-393. https://www.dbpia.co.kr/journal/articleDetail?dbid=edspia&text=Full+Text+%28DBPIA%29&nodeId=NODE11107752&an=edspia.NODE11107752 Li, L. H., Zhang, P., Zhang, H., Yang, J., Li, C., Zhong, Y., ... & Gao, J. (2022). Grounded language-image pre-training. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (pp. 10965-10975). https://openaccess.thecvf.com/content/CVPR2022/html/Li_Grounded_Language-Image_Pre-Training_CVPR_2022_paper.html?ref=blog.roboflow.com",
+    "page": 11,
+    "box": [
+     143.8,
+     643.0,
+     1001.1,
+     1195.8
+    ],
+    "uid": "u10_3",
+    "authors": [
+     "Kang S. H"
+    ],
+    "authors_raw": "Kang, S. H",
+    "et_al": false,
+    "year": "2022",
+    "title": "Research of Unidentified Tank Classification Using Few-Shot Learning",
+    "source": "). Grounded language-image pre-training. In Proceedings of the IEEE/CVF conference on computer vision and pattern recognition (",
+    "volume": null,
+    "issue": null,
+    "pages": "392-393",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Liu, S., Zeng, Z., Ren, T., Li, F., Zhang, H., Yang, J., … & Zhang, L. (2024, September). Grounding dino: Marrying dino with grounded pre-training for open-set object detection. In European Conference on Computer Vision (pp. 38-55). Cham: Springer Nature Switzerland. https://doi.org/10.1007/978-3-031-72970-6_3",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Liu S",
+     "Zeng Z",
+     "Ren T",
+     "Li F",
+     "Zhang H",
+     "Yang J",
+     "… & Zhang",
+     "L"
+    ],
+    "authors_raw": "Liu, S., Zeng, Z., Ren, T., Li, F., Zhang, H., Yang, J., … & Zhang, L",
+    "et_al": false,
+    "year": "2024",
+    "title": "September). Grounding dino: Marrying dino with grounded pre-training for open-set object detection. In European Conference on Computer Vision (pp. 38-55). Cham: Springer Nature Switzerland. https://doi.org/10.1007/978-3-031-72970-6_3",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "38-55",
+    "doi": "10.1007/978-3-031-72970-6_3",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Madan, A., Peri, N., Kong, S., & Ramanan, D. (2024). Revisiting few-shot object detection with vision-language models. Advances in Neural Information Processing Systems, 37, 19547-19560. https://doi.org/10.48550/arXiv.2312.14494",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Madan A",
+     "Peri N",
+     "Kong S",
+     "Ramanan D"
+    ],
+    "authors_raw": "Madan, A., Peri, N., Kong, S., & Ramanan, D",
+    "et_al": false,
+    "year": "2024",
+    "title": "Revisiting few-shot object detection with vision-language models. Advances in Neural Information Processing Systems",
+    "source": "37",
+    "volume": "2312",
+    "issue": null,
+    "pages": null,
+    "doi": "10.48550/arXiv.2312.14494",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, C., Lee, S., Choi, H., Kim, D., Jeong, Y., & Paik, J. (2024, January). Enhancing defense surveillance: Few-shot object detection with synthetically generated military data. In 2024 International Conference on Electronics, Information, and Communication (ICEIC) (pp. 1-2). IEEE. https://doi.org/10.1109/ICEIC61013.2024.10457124",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Park C",
+     "Lee S",
+     "Choi H",
+     "Kim D",
+     "Jeong Y",
+     "Paik J"
+    ],
+    "authors_raw": "Park, C., Lee, S., Choi, H., Kim, D., Jeong, Y., & Paik, J",
+    "et_al": false,
+    "year": "2024",
+    "title": "January). Enhancing defense surveillance: Few-shot object detection with synthetically generated military data. In 2024 International Conference on Electronics",
+    "source": "Information",
+    "volume": null,
+    "issue": null,
+    "pages": "1-2",
+    "doi": "10.1109/ICEIC61013.2024.10457124",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You only look once: Unified, real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788). https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Redmon J",
+     "Divvala S",
+     "Girshick R",
+     "Farhadi A"
+    ],
+    "authors_raw": "Redmon, J., Divvala, S., Girshick, R., & Farhadi, A",
+    "et_al": false,
+    "year": "2016",
+    "title": "You only look once: Unified",
+    "source": "real-time object detection. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 779-788). https://www.cv-foundation.org/openaccess/content_cvpr_2016/html/Redmon_You_Only_Look_CVPR_2016_paper.html",
+    "volume": null,
+    "issue": null,
+    "pages": "779-788",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ryu, H., Park, M., & Kim, D. Y. (2024). Object prediction and detection of ground-based weapon with an improved YOLO11 approach: Focusing on assumptions underlying operational environments and UAV-captured features related to PLZ-05 Self-Propelled Howitzer. Journal of Advances in Military Studies, 7(3), 13-30. https://doi.org/10.37944/jams.v7i3.256",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Ryu H",
+     "Park M",
+     "Kim D. Y"
+    ],
+    "authors_raw": "Ryu, H., Park, M., & Kim, D. Y",
+    "et_al": false,
+    "year": "2024",
+    "title": "Object prediction and detection of ground-based weapon with an improved YOLO11 approach: Focusing on assumptions underlying operational environments and UAV-captured features related to PLZ-05 Self-Propelled Howitzer. Journal of Advances in Military Studies",
+    "source": "7(3)",
+    "volume": "7",
+    "issue": null,
+    "pages": "13-30",
+    "doi": "10.37944/jams.v7i3.256",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wang, X., Huang, T. E., Darrell, T., Gonzalez, J. E., & Yu, F. (2020). Frustratingly simple few-shot object detection. arXiv preprint arXiv:2003.06957.",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Wang X",
+     "Huang T. E",
+     "Darrell T",
+     "Gonzalez J. E",
+     "Yu F"
+    ],
+    "authors_raw": "Wang, X., Huang, T. E., Darrell, T., Gonzalez, J. E., & Yu, F",
+    "et_al": false,
+    "year": "2020",
+    "title": "Frustratingly simple few-shot object detection. arXiv preprint arXiv:2003.06957",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Wu, G., Cong, L., Huang, C., Ju, Y., Jiang, J., & Chen, C. (2025, January). Meta-Learning Framework for Effective Few Shot Time Series Prediction. In 2025 IEEE 5th International Conference on Power, Electronics and Computer Applications (ICPECA) (pp. 18-22). IEEE. https://doi.org/10.1109/ICPECA63937.2025.10928851",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Wu G",
+     "Cong L",
+     "Huang C",
+     "Ju Y",
+     "Jiang J",
+     "Chen C"
+    ],
+    "authors_raw": "Wu, G., Cong, L., Huang, C., Ju, Y., Jiang, J., & Chen, C",
+    "et_al": false,
+    "year": "2025",
+    "title": "January). Meta-Learning Framework for Effective Few Shot Time Series Prediction. In 2025 IEEE 5th International Conference on Power",
+    "source": "Electronics and Computer Applications (ICPECA) (pp. 18-22). IEEE. https://doi.org/10.1109/ICPECA63937.2025.10928851",
+    "volume": null,
+    "issue": null,
+    "pages": "18-22",
+    "doi": "10.1109/ICPECA63937.2025.10928851",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yuk, T. K., Oh, S. H., Hwang, S. I., & Jeong, K. (2024). Effective Few-Shot Learning for Military Vehicles Image Classification Using Prompt-Based Learning. Journal of Convergence Security, 24(5), 189-194. https://doi.org/10.33778/kcsa.2024.24.5.189\n원고접수일 2025년 03월 28일\n원고수정일 2025년 04월 16일\n게재확정일 2025년 05월 12일",
+    "page": 12,
+    "box": [
+     149.3,
+     756.7,
+     997.9,
+     1100.6
+    ],
+    "uid": "u11_2",
+    "authors": [
+     "Yuk T. K",
+     "Oh S. H",
+     "Hwang S. I",
+     "Jeong K"
+    ],
+    "authors_raw": "Yuk, T. K., Oh, S. H., Hwang, S. I., & Jeong, K",
+    "et_al": false,
+    "year": "2024",
+    "title": "Effective Few-Shot Learning for Military Vehicles Image Classification Using Prompt-Based Learning. Journal of Convergence Security",
+    "source": "24(5)",
+    "volume": null,
+    "issue": null,
+    "pages": "189-194",
+    "doi": "10.33778/kcsa.2024.24.5.189",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "따라서 객체 탐지⋅분류 정확도 향상을 위한 계량적 연구 접근이 부족하여 실시간 탐지 및 분석 시스템의 최적화를 위한 연구 설계가 필요하다(Ryu, Park, & Kim, 2024).",
+    "raw": "따라서 객체 탐지⋅분류 정확도 향상을 위한 계량적 연구 접근이 부족하여 실시간 탐지 및 분석 시스템의 최적화를 위한 연구 설계가 필요하다(Ryu, Park, & Kim, 2024).",
+    "citation_text": "(Ryu, Park, & Kim, 2024)",
+    "offset": [
+     76,
+     100
+    ],
+    "authors": [
+     "Ryu"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "대표적인 OVOD 모델인 GLIP(Li et al., 2022) 및 Grounding DINO(Liu et al., 2024)는 대규모 텍스트-이미지 사전학습을 통해 제로샷(zero shot) 탐지 성능을 확보하며, 자연어 기반 객체 인식을 실현하였다.",
+    "raw": "대표적인 OVOD 모델인 GLIP(Li et al., 2022) 및 Grounding DINO(Liu et al., 2024)는 대규모 텍스트-이미지 사전학습을 통해 제로샷(zero shot) 탐지 성능을 확보하며, 자연어 기반 객체 인식을 실현하였다.",
+    "citation_text": "(Li et al., 2022)",
+    "offset": [
+     18,
+     35
+    ],
+    "authors": [
+     "Li et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "대표적인 OVOD 모델인 GLIP(Li et al., 2022) 및 Grounding DINO(Liu et al., 2024)는 대규모 텍스트-이미지 사전학습을 통해 제로샷(zero shot) 탐지 성능을 확보하며, 자연어 기반 객체 인식을 실현하였다.",
+    "raw": "대표적인 OVOD 모델인 GLIP(Li et al., 2022) 및 Grounding DINO(Liu et al., 2024)는 대규모 텍스트-이미지 사전학습을 통해 제로샷(zero shot) 탐지 성능을 확보하며, 자연어 기반 객체 인식을 실현하였다.",
+    "citation_text": "(Liu et al., 2024)",
+    "offset": [
+     52,
+     70
+    ],
+    "authors": [
+     "Liu et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이 도메인의 Few-Shot 학습연구는 대부분 이미지 분류(Classification)에 중점되어 있으며(Kang, 2022; Yuk, Oh, Jeong, 2024), 이미지 내 객체의 위치까지 탐지하는 OD 문제에 Few-Shot을 적용한 학술적 연구가 부족하다.",
+    "raw": "이 도메인의 Few-Shot 학습연구는 대부분 이미지 분류(Classification)에 중점되어 있으며(Kang, 2022; Yuk, Oh, Jeong, 2024), 이미지 내 객체의 위치까지 탐지하는 OD 문제에 Few-Shot을 적용한 학술적 연구가 부족하다.",
+    "citation_text": "Kang, 2022",
+    "offset": [
+     59,
+     69
+    ],
+    "authors": [
+     "Kang"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "이 도메인의 Few-Shot 학습연구는 대부분 이미지 분류(Classification)에 중점되어 있으며(Kang, 2022; Yuk, Oh, Jeong, 2024), 이미지 내 객체의 위치까지 탐지하는 OD 문제에 Few-Shot을 적용한 학술적 연구가 부족하다.",
+    "raw": "이 도메인의 Few-Shot 학습연구는 대부분 이미지 분류(Classification)에 중점되어 있으며(Kang, 2022; Yuk, Oh, Jeong, 2024), 이미지 내 객체의 위치까지 탐지하는 OD 문제에 Few-Shot을 적용한 학술적 연구가 부족하다.",
+    "citation_text": "Yuk, Oh, Jeong, 2024",
+    "offset": [
+     71,
+     91
+    ],
+    "authors": [
+     "Yuk"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "YOLO 모델은 기존 객체 탐지(R-CNN 계열) 방식의 제약을 해소하기 위한 개선 모델로 전체 이미지를 한 번에 탐지하고, 단일 신경망으로 모든 객체의 위치와 종류를 실시간 처리하여 동시에 예측할 수 있다(Remon et al., 2016).",
+    "raw": "YOLO 모델은 기존 객체 탐지(R-CNN 계열) 방식의 제약을 해소하기 위한 개선 모델로 전체 이미지를 한 번에 탐지하고, 단일 신경망으로 모든 객체의 위치와 종류를 실시간 처리하여 동시에 예측할 수 있다(Remon et al., 2016).",
+    "citation_text": "(Remon et al., 2016)",
+    "offset": [
+     115,
+     135
+    ],
+    "authors": [
+     "Remon et al."
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "그래서 해당 모델은 객체 탐지의 속도와 정확도 향상이 가능하며 YOLOv5, YOLOv8 등으로 발전하면서 실시간 비전 분야에서 활용되고 있다(e.g., Alawi & Mohammed, 2024; Ryu, Park, & Kim, 2024).",
+    "raw": "그래서 해당 모델은 객체 탐지의 속도와 정확도 향상이 가능하며 YOLOv5, YOLOv8 등으로 발전하면서 실시간 비전 분야에서 활용되고 있다(e.g., Alawi & Mohammed, 2024; Ryu, Park, & Kim, 2024).",
+    "citation_text": "e.g., Alawi & Mohammed, 2024",
+    "offset": [
+     80,
+     108
+    ],
+    "authors": [
+     "Alawi & Mohammed"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "그래서 해당 모델은 객체 탐지의 속도와 정확도 향상이 가능하며 YOLOv5, YOLOv8 등으로 발전하면서 실시간 비전 분야에서 활용되고 있다(e.g., Alawi & Mohammed, 2024; Ryu, Park, & Kim, 2024).",
+    "raw": "그래서 해당 모델은 객체 탐지의 속도와 정확도 향상이 가능하며 YOLOv5, YOLOv8 등으로 발전하면서 실시간 비전 분야에서 활용되고 있다(e.g., Alawi & Mohammed, 2024; Ryu, Park, & Kim, 2024).",
+    "citation_text": "Ryu, Park, & Kim, 2024",
+    "offset": [
+     110,
+     132
+    ],
+    "authors": [
+     "Ryu"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "narrative",
+    "sentence": "예를 들어 Baek et al. (2024) 연구는 실제 유도무기의 적외선 영상 내 객체 탐지의 신속성과 동적 영상에서 일관되고 정확한 검출을 위한 이미지 전처리 목적으로 YOLO 모델을 활용하였다.",
+    "raw": "예를 들어 Baek et al. (2024) 연구는 실제 유도무기의 적외선 영상 내 객체 탐지의 신속성과 동적 영상에서 일관되고 정확한 검출을 위한 이미지 전처리 목적으로 YOLO 모델을 활용하였다.",
+    "citation_text": "Baek et al. (2024)",
+    "offset": [
+     6,
+     24
+    ],
+    "authors": [
+     "Baek et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "반면, DETR 모델(Carion et al., 2020)은 Transformer 아키텍처를 활용해 기존 객체 탐지 모델의 복잡한 수작업 구성 요소를 제거하고 end-to-end 단일 네트워크로 객체 간 관계를 모델링하여 복잡한 장면에서도 뛰어난 성능의 장점이 있다.",
+    "raw": "반면, DETR 모델(Carion et al., 2020)은 Transformer 아키텍처를 활용해 기존 객체 탐지 모델의 복잡한 수작업 구성 요소를 제거하고 end-to-end 단일 네트워크로 객체 간 관계를 모델링하여 복잡한 장면에서도 뛰어난 성능의 장점이 있다.",
+    "citation_text": "(Carion et al., 2020)",
+    "offset": [
+     11,
+     32
+    ],
+    "authors": [
+     "Carion et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "narrative",
+    "sentence": "이에 Alawi & Mohammed (2024) 연구는 야전에서 주변 환경과 유사 색상·패턴을 활용한 군용 위장 표적 탐지의 성능 향상을 위해 기존 DETR 모델 개선을 시도하였다.",
+    "raw": "이에 Alawi & Mohammed (2024) 연구는 야전에서 주변 환경과 유사 색상·패턴을 활용한 군용 위장 표적 탐지의 성능 향상을 위해 기존 DETR 모델 개선을 시도하였다.",
+    "citation_text": "Mohammed (2024)",
+    "offset": [
+     11,
+     26
+    ],
+    "authors": [
+     "Mohammed"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "narrative",
+    "sentence": "Li et al. (2022)이 제안한 GLIP(Grounded Language-Image Pretraining)은 텍스트-이미지 간 의미적 매칭으로 대규모 사전학습을 통해 zero-shot 기반 탐지가 가능하다.",
+    "raw": "Li et al. (2022)이 제안한 GLIP(Grounded Language-Image Pretraining)은 텍스트-이미지 간 의미적 매칭으로 대규모 사전학습을 통해 zero-shot 기반 탐지가 가능하다.",
+    "citation_text": "Li et al. (2022)",
+    "offset": [
+     0,
+     16
+    ],
+    "authors": [
+     "Li et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_3",
+    "kind": "parenthetical",
+    "sentence": "최근 발표된 Grounding DINO 모델은 DETR 기반 구조에 텍스트 조건부 객체 탐지를 통합하고, 다양한 데이터셋 대상으로 사전학습이 되어 자연어 쿼리에 따른 객체 위치의 정밀 예측이 가능한 구조를 갖추고 있으나(Liu et al., 2023) 사전학습에 포함되지 않은 도메인이나 객체에 관한 탐지 성능이 제한된다는 한계도 있다.",
+    "raw": "최근 발표된 Grounding DINO 모델은 DETR 기반 구조에 텍스트 조건부 객체 탐지를 통합하고, 다양한 데이터셋 대상으로 사전학습이 되어 자연어 쿼리에 따른 객체 위치의 정밀 예측이 가능한 구조를 갖추고 있으나(Liu et al., 2023) 사전학습에 포함되지 않은 도메인이나 객체에 관한 탐지 성능이 제한된다는 한계도 있다.",
+    "citation_text": "(Liu et al., 2023)",
+    "offset": [
+     122,
+     140
+    ],
+    "authors": [
+     "Liu et al."
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "Meta R-CNN(Wang et al., 2020)은 RoI(Region of Interest)¹) 수준의 메타러닝 구조를 도입하여 소수샘플로 효과적인 객체 탐지가 가능하며, Frustratingly Simple FSOD(Wang, Huang, Darrell, Gonzalez, & Yu, 2020)은 단순 fine-tuning만으로 기존 메타러닝 기법을 능가하는 성능을 보였다.",
+    "raw": "Meta R-CNN(Wang et al., 2020)은 RoI(Region of Interest)¹) 수준의 메타러닝 구조를 도입하여 소수샘플로 효과적인 객체 탐지가 가능하며, Frustratingly Simple FSOD(Wang, Huang, Darrell, Gonzalez, & Yu, 2020)은 단순 fine-tuning만으로 기존 메타러닝 기법을 능가하는 성능을 보였다.",
+    "citation_text": "(Wang et al., 2020)",
+    "offset": [
+     10,
+     29
+    ],
+    "authors": [
+     "Wang et al."
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "Meta R-CNN(Wang et al., 2020)은 RoI(Region of Interest)¹) 수준의 메타러닝 구조를 도입하여 소수샘플로 효과적인 객체 탐지가 가능하며, Frustratingly Simple FSOD(Wang, Huang, Darrell, Gonzalez, & Yu, 2020)은 단순 fine-tuning만으로 기존 메타러닝 기법을 능가하는 성능을 보였다.",
+    "raw": "Meta R-CNN(Wang et al., 2020)은 RoI(Region of Interest)¹) 수준의 메타러닝 구조를 도입하여 소수샘플로 효과적인 객체 탐지가 가능하며, Frustratingly Simple FSOD(Wang, Huang, Darrell, Gonzalez, & Yu, 2020)은 단순 fine-tuning만으로 기존 메타러닝 기법을 능가하는 성능을 보였다.",
+    "citation_text": "(Wang, Huang, Darrell, Gonzalez, & Yu, 2020)",
+    "offset": [
+     124,
+     168
+    ],
+    "authors": [
+     "Wang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "또한, FS-DETR (Bulat, Guerrero, Martinez, & Tzimiroopoulos, 2023)은 DETR 구조에 시각적 프롬프트를 적용하여 테스트 시 추가 학습 없이도 새로운 클래스 탐지가 가능하였다.",
+    "raw": "또한, FS-DETR (Bulat, Guerrero, Martinez, & Tzimiroopoulos, 2023)은 DETR 구조에 시각적 프롬프트를 적용하여 테스트 시 추가 학습 없이도 새로운 클래스 탐지가 가능하였다.",
+    "citation_text": "(Bulat, Guerrero, Martinez, & Tzimiroopoulos, 2023)",
+    "offset": [
+     12,
+     63
+    ],
+    "authors": [
+     "Bulat"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 3,
+    "uid": "u2_5",
+    "kind": "parenthetical",
+    "sentence": "최근 Vision Transformer 기반의 개방형 탐지 구조를 확장한 CD-ViTO(Fu et al., 2024) 모델은 CD-FSOD(Cross-domain few-shot object detection) 모델보다 향상 성능을 나타냈다.",
+    "raw": "최근 Vision Transformer 기반의 개방형 탐지 구조를 확장한 CD-ViTO(Fu et al., 2024) 모델은 CD-FSOD(Cross-domain few-shot object detection) 모델보다 향상 성능을 나타냈다.",
+    "citation_text": "(Fu et al., 2024)",
+    "offset": [
+     48,
+     65
+    ],
+    "authors": [
+     "Fu et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "상기한 객체 탐지 모델은 학습 가능한 소량 객체 데이터로 객체의 고유 특징을 포착할 수 있어 군사 분야에서 객체의 분류 정확성을 높이는 데 적합하다(e.g., Park, Lee, Choi, Kim, Jeong, & Paik, 2024).",
+    "raw": "상기한 객체 탐지 모델은 학습 가능한 소량 객체 데이터로 객체의 고유 특징을 포착할 수 있어 군사 분야에서 객체의 분류 정확성을 높이는 데 적합하다(e.g., Park, Lee, Choi, Kim, Jeong, & Paik, 2024).",
+    "citation_text": "(e.g., Park, Lee, Choi, Kim, Jeong, & Paik, 2024)",
+    "offset": [
+     82,
+     131
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "실제 군사 분야는 군사적 비밀이나 기밀성으로 대규모 데이터가 확보가 현실적으로 어려운 실정이다(Baek et al., 2024).",
+    "raw": "실제 군사 분야는 군사적 비밀이나 기밀성으로 대규모 데이터가 확보가 현실적으로 어려운 실정이다(Baek et al., 2024).",
+    "citation_text": "(Baek et al., 2024)",
+    "offset": [
+     52,
+     71
+    ],
+    "authors": [
+     "Baek et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "이런 실증연구 수행의 제약을 해소하기 위해 Kang(2022)은 전차 전투원의 생존력 및 전투수행능력 향상에 필요한 미식별 전차를 학습하지 않은 데이터 분류가 가능한 메타러닝 기반 학습모델을 제안하였다.",
+    "raw": "이런 실증연구 수행의 제약을 해소하기 위해 Kang(2022)은 전차 전투원의 생존력 및 전투수행능력 향상에 필요한 미식별 전차를 학습하지 않은 데이터 분류가 가능한 메타러닝 기반 학습모델을 제안하였다.",
+    "citation_text": "Kang(2022)",
+    "offset": [
+     24,
+     34
+    ],
+    "authors": [
+     "Kang"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "narrative",
+    "sentence": "더 나아가 Yuk et al.(2024) 경우, 실제 전차와 전투기 이미지 데이터(오픈소스 데이터셋 및 인터넷 이미지 수집)를 사용하여 Prompt Learning에 기반한 Few-Shot Learning 방식으로 분류 정확성을 높이고자 연구를 수행하였다.",
+    "raw": "더 나아가 Yuk et al.(2024) 경우, 실제 전차와 전투기 이미지 데이터(오픈소스 데이터셋 및 인터넷 이미지 수집)를 사용하여 Prompt Learning에 기반한 Few-Shot Learning 방식으로 분류 정확성을 높이고자 연구를 수행하였다.",
+    "citation_text": "Yuk et al.(2024)",
+    "offset": [
+     6,
+     22
+    ],
+    "authors": [
+     "Yuk et al."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "해당 실험의 Few-Shot 학습 환경은 기존 연구(Bulat et al., 2023; Li et al., 2022)를 참고하여 클래스 별로 각각 1-shot, 5-shot, 10-shot 조건에 맞추어 학습 데이터를 구성한다.",
+    "raw": "해당 실험의 Few-Shot 학습 환경은 기존 연구(Bulat et al., 2023; Li et al., 2022)를 참고하여 클래스 별로 각각 1-shot, 5-shot, 10-shot 조건에 맞추어 학습 데이터를 구성한다.",
+    "citation_text": "Bulat et al., 2023",
+    "offset": [
+     29,
+     47
+    ],
+    "authors": [
+     "Bulat et al."
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "해당 실험의 Few-Shot 학습 환경은 기존 연구(Bulat et al., 2023; Li et al., 2022)를 참고하여 클래스 별로 각각 1-shot, 5-shot, 10-shot 조건에 맞추어 학습 데이터를 구성한다.",
+    "raw": "해당 실험의 Few-Shot 학습 환경은 기존 연구(Bulat et al., 2023; Li et al., 2022)를 참고하여 클래스 별로 각각 1-shot, 5-shot, 10-shot 조건에 맞추어 학습 데이터를 구성한다.",
+    "citation_text": "Li et al., 2022",
+    "offset": [
+     49,
+     64
+    ],
+    "authors": [
+     "Li et al."
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_5",
+    "kind": "parenthetical",
+    "sentence": "모든 모델은 각 모델별로 공개된 사전학습 가중치를 기반으로 초기화하고, Few-Shot 학습의 특성상 과적합(overfitting)을 방지하기 위해 조기 종료(Early Stopping)를 공통으로 적용하였다(e.g., Wu, Cong, Huang, Ju, Jiang, & Chen, 2025).",
+    "raw": "모든 모델은 각 모델별로 공개된 사전학습 가중치를 기반으로 초기화하고, Few-Shot 학습의 특성상 과적합(overfitting)을 방지하기 위해 조기 종료(Early Stopping)를 공통으로 적용하였다(e.g., Wu, Cong, Huang, Ju, Jiang, & Chen, 2025).",
+    "citation_text": "(e.g., Wu, Cong, Huang, Ju, Jiang, & Chen, 2025)",
+    "offset": [
+     116,
+     164
+    ],
+    "authors": [
+     "Wu"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "더 나아가 향후 실험설계는 객체 탐지와 관련된 실제 운용환경의 특징(영상 촬영 환경, 해상도, 배경 잡음 등)을 고려할 수 있도록 변수를 사전식별하고 반영해야 한다(e.g., Ryu, Park, & Kim, 2024).",
+    "raw": "더 나아가 향후 실험설계는 객체 탐지와 관련된 실제 운용환경의 특징(영상 촬영 환경, 해상도, 배경 잡음 등)을 고려할 수 있도록 변수를 사전식별하고 반영해야 한다(e.g., Ryu, Park, & Kim, 2024).",
+    "citation_text": "(e.g., Ryu, Park, & Kim, 2024)",
+    "offset": [
+     91,
+     121
+    ],
+    "authors": [
+     "Ryu"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2024, August).",
+    "raw": "(2024, August).",
+    "citation_text": "(2024, August)",
+    "offset": [
+     0,
+     14
+    ],
+    "authors": [
+     "August"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2020, August).",
+    "raw": "(2020, August).",
+    "citation_text": "(2020, August)",
+    "offset": [
+     0,
+     14
+    ],
+    "authors": [
+     "August"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2024, September).",
+    "raw": "(2024, September).",
+    "citation_text": "(2024, September)",
+    "offset": [
+     0,
+     17
+    ],
+    "authors": [
+     "September"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2024, September).",
+    "raw": "(2024, September).",
+    "citation_text": "(2024, September)",
+    "offset": [
+     0,
+     17
+    ],
+    "authors": [
+     "September"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2024, January).",
+    "raw": "(2024, January).",
+    "citation_text": "(2024, January)",
+    "offset": [
+     0,
+     15
+    ],
+    "authors": [
+     "January"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u10_3"
+     }
+    ],
+    "n_candidates": 9,
+    "confidence": "partial"
+   },
+   {
+    "page": 11,
+    "uid": "u10_3",
+    "kind": "parenthetical",
+    "sentence": "(2025, January).",
+    "raw": "(2025, January).",
+    "citation_text": "(2025, January)",
+    "offset": [
+     0,
+     15
+    ],
+    "authors": [
+     "January"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u11_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

@@ -1,0 +1,3143 @@
+{
+ "doc": "13571811",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571811",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "KOTRA(2019). 2020 드론 주요시장 보고서. http://openknowledge.kotra.or.kr/handle/2014.oak/20519",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     997.9,
+     1363.3
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "KOTRA"
+    ],
+    "authors_raw": "KOTRA",
+    "et_al": false,
+    "year": "2019",
+    "title": "2020 드론 주요시장 보고서. http://openknowledge.kotra.or.kr/handle/2014.oak/20519",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "한국방위산업진흥회(2020). 방위사업청, ‘국방 드론 산업 발전을 위한 온라인세미나’ 개최: 국방 드론의 진화적 개발 위해 2030년까지 2조 7천억 원 투자 계획, 국방과 기술, 500호 30-31.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     997.9,
+     1363.3
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "한국방위산업진흥회"
+    ],
+    "authors_raw": "한국방위산업진흥회",
+    "et_al": false,
+    "year": "2020",
+    "title": "방위사업청",
+    "source": "‘국방 드론 산업 발전을 위한 온라인세미나’ 개최: 국방 드론의 진화적 개발 위해 2030년까지 2조 7천억 원 투자 계획",
+    "volume": null,
+    "issue": null,
+    "pages": "30-31",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "고시성(2020). 인구 절벽시대 병역자원 감소에 따른 한국군 병력구조 개편 발전방향 연구. KIMA 정책연구, 2. https://www.kima.re.kr/3.html?html=3-10-3.html&s=10&uid=281",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     151.5,
+     1303.8,
+     997.9,
+     1363.3
+    ],
+    "uid": "u1_5",
+    "authors": [
+     "고시성"
+    ],
+    "authors_raw": "고시성",
+    "et_al": false,
+    "year": "2020",
+    "title": "인구 절벽시대 병역자원 감소에 따른 한국군 병력구조 개편 발전방향 연구. KIMA 정책연구",
+    "source": "2. https://www.kima.re.kr/3.html?html=3-10-3.html&s=10&uid=281",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "중앙일보(2021.10.23). 드론 공격에 드론으로 되갚았다...美, 알카에다 고위 지도자 사살. https://www.joongang.co.kr/article/25017491#home",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1279.9,
+     997.9,
+     1388.7
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "중앙일보"
+    ],
+    "authors_raw": "중앙일보",
+    "et_al": false,
+    "year": "2021",
+    "title": "10.23). 드론 공격에 드론으로 되갚았다...美",
+    "source": "알카에다 고위 지도자 사살. https://www.joongang.co.kr/article/25017491#home",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "동아일보(2022.03.13). 저가<sup>⋅</sup>소형 드론으로 러시아군 타격 입히는 우크라이나. https://www.donga.com/news/Inter/article/all/20220313/112303653/1",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1279.9,
+     997.9,
+     1388.7
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "동아일보"
+    ],
+    "authors_raw": "동아일보",
+    "et_al": false,
+    "year": "2022",
+    "title": "03.13). 저가<sup>⋅</sup>소형 드론으로 러시아군 타격 입히는 우크라이나. https://www.donga.com/news/Inter/article/all/20220313/112303653/1",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "이원승, 김진태(2013). 미래 지상전개념 구현을 위한 무인전투체계 발전방안. http://www.kris.or.kr/data/report_view.asp?seqno=758&page=1",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1279.9,
+     997.9,
+     1388.7
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "이원승",
+     "김진태"
+    ],
+    "authors_raw": "이원승, 김진태",
+    "et_al": false,
+    "year": "2013",
+    "title": "미래 지상전개념 구현을 위한 무인전투체계 발전방안. http://www.kris.or.kr/data/report_view.asp?seqno=758&page=1",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     153.8,
+     1279.9,
+     997.9,
+     1388.7
+    ],
+    "uid": "u2_4",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "드론로봇 시장 선점 위해 민간과 국방이 손잡는다. https://www.edaily.co.kr/news/read?newsId=03345606619378168",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     149.3,
+     1188.1,
+     997.9,
+     1246.5
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "드론로봇",
+     "시장",
+     "선점",
+     "위해",
+     "민간과",
+     "국방이",
+     "손잡는다",
+     "https://www.edaily.co.kr/news/read?newsId=03345606619378168"
+    ],
+    "authors_raw": "드론로봇 시장 선점 위해 민간과 국방이 손잡는다. https://www.edaily.co.kr/news/read?newsId=03345606619378168",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "대한민국 정책브리핑(2018.10.30.). 드론<sup>⋅</sup>로봇 시장선점 위해 민간과 국방이 손잡는다. https://www.korea.kr/news/pressReleaseView.do?newsId=156301280",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     149.3,
+     1188.1,
+     997.9,
+     1246.5
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "대한민국",
+     "정책브리핑"
+    ],
+    "authors_raw": "대한민국 정책브리핑",
+    "et_al": false,
+    "year": "2018",
+    "title": "10.30.). 드론<sup>⋅</sup>로봇 시장선점 위해 민간과 국방이 손잡는다. https://www.korea.kr/news/pressReleaseView.do?newsId=156301280",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "AI<sup>⋅</sup>드론<sup>⋅</sup>로봇... 국방부, 무인전투체계 도입 위해 조직 개편. http://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002762459",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     149.3,
+     1188.1,
+     997.9,
+     1246.5
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "무인전투체계 도입 위해 조직 개편. http://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002762459"
+    ],
+    "authors_raw": "AI<sup>⋅</sup>드론<sup>⋅</sup>로봇... 국방부, 무인전투체계 도입 위해 조직 개편. http://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002762459",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "Ohmynews(2021.07.28.). AI<sup>⋅</sup>드론<sup>⋅</sup>로봇...국방부, 무인전투체계 도입 위해 조직 개편. http://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002762459",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     149.3,
+     1188.1,
+     997.9,
+     1246.5
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "Ohmynews"
+    ],
+    "authors_raw": "Ohmynews",
+    "et_al": false,
+    "year": "2021",
+    "title": "07.28.). AI<sup>⋅</sup>드론<sup>⋅</sup>로봇...국방부",
+    "source": "무인전투체계 도입 위해 조직 개편. http://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0002762459",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "정우진(2013). 빅데이터를 말하다. 클라우드북스. http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788997793075",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     149.3,
+     1188.1,
+     997.9,
+     1246.5
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "정우진"
+    ],
+    "authors_raw": "정우진",
+    "et_al": false,
+    "year": "2013",
+    "title": "빅데이터를 말하다. 클라우드북스. http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788997793075",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "The end of theory: The datadeuge makes the scientific method obsolete https://www.wired.com/2008/06/pb-theory/",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     147.0,
+     1397.6,
+     959.5,
+     1419.5
+    ],
+    "uid": "u4_2",
+    "authors": [
+     "The",
+     "end",
+     "of",
+     "theory:",
+     "The",
+     "datadeuge",
+     "makes",
+     "the",
+     "scientific",
+     "method",
+     "obsolete",
+     "https://www.wired.com/"
+    ],
+    "authors_raw": "The end of theory: The datadeuge makes the scientific method obsolete https://www.wired.com/",
+    "et_al": false,
+    "year": "2008",
+    "title": "/06/pb-theory/",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "이원승, 김진태(2013). 미래 지상전개념 구현을 위한 무인전투체계 발전방안. http://www.kris.or.kr/data/report_view.asp?seqno=758&page=1",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     147.7,
+     1339.0,
+     995.6,
+     1418.5
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "이원승",
+     "김진태"
+    ],
+    "authors_raw": "이원승, 김진태",
+    "et_al": false,
+    "year": "2013",
+    "title": "미래 지상전개념 구현을 위한 무인전투체계 발전방안. http://www.kris.or.kr/data/report_view.asp?seqno=758&page=1",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "About TEXTOM. https://www.textom.co.kr/home/sub/overview.php?pnm=1",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     147.7,
+     1339.0,
+     995.6,
+     1418.5
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "About",
+     "TEXTOM",
+     "https://www.textom.co.kr/home/sub/overview.php?pnm=1"
+    ],
+    "authors_raw": "About TEXTOM. https://www.textom.co.kr/home/sub/overview.php?pnm=1",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "DefenseNews (2013). Pentagon Fast-Tracks Deployment of Israeli-Designed Robot. https://matzav.com/pentagon-fast-tracks-deployment-of-israeli-designed-robot/",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     147.0,
+     1333.1,
+     997.9,
+     1390.3
+    ],
+    "uid": "u8_5",
+    "authors": [
+     "DefenseNews"
+    ],
+    "authors_raw": "DefenseNews",
+    "et_al": false,
+    "year": "2013",
+    "title": "Pentagon Fast-Tracks Deployment of Israeli-Designed Robot. https://matzav.com/pentagon-fast-tracks-deployment-of-israeli-designed-robot/",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do?mode=download&articleNo=666708&attachNo=458380",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     147.0,
+     1333.1,
+     997.9,
+     1390.3
+    ],
+    "uid": "u8_5",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do?mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "21세기 정치학대사전. http://www.yes24.com/Product/Goods/12649792",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     147.0,
+     1333.1,
+     997.9,
+     1390.3
+    ],
+    "uid": "u8_5",
+    "authors": [
+     "21세기",
+     "정치학대사전",
+     "http://www.yes24.com/Product/Goods/12649792"
+    ],
+    "authors_raw": "21세기 정치학대사전. http://www.yes24.com/Product/Goods/12649792",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     144.1,
+     296.2,
+     1000.1,
+     1419.2
+    ],
+    "uid": "u9_6",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "한국방위산업진흥회(2020). 방위사업청, ‘국방 드론 산업 발전을 위한 온라인 세미나’ 개최 : 국방 드론의 진화적개발 위해 2030년까지 2조 7천억 원 투자 계획. 국방과 기술, 500, 30-31. https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10442490",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     145.5,
+     1303.8,
+     997.9,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [
+     "한국방위산업진흥회"
+    ],
+    "authors_raw": "한국방위산업진흥회",
+    "et_al": false,
+    "year": "2020",
+    "title": "방위사업청",
+    "source": "‘국방 드론 산업 발전을 위한 온라인 세미나’ 개최 : 국방 드론의 진화적개발 위해 2030년까지 2조 7천억 원 투자 계획. 국방과 기술",
+    "volume": null,
+    "issue": null,
+    "pages": "30-31",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "[디펜스기고]배치 앞둔 육<sup>⋅</sup>공군 핵심전력 드론 ‘6가지’ https://military.asiae.co.kr/view.htm?sec=1513&idxno= 2022040109422642260",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     145.5,
+     1303.8,
+     997.9,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [
+     "[디펜스기고]배치",
+     "앞둔",
+     "육<sup>⋅</sup>공군",
+     "핵심전력",
+     "드론",
+     "‘6가지’",
+     "https://military.asiae.co.kr/view.htm?sec=1513&idxno=",
+     "2022040109422642260"
+    ],
+    "authors_raw": "[디펜스기고]배치 앞둔 육<sup>⋅</sup>공군 핵심전력 드론 ‘6가지’ https://military.asiae.co.kr/view.htm?sec=1513&idxno= 2022040109422642260",
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "전자신문(2019.01.20.). 공군, ‘스마트 비행단’에 드론 활용한다...올해 24억 들여 드론 136대 구매 https://www.etnews.com/20190118000225",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     145.5,
+     1303.8,
+     997.9,
+     1362.2
+    ],
+    "uid": "u13_6",
+    "authors": [
+     "전자신문"
+    ],
+    "authors_raw": "전자신문",
+    "et_al": false,
+    "year": "2019",
+    "title": "01.20.). 공군",
+    "source": "‘스마트 비행단’에 드론 활용한다...올해 24억 들여 드론 136대 구매 https://www.etnews.com/20190118000225",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     144.1,
+     1305.4,
+     999.8,
+     1363.3
+    ],
+    "uid": "u14_7",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     144.1,
+     1305.4,
+     999.8,
+     1363.3
+    ],
+    "uid": "u14_7",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02. do?mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do? mode=download&articleNo=666708&attachNo=458380",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     144.1,
+     1305.4,
+     999.8,
+     1363.3
+    ],
+    "uid": "u14_7",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do? mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "한국방위산업진흥회(2020). 방위사업청, ‘국방 드론 산업 발전을 위한 온라인 세미나’ 개최 : 국방 드론의 진화적개발 위해 2030년까지 2조 7천억 원 투자 계획. 국방과 기술, 500, 30-31. https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE10442490",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     146.2,
+     1282.7,
+     997.9,
+     1417.7
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "한국방위산업진흥회"
+    ],
+    "authors_raw": "한국방위산업진흥회",
+    "et_al": false,
+    "year": "2020",
+    "title": "방위사업청",
+    "source": "‘국방 드론 산업 발전을 위한 온라인 세미나’ 개최 : 국방 드론의 진화적개발 위해 2030년까지 2조 7천억 원 투자 계획. 국방과 기술",
+    "volume": null,
+    "issue": null,
+    "pages": "30-31",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "국방일보(2022.03.25.). 2030년대엔 ‘곤충형 멀티 드론’ 나온다. https://bemil.chosun.com/nbrd/bbs/view.html?b_bbs_id=10002&branch=&pn=1&num=17605",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     146.2,
+     1282.7,
+     997.9,
+     1417.7
+    ],
+    "uid": "u16_2",
+    "authors": [
+     "국방일보"
+    ],
+    "authors_raw": "국방일보",
+    "et_al": false,
+    "year": "2022",
+    "title": "03.25.). 2030년대엔 ‘곤충형 멀티 드론’ 나온다. https://bemil.chosun.com/nbrd/bbs/view.html?b_bbs_id=10002&branch=&pn=1&num=17605",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "중앙일보(2021.10.23). 드론 공격에 드론으로 되갚았다...美, 알카에다 고위 지도자 사살. https://www.joongang.co.kr/article/25017491#home",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     144.1,
+     1250.7,
+     999.0,
+     1359.4
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "중앙일보"
+    ],
+    "authors_raw": "중앙일보",
+    "et_al": false,
+    "year": "2021",
+    "title": "10.23). 드론 공격에 드론으로 되갚았다...美",
+    "source": "알카에다 고위 지도자 사살. https://www.joongang.co.kr/article/25017491#home",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "동아일보(2022.03.13). 저가<sup>⋅</sup>소형 드론으로 러시아군 타격 입히는 우크라이나. https://www.donga.com/news/Inter/article/all/20220313/112303653/1",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     144.1,
+     1250.7,
+     999.0,
+     1359.4
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "동아일보"
+    ],
+    "authors_raw": "동아일보",
+    "et_al": false,
+    "year": "2022",
+    "title": "03.13). 저가<sup>⋅</sup>소형 드론으로 러시아군 타격 입히는 우크라이나. https://www.donga.com/news/Inter/article/all/20220313/112303653/1",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "박세현, 양지원(2022). 군사안보의 심장, 이차전지. 국방논단. 제1890호. https://www.kida.re.kr/frt/board/frtNormalBoardDetail.do?sidx=382&idx=1951&depth=3&lang=k",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     144.1,
+     1250.7,
+     999.0,
+     1359.4
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "박세현",
+     "양지원"
+    ],
+    "authors_raw": "박세현, 양지원",
+    "et_al": false,
+    "year": "2022",
+    "title": "군사안보의 심장",
+    "source": "이차전지. 국방논단. 제1890호. https://www.kida.re.kr/frt/board/frtNormalBoardDetail.do?sidx=382&idx=1951&depth=3&lang=k",
+    "volume": null,
+    "issue": "1890",
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "31",
+    "raw": "국방일보(2022). 방산혁신클러스터 신규 지역, 5월 4일까지 공모합니다. https://kookbang.dema.mil.kr/newsWeb/20220325/3/BBSMSTR_000000010027/view.do",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     144.1,
+     1250.7,
+     999.0,
+     1359.4
+    ],
+    "uid": "u17_5",
+    "authors": [
+     "국방일보"
+    ],
+    "authors_raw": "국방일보",
+    "et_al": false,
+    "year": "2022",
+    "title": "방산혁신클러스터 신규 지역",
+    "source": "5월 4일까지 공모합니다. https://kookbang.dema.mil.kr/newsWeb/20220325/3/BBSMSTR_000000010027/view.do",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "32",
+    "raw": "박세현, 양지원(2022). 군사안보의 심장, 이차전지. 국방논단. 제1890호. https://www.kida.re.kr/frt/board/frtNormalBoardDetail.do?sidx=382&idx=1951&depth=3&lang=kr",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "박세현",
+     "양지원"
+    ],
+    "authors_raw": "박세현, 양지원",
+    "et_al": false,
+    "year": "2022",
+    "title": "군사안보의 심장",
+    "source": "이차전지. 국방논단. 제1890호. https://www.kida.re.kr/frt/board/frtNormalBoardDetail.do?sidx=382&idx=1951&depth=3&lang=kr",
+    "volume": null,
+    "issue": "1890",
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "33",
+    "raw": "아시아경제(2020. 9. 24.). [양낙규의 Defence Club] 군사대국, 잠수함용 리튬전지 개발戰. https://www.asiae.co.kr/article/2020090414014513572",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "아시아경제"
+    ],
+    "authors_raw": "아시아경제",
+    "et_al": false,
+    "year": "2020",
+    "title": "9. 24.). [양낙규의 Defence Club] 군사대국",
+    "source": "잠수함용 리튬전지 개발戰. https://www.asiae.co.kr/article/2020090414014513572",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "34",
+    "raw": "한국드론혁신협회(2021). 드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do? mode=download&articleNo=666708&attachNo=458380",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "authors_raw": "한국드론혁신협회",
+    "et_al": false,
+    "year": "2021",
+    "title": "드론봇 전투체계 발전방안 연구. https://defense.na.go.kr:444/defense/reference/reference02.do? mode=download&articleNo=666708&attachNo=458380",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "35",
+    "raw": "2020 DRONE REPORT. http://openknowledge.kotra.or.kr/handle/2014.oak/20519",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2014",
+    "title": "oak/20519",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "36",
+    "raw": "중앙일보(2021.09.18). 미군 오판 참사 … 드론 사망 아프간인 車엔 생수만 있었다. 중앙일보. https://www.joongang.co.kr/article/25008276#home",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "중앙일보"
+    ],
+    "authors_raw": "중앙일보",
+    "et_al": false,
+    "year": "2021",
+    "title": "09.18). 미군 오판 참사 … 드론 사망 아프간인 車엔 생수만 있었다. 중앙일보. https://www.joongang.co.kr/article/25008276#home",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "37",
+    "raw": "연합뉴스(2019.01.16). 육군정보학교, ‘드론 특기병’ 29명 첫 배출. https://www.yna.co.kr/view/AKR20190116080000061",
+    "page": 19,
+    "page_end": 19,
+    "box": [
+     146.2,
+     1248.5,
+     997.9,
+     1330.1
+    ],
+    "uid": "u18_2",
+    "authors": [
+     "연합뉴스"
+    ],
+    "authors_raw": "연합뉴스",
+    "et_al": false,
+    "year": "2019",
+    "title": "01.16). 육군정보학교",
+    "source": "‘드론 특기병’ 29명 첫 배출. https://www.yna.co.kr/view/AKR20190116080000061",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "38",
+    "raw": "2020 DRONE REPORT. http://openknowledge.kotra.or.kr/handle/2014.oak/20519",
+    "page": 20,
+    "page_end": 20,
+    "box": [
+     144.1,
+     1396.7,
+     725.1,
+     1420.0
+    ],
+    "uid": "u19_10",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": "2014",
+    "title": "oak/20519",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "39",
+    "raw": "국방일보(2022). 방산혁신클러스터 신규 지역, 5월 4일까지 공모합니다. https://kookbang.dema.mil.kr/newsWeb/20220325/3/BBSMSTR_000000010027/view.do",
+    "page": 21,
+    "page_end": 21,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1418.5
+    ],
+    "uid": "u20_11",
+    "authors": [
+     "국방일보"
+    ],
+    "authors_raw": "국방일보",
+    "et_al": false,
+    "year": "2022",
+    "title": "방산혁신클러스터 신규 지역",
+    "source": "5월 4일까지 공모합니다. https://kookbang.dema.mil.kr/newsWeb/20220325/3/BBSMSTR_000000010027/view.do",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "40",
+    "raw": "국방일보(2020.06.11). “미래 드론 전문가 양성 자부심으로 교육 매진”. https://kookbang.dema.mil.kr/newsWeb/20200612/2/BBSMSTR_000000010024/view.do * (제1저자) 한라대학교 글로벌비즈니스학부, 교수, yesek41@naver.com, https://orcid.org/0000-0002-9443-7910",
+    "page": 21,
+    "page_end": 25,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1418.5
+    ],
+    "uid": "u20_11",
+    "authors": [
+     "국방일보"
+    ],
+    "authors_raw": "국방일보",
+    "et_al": false,
+    "year": "2020",
+    "title": "미래 드론 전문가 양성 자부심으로 교육 매진",
+    "source": "https://kookbang.dema.mil.kr/newsWeb/20200612/2/BBSMSTR_000000010024/view.do * (제1저자) 한라대학교 글로벌비즈니스학부, 교수, yesek41@naver.com, https://orcid.org/0000-0002-9443-7910",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 40,
+   "per_page": {
+    "2": 3,
+    "3": 4,
+    "4": 5,
+    "5": 1,
+    "6": 2,
+    "9": 3,
+    "10": 1,
+    "14": 3,
+    "15": 3,
+    "17": 2,
+    "18": 4,
+    "19": 6,
+    "20": 1,
+    "21": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1",
+      "2",
+      "3"
+     ],
+     "collected": [
+      "1",
+      "2",
+      "3"
+     ]
+    },
+    "3": {
+     "markers": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ],
+     "collected": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ]
+    },
+    "4": {
+     "markers": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+     ],
+     "collected": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+     ]
+    },
+    "5": {
+     "markers": [
+      "13"
+     ],
+     "collected": [
+      "13"
+     ]
+    },
+    "6": {
+     "markers": [
+      "14",
+      "15"
+     ],
+     "collected": [
+      "14",
+      "15"
+     ]
+    },
+    "9": {
+     "markers": [
+      "16",
+      "17",
+      "18"
+     ],
+     "collected": [
+      "16",
+      "17",
+      "18"
+     ]
+    },
+    "10": {
+     "markers": [
+      "19"
+     ],
+     "collected": [
+      "19"
+     ]
+    },
+    "14": {
+     "markers": [
+      "20",
+      "21",
+      "22"
+     ],
+     "collected": [
+      "20",
+      "21",
+      "22"
+     ]
+    },
+    "15": {
+     "markers": [
+      "23",
+      "24",
+      "25"
+     ],
+     "collected": [
+      "23",
+      "24",
+      "25"
+     ]
+    },
+    "17": {
+     "markers": [
+      "26",
+      "27"
+     ],
+     "collected": [
+      "26",
+      "27"
+     ]
+    },
+    "18": {
+     "markers": [
+      "28",
+      "29",
+      "30",
+      "31"
+     ],
+     "collected": [
+      "28",
+      "29",
+      "30",
+      "31"
+     ]
+    },
+    "19": {
+     "markers": [
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37"
+     ],
+     "collected": [
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37"
+     ]
+    },
+    "20": {
+     "markers": [
+      "38"
+     ],
+     "collected": [
+      "38"
+     ]
+    },
+    "21": {
+     "markers": [
+      "39",
+      "40"
+     ],
+     "collected": [
+      "39",
+      "40"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Conceptualization, Resources and Data curation, Methodology, Writing, and Project administration and Supervision: HU 39) 국방일보(2022). 방산혁신클러스터 신규 지역, 5월 4일까지 공모합니다. https://kookbang.dema.mil.kr/newsWeb/20220325/3/BBSMSTR_000000010027/view.do\n40) 국방일보(2020.06.11). “미래 드론 전문가 양성 자부심으로 교육 매진”. https://kookbang.dema.mil.kr/newsWeb/20200612/2/BBSMSTR_000000010024/view.do Ahn, M. S., & Oh, I. K. (2015). Analysis of Attitudes on Using Five-Star Hotel Packages Applying Network Text Analysis Method: Using Portal Sites. International Journal of Tourism Management and Sciences, 30(5). 163-181. UCI : G704-000941.2015.30.5.005",
+    "page": 21,
+    "box": [
+     145.5,
+     1084.0,
+     997.9,
+     1146.5
+    ],
+    "uid": "u20_10",
+    "authors": [
+     "Conceptualization",
+     "Resources",
+     "Data curation",
+     "Methodology",
+     "Writing",
+     "Project administration",
+     "Supervision: HU 39) 국방일보"
+    ],
+    "authors_raw": "Conceptualization, Resources and Data curation, Methodology, Writing, and Project administration and Supervision: HU 39) 국방일보",
+    "et_al": false,
+    "year": "2015",
+    "title": "미래 드론 전문가 양성 자부심으로 교육 매진",
+    "source": "https://kookbang.dema.mil.kr/newsWeb/20200612/2/BBSMSTR_000000010024/view.do Ahn, M. S., & Oh, I. K. (2015). Analysis of Attitudes on Using Five-Star Hotel Packages Applying Network Text Analysis Method: Using Portal Sites. International Journal of Tourism Management and Sciences, 30(5). 163-181. UCI : G704-000941.2015.30.5.005",
+    "volume": null,
+    "issue": null,
+    "pages": "163-181",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Baran, R. (2011). Social Networking in China and the United States: Opportunities for New Marketing Strategy and Customer Relationship Management. AFBE Journal, 4(3), 464-481. https://www.academia.edu/download/18349380/afbejournal-issue8vol4no3.pdf#page=30",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Baran R"
+    ],
+    "authors_raw": "Baran, R",
+    "et_al": false,
+    "year": "2011",
+    "title": "Social Networking in China and the United States: Opportunities for New Marketing Strategy and Customer Relationship Management. AFBE Journal",
+    "source": "4(3)",
+    "volume": "4",
+    "issue": "3",
+    "pages": "464-481",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Borgatti, S. P. (2005). Centrality and network flow. Social networks, 27(1), 55-71. https://doi.org/10.1016/j.socnet.2004.11.008",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Borgatti S. P"
+    ],
+    "authors_raw": "Borgatti, S. P",
+    "et_al": false,
+    "year": "2005",
+    "title": "Centrality and network flow. Social networks",
+    "source": "27(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "55-71",
+    "doi": "10.1016/j.socnet.2004.11.008",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cho, S. H. (2018). A Study on Analysis of the Trend of Blockchain by Key Words Network Analysis. Journal of Korea Institute of Information, Electronics, and Communication Technology, 11(5), 550-555. https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSere ArtiView.kci?sereArticleSearchBean.artiId=ART002397595",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Cho S. H"
+    ],
+    "authors_raw": "Cho, S. H",
+    "et_al": false,
+    "year": "2018",
+    "title": "A Study on Analysis of the Trend of Blockchain by Key Words Network Analysis. Journal of Korea Institute of Information",
+    "source": "Electronics",
+    "volume": null,
+    "issue": null,
+    "pages": "550-555",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, S. B., Kang, C. W., Choi, H. J. & Kang, B. W. (2011). Social network analysis for a soccer game. Journal of the Korean Data & Information Science Society, 22(6), 1053-1063. UCI : G704-000605.2011.22.6.022",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Choi S. B",
+     "Kang C. W",
+     "Choi H. J",
+     "Kang B. W"
+    ],
+    "authors_raw": "Choi, S. B., Kang, C. W., Choi, H. J. & Kang, B. W",
+    "et_al": false,
+    "year": "2011",
+    "title": "Social network analysis for a soccer game. Journal of the Korean Data & Information Science Society",
+    "source": "22(6)",
+    "volume": null,
+    "issue": null,
+    "pages": "1053-1063",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hall, A. R. (2015). Drones: public interest, public choice, and the expansion of unmanned aerial vehicles. Peace Economics, Peace Science and Public Policy, 21(2), 273-300. https://doi.org/10.1515/peps-2014-0043",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Hall A. R"
+    ],
+    "authors_raw": "Hall, A. R",
+    "et_al": false,
+    "year": "2015",
+    "title": "Drones: public interest",
+    "source": "public choice",
+    "volume": null,
+    "issue": null,
+    "pages": "273-300",
+    "doi": "10.1515/peps-2014-0043",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, U. S. (2018). The Analysis of Big Data Visualization for Consumer Interest Tendency to YangYang Internationl Airport. Journal of Hotel & Resort, 17(1), 27-43. https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearc hBean.artiId=ART002323825",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Hwang U. S"
+    ],
+    "authors_raw": "Hwang, U. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "The Analysis of Big Data Visualization for Consumer Interest Tendency to YangYang Internationl Airport. Journal of Hotel & Resort",
+    "source": "17(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "27-43",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, U. S. (2021). Analysis of issues of interest in unification economic cooperation by visualizing big data on social networks. Journal of Advances in Military Studies, 4(3), 133-152. https://doi.org/10.37944/jams.v4i3.133",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Hwang U. S"
+    ],
+    "authors_raw": "Hwang, U. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "Analysis of issues of interest in unification economic cooperation by visualizing big data on social networks. Journal of Advances in Military Studies",
+    "source": "4(3)",
+    "volume": "4",
+    "issue": null,
+    "pages": "133-152",
+    "doi": "10.37944/jams.v4i3.133",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jeong, S. C. (2017). A study on the security control and the image tracking of a drone to apply element technologies of the 4th industrial revolution. [Doctoral dissertation, Seoul National University of Science and Technology].",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Jeong S. C"
+    ],
+    "authors_raw": "Jeong, S. C",
+    "et_al": false,
+    "year": "2017",
+    "title": "A study on the security control and the image tracking of a drone to apply element technologies of the 4th industrial revolution. [Doctoral dissertation",
+    "source": "Seoul National University of Science and Technology]",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kang, H. K., Park, Y. J., & Park, J. H. (2018). A study on Technology Push-based Future Weapon System and Core Technology Derivation Methodology. Journal of Korean",
+    "page": 22,
+    "box": [
+     143.8,
+     782.8,
+     1000.1,
+     1231.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Kang H. K",
+     "Park Y. J",
+     "Park J. H"
+    ],
+    "authors_raw": "Kang, H. K., Park, Y. J., & Park, J. H",
+    "et_al": false,
+    "year": "2018",
+    "title": "A study on Technology Push-based Future Weapon System and Core Technology Derivation Methodology. Journal of Korean",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Society for Quality Management, 46(2), 225-242. https://doi.org/10.7469/JKSQM.2018. 46.2.225",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Society for Quality Management"
+    ],
+    "authors_raw": "Society for Quality Management",
+    "et_al": false,
+    "year": "2018",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "225-242",
+    "doi": "10.7469/JKSQM.2018",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, H. J., Jo, N. O., & Shin, K. S. (2015). Text Mining-Based Emerging Trend Analysis for the Aviation Industry. Journal of Intelligence and Information Systems, 21(1), 65-82. UCI : G704-000721.2015.21.1.001",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim H. J",
+     "Jo N. O",
+     "Shin K. S"
+    ],
+    "authors_raw": "Kim, H. J., Jo, N. O., & Shin, K. S",
+    "et_al": false,
+    "year": "2015",
+    "title": "Text Mining-Based Emerging Trend Analysis for the Aviation Industry. Journal of Intelligence and Information Systems",
+    "source": "21(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "65-82",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. G. (2020). Recognition of ‘Defense Cost Sharing’ through Big Data : Focusing on Twitter. Journal of Advances in Military Studies, 3(1), 51-74. https://doi.org/ 10.37944/ jams.v3i1.64",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim S. G"
+    ],
+    "authors_raw": "Kim, S. G",
+    "et_al": false,
+    "year": "2020",
+    "title": "Recognition of ‘Defense Cost Sharing’ through Big Data : Focusing on Twitter. Journal of Advances in Military Studies",
+    "source": "3(1)",
+    "volume": "3",
+    "issue": null,
+    "pages": "51-74",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. W., Kim, G. G., & Yoon, B. K. (2014). A Study on a Way to Utilize Big Data Analytics in the Defense Area. Korean Operations Research And Management Society, 39(2), 1-19. https://doi.org/10.7737/JKORMS.2014.39.2.001",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Kim S. W",
+     "Kim G. G",
+     "Yoon B. K"
+    ],
+    "authors_raw": "Kim, S. W., Kim, G. G., & Yoon, B. K",
+    "et_al": false,
+    "year": "2014",
+    "title": "A Study on a Way to Utilize Big Data Analytics in the Defense Area. Korean Operations Research And Management Society",
+    "source": "39(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-19",
+    "doi": "10.7737/JKORMS.2014.39.2.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, Y. U. (2020). A Study on the Effective Military Use of Drones. Journal of Information and Security, 20(4), 61-70. https://doi.org/10.33778/kcsa.2020.20.4.061",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Lee Y. U"
+    ],
+    "authors_raw": "Lee, Y. U",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Effective Military Use of Drones. Journal of Information and Security",
+    "source": "20(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "61-70",
+    "doi": "10.33778/kcsa.2020.20.4.061",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lim, H. B. (2017). Development direction of ground unmanned combat system for victory in the future. Military Research and Development, 11(1), 109-137. https://www.earticle. net/Article/A320446",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Lim H. B"
+    ],
+    "authors_raw": "Lim, H. B",
+    "et_al": false,
+    "year": "2017",
+    "title": "Development direction of ground unmanned combat system for victory in the future. Military Research and Development",
+    "source": "11(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "109-137",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lu, X. M., & Lee, S. Y. (2020). A Study on the Design Keyword of Smart Wearable Product Using Social Network Analysis. A Treatise on The Plastic Media, 23(4), 187-195. https://doi.org/10.35280/KOTPM.2020.23.4.21",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Lu X. M",
+     "Lee S. Y"
+    ],
+    "authors_raw": "Lu, X. M., & Lee, S. Y",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Design Keyword of Smart Wearable Product Using Social Network Analysis. A Treatise on The Plastic Media",
+    "source": "23(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "187-195",
+    "doi": "10.35280/KOTPM.2020.23.4.21",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Oh, I. K., Lee, T. S., & Jun, C. M. (2015). A Study on Awareness of Korea Tourism through Big Data Analysis. Journal of Tourism Sciences, 39(10), 107-126. https://doi.org/ 10.17086/JTS.2015.39.10.107.126",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Oh I. K",
+     "Lee T. S",
+     "Jun C. M"
+    ],
+    "authors_raw": "Oh, I. K., Lee, T. S., & Jun, C. M",
+    "et_al": false,
+    "year": "2015",
+    "title": "A Study on Awareness of Korea Tourism through Big Data Analysis. Journal of Tourism Sciences",
+    "source": "39(10)",
+    "volume": null,
+    "issue": null,
+    "pages": "107-126",
+    "doi": "10.17086/JTS.2015.39.10.107.126",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, D. S., & Oh, K. W. (2021). Study on Development of Korean Unmanned Systems through Analysis of U.S. Unmanned Systems Policy. Journal of Aerospace System Engineering, 15(3), 65-70. https://doi.org/10.20910/JASE.2021.15.3.65",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Park D. S",
+     "Oh K. W"
+    ],
+    "authors_raw": "Park, D. S., & Oh, K. W",
+    "et_al": false,
+    "year": "2021",
+    "title": "Study on Development of Korean Unmanned Systems through Analysis of U.S. Unmanned Systems Policy. Journal of Aerospace System Engineering",
+    "source": "15(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "65-70",
+    "doi": "10.20910/JASE.2021.15.3.65",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, S. B. & Jung, J. H. (2021). A study on public opinion on the military service system using big data analysis technology: Focusing on Internet news and SNS. Korean National Security and Public Safety Association, 13, 7-30. https://doi.org/10.36847/knspsa.2021.13.1",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Park S. B",
+     "Jung J. H"
+    ],
+    "authors_raw": "Park, S. B. & Jung, J. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "A study on public opinion on the military service system using big data analysis technology: Focusing on Internet news and SNS. Korean National Security and Public Safety Association",
+    "source": "13",
+    "volume": null,
+    "issue": null,
+    "pages": "7-30",
+    "doi": "10.36847/knspsa.2021.13.1",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rodrigues, F. A. (2019). Network Centrality: An Introduction. In: Macau, E. (eds) A Mathematical Modeling Approach from Nonlinear Dynamics to Complex Systems. Nonlinear Systems and Complexity, 22, Springer, Cham. https://doi.org/10.1007/ 978-3-319-78512-7_10",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Rodrigues F. A"
+    ],
+    "authors_raw": "Rodrigues, F. A",
+    "et_al": false,
+    "year": "2019",
+    "title": "Network Centrality: An Introduction. In: Macau",
+    "source": "E. (eds) A Mathematical Modeling Approach from Nonlinear Dynamics to Complex Systems. Nonlinear Systems and Complexity",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Seo, H. J. (2019). Identifying Key Issues in Korea’s Defense Policy -Application of Text Network Analysis to The 2018 Defense White Paper. Korea Journal of Military Affairs, 6, 39-70.",
+    "page": 23,
+    "box": [
+     146.2,
+     612.8,
+     997.9,
+     993.2
+    ],
+    "uid": "u22_2",
+    "authors": [
+     "Seo H. J"
+    ],
+    "authors_raw": "Seo, H. J",
+    "et_al": false,
+    "year": "2019",
+    "title": "Identifying Key Issues in Korea’s Defense Policy -Application of Text Network Analysis to The 2018 Defense White Paper. Korea Journal of Military Affairs",
+    "source": "6",
+    "volume": null,
+    "issue": null,
+    "pages": "39-70",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Analysis of Text Mining Keyword Issues for Defense Drone on Social Network",
+   "page": 1,
+   "box": [
+    212.2,
+    392.1,
+    950.3,
+    469.0
+   ],
+   "uid": "u0_5",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Hwang, Ugsun",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     509.4,
+     495.1,
+     655.3,
+     524.8
+    ],
+    "uid": "u0_6",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Halla University",
+   "Department of Business Administration",
+   "INSTITUTE OF DEFENSE ACQUISITION PROGRAM"
+  ],
+  "abstract": {
+   "value": "Research on weapon systems has been conducted, and defense drones have been developed. However, few analyses that identify the needs of the general public have been conducted. The purpose of this study is to analyze the issues of interest in social networks regarding defense drones and extract keywords for activation. In this study, big data analysis tools such as Textom, Ucinet6, and NetDraw were used. The results of the keyword frequency analysis, centrality analysis, and CONCOR analysis showed that public information regarding social networks expressed keywords in defense drones, such as Defense Daily, News, Enterprise, Defense Science Research Institute, University, Hydrogen Battery, Army, Air Force, Urban Transportation, Fire, Regional, Enterprise, and Research. It is necessary to revitalize media publicity in developing cooperative technologies by companies, universities, the National Defense Research Institute, urban transportation, and firefighting, using army and air force drones, and developing future hydrogen batteries. In addition, issues of interest were observed for contents, such as applications in the United States, Israel, North Korea, Iran, and Afghanistan, and fostering university education. There is a need to present a case for the actual military use of defense drones and train the department of defense drones at universities.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Research on weapon systems has been conducted, and defense drones have been developed. However, few analyses that identify the needs of the general public have been conducted. The purpose of this study is to analyze the issues of interest in social networks regarding defense drones and extract keywords for activation. In this study, big data analysis tools such as Textom, Ucinet6, and NetDraw were used. The results of the keyword frequency analysis, centrality analysis, and CONCOR analysis showed that public information regarding social networks expressed keywords in defense drones, such as Defense Daily, News, Enterprise, Defense Science Research Institute, University, Hydrogen Battery, Army, Air Force, Urban Transportation, Fire, Regional, Enterprise, and Research. It is necessary to revitalize media publicity in developing cooperative technologies by companies, universities, the National Defense Research Institute, urban transportation, and firefighting, using army and air force drones, and developing future hydrogen batteries. In addition, issues of interest were observed for contents, such as applications in the United States, Israel, North Korea, Iran, and Afghanistan, and fostering university education. There is a need to present a case for the actual military use of defense drones and train the department of defense drones at universities.",
+   "page": 1,
+   "box": [
+    190.5,
+    575.7,
+    310.5,
+    602.4
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_7"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : defense drone, mass media publicity, cooperative technology, text mining, keyword analysis"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 2,
+   "uid": "u0_3",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "21-45",
+   "uid": "u0_3",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "국방 드론",
+   "대중매체 홍보",
+   "협력기술",
+   "텍스트 마이닝",
+   "키워드 분석"
+  ],
+  "keywords_en": [
+   "defense drone",
+   "mass media publicity",
+   "cooperative technology",
+   "text mining",
+   "keyword analysis"
+  ],
+  "citation_spans": [
+   {
+    "page": 4,
+    "uid": "u3_2",
+    "kind": "parenthetical",
+    "sentence": "통해 개발한 로봇을 전투 실험하여 소요군의 사용자 요구기준을 충족해야 한다(Lim, 2017).",
+    "raw": "통해 개발한 로봇을 전투 실험하여 소요군의 사용자 요구기준을 충족해야 한다(Lim, 2017).",
+    "citation_text": "(Lim, 2017)",
+    "offset": [
+     41,
+     52
+    ],
+    "authors": [
+     "Lim"
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "게다가 소셜 네트워크의 빅데이터는 양적으로 매우 크기 때문에 숫자나 텍스트로 표현하는 것보다는 차트, 그림, 이미지 등의 시각적인 표현이 더욱 유용할 것이다(Hwang, 2018).",
+    "raw": "게다가 소셜 네트워크의 빅데이터는 양적으로 매우 크기 때문에 숫자나 텍스트로 표현하는 것보다는 차트, 그림, 이미지 등의 시각적인 표현이 더욱 유용할 것이다(Hwang, 2018).",
+    "citation_text": "(Hwang, 2018)",
+    "offset": [
+     87,
+     100
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "예를 들어, 사용자 그룹별 맞춤 콘텐츠를 제공하거나, 마케팅을 위한 고객관계관리(CRM : Customer Relationship Management)의 기초 자료로 활용할 수 있다(Baran, 2011).",
+    "raw": "예를 들어, 사용자 그룹별 맞춤 콘텐츠를 제공하거나, 마케팅을 위한 고객관계관리(CRM : Customer Relationship Management)의 기초 자료로 활용할 수 있다(Baran, 2011).",
+    "citation_text": "(Baran, 2011)",
+    "offset": [
+     101,
+     114
+    ],
+    "authors": [
+     "Baran"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "현재 시대는 방대한 양의 데이터가 존재하는 시대13)로 어떤 사건에서 생성된 다수의 데이터를통해 과거 일부 데이터를 통해 얻은 이론에서 설명할 수 없는 상관관계를 설명할 수 있다(Kim,Kim, & Yoon, 2014).",
+    "raw": "현재 시대는 방대한 양의 데이터가 존재하는 시대13)로 어떤 사건에서 생성된 다수의 데이터를통해 과거 일부 데이터를 통해 얻은 이론에서 설명할 수 없는 상관관계를 설명할 수 있다(Kim,Kim, & Yoon, 2014).",
+    "citation_text": "(Kim,Kim, & Yoon, 2014)",
+    "offset": [
+     99,
+     122
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "즉, 빅데이터 분석방법을 활용하여 일부 데이터를 토대로 전체 상황이나 문제를 예측하는 샘플링 기반의 귀납적 모델 방식의 단점을 보완할 수 있어 과거 이론을 대체할 수 있는 효과가 있다(Kim, Kim, & Yoon, 2014).",
+    "raw": "즉, 빅데이터 분석방법을 활용하여 일부 데이터를 토대로 전체 상황이나 문제를 예측하는 샘플링 기반의 귀납적 모델 방식의 단점을 보완할 수 있어 과거 이론을 대체할 수 있는 효과가 있다(Kim, Kim, & Yoon, 2014).",
+    "citation_text": "(Kim, Kim, & Yoon, 2014)",
+    "offset": [
+     102,
+     126
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "narrative",
+    "sentence": "Kang, Park, & Park(2018)은 4차 산업혁명의 핵심 기술인 빅데이터 텍스트 마이닝(Text Mining) 분석을 통한 미래 국방 유망기술의 예측방법을 도출하였다.",
+    "raw": "Kang, Park, & Park(2018)은 4차 산업혁명의 핵심 기술인 빅데이터 텍스트 마이닝(Text Mining) 분석을 통한 미래 국방 유망기술의 예측방법을 도출하였다.",
+    "citation_text": "Park(2018)",
+    "offset": [
+     14,
+     24
+    ],
+    "authors": [
+     "Park"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "narrative",
+    "sentence": "Kim, Kim, & Yoon(2014)은 국방 분야의 빅데이터 활용은 무수히 많은 분야에서 가능성을 찾을 수 있을 것이며, 분위기를 확산하는 것이 전제되어야 한다고 하였다.",
+    "raw": "Kim, Kim, & Yoon(2014)은 국방 분야의 빅데이터 활용은 무수히 많은 분야에서 가능성을 찾을 수 있을 것이며, 분위기를 확산하는 것이 전제되어야 한다고 하였다.",
+    "citation_text": "Yoon(2014)",
+    "offset": [
+     12,
+     22
+    ],
+    "authors": [
+     "Yoon"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "narrative",
+    "sentence": "Park & Jung(2021)은 네이버 데이터랩, 구글 트랜드, 빅카인즈 등의 인터넷 빅데이터 사이트에서 제공하는 자료를 활용하여 모병제와 징병제를 키워드로 병역제도에 대한 여론 조사를 실행하였다.",
+    "raw": "Park & Jung(2021)은 네이버 데이터랩, 구글 트랜드, 빅카인즈 등의 인터넷 빅데이터 사이트에서 제공하는 자료를 활용하여 모병제와 징병제를 키워드로 병역제도에 대한 여론 조사를 실행하였다.",
+    "citation_text": "Jung(2021)",
+    "offset": [
+     7,
+     17
+    ],
+    "authors": [
+     "Jung"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "그리고 분석자의 편의성을 고려한 맞춤형 데이터 정제 및 다양한 분석프로그램 (UCINET, NODEXL)에 적용 가능한 데이터 포ائ을 지원한다.15)\n\n분석도구에 입력하기 위한 대표 검색단어는 해당 도메인의 일반적인 단어를 선정하거나 도메인 전문가가 데이터 분석 목적과 검색된 데이터의 관련성을 고려하여 선택한다(Kim, Jo, Shin, 2015).",
+    "raw": "그리고 분석자의 편의성을 고려한 맞춤형 데이터 정제 및 다양한 분석프로그램 (UCINET, NODEXL)에 적용 가능한 데이터 포ائ을 지원한다.15)\n\n분석도구에 입력하기 위한 대표 검색단어는 해당 도메인의 일반적인 단어를 선정하거나 도메인 전문가가 데이터 분석 목적과 검색된 데이터의 관련성을 고려하여 선택한다(Kim, Jo, Shin, 2015).",
+    "citation_text": "(Kim, Jo, Shin, 2015)",
+    "offset": [
+     175,
+     196
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "주요단어 빈도분석의 정체결과, 빈도비율이 높을수록 중요도가 높다는 것을 나타낸다(Oh, Lee, & Jun., 2015).",
+    "raw": "주요단어 빈도분석의 정체결과, 빈도비율이 높을수록 중요도가 높다는 것을 나타낸다(Oh, Lee, & Jun., 2015).",
+    "citation_text": "(Oh, Lee, & Jun., 2015)",
+    "offset": [
+     44,
+     67
+    ],
+    "authors": [
+     "Oh"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 10,
+    "uid": "u9_4",
+    "kind": "narrative",
+    "sentence": "한국드론혁신협회(2021)19)에 따르면, 드론의 핵심기술 중의 하나는 배터리로 현재 사용되고 있는 대부분의 일반적인 드론은 한 번 충전으로 30분에서 1시간 이내의 비행을 한다.",
+    "raw": "한국드론혁신협회(2021)19)에 따르면, 드론의 핵심기술 중의 하나는 배터리로 현재 사용되고 있는 대부분의 일반적인 드론은 한 번 충전으로 30분에서 1시간 이내의 비행을 한다.",
+    "citation_text": "한국드론혁신협회(2021)",
+    "offset": [
+     0,
+     14
+    ],
+    "authors": [
+     "한국드론혁신협회"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_1",
+    "kind": "parenthetical",
+    "sentence": "즉, 연결 정도 중심성과 유사하지만, 관계성에 대한 양적인 표현이 아니라 질적인 연결도 함께 반영한다(Wasserman & Faust, 1994).",
+    "raw": "즉, 연결 정도 중심성과 유사하지만, 관계성에 대한 양적인 표현이 아니라 질적인 연결도 함께 반영한다(Wasserman & Faust, 1994).",
+    "citation_text": "(Wasserman & Faust, 1994)",
+    "offset": [
+     56,
+     81
+    ],
+    "authors": [
+     "Wasserman & Faust"
+    ],
+    "year": "1994",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "근접 중심성은 특정노드가 다른 모든 노드에 가까운 정도를 나타낸다(Choi et al., 2011).",
+    "raw": "근접 중심성은 특정노드가 다른 모든 노드에 가까운 정도를 나타낸다(Choi et al., 2011).",
+    "citation_text": "(Choi et al., 2011)",
+    "offset": [
+     36,
+     55
+    ],
+    "authors": [
+     "Choi et al."
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 15,
+    "uid": "u14_4",
+    "kind": "parenthetical",
+    "sentence": "매개 중심성은 특정 노드가 다른 노드들에 대하여 얼마나 중계역할을 하는지를 파악하게 한다(Choi et al., 2011).",
+    "raw": "매개 중심성은 특정 노드가 다른 노드들에 대하여 얼마나 중계역할을 하는지를 파악하게 한다(Choi et al., 2011).",
+    "citation_text": "(Choi et al., 2011)",
+    "offset": [
+     49,
+     68
+    ],
+    "authors": [
+     "Choi et al."
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_1",
+    "kind": "parenthetical",
+    "sentence": "드론 정책은 광범위한 공공관심 달성에 관심을 두어야 한다(Hall, 2015).",
+    "raw": "드론 정책은 광범위한 공공관심 달성에 관심을 두어야 한다(Hall, 2015).",
+    "citation_text": "(Hall, 2015)",
+    "offset": [
+     31,
+     43
+    ],
+    "authors": [
+     "Hall"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_1",
+    "kind": "narrative",
+    "sentence": "한국방위산업진흥회(2020)26)에 의하면, 드론은 민수와 군수를 막론하고 다양한 임무에 적극적으로 투입될 드론은 그 활용성이 더욱 높아질 것으로 전망되고 있지만, 국내에서는 고성능 드론의 수요가 많지 않아 군사적 목적에 맞는 기술개발이 더디게 진행되고 있는 것이 현실이다.",
+    "raw": "한국방위산업진흥회(2020)26)에 의하면, 드론은 민수와 군수를 막론하고 다양한 임무에 적극적으로 투입될 드론은 그 활용성이 더욱 높아질 것으로 전망되고 있지만, 국내에서는 고성능 드론의 수요가 많지 않아 군사적 목적에 맞는 기술개발이 더디게 진행되고 있는 것이 현실이다.",
+    "citation_text": "한국방위산업진흥회(2020)",
+    "offset": [
+     0,
+     15
+    ],
+    "authors": [
+     "한국방위산업진흥회"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 17,
+    "uid": "u16_1",
+    "kind": "narrative",
+    "sentence": "병무청(2021)에서는 육군드론운용 및 정비병이 되기 위한 자격증 등급 점수를 공지하여 지원자격에 의한 군지원(모병) 안내를 실시하고 있다.",
+    "raw": "병무청(2021)에서는 육군드론운용 및 정비병이 되기 위한 자격증 등급 점수를 공지하여 지원자격에 의한 군지원(모병) 안내를 실시하고 있다.",
+    "citation_text": "병무청(2021)",
+    "offset": [
+     0,
+     9
+    ],
+    "authors": [
+     "병무청"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_2",
+    "kind": "parenthetical",
+    "sentence": "현재 대학에서는 기업과 협업에 의하여 국방 및 민간산업부분 감시정차, 소방 등 다양한 산업용 분야의 드론개발, 우수학생인턴 및 취업 등에 대한 협력을 시행해 보는 단계라고 할 수 있다(백두산, 2020).",
+    "raw": "현재 대학에서는 기업과 협업에 의하여 국방 및 민간산업부분 감시정차, 소방 등 다양한 산업용 분야의 드론개발, 우수학생인턴 및 취업 등에 대한 협력을 시행해 보는 단계라고 할 수 있다(백두산, 2020).",
+    "citation_text": "(백두산, 2020)",
+    "offset": [
+     102,
+     113
+    ],
+    "authors": [
+     "백두산"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "따라서 무인 항공기 정책을 구성하는 사람들은 사회복지 기능을 극대화하기 위해 노력한다(Hall, 2015).",
+    "raw": "따라서 무인 항공기 정책을 구성하는 사람들은 사회복지 기능을 극대화하기 위해 노력한다(Hall, 2015).",
+    "citation_text": "(Hall, 2015)",
+    "offset": [
+     47,
+     59
+    ],
+    "authors": [
+     "Hall"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "그리하여 군과 관계된 국방 드론활용에 대한 대중 선호도 여론 연구를 실행하기도 하였다(West, Klofstad, Uscinski, & Connolly, 2018).",
+    "raw": "그리하여 군과 관계된 국방 드론활용에 대한 대중 선호도 여론 연구를 실행하기도 하였다(West, Klofstad, Uscinski, & Connolly, 2018).",
+    "citation_text": "(West, Klofstad, Uscinski, & Connolly, 2018)",
+    "offset": [
+     47,
+     91
+    ],
+    "authors": [
+     "West"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "narrative",
+    "sentence": "KOTRA(2019)38)는 국방용 드론에 대하여 니즈에 적합한 디자인과 성능을 확보하고 초기 성공사례를 창출하여 수요 맞춤형 기술을 발굴함으로서 시장을 초기에 선점하는 전략이 필요하다고 하였다.",
+    "raw": "KOTRA(2019)38)는 국방용 드론에 대하여 니즈에 적합한 디자인과 성능을 확보하고 초기 성공사례를 창출하여 수요 맞춤형 기술을 발굴함으로서 시장을 초기에 선점하는 전략이 필요하다고 하였다.",
+    "citation_text": "KOTRA(2019)",
+    "offset": [
+     0,
+     11
+    ],
+    "authors": [
+     "KOTRA"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u22_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

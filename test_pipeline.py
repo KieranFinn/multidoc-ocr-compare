@@ -15,6 +15,8 @@ import qc
 import stages
 import unify
 import viewer
+import workspaces
+import golden
 
 
 class UnifiedSafetyTest(unittest.TestCase):
@@ -415,6 +417,102 @@ class UnifiedSafetyTest(unittest.TestCase):
                                                        "linked_refs": []}]}, 1)
         self.assertIn("&lt;tag&gt;", plain)   # 无公式特征时与纯转义等价
         self.assertNotIn("<sub>", plain)
+
+
+class WsResolveTest(unittest.TestCase):
+    """--ws 工作区解析(2026-11-24): --ws > KCI_WS_ROOT > .gui_prefs 当前 > 主库。"""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = pathlib.Path(self.tmp.name)
+        self.here = self.root / "pipeline"
+        self.here.mkdir()
+        self.custom = self.root / "beta"
+        self.custom.mkdir()
+        self.prefs = self.here / ".gui_prefs.json"
+        self.prefs.write_text(json.dumps(
+            {"workspace": "beta", "workspace_paths": {"beta": str(self.custom)}}),
+            encoding="utf-8")
+
+    def tearDown(self):
+        os.environ.pop("KCI_WS_ROOT", None)
+        self.tmp.cleanup()
+
+    def resolve(self, explicit=None):
+        return workspaces.resolve_ws_root(explicit=explicit, here=str(self.here),
+                                          prefs_fp=str(self.prefs))
+
+    def test_defaults_to_gui_current_workspace(self):
+        root, name, src = self.resolve()
+        self.assertEqual(root, str(self.custom))
+        self.assertEqual(name, "beta")
+        self.assertIn(".gui_prefs", src)
+
+    def test_env_beats_prefs(self):
+        env_ws = self.root / "envws"
+        env_ws.mkdir()
+        os.environ["KCI_WS_ROOT"] = str(env_ws)
+        root, _name, src = self.resolve()
+        self.assertEqual(root, str(env_ws))
+        self.assertIn("KCI_WS_ROOT", src)
+
+    def test_explicit_beats_env_and_main_keyword_resets(self):
+        env_ws = self.root / "envws"
+        env_ws.mkdir()
+        os.environ["KCI_WS_ROOT"] = str(env_ws)
+        root, name, _ = self.resolve(explicit="main")
+        self.assertEqual(root, "")
+        self.assertEqual(name, "main")
+        root, _name, _ = self.resolve(explicit="beta")
+        self.assertEqual(root, str(self.custom))
+
+    def test_path_managed_and_unknown(self):
+        root, _name, src = self.resolve(explicit=str(self.custom))
+        self.assertEqual(root, str(self.custom))
+        self.assertIn("路径", src)
+        managed = self.here / "workspaces" / "alpha"
+        managed.mkdir(parents=True)
+        root, _name, src = self.resolve(explicit="alpha")
+        self.assertEqual(root, str(managed))
+        self.assertIn("受管", src)
+        with self.assertRaises(ValueError):
+            self.resolve(explicit="no-such-ws-xyz")
+
+    def test_missing_prefs_falls_back_to_main(self):
+        root, name, _src = workspaces.resolve_ws_root(
+            here=str(self.here), prefs_fp=str(self.here / "nope.json"))
+        self.assertEqual((root, name), ("", "main"))
+
+    def test_stages_main_ws_flag_repoints_globals(self):
+        saved = (stages.WS, stages.OUT, stages.UP)
+        self.addCleanup(lambda: setattr(stages, "WS", saved[0])
+                        or setattr(stages, "OUT", saved[1])
+                        or setattr(stages, "UP", saved[2]))
+        rc = stages._main(["--ws", str(self.custom), "list"])
+        self.assertEqual(rc, 0)
+        self.assertEqual(stages.OUT, str(self.custom / "out"))
+        self.assertEqual(stages.UP, str(self.custom / "uploads"))
+
+
+class GoldenDiffTest(unittest.TestCase):
+    """golden.py 值级比对(2026-11-24): 出处扰动不算差异, 真值变化必须报。"""
+
+    def test_provenance_churn_is_not_diff(self):
+        exp = {"title": {"value": "T", "uid": "u1", "confidence": {"level": "mid"}},
+               "authors": [{"name": "A", "uid": "u9", "box": [0, 0, 1, 1], "page": 3}],
+               "references": [{"num": None, "raw": "X", "box": [0, 0, 1, 1]}],
+               "generated": "2026-01-01 00:00"}
+        act = {"title": {"value": "T", "uid": "u2", "confidence": {"level": "high"}},
+               "authors": [{"name": "A"}],
+               "references": [{"num": None, "raw": "X"}],
+               "generated": "2026-02-02 00:00"}
+        self.assertEqual(golden.diff_meta(exp, act), [])
+
+    def test_real_value_change_is_diff(self):
+        exp = {"keywords": ["a", "b"], "title": {"value": "T"}}
+        act = {"keywords": ["a", "c"], "title": {"value": "T2"}}
+        d = golden.diff_meta(exp, act)
+        self.assertEqual({x[0] for x in d}, {"title", "keywords"})
 
 
 class StageRunTest(unittest.TestCase):

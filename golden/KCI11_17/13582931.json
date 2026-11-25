@@ -1,0 +1,1912 @@
+{
+ "doc": "13582931",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582931",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김상준. (2022). 통일교육 환경 변화와 전담조직 재구조화 방향. 평화학연구 제21권제3호.",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "김상준"
+    ],
+    "authors_raw": "김상준",
+    "et_al": false,
+    "year": "2022",
+    "title": "통일교육 환경 변화와 전담조직 재구조화 방향. 평화학연구 제21권제3호",
+    "source": null,
+    "volume": "21",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김종수. (2020), 통일교육 환경 변화와 전담조직 ‘재구조화’ 방향 :통일교육과 민주시민교육의 결합, 평화학연구 제21권 3호",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "김종수"
+    ],
+    "authors_raw": "김종수",
+    "et_al": false,
+    "year": "2020",
+    "title": "통일교육 환경 변화와 전담조직 ‘재구조화’ 방향 :통일교육과 민주시민교육의 결합",
+    "source": "평화학연구 제21권 3호",
+    "volume": "21",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "문현진. (2024). 회복적 정의 이론을 적용한 사회과 교수학습방법 탐색, 사회과교육연구 제31권제1호",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "문현진"
+    ],
+    "authors_raw": "문현진",
+    "et_al": false,
+    "year": "2024",
+    "title": ". 회복적 정의 이론을 적용한 사회과 교수학습방법 탐색",
+    "source": "사회과교육연구 제31권",
+    "volume": "31",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_5seg",
+    "container_title": "사회과교육연구 제31권",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박형민. (2024). 통일교육의 학문적 정체성 재고: 평화교육 다문화교육 민주시민교육 세계시민교육과의 관계를 중심으로. 통일교육연구 제21권제2호.",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "박형민"
+    ],
+    "authors_raw": "박형민",
+    "et_al": false,
+    "year": "2024",
+    "title": "통일교육의 학문적 정체성 재고: 평화교육 다문화교육 민주시민교육 세계시민교육과의 관계를 중심으로. 통일교육연구 제21권제2호",
+    "source": null,
+    "volume": "21",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "오기성. (2021). 회복적 생활교육의 평화·통일교육적 함의. 평화학연구 제22권 제2호",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "오기성"
+    ],
+    "authors_raw": "오기성",
+    "et_al": false,
+    "year": "2021",
+    "title": "회복적 생활교육의 평화·통일교육적 함의. 평화학연구 제22권 제2호",
+    "source": null,
+    "volume": "22",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "차승주. (2023). ‘민족주의’적 통일교육의 한계와 대안. 평화학연구 제24권제3호",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "차승주"
+    ],
+    "authors_raw": "차승주",
+    "et_al": false,
+    "year": "2023",
+    "title": "‘민족주의’적 통일교육의 한계와 대안. 평화학연구 제24권제3호",
+    "source": null,
+    "volume": "24",
+    "issue": "3",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bohm, David. (1996). *On Dialogue* (edited by Lee Nichol). London: Routledge.",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Bohm",
+     "David"
+    ],
+    "authors_raw": "Bohm, David",
+    "et_al": false,
+    "year": "1996",
+    "title": "On Dialogue",
+    "source": "). On Dialogue (edited by Lee Nichol). London: Routledge",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Braithwaite, John. (2002). *Restorative Justice and Responsive Regulation*. Oxford: Oxford University Press.",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Braithwaite",
+     "John"
+    ],
+    "authors_raw": "Braithwaite, John",
+    "et_al": false,
+    "year": "2002",
+    "title": "Restorative Justice and Responsive Regulation",
+    "source": "). Restorative Justice and Responsive Regulation. Oxford: Oxford University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Janis, I. L. (1982). *Groupthink: Psychological Studies of Policy Decisions and Fiascos* (2nd ed.). Boston: Houghton Mifflin",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Janis I. L"
+    ],
+    "authors_raw": "Janis, I. L",
+    "et_al": false,
+    "year": "1982",
+    "title": "Groupthink: Psychological Studies of Policy Decisions and Fiascos",
+    "source": "). Groupthink: Psychological Studies of Policy Decisions and Fiascos (2nd ed.). Boston: Houghton Mifflin",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lederach, J. P. (2005). *The Moral Imagination: The Art and Soul of Building Peace*. Oxford: Oxford University Press",
+    "page": 29,
+    "box": [
+     104.2,
+     618.9,
+     792.7,
+     777.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Lederach J. P"
+    ],
+    "authors_raw": "Lederach, J. P",
+    "et_al": false,
+    "year": "2005",
+    "title": "The Moral Imagination: The Art and Soul of Building Peace",
+    "source": "). The Moral Imagination: The Art and Soul of Building Peace. Oxford: Oxford University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Morrison, Brenda & Ahmed, Eliza. (2006). Restorative Justice and Civil Society. Cambridge: Cambridge University Press.",
+    "page": 30,
+    "box": [
+     104.2,
+     237.7,
+     792.7,
+     300.9
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Morrison",
+     "Brenda",
+     "Ahmed",
+     "Eliza"
+    ],
+    "authors_raw": "Morrison, Brenda & Ahmed, Eliza",
+    "et_al": false,
+    "year": "2006",
+    "title": "Restorative Justice and Civil Society. Cambridge: Cambridge University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Morrison, Brenda. (2007). Restoring Safe School Communities: A Whole School Response to Bullying, Violence and Alienation. Sydney: Federation Press.",
+    "page": 30,
+    "box": [
+     104.2,
+     237.7,
+     792.7,
+     300.9
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Morrison",
+     "Brenda"
+    ],
+    "authors_raw": "Morrison, Brenda",
+    "et_al": false,
+    "year": "2007",
+    "title": "Restoring Safe School Communities: A Whole School Response to Bullying",
+    "source": "Violence and Alienation. Sydney: Federation Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Pranis, K. (2005). The Little Book of Circle Processes: A New/Old Approach to Peacemaking. Intercourse, PA: Good Books",
+    "page": 30,
+    "box": [
+     104.2,
+     237.7,
+     792.7,
+     300.9
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Pranis K"
+    ],
+    "authors_raw": "Pranis, K",
+    "et_al": false,
+    "year": "2005",
+    "title": "The Little Book of Circle Processes: A New/Old Approach to Peacemaking. Intercourse",
+    "source": "PA: Good Books",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Morrison, Brenda & Vaandering, Dorothy. (2012). “Restorative Justice: Pedagogy, Praxis, and Discipline”. Journal of School Violence, 11(2)",
+    "page": 30,
+    "box": [
+     104.2,
+     237.7,
+     792.7,
+     300.9
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Morrison",
+     "Brenda",
+     "Vaandering",
+     "Dorothy"
+    ],
+    "authors_raw": "Morrison, Brenda & Vaandering, Dorothy",
+    "et_al": false,
+    "year": "2012",
+    "title": "Restorative Justice: Pedagogy, Praxis, and Discipline",
+    "source": "Journal of School Violence, 11(2)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "한반도 평화·통일교육 연구는 개념적 모호성과 도덕적 절대성이 공존하는 긴장 구조에 주목해 왔다. 박주화(2025) 역시 평화교육이 추상적 담론이나 교조적 접근으로 흐를 위험을 지적하면서, 분단 서사 속 ‘인지적 동결’을 극복해야 함을 강조하였다. 최근 교육학계에서는 ‘회복적 정의’가 학교 현장의 갈등 해결과 생활교육의 대안으로 주목받았다. 이경원·김순자(2021)는 서클 프로세스가 응보적 생활지도와 달리 학생들의 책임성과 공동체적 관계를 회복시키는 도덕교육적 효과가 있다고 분석하였다. 안지영(2021)은 비폭력대화(NVC)와 내면중재 개념을 접목한 연구를 통해, 회복적 생활교육이 교실 내 갈등 상황에서 학생 스스로 성찰과 대화를 통해 문제를 해결할 수 있는 역량을 기른다고 주장하였다. 또한 김은아(2017)의 실험연구는 회복적 정의 기반 활동중심 갈등해결 프로그램이 초등학생의 공동체 의식 향상에 통계적으로 유의미한 효과가 있음을 입증하였다. 학교폭력 맥락에서도 회복적 정의는 응보적 제재 중심의 기존 체계를 넘어, 피해자·가해자·공동체 모두를 아우르는 회복과 재통합의 장을 마련할 수 있다는 점에서 의미를 가진다(이유진, 2014). 나아가 오기성(2021)는 회복적 생활교육이 일상 속 평화·통일교육의 가능성을 열어주는 기因이 될 수 있다고 보았다. 그러나 이들 연구는 주로 사건 대응이나 학급 차원의 프로그램에 초점을 두고 있으며, 평화·통일교육 차원으로 확장하려는 시도는 부족하다. 최근 통일교육에 관한 연구들은 통일교육을 민주주의 시민성 교육과 결합하려는 시도를 본격화하고 있다. 김종수(2020)은 통일교육 전담조직의 재구조화를 통해 민주시민교육과의 제도적 결합을 제안하였으며, 박형빈(2024), 차승주(2024) 등은 평화교육, 다문화교육, 민주시민교육, 세계시민교육과의 관계 속에서 통일교육의 학문적 정체성을 재검토하고 있다. 이러한 연구들은 통일교육이 민족주의 담론을 넘어 민주적 참여와 세계시민적 연대 속에서 재구성되어야 함을 공통적으로 강조한다. 다만 민주시민교육과 통일교육의 구체적 교수·학습 연계 방안은 아직 충분히 제시되지 않고 있다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     103.1,
+     633.9,
+     797.1,
+     1178.3
+    ],
+    "uid": "u3_3",
+    "authors": [
+     "한반도 평화",
+     "통일교육 연구는 개념적 모호성과 도덕적 절대성이 공존하는 긴장 구조에 주목해 왔다. 박주화"
+    ],
+    "authors_raw": "한반도 평화·통일교육 연구는 개념적 모호성과 도덕적 절대성이 공존하는 긴장 구조에 주목해 왔다. 박주화",
+    "et_al": false,
+    "year": "2024",
+    "title": "등은 평화교육",
+    "source": "다문화교육",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "데이비드 봄(David Bohm, 1917-1992)은 미국 태생의 이론물리학자이자 사상가로, 양자역학의 파일랫 웨이브 이론을 제시했으며, 철학과 교육 분야에 ‘대화론’을 제안하였다. (Wholeness and the Implicate Order, 1980), (On Dialogue, 1996) 등 주요 저작을 남졌다.",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     103.4,
+     1081.7,
+     794.9,
+     1176.9
+    ],
+    "uid": "u4_9",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "(Bohm, 1996).",
+    "page": 5,
+    "page_end": 5,
+    "box": [
+     103.4,
+     1081.7,
+     794.9,
+     1176.9
+    ],
+    "uid": "u4_9",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "(Bohm, 1996, pp.22–27, 31–36)",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     102.7,
+     1132.0,
+     361.5,
+     1154.6
+    ],
+    "uid": "u5_5",
+    "authors": [
+     "(Bohm"
+    ],
+    "authors_raw": "(Bohm",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.22–27",
+    "source": "31–36",
+    "volume": null,
+    "issue": null,
+    "pages": "22-27",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "(Bohm, 1996, pp.12–17)",
+    "page": 6,
+    "page_end": 6,
+    "box": [
+     102.7,
+     1155.9,
+     308.4,
+     1178.3
+    ],
+    "uid": "u5_6",
+    "authors": [
+     "(Bohm"
+    ],
+    "authors_raw": "(Bohm",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.12–17",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "12-17",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "(Bohm, 1996, pp.6–7, 23–27)",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     103.4,
+     1132.0,
+     344.8,
+     1154.6
+    ],
+    "uid": "u6_5",
+    "authors": [
+     "(Bohm"
+    ],
+    "authors_raw": "(Bohm",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.6–7",
+    "source": "23–27",
+    "volume": null,
+    "issue": null,
+    "pages": "6-7",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "7",
+    "raw": "(Bohm, 1996, pp.14–20, pp.3–26)",
+    "page": 7,
+    "page_end": 7,
+    "box": [
+     103.4,
+     1155.9,
+     372.9,
+     1180.9
+    ],
+    "uid": "u6_6",
+    "authors": [
+     "(Bohm"
+    ],
+    "authors_raw": "(Bohm",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.14–20",
+    "source": "pp.3–26",
+    "volume": null,
+    "issue": null,
+    "pages": "14-20",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "8",
+    "raw": "브렌다 모리슨은 호주 그리피스 대학교(Griffith University)와 빅토리아 대학교(Victoria University)에서 범죄학과 교육학을 연구했으며, 호주국립대학교(ANU) 회복적 정의 연구소에서도 활동하였다. (Morrison. 2007)",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     102.7,
+     1082.0,
+     790.8,
+     1177.7
+    ],
+    "uid": "u8_6",
+    "authors": [
+     "브렌다 모리슨은 호주 그리피스 대학교(Griffith University)와 빅토리아 대학교(Victoria University)에서 범죄학과 교육학을 연구했으며"
+    ],
+    "authors_raw": "브렌다 모리슨은 호주 그리피스 대학교(Griffith University)와 빅토리아 대학교(Victoria University)에서 범죄학과 교육학을 연구했으며",
+    "et_al": false,
+    "year": "2007",
+    "title": "호주국립대학교(ANU) 회복적 정의 연구소에서도 활동하였다. (Morrison",
+    "source": ")",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "9",
+    "raw": "(Braithwaite, 2002. pp.29-33)",
+    "page": 9,
+    "page_end": 9,
+    "box": [
+     102.7,
+     1082.0,
+     790.8,
+     1177.7
+    ],
+    "uid": "u8_6",
+    "authors": [
+     "(Braithwaite"
+    ],
+    "authors_raw": "(Braithwaite",
+    "et_al": false,
+    "year": "2002",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "29-33",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "10",
+    "raw": "브레이스웨이트는 사회 규율·범죄학 영역에서 “규제 피라미드(regulatory pyramid)”라는 모델을 제시하는데, 이 피라미드는 규율을 집행하는 방식이 단일한 처벌 수단이 아니라, 여러 층위와 방식이 단계적으로 작동한다는 점을 강조하는 은유다. 브레이스웨이트의 ‘규제 피라미드’의 바닥은 설득, 그 위는 경고, 더 위는 강화된 제재, 꼭대기는 형사처벌로 쌓여 있는 구조이다. 즉, 규율은 처음부터 강력한 처벌이 아니라, 돌봉·설득→점진적 제재 → 최종 처벌 순으로 운영되어야 한다는 원리다.(Braithwaite, 2002, pp.29-31)",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     104.2,
+     1007.5,
+     790.8,
+     1177.7
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "브레이스웨이트는 사회 규율",
+     "범죄학 영역에서"
+    ],
+    "authors_raw": "브레이스웨이트는 사회 규율·범죄학 영역에서",
+    "et_al": false,
+    "year": "2002",
+    "title": "규제 피라미드(regulatory pyramid)",
+    "source": "라는 모델을 제시하는데, 이 피라미드는 규율을 집행하는 방식이 단일한 처벌 수단이 아니라, 여러 층위와 방식이 단계적으로 작동한다는 점을 강조하는 은유다. 브레이스웨이트의 ‘규제 피라미드’의 바닥은 설득, 그 위는 경고, 더 위는 강화된 제재, 꼭대기는 형사처벌로 쌓여 있는 구조이다. 즉, 규율은 처음부터 강력한 처벌이 아니라, 돌봉·설득→점진적 제재 → 최종 처벌 순으로 운영되어야 한다는 원리다.(Braithwaite",
+    "volume": null,
+    "issue": null,
+    "pages": "29-31",
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "11",
+    "raw": "(Morrison, 2007, pp.30-35)",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     104.2,
+     1007.5,
+     790.8,
+     1177.7
+    ],
+    "uid": "u9_4",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "30-35",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "12",
+    "raw": "(Morrison, 2007, pp.46-50)",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     103.4,
+     1132.8,
+     349.3,
+     1177.7
+    ],
+    "uid": "u10_5",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "46-50",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "13",
+    "raw": "(Morrison, 2007, pp.100-103)",
+    "page": 11,
+    "page_end": 11,
+    "box": [
+     103.4,
+     1132.8,
+     349.3,
+     1177.7
+    ],
+    "uid": "u10_5",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "100-103",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "14",
+    "raw": "(Morrison, 2007, pp.105–107)",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     104.2,
+     1155.9,
+     354.2,
+     1178.3
+    ],
+    "uid": "u11_5",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.105–107",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "105-107",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "15",
+    "raw": "(Morrison, 2007, pp.120-126)",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     104.2,
+     1155.9,
+     355.2,
+     1180.9
+    ],
+    "uid": "u12_7",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "120-126",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "16",
+    "raw": "(Morrison, 2007, pp.41–45)",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     103.4,
+     1130.8,
+     346.8,
+     1155.9
+    ],
+    "uid": "u13_4",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.41–45",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "41-45",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "17",
+    "raw": "(Bohm, 1996, pp.14–20)",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     103.4,
+     1130.8,
+     346.8,
+     1155.9
+    ],
+    "uid": "u13_4",
+    "authors": [
+     "(Bohm"
+    ],
+    "authors_raw": "(Bohm",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.14–20",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "14-20",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "18",
+    "raw": "(CASEL Learning. 2013, pp.9–15; Bohm, 1996, pp.22–27)",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     103.4,
+     1130.8,
+     346.8,
+     1155.9
+    ],
+    "uid": "u13_4",
+    "authors": [
+     "(CASEL",
+     "Learning"
+    ],
+    "authors_raw": "(CASEL Learning",
+    "et_al": false,
+    "year": "1996",
+    "title": "pp.22–27",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "9-15",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "19",
+    "raw": "(Morrison, 2007, pp.85–90)",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     103.4,
+     1128.2,
+     346.8,
+     1155.9
+    ],
+    "uid": "u14_5",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.85–90",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "85-90",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "20",
+    "raw": "(Pranis, 2005, pp.11–19)",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     103.4,
+     1128.2,
+     346.8,
+     1155.9
+    ],
+    "uid": "u14_5",
+    "authors": [
+     "(Pranis"
+    ],
+    "authors_raw": "(Pranis",
+    "et_al": false,
+    "year": "2005",
+    "title": "pp.11–19",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "11-19",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "21",
+    "raw": "(Morrison, 2007, pp. 119–123; Zehr, 2015. pp.56–59)",
+    "page": 15,
+    "page_end": 15,
+    "box": [
+     103.4,
+     1128.2,
+     346.8,
+     1155.9
+    ],
+    "uid": "u14_5",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2015",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "119-123",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "22",
+    "raw": "(Lederach, 2003. pp.14–18)",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     102.7,
+     1132.0,
+     338.5,
+     1154.6
+    ],
+    "uid": "u15_5",
+    "authors": [
+     "(Lederach"
+    ],
+    "authors_raw": "(Lederach",
+    "et_al": false,
+    "year": "2003",
+    "title": "pp.14–18",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "14-18",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "23",
+    "raw": "(Morrison, 2007. pp.128–133)",
+    "page": 16,
+    "page_end": 16,
+    "box": [
+     102.7,
+     1155.9,
+     354.2,
+     1178.3
+    ],
+    "uid": "u15_6",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.128–133",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "128-133",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "24",
+    "raw": "(Wachtel, 2010. pp.9–15)",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     104.2,
+     1128.2,
+     331.8,
+     1155.9
+    ],
+    "uid": "u16_4",
+    "authors": [
+     "(Wachtel"
+    ],
+    "authors_raw": "(Wachtel",
+    "et_al": false,
+    "year": "2010",
+    "title": "pp.9–15",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "9-15",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "25",
+    "raw": "(Zehr, 2015. pp.47–52)",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     104.2,
+     1128.2,
+     331.8,
+     1155.9
+    ],
+    "uid": "u16_4",
+    "authors": [
+     "(Zehr"
+    ],
+    "authors_raw": "(Zehr",
+    "et_al": false,
+    "year": "2015",
+    "title": "pp.47–52",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "47-52",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "26",
+    "raw": "(O’Connell, Wachtel & Wachtel, 1999. pp.21–26)",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     104.2,
+     1128.2,
+     331.8,
+     1155.9
+    ],
+    "uid": "u16_4",
+    "authors": [
+     "(O’Connell"
+    ],
+    "authors_raw": "(O’Connell",
+    "et_al": false,
+    "year": "1999",
+    "title": "Wachtel & Wachtel",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "21-26",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "27",
+    "raw": "(Morrison, 2007, pp.137–139)",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     104.2,
+     1110.0,
+     356.5,
+     1154.6
+    ],
+    "uid": "u17_6",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.137–139",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "137-139",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "28",
+    "raw": "(Lederach, 2005. pp.91–95)",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     104.2,
+     1110.0,
+     356.5,
+     1154.6
+    ],
+    "uid": "u17_6",
+    "authors": [
+     "(Lederach"
+    ],
+    "authors_raw": "(Lederach",
+    "et_al": false,
+    "year": "2005",
+    "title": "pp.91–95",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "91-95",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "29",
+    "raw": "(Morrison, 2007. pp.95–100)",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     104.2,
+     1110.0,
+     356.5,
+     1154.6
+    ],
+    "uid": "u17_6",
+    "authors": [
+     "(Morrison"
+    ],
+    "authors_raw": "(Morrison",
+    "et_al": false,
+    "year": "2007",
+    "title": "pp.95–100",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "95-100",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "30",
+    "raw": "(Morrison & Vaandering, 2012, pp.146–147)",
+    "page": 18,
+    "page_end": 18,
+    "box": [
+     104.2,
+     1110.0,
+     356.5,
+     1154.6
+    ],
+    "uid": "u17_6",
+    "authors": [
+     "(Morrison",
+     "Vaandering"
+    ],
+    "authors_raw": "(Morrison & Vaandering",
+    "et_al": false,
+    "year": "2012",
+    "title": "pp.146–147",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "146-147",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 30,
+   "per_page": {
+    "4": 1,
+    "5": 2,
+    "6": 2,
+    "7": 2,
+    "9": 2,
+    "10": 2,
+    "11": 2,
+    "12": 1,
+    "13": 1,
+    "14": 3,
+    "15": 3,
+    "16": 2,
+    "17": 3,
+    "18": 4
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "4": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "5": {
+     "markers": [
+      "2",
+      "3"
+     ],
+     "collected": [
+      "2",
+      "3"
+     ]
+    },
+    "6": {
+     "markers": [
+      "4",
+      "5"
+     ],
+     "collected": [
+      "4",
+      "5"
+     ]
+    },
+    "7": {
+     "markers": [
+      "6",
+      "7"
+     ],
+     "collected": [
+      "6",
+      "7"
+     ]
+    },
+    "9": {
+     "markers": [
+      "8",
+      "9"
+     ],
+     "collected": [
+      "8",
+      "9"
+     ]
+    },
+    "10": {
+     "markers": [
+      "10",
+      "11"
+     ],
+     "collected": [
+      "10",
+      "11"
+     ]
+    },
+    "11": {
+     "markers": [
+      "12",
+      "13"
+     ],
+     "collected": [
+      "12",
+      "13"
+     ]
+    },
+    "12": {
+     "markers": [
+      "14"
+     ],
+     "collected": [
+      "14"
+     ]
+    },
+    "13": {
+     "markers": [
+      "15"
+     ],
+     "collected": [
+      "15"
+     ]
+    },
+    "14": {
+     "markers": [
+      "16",
+      "17",
+      "18"
+     ],
+     "collected": [
+      "16",
+      "17",
+      "18"
+     ]
+    },
+    "15": {
+     "markers": [
+      "19",
+      "20",
+      "21"
+     ],
+     "collected": [
+      "19",
+      "20",
+      "21"
+     ]
+    },
+    "16": {
+     "markers": [
+      "22",
+      "23"
+     ],
+     "collected": [
+      "22",
+      "23"
+     ]
+    },
+    "17": {
+     "markers": [
+      "24",
+      "25",
+      "26"
+     ],
+     "collected": [
+      "24",
+      "25",
+      "26"
+     ]
+    },
+    "18": {
+     "markers": [
+      "27",
+      "28",
+      "29",
+      "30"
+     ],
+     "collected": [
+      "27",
+      "28",
+      "29",
+      "30"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "A New Pedagogical Approach to Peace, Unification, and Democratic Citizenship Education: Applying David Bohm's Dialogue and Brenda Morrison's Restorative Justice Model",
+   "page": 1,
+   "box": [
+    102.7,
+    204.8,
+    791.6,
+    393.0
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Carey Park",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     102.7,
+     453.4,
+     403.2,
+     501.4
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Institute for Unification Education"
+  ],
+  "abstract": {
+   "value": "This study proposes an integrated pedagogical framework for peace, unification, and democratic citizenship education on the Korean Peninsula by synthesizing David Bohm’s *dialogue theory* and Brenda Morrison’s *whole-school restorative justice model*. Whereas traditional unification education has focused on normative or knowledge-based approaches, this study emphasizes strengthening civic competencies to mediate social conflicts. Bohm’s dialogue theory—centered on the suspension of judgment, revealing tacit assumptions, and creating shared meaning—cultivates democratic dialogue skills, while Morrison’s model—featuring responsive regulation and restorative processes—fosters collective democratic resilience within school communities. Integrating these approaches, the paper presents a practical instructional design applicable across classrooms, schools, and communities. Ultimately, it reframes peace, unification, and citizenship education as an integrated practice that promotes learning ‘peace as a process’ rather than pursuing ‘unification as an end.’",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study proposes an integrated pedagogical framework for peace, unification, and democratic citizenship education on the Korean Peninsula by synthesizing David Bohm’s *dialogue theory* and Brenda Morrison’s *whole-school restorative justice model*. Whereas traditional unification education has focused on normative or knowledge-based approaches, this study emphasizes strengthening civic competencies to mediate social conflicts. Bohm’s dialogue theory—centered on the suspension of judgment, revealing tacit assumptions, and creating shared meaning—cultivates democratic dialogue skills, while Morrison’s model—featuring responsive regulation and restorative processes—fosters collective democratic resilience within school communities. Integrating these approaches, the paper presents a practical instructional design applicable across classrooms, schools, and communities. Ultimately, it reframes peace, unification, and citizenship education as an integrated practice that promotes learning ‘peace as a process’ rather than pursuing ‘unification as an end.’",
+   "page": 1,
+   "box": [
+    102.7,
+    562.9,
+    171.9,
+    583.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: Dialogue Theory, Restorative Justice, Peace Education, Unification Education, Democratic Citizenship Education"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u1_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 9,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 3,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "133-162",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "대화론",
+   "회복적 정의",
+   "평화교육",
+   "통일교육",
+   "민주시민교육"
+  ],
+  "keywords_en": [
+   "Dialogue Theory",
+   "Restorative Justice",
+   "Peace Education",
+   "Unification Education",
+   "Democratic Citizenship Education"
+  ],
+  "citation_spans": []
+ }
+}

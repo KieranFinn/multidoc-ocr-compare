@@ -1,0 +1,3562 @@
+{
+ "doc": "13571818",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13571818",
+  "generated": "2026-11-24 15:27",
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "조선일보(2019.10.01.). 군사기밀 주고받은 군장교⋅경찰 연인...남녀 모두 징역형.",
+    "page": 2,
+    "page_end": 2,
+    "box": [
+     158.4,
+     1370.4,
+     770.2,
+     1417.7
+    ],
+    "uid": "u1_4",
+    "authors": [
+     "조선일보"
+    ],
+    "authors_raw": "조선일보",
+    "et_al": false,
+    "year": "2019",
+    "title": "10.01.). 군사기밀 주고받은 군장교⋅경찰 연인...남녀 모두 징역형",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "국방보안업무훈령(국방부훈령 제2425호, 2020. 5. 11)은 소속부대 및 기관의 전반적인 보안에 대한 지휘·감독 책임이 각급부대의 장에게 있음을 명시하고 있다.",
+    "page": 3,
+    "page_end": 3,
+    "box": [
+     152.3,
+     1367.5,
+     997.9,
+     1421.1
+    ],
+    "uid": "u2_2",
+    "authors": [
+     "국방보안업무훈령(국방부훈령 제2425호"
+    ],
+    "authors_raw": "국방보안업무훈령(국방부훈령 제2425호",
+    "et_al": false,
+    "year": "2020",
+    "title": "5. 11)은 소속부대 및 기관의 전반적인 보안에 대한 지휘·감독 책임이 각급부대의 장에게 있음을 명시하고 있다",
+    "source": null,
+    "volume": null,
+    "issue": "2425",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "국방부 소관 법령인 군사기밀 보호법(법률 제13503호, 2015. 9. 1. 시행)은 누설될 경우 국가안전보장에 명백한 위험을 초래할 우려가 있는 문서, 기록 등의 군사기밀을 보호하기 위한 목적으로 제정되어 시행되고 있는데, 이는 군조직 내 정보보안의 중요성을 나타내는 대표적인 사례라고 할 수 있다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     153.8,
+     1340.3,
+     997.9,
+     1418.0
+    ],
+    "uid": "u3_6",
+    "authors": [
+     "국방부 소관 법령인 군사기밀 보호법(법률 제13503호"
+    ],
+    "authors_raw": "국방부 소관 법령인 군사기밀 보호법(법률 제13503호",
+    "et_al": false,
+    "year": "2015",
+    "title": "9. 1. 시행)은 누설될 경우 국가안전보장에 명백한 위험을 초래할 우려가 있는 문서",
+    "source": "기록 등의 군사기밀을 보호하기 위한 목적으로 제정되어 시행되고 있는데",
+    "volume": null,
+    "issue": "13503",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "상비사단은 평시 편제병력의 대부분이 현역으로 구성되어 즉각적인 전투력 발휘가 가능한 사단이다. 따라서 상비사단에서 근무하는 장교들은 경계 및 전투태세와 관련된 민감정보 및 군사기밀을 상시 다루고 있어 본 연구의 목적에 부합한 설문대상이라고 할 수 있다.",
+    "page": 12,
+    "page_end": 12,
+    "box": [
+     151.5,
+     1280.9,
+     998.3,
+     1419.5
+    ],
+    "uid": "u11_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "외이드안보(2021.02.01.). 2021년 국방예산 분석 및 정책적 함의. Rok Angle, 232호. https://kookbang.dema.mil.kr/newsWeb/20210201/1/BBSMSTR_000000100003/view.do * (제1저자) 3군단 직할부대, 중대장, tkddud829@naver.com, https://orcid.org/0000-0001-5313-0114 ** (교신저자) 국방대학교 국방관리학과 박사과정, taebok88@gmail.com, https://orcid.org/0000-0002-5310-4490",
+    "page": 12,
+    "page_end": 29,
+    "box": [
+     151.5,
+     1280.9,
+     998.3,
+     1419.5
+    ],
+    "uid": "u11_5",
+    "authors": [
+     "외이드안보"
+    ],
+    "authors_raw": "외이드안보",
+    "et_al": false,
+    "year": "2021",
+    "title": "(제1저자) 3군단 직할부대, 중대장, tkddud829@naver.com, https://orcid.org/0000-0001-5313-0114",
+    "source": "02.01.). 2021년 국방예산 분석 및 정책적 함의. Rok Angle, 232호. https://kookbang.dema.mil.kr/newsWeb/20210201/1/BBSMSTR_000000100003/view.do  (제1저자) 3군단 직할부대, 중대장, tkddud829@naver.com, https://orcid.org/0000-0001-5313-0114 * (교신저자) 국방대학교 국방관리학과 박사과정, taebok88@gmail.com, https://orcid.org/0000-0002-5310-4490",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 5,
+   "per_page": {
+    "2": 1,
+    "3": 1,
+    "4": 1,
+    "12": 2
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "2": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "3": {
+     "markers": [
+      "2"
+     ],
+     "collected": [
+      "2"
+     ]
+    },
+    "4": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "12": {
+     "markers": [
+      "4",
+      "5"
+     ],
+     "collected": [
+      "4",
+      "5"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Agarwal, V. (2013). Investigating the Convergent Validity of Organizational Trust. Journal of Communication Management, 17(1), 24-39. https://doi.org/10.1108/13632541311300133",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Agarwal V"
+    ],
+    "authors_raw": "Agarwal, V",
+    "et_al": false,
+    "year": "2013",
+    "title": "Investigating the Convergent Validity of Organizational Trust. Journal of Communication Management",
+    "source": "17(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "24-39",
+    "doi": "10.1108/13632541311300133",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Ajzen, I. (1991). The Theory of Planned Behavior. Organizational Behavior and Human Decision Processes, 50(2), 179-211. https://doi.org/10.1016/0749-5978(91)90020-t",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Ajzen I"
+    ],
+    "authors_raw": "Ajzen, I",
+    "et_al": false,
+    "year": "1991",
+    "title": "The Theory of Planned Behavior. Organizational Behavior and Human Decision Processes",
+    "source": "50(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "179-211",
+    "doi": "10.1016/0749-5978(91)90020-t",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Al-Omari, A., Deokar, A., El-Gayar, O., Walters, J., & Aleassa, H. (2013). Information Security Policy Compliance: An Empirical Study of Ethical Ideology. System Sciences (HICSS), 2013 46<sup>th</sup> Hawaii International Conference on System Sciences, 3018-3027. https://doi.org/ 10.1109/hicss.2013.272",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Al-Omari A",
+     "Deokar A",
+     "El-Gayar O",
+     "Walters J",
+     "Aleassa H"
+    ],
+    "authors_raw": "Al-Omari, A., Deokar, A., El-Gayar, O., Walters, J., & Aleassa, H",
+    "et_al": false,
+    "year": "2013",
+    "title": "Information Security Policy Compliance: An Empirical Study of Ethical Ideology. System Sciences (HICSS)",
+    "source": "2013 46<sup>th</sup> Hawaii International Conference on System Sciences",
+    "volume": null,
+    "issue": null,
+    "pages": "3018-3027",
+    "doi": "10.1109/hicss.2013.272",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Barclay, D. Higgins, C., & Thomson, R. (1995). The Partial Least Squares(PLS) Approach to Causal Modeling : Personal Computer Adoption and Use as an Illustration. Technology Studies, 2(2), 44-59. https://www.researchgate.net/publication/313137896",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Barclay",
+     "D. Higgins",
+     "C. Thomson",
+     "R"
+    ],
+    "authors_raw": "Barclay, D. Higgins, C., & Thomson, R",
+    "et_al": false,
+    "year": "1995",
+    "title": "The Partial Least Squares(PLS) Approach to Causal Modeling : Personal Computer Adoption and Use as an Illustration. Technology Studies",
+    "source": "2(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "44-59",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bulgurcu, B., Cavusoglu, H., & Benbasat, I. (2010). Information Security Policy Compliance: An Empirical Study of Rationality-based Beliefs and Information Security Awareness. MIS Quarterly, 34(3), 523-548. https://doi.org/10.2307/25750690",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Bulgurcu B",
+     "Cavusoglu H",
+     "Benbasat I"
+    ],
+    "authors_raw": "Bulgurcu, B., Cavusoglu, H., & Benbasat, I",
+    "et_al": false,
+    "year": "2010",
+    "title": "Information Security Policy Compliance: An Empirical Study of Rationality-based Beliefs and Information Security Awareness. MIS Quarterly",
+    "source": "34(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "523-548",
+    "doi": "10.2307/25750690",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Chin, W. W. (1998). The partial least squares approach to structural equation modeling. Modern methods for business research, 295(2), 295-336. https://www.researchgate.net/publication/ 311766005",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Chin W. W"
+    ],
+    "authors_raw": "Chin, W. W",
+    "et_al": false,
+    "year": "1998",
+    "title": "The partial least squares approach to structural equation modeling. Modern methods for business research",
+    "source": "295(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "295-336",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Choi, E. S. (2021). Military Spiritual Education According to Environmental Changes in the Advanced Military Culture: Focusing on the Characteristics of New Generation (MZ Generation). The Korean Journal of Unification Affairs, 33(1), 29-63. https://doi.org/ 10.46561/KUA.2021.33.1.02",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Choi E. S"
+    ],
+    "authors_raw": "Choi, E. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "Military Spiritual Education According to Environmental Changes in the Advanced Military Culture: Focusing on the Characteristics of New Generation (MZ Generation). The Korean Journal of Unification Affairs",
+    "source": "33(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "29-63",
+    "doi": "10.46561/KUA.2021.33.1.02",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Cornwell, J. F., Franks, B., & Higgins, E. T. (2014). Truth, control, and value motivations: the “what,” “how,” and “why” of approach and avoidance. Frontiers in Systems Neuroscience, 8, 1-15. https://doi.org/10.3389/fnsys.2014.00194",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Cornwell"
+    ],
+    "authors_raw": "Cornwell",
+    "et_al": false,
+    "year": "2014",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1-15",
+    "doi": "10.3389/fnsys.2014.00194",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Crossler, R. E., Johnston, A. C., Lowry, P. B., Hu, Q., Warkentin, M., & Baskerville, R. (2013). Future Directions for Behavioral Information Security Research. Computers & Security, 32(1), 90-101. https://doi.org/10.1016/j.cose.2012.09.010",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Crossler R. E",
+     "Johnston A. C",
+     "Lowry P. B",
+     "Hu Q",
+     "Warkentin M",
+     "Baskerville R"
+    ],
+    "authors_raw": "Crossler, R. E., Johnston, A. C., Lowry, P. B., Hu, Q., Warkentin, M., & Baskerville, R",
+    "et_al": false,
+    "year": "2013",
+    "title": "Future Directions for Behavioral Information Security Research. Computers & Security",
+    "source": "32(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "90-101",
+    "doi": "10.1016/j.cose.2012.09.010",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Das, S., Kim, T. H. J., Dabbish, L. A., & Hong, J. I. (2014). The effect of social influence on security sensitivity. In 10th Symposium On Usable Privacy and Security, 143-157. https://www.usenix.org/sites/default/files/soups14_proceedings.pdf#page=150 Eom, J. H., & Kim, N. U. (2020). Measures to Prevent the Leakage of Military Internal Information through the Analysis of Military Secret Leakage Cases: Focusing on Insider Behaviors. Journal of Convergence Security, 20(1), 85-92. https://doi.org/10.33778/kcsa. 2020.20.1.085",
+    "page": 22,
+    "box": [
+     143.8,
+     680.6,
+     1002.2,
+     945.9
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "Das S",
+     "Kim T. H. J",
+     "Dabbish L. A",
+     "Hong J. I"
+    ],
+    "authors_raw": "Das, S., Kim, T. H. J., Dabbish, L. A., & Hong, J. I",
+    "et_al": false,
+    "year": "2020",
+    "title": "Measures to Prevent the Leakage of Military Internal Information through the Analysis of Military Secret Leakage Cases: Focusing on Insider Behaviors. Journal of Convergence Security",
+    "source": "20(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "143-157",
+    "doi": "10.33778/kcsa",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Fornell, C. & Larcker. D. F. (1981). Structural equation models with unobservable variables and measurement error: Algebra and statistics. Journal of Marketing Research, 18(3), 382-388. https://doi.org/10.2307/3150980",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Fornell C",
+     "Larcker. D. F"
+    ],
+    "authors_raw": "Fornell, C. & Larcker. D. F",
+    "et_al": false,
+    "year": "1981",
+    "title": "Structural equation models with unobservable variables and measurement error: Algebra and statistics. Journal of Marketing Research",
+    "source": "18(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "382-388",
+    "doi": "10.2307/3150980",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Gillespie, N. & Dietz, G. (2009). Trust repair after an organization-level failure. The Academy of Management Review, 34(1), 127-145. https://doi.org/10.5465/amr.2009.35713319",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Gillespie N",
+     "Dietz G"
+    ],
+    "authors_raw": "Gillespie, N. & Dietz, G",
+    "et_al": false,
+    "year": "2009",
+    "title": "Trust repair after an organization-level failure. The Academy of Management Review",
+    "source": "34(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "127-145",
+    "doi": "10.5465/amr.2009.35713319",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hair J., J.F., Sarstedt, M., Ringle, C.M., & Hult, G.T. (2014). A Primer on partial least squares structural equation modeling. California: Sage publications.",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hair J",
+     "J.F",
+     "Sarstedt M",
+     "Ringle C.M",
+     "Hult G.T"
+    ],
+    "authors_raw": "Hair J., J.F., Sarstedt, M., Ringle, C.M., & Hult, G.T",
+    "et_al": false,
+    "year": "2014",
+    "title": "A Primer on partial least squares structural equation modeling. California: Sage publications",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hair, J., W. Black, B. Babin, & R. E. Anderson. (2010). Multivariate Data Analysis. Englewood Cliffs, Nj: Prentice Hall.",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hair J",
+     "W. Black",
+     "B. Babin",
+     "R. E. Anderson"
+    ],
+    "authors_raw": "Hair, J., W. Black, B. Babin, & R. E. Anderson",
+    "et_al": false,
+    "year": "2010",
+    "title": "Multivariate Data Analysis. Englewood Cliffs",
+    "source": "Nj: Prentice Hall",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Henseler, J., Hubona, G., & Ray, P. (2016). Using PLS Path Modeling in New Technology Research: Updated Guidelines. Industrial Management & Data Systems, 116(1). 2-20. https://doi.org/10.1108/IMDS-09-2015-0382",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Henseler J",
+     "Hubona G",
+     "Ray P"
+    ],
+    "authors_raw": "Henseler, J., Hubona, G., & Ray, P",
+    "et_al": false,
+    "year": "2016",
+    "title": "Using PLS Path Modeling in New Technology Research: Updated Guidelines. Industrial Management & Data Systems",
+    "source": "116(1). 2-20. https://doi.org/10.1108/IMDS-09-2015-0382",
+    "volume": null,
+    "issue": null,
+    "pages": "2-20",
+    "doi": "10.1108/IMDS-09-2015-0382",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Herath, T. & Rao, H. R. (2009). Encouraging information security behaviors in organizations: Role of penalties, pressures and perceived effectiveness. Decision Support Systems, 47(2), 54-165. https://doi.org/10.1016/j.dss.2009.02.005",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Herath T",
+     "Rao H. R"
+    ],
+    "authors_raw": "Herath, T. & Rao, H. R",
+    "et_al": false,
+    "year": "2009",
+    "title": "Encouraging information security behaviors in organizations: Role of penalties",
+    "source": "pressures and perceived effectiveness. Decision Support Systems",
+    "volume": null,
+    "issue": null,
+    "pages": "54-165",
+    "doi": "10.1016/j.dss.2009.02.005",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Higgins, E. T. (1998). Advances in experimental social psychology. Vol. 30. Academic Press. https://www.elsevier.com/books/advances-in-experimental-social-psychology/zanna/978 0 12 015230 8",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Higgins E. T"
+    ],
+    "authors_raw": "Higgins, E. T",
+    "et_al": false,
+    "year": "1998",
+    "title": "Advances in experimental social psychology. Vol. 30. Academic Press. https://www.elsevier.com/books/advances-in-experimental-social-psychology/zanna/978 0 12 015230 8",
+    "source": null,
+    "volume": "30",
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hu, S. H. (2020). Analysis of the impact of military organization’s safety culture on safety behavior: Focusing on the mediating effect of safety leadership. Journal of Advances in Military Studies, 3(2), 63-81. https://doi.org/10.37944/jams.v3i2.70",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hu S. H"
+    ],
+    "authors_raw": "Hu, S. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "Analysis of the impact of military organization’s safety culture on safety behavior: Focusing on the mediating effect of safety leadership. Journal of Advances in Military Studies",
+    "source": "3(2)",
+    "volume": "3",
+    "issue": null,
+    "pages": "63-81",
+    "doi": "10.37944/jams.v3i2.70",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. & Hu, S. H. (2018). A Study on the Influence of Information Security Compliance Intention of Employee: Theory of Planned Behavior, Justice Theory, and Motivation Theory Applied. Journal of Digital Convergence, 16(3), 225-236. https://doi.org/10.14400/ JDC.2018.16.3.225",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hwang I. H",
+     "Hu S. H"
+    ],
+    "authors_raw": "Hwang, I. H. & Hu, S. H",
+    "et_al": false,
+    "year": "2018",
+    "title": "A Study on the Influence of Information Security Compliance Intention of Employee: Theory of Planned Behavior",
+    "source": "Justice Theory",
+    "volume": null,
+    "issue": null,
+    "pages": "225-236",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. & Hu, S. H. (2021a). The Influence of Security Motivation and Organization Trust on Information Security Compliance: Focusing on Moderation Effects of Work Promotion Focus. Journal of the Korea Society Industrial Information System, 26(3), 23-39. https://doi.org/10.9723/jksiis.2021.26.3.023",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hwang"
+    ],
+    "authors_raw": "Hwang",
+    "et_al": false,
+    "year": "2021",
+    "title": "I. H. & Hu",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "23-39",
+    "doi": "10.9723/jksiis.2021.26.3.023",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. & Hu, S. H. (2021b). Influence of Work Impediment and Compliance Anxiety on",
+    "page": 23,
+    "box": [
+     145.5,
+     680.6,
+     1000.1,
+     884.2
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Hwang I. H",
+     "Hu S. H"
+    ],
+    "authors_raw": "Hwang, I. H. & Hu, S. H",
+    "et_al": false,
+    "year": "2021",
+    "title": "Influence of Work Impediment and Compliance Anxiety on",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Information Security Compliance Intention: Analysis of Moderating Effect on Involvement and PO fit. Journal of Korea Service Management Society, 22(2), 1-27. https://doi.org/ 10.15706/jksms.2021.22.2.001",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Information Security Compliance Intention: Analysis of Moderating Effect on Involvement",
+     "PO fit. Journal of Korea Service Management Society"
+    ],
+    "authors_raw": "Information Security Compliance Intention: Analysis of Moderating Effect on Involvement and PO fit. Journal of Korea Service Management Society",
+    "et_al": false,
+    "year": "2021",
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1-27",
+    "doi": "10.15706/jksms.2021.22.2.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. & Kim, S. W. (2017). A Study on the Inhibitors and Task Coping of Information Security Related Work Stress of Employees in Finance Industry. The e-Business Studies, 18(3), 147-165. https://doi.org/10.20462/tebs.2017.06.18.3.147",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Hwang I. H",
+     "Kim S. W"
+    ],
+    "authors_raw": "Hwang, I. H. & Kim, S. W",
+    "et_al": false,
+    "year": "2017",
+    "title": "A Study on the Inhibitors and Task Coping of Information Security Related Work Stress of Employees in Finance Industry. The e-Business Studies",
+    "source": "18(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "147-165",
+    "doi": "10.20462/tebs.2017.06.18.3.147",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. (2020). The Effect of Information Security Delivery Activities and Feedback on Work Impediment and Compliance Intention. Journal of Digital Contents Society, 21(9), 1653-1663. https://doi.org/10.9728/dcs.2020.21.1.1653",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Hwang I. H"
+    ],
+    "authors_raw": "Hwang, I. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "The Effect of Information Security Delivery Activities and Feedback on Work Impediment and Compliance Intention. Journal of Digital Contents Society",
+    "source": "21(9)",
+    "volume": null,
+    "issue": null,
+    "pages": "1653-1663",
+    "doi": "10.9728/dcs.2020.21.1.1653",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. (2021a). Analysis of the Effects of Information Security Sanction and Role Ambiguity on Compliance Intention: Focusing on Moderation Effects of Technical Support and Task Coping. Journal of Digital Contents Society, 22(2), 271-280. https://doi.org/10.9728/dcs.2021.22.2.271",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Hwang"
+    ],
+    "authors_raw": "Hwang",
+    "et_al": false,
+    "year": "2021",
+    "title": "I. H. (2021a). Analysis of the Effects of Information Security Sanction and Role Ambiguity on Compliance Intention: Focusing on Moderation Effects of Technical Support and Task Coping. Journal of Digital Contents Society",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "271-280",
+    "doi": "10.9728/dcs.2021.22.2.271",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hwang, I. H. (2021b). The Effect on Psychological Empowerment on IS Compliance Intention: Focusing on the Moderating Effect of Trust and Justice. Journal of Digital Contents Society, 22(10), 1683-1694. https://doi.org/10.9728/dcs.2021.22.10.1683",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Hwang"
+    ],
+    "authors_raw": "Hwang",
+    "et_al": false,
+    "year": "2021",
+    "title": "I. H. (2021b). The Effect on Psychological Empowerment on IS Compliance Intention: Focusing on the Moderating Effect of Trust and Justice. Journal of Digital Contents Society",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1683-1694",
+    "doi": "10.9728/dcs.2021.22.10.1683",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "en_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jeong, H. I. & Kim, S. J. (2018). Influence on Information Security Behavior of Members of Organizations: Based on Integration of Theory of Planned Behavior (TPB) and Theory of Protection Motivation (TPM). Korean Security Journal, 56, 145-164. https://doi.org/ 10.36623/kssa.2018.56.7",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Jeong H. I",
+     "Kim S. J"
+    ],
+    "authors_raw": "Jeong, H. I. & Kim, S. J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Influence on Information Security Behavior of Members of Organizations: Based on Integration of Theory of Planned Behavior (TPB) and Theory of Protection Motivation (TPM). Korean Security Journal",
+    "source": "56",
+    "volume": null,
+    "issue": null,
+    "pages": "145-164",
+    "doi": "10.36623/kssa.2018.56.7",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jin, J., & Shen, M. (2012). Analysis of Security Models Based on Multilevel Security Policy. 2012 International Conference on Management of e-Commerce and e-Government. https://doi.org/10.1109/icmecg.2012.72",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Jin J",
+     "Shen M"
+    ],
+    "authors_raw": "Jin, J., & Shen, M",
+    "et_al": false,
+    "year": "2012",
+    "title": "Analysis of Security Models Based on Multilevel Security Policy. 2012 International Conference on Management of e-Commerce and e-Government. https://doi.org/10.1109/icmecg.2012.72",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1109/icmecg.2012.72",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jin, S. J. & Lee, J. S. (2018). The effect of approach-avoidance motivation on academic self-regulation: The mediating effect of self-efficacy. The Journal of Learner-Centered Curriculum and Instruction, 18(7), 547-563. https://doi.org/10.22251/jlcci.2018.18.7.547",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Jin S. J",
+     "Lee J. S"
+    ],
+    "authors_raw": "Jin, S. J. & Lee, J. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "The effect of approach-avoidance motivation on academic self-regulation: The mediating effect of self-efficacy. The Journal of Learner-Centered Curriculum and Instruction",
+    "source": "18(7)",
+    "volume": null,
+    "issue": null,
+    "pages": "547-563",
+    "doi": "10.22251/jlcci.2018.18.7.547",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Jung, B. S. (2021). Mixed Method Study on the Effect of Gender Equality Education for Military Cadets. The Journal of Learner-Centered Curriculum and Instruction, 21(15), 459-473. https://doi.org/10.22251/jlcci.2021.21.15.459",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Jung B. S"
+    ],
+    "authors_raw": "Jung, B. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "Mixed Method Study on the Effect of Gender Equality Education for Military Cadets. The Journal of Learner-Centered Curriculum and Instruction",
+    "source": "21(15)",
+    "volume": null,
+    "issue": null,
+    "pages": "459-473",
+    "doi": "10.22251/jlcci.2021.21.15.459",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. R. & Seong, K. S., & Kim, B. S. (2020). Effect of Military Officer’s Ethical Disposition and Perceived Work Environment on Organizational Security Policy Compliance. Information Systems Review, 22(3), 31-58. https://doi.org/10.14329/isr.2020.22.3.031",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kim B. R",
+     "Seong K. S",
+     "Kim B. S"
+    ],
+    "authors_raw": "Kim, B. R. & Seong, K. S., & Kim, B. S",
+    "et_al": false,
+    "year": "2020",
+    "title": "Effect of Military Officer’s Ethical Disposition and Perceived Work Environment on Organizational Security Policy Compliance. Information Systems Review",
+    "source": "22(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "31-58",
+    "doi": "10.14329/isr.2020.22.3.031",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, B. R. & Shin, J. H., & Kim, B. S. (2018). What Influences Soldier’s Intention and Attitude on the Information Security Policy Compliance?: A Case Study of One Signal Brigade Unit. The Quarterly Journal of Defense Policy Studies, 34(2), 7-46. https://doi.org 10.22883/jdps.2018.34.2.001",
+    "page": 24,
+    "box": [
+     143.8,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u23_2",
+    "authors": [
+     "Kim B. R",
+     "Shin J. H",
+     "Kim B. S"
+    ],
+    "authors_raw": "Kim, B. R. & Shin, J. H., & Kim, B. S",
+    "et_al": false,
+    "year": "2018",
+    "title": "What Influences Soldier’s Intention and Attitude on the Information Security Policy Compliance?: A Case Study of One Signal Brigade Unit. The Quarterly Journal of Defense Policy Studies",
+    "source": "34(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "7-46",
+    "doi": "10.22883/jdps.2018.34.2.001",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, C. J. & Yoon, C. S. (2008). A Study on the Relationship between Justice Perception and Organizational Trust in Contingent Workers. Journal of Industrial Economics and Business, 21(2), 759-782. http://uci.kci.go.kr/resolution/result.do?res_cd=G704-001438. 2008.21.2.004",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim C. J",
+     "Yoon C. S"
+    ],
+    "authors_raw": "Kim, C. J. & Yoon, C. S",
+    "et_al": false,
+    "year": "2008",
+    "title": "A Study on the Relationship between Justice Perception and Organizational Trust in Contingent Workers. Journal of Industrial Economics and Business",
+    "source": "21(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "759-782",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, D. H. & Kim, D. K. (2020). A Study on the Effect of the Internal Motivation on Security Behavior of Military Members: Focusing on the Theory of Planned Behavior Model. Korean Journal of Public Safety and Criminal Justice, 29(3), 25-52. https://doi.org/ 10 21181/kj 2020 29 3 25",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim D. H",
+     "Kim D. K"
+    ],
+    "authors_raw": "Kim, D. H. & Kim, D. K",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Effect of the Internal Motivation on Security Behavior of Military Members: Focusing on the Theory of Planned Behavior Model. Korean Journal of Public Safety and Criminal Justice",
+    "source": "29(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "25-52",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, H. G. (2008). Relationships between Supervisor Trust, Organizational Trust and Organizational Citizenship Behavior: The Mediational Role of Organizational Commitment. Korean Journal of Public Administration, 46(1), 177-209. UCI : G704-000826.2008.46.1.001",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim H. G"
+    ],
+    "authors_raw": "Kim, H. G",
+    "et_al": false,
+    "year": "2008",
+    "title": "Relationships between Supervisor Trust",
+    "source": "Organizational Trust and Organizational Citizenship Behavior: The Mediational Role of Organizational Commitment. Korean Journal of Public Administration",
+    "volume": null,
+    "issue": null,
+    "pages": "177-209",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, H. S. (2016). Leadership, Corporate Entrepreneurship, Organization Trust, and Support of the CEO on the Compliance of the Organizational Security Policy: Focus on Business Incubator Firm. Korean Journal of Industrial Security, 6(2), 111-141. https://www. earticle.net/Article/A296678",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim H. S"
+    ],
+    "authors_raw": "Kim, H. S",
+    "et_al": false,
+    "year": "2016",
+    "title": "Leadership",
+    "source": "Corporate Entrepreneurship",
+    "volume": null,
+    "issue": null,
+    "pages": "111-141",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, J. K. & MOU JIAN (2020). Meta-analysis of Information Security Policy Compliance Based on Theory of Planned Behavior. Journal of Digital Convergence, 18(11), 169-176. http://doi.org/10.14400/JDC.2020.18.11.169",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim J. K",
+     "MOU JIAN"
+    ],
+    "authors_raw": "Kim, J. K. & MOU JIAN",
+    "et_al": false,
+    "year": "2020",
+    "title": "Meta-analysis of Information Security Policy Compliance Based on Theory of Planned Behavior. Journal of Digital Convergence",
+    "source": "18(11)",
+    "volume": null,
+    "issue": null,
+    "pages": "169-176",
+    "doi": "10.14400/JDC.2020.18.11.169",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, S. H. & Song, Y. M. (2011). An Empirical Study on Motivational Factors Influencing Information Security Policy Compliance and Security Behavior of End-Users(Employees) in Organizations. The e-Business Studies, 12(3), 327-349. https://doi.org/10.15719/ geba.12.3.201109.327",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim S. H",
+     "Song Y. M"
+    ],
+    "authors_raw": "Kim, S. H. & Song, Y. M",
+    "et_al": false,
+    "year": "2011",
+    "title": "An Empirical Study on Motivational Factors Influencing Information Security Policy Compliance and Security Behavior of End-Users(Employees) in Organizations. The e-Business Studies",
+    "source": "12(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "327-349",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim, Y. R. (2019). The Influence of Female Sport Leaders Education on Gender Sensitivity. Journal of Korean Physical Education Association for Girls and Women, 33(4), 1-14. https://doi.org/10.16915/jkapesgw.2019.12.33.4.1",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim Y. R"
+    ],
+    "authors_raw": "Kim, Y. R",
+    "et_al": false,
+    "year": "2019",
+    "title": "The Influence of Female Sport Leaders Education on Gender Sensitivity. Journal of Korean Physical Education Association for Girls and Women",
+    "source": "33(4)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-14",
+    "doi": "10.16915/jkapesgw.2019.12.33.4.1",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kim. D. H. (2020). A Study on the Effect of Internal and External Dynamics of the Military Members on Security Behavior: Focusing on the Theory of Planned Behavior Model. Journal of Defense and Security, 2(1), 1-63. https://www.dssc.mil.kr/dssckr/173/subview.do",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kim",
+     "D",
+     "H"
+    ],
+    "authors_raw": "Kim. D. H",
+    "et_al": false,
+    "year": "2020",
+    "title": "A Study on the Effect of Internal and External Dynamics of the Military Members on Security Behavior: Focusing on the Theory of Planned Behavior Model. Journal of Defense and Security",
+    "source": "2(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "1-63",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Koo, D. M. (2017). Research methodology for basic, control, and mediating effect analysis, Changmyeong.",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Koo D. M"
+    ],
+    "authors_raw": "Koo, D. M",
+    "et_al": false,
+    "year": "2017",
+    "title": "Research methodology for basic",
+    "source": "control",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Kwon, Y. S. & Nam, J. M. (2021). Effects of Franchise Headquarters Support Services and Franchise Entrepreneurship on Multi-unit franchising Intention: Focusing on Mediated",
+    "page": 25,
+    "box": [
+     146.2,
+     680.6,
+     1000.1,
+     1165.0
+    ],
+    "uid": "u24_1",
+    "authors": [
+     "Kwon Y. S",
+     "Nam J. M"
+    ],
+    "authors_raw": "Kwon, Y. S. & Nam, J. M",
+    "et_al": false,
+    "year": "2021",
+    "title": "Effects of Franchise Headquarters Support Services and Franchise Entrepreneurship on Multi-unit franchising Intention: Focusing on Mediated",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Effects of Theory of Reasoned Action Factors. The Journal of Korean Career ⋅ Entrepreneurship & Business Association, 5(3), 25-60. https://doi.org/10.48206/kceba. 2021.5.3.25\nL<sub>e</sub>b<sub>e</sub>k<sub>,</sub> B<sub>.,</sub> Uff<sub>en,</sub> J<sub>.,</sub> Br<sub>e</sub>it<sub>ne</sub>r<sub>,</sub> M<sub>.</sub> H<sub>.,</sub> N<sub>e</sub>um<sub>ann,</sub> M<sub>.,</sub> & H<sub>o</sub>hl<sub>e</sub>r<sub>,</sub> B<sub>.</sub> (2013)<sub>.</sub> Empl<sub>oyees</sub>’ i<sub>n</sub>f<sub>o</sub>rm<sub>a</sub>ti<sub>on</sub> security awareness and behavior: A literature review. In 2013 46<sup>th</sup> Hawaii International Conference on System Sciences, 2978-2987.",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Effects of Theory of Reasoned Action Factors. The Journal of Korean Career ⋅ Entrepreneurship",
+     "Business Association",
+     "5(3)",
+     "25-60. https://doi.org/10.48206/kceba"
+    ],
+    "authors_raw": "Effects of Theory of Reasoned Action Factors. The Journal of Korean Career ⋅ Entrepreneurship & Business Association, 5(3), 25-60. https://doi.org/10.48206/kceba",
+    "et_al": false,
+    "year": "2013",
+    "title": "<sub>.</sub> Empl<sub>oyees</sub>’ i<sub>n</sub>f<sub>o</sub>rm<sub>a</sub>ti<sub>on</sub> security awareness and behavior: A literature review. In 2013 46<sup>th</sup> Hawaii International Conference on System Sciences",
+    "source": "2978-2987",
+    "volume": null,
+    "issue": null,
+    "pages": "25-60",
+    "doi": "10.48206/kceba",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, S. H. & Lee, J. L. (2019). A Study on Private Security Officers’ Willingness to Comply with Security Policies. Korean Security Journal, 61, 137-162. https://doi.org/10.36623/kssr. 2019.61.6",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Lee S. H",
+     "Lee J. L"
+    ],
+    "authors_raw": "Lee, S. H. & Lee, J. L",
+    "et_al": false,
+    "year": "2019",
+    "title": "A Study on Private Security Officers’ Willingness to Comply with Security Policies. Korean Security Journal",
+    "source": "61",
+    "volume": null,
+    "issue": null,
+    "pages": "137-162",
+    "doi": "10.36623/kssr",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lee, T. B. & Kim, S. Y. (2021). The Relationship between Military Officer’s Perception of Punishment and Defense Security Compliance Intention. Journal of Defense and Security, 3(2), 199-220. https://www.dssc.mil.kr/dssckr/173/subview.do",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Lee T. B",
+     "Kim S. Y"
+    ],
+    "authors_raw": "Lee, T. B. & Kim, S. Y",
+    "et_al": false,
+    "year": "2021",
+    "title": "The Relationship between Military Officer’s Perception of Punishment and Defense Security Compliance Intention. Journal of Defense and Security",
+    "source": "3(2)",
+    "volume": null,
+    "issue": null,
+    "pages": "199-220",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lowry, P. B., Posey, C., Bennett, R. J., & Roberts, T. L. (2015). Leveraging Fairness and Reactance Theories to Deter Reactive Computer Abuse Following Enhanced Organisational Information Security Policies : An Empirical Study of the Influence of Counterfactual Reasoning and Organisational Trust. Information Systems Journal, 25(3), 193-273. https://doi.org/10.1111/isj.12063",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Lowry P. B",
+     "Posey C",
+     "Bennett R. J",
+     "Roberts T. L"
+    ],
+    "authors_raw": "Lowry, P. B., Posey, C., Bennett, R. J., & Roberts, T. L",
+    "et_al": false,
+    "year": "2015",
+    "title": "Leveraging Fairness and Reactance Theories to Deter Reactive Computer Abuse Following Enhanced Organisational Information Security Policies : An Empirical Study of the Influence of Counterfactual Reasoning and Organisational Trust. Information Systems Journal",
+    "source": "25(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "193-273",
+    "doi": "10.1111/isj.12063",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Nachmias, D. (1985). Determinants of trust within the federal bureaucracy. In D. H. Rosenbloom (Ed.), Public personnel policy: The politics of civil service. Port Washington, NY: Associated Faculty Press.",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Nachmias D"
+    ],
+    "authors_raw": "Nachmias, D",
+    "et_al": false,
+    "year": "1985",
+    "title": "Determinants of trust within the federal bureaucracy. In D. H. Rosenbloom (Ed.)",
+    "source": "Public personnel policy: The politics of civil service. Port Washington",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Onwudiwe, I., J. Odo, & E. Onyeozili. (2005). Deterrence Theory. In: Bosworth, M. (Ed.), Encyclopedia of Prisons & Correctional Facilities. California: Sage Publications.",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Onwudiwe I",
+     "J. Odo",
+     "E. Onyeozili"
+    ],
+    "authors_raw": "Onwudiwe, I., J. Odo, & E. Onyeozili",
+    "et_al": false,
+    "year": "2005",
+    "title": "Deterrence Theory. In: Bosworth",
+    "source": "M. (Ed.)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, E. C. & Jeon. K. S. (2021). A Study on the Effects of Influencing Factors in the Security Environment of Military Organizational Members on Information Security Stress and Security Compliance Behavior Intention. Journal of convergence security, 21(3), 93-104. https://doi.org/10.33778/kcsa.2021.21.3.093",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Park E. C",
+     "Jeon. K. S"
+    ],
+    "authors_raw": "Park, E. C. & Jeon. K. S",
+    "et_al": false,
+    "year": "2021",
+    "title": "A Study on the Effects of Influencing Factors in the Security Environment of Military Organizational Members on Information Security Stress and Security Compliance Behavior Intention. Journal of convergence security",
+    "source": "21(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "93-104",
+    "doi": "10.33778/kcsa.2021.21.3.093",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Park, J. K. & Oh, Y. K. (2016). A Study on the Effect of Military Security Performance on the Psychological military strength (As for Mediated Effect of Military Organizational Characteristics & Culture). Journal of National Defense Studies, 59(3), 75-106. http://doi.org/10.23011/jnds.2016.59.3.004",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Park J. K",
+     "Oh Y. K"
+    ],
+    "authors_raw": "Park, J. K. & Oh, Y. K",
+    "et_al": false,
+    "year": "2016",
+    "title": "A Study on the Effect of Military Security Performance on the Psychological military strength (As for Mediated Effect of Military Organizational Characteristics & Culture). Journal of National Defense Studies",
+    "source": "59(3)",
+    "volume": null,
+    "issue": null,
+    "pages": "75-106",
+    "doi": "10.23011/jnds.2016.59.3.004",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Vance, A., & Siponen, M. T. (2012). IS security policy violations: A rational choice perspective. Journal of Organizational and End User Computing, 24(1), 21-41. https://doi.org/10.4018/ joeuc.2012010102",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Vance A",
+     "Siponen M. T"
+    ],
+    "authors_raw": "Vance, A., & Siponen, M. T",
+    "et_al": false,
+    "year": "2012",
+    "title": "IS security policy violations: A rational choice perspective. Journal of Organizational and End User Computing",
+    "source": "24(1)",
+    "volume": null,
+    "issue": null,
+    "pages": "21-41",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Warkentin M. & Willison R. (2009). Behavioral and Policy Issues in Information Systems Security: The Insider Threat. European Journal of Information Systems, 18, 101-105. https://doi.org/10.1057/ejis.2009.12",
+    "page": 26,
+    "box": [
+     144.9,
+     222.8,
+     1000.1,
+     989.1
+    ],
+    "uid": "u25_2",
+    "authors": [
+     "Warkentin M",
+     "Willison R"
+    ],
+    "authors_raw": "Warkentin M. & Willison R",
+    "et_al": false,
+    "year": "2009",
+    "title": "Behavioral and Policy Issues in Information Systems Security: The Insider Threat. European Journal of Information Systems",
+    "source": "18",
+    "volume": null,
+    "issue": null,
+    "pages": "101-105",
+    "doi": "10.1057/ejis.2009.12",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Yammarino, F. J., Mumford, M. D., Connelly, M. S., & Dionne, S. D. (2010). Leadership and team dynamics for dangerous military contexts. Military Psychology, 22(sup1), S15-S41. https://doi.org/10.1080/08995601003644221",
+    "page": 27,
+    "box": [
+     147.0,
+     222.8,
+     997.9,
+     387.7
+    ],
+    "uid": "u26_1",
+    "authors": [
+     "Yammarino F. J",
+     "Mumford M. D",
+     "Connelly M. S",
+     "Dionne S. D"
+    ],
+    "authors_raw": "Yammarino, F. J., Mumford, M. D., Connelly, M. S., & Dionne, S. D",
+    "et_al": false,
+    "year": "2010",
+    "title": "Leadership and team dynamics for dangerous military contexts. Military Psychology",
+    "source": "22(sup1)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": "10.1080/08995601003644221",
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "title": {
+   "value": "Factors affecting information security compliance intention of military officer",
+   "page": 1,
+   "box": [
+    164.2,
+    391.9,
+    999.0,
+    467.7
+   ],
+   "uid": "u0_6",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Kim, Sangyoung",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     434.4,
+     493.6,
+     728.3,
+     523.3
+    ]
+   },
+   {
+    "name": "Lee, Taebok",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     434.4,
+     493.6,
+     728.3,
+     523.3
+    ]
+   }
+  ],
+  "affiliations": [
+   "Korea National Defense University",
+   "Department of Defense Management"
+  ],
+  "abstract": {
+   "value": "The purpose of this study is to analyze the factors that influence the information security compliance intention of Korean military officers. For this purpose, a research model was constructed focusing on information security compliance attitude and perceived control, which are the main variables of the theory of planned behavior. In addition, security sensitivity, organization trust, information security work impediment, and sanction, were selected as independent variables. The research model was analyzed through a survey targeting Korean army officers, and the results are as follows. First, security sensitivity, organization trust, and sanctions had a significant effect on information security compliance attitude. However, the effect of information security work impediment had not been identified. Second, it was analyzed that security sensitivity and organization trust had a positive effect on perceived information security compliance control, but the effect of information security work impediment and sanction had not been verified. Third, it was confirmed that the information security compliance attitude and perceived control affect the information security compliance intention, which reconfirmed the results of previous studies. This study is meaningful in that it can improve the information security level of the military organization by suggesting a way to manage these factors.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "The purpose of this study is to analyze the factors that influence the information security compliance intention of Korean military officers. For this purpose, a research model was constructed focusing on information security compliance attitude and perceived control, which are the main variables of the theory of planned behavior. In addition, security sensitivity, organization trust, information security work impediment, and sanction, were selected as independent variables. The research model was analyzed through a survey targeting Korean army officers, and the results are as follows. First, security sensitivity, organization trust, and sanctions had a significant effect on information security compliance attitude. However, the effect of information security work impediment had not been identified. Second, it was analyzed that security sensitivity and organization trust had a positive effect on perceived information security compliance control, but the effect of information security work impediment and sanction had not been verified. Third, it was confirmed that the information security compliance attitude and perceived control affect the information security compliance intention, which reconfirmed the results of previous studies. This study is meaningful in that it can improve the information security level of the military organization by suggesting a way to manage these factors.",
+   "page": 1,
+   "box": [
+    189.8,
+    575.7,
+    310.5,
+    603.5
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_8"
+   }
+  },
+  "keywords_lines": [
+   "keywords: : military officer’s information security, perceived information security compliance control, security sensitivity, organization trust, sanction"
+  ],
+  "journal": {
+   "value": "Journal of Advances in Military Studies",
+   "uid": "u0_2",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2022,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 5,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_4",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "5-33",
+   "uid": "u0_4",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "군 장교의 정보보안",
+   "정보보안 준수 통제감",
+   "보안 감수성",
+   "조직 신뢰",
+   "제재"
+  ],
+  "keywords_en": [
+   "military officer’s information security",
+   "perceived information security compliance control",
+   "security sensitivity",
+   "organization trust",
+   "sanction"
+  ],
+  "citation_spans": [
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "실례로 2019년 전방 부대의 정보장교가군 시설과 무기 배치 등의 기밀자료를 모바일 메신저로 주고받다가 처벌받은 사례가 있다.<sup>1)</sup> 또한,Warkentin & Willson(2009)은 바이러스와 같은 기술적 요인보다 조직 내⋅외부의 인적자원 요소가 더 큰 위협 요소라고 지적하였으며, 정보보안 사고의 상당수가 내부 인원에 의해 발생한다는 연구결과도 있다(Crossler et al., 2013).",
+    "raw": "실례로 2019년 전방 부대의 정보장교가군 시설과 무기 배치 등의 기밀자료를 모바일 메신저로 주고받다가 처벌받은 사례가 있다.<sup>1)</sup> 또한,Warkentin & Willson(2009)은 바이러스와 같은 기술적 요인보다 조직 내⋅외부의 인적자원 요소가 더 큰 위협 요소라고 지적하였으며, 정보보안 사고의 상당수가 내부 인원에 의해 발생한다는 연구결과도 있다(Crossler et al., 2013).",
+    "citation_text": "Willson(2009)",
+    "offset": [
+     99,
+     112
+    ],
+    "authors": [
+     "Willson"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 51,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "parenthetical",
+    "sentence": "실례로 2019년 전방 부대의 정보장교가군 시설과 무기 배치 등의 기밀자료를 모바일 메신저로 주고받다가 처벌받은 사례가 있다.<sup>1)</sup> 또한,Warkentin & Willson(2009)은 바이러스와 같은 기술적 요인보다 조직 내⋅외부의 인적자원 요소가 더 큰 위협 요소라고 지적하였으며, 정보보안 사고의 상당수가 내부 인원에 의해 발생한다는 연구결과도 있다(Crossler et al., 2013).",
+    "raw": "실례로 2019년 전방 부대의 정보장교가군 시설과 무기 배치 등의 기밀자료를 모바일 메신저로 주고받다가 처벌받은 사례가 있다.<sup>1)</sup> 또한,Warkentin & Willson(2009)은 바이러스와 같은 기술적 요인보다 조직 내⋅외부의 인적자원 요소가 더 큰 위협 요소라고 지적하였으며, 정보보안 사고의 상당수가 내부 인원에 의해 발생한다는 연구결과도 있다(Crossler et al., 2013).",
+    "citation_text": "(Crossler et al., 2013)",
+    "offset": [
+     208,
+     231
+    ],
+    "authors": [
+     "Crossler et al."
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "Park& Oh(2016)는 군 조직문화와 정신전력이 장병의 보안 준수 의지에 영향을 미친다는 점을 분석하였고, Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 정책준수 태도 및 의도에영향을 미치는 요인을 연구하였다.",
+    "raw": "Park& Oh(2016)는 군 조직문화와 정신전력이 장병의 보안 준수 의지에 영향을 미친다는 점을 분석하였고, Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 정책준수 태도 및 의도에영향을 미치는 요인을 연구하였다.",
+    "citation_text": "Oh(2016)",
+    "offset": [
+     6,
+     14
+    ],
+    "authors": [
+     "Oh"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 49,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "Park& Oh(2016)는 군 조직문화와 정신전력이 장병의 보안 준수 의지에 영향을 미친다는 점을 분석하였고, Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 정책준수 태도 및 의도에영향을 미치는 요인을 연구하였다.",
+    "raw": "Park& Oh(2016)는 군 조직문화와 정신전력이 장병의 보안 준수 의지에 영향을 미친다는 점을 분석하였고, Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 정책준수 태도 및 의도에영향을 미치는 요인을 연구하였다.",
+    "citation_text": "Kim(2018)",
+    "offset": [
+     76,
+     85
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "특히, Kim & Kim(2020)은 계획된 행동이론을 토대로 군 구성원이 군사보안 행동에 영향을 미치는 정보보안 정책준수 의도와 태도, 주관적 규범 등의 관계를 통계적으로 분석하여 내재적 동기인 윤리의식의 주요 영향요인을 밝혔다.",
+    "raw": "특히, Kim & Kim(2020)은 계획된 행동이론을 토대로 군 구성원이 군사보안 행동에 영향을 미치는 정보보안 정책준수 의도와 태도, 주관적 규범 등의 관계를 통계적으로 분석하여 내재적 동기인 윤리의식의 주요 영향요인을 밝혔다.",
+    "citation_text": "Kim(2020)",
+    "offset": [
+     10,
+     19
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "exact"
+   },
+   {
+    "page": 2,
+    "uid": "u1_3",
+    "kind": "narrative",
+    "sentence": "Kim, Seong, & Kim(2020)은 육군 장교의 윤리적 성향이 보안정책 준수 태도와 의도에 영향을 미친다는 연구결과를 제시하였다.",
+    "raw": "Kim, Seong, & Kim(2020)은 육군 장교의 윤리적 성향이 보안정책 준수 태도와 의도에 영향을 미친다는 연구결과를 제시하였다.",
+    "citation_text": "Kim(2020)",
+    "offset": [
+     14,
+     23
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "계획된 행동이론은 합리적 행동이론을 보완하여 태도, 주관적 규범, 지각된 행동 통제감을 세부 요인으로 적용한 이론이다(Ajzen, 1991).",
+    "raw": "계획된 행동이론은 합리적 행동이론을 보완하여 태도, 주관적 규범, 지각된 행동 통제감을 세부 요인으로 적용한 이론이다(Ajzen, 1991).",
+    "citation_text": "(Ajzen, 1991)",
+    "offset": [
+     65,
+     78
+    ],
+    "authors": [
+     "Ajzen"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 1,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "이 중 태도와 지각된 통제감은 행동에 대한 내적 인식을 나타내는 개인적 요인이며, 주관적 규범은 어떠한 행동을 수행하면서 개인이 느끼는 사회적 의무 및 압박감으로서 환경적 요 인으로 구분될 수 있다(Kim, Shin, & Kim, 2018).",
+    "raw": "이 중 태도와 지각된 통제감은 행동에 대한 내적 인식을 나타내는 개인적 요인이며, 주관적 규범은 어떠한 행동을 수행하면서 개인이 느끼는 사회적 의무 및 압박감으로서 환경적 요 인으로 구분될 수 있다(Kim, Shin, & Kim, 2018).",
+    "citation_text": "(Kim, Shin, & Kim, 2018)",
+    "offset": [
+     110,
+     134
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "정보보안 준수 의도는 다양한 보안 위협으로부터 조직 내 주요 정보를 보호하고자 하는 구성원의 의지로 구성원 개인의 정보보안 준수 의도가 높을수록 보안 행동에 정적인 영향이 나타났다(Vance & Siponen, 2012).",
+    "raw": "정보보안 준수 의도는 다양한 보안 위협으로부터 조직 내 주요 정보를 보호하고자 하는 구성원의 의지로 구성원 개인의 정보보안 준수 의도가 높을수록 보안 행동에 정적인 영향이 나타났다(Vance & Siponen, 2012).",
+    "citation_text": "(Vance & Siponen, 2012)",
+    "offset": [
+     100,
+     123
+    ],
+    "authors": [
+     "Vance & Siponen"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 27,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "narrative",
+    "sentence": "이와 관련하여 Al-Omari et al. (2013)는 정보보안 주관적 규범과 태도, 통제감이 정보보안 준수 의도와 긍정적인 관계를 밝혔다.",
+    "raw": "이와 관련하여 Al-Omari et al. (2013)는 정보보안 주관적 규범과 태도, 통제감이 정보보안 준수 의도와 긍정적인 관계를 밝혔다.",
+    "citation_text": "Omari et al. (2013)",
+    "offset": [
+     11,
+     30
+    ],
+    "authors": [
+     "Omari et al."
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "narrative",
+    "sentence": "예를 들어, Park & Oh(2016)는 장병의 보안 준수 의지를 높이는 주요 요인으로 군 조직문화와 군인정신 · 국가관 · 안보관 등의 정신전력을 강조하였다.",
+    "raw": "예를 들어, Park & Oh(2016)는 장병의 보안 준수 의지를 높이는 주요 요인으로 군 조직문화와 군인정신 · 국가관 · 안보관 등의 정신전력을 강조하였다.",
+    "citation_text": "Oh(2016)",
+    "offset": [
+     14,
+     22
+    ],
+    "authors": [
+     "Oh"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 49,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "narrative",
+    "sentence": "Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 준수의도에 정보보안 준수 태도와 규범이 긍정적인 영향을 미치며, 이런 영향관계에서 내재적 이익과 보안 안전성 등이 정보보안 준수 태도를 높이는 요인이라는 것을 밝혔다.",
+    "raw": "Kim, Shin, & Kim(2018)은 군 정보통신부대원을 대상으로 정보보안 준수의도에 정보보안 준수 태도와 규범이 긍정적인 영향을 미치며, 이런 영향관계에서 내재적 이익과 보안 안전성 등이 정보보안 준수 태도를 높이는 요인이라는 것을 밝혔다.",
+    "citation_text": "Kim(2018)",
+    "offset": [
+     13,
+     22
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_5",
+    "kind": "narrative",
+    "sentence": "또한, Kim(2020)은 군사보안 준수에 대한 태도와 주관적 규범에 영향을 미치는 내 · 외적동기(군 조직원의 윤리의",
+    "raw": "또한, Kim(2020)은 군사보안 준수에 대한 태도와 주관적 규범에 영향을 미치는 내 · 외적동기(군 조직원의 윤리의",
+    "citation_text": "Kim(2020)",
+    "offset": [
+     4,
+     13
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "narrative",
+    "sentence": "특히, Kim, Seong, & Kim(2020)은 군 장교를 대상으로 도덕성과 책임감 등의 윤리적 성향이 보안 준수 태도에 영향을 미친다는 점을 실증적 분석을 통해 검증하였다.",
+    "raw": "특히, Kim, Seong, & Kim(2020)은 군 장교를 대상으로 도덕성과 책임감 등의 윤리적 성향이 보안 준수 태도에 영향을 미친다는 점을 실증적 분석을 통해 검증하였다.",
+    "citation_text": "Kim(2020)",
+    "offset": [
+     18,
+     27
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 5,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_2",
+    "kind": "parenthetical",
+    "sentence": "본 연구에서는 특정 행동을 수행하기 위한 동기는 즐거움을 추구하고자 하는 접근 동기와 고통을 피하고자 하는 회피 동기의 두 가지 차원으로 구분될 수 있다는 선행연구 결과(Cornwell, Franks, & Higgins, 2014)를 바탕으로 보안 감수성과 조직 신뢰는 부대의 정보보안 목표 달성의 긍정적 측면과 관련 있는 접근 동기 측면의 변수로, 정보보안 업무 장애와 제재는 보안 미준수로 발생할 수 있는 위험과 관련된 회피 동기 측면의 변수로 제시하였다.",
+    "raw": "본 연구에서는 특정 행동을 수행하기 위한 동기는 즐거움을 추구하고자 하는 접근 동기와 고통을 피하고자 하는 회피 동기의 두 가지 차원으로 구분될 수 있다는 선행연구 결과(Cornwell, Franks, & Higgins, 2014)를 바탕으로 보안 감수성과 조직 신뢰는 부대의 정보보안 목표 달성의 긍정적 측면과 관련 있는 접근 동기 측면의 변수로, 정보보안 업무 장애와 제재는 보안 미준수로 발생할 수 있는 위험과 관련된 회피 동기 측면의 변수로 제시하였다.",
+    "citation_text": "(Cornwell, Franks, & Higgins, 2014)",
+    "offset": [
+     94,
+     129
+    ],
+    "authors": [
+     "Cornwell"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "parenthetical",
+    "sentence": "보안 감수성은 보안 업무를 수행하면서 발생 가능한 보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성이라고 정의될 수 있는데, 보안 위협 및 수단의 필요성에 대한 인식, 보안 수단을 사용하도록 만드는 다양한 동기, 보안 수단의 효과적인 사용을 위해 필요한 지식 등의 세 가지 하위요인으로 구성될 수 있다(Das et al., 2014).",
+    "raw": "보안 감수성은 보안 업무를 수행하면서 발생 가능한 보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성이라고 정의될 수 있는데, 보안 위협 및 수단의 필요성에 대한 인식, 보안 수단을 사용하도록 만드는 다양한 동기, 보안 수단의 효과적인 사용을 위해 필요한 지식 등의 세 가지 하위요인으로 구성될 수 있다(Das et al., 2014).",
+    "citation_text": "(Das et al., 2014)",
+    "offset": [
+     191,
+     209
+    ],
+    "authors": [
+     "Das et al."
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "narrative",
+    "sentence": "조직에서 발생하는 정보보안 위반 사례의 50% 이상이 내부 구성원에 의해 발생한다는 Crossler et al. (2013)의 연구결과는 조직 구성원이 지닌 보안 감수성에 따라 조직 전체의 보안 위반사례 및 보안 수준이 달라질 수 있다는 점을 시사한다.",
+    "raw": "조직에서 발생하는 정보보안 위반 사례의 50% 이상이 내부 구성원에 의해 발생한다는 Crossler et al. (2013)의 연구결과는 조직 구성원이 지닌 보안 감수성에 따라 조직 전체의 보안 위반사례 및 보안 수준이 달라질 수 있다는 점을 시사한다.",
+    "citation_text": "Crossler et al. (2013)",
+    "offset": [
+     47,
+     69
+    ],
+    "authors": [
+     "Crossler et al."
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 6,
+    "uid": "u5_4",
+    "kind": "narrative",
+    "sentence": "이와 관련하여 Lee & Kim (2021)은 보안 감수성이 군 구성원의 지각된 처벌과 국방보안 준수 의도 간의 관계를 조절하는 변수라는 점을 실증적으로 분석함으로써, 보안 감수성이 정보보안 준수 의도에 미치는 영향에 대해 설명하였다.",
+    "raw": "이와 관련하여 Lee & Kim (2021)은 보안 감수성이 군 구성원의 지각된 처벌과 국방보안 준수 의도 간의 관계를 조절하는 변수라는 점을 실증적으로 분석함으로써, 보안 감수성이 정보보안 준수 의도에 미치는 영향에 대해 설명하였다.",
+    "citation_text": "Kim (2021)",
+    "offset": [
+     14,
+     24
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 44,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_2",
+    "kind": "parenthetical",
+    "sentence": "신뢰는 조직구성원 및 개인 간 친밀성을 가지고 긍정적인 믿음을 형성하고 있는 수준으로서 (Nachmias, 1985), 상대방이 특정 행동 또는 목표에 대하여 자신과 유사한 행동을 할 것이라는 심리적 믿음(Gillespie & Dietz, 2009; Hwang, I.",
+    "raw": "신뢰는 조직구성원 및 개인 간 친밀성을 가지고 긍정적인 믿음을 형성하고 있는 수준으로서 (Nachmias, 1985), 상대방이 특정 행동 또는 목표에 대하여 자신과 유사한 행동을 할 것이라는 심리적 믿음(Gillespie & Dietz, 2009; Hwang, I.",
+    "citation_text": "(Nachmias, 1985)",
+    "offset": [
+     49,
+     65
+    ],
+    "authors": [
+     "Nachmias"
+    ],
+    "year": "1985",
+    "linked_refs": [
+     {
+      "index": 46,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "정보보안 분야에서 조직 신뢰는 조직의 보안 규정 및 정책 등에 대한 구성원의 믿음을 바탕으로 형성되며(Lowry et al., 2015), 조직에 대한 신뢰는 조직의 정보보안 체계가 자신을 포함한 구성원들에게 이익이 될 것이라고 믿고 행동하도록 해준다(Hwang, I.",
+    "raw": "정보보안 분야에서 조직 신뢰는 조직의 보안 규정 및 정책 등에 대한 구성원의 믿음을 바탕으로 형성되며(Lowry et al., 2015), 조직에 대한 신뢰는 조직의 정보보안 체계가 자신을 포함한 구성원들에게 이익이 될 것이라고 믿고 행동하도록 해준다(Hwang, I.",
+    "citation_text": "(Lowry et al., 2015)",
+    "offset": [
+     56,
+     76
+    ],
+    "authors": [
+     "Lowry et al."
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 45,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "narrative",
+    "sentence": "S.(2016)은 국내 창업교육센터 입주기업을 대상으로 조직 신뢰가 보안정책 준수 의지에 긍정적인 영향을 미친다는 점을 분석하였고, Lee & Lee(2019)는 민간 경비원의 조직 신뢰와 보안정책 준수 의지가 긍정적 관계가 있음을 실증적으로 확인하였다.",
+    "raw": "S.(2016)은 국내 창업교육센터 입주기업을 대상으로 조직 신뢰가 보안정책 준수 의지에 긍정적인 영향을 미친다는 점을 분석하였고, Lee & Lee(2019)는 민간 경비원의 조직 신뢰와 보안정책 준수 의지가 긍정적 관계가 있음을 실증적으로 확인하였다.",
+    "citation_text": "Lee(2019)",
+    "offset": [
+     80,
+     89
+    ],
+    "authors": [
+     "Lee"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 43,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "parenthetical",
+    "sentence": "업무 장애는 특정 정책 및 기술 도입에 따른 새로운 요구사항으로 인해 업무에 장애가 있다고 느끼는 정도(Bulgurcu, Cavusoglu, & Benbasat, 2010)를 의미하는데, 추가적인 보안정책 및 기술을 기존 업무에 적용해야 하는 정보보안과 같은 분야에서 자주 나타날 수 있는 문제이다(Hwang, I.",
+    "raw": "업무 장애는 특정 정책 및 기술 도입에 따른 새로운 요구사항으로 인해 업무에 장애가 있다고 느끼는 정도(Bulgurcu, Cavusoglu, & Benbasat, 2010)를 의미하는데, 추가적인 보안정책 및 기술을 기존 업무에 적용해야 하는 정보보안과 같은 분야에서 자주 나타날 수 있는 문제이다(Hwang, I.",
+    "citation_text": "(Bulgurcu, Cavusoglu, & Benbasat, 2010)",
+    "offset": [
+     57,
+     96
+    ],
+    "authors": [
+     "Bulgurcu"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "이러한 정보보안 업무 장애는 개인의 보안 준수 행동에 부정적 영향을 미치는 요인이 될 수 있는데, 이와 관련하여 Hwang(2020)은 금융업에 근무하는 직장인을 대상으로 정보보안 업무 장애가 준수 의도에 부정적 영향을 미친다는 점을 확인하였고, Hwang & Hu(2021b)는 정보보안 업무 장애가 정보보안 준수 걱정에 영향을 미침으로써 준수 의도에도 부정적 영향을 미친다는 점을 실증 분석하였다.",
+    "raw": "이러한 정보보안 업무 장애는 개인의 보안 준수 행동에 부정적 영향을 미치는 요인이 될 수 있는데, 이와 관련하여 Hwang(2020)은 금융업에 근무하는 직장인을 대상으로 정보보안 업무 장애가 준수 의도에 부정적 영향을 미친다는 점을 확인하였고, Hwang & Hu(2021b)는 정보보안 업무 장애가 정보보안 준수 걱정에 영향을 미침으로써 준수 의도에도 부정적 영향을 미친다는 점을 실증 분석하였다.",
+    "citation_text": "Hwang(2020)",
+    "offset": [
+     63,
+     74
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "이러한 정보보안 업무 장애는 개인의 보안 준수 행동에 부정적 영향을 미치는 요인이 될 수 있는데, 이와 관련하여 Hwang(2020)은 금융업에 근무하는 직장인을 대상으로 정보보안 업무 장애가 준수 의도에 부정적 영향을 미친다는 점을 확인하였고, Hwang & Hu(2021b)는 정보보안 업무 장애가 정보보안 준수 걱정에 영향을 미침으로써 준수 의도에도 부정적 영향을 미친다는 점을 실증 분석하였다.",
+    "raw": "이러한 정보보안 업무 장애는 개인의 보안 준수 행동에 부정적 영향을 미치는 요인이 될 수 있는데, 이와 관련하여 Hwang(2020)은 금융업에 근무하는 직장인을 대상으로 정보보안 업무 장애가 준수 의도에 부정적 영향을 미친다는 점을 확인하였고, Hwang & Hu(2021b)는 정보보안 업무 장애가 정보보안 준수 걱정에 영향을 미침으로써 준수 의도에도 부정적 영향을 미친다는 점을 실증 분석하였다.",
+    "citation_text": "Hu(2021b)",
+    "offset": [
+     146,
+     155
+    ],
+    "authors": [
+     "Hu"
+    ],
+    "year": "2021b",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "억제이론은 조직의 보안정책을 준수하지 않을 때 적용 가능한 제재의 유형 및 강도를 구성원에게 인식시키고, 이를 지속적으로 통제하고 확인함으로써 보안 위협요소를 최소화할 수 있다고 제시한다(Onwudiwe, Odo, & Onyeozili, 2005).",
+    "raw": "억제이론은 조직의 보안정책을 준수하지 않을 때 적용 가능한 제재의 유형 및 강도를 구성원에게 인식시키고, 이를 지속적으로 통제하고 확인함으로써 보안 위협요소를 최소화할 수 있다고 제시한다(Onwudiwe, Odo, & Onyeozili, 2005).",
+    "citation_text": "(Onwudiwe, Odo, & Onyeozili, 2005)",
+    "offset": [
+     104,
+     138
+    ],
+    "authors": [
+     "Onwudiwe"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 47,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "narrative",
+    "sentence": "이와 관련하여 Kim & Song(2011)은 제재의 강도가 정보보안 준수 의도와 긍정적인 관계를 보인다고 설명하였으며, Hwang(2021a)는 제재의 심각성과 확실성이 보안 준수 의도에 영향을 미칠 수 있음을 확인하였다.",
+    "raw": "이와 관련하여 Kim & Song(2011)은 제재의 강도가 정보보안 준수 의도와 긍정적인 관계를 보인다고 설명하였으며, Hwang(2021a)는 제재의 심각성과 확실성이 보안 준수 의도에 영향을 미칠 수 있음을 확인하였다.",
+    "citation_text": "Song(2011)",
+    "offset": [
+     14,
+     24
+    ],
+    "authors": [
+     "Song"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 37,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "narrative",
+    "sentence": "이와 관련하여 Kim & Song(2011)은 제재의 강도가 정보보안 준수 의도와 긍정적인 관계를 보인다고 설명하였으며, Hwang(2021a)는 제재의 심각성과 확실성이 보안 준수 의도에 영향을 미칠 수 있음을 확인하였다.",
+    "raw": "이와 관련하여 Kim & Song(2011)은 제재의 강도가 정보보안 준수 의도와 긍정적인 관계를 보인다고 설명하였으며, Hwang(2021a)는 제재의 심각성과 확실성이 보안 준수 의도에 영향을 미칠 수 있음을 확인하였다.",
+    "citation_text": "Hwang(2021a)",
+    "offset": [
+     68,
+     80
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2021a",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "narrative",
+    "sentence": "H.(2020)은 군 조직원이 지각하는 처벌 명확성이 보안 준수 태도와 주관적 규범에 긍정적 영향을 미친다는 점을 확인하였으며, Lee & Kim(2021)은 군 장교의 처벌에 대한 지각이 국방보안 준수 의도와 관계가 있다는 점을 실증 분석하였다.",
+    "raw": "H.(2020)은 군 조직원이 지각하는 처벌 명확성이 보안 준수 태도와 주관적 규범에 긍정적 영향을 미친다는 점을 확인하였으며, Lee & Kim(2021)은 군 장교의 처벌에 대한 지각이 국방보안 준수 의도와 관계가 있다는 점을 실증 분석하였다.",
+    "citation_text": "Kim(2021)",
+    "offset": [
+     78,
+     87
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 44,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "parenthetical",
+    "sentence": "보안 감수성은 ‘보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성 정도’를 의미하며(Das et al., 2014), 이를 측정하기 위해 Lee & Kim(2021)의 연구에서 사용한 8개의 설문 문항을 활용하였다.",
+    "raw": "보안 감수성은 ‘보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성 정도’를 의미하며(Das et al., 2014), 이를 측정하기 위해 Lee & Kim(2021)의 연구에서 사용한 8개의 설문 문항을 활용하였다.",
+    "citation_text": "(Das et al., 2014)",
+    "offset": [
+     69,
+     87
+    ],
+    "authors": [
+     "Das et al."
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "보안 감수성은 ‘보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성 정도’를 의미하며(Das et al., 2014), 이를 측정하기 위해 Lee & Kim(2021)의 연구에서 사용한 8개의 설문 문항을 활용하였다.",
+    "raw": "보안 감수성은 ‘보안 위협을 예방하기 위한 보안정책 및 기술에 대해 인식하고 행동하고자 하는 개인의 민감성 정도’를 의미하며(Das et al., 2014), 이를 측정하기 위해 Lee & Kim(2021)의 연구에서 사용한 8개의 설문 문항을 활용하였다.",
+    "citation_text": "Kim(2021)",
+    "offset": [
+     106,
+     115
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 44,
+      "num": null,
+      "uid": "u25_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "G., 2008), 이를 측정하기 위해 Agarwal(2013)의 연구를 바탕으로 Hwang(2021b)가 사용한 4개의 설문 항목을 사용하였다.",
+    "raw": "G., 2008), 이를 측정하기 위해 Agarwal(2013)의 연구를 바탕으로 Hwang(2021b)가 사용한 4개의 설문 항목을 사용하였다.",
+    "citation_text": "Agarwal(2013)",
+    "offset": [
+     22,
+     35
+    ],
+    "authors": [
+     "Agarwal"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "G., 2008), 이를 측정하기 위해 Agarwal(2013)의 연구를 바탕으로 Hwang(2021b)가 사용한 4개의 설문 항목을 사용하였다.",
+    "raw": "G., 2008), 이를 측정하기 위해 Agarwal(2013)의 연구를 바탕으로 Hwang(2021b)가 사용한 4개의 설문 항목을 사용하였다.",
+    "citation_text": "Hwang(2021b)",
+    "offset": [
+     46,
+     58
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2021b",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "정보보안 업무 장애는 ‘조직의 정보보안 정책 및 기술을 적용하는 과정에서 업무에 장애가 있다고 느끼는 정도’로 정의할 수 있으며, Hwang & Hu(2021b)가 선행연구를 통해 도출한 3개의 설문 문항에 정보보안 준수가 업무 효율에 미치는 영향을 측정하기 위한 1문항을 추가하여 활용하였다.",
+    "raw": "정보보안 업무 장애는 ‘조직의 정보보안 정책 및 기술을 적용하는 과정에서 업무에 장애가 있다고 느끼는 정도’로 정의할 수 있으며, Hwang & Hu(2021b)가 선행연구를 통해 도출한 3개의 설문 문항에 정보보안 준수가 업무 효율에 미치는 영향을 측정하기 위한 1문항을 추가하여 활용하였다.",
+    "citation_text": "Hu(2021b)",
+    "offset": [
+     81,
+     90
+    ],
+    "authors": [
+     "Hu"
+    ],
+    "year": "2021b",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "제재는 ‘정보보안을 준수하지 않았을 때 발생하는 물리적·사회적 처별의 정도’라고 정의할 수 있으며, Hwang(2021a)의 연구에서 사용한 6개의 설문 문항을 수정한 후 사용하였다.",
+    "raw": "제재는 ‘정보보안을 준수하지 않았을 때 발생하는 물리적·사회적 처별의 정도’라고 정의할 수 있으며, Hwang(2021a)의 연구에서 사용한 6개의 설문 문항을 수정한 후 사용하였다.",
+    "citation_text": "Hwang(2021a)",
+    "offset": [
+     56,
+     68
+    ],
+    "authors": [
+     "Hwang"
+    ],
+    "year": "2021a",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "정보보안 준수 통제감은 ‘구성원이 보안정책 및 절차의 준수를 잘 수행하고 통제할 수 있다고 믿는 정도’로 Kim, Shin, & Kim(2018)의 연구에서 지각된 통제감을 측정하기 위해 사용한 3개 문항을 활용해서 측정하였다.",
+    "raw": "정보보안 준수 통제감은 ‘구성원이 보안정책 및 절차의 준수를 잘 수행하고 통제할 수 있다고 믿는 정도’로 Kim, Shin, & Kim(2018)의 연구에서 지각된 통제감을 측정하기 위해 사용한 3개 문항을 활용해서 측정하였다.",
+    "citation_text": "Kim(2018)",
+    "offset": [
+     72,
+     81
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "정보보안 준수 주관적 규범은 ‘구성원이 정보보안 준수에 대해 느끼는 사회적 압력의 정도’라고 정의할 수 있으며, Kim, Shin, & Kim(2018)이 사용한 4개 문항을 연구목적에 맞게 수정하여 활용하였다.",
+    "raw": "정보보안 준수 주관적 규범은 ‘구성원이 정보보안 준수에 대해 느끼는 사회적 압력의 정도’라고 정의할 수 있으며, Kim, Shin, & Kim(2018)이 사용한 4개 문항을 연구목적에 맞게 수정하여 활용하였다.",
+    "citation_text": "Kim(2018)",
+    "offset": [
+     76,
+     85
+    ],
+    "authors": [
+     "Kim"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_2",
+    "kind": "narrative",
+    "sentence": "정보보안 준수 의도는 ‘조직의 정보보안 정책을 준수하고자 하는 자발적 의지의 정도’로 정의하였으며, Herath & Rao(2009)가 보안정책 준수 의도 측정을 위해 사용한 3개의 설문 문항을 사용하였다.",
+    "raw": "정보보안 준수 의도는 ‘조직의 정보보안 정책을 준수하고자 하는 자발적 의지의 정도’로 정의하였으며, Herath & Rao(2009)가 보안정책 준수 의도 측정을 위해 사용한 3개의 설문 문항을 사용하였다.",
+    "citation_text": "Rao(2009)",
+    "offset": [
+     65,
+     74
+    ],
+    "authors": [
+     "Rao"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "raw": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "citation_text": "(Hair et al., 2010)",
+    "offset": [
+     17,
+     36
+    ],
+    "authors": [
+     "Hair et al."
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "raw": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "citation_text": "(Barclay, Higgins, & Thomson, 1995)",
+    "offset": [
+     70,
+     105
+    ],
+    "authors": [
+     "Barclay"
+    ],
+    "year": "1995",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "raw": "PLS는 복잡한 연구모형을 검증(Hair et al., 2010)하거나 이론개발의 초기 단계에서 사용하기에 적합한 분석기법으로(Barclay, Higgins, & Thomson, 1995), 자료의 표본 분포에 관한 가정이나 제약으로부터 비교적 자유롭다는 특성이 있다(Chin, 1998).",
+    "citation_text": "(Chin, 1998)",
+    "offset": [
+     149,
+     161
+    ],
+    "authors": [
+     "Chin"
+    ],
+    "year": "1998",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "평균분산추출지수(AVE)가 0.5보다 클 때 모델이 타당한 것으로 판단하는데(Barclay, Higgins, & Thomson,1995), 연구에서 사용된 모든 변수의 평균분산추출지수가 0.5 이상으로 이를 충족하고 있다.",
+    "raw": "평균분산추출지수(AVE)가 0.5보다 클 때 모델이 타당한 것으로 판단하는데(Barclay, Higgins, & Thomson,1995), 연구에서 사용된 모든 변수의 평균분산추출지수가 0.5 이상으로 이를 충족하고 있다.",
+    "citation_text": "(Barclay, Higgins, & Thomson,1995)",
+    "offset": [
+     42,
+     76
+    ],
+    "authors": [
+     "Barclay"
+    ],
+    "year": "1995",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_4",
+    "kind": "parenthetical",
+    "sentence": "한편 판별타당도는 각 변수의 평균분산추출지수의 제곱근이 다른 변수와의 상관계수보다 클 때적절한 것으로 판단한다(Fornell & Larcker, 1981).",
+    "raw": "한편 판별타당도는 각 변수의 평균분산추출지수의 제곱근이 다른 변수와의 상관계수보다 클 때적절한 것으로 판단한다(Fornell & Larcker, 1981).",
+    "citation_text": "(Fornell & Larcker, 1981)",
+    "offset": [
+     61,
+     86
+    ],
+    "authors": [
+     "Fornell & Larcker"
+    ],
+    "year": "1981",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_4",
+    "kind": "parenthetical",
+    "sentence": "한편 PLS 구조방정식 모형은 평균자승잔차제곱근(SRMR)이 0.08보다 작을 경우 적합한 것으로 해석하는데(Henseler, Hubona, & Ray,2016), 본 연구모형의 SRMR은 0.056으로 모형의 적합도가 있는 것으로 판단하였다.",
+    "raw": "한편 PLS 구조방정식 모형은 평균자승잔차제곱근(SRMR)이 0.08보다 작을 경우 적합한 것으로 해석하는데(Henseler, Hubona, & Ray,2016), 본 연구모형의 SRMR은 0.056으로 모형의 적합도가 있는 것으로 판단하였다.",
+    "citation_text": "(Henseler, Hubona, & Ray,2016)",
+    "offset": [
+     60,
+     90
+    ],
+    "authors": [
+     "Henseler"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "VAF(Varianc account for)는 변수 간 관계에서 총효과에 대비한 간접효과의 크기를 나타내는 값인데, 0.2보다 작을 경우에는 매개 효과가 없는 것으로 판단하고, 0.2~0.8일 때는 부분매개, 0.8보다 큰 경우에는 완전매개 효과가 있다고 해석할 수 있다(Hair et al., 2014).",
+    "raw": "VAF(Varianc account for)는 변수 간 관계에서 총효과에 대비한 간접효과의 크기를 나타내는 값인데, 0.2보다 작을 경우에는 매개 효과가 없는 것으로 판단하고, 0.2~0.8일 때는 부분매개, 0.8보다 큰 경우에는 완전매개 효과가 있다고 해석할 수 있다(Hair et al., 2014).",
+    "citation_text": "(Hair et al., 2014)",
+    "offset": [
+     151,
+     170
+    ],
+    "authors": [
+     "Hair et al."
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u22_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 관리책임자와 구성원의 역할 관계를 고려할 수 있는 팀 조직 수준의 변수(i.e., leadership: Yammarino, Mumford, Connelly, & Dionne, 2010)를 고려한 다수준 연구 접근이나 정보보안의 다층적 구조(multilevel information security architecture: Jin & Shen, 2012)를 고려한 연구모형 설계를 진행할 필요가 있다.",
+    "raw": "예를 들어 관리책임자와 구성원의 역할 관계를 고려할 수 있는 팀 조직 수준의 변수(i.e., leadership: Yammarino, Mumford, Connelly, & Dionne, 2010)를 고려한 다수준 연구 접근이나 정보보안의 다층적 구조(multilevel information security architecture: Jin & Shen, 2012)를 고려한 연구모형 설계를 진행할 필요가 있다.",
+    "citation_text": "(i.e., leadership: Yammarino, Mumford, Connelly, & Dionne, 2010)",
+    "offset": [
+     45,
+     109
+    ],
+    "authors": [
+     "leadership: Yammarino"
+    ],
+    "year": "2010",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "예를 들어 관리책임자와 구성원의 역할 관계를 고려할 수 있는 팀 조직 수준의 변수(i.e., leadership: Yammarino, Mumford, Connelly, & Dionne, 2010)를 고려한 다수준 연구 접근이나 정보보안의 다층적 구조(multilevel information security architecture: Jin & Shen, 2012)를 고려한 연구모형 설계를 진행할 필요가 있다.",
+    "raw": "예를 들어 관리책임자와 구성원의 역할 관계를 고려할 수 있는 팀 조직 수준의 변수(i.e., leadership: Yammarino, Mumford, Connelly, & Dionne, 2010)를 고려한 다수준 연구 접근이나 정보보안의 다층적 구조(multilevel information security architecture: Jin & Shen, 2012)를 고려한 연구모형 설계를 진행할 필요가 있다.",
+    "citation_text": "(multilevel information security architecture: Jin & Shen, 2012)",
+    "offset": [
+     139,
+     203
+    ],
+    "authors": [
+     "multilevel information security architecture: Jin & Shen"
+    ],
+    "year": "2012",
+    "linked_refs": [
+     {
+      "index": 27,
+      "num": null,
+      "uid": "u23_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_5",
+    "kind": "parenthetical",
+    "sentence": "자기보고식 측정 방법은 응답자들이 실제 현상보다 긍정적 또는 바람직한 방향으로 응답하는 반응편향 문제가 발생할 수 있다(Lebek et al., 2013).",
+    "raw": "자기보고식 측정 방법은 응답자들이 실제 현상보다 긍정적 또는 바람직한 방향으로 응답하는 반응편향 문제가 발생할 수 있다(Lebek et al., 2013).",
+    "citation_text": "(Lebek et al., 2013)",
+    "offset": [
+     66,
+     86
+    ],
+    "authors": [
+     "Lebek et al."
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 4,
+    "confidence": "partial"
+   },
+   {
+    "page": 24,
+    "uid": "u23_2",
+    "kind": "narrative",
+    "sentence": "& MOU JIAN (2020).",
+    "raw": "& MOU JIAN (2020).",
+    "citation_text": "MOU JIAN (2020)",
+    "offset": [
+     2,
+     17
+    ],
+    "authors": [
+     "MOU JIAN"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 36,
+      "num": null,
+      "uid": "u24_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}

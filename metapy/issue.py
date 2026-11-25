@@ -64,6 +64,12 @@ _DOI_VIY = re.compile(r"(?<!\d)(\d{1,3})\.(\d{1,3})\.((?:19|20)\d{2})\d{0,2}\.")
 _DOI_VYY = re.compile(r"\.(\d{1,3})\.\.((?:19|20)\d{2})\d{2}\.")
 # 横幅 '2023, Vol. 6, No. 2, …' 题录信号(JAMS 系): 第 1 页含此形态的块整体进来源
 _YEAR_VOL = re.compile(r"(?:19|20)\d{2}\s*,\s*Vol\b", re.I)
+# 法文卷号体例(fr_07 实证): '2009/6 64e année' — année 序数即卷号。
+_ANNEE_VOL = re.compile(r"(?i)\b(\d{1,3})\s*(?:re)?e?\s+année\b")
+# 迟到页眉/页脚题录(pt_03 实证): 'Ciência & Saúde Coletiva, 17(3):621-626, 2012'。
+# 仅 Page-header/footer 命中本形态才进 source, 防正文引文被当刊头。
+_VI_PY = re.compile(r"\b(\d{1,3})\s*\((\d{1,4})\)\s*:\s*(\d{1,4})\s*[-–]\s*(\d{1,4})\s*,\s*((?:19|20)\d{2})\b")
+_LATE_MAST = re.compile(r"^[A-ZÀ-Ú][^,\n]{2,60},\s*\d{1,3}\s*\(\d{1,4}\)\s*:\s*\d{1,4}\s*[-–]\s*\d{1,4},\s*(?:19|20)\d{2}\b")
 # 页脚刊例(2026-11-19, 산업연구 系 37 篇实测, 4 篇红): '34 산업연구 | 2025년 제9권 제2호'。
 # 该刊带日期的页脚出现位置不定(13578203 拖到第 29 页才有), 首页 p0-1 来源行永远够不着,
 # 故 issue_doc 对"任意页 Page-header/footer 命中本形态"的行放行进 source。
@@ -489,6 +495,16 @@ def extract(source, n_pages, excluded_folds, lang=None):
             ms = _SEASON.search(s)
             if ms:
                 _add(issue_season, ms.group(1).upper(), page, uid)
+        if lang == "fr":
+            for m in _ANNEE_VOL.finditer(s):
+                _add(vol_vol, int(m.group(1)), page, uid)
+        # 迟到页眉/页脚 '17(3):621-626, 2012' 一次性供出卷/期/页/年。
+        for m in _VI_PY.finditer(s):
+            _add(vol_vol, int(m.group(1)), page, uid)
+            _add(issue, int(m.group(2)), page, uid)
+            _add(pages_pp, (int(m.group(3)), int(m.group(4))), page, uid)
+            _add(year, int(m.group(5)), page, uid)
+            _add(year_strong, int(m.group(5)), page, uid)
         for m in _TONGKWAN.finditer(s):
             tongkwan.append({"value": int(m.group(1)), "page": page})
         # BMC (연도) 권:문号
@@ -973,8 +989,10 @@ def issue_doc(doc, out_root):
                                     or (p == 0 and re.match(r"(?i)(?:Revista|Revue|Jornal)\b", t))
                                     or re.search(r"(?i)Revue\s+[^,\n]+,\s*(?:19|20)\d{2}\s*,\s*\d+", t)
                                     or re.search(u"//\\s*[^/]+[.]\\s*[—–-]?\\s*(?:19|20)\\d{2}", t))) \
+                    or (p > 1 and len(_fold(t)) <= 100 and _LATE_MAST.search(t)) \
                     or (u["type"] in ("Page-header", "Page-footer")
-                        and (_FOOT_MAST.search(t) or re.search(u"(?i)обозрение|журнал|ciência|saúde", t))):
+                        and (_FOOT_MAST.search(t) or _LATE_MAST.search(t)
+                             or re.search(u"(?i)обозрение|журнал|ciência|saúde", t))):
                 for ln in t.split("\n"):
                     if ln.strip():
                         source.append((p, u["uid"], ln.strip()))
@@ -1608,15 +1626,23 @@ def _selftest():
                   1, set(), lang="fr")
     ok37 = r37["volume"]["value"] == 7 and r37["issue"]["value"] == 1 \
         and r37["journal"]["value"] == "Analyses & Alternatives"
+    # 38-39) 2026-11-24 俄葡法工作区: 法文 '64e année' 卷号 / 葡文迟到页眉 '17(3):621-626, 2012'。
+    r38 = extract([(0, "u0", u"Dans Annales. Histoire, Sciences Sociales 2009/6 64e année, pages 1237 à 1266")],
+                  1, set(), lang="fr")
+    # 该守卫只负责 '64e année' → 卷号; 期/页由同行/其他题录行另供。
+    ok38 = r38["volume"]["value"] == 64 and r38["year"]["value"] == 2009
+    r39 = extract([(2, "u2", u"Ciência & Saúde Coletiva, 17(3):621-626, 2012")], 3, set(), lang="pt")
+    ok39 = r39["year"]["value"] == 2012 and r39["volume"]["value"] == 17 \
+        and r39["issue"]["value"] == 3 and r39["pages"]["value"] == "621-626"
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
                             ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
-                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37), 1):
+                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37, ok38, ok39), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/38 PASS" % n_ok)
-    return n_ok == 38
+    print("issue selftest: %d/40 PASS" % n_ok)
+    return n_ok == 40
 
 
 if __name__ == "__main__":

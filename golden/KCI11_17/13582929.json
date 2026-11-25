@@ -1,0 +1,1238 @@
+{
+ "doc": "13582929",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582929",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "강동관.(2021). 한국의 인구구조와 외국인 정책 방향: 이민자유입, 사회통합, 거버넌스. 한국이민정책학보 제4권 제2호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "강동관"
+    ],
+    "authors_raw": "강동관",
+    "et_al": false,
+    "year": "2021",
+    "title": ". 한국의 인구구조와 외국인 정책 방향: 이민자유입, 사회통합",
+    "source": "사회통합",
+    "volume": "4",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_5seg",
+    "container_title": "거버넌스. 한국이민정책학보 제4권",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "고다현&신인철.(2023). 서울시 외국인주민 거주지의 확장과 선주민 청년과의 저가주택 경쟁. 한국이민정책학보 제6권 제1호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "고다현&신인철"
+    ],
+    "authors_raw": "고다현&신인철",
+    "et_al": false,
+    "year": "2023",
+    "title": "서울시 외국인주민 거주지의 확장과 선주민 청년과의 저가주택 경쟁. 한국이민정책학보 제6권 제1호",
+    "source": null,
+    "volume": "6",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김수정.(2019). 저출산·고령화 시대 한국의 인구 정책에 관한 비판적 고찰. 한국도시지리학회지 제22권 2호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "김수정"
+    ],
+    "authors_raw": "김수정",
+    "et_al": false,
+    "year": "2019",
+    "title": "저출산·고령화 시대 한국의 인구 정책에 관한 비판적 고찰. 한국도시지리학회지 제22권 2호",
+    "source": null,
+    "volume": "22",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "류형철.(2023). 광역비자 도입의 실효적 추진 방안. 경북연구원 CEO BRIEFING 제701호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "류형철"
+    ],
+    "authors_raw": "류형철",
+    "et_al": false,
+    "year": "2023",
+    "title": "광역비자 도입의 실효적 추진 방안. 경북연구원 CEO BRIEFING 제701호",
+    "source": null,
+    "volume": null,
+    "issue": "701",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "양혜우.(2025). 정치공동체로의 초대: 서울시 외국인주민대표자회의 실험이 남긴 것. 문화교류와 다문화교육 제14권 제1호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "양혜우"
+    ],
+    "authors_raw": "양혜우",
+    "et_al": false,
+    "year": "2025",
+    "title": "정치공동체로의 초대: 서울시 외국인주민대표자회의 실험이 남긴 것. 문화교류와 다문화교육 제14권 제1호",
+    "source": null,
+    "volume": "14",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이병하.(2023). 한국에서 인구정책과 이민정책의 연계: 이민국가의 관점에서.\n담론201 제26권 1호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "이병하"
+    ],
+    "authors_raw": "이병하",
+    "et_al": false,
+    "year": "2023",
+    "title": "한국에서 인구정책과 이민정책의 연계: 이민국가의 관점에서. 담론201 제26권 1호",
+    "source": null,
+    "volume": "26",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "최선영.(2022). 외국인주민의 출신국가별 특성에 따른 서울시 외국인정책의 차등화 — 아시아권과 비(非)아시아권 구분을 중심으로 — 대한지리학회지제57권 제1호.",
+    "page": 22,
+    "box": [
+     104.2,
+     551.4,
+     793.8,
+     613.6
+    ],
+    "uid": "u21_2",
+    "authors": [
+     "최선영"
+    ],
+    "authors_raw": "최선영",
+    "et_al": false,
+    "year": "2022",
+    "title": "외국인주민의 출신국가별 특성에 따른 서울시 외국인정책의 차등화 — 아시아권과 비(非)아시아권 구분을 중심으로 — 대한지리학회지제57권 제1호",
+    "source": null,
+    "volume": "57",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "관계기관 합동.(2023). 제4차 다문화가족 기본계획(안)(2023~2027). 여성가족부. https://www.mogef.go.kr/mp/pcd/mp_pcd_s001d.do?mid=plc503 (검색일: 2025.5.4).",
+    "page": 22,
+    "box": [
+     102.7,
+     1051.0,
+     792.8,
+     1143.3
+    ],
+    "uid": "u21_3",
+    "authors": [
+     "관계기관 합동"
+    ],
+    "authors_raw": "관계기관 합동",
+    "et_al": false,
+    "year": "2023",
+    "title": "제4차 다문화가족 기본계획(안)(2023~2027). 여성가족부. https://www.mogef.go.kr/mp/pcd/mp_pcd_s001d.do?mid=plc503 (검색일: 2025.5.4)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "2023-2027",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "법무부 출입국·외국인정책본부.(2017). 2016출입국·외국인정책통계연보. 법무부. https://www.immigration.go.kr/immigration/1570/subview.do (검색일: 2025.5.8).",
+    "page": 22,
+    "box": [
+     104.2,
+     336.6,
+     794.9,
+     1177.7
+    ],
+    "uid": "u21_4",
+    "authors": [
+     "법무부 출입국",
+     "외국인정책본부"
+    ],
+    "authors_raw": "법무부 출입국·외국인정책본부",
+    "et_al": false,
+    "year": "2017",
+    "title": "2016출입국·외국인정책통계연보. 법무부. https://www.immigration.go.kr/immigration/1570/subview.do (검색일: 2025.5.8)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "법무부 출입국·외국인정책본부.(2024). 제4차 외국인정책 기본계획. 법무부. https://www.immigration.go.kr/bbs/immigration/226/artclList.do (검색일: 2025.5.4).",
+    "page": 23,
+    "box": [
+     112.8,
+     336.6,
+     792.8,
+     432.9
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "법무부 출입국",
+     "외국인정책본부"
+    ],
+    "authors_raw": "법무부 출입국·외국인정책본부",
+    "et_al": false,
+    "year": "2024",
+    "title": "제4차 외국인정책 기본계획. 법무부. https://www.immigration.go.kr/bbs/immigration/226/artclList.do (검색일: 2025.5.4)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "법무부 출입국·외국인정책본부.(2024). 2023출입국·외국인정책통계연보. 법무부. https://www.immigration.go.kr/immigration/1570/subview.do (검색일: 2025.5.8).",
+    "page": 22,
+    "box": [
+     104.2,
+     336.6,
+     794.9,
+     1177.7
+    ],
+    "uid": "u21_4",
+    "authors": [
+     "법무부 출입국",
+     "외국인정책본부"
+    ],
+    "authors_raw": "법무부 출입국·외국인정책본부",
+    "et_al": false,
+    "year": "2024",
+    "title": "2023출입국·외국인정책통계연보. 법무부. https://www.immigration.go.kr/immigration/1570/subview.do (검색일: 2025.5.8)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "행정안전부.(2024). 2023 지방자치단체 외국인주민 현황. 행정안전부. https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000014&nttId=113261 (검색일: 2025.3.4).",
+    "page": 22,
+    "box": [
+     104.2,
+     336.6,
+     794.9,
+     1177.7
+    ],
+    "uid": "u21_4",
+    "authors": [
+     "행정안전부"
+    ],
+    "authors_raw": "행정안전부",
+    "et_al": false,
+    "year": "2024",
+    "title": "2023 지방자치단체 외국인주민 현황. 행정안전부. https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000014&nttId=113261 (검색일: 2025.3.4)",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Silver, Laura et al.(2025, July 15). International Views of China Turn Slightly More Positive, Pew Research Center. https://www.pewresearch.org/global/2025/07/15/international-views-of-china-turn-slightly-more-positive/ (검색일: 2025.8.7).",
+    "page": 23,
+    "box": [
+     112.8,
+     336.6,
+     792.8,
+     432.9
+    ],
+    "uid": "u22_1",
+    "authors": [
+     "Silver",
+     "Laura"
+    ],
+    "authors_raw": "Silver, Laura et al",
+    "et_al": true,
+    "year": "2025",
+    "title": "July 15). International Views of China Turn Slightly More Positive",
+    "source": "Pew Research Center. https://www.pewresearch.org/global/2025/07/15/international-views-of-china-turn-slightly-more-positive/ (검색일: 2025.8.7)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "url",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "법무부는 외국인정책을 국경·출입국 및 체류 관리, 사회통합과 국적 부여 정책을 포괄하는 개념으로 이민정책으로 규정. 국내에서 살아가는데 필요한 제반 환경조성에 관한 사항을 종합적인 관점에서 다루는 정책까지 포함(법무부 출입국외국인정책본부, 2024, p.6).",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     105.0,
+     1104.8,
+     795.3,
+     1179.7
+    ],
+    "uid": "u3_5",
+    "authors": [
+     "법무부는 외국인정책을 국경",
+     "출입국 및 체류 관리"
+    ],
+    "authors_raw": "법무부는 외국인정책을 국경·출입국 및 체류 관리",
+    "et_al": false,
+    "year": "2024",
+    "title": "사회통합과 국적 부여 정책을 포괄하는 개념으로 이민정책으로 규정. 국내에서 살아가는데 필요한 제반 환경조성에 관한 사항을 종합적인 관점에서 다루는 정책까지 포함(법무부 출입국외국인정책본부",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "외국인주민에게 적용 가능한 사회복지제도를 검토한 연구는 전무한 상황으로 향후 이에 대한 검토가 필요.",
+    "page": 21,
+    "page_end": 21,
+    "box": [
+     105.0,
+     1129.8,
+     792.7,
+     1175.7
+    ],
+    "uid": "u20_3",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 2,
+   "per_page": {
+    "4": 1,
+    "21": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "4": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "21": {
+     "markers": [
+      "2"
+     ],
+     "collected": [
+      "2"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "Foreseeable Tensions and Inclusion: An Examination of the Demographic Characteristics of Foreign Residents in Seoul",
+   "page": 1,
+   "box": [
+    102.1,
+    204.3,
+    793.8,
+    342.9
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Min-gyu Lee",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     101.9,
+     403.4,
+     238.6,
+     451.3
+    ]
+   }
+  ],
+  "affiliations": [],
+  "abstract": {
+   "value": "This study seeks to examine the demographic characteristics of foreign residents in Korea, with a particular focus on identifying the structural challenges and policy implications that warrant attention. For this purpose, the foreign population in Seoul was classified into three categories―non-naturalized foreign residents, naturalized citizens, and children of foreign nationals―and their demographic trends were subsequently examined. The major findings are as follows.\nFirst, although the size of the foreign resident population has rebounded since the conclusion of the COVID-19 pandemic, the overall growth trajectory has shown signs of slowing. Second, in contrast to the national average, the proportion of women among foreign residents in Seoul is markedly higher. This is largely attributable to women constituting more than 60 percent of both marriage migrants and international students. Third, the foreign resident population is not immune to the broader phenomenon of demographic aging. Notably, 35.2 percent of non-naturalized foreign residents are over the age of 50, suggesting that aging within this group is likely to emerge as a salient policy concern over the next five to ten years. Fourth, the composition of foreign residents has become increasingly diversified, with Southeast Asian nationals demonstrating particularly rapid growth. Fifth, one of the defining characteristics of Seoul’s foreign resident population is the predominance of ethnic Koreans from abroad, who account for 84.9 percent of all foreign nationals residing in the city. Sixth, Seoul continues to serve as a key hub for international students, who are disproportionately concentrated in the capital relative to other regions of the country. Taken together, these findings underscore a number of policy implications. Most importantly, the role of foreign residents in mitigating population decline appears limited; rather, their growing presence is likely to generate new demands on the social welfare system and pose challenges for service provision. Moreover, while the rising number of international students can be regarded as a positive development, it also raises potential tensions related to labor market competition, entrepreneurial opportunities, and distributive equity. The overrepresentation of Chinese nationals highlights the persistent challenge of managing anti-Chinese sentiment in Korean society. Finally, the disproportionately high share of women among foreign residents calls for sustained public deliberation and consensus-building regarding the applicability and scope of gender-focused policy measures.\n* Lee, Min-gyu. The Seoul Institute. E-mail: obscurecount@gmail.com.\nThe capital relative to other regions of the country.\nTaken together, these findings underscore a number of policy implications. Most importantly, the role of foreign residents in mitigating population decline appears limited; rather, their growing presence is likely to generate new demands on the social welfare system and pose challenges for service provision. Moreover, while the rising number of international students can be regarded as a positive development, it also raises potential tensions related to labor market competition, entrepreneurial opportunities, and distributive equity. The overrepresentation of Chinese nationals highlights the persistent challenge of managing anti-Chinese sentiment in Korean society. Finally, the disproportionately high share of women among foreign residents calls for sustained public deliberation and consensus-building regarding the applicability and scope of gender-focused policy measures.",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "This study seeks to examine the demographic characteristics of foreign residents in Korea, with a particular focus on identifying the structural challenges and policy implications that warrant attention. For this purpose, the foreign population in Seoul was classified into three categories―non-naturalized foreign residents, naturalized citizens, and children of foreign nationals―and their demographic trends were subsequently examined. The major findings are as follows.",
+   "page": 1,
+   "box": [
+    101.9,
+    512.8,
+    173.0,
+    533.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: Foreign residents, Immigration policies, Aging, Social Integration, Population Extinction"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2025,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 9,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 3,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "109-131",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "Foreign residents",
+   "Immigration policies",
+   "Aging",
+   "Social Integration",
+   "Population Extinction"
+  ],
+  "keywords_en": [
+   "Foreign residents",
+   "Immigration policies",
+   "Aging",
+   "Social Integration",
+   "Population Extinction"
+  ],
+  "citation_spans": [
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "저출산·고령화로 대표되는 한국의 인구구조 변화가 ‘지역소멸’을 넘어 ‘인구소멸 국가 1호’가 될 수 있다는 경고가 지속되면서, 이민정책(Immigration Policy)이 대안으로 주목받고 있다(강동관, 2021).¹) 2005년부터 실시한 저출산·고령화 정책에도 불구하고, 2023년 합계출산율(Total Fertility Rate: TFR)이 0.721명까지 하락하면서 인구정책 실효성에 대한 의문이 지속해서 제기된다.",
+    "raw": "저출산·고령화로 대표되는 한국의 인구구조 변화가 ‘지역소멸’을 넘어 ‘인구소멸 국가 1호’가 될 수 있다는 경고가 지속되면서, 이민정책(Immigration Policy)이 대안으로 주목받고 있다(강동관, 2021).¹) 2005년부터 실시한 저출산·고령화 정책에도 불구하고, 2023년 합계출산율(Total Fertility Rate: TFR)이 0.721명까지 하락하면서 인구정책 실효성에 대한 의문이 지속해서 제기된다.",
+    "citation_text": "(강동관, 2021)",
+    "offset": [
+     109,
+     120
+    ],
+    "authors": [
+     "강동관"
+    ],
+    "year": "2021",
+    "linked_refs": [
+     {
+      "index": 0,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "실패 원인 중 하나로 이주민 유입을 적극적으로 검토하지 않았다는 점이 부각되면서 인구정책의 핵심 분야로 등장하게 된다(김수정, 2019, pp.153-155).",
+    "raw": "실패 원인 중 하나로 이주민 유입을 적극적으로 검토하지 않았다는 점이 부각되면서 인구정책의 핵심 분야로 등장하게 된다(김수정, 2019, pp.153-155).",
+    "citation_text": "(김수정, 2019, pp.153-155)",
+    "offset": [
+     65,
+     88
+    ],
+    "authors": [
+     "김수정"
+    ],
+    "year": "2019",
+    "linked_refs": [
+     {
+      "index": 2,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "비록 ‘이민 확대론’과 달리 이민정책과 인구정책을 연계하는 것을 경계하는 ‘이민 신중론’의 목소리도 작지 않지만, 신중론자 역시 이민정책의 활용 자체를 부정하지 않는다는 측면에서 ‘이민’에 대한 관심이 높아지고 있다(이병하, 2023, pp.23-25).",
+    "raw": "비록 ‘이민 확대론’과 달리 이민정책과 인구정책을 연계하는 것을 경계하는 ‘이민 신중론’의 목소리도 작지 않지만, 신중론자 역시 이민정책의 활용 자체를 부정하지 않는다는 측면에서 ‘이민’에 대한 관심이 높아지고 있다(이병하, 2023, pp.23-25).",
+    "citation_text": "(이병하, 2023, pp.23-25)",
+    "offset": [
+     120,
+     141
+    ],
+    "authors": [
+     "이병하"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 4,
+    "uid": "u3_4",
+    "kind": "parenthetical",
+    "sentence": "2023년 법무부는 「제4차 외국인정책 기본계획(2023~2027)」 발표를 통해 ① 이민을 활용한 경제와 지역발전 촉진, ② 안전하고 질서있는 이민사회 구현, ③ 국민과 이민자가 함께하는 사회통합, ④ 이민자의 인권 가치를 존중하는 사회 실현, ⑤ 글로벌 스탠더드에 부합하는 이민행정 기반 구축 등 5가지 정책 목표와 18개 중점 과제를 제시한다(법무부 출입국외국인정책본부, 2024).",
+    "raw": "2023년 법무부는 「제4차 외국인정책 기본계획(2023~2027)」 발표를 통해 ① 이민을 활용한 경제와 지역발전 촉진, ② 안전하고 질서있는 이민사회 구현, ③ 국민과 이민자가 함께하는 사회통합, ④ 이민자의 인권 가치를 존중하는 사회 실현, ⑤ 글로벌 스탠더드에 부합하는 이민행정 기반 구축 등 5가지 정책 목표와 18개 중점 과제를 제시한다(법무부 출입국외국인정책본부, 2024).",
+    "citation_text": "(법무부 출입국외국인정책본부, 2024)",
+    "offset": [
+     194,
+     216
+    ],
+    "authors": [
+     "법무부 출입국외국인정책본부"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_1",
+    "kind": "parenthetical",
+    "sentence": "14개 중과제를 제시한다(관계기관 합동, 2023).",
+    "raw": "14개 중과제를 제시한다(관계기관 합동, 2023).",
+    "citation_text": "(관계기관 합동, 2023)",
+    "offset": [
+     13,
+     28
+    ],
+    "authors": [
+     "관계기관 합동"
+    ],
+    "year": "2023",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u21_3"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "raw": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "citation_text": "양혜우 2025",
+    "offset": [
+     146,
+     154
+    ],
+    "authors": [
+     "양혜우"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "raw": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "citation_text": "최선영 2022",
+    "offset": [
+     170,
+     178
+    ],
+    "authors": [
+     "최선영"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_4",
+    "kind": "parenthetical",
+    "sentence": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "raw": "다른 한편 타지자체 대비 서울 거주 외국인주민 관련 연구는 상대적으로 있는 편이지만, 외국인주민대표자회의, 이주배경학생, 외국인 노동자, 다문화 수용성 등 특정 이슈 중심으로 전체적인 인구구조 변화 양상과 이에 따른 추세적 특징을 파악할 수 없다는 한계가 있다(양혜우 2025; 고다현&신인철 2023; 최선영 2022; 김자현 2018).",
+    "citation_text": "김자현 2018",
+    "offset": [
+     180,
+     188
+    ],
+    "authors": [
+     "김자현"
+    ],
+    "year": "2018",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 7,
+    "uid": "u6_5",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 8,
+    "uid": "u7_7",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 9,
+    "uid": "u8_5",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_3",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_7",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 15,
+    "uid": "u14_8",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_7",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_6",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_5",
+    "kind": "narrative",
+    "sentence": "출처: 행정안전부.(2024).",
+    "raw": "출처: 행정안전부.(2024).",
+    "citation_text": "행정안전부.(2024)",
+    "offset": [
+     4,
+     16
+    ],
+    "authors": [
+     "행정안전부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_5",
+    "kind": "narrative",
+    "sentence": "출처: 법무부 출입국·외국인정책본부.(2017).",
+    "raw": "출처: 법무부 출입국·외국인정책본부.(2017).",
+    "citation_text": "출입국·외국인정책본부.(2017)",
+    "offset": [
+     8,
+     26
+    ],
+    "authors": [
+     "출입국·외국인정책본부."
+    ],
+    "year": "2017",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_5",
+    "kind": "narrative",
+    "sentence": "법무부; 법무부 출입국·외국인정책본부.(2024).",
+    "raw": "법무부; 법무부 출입국·외국인정책본부.(2024).",
+    "citation_text": "출입국·외국인정책본부.(2024)",
+    "offset": [
+     9,
+     27
+    ],
+    "authors": [
+     "출입국·외국인정책본부."
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "퓨 리서치센터(Pew Research Center)의 대중국 이미지 여론조사 결과, 한국인의 대중국 호감도는 2002년 65.0%에서 2025년 19.0%까지 급락한다(“International Views of China Turn Slightly More Positive”, 2025).",
+    "raw": "퓨 리서치센터(Pew Research Center)의 대중국 이미지 여론조사 결과, 한국인의 대중국 호감도는 2002년 65.0%에서 2025년 19.0%까지 급락한다(“International Views of China Turn Slightly More Positive”, 2025).",
+    "citation_text": "(“International Views of China Turn Slightly More Positive”, 2025)",
+    "offset": [
+     93,
+     159
+    ],
+    "authors": [
+     "“International Views of China Turn Slightly More Positive”"
+    ],
+    "year": "2025",
+    "linked_refs": [
+     {
+      "index": 4,
+      "num": null,
+      "uid": "u21_2"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "서울대학교 통일평화연구원에서 실시한 ‘통일의식조사’ 결과에서도 중국을 ‘경계 대상’으로 응답한 비율이 2007년 31.0%에서 2024년 58.7%로 높아졌음을 알 수 있다(김범수 외, 2024, p.143).",
+    "raw": "서울대학교 통일평화연구원에서 실시한 ‘통일의식조사’ 결과에서도 중국을 ‘경계 대상’으로 응답한 비율이 2007년 31.0%에서 2024년 58.7%로 높아졌음을 알 수 있다(김범수 외, 2024, p.143).",
+    "citation_text": "(김범수 외, 2024, p.143)",
+    "offset": [
+     96,
+     116
+    ],
+    "authors": [
+     "김범수 외"
+    ],
+    "year": "2024",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u21_4"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   }
+  ]
+ }
+}

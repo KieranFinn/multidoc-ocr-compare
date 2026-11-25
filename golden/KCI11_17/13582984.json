@@ -1,0 +1,3035 @@
+{
+ "doc": "13582984",
+ "ws": "KCI11_17",
+ "frozen_at": "2026-11-24 15:28",
+ "frozen_by": "golden add",
+ "note": "2026-11-24 全段重跑后基线(修正冻结)",
+ "metadata": {
+  "doc": "13582984",
+  "generated": "2026-11-24 15:27",
+  "references": [
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "김선재&김수한(2022). 탈중국을 위한 대만 남향정책의 지속과 변화: 균형과 편승의 동학. 분석과대안 제6권1호.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "김선재&김수한"
+    ],
+    "authors_raw": "김선재&김수한",
+    "et_al": false,
+    "year": "2022",
+    "title": "탈중국을 위한 대만 남향정책의 지속과 변화: 균형과 편승의 동학. 분석과대안 제6권1호",
+    "source": null,
+    "volume": "6",
+    "issue": "1",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "박상남(2022). 러·중 밀월관계의 본질과 러-우 전쟁의 종결 필요성. 동북아위치 제7호.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "박상남"
+    ],
+    "authors_raw": "박상남",
+    "et_al": false,
+    "year": "2022",
+    "title": "러·중 밀월관계의 본질과 러-우 전쟁의 종결 필요성. 동북아위치 제7호",
+    "source": null,
+    "volume": null,
+    "issue": "7",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "이성원(2022). 다극체제와 동아시아 안보: 국제질서 재편에 따른 한반도 안보 위협 논의의 재고찰. 분석과대안 제6권2호.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "이성원"
+    ],
+    "authors_raw": "이성원",
+    "et_al": false,
+    "year": "2022",
+    "title": "다극체제와 동아시아 안보: 국제질서 재편에 따른 한반도 안보 위협 논의의 재고찰. 분석과대안 제6권2호",
+    "source": null,
+    "volume": "6",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "장세호(2022). 러시아-우크라이나 전쟁과 국제질서의 변화. 분석과대안 제6권2호.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "장세호"
+    ],
+    "authors_raw": "장세호",
+    "et_al": false,
+    "year": "2022",
+    "title": "러시아-우크라이나 전쟁과 국제질서의 변화. 분석과대안 제6권2호",
+    "source": null,
+    "volume": "6",
+    "issue": "2",
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Aksakal, M.(2010). *The Ottoman Road to War in 1914: The Ottoman Empire and the First World War*. Cambridge University Press.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Aksakal M"
+    ],
+    "authors_raw": "Aksakal, M",
+    "et_al": false,
+    "year": "2010",
+    "title": "The Ottoman Road to War in 1914: The Ottoman Empire and the First World War",
+    "source": "). The Ottoman Road to War in 1914: The Ottoman Empire and the First World War. Cambridge University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bercovitch, J.(1991). “Superpower and Client states: Perception interaction”. in Efrat, M. and Bercovitch, J.(eds.), *Superpowers and Client States in the Middle East*, Routledge.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Bercovitch J"
+    ],
+    "authors_raw": "Bercovitch, J",
+    "et_al": false,
+    "year": "1991",
+    "title": "Superpower and Client states: Perception interaction",
+    "source": "in Efrat, M. and Bercovitch, J.(eds.), Superpowers and Client States in the Middle East, Routledge",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Bridge, F. R. & Bullen, R.(2005). *The Great Powers and the European States System 1814-1914*. Pearson Education Limited.",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Bridge F. R",
+     "Bullen R"
+    ],
+    "authors_raw": "Bridge, F. R. & Bullen, R",
+    "et_al": false,
+    "year": "2005",
+    "title": "The Great Powers and the European States System 1814-1914",
+    "source": "). The Great Powers and the European States System 1814-1914. Pearson Education Limited",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Carney, P. C.(1989). “International Patron-Client Relationships: A Conceptual Framework”. *Studies in Comparative International Development* 24(2).",
+    "page": 29,
+    "box": [
+     111.1,
+     658.5,
+     794.1,
+     724.5
+    ],
+    "uid": "u28_2",
+    "authors": [
+     "Carney P. C"
+    ],
+    "authors_raw": "Carney, P. C",
+    "et_al": false,
+    "year": "1989",
+    "title": "International Patron-Client Relationships: A Conceptual Framework",
+    "source": "Studies in Comparative International Development 24(2)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Fischer, B. J. (2016). \"The Balkan Wars and the Creation of Albanian Independence\". in Pettifer, J. & Buchanan, T. (eds.), *War in the Balkans: Conflict and Diplomacy before World War I*. Bloomsbury Publishing.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Fischer B. J"
+    ],
+    "authors_raw": "Fischer, B. J",
+    "et_al": false,
+    "year": "2016",
+    "title": "The Balkan Wars and the Creation of Albanian Independence",
+    "source": "in Pettifer, J. & Buchanan, T. (eds.), War in the Balkans: Conflict and Diplomacy before World War I. Bloomsbury Publishing",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Clark, C. (2009). *Kaiser Wilhelm II: A Life in Power*. Penguin Books (2013), *The Sleepwalkers: How Europe Went to War in 1914*. Harper.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Clark C"
+    ],
+    "authors_raw": "Clark, C",
+    "et_al": false,
+    "year": "2013",
+    "title": "Kaiser Wilhelm II: A Life in Power",
+    "source": "), The Sleepwalkers: How Europe Went to War in 1914. Harper",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Crampton, R. J. (1977). \"The Balkans as a Factor in German Foreign Policy, 1912-1914.\" *The Slavonic and East European Review* 55(3).",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Crampton R. J"
+    ],
+    "authors_raw": "Crampton, R. J",
+    "et_al": false,
+    "year": "1977",
+    "title": "The Balkans as a Factor in German Foreign Policy, 1912-1914.",
+    "source": "The Slavonic and East European Review 55(3)",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hacısalıhoğlu, M. (2013). \"The Young Turk Policy in Macedonia: Cause of the Balkan Wars?\" in Ruthner, C., Cordileone, D. R., Reber, U. & Detrez, R. (eds.), *Wechselwirkungen: Austria-Hungary, Bosnia-Herzegovina, and the Western Balkans, 1878-1918*. New York: Peter Lang Publishing Inc.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Hacısalıhoğlu",
+     "M"
+    ],
+    "authors_raw": "Hacısalıhoğlu, M",
+    "et_al": false,
+    "year": "2013",
+    "title": "The Young Turk Policy in Macedonia: Cause of the Balkan Wars?",
+    "source": "in Ruthner, C., Cordileone, D. R., Reber, U. & Detrez, R. (eds.), Wechselwirkungen: Austria-Hungary, Bosnia-Herzegovina, and the Western Balkans, 1878-1918. New York: Peter Lang Publishing Inc",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Hall, R. C. (2003). \"Serbia.\" in Hamilton, R. F. & Herwig, H. H. (eds.), *The Origins of World War I*. Cambridge University Press.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Hall R. C"
+    ],
+    "authors_raw": "Hall, R. C",
+    "et_al": false,
+    "year": "2003",
+    "title": "Serbia.\" in Hamilton, R. F. & Herwig, H. H. (eds.)",
+    "source": "The Origins of World War I",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "remnant_quote",
+    "layout": "en_journal",
+    "container_title": "The Origins of World War I",
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Höbelt, L. (2020). \"Why fight a Third Balkan War? The Habsburg mindset in 1914.\" in Cornwall, M. (ed.), *Sarajevo 1914: Sparking the First World War*. BLOOMSBURY ACADEMIC.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Höbelt",
+     "L"
+    ],
+    "authors_raw": "Höbelt, L",
+    "et_al": false,
+    "year": "2020",
+    "title": "Why fight a Third Balkan War? The Habsburg mindset in 1914.",
+    "source": "in Cornwall, M. (ed.), Sarajevo 1914: Sparking the First World War. BLOOMSBURY ACADEMIC",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Leonhard, J. (2014). *Pandora's Box: A History of the First World War*, C. H. Beck, Patrick, C. (2018). (Trans.), *Pandora's Box: A History of the First World War*. Belknap Press.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Leonhard J"
+    ],
+    "authors_raw": "Leonhard, J",
+    "et_al": false,
+    "year": "2018",
+    "title": "Pandora's Box: A History of the First World War",
+    "source": "). (Trans.), Pandora's Box: A History of the First World War. Belknap Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Lieven, D. (2016). *Towards the Flame: Empire, War and the End of Tsarist Russia*, Penguin.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "Lieven D"
+    ],
+    "authors_raw": "Lieven, D",
+    "et_al": false,
+    "year": "2016",
+    "title": "Towards the Flame: Empire, War and the End of Tsarist Russia",
+    "source": "). Towards the Flame: Empire, War and the End of Tsarist Russia, Penguin",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "MacMeekin, S. (2011). *The Russian origins of the First World War*. Harvard University Press.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "MacMeekin S"
+    ],
+    "authors_raw": "MacMeekin, S",
+    "et_al": false,
+    "year": "2011",
+    "title": "The Russian origins of the First World War",
+    "source": "). The Russian origins of the First World War. Harvard University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "MacMillan, M. (2013). *The War That Ended Peace: The Road to 1914*, Random House.",
+    "page": 30,
+    "box": [
+     104.2,
+     683.6,
+     793.0,
+     968.4
+    ],
+    "uid": "u29_1",
+    "authors": [
+     "MacMillan M"
+    ],
+    "authors_raw": "MacMillan, M",
+    "et_al": false,
+    "year": "2013",
+    "title": "The War That Ended Peace: The Road to 1914",
+    "source": "). The War That Ended Peace: The Road to 1914, Random House",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Otte, T. G. (2014). 'A \"formidable factor in European politics\": Views of Russia in 1914.' in Levy, J. S. & Vasquez, J. A. (eds.), *The Outbreak of the First World War: Structure, Politics, and Decision-Making*. Cambridge University Press.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Otte T. G"
+    ],
+    "authors_raw": "Otte, T. G",
+    "et_al": false,
+    "year": "2014",
+    "title": "formidable factor in European politics",
+    "source": "Views of Russia in 1914.' in Levy, J. S. & Vasquez, J. A. (eds.), The Outbreak of the First World War: Structure, Politics, and Decision-Making. Cambridge University Press",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rahten, A. (2020). \"Great expectations The Habsburg heir apparent and the Southern Slavs\" in Cornwall, M. (ed.), *Sarajevo 1914: Sparking the First World War*. BLOOMSBURY ACADEMIC.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Rahten A"
+    ],
+    "authors_raw": "Rahten, A",
+    "et_al": false,
+    "year": "2020",
+    "title": "Great expectations The Habsburg heir apparent and the Southern Slavs",
+    "source": "in Cornwall, M. (ed.), Sarajevo 1914: Sparking the First World War. BLOOMSBURY ACADEMIC",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rauchensteiner, M. (2013). *Der Erste Weltkrieg: Und Das Ende Der Habsburgermonarchie 1914-1918*. Böhlau Verlag, (Trans.), Guttel, A. & Kay, A. J. (2014). The First World War and the End of the Habsburg Monarchy. 1914-1918. Böhlau Verlag.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Rauchensteiner M"
+    ],
+    "authors_raw": "Rauchensteiner, M",
+    "et_al": false,
+    "year": "2014",
+    "title": "Der Erste Weltkrieg: Und Das Ende Der Habsburgermonarchie 1914-1918",
+    "source": "). The First World War and the End of the Habsburg Monarchy. 1914-1918. Böhlau Verlag",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Remak, J. (1971). \"The Third Balkan War: Origins Reconsidered.\" *Journal of Modern History*. 43.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Remak J"
+    ],
+    "authors_raw": "Remak, J",
+    "et_al": false,
+    "year": "1971",
+    "title": "The Third Balkan War: Origins Reconsidered.",
+    "source": "Journal of Modern History. 43",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Rich, N. (1991). *Great power Diplomacy 1814-1914*. McGraw-Hill Humanities.\nŠarenac, D. (2020). \"Why did nobody control Apis?: Serbian military intelligence and the Sarajevo assassination.\" in Cornwall, M. (ed.), *Sarajevo 1914: Sparking the First World War*. BLOOMSBURY ACADEMIC.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Rich N"
+    ],
+    "authors_raw": "Rich, N",
+    "et_al": false,
+    "year": "2020",
+    "title": "Why did nobody control Apis?: Serbian military intelligence and the Sarajevo assassination.",
+    "source": "in Cornwall, M. (ed.), Sarajevo 1914: Sparking the First World War. BLOOMSBURY ACADEMIC",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Schmutz, T. (2015). \"The German Role in the Reform Discussion of 1913-14.\" in Kieser, H. L. Öktem, K. & Reinkowski, M. (eds.), *World War I and the End of the Ottomans: From the Balkan Wars to the Armenian Genocide*. I.B. Tauris.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Schmutz T"
+    ],
+    "authors_raw": "Schmutz, T",
+    "et_al": false,
+    "year": "2015",
+    "title": "The German Role in the Reform Discussion of 1913-14.",
+    "source": "in Kieser, H. L. Öktem, K. & Reinkowski, M. (eds.), World War I and the End of the Ottomans: From the Balkan Wars to the Armenian Genocide. I.B. Tauris",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Shoemaker, C. & Spanier, J. (1984). *Patron-Client State Relationships*. Praeger.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Shoemaker C",
+     "Spanier J"
+    ],
+    "authors_raw": "Shoemaker, C. & Spanier, J",
+    "et_al": false,
+    "year": "1984",
+    "title": "Patron-Client State Relationships",
+    "source": "). Patron-Client State Relationships. Praeger",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Snyder, J. L. (2000). *From Voting to Violence: Democratization and* Nationalist Conflict. W W Norton & Co Inc.",
+    "page": 31,
+    "box": [
+     111.1,
+     683.6,
+     793.0,
+     749.5
+    ],
+    "uid": "u30_1",
+    "authors": [
+     "Snyder J. L"
+    ],
+    "authors_raw": "Snyder, J. L",
+    "et_al": false,
+    "year": "2000",
+    "title": "From Voting to Violence: Democratization and",
+    "source": "). From Voting to Violence: Democratization and Nationalist Conflict. W W Norton & Co Inc",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "italic",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Taylor, A. J. P. (1980). The Struggle for Mastery in Europe: 1848-1918. Oxford University Press.",
+    "page": 32,
+    "box": [
+     112.9,
+     212.5,
+     793.0,
+     382.5
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Taylor A. J. P"
+    ],
+    "authors_raw": "Taylor, A. J. P",
+    "et_al": false,
+    "year": "1980",
+    "title": "The Struggle for Mastery in Europe: 1848-1918. Oxford University Press",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": "1848-1918",
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Weaver, E. B.(2016). “Yugoslavism in Hungary during the Balkan Wars” in Pettifer, J. & Buchanan, T., (eds.), War in the Balkans: Conflict and Diplomacy before World War I. Bloomsbury Publishing.",
+    "page": 32,
+    "box": [
+     112.9,
+     212.5,
+     793.0,
+     382.5
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Weaver E. B"
+    ],
+    "authors_raw": "Weaver, E. B",
+    "et_al": false,
+    "year": "2016",
+    "title": "Yugoslavism in Hungary during the Balkan Wars",
+    "source": "in Pettifer, J. & Buchanan, T., (eds.), War in the Balkans: Conflict and Diplomacy before World War I. Bloomsbury Publishing",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   },
+   {
+    "num": null,
+    "style": "authoryear",
+    "raw": "Windsor, P.(1991). “Superpower and Client states: Perception and interattention” in Efrat, M. & Bercovitch, J. (eds.), Superpowers and Client States in the Middle East. Routledge.",
+    "page": 32,
+    "box": [
+     112.9,
+     212.5,
+     793.0,
+     382.5
+    ],
+    "uid": "u31_1",
+    "authors": [
+     "Windsor P"
+    ],
+    "authors_raw": "Windsor, P",
+    "et_al": false,
+    "year": "1991",
+    "title": "Superpower and Client states: Perception and interattention",
+    "source": "in Efrat, M. & Bercovitch, J. (eds.), Superpowers and Client States in the Middle East. Routledge",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "en",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "en_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_refs": [
+   {
+    "num": "1",
+    "raw": "달리 말해 전통적 세력균형론자들은 불확실성의 감소를, 월츠는 불확실성의 증가를 각각 전쟁의 원인으로 지목했다(이성원 2022, p.46). 그리고 양측 모두 대표적인 사례를 제1차 세계대전이라 보았다.",
+    "page": 4,
+    "page_end": 4,
+    "box": [
+     103.5,
+     1104.8,
+     797.5,
+     1178.3
+    ],
+    "uid": "u3_5",
+    "authors": [
+     "달리 말해 전통적 세력균형론자들은 불확실성의 감소를"
+    ],
+    "authors_raw": "달리 말해 전통적 세력균형론자들은 불확실성의 감소를",
+    "et_al": false,
+    "year": "2022",
+    "title": "월츠는 불확실성의 증가를 각각 전쟁의 원인으로 지목했다(이성원",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "1",
+    "raw": "최근의 사례로는 트럼프 행정부는 물론 바이든 행정부에서도 계속되고 있는 미중경쟁의 첨예화에 따라, 남향정책의 주안점을 변화시킨 대만의 결정과 그 영향을 언급할 수 있다 (김선재&김수한 2022).",
+    "page": 10,
+    "page_end": 10,
+    "box": [
+     102.8,
+     1104.8,
+     795.7,
+     1178.3
+    ],
+    "uid": "u9_5",
+    "authors": [],
+    "authors_raw": null,
+    "et_al": false,
+    "year": null,
+    "title": null,
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": null,
+    "notice_no": null,
+    "grammar": null,
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "2",
+    "raw": "독일은 산업화에 따른 노동자 계층의 사회변혁 요구를 억누르기 위해 대외적 팽창으로 대중의 눈길을 돌리는 관제 민족주의정책을 피고 있었다. 관련해서는 Snyder(2000)을 참조.",
+    "page": 13,
+    "page_end": 13,
+    "box": [
+     104.2,
+     1104.8,
+     793.0,
+     1175.7
+    ],
+    "uid": "u12_5",
+    "authors": [
+     "독일은",
+     "산업화에",
+     "따른",
+     "노동자",
+     "계층의",
+     "사회변혁",
+     "요구를",
+     "억누르기",
+     "위해",
+     "대외적",
+     "팽창으로",
+     "대중의",
+     "눈길을",
+     "돌리는",
+     "관제",
+     "민족주의정책을",
+     "피고",
+     "있었다",
+     "관련해서는",
+     "Snyder"
+    ],
+    "authors_raw": "독일은 산업화에 따른 노동자 계층의 사회변혁 요구를 억누르기 위해 대외적 팽창으로 대중의 눈길을 돌리는 관제 민족주의정책을 피고 있었다. 관련해서는 Snyder",
+    "et_al": false,
+    "year": "2000",
+    "title": "을 참조",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "3",
+    "raw": "대표적으로 1911년 포츠담 회담(Potsdam Conference)에서 러시아는 페르시아에서 독일 상품 수출과 바그다드 철도 계획을 반대하지 않는다면, 페르시아에서 러시아의 철도독점 권을 존중하겠다는 독일의 제안을 응낙했다(Taylor 1980, 463).",
+    "page": 14,
+    "page_end": 14,
+    "box": [
+     102.8,
+     1104.8,
+     793.0,
+     1178.3
+    ],
+    "uid": "u13_5",
+    "authors": [
+     "대표적으로 1911년 포츠담 회담(Potsdam Conference)에서 러시아는 페르시아에서 독일 상품 수출과 바그다드 철도 계획을 반대하지 않는다면"
+    ],
+    "authors_raw": "대표적으로 1911년 포츠담 회담(Potsdam Conference)에서 러시아는 페르시아에서 독일 상품 수출과 바그다드 철도 계획을 반대하지 않는다면",
+    "et_al": false,
+    "year": "1980",
+    "title": "페르시아에서 러시아의 철도독점 권을 존중하겠다는 독일의 제안을 응낙했다(Taylor",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "4",
+    "raw": "독일의 베스만 홀베크(Theobald von Bethmann Hollweg) 재상은 1912년, “러시아는 다른 열강을 사랑하는 것 이상으로 우리를 사랑하지 않는다. 그러기엔 우린 지나치게 강하고, 지나치게 빠르게 성장했으며, 지나치게 역겁다”라고 평가했다(Otte, 2014, p.15).",
+    "page": 17,
+    "page_end": 17,
+    "box": [
+     102.0,
+     1105.0,
+     795.7,
+     1179.7
+    ],
+    "uid": "u16_4",
+    "authors": [
+     "독일의",
+     "베스만",
+     "홀베크(Theobald",
+     "von",
+     "Bethmann",
+     "Hollweg)",
+     "재상은"
+    ],
+    "authors_raw": "독일의 베스만 홀베크(Theobald von Bethmann Hollweg) 재상은",
+    "et_al": false,
+    "year": "2014",
+    "title": "러시아는 다른 열강을 사랑하는 것 이상으로 우리를 사랑하지 않는다. 그러기엔 우린 지나치게 강하고, 지나치게 빠르게 성장했으며, 지나치게 역겁다",
+    "source": "라고 평가했다(Otte",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "quoted",
+    "layout": "ko_journal",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "high",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "5",
+    "raw": "합스부르크제국은 오스트리아와 형가리의 각료로 구성된 공동 내각으로 대외정책을 결정했다. 이 가운데 중요한 결정권을 지녔던 형가리 수상 이슈타반 티사(István Tisza)는 전쟁의 결과가 승패에 상관없이 제국, 정확히는 형가리에 손해라고 인식해 전쟁결정을 가로막고 지연시켰다(Rauchensteiner 2014, p.93).",
+    "page": 21,
+    "page_end": 21,
+    "box": [
+     104.2,
+     1080.9,
+     793.0,
+     1178.3
+    ],
+    "uid": "u20_5",
+    "authors": [
+     "합스부르크제국은 오스트리아와 형가리의 각료로 구성된 공동 내각으로 대외정책을 결정했다. 이 가운데 중요한 결정권을 지녔던 형가리 수상 이슈타반 티사(István Tisza)는 전쟁의 결과가 승패에 상관없이 제국"
+    ],
+    "authors_raw": "합스부르크제국은 오스트리아와 형가리의 각료로 구성된 공동 내각으로 대외정책을 결정했다. 이 가운데 중요한 결정권을 지녔던 형가리 수상 이슈타반 티사(István Tisza)는 전쟁의 결과가 승패에 상관없이 제국",
+    "et_al": false,
+    "year": "2014",
+    "title": "정확히는 형가리에 손해라고 인식해 전쟁결정을 가로막고 지연시켰다(Rauchensteiner",
+    "source": null,
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "noquote",
+    "layout": "ko_manual",
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "low",
+     "source": "regex"
+    }
+   },
+   {
+    "num": "6",
+    "raw": "대표적으로 중국과의 관계에서 한편으론 호혜적 성격에도 불구하고 이해의 불일치와 종속의 가능성을 우려하는 러시아의 딜레마는 본 연구에서 다룬 오스트리아가 독일과의 관계에서 겪은 딜레마와 맞닿아 있다(박상남 2023).",
+    "page": 27,
+    "page_end": 27,
+    "box": [
+     104.2,
+     1104.8,
+     795.7,
+     1178.3
+    ],
+    "uid": "u26_5",
+    "authors": [
+     "대표적으로 중국과의 관계에서 한편으론 호혜적 성격에도 불구하고 이해의 불일치와 종속의 가능성을 우려하는 러시아의 딜레마는 본 연구에서 다룬 오스트리아가 독일과의 관계에서 겪은 딜레마와 맞닿아 있다(박상남"
+    ],
+    "authors_raw": "대표적으로 중국과의 관계에서 한편으론 호혜적 성격에도 불구하고 이해의 불일치와 종속의 가능성을 우려하는 러시아의 딜레마는 본 연구에서 다룬 오스트리아가 독일과의 관계에서 겪은 딜레마와 맞닿아 있다(박상남",
+    "et_al": false,
+    "year": "2023",
+    "title": null,
+    "source": ")",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "doi": null,
+    "lang": "ko",
+    "notice_no": null,
+    "grammar": "unknown",
+    "layout": null,
+    "container_title": null,
+    "publisher": null,
+    "editor": null,
+    "confidence": {
+     "level": "mid",
+     "source": "regex"
+    }
+   }
+  ],
+  "footnote_ref_validation": {
+   "entry_count": 7,
+   "per_page": {
+    "4": 1,
+    "10": 1,
+    "13": 1,
+    "14": 1,
+    "17": 1,
+    "21": 1,
+    "27": 1
+   },
+   "num_borrowed": [],
+   "per_page_detail": {
+    "4": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "10": {
+     "markers": [
+      "1"
+     ],
+     "collected": [
+      "1"
+     ]
+    },
+    "13": {
+     "markers": [
+      "2"
+     ],
+     "collected": [
+      "2"
+     ]
+    },
+    "14": {
+     "markers": [
+      "3"
+     ],
+     "collected": [
+      "3"
+     ]
+    },
+    "17": {
+     "markers": [
+      "4"
+     ],
+     "collected": [
+      "4"
+     ]
+    },
+    "21": {
+     "markers": [
+      "5"
+     ],
+     "collected": [
+      "5"
+     ]
+    },
+    "27": {
+     "markers": [
+      "6"
+     ],
+     "collected": [
+      "6"
+     ]
+    }
+   },
+   "dup_alarm": []
+  },
+  "title": {
+   "value": "A Study on the Influence of the Balkan Conflict in the Outbreak of World War I: Focusing on Perspective of Patron-Client Relationship between states",
+   "page": 1,
+   "box": [
+    102.0,
+    205.4,
+    793.5,
+    392.3
+   ],
+   "uid": "u0_1",
+   "confidence": {
+    "level": "high",
+    "source": "regex"
+   }
+  },
+  "title_en": {
+   "value": null,
+   "page": null,
+   "box": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "authors": [
+   {
+    "name": "Lee Young Soo",
+    "markers": [],
+    "affiliation": null,
+    "role": null,
+    "roman": null,
+    "box": [
+     111.1,
+     456.6,
+     416.1,
+     505.4
+    ],
+    "uid": "u0_2",
+    "page": 1
+   },
+   {
+    "name": "Park Sang Nam",
+    "markers": [],
+    "affiliation": "Hansei University",
+    "role": null,
+    "roman": null,
+    "box": [
+     111.1,
+     456.6,
+     416.1,
+     505.4
+    ],
+    "uid": "u0_2",
+    "page": 1
+   }
+  ],
+  "affiliations": [
+   "Hansei University",
+   "Hanshin University"
+  ],
+  "abstract": {
+   "value": "Previous studies on international politics dealing with World War I mainly pointed to the balance of power and alliance issues as the causes of war. This view saw the assassination of Sarajevo, the direct cause of the war, as a simple opportunity. As a result, these studies can explain 'what made war inevitable' but still need to fully explain 'why the war started in the Balkans and how it spread throughout Europe.' To compensate for the limitations of these preceding studies, this study aim to find the origin of World War 1 in the context of the Balkan, which began with the conflict between Germany-Austria and Russia-Serbia.\nTo this end, this study analyzed the historical background of the Balkan crisis and the development of the crisis through the concept of Shoemaker and Spanier's patron-client relationship between states and crisis manipulation. As a result, it confirmed that competition between Russia and Germany and crisis manipulation attempts by their client states did not necessarily lead to war. But crisis manipulation has instilled a competitive mindset in patron states that will potentially and cumulatively work. Since then, unexpected crises have occurred, and rival patrons have suspected that their opponents are planning grand strategic conspiracies and challenges. As a result, they have become vulnerable to crisis manipulation by the clients. This situation was the cause of the outbreak of World War I in the context of the Balkans' patron-client relationship.\n* This study re-edited the first author's doctoral thesis..\n** Lecturer, Hansei University. E-mail: ypra1989@gmail.com\n*** Professor, Hanshin University. E-mail: allo7@hanmail.net",
+   "page": 1,
+   "box": null,
+   "confidence": {
+    "level": "mid",
+    "source": "channel_fallback",
+    "uid_head": null
+   }
+  },
+  "abstract_en": {
+   "value": "Previous studies on international politics dealing with World War I mainly pointed to the balance of power and alliance issues as the causes of war. This view saw the assassination of Sarajevo, the direct cause of the war, as a simple opportunity. As a result, these studies can explain 'what made war inevitable' but still need to fully explain 'why the war started in the Balkans and how it spread throughout Europe.' To compensate for the limitations of these preceding studies, this study aim to find the origin of World War 1 in the context of the Balkan, which began with the conflict between Germany-Austria and Russia-Serbia.",
+   "page": 1,
+   "box": [
+    102.0,
+    562.9,
+    171.9,
+    583.7
+   ],
+   "from_tail": false,
+   "confidence": {
+    "level": "mid",
+    "source": "regex",
+    "uid_head": "u0_3"
+   }
+  },
+  "keywords_lines": [
+   "keywords: origin of world war1, Balkan question, Germany-Russia, Austria-Serbia, Patron-Client Relationship, Crisis Manipulation"
+  ],
+  "journal": {
+   "value": "Analyses & Alternatives",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "journal_en": {
+   "value": null,
+   "uid": null,
+   "confidence": {
+    "level": "low",
+    "source": "regex"
+   }
+  },
+  "year": {
+   "value": 2023,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "high",
+    "source": "latin_biblio"
+   }
+  },
+  "volume": {
+   "value": 7,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "issue": {
+   "value": 1,
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "pages": {
+   "value": "83-114",
+   "uid": "u0_0",
+   "confidence": {
+    "level": "mid",
+    "source": "regex"
+   }
+  },
+  "keywords": [
+   "origin of world war1",
+   "Balkan question",
+   "Germany-Russia",
+   "Austria-Serbia",
+   "Patron-Client Relationship",
+   "Crisis Manipulation"
+  ],
+  "keywords_en": [
+   "origin of world war1",
+   "Balkan question",
+   "Germany-Russia",
+   "Austria-Serbia",
+   "Patron-Client Relationship",
+   "Crisis Manipulation"
+  ],
+  "citation_spans": [
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "전통적인 세력균형론은 19세기 말부터 시작된 독일 통일 이후 독일 권력의 강화, 그로 인한 독일과 영국이라는 양극을 중심으로 한 동맹체제의 경직성 강화라는 유럽 세력균형체제의 변동에서 전쟁의 원인을 찾는다(Nye, 2000, pp.109-110).",
+    "raw": "전통적인 세력균형론은 19세기 말부터 시작된 독일 통일 이후 독일 권력의 강화, 그로 인한 독일과 영국이라는 양극을 중심으로 한 동맹체제의 경직성 강화라는 유럽 세력균형체제의 변동에서 전쟁의 원인을 찾는다(Nye, 2000, pp.109-110).",
+    "citation_text": "(Nye, 2000, pp.109-110)",
+    "offset": [
+     114,
+     137
+    ],
+    "authors": [
+     "Nye"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 25,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 4,
+    "uid": "u3_3",
+    "kind": "parenthetical",
+    "sentence": "그리고 이런 상황에서는 경쟁하는 블록을 구성하는 국가들이 상대적으로 약한 국가의 위기나, 모험적인 국가의 모험을 지원하지 않음으로써 초래될 동맹의 와해를 막기 위해 연루되어 갔음을 지적한다(Waltz, 2000, p.258).1)",
+    "raw": "그리고 이런 상황에서는 경쟁하는 블록을 구성하는 국가들이 상대적으로 약한 국가의 위기나, 모험적인 국가의 모험을 지원하지 않음으로써 초래될 동맹의 와해를 막기 위해 연루되어 갔음을 지적한다(Waltz, 2000, p.258).1)",
+    "citation_text": "(Waltz, 2000, p.258)",
+    "offset": [
+     105,
+     125
+    ],
+    "authors": [
+     "Waltz"
+    ],
+    "year": "2000",
+    "linked_refs": [
+     {
+      "index": 25,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "raw": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "citation_text": "Remak, 1971",
+    "offset": [
+     100,
+     111
+    ],
+    "authors": [
+     "Remak"
+    ],
+    "year": "1971",
+    "linked_refs": [
+     {
+      "index": 21,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "raw": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "citation_text": "Leonhard, 2018",
+    "offset": [
+     113,
+     127
+    ],
+    "authors": [
+     "Leonhard"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "raw": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "citation_text": "Lieven, 2016",
+    "offset": [
+     129,
+     141
+    ],
+    "authors": [
+     "Lieven"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 5,
+    "uid": "u4_2",
+    "kind": "parenthetical",
+    "sentence": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "raw": "레마크 이후로도 적잖은 제1차 세계대전 연구자들은 동방문제(Eastern Question)에서 비롯된 세르비아와 오스트리아, 그리고 여기에 연루된 독일과 러시아의 갈등에 주목했다(Remak, 1971; Leonhard, 2018; Lieven, 2016; Münkler, 2017).",
+    "citation_text": "Münkler, 2017",
+    "offset": [
+     143,
+     156
+    ],
+    "authors": [
+     "Münkler"
+    ],
+    "year": "2017",
+    "linked_refs": [],
+    "n_candidates": 0,
+    "confidence": "unlinked"
+   },
+   {
+    "page": 5,
+    "uid": "u4_3",
+    "kind": "parenthetical",
+    "sentence": "최근의 우크라이나전쟁도 서방과 러시아, 러시아와 우크라이나, 우크라이나 정부군과 반군의 대립이라는 서로 다른 층위로 구성된 복합전으로 설명된다(장세호, 2022, p.10).",
+    "raw": "최근의 우크라이나전쟁도 서방과 러시아, 러시아와 우크라이나, 우크라이나 정부군과 반군의 대립이라는 서로 다른 층위로 구성된 복합전으로 설명된다(장세호, 2022, p.10).",
+    "citation_text": "(장세호, 2022, p.10)",
+    "offset": [
+     79,
+     96
+    ],
+    "authors": [
+     "장세호"
+    ],
+    "year": "2022",
+    "linked_refs": [
+     {
+      "index": 3,
+      "num": null,
+      "uid": "u28_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_3",
+    "kind": "parenthetical",
+    "sentence": "연구자들에 따르면, 공식적인 조약이 없더라도 관계의 구성원들 간에 정서적 친밀성을 느끼다는 점, 그리고 구성원들이 호혜적 관계로 받아들인다는 점에서 후견-피후견 관계는 다른 약자와 강자 간의 비대칭적 관계와 차이를 보인다(Carney, 1989, pp.43-45).",
+    "raw": "연구자들에 따르면, 공식적인 조약이 없더라도 관계의 구성원들 간에 정서적 친밀성을 느끼다는 점, 그리고 구성원들이 호혜적 관계로 받아들인다는 점에서 후견-피후견 관계는 다른 약자와 강자 간의 비대칭적 관계와 차이를 보인다(Carney, 1989, pp.43-45).",
+    "citation_text": "(Carney, 1989, pp.43-45)",
+    "offset": [
+     123,
+     147
+    ],
+    "authors": [
+     "Carney"
+    ],
+    "year": "1989",
+    "linked_refs": [
+     {
+      "index": 7,
+      "num": null,
+      "uid": "u28_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 7,
+    "uid": "u6_4",
+    "kind": "parenthetical",
+    "sentence": "세 번째로, 두 국가의 긴밀한 결합이 다양한 수단을 통해서 기꺼이 표명되어야 한다(Shoemaker & Spanier, 1984, p.13).",
+    "raw": "세 번째로, 두 국가의 긴밀한 결합이 다양한 수단을 통해서 기꺼이 표명되어야 한다(Shoemaker & Spanier, 1984, p.13).",
+    "citation_text": "(Shoemaker & Spanier, 1984, p.13)",
+    "offset": [
+     45,
+     78
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 8,
+    "uid": "u7_3",
+    "kind": "parenthetical",
+    "sentence": "이러한 유형들은 앞서와 마찬가지로 후견국이 추구하는 목표에 따라, 후견-피후견국 간 무관심(Patron-Client Indifference), 피후견국 우위(Client-Prevalence) 피후견국 중심(Client-Centric) 유형이다(Shoemaker & Spanier, 1984, pp.26-44).",
+    "raw": "이러한 유형들은 앞서와 마찬가지로 후견국이 추구하는 목표에 따라, 후견-피후견국 간 무관심(Patron-Client Indifference), 피후견국 우위(Client-Prevalence) 피후견국 중심(Client-Centric) 유형이다(Shoemaker & Spanier, 1984, pp.26-44).",
+    "citation_text": "(Shoemaker & Spanier, 1984, pp.26-44)",
+    "offset": [
+     135,
+     172
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 8,
+    "uid": "u7_4",
+    "kind": "parenthetical",
+    "sentence": "또한 이러한 유형이 고정된 것이 아니라, 관계의 내부적인 목표 구조(Internal Goal Structure)나 외부적인 국제 환경(The International Milieu)이 변화함에 따라, 유형이 변화된다고 보았다(Shoemaker & Spanier, 1984, pp.48-55).",
+    "raw": "또한 이러한 유형이 고정된 것이 아니라, 관계의 내부적인 목표 구조(Internal Goal Structure)나 외부적인 국제 환경(The International Milieu)이 변화함에 따라, 유형이 변화된다고 보았다(Shoemaker & Spanier, 1984, pp.48-55).",
+    "citation_text": "(Shoemaker & Spanier, 1984, pp.48-55)",
+    "offset": [
+     124,
+     161
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_1",
+    "kind": "parenthetical",
+    "sentence": "(Crisis Exaggeration)과 위기 조작(Crisis Fabrication)으로 나뉘는데 둘다 즉각적인 위협이라는 이미지를 이용해, 관계 내 파트너에게 영향을 끼칠 목적을 지닌다(Shoemaker & Spanier, 1984, p.75).",
+    "raw": "(Crisis Exaggeration)과 위기 조작(Crisis Fabrication)으로 나뉘는데 둘다 즉각적인 위협이라는 이미지를 이용해, 관계 내 파트너에게 영향을 끼칠 목적을 지닌다(Shoemaker & Spanier, 1984, p.75).",
+    "citation_text": "(Shoemaker & Spanier, 1984, p.75)",
+    "offset": [
+     105,
+     138
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_3",
+    "kind": "parenthetical",
+    "sentence": "그러나 만약 위기 조작이 피후견국의 입장에서 보았을 때 성공했다면, 국제체제에 큰 위험이 될 수 있다(Shoemaker & Spanier, 1984, pp.76-78).",
+    "raw": "그러나 만약 위기 조작이 피후견국의 입장에서 보았을 때 성공했다면, 국제체제에 큰 위험이 될 수 있다(Shoemaker & Spanier, 1984, pp.76-78).",
+    "citation_text": "(Shoemaker & Spanier, 1984, pp.76-78)",
+    "offset": [
+     56,
+     93
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 9,
+    "uid": "u8_4",
+    "kind": "parenthetical",
+    "sentence": "때문에 강대국간 경쟁은 그들에게 친구에 대한 갈망을 강하게 만들고, 피후건국들에게 예상외의 영향력을 준다(Windsor 1991).¹) 반대로 후건국인 강대국들의 관계가 경쟁보다는 협력으로 기울 때, 피후건국의 후건국에 대한 영향력은 제한되고 낮아진다.",
+    "raw": "때문에 강대국간 경쟁은 그들에게 친구에 대한 갈망을 강하게 만들고, 피후건국들에게 예상외의 영향력을 준다(Windsor 1991).¹) 반대로 후건국인 강대국들의 관계가 경쟁보다는 협력으로 기울 때, 피후건국의 후건국에 대한 영향력은 제한되고 낮아진다.",
+    "citation_text": "(Windsor 1991)",
+    "offset": [
+     58,
+     72
+    ],
+    "authors": [
+     "Windsor"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 28,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_4",
+    "kind": "parenthetical",
+    "sentence": "또한 1903년의 쿠데타 이후 갈수록 민족주의적으로 변해가는 세르비아로부터 위협을 느끼고 있었다(Clark, 2013, p.3-42; Šarenac, 2020).",
+    "raw": "또한 1903년의 쿠데타 이후 갈수록 민족주의적으로 변해가는 세르비아로부터 위협을 느끼고 있었다(Clark, 2013, p.3-42; Šarenac, 2020).",
+    "citation_text": "Clark, 2013, p.3-42",
+    "offset": [
+     54,
+     73
+    ],
+    "authors": [
+     "Clark"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_4",
+    "kind": "parenthetical",
+    "sentence": "또한 1903년의 쿠데타 이후 갈수록 민족주의적으로 변해가는 세르비아로부터 위협을 느끼고 있었다(Clark, 2013, p.3-42; Šarenac, 2020).",
+    "raw": "또한 1903년의 쿠데타 이후 갈수록 민족주의적으로 변해가는 세르비아로부터 위협을 느끼고 있었다(Clark, 2013, p.3-42; Šarenac, 2020).",
+    "citation_text": "Šarenac, 2020",
+    "offset": [
+     75,
+     88
+    ],
+    "authors": [
+     "Šarenac"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 12,
+    "uid": "u11_5",
+    "kind": "parenthetical",
+    "sentence": "그는 러시아 외무장관 이즈볼스키(Alexander Petrovich Izvolsky)와 만나 합병에 대해 합의했고, 승인의 대가로 터키해협에서 러시아의 지위를 유리하게 바所도록 지지를 약속했다(MacMillan, 2013, p.428).",
+    "raw": "그는 러시아 외무장관 이즈볼스키(Alexander Petrovich Izvolsky)와 만나 합병에 대해 합의했고, 승인의 대가로 터키해협에서 러시아의 지위를 유리하게 바所도록 지지를 약속했다(MacMillan, 2013, p.428).",
+    "citation_text": "(MacMillan, 2013, p.428)",
+    "offset": [
+     107,
+     131
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_5",
+    "kind": "parenthetical",
+    "sentence": "보스니아-헤르체코비나를 자신들이 수복해야할 옛 제국의 영토로 여기던 세르비아에서도 오스트리아에 대한 분노가 여론을 지배했다(Bridge & Bullen, 2005, p.291).",
+    "raw": "보스니아-헤르체코비나를 자신들이 수복해야할 옛 제국의 영토로 여기던 세르비아에서도 오스트리아에 대한 분노가 여론을 지배했다(Bridge & Bullen, 2005, p.291).",
+    "citation_text": "(Bridge & Bullen, 2005, p.291)",
+    "offset": [
+     68,
+     98
+    ],
+    "authors": [
+     "Bridge & Bullen"
+    ],
+    "year": "2005",
+    "linked_refs": [
+     {
+      "index": 6,
+      "num": null,
+      "uid": "u28_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 12,
+    "uid": "u11_5",
+    "kind": "parenthetical",
+    "sentence": "그리고 독일에게 지지를 요청하는 한편, 세르비아에게 보스니아-헤르체코비나 합병을 인정하라고 요구하는 최후통첩을 전달했다(MacMillan, 2013, p.413).",
+    "raw": "그리고 독일에게 지지를 요청하는 한편, 세르비아에게 보스니아-헤르체코비나 합병을 인정하라고 요구하는 최후통첩을 전달했다(MacMillan, 2013, p.413).",
+    "citation_text": "(MacMillan, 2013, p.413)",
+    "offset": [
+     66,
+     90
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 12,
+    "uid": "u11_5",
+    "kind": "parenthetical",
+    "sentence": "이에 세르비아가 접경지역에 군대를 이동시키는 등 전쟁준비태세에 돌입하면서 러시아의 지지를 구하자, 오스트리아 역시 부분동원령을 선포했다(MacMillan, 2013, p.429).",
+    "raw": "이에 세르비아가 접경지역에 군대를 이동시키는 등 전쟁준비태세에 돌입하면서 러시아의 지지를 구하자, 오스트리아 역시 부분동원령을 선포했다(MacMillan, 2013, p.429).",
+    "citation_text": "(MacMillan, 2013, p.429)",
+    "offset": [
+     75,
+     99
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "더불어 오스트리아와 마찬가지로 대외적 승리를 통해 내부불만을 잠재우려는 목적이 있었다(Kitchen, 2011, p.255).2) 또한 식민지 정책을 두고 프랑스와 독일이 충돌한 제1차 모로코 위기 당시 러시아가 기대를 저버린데 대한 앙갈음이기도 했다(Lieven, 2016, p.188).",
+    "raw": "더불어 오스트리아와 마찬가지로 대외적 승리를 통해 내부불만을 잠재우려는 목적이 있었다(Kitchen, 2011, p.255).2) 또한 식민지 정책을 두고 프랑스와 독일이 충돌한 제1차 모로코 위기 당시 러시아가 기대를 저버린데 대한 앙갈음이기도 했다(Lieven, 2016, p.188).",
+    "citation_text": "(Kitchen, 2011, p.255)",
+    "offset": [
+     47,
+     69
+    ],
+    "authors": [
+     "Kitchen"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 13,
+    "uid": "u12_4",
+    "kind": "parenthetical",
+    "sentence": "더불어 오스트리아와 마찬가지로 대외적 승리를 통해 내부불만을 잠재우려는 목적이 있었다(Kitchen, 2011, p.255).2) 또한 식민지 정책을 두고 프랑스와 독일이 충돌한 제1차 모로코 위기 당시 러시아가 기대를 저버린데 대한 앙갈음이기도 했다(Lieven, 2016, p.188).",
+    "raw": "더불어 오스트리아와 마찬가지로 대외적 승리를 통해 내부불만을 잠재우려는 목적이 있었다(Kitchen, 2011, p.255).2) 또한 식민지 정책을 두고 프랑스와 독일이 충돌한 제1차 모로코 위기 당시 러시아가 기대를 저버린데 대한 앙갈음이기도 했다(Lieven, 2016, p.188).",
+    "citation_text": "(Lieven, 2016, p.188)",
+    "offset": [
+     140,
+     161
+    ],
+    "authors": [
+     "Lieven"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_2",
+    "kind": "parenthetical",
+    "sentence": "러시아는 충분한 힘이 없어서 독일에 맞서지 못했다는 굴욕감을 느꼈다(MacMillan, 2013, p.435).",
+    "raw": "러시아는 충분한 힘이 없어서 독일에 맞서지 못했다는 굴욕감을 느꼈다(MacMillan, 2013, p.435).",
+    "citation_text": "(MacMillan, 2013, p.435)",
+    "offset": [
+     37,
+     61
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_2",
+    "kind": "parenthetical",
+    "sentence": "반면 독일은 자신들이 러시아에게 지나친 굴욕을 주었다는 사실을 우려했다(Taylor, 1980, p.483).",
+    "raw": "반면 독일은 자신들이 러시아에게 지나친 굴욕을 주었다는 사실을 우려했다(Taylor, 1980, p.483).",
+    "citation_text": "(Taylor, 1980, p.483)",
+    "offset": [
+     39,
+     60
+    ],
+    "authors": [
+     "Taylor"
+    ],
+    "year": "1980",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 14,
+    "uid": "u13_3",
+    "kind": "parenthetical",
+    "sentence": "러시아는 “슬라브 민족의 보호자”를 자처하는 입장에서 세르비아에게 충분한 지지를 보내지 못했다는 부채감과 함께 독일과 오스트리아라는 공통의 적에 대한 적대를 바탕으로 세르비아와의 관계를 강화했다(Rich, 1991, p.414).",
+    "raw": "러시아는 “슬라브 민족의 보호자”를 자처하는 입장에서 세르비아에게 충분한 지지를 보내지 못했다는 부채감과 함께 독일과 오스트리아라는 공통의 적에 대한 적대를 바탕으로 세르비아와의 관계를 강화했다(Rich, 1991, p.414).",
+    "citation_text": "(Rich, 1991, p.414)",
+    "offset": [
+     108,
+     127
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 14,
+    "uid": "u13_4",
+    "kind": "parenthetical",
+    "sentence": "그 결과 오스트리아의 대외정책은 현상유지적으로 회귀했다(Tunstall, 2003, p.122).",
+    "raw": "그 결과 오스트리아의 대외정책은 현상유지적으로 회귀했다(Tunstall, 2003, p.122).",
+    "citation_text": "(Tunstall, 2003, p.122)",
+    "offset": [
+     30,
+     53
+    ],
+    "authors": [
+     "Tunstall"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_1",
+    "kind": "parenthetical",
+    "sentence": "인 독일의 대외정책에 대한 지지도 포기되었다(Rauchensteiner, 2014, p.66).",
+    "raw": "인 독일의 대외정책에 대한 지지도 포기되었다(Rauchensteiner, 2014, p.66).",
+    "citation_text": "(Rauchensteiner, 2014, p.66)",
+    "offset": [
+     24,
+     52
+    ],
+    "authors": [
+     "Rauchensteiner"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 15,
+    "uid": "u14_3",
+    "kind": "parenthetical",
+    "sentence": "이탈리아는 다른 열강들의 묵인 속에 1911년 터키령 북아프리카 지역인 리비아를 침공했다(박상섭, 2014, p.124).",
+    "raw": "이탈리아는 다른 열강들의 묵인 속에 1911년 터키령 북아프리카 지역인 리비아를 침공했다(박상섭, 2014, p.124).",
+    "citation_text": "(박상섭, 2014, p.124)",
+    "offset": [
+     49,
+     67
+    ],
+    "authors": [
+     "박상섭"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_3",
+    "kind": "parenthetical",
+    "sentence": "또한 청년 투르크당이 집권한 이후 추진한 중앙화, 터키 국민화 정책은 발칸의 비터키계 주민들로부터 거센 반발을 받고 있었다(Hacısalıhoğlu, 2013; Fischer, 2016).",
+    "raw": "또한 청년 투르크당이 집권한 이후 추진한 중앙화, 터키 국민화 정책은 발칸의 비터키계 주민들로부터 거센 반발을 받고 있었다(Hacısalıhoğlu, 2013; Fischer, 2016).",
+    "citation_text": "Hacısalıhoğlu, 2013",
+    "offset": [
+     69,
+     88
+    ],
+    "authors": [
+     "Hacısalıhoğlu"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 11,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 15,
+    "uid": "u14_3",
+    "kind": "parenthetical",
+    "sentence": "또한 청년 투르크당이 집권한 이후 추진한 중앙화, 터키 국민화 정책은 발칸의 비터키계 주민들로부터 거센 반발을 받고 있었다(Hacısalıhoğlu, 2013; Fischer, 2016).",
+    "raw": "또한 청년 투르크당이 집권한 이후 추진한 중앙화, 터키 국민화 정책은 발칸의 비터키계 주민들로부터 거센 반발을 받고 있었다(Hacısalıhoğlu, 2013; Fischer, 2016).",
+    "citation_text": "Fischer, 2016",
+    "offset": [
+     90,
+     103
+    ],
+    "authors": [
+     "Fischer"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 8,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 15,
+    "uid": "u14_4",
+    "kind": "parenthetical",
+    "sentence": "그들은 오스만의 붕괴와 오스트리아-독일 세력의 남하를 대비해 방어적 목적으로 러시아가 중재 해준 발칸연맹을 활용해 국력을 집결시켜 터키를 향해 전쟁을 선포했다(Rich, 1991, p.426).",
+    "raw": "그들은 오스만의 붕괴와 오스트리아-독일 세력의 남하를 대비해 방어적 목적으로 러시아가 중재 해준 발칸연맹을 활용해 국력을 집결시켜 터키를 향해 전쟁을 선포했다(Rich, 1991, p.426).",
+    "citation_text": "(Rich, 1991, p.426)",
+    "offset": [
+     88,
+     107
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 15,
+    "uid": "u14_5",
+    "kind": "parenthetical",
+    "sentence": "때문에 러시아는 남부 국경지역에 시범 동원령을 발령하고 군사개입을 하지 말라고 경고해 오스트리아를 견제했다(Clark, 2013, pp.266-268).",
+    "raw": "때문에 러시아는 남부 국경지역에 시범 동원령을 발령하고 군사개입을 하지 말라고 경고해 오스트리아를 견제했다(Clark, 2013, pp.266-268).",
+    "citation_text": "(Clark, 2013, pp.266-268)",
+    "offset": [
+     59,
+     84
+    ],
+    "authors": [
+     "Clark"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_2",
+    "kind": "parenthetical",
+    "sentence": "세르비아는 전쟁의 목적이 오스트리아와 이탈리아가 받아들일 수 없는 아드리아(Adriatic Sea)해안으로의 진출임을 공공연하게 밝혔다(MacMillan, 2013, p.481).",
+    "raw": "세르비아는 전쟁의 목적이 오스트리아와 이탈리아가 받아들일 수 없는 아드리아(Adriatic Sea)해안으로의 진출임을 공공연하게 밝혔다(MacMillan, 2013, p.481).",
+    "citation_text": "(MacMillan, 2013, p.481)",
+    "offset": [
+     75,
+     99
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_2",
+    "kind": "parenthetical",
+    "sentence": "게다가 전후 알바니아의 건국으로 아드리아해 접근이 차단되자, 불만을 품고, 민병대의 침입을 명분삼아 알바니아 영토를 점령했다(Wawro, 2014, p.93).",
+    "raw": "게다가 전후 알바니아의 건국으로 아드리아해 접근이 차단되자, 불만을 품고, 민병대의 침입을 명분삼아 알바니아 영토를 점령했다(Wawro, 2014, p.93).",
+    "citation_text": "(Wawro, 2014, p.93)",
+    "offset": [
+     69,
+     88
+    ],
+    "authors": [
+     "Wawro"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 18,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 2,
+    "confidence": "partial"
+   },
+   {
+    "page": 16,
+    "uid": "u15_3",
+    "kind": "parenthetical",
+    "sentence": "또한 제2차 발칸전쟁이 발발하자, 세르비아의 성장과 잠재적 동맹인 불가리아의 쇠퇴를 막기 위한 군사행동에 삼국동맹에 지지를 요구했다(Lieven, 2016, pp.275-276).",
+    "raw": "또한 제2차 발칸전쟁이 발발하자, 세르비아의 성장과 잠재적 동맹인 불가리아의 쇠퇴를 막기 위한 군사행동에 삼국동맹에 지지를 요구했다(Lieven, 2016, pp.275-276).",
+    "citation_text": "(Lieven, 2016, pp.275-276)",
+    "offset": [
+     73,
+     99
+    ],
+    "authors": [
+     "Lieven"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 15,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "parenthetical",
+    "sentence": "또한 몬테네그로의 스쿠타리 공략을 인정하지 않겠다는 입장을 보였다(Crampton, 1977, p.376).",
+    "raw": "또한 몬테네그로의 스쿠타리 공략을 인정하지 않겠다는 입장을 보였다(Crampton, 1977, p.376).",
+    "citation_text": "(Crampton, 1977, p.376)",
+    "offset": [
+     36,
+     59
+    ],
+    "authors": [
+     "Crampton"
+    ],
+    "year": "1977",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_4",
+    "kind": "parenthetical",
+    "sentence": "그리고 세르비아가 알바니아 지역을 점령으로 오스트리아의 최후통첩에 직면했을 때, 세르비아를 지지하지 않겠다는 입장을 명확히 했다(Clark, 2013, p.287).",
+    "raw": "그리고 세르비아가 알바니아 지역을 점령으로 오스트리아의 최후통첩에 직면했을 때, 세르비아를 지지하지 않겠다는 입장을 명확히 했다(Clark, 2013, p.287).",
+    "citation_text": "(Clark, 2013, p.287)",
+    "offset": [
+     71,
+     91
+    ],
+    "authors": [
+     "Clark"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_5",
+    "kind": "parenthetical",
+    "sentence": "독일은 황제와 재상이 오스트리아의 입장을 지지하겠다는 입장을 밝혔음에도 불구하고, 그 실질적인 의미는 미약했다(MacMillan, 2013, p.488).",
+    "raw": "독일은 황제와 재상이 오스트리아의 입장을 지지하겠다는 입장을 밝혔음에도 불구하고, 그 실질적인 의미는 미약했다(MacMillan, 2013, p.488).",
+    "citation_text": "(MacMillan, 2013, p.488)",
+    "offset": [
+     61,
+     85
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 16,
+    "uid": "u15_5",
+    "kind": "parenthetical",
+    "sentence": "독일은 알바니아의 독립을 승인하는 대가로 오스트리아에게 세르비아와 몬테네그로에게 최대한 알바니아의 영토를 양보하게 했다 (Crampton, 1977, pp.374-375).",
+    "raw": "독일은 알바니아의 독립을 승인하는 대가로 오스트리아에게 세르비아와 몬테네그로에게 최대한 알바니아의 영토를 양보하게 했다 (Crampton, 1977, pp.374-375).",
+    "citation_text": "(Crampton, 1977, pp.374-375)",
+    "offset": [
+     67,
+     95
+    ],
+    "authors": [
+     "Crampton"
+    ],
+    "year": "1977",
+    "linked_refs": [
+     {
+      "index": 10,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_2",
+    "kind": "parenthetical",
+    "sentence": "독일과 러시아는 보스니아-헤르체코비나 합병위기가 가져온 충격을 관리하기 위해 협력했다(Taylor, 1980, p.463).",
+    "raw": "독일과 러시아는 보스니아-헤르체코비나 합병위기가 가져온 충격을 관리하기 위해 협력했다(Taylor, 1980, p.463).",
+    "citation_text": "(Taylor, 1980, p.463)",
+    "offset": [
+     47,
+     68
+    ],
+    "authors": [
+     "Taylor"
+    ],
+    "year": "1980",
+    "linked_refs": [
+     {
+      "index": 26,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "영토는 두배 가량 증가했고, 인구도 500만에 근접하게 되었다(Hall, 2003, p.102).이와 같이 성장한 역량을 바탕으로 세르비아는 세르비아민족통합운동의 중심이 되었다.",
+    "raw": "영토는 두배 가량 증가했고, 인구도 500만에 근접하게 되었다(Hall, 2003, p.102).이와 같이 성장한 역량을 바탕으로 세르비아는 세르비아민족통합운동의 중심이 되었다.",
+    "citation_text": "(Hall, 2003, p.102)",
+    "offset": [
+     34,
+     53
+    ],
+    "authors": [
+     "Hall"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 17,
+    "uid": "u16_3",
+    "kind": "parenthetical",
+    "sentence": "러시아는 고위급 회담 등을 통해 세르비아와의 긴밀한 유대를 과시했고, 영향력 분할의 성격은 공고해졌다(Rich, 1991,p.433).",
+    "raw": "러시아는 고위급 회담 등을 통해 세르비아와의 긴밀한 유대를 과시했고, 영향력 분할의 성격은 공고해졌다(Rich, 1991,p.433).",
+    "citation_text": "(Rich, 1991,p.433)",
+    "offset": [
+     56,
+     74
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_1",
+    "kind": "parenthetical",
+    "sentence": "밀한 유대를 과시했고, 영향력 분할의 성격은 공고해졌다(Rich, 1991, p.433).",
+    "raw": "밀한 유대를 과시했고, 영향력 분할의 성격은 공고해졌다(Rich, 1991, p.433).",
+    "citation_text": "(Rich, 1991, p.433)",
+    "offset": [
+     30,
+     49
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_2",
+    "kind": "parenthetical",
+    "sentence": "더군다나 세르비아의 성공에 고무된 이중제국 내 남슬라브인들은 합스부르크가 의 통치에 저항하기 시작했다(Weaver, 2016).",
+    "raw": "더군다나 세르비아의 성공에 고무된 이중제국 내 남슬라브인들은 합스부르크가 의 통치에 저항하기 시작했다(Weaver, 2016).",
+    "citation_text": "(Weaver, 2016)",
+    "offset": [
+     56,
+     70
+    ],
+    "authors": [
+     "Weaver"
+    ],
+    "year": "2016",
+    "linked_refs": [
+     {
+      "index": 27,
+      "num": null,
+      "uid": "u31_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_2",
+    "kind": "parenthetical",
+    "sentence": "오스트리아는 늦기 전에 세르비아에 대한 행동에 나서야 한다고 초조해 했다(Clark, 2013, pp.114-115).",
+    "raw": "오스트리아는 늦기 전에 세르비아에 대한 행동에 나서야 한다고 초조해 했다(Clark, 2013, pp.114-115).",
+    "citation_text": "(Clark, 2013, pp.114-115)",
+    "offset": [
+     40,
+     65
+    ],
+    "authors": [
+     "Clark"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 18,
+    "uid": "u17_2",
+    "kind": "parenthetical",
+    "sentence": "독일은 빈이 세르비아에 대해 군사적 행동을 취하는 상황을 경계하면서, 세르비아에 대한 유화책을 권유했다 (Clark 2009).",
+    "raw": "독일은 빈이 세르비아에 대해 군사적 행동을 취하는 상황을 경계하면서, 세르비아에 대한 유화책을 권유했다 (Clark 2009).",
+    "citation_text": "(Clark 2009)",
+    "offset": [
+     58,
+     70
+    ],
+    "authors": [
+     "Clark"
+    ],
+    "year": "2009",
+    "linked_refs": [
+     {
+      "index": 9,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 18,
+    "uid": "u17_4",
+    "kind": "parenthetical",
+    "sentence": "나아가 세르비아가 합스부르 크제국의 위성국이 되거나 제국에 병합되는 결과를 불러올 수 있다고 우려했다(Rahten, 2020).",
+    "raw": "나아가 세르비아가 합스부르 크제국의 위성국이 되거나 제국에 병합되는 결과를 불러올 수 있다고 우려했다(Rahten, 2020).",
+    "citation_text": "(Rahten, 2020)",
+    "offset": [
+     56,
+     70
+    ],
+    "authors": [
+     "Rahten"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 19,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_1",
+    "kind": "parenthetical",
+    "sentence": "드미트리예비치는 외교적 난제를 만들어 오스트리아에 대한 유화책을 피던 파시치정부와 그를 후원하던 러시아를 곤란하게 만들고 선택을 강요하고자했다(Šarenac, 2020, p.144).",
+    "raw": "드미트리예비치는 외교적 난제를 만들어 오스트리아에 대한 유화책을 피던 파시치정부와 그를 후원하던 러시아를 곤란하게 만들고 선택을 강요하고자했다(Šarenac, 2020, p.144).",
+    "citation_text": "(Šarenac, 2020, p.144)",
+    "offset": [
+     79,
+     101
+    ],
+    "authors": [
+     "Šarenac"
+    ],
+    "year": "2020",
+    "linked_refs": [
+     {
+      "index": 13,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 3,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_2",
+    "kind": "parenthetical",
+    "sentence": "오스트리아는 암살 이후, 호요스 백작(Alexander Graf von Hoyos)을 특사로 베를린으로 파견해 세르비아의 위협을 제거하기 위해서는 군사행동이 필요하다고 설득했다(Rich, 1991, pp.440-441).",
+    "raw": "오스트리아는 암살 이후, 호요스 백작(Alexander Graf von Hoyos)을 특사로 베를린으로 파견해 세르비아의 위협을 제거하기 위해서는 군사행동이 필요하다고 설득했다(Rich, 1991, pp.440-441).",
+    "citation_text": "(Rich, 1991, pp.440-441)",
+    "offset": [
+     98,
+     122
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "그들은 세르비아의 내정에 간섭할 빌미를 주는 최후통첩안을 작성해 짧은 기간 내에 답변을 요구했다(Rich, 1991, p.569).",
+    "raw": "그들은 세르비아의 내정에 간섭할 빌미를 주는 최후통첩안을 작성해 짧은 기간 내에 답변을 요구했다(Rich, 1991, p.569).",
+    "citation_text": "(Rich, 1991, p.569)",
+    "offset": [
+     53,
+     72
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "이에 세르비아는 전향적 태도를 보이며 추가협상을 위한 기한 연장을 요구했다(MacMillan, 2013, p.571).",
+    "raw": "이에 세르비아는 전향적 태도를 보이며 추가협상을 위한 기한 연장을 요구했다(MacMillan, 2013, p.571).",
+    "citation_text": "(MacMillan, 2013, p.571)",
+    "offset": [
+     41,
+     65
+    ],
+    "authors": [
+     "MacMillan"
+    ],
+    "year": "2013",
+    "linked_refs": [
+     {
+      "index": 17,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "그리고 교전이 있었다는 오인보고를 이용해 세르비아에 대한 선전 포고를 정당화했다(Rauchensteiner, 2014, pp.127-128).",
+    "raw": "그리고 교전이 있었다는 오인보고를 이용해 세르비아에 대한 선전 포고를 정당화했다(Rauchensteiner, 2014, pp.127-128).",
+    "citation_text": "(Rauchensteiner, 2014, pp.127-128)",
+    "offset": [
+     44,
+     78
+    ],
+    "authors": [
+     "Rauchensteiner"
+    ],
+    "year": "2014",
+    "linked_refs": [
+     {
+      "index": 20,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 19,
+    "uid": "u18_3",
+    "kind": "parenthetical",
+    "sentence": "게다가 영국이 제안한 열강들의 중재를 받아들이라는 독일의 제의를 사실상 거부했다(Rich, 1991, p.453).",
+    "raw": "게다가 영국이 제안한 열강들의 중재를 받아들이라는 독일의 제의를 사실상 거부했다(Rich, 1991, p.453).",
+    "citation_text": "(Rich, 1991, p.453)",
+    "offset": [
+     44,
+     63
+    ],
+    "authors": [
+     "Rich"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 22,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 20,
+    "uid": "u19_3",
+    "kind": "parenthetical",
+    "sentence": "러시아는 자국의 핵심적인 이해가 걸려 있는 해협에서 독일인 장교가 그런 역할을 수행하게 되면 자국의 이해를 크게 침해받는다며 반발했다(Schmutz, 2015).",
+    "raw": "러시아는 자국의 핵심적인 이해가 걸려 있는 해협에서 독일인 장교가 그런 역할을 수행하게 되면 자국의 이해를 크게 침해받는다며 반발했다(Schmutz, 2015).",
+    "citation_text": "(Schmutz, 2015)",
+    "offset": [
+     74,
+     89
+    ],
+    "authors": [
+     "Schmutz"
+    ],
+    "year": "2015",
+    "linked_refs": [
+     {
+      "index": 23,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_4",
+    "kind": "parenthetical",
+    "sentence": "위기는 결국 양측의 타협으로 해결되었지만, 러시아와 독일의 언론은 결과를 두고 자국 정부의 패배라고 부르며 언론전쟁을 추동했다 (MacMeekin, 2011, p.32).",
+    "raw": "위기는 결국 양측의 타협으로 해결되었지만, 러시아와 독일의 언론은 결과를 두고 자국 정부의 패배라고 부르며 언론전쟁을 추동했다 (MacMeekin, 2011, p.32).",
+    "citation_text": "(MacMeekin, 2011, p.32)",
+    "offset": [
+     71,
+     94
+    ],
+    "authors": [
+     "MacMeekin"
+    ],
+    "year": "2011",
+    "linked_refs": [
+     {
+      "index": 16,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 20,
+    "uid": "u19_5",
+    "kind": "parenthetical",
+    "sentence": "그들은 러시아가 힘을 회복함에 따라, 독일에게 복수하려 할 것을 두려워했다(Leonhard, 2018, p.80).",
+    "raw": "그들은 러시아가 힘을 회복함에 따라, 독일에게 복수하려 할 것을 두려워했다(Leonhard, 2018, p.80).",
+    "citation_text": "(Leonhard, 2018, p.80)",
+    "offset": [
+     41,
+     63
+    ],
+    "authors": [
+     "Leonhard"
+    ],
+    "year": "2018",
+    "linked_refs": [
+     {
+      "index": 14,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   },
+   {
+    "page": 21,
+    "uid": "u20_3",
+    "kind": "parenthetical",
+    "sentence": "러시아가 개입하기 전에 오스트리아가 세르비아를 상대로 승리를 거두어 러시아를 외교적으로 패배시킨다는 이른바 “계산된 리스크(Calculated Risk)”에 기반을 둔 기획이었다(Herwig, 2003, p.167).",
+    "raw": "러시아가 개입하기 전에 오스트리아가 세르비아를 상대로 승리를 거두어 러시아를 외교적으로 패배시킨다는 이른바 “계산된 리스크(Calculated Risk)”에 기반을 둔 기획이었다(Herwig, 2003, p.167).",
+    "citation_text": "(Herwig, 2003, p.167)",
+    "offset": [
+     99,
+     120
+    ],
+    "authors": [
+     "Herwig"
+    ],
+    "year": "2003",
+    "linked_refs": [
+     {
+      "index": 12,
+      "num": null,
+      "uid": "u29_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 25,
+    "uid": "u24_2",
+    "kind": "parenthetical",
+    "sentence": "피후견국들은 후견국이 지니는 초강대국간 적대의 지구적 함의에 대해 별로 공감하지 않는다(Shoemaker & Spanier, 1984, p.183).",
+    "raw": "피후견국들은 후견국이 지니는 초강대국간 적대의 지구적 함의에 대해 별로 공감하지 않는다(Shoemaker & Spanier, 1984, p.183).",
+    "citation_text": "(Shoemaker & Spanier, 1984, p.183)",
+    "offset": [
+     48,
+     82
+    ],
+    "authors": [
+     "Shoemaker & Spanier"
+    ],
+    "year": "1984",
+    "linked_refs": [
+     {
+      "index": 24,
+      "num": null,
+      "uid": "u30_1"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "partial"
+   },
+   {
+    "page": 25,
+    "uid": "u24_4",
+    "kind": "parenthetical",
+    "sentence": "그 결과, 독립된 각각의 맥락이 있는 별개의 위기들을 자신을 향한 라이벌 강대국의 대전략적인 음모와 도전의 일부라고 판단할 수 있다(Bercovitch, 1991).",
+    "raw": "그 결과, 독립된 각각의 맥락이 있는 별개의 위기들을 자신을 향한 라이벌 강대국의 대전략적인 음모와 도전의 일부라고 판단할 수 있다(Bercovitch, 1991).",
+    "citation_text": "(Bercovitch, 1991)",
+    "offset": [
+     73,
+     91
+    ],
+    "authors": [
+     "Bercovitch"
+    ],
+    "year": "1991",
+    "linked_refs": [
+     {
+      "index": 5,
+      "num": null,
+      "uid": "u28_2"
+     }
+    ],
+    "n_candidates": 1,
+    "confidence": "exact"
+   }
+  ]
+ }
+}
