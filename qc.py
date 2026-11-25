@@ -138,9 +138,8 @@ def _book_review(dd):
     return all(re.search(r"(?m)^\s*%s\s*[:：]" % re.escape(x), text) for x in labels)
 
 
-# 免卷期刊白名单(2026-11-17 用户拍板, 口径同 nonregular 的强结构证据门槛):
-# 「국방과 보안」——国防部杂志型刊物, 通卷编号, 原文不印卷期。
-_NO_VOL_JOURNALS = {u"국방과 보안"}
+# 免卷白名单已移除(2026-11-25 用户拍板): 该刊 67 篇已按 KCI 著录批量回填卷期,
+# 4 个工作区 novol 篇数均为 0 —— 第三档已是死代码。缺卷期一律照常报缺, 不再结构豁免。
 
 
 def _journal_value(m):
@@ -285,14 +284,7 @@ def qc_of(doc, out_dir=None, ner_root=None):
         return {"issues": [], "level": "", "label": "\u2714", "language": lang}
     if _non_regular_article(dd, m):
         return {"issues": miss, "level": "nonregular", "label": "◇ 非正规论文", "language": lang}
-    # 免卷期刊第三档(2026-11-17 用户拍板): 「국방과 보안」为国防部杂志型刊物, 按通卷
-    # 编号, 原文整批不印卷期(2023-2025 连续区间 ~70 篇 + 页图目检实证, 同族 PDR/세종대
-    # 系连投稿历程行也缺)。强结构证据 = 刊名匹配 + 出版年已由投稿历程脚注填出——
-    # 证明确系该刊体例而非抽取失败。缺项仅限卷/期时不记 bad, 标 "novol"(GUI 紫标)。
-    if set(miss) <= set((u"卷", u"期")) and _journal_value(m) in _NO_VOL_JOURNALS \
-            and (m.get("year") or {}).get("value"):
-        return {"issues": miss, "level": "novol",
-                "label": u"◆ 免卷期刊(原文不印卷期)", "language": lang}
+    # 免卷第三档已移除(2026-11-25): 缺卷/期照常报 bad, 无结构豁免。
     head = "/".join(miss[:4]) + ("…" if len(miss) > 4 else "")
     return {"issues": miss, "level": "bad",
             "label": "\u2718 %d 项 %s" % (len(miss), head), "language": lang}

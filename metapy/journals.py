@@ -25,8 +25,7 @@ FAMILIES = [
         "key": "kgs", "names": ["국방과 보안"], "doi_prefix": None,
         "layout": "免卷期刊(国防部杂志型, 通卷编号): 不印年卷期, 首页投稿历程行 "
                   "'접수일(YYYY년…), 수정일(…), 게재확정일(YYYY년…)' 供推年; 正文 [n] 括号引用",
-        "extractor": "issue._pubdate_fn_year; issue._apply_doi_series('defsec'); "
-                     "qc 免卷第三档(_NO_VOL_JOURNALS)",
+        "extractor": "issue._pubdate_fn_year; issue._apply_doi_series('defsec')",
         "gaps": "13564438 唯一无投稿历程行(年无证据, 备注); 13564462 正文零标注"
                 "(文末 15 条参考文献无文内标记, 备注)。2026-11-18 修正: 原文不印卷期但 "
                 "KCI 官方著录有(2023→5-1, 2024→6-1, 2025→7-x, 2026→8-1)——全库 67 篇已按著录"

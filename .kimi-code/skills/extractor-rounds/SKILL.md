@@ -20,7 +20,7 @@ description: KCI 题录抽取的轮次收敛工作法 —— QC 红单/新批次
 | 问题 | 唯一权威 | 其余只作参考 |
 |---|---|---|
 | 红不红、缺什么 | `qc.qc_of()` | 备注/台账都不覆盖 QC |
-| 这个刊什么体例 | `metapy/journals.py` 族表 + DOI 注册表 + `qc._NO_VOL_JOURNALS` | 三处口径若打架，`why.py --journal` 会标 ⚠，先修一致再判 |
+| 这个刊什么体例 | `metapy/journals.py` 族表 + DOI 注册表 | `why.py --journal <刊名>` 一处查全；免卷豁免已于 2026-11-25 取消，缺卷期一律报红 |
 | 字段值从哪来 | `metadata.json` 的 `confidence.source` / `webfill` | 产物自带出处，不靠备注猜 |
 | 当初为什么这么判 | `reviewed_docs.json`（冻结档案，只解释过去） | 不判现在，与 QC 冲突时以 QC 为准 |
 | GUI 上显示的备注 | 工作区 `gui_notes.json`（可被回填脚本覆盖） | 展示文字，非判据 |
@@ -91,7 +91,7 @@ python golden.py run --ws <区>  # 改完跑黄金样本, 已有样本必须全�
 ```bash
 python stages.py --batch <本簇篇目> front,abs,issue      # 只重跑目标簇, 绝不顺手全库
 python meta_diff.py diff                                  # 三道闸:
-#   a. QC 恶化表必须空 (ok/novol -> bad = 0)
+#   a. QC 恶化表必须空 (ok/nonregular -> bad = 0; novol 档已于 2026-11-25 取消)
 #   b. 字段组统计里可疑组合逐篇过 (如 volume/issue 互换 → 必须对页眉印刷证据)
 #   c. _meta_diff_<tag>.json 人工抽验变更值
 ```
