@@ -135,6 +135,18 @@ def _pick_title(j, want_hangul, lang=None):
             cand.append((1, lines[1]))   # 题名可能在次行(短引导行/副标题在首行的形态)
         for li, t in cand:
             f = _fold(t)
+            # 题名槽不收 DOI/引文/单独韩名署名/破折号副题前缀(标题好修 47 篇)
+            if re.match(r"(?i)^(?:https?://|dx\.doi\.org|doi\s*[:：])", t) \
+                    or re.search(r"10\.\d{4,}/", t):
+                continue
+            if re.match(r"^[A-Z][A-Za-z\-']+,\s*(?:[A-Z][A-Za-z\-']*\.?\s*)?\((?:19|20)\d{2}", t):
+                continue
+            if re.search(r"\((?:19|20)\d{2}[a-z]?\)\.", t) or re.match(r"^\[[^\]]{20,}\]", t):
+                continue
+            if re.match(r"^[가-힣]{2,5}[^\s가-힣A-Za-z]{0,6}$", t):
+                continue
+            if re.match(r"^[-·•]+\s*[가-힣]", t) and len(_fold(t)) < 80:
+                continue
             _min_len = 7 if (u["type"] == "Section-header" and li == 0) else 10
             if not (_min_len <= len(f) <= 220):
                 continue
@@ -175,6 +187,9 @@ def _pick_title(j, want_hangul, lang=None):
                         r"(?:\s*[·•․]\s*[A-Z][A-Za-z\-']+, [A-Z][A-Za-z\-']+\*{0,4})*$", t):
                 continue
             hr = _hangul_ratio(t)
+            if not want_hangul and re.search(u"[가-힣]",
+                    re.sub(r"\([^)]*\)", "", t)):
+                continue   # 英题通道不收韩文署名/正文混排行
             # 英题里括注汉字('Dōshō(道昭)')是题名一部分, 不是韩文题名; 只在英文通道
             # 剥掉括号内的 CJK 再判, 防止真英题被 has_cjk 整行拒收(13563582)。
             _cjk_src = re.sub(r"\([^)]*[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff][^)]*\)",
@@ -205,7 +220,7 @@ def _pick_title(j, want_hangul, lang=None):
                     or len(re.findall(u"[다요음임]\\.\\s", t)) >= 1:
                 continue
             # 目录/章节列表行不是题名; 单名+HTML上标是署名行(13564051)
-            if re.match(u"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.、]\\s", t) \
+            if re.match(r"^[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.、]\s", t) \
                     or re.match(u"^(?:\\d{1,2}[.、]\\s*){2,}", t) \
                     or re.match(u"^[가-힣]{2,4}<sup>[^<]*</sup>$", t):
                 continue
@@ -1706,6 +1721,17 @@ def front_doc(doc, out_root):
         t = re.sub(u"[¹²³⁴⁵⁶⁷⁸⁹⁰]+$", "", t).strip()
         return t
 
+    def _clean_title_en(t):
+        t = _clean_title(t)
+        t = t.replace(r"\langle", "<").replace(r"\rangle", ">")
+        t = re.sub(r"\\\*", "", t)
+        # 英题前粘韩文副题时，从'韩文之后的第一个英文词'起取
+        _m = next((m for m in re.finditer(r"[A-Za-z]{4,}", t)
+                   if re.search(u"[가-힣]", t[:m.start()])), None)
+        if _m:
+            t = t[_m.start():]
+        return t.strip()
+
     # —— 体例兜底(2026-11-12 全覆盖): 英文期刊/SpringerOpen/老式韩文期刊把题名判为
     #     Section-header、作者判为独立 Text、机构塞进 Page-footer 或附注句, 现有
     #     _pick_title/_zone/MARKER_LINE 三套判据都够不着; 而 merged.json 三家读法逐块都在。
@@ -2376,6 +2402,17 @@ def front_doc(doc, out_root):
     # 并列, 真副题不呈此形。星标可能已被 _clean_title 剥掉(*{0,4})。
     if title_value:
         title_value = _strip_title_byline(title_value)
+
+    _title_en_val = _clean_title_en(_best_text(t_en, li_en, keep_all=lang in ("ru", "pt", "fr", "en"), majority=lang in ("ru", "pt", "fr", "en"))) if t_en else None
+    if _title_en_val and t_en:
+        # 英题同块渠道读法更长时取长读法(副标题被截断的 5 篇)
+        for _r in (t_en.get("readings") or []):
+            for _rl in (_r.get("text") or "").split("\n"):
+                _rl = _clean_title_en(_rl)
+                if len(_rl) > len(_title_en_val) \
+                        and _fold(_title_en_val) in _fold(_rl):
+                    _title_en_val = _rl
+
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -2383,7 +2420,7 @@ def front_doc(doc, out_root):
         "title": {"value": title_value,
                   "page": t_ko_c.get("page"), "box": t_ko_c.get("box"), "uid": t_ko_c.get("uid"),
                   "confidence": {"level": t_ko_c["level"], "source": t_ko_c["source"]}},
-        "title_en": {"value": _clean_title(_best_text(t_en, li_en, keep_all=lang in ("ru", "pt", "fr", "en"), majority=lang in ("ru", "pt", "fr", "en"))) if t_en else None,
+        "title_en": {"value": _title_en_val,
                      "page": t_en_c.get("page"), "box": t_en_c.get("box"), "uid": t_en_c.get("uid"),
                      "confidence": {"level": t_en_c["level"], "source": t_en_c["source"]}},
         "authors": _rescue_empty_authors(authors, doc_dir) if not authors else authors,
