@@ -127,6 +127,12 @@ _MANUAL = {
                      "source": "manual",
                      "note": u"doi.org CSL + KCI 著录页双证实 2026-11-18; 발행기관 사단법인 방정환연구소, "
                              u"ISSN 2671-4051。注意: KCI 卷=자체권(2025→7), DOI 第二段=통권(13/14)"},
+    "10.23192/kjcss": {"journal": u"중국사회과학논총",
+                       "journal_en": "The Korea Journal of Chinese Social Science",
+                       "source": "manual",
+                       "note": u"2026-11-25 用户定: 英韩刊名双全。corpus 投票 18 篇误把页脚英文名"
+                               u"塞进 journal 且 journal_en 复制同值; 原文页脚英文刊名 + 页码块韩文"
+                               u"刊名 + ODPS 著录三证。manual 覆盖 corpus(_MANUAL 先入 setdefault)。"},
     "10.23073/defsec": {"journal": u"국방과 보안", "journal_en": None, "source": "manual",
                         "note": u"国防部杂志型免卷刊物(2026-11-17 用户拍板)"},
     "10.37944/jams": {"journal": "Journal of Advances in Military Studies",
@@ -170,6 +176,25 @@ def journal_from_doi(text):
     if hits:
         row = reg[hits[0]]
         return row.get("journal"), row.get("journal_en")
+    return None, None
+
+
+def journal_from_name(text):
+    """原文刊名(韩/英) → (刊名, 刊名英) 或 (None, None)。仅 manual 行, 反查最长名优先。
+
+    无 DOI 篇(13569945 等 5 篇 kjcss)页脚印英文刊名 The Korea Journal of Chinese
+    Social Science, 靠它反查注册表 manual 行拿到韩文主名, 补上 DOI 缺失的缺口。
+    """
+    reg = load_registry()
+    folded = re.sub(r"\s+", "", (text or "").lower())
+    manual = [(k, v) for k, v in reg.items() if v.get("source") == "manual"]
+    manual.sort(key=lambda kv: -max(len(re.sub(r"\s+", "", str(kv[1].get(f) or "")))
+                                    for f in ("journal", "journal_en")))
+    for _k, row in manual:
+        for f in ("journal", "journal_en"):
+            name = re.sub(r"\s+", "", str(row.get(f) or "").lower())
+            if len(name) >= 8 and name in folded:
+                return row.get("journal"), row.get("journal_en")
     return None, None
 
 

@@ -801,6 +801,12 @@ def _apply_running_journal(res, source, excluded):
             continue
         if re.search(r"[.!?:：;；|]|https?://|www\.", s):
             continue
+        # 2026-11-25: 机构署名行不得当选 running 刊名(13570501 等 11 篇实证):
+        # '전북대학교 문화융복합아카이빙연구소' 每页重复出现被当刊名, 压过页眉首行的
+        # 真刊名 '디지털문화아카이브지'。全库实测以大学/研究所/学科结尾的刊名仅这 11 篇,
+        # 全是错误值, 零误伤; 拦掉后真刊名(本来就在候选池)自然胜出。
+        if re.search(u"(?:대학교|연구소|연구원|연구재단|학과|교수|대학)$", s.strip()):
+            continue
         votes[folded].add(page)
         display[folded] = s
     candidates = [(len(pages), key) for key, pages in votes.items() if len(pages) >= 2]
@@ -810,6 +816,33 @@ def _apply_running_journal(res, source, excluded):
     res["journal"] = {"value": display[key], "uid": None,
                       "confidence": {"level": "mid", "source": "running_header"}}
     return True
+
+
+def _is_journal_fragment(value):
+    """断行残片形态的刊名(2026-11-25, 5 篇 jdca 实证): 原文页眉 'Journal of | Culture |
+    Archives' 被 OCR 断成三行, 抽取只吃到前两行 'Journal of'。全库精确命中这 5 篇。"""
+    return bool(re.match(r"^(?:Journal\s*of|Journalof|The\s+Journal|Of\s+[A-Z]|Vol\.?|No\.?)\s*$",
+                         str(value or "").strip(), re.I))
+
+
+def _should_registry_override(journal_field, registry_value, manual_mismatch=False):
+    """低置信猜测 / manual 注册表错值可被高置信值纠正(2026-11-25)。
+
+    两条放行路径:
+      ① running_header / channel_fallback 来源 + 注册表值韩文 —— 纠正题名/作者名当刊名
+         (13568652/677、13570527/529/564 五篇实证, 零误伤)。
+      ② manual_mismatch: DOI 前缀命中 manual 行且当前值≠manual 刊名 —— 人工双证实的
+         封闭值域纠正自动判定的错值(kjcss 18 篇英文名塞进 journal 槽, 零误伤)。
+    corpus 投票行一律不参与纠正(会自我强化错误), 只有 manual 行有此权力。
+    """
+    src = ((journal_field or {}).get("confidence") or {}).get("source")
+    if manual_mismatch:
+        return True
+    # 断行残片: 不管来源(regex 也可)与注册表行类型(corpus 也可), 残片不是有效刊名。
+    if _is_journal_fragment(journal_field.get("value") if isinstance(journal_field, dict) else None):
+        return bool(registry_value)
+    return (src in ("running_header", "channel_fallback")
+            and bool(re.search(u"[가-힣]", registry_value or "")))
 
 
 def _apply_doi_series(res, source):
@@ -1136,14 +1169,30 @@ def issue_doc(doc, out_root):
     #    → 查表填空(只填空不覆盖; corpus 行由 failures.py --round 每轮重扫维护,
     #    manual 行永驻——BJH=방정환연구 经 doi.org CSL + KCI 著录页双证实)。
     _jk = _fit = None
-    if res["journal"]["value"] is None:
-        _jk, _je = jreg.journal_from_doi("\n".join(s for _p, _u, s in source))
-        if _jk:
-            res["journal"] = {"value": _jk, "uid": None,
-                              "confidence": {"level": "high", "source": "doi_registry"}}
-            if res["journal_en"]["value"] is None and _je:
-                res["journal_en"] = {"value": _je, "uid": None,
-                                     "confidence": {"level": "high", "source": "doi_registry"}}
+    # 2026-11-25: running_header 是低置信启发式(mid), 会把文章内部行当刊名
+    #   (13568641 '…중략…' / 13568660 '반갑게 먼저 말을 걸어 줘' / 13568677 '천공의 용소년…')。
+    #   这类篇原文不印刊名, 只有 DOI 前缀 BJH(10.33957) = 방정환연구(注册表双证实 high)。
+    #   running_header 来源 + DOI 在注册表 → 让 high 证据纠正 mid 猜测。全库精确命中这 3 篇,
+    #   零误伤; 其它来源(作者直接判定/渠道兜底)一概不动。
+    _doi_txt = "\n".join(s for _p, _u, s in source)
+    _jk, _je = jreg.journal_from_doi(_doi_txt)
+    if not _jk:
+        # 无 DOI 篇(13569945 等 5 篇 kjcss): 页脚印英文刊名, 靠英文名反查 manual 行。
+        _jk, _je = jreg.journal_from_name(_doi_txt)
+    # manual 行是人工双证实的封闭值域: 当前值不符即可纠正(不受"只填空"限制)。
+    # corpus 投票行无此权力——它会自我强化错误(kjcss 18 篇曾把英文名投进 journal 槽)。
+    _manual_row = next((row for row in jreg.load_registry().values()
+                        if row.get("source") == "manual" and row.get("journal") == _jk), None)
+    _manual_mismatch = bool(_manual_row and res["journal"]["value"] != _manual_row.get("journal"))
+    if _jk and (res["journal"]["value"] is None
+                or _should_registry_override(res["journal"], _jk, _manual_mismatch)):
+        res["journal"] = {"value": _jk, "uid": None,
+                          "confidence": {"level": "high", "source": "doi_registry"}}
+        # 英韩双全: manual 行给的 journal_en 要用上; 旧值即便非空, 若等于错误的 journal 旧值
+        # (18 篇把英文名同时塞进两槽)也要纠正为 manual 的英文刊名。
+        if _je and (res["journal_en"]["value"] is None or _manual_mismatch):
+            res["journal_en"] = {"value": _je, "uid": None,
+                                 "confidence": {"level": "high", "source": "doi_registry"}}
     # —— 同刊卷期账本推断(只填空): 缺卷/期且同刊存在"印刷页码完整落入其跨度、又不与
     #    已知文章撞车"的唯一卷期 → 继承(语料自带冗余; 无 DOI 篇如 KCI_FI/중국사회과학논총)。
     if res["volume"]["value"] is None or res["issue"]["value"] is None:
@@ -1305,6 +1354,16 @@ def issue_doc(doc, out_root):
         kw_raw = kw_raw_en
         kw_loc = kw_loc_en
         audit["keywords_language_fallback"] = u"keywords[] 原语种空缺, 以 keywords_en 同值填充"
+    # 2026-11-25: 重跑不得冲掉外部回填值(webfill 的 web_record / volume_only)。
+    # 旧值来自联网著录、原文往往不印该字段, 重跑 extract 算出 None 会把著录值抹掉
+    # (13564373 实证: web_record 卷7期1 被冲成 None; 同批 5 篇 kjcss webfill 卷期亦如此)。
+    # 只保留"旧值有值 且 来源在白名单"的字段; 其余照常用新算结果, 幂等。
+    _KEEP_SRC = ("web_record", "volume_only")
+    for _f in ("journal", "journal_en", "year", "volume", "issue", "pages"):
+        _old = meta.get(_f) or {}
+        _src = (_old.get("confidence") or {}).get("source") if isinstance(_old, dict) else None
+        if _src in _KEEP_SRC and _old.get("value") is not None:
+            res[_f] = _old
     meta.update({
         "doc": doc,
         "generated": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -1634,15 +1693,43 @@ def _selftest():
     r39 = extract([(2, "u2", u"Ciência & Saúde Coletiva, 17(3):621-626, 2012")], 3, set(), lang="pt")
     ok39 = r39["year"]["value"] == 2012 and r39["volume"]["value"] == 17 \
         and r39["issue"]["value"] == 3 and r39["pages"]["value"] == "621-626"
+    # 41) 机构署名行不得当 running 刊名(2026-11-25, 13570501 等 11 篇实证):
+    #   机构行每页重复会被 _apply_running_journal 选中, 压过页眉首行真刊名。
+    _j41 = extract([(0, "u0", u"디지털문화아카이브지 Vol.7 No.2, 2024.10."),
+                    (0, "u1", u"전북대학교 문화융복합아카이빙연구소"),
+                    (1, "u2", u"디지털문화아카이브지 Vol.7 No.2, 2024.10."),
+                    (1, "u3", u"전북대학교 문화융복합아카이빙연구소")], 2, set())
+    ok41 = _j41["journal"]["value"] == u"디지털문화아카이브지"
+    # 42) running_header 垃圾值被 DOI 注册表纠正(2026-11-25, BJH 3 篇):
+    #   只放行 running_header 来源; 其它来源(原文直接判定)不得被覆盖。
+    _bjh = u"방정환연구"
+    ok42 = (_should_registry_override({"confidence": {"source": "running_header"}}, _bjh)
+            and _should_registry_override({"confidence": {"source": "channel_fallback"}}, _bjh)
+            and not _should_registry_override({"confidence": {"source": "regex"}}, _bjh)
+            and not _should_registry_override({"confidence": {"source": "doi"}}, _bjh)
+            and not _should_registry_override({"confidence": {"source": "running_header"}}, "The Korea Journal")
+            and not _should_registry_override(None, _bjh)
+            # manual 行封闭值域: 值不符即纠正(不受来源限制), 即使来源 regex。
+            and _should_registry_override({"confidence": {"source": "regex"}}, _bjh, True)
+            and not _should_registry_override({"confidence": {"source": "regex"}}, _bjh, False))
+    # 43) 断行残片 Journal of 可被 DOI 注册表(corpus 行也可)纠正; 正常刊名不受影响。
+    ok43 = (_is_journal_fragment(u"Journal of")
+            and _is_journal_fragment(u"Journalof")
+            and not _is_journal_fragment(u"Journal of Culture Archives")
+            and _should_registry_override({"value": u"Journal of", "confidence": {"source": "regex"}},
+                                          u"디지털문화아카이브지")
+            and not _should_registry_override({"value": u"ESP Review", "confidence": {"source": "regex"}},
+                                               u"디지털문화아카이브지"))
     for i, ok in enumerate((ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13,
                             ok14, ok15, ok16, ok17, ok18, ok19, ok19b, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
-                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37, ok38, ok39), 1):
+                            ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37, ok38, ok39,
+                            ok41, ok42, ok43), 1):
         if ok:
             n_ok += 1
         else:
             print("FAIL [issue case %d]" % i)
-    print("issue selftest: %d/40 PASS" % n_ok)
-    return n_ok == 40
+    print("issue selftest: %d/43 PASS" % n_ok)
+    return n_ok == 43
 
 
 if __name__ == "__main__":
