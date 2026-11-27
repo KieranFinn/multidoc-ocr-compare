@@ -120,7 +120,10 @@ def _pick_title(j, want_hangul, lang=None):
     H = float(j["h"])
     best, bs, bli = None, -1.0, 0
     for u in j["unified"]:
-        if u.get("cross_page", {}).get("role"):
+        _cp_role = (u.get("cross_page") or {}).get("role")
+        # R1: 英题通道放行跨页 head 片段(题名被 unify 合并进脚注块的形态, 13563549 实证);
+        # tail 片段与韩文通道仍一律跳过, 避免正文残片占题名槽。
+        if _cp_role and not (not want_hangul and _cp_role == "head"):
             continue
         if u["type"] in ("Page-header", "Page-footer", "Page-number", "Footnote"):
             continue
@@ -147,6 +150,8 @@ def _pick_title(j, want_hangul, lang=None):
                 continue
             if re.match(r"^[-·•]+\s*[가-힣]", t) and len(_fold(t)) < 80:
                 continue
+            if "@" in t or "|" in t or t.lstrip().startswith("$") or "\\bar" in t:
+                continue   # 邮箱/角色分隔/数学行不进题名槽
             _min_len = 7 if (u["type"] == "Section-header" and li == 0) else 10
             if not (_min_len <= len(f) <= 220):
                 continue
@@ -241,6 +246,192 @@ def _pick_title(j, want_hangul, lang=None):
             if score > bs:
                 best, bs, bli = u, score, li
     return best, bli
+
+# ---- title_en 单一入口(2026-11-26): 主副题按原文续行拼接 ----
+# 所有 title_en 出口统一经 _join_en_subtitle。只读 front 页 unified 原文行,
+# 只认 ':'/'-' 前缀的续行与'姓, 名. (年).'引文壳; 不取正文/署名, 不从 ODPS 抄。
+_SUBTITLE_CONT = re.compile(u"^\\s*[:：\\-–—]\\s*\\S")
+_CITATION_SHELL = re.compile(
+    u"\\((?:19|20)\\d{2}\\)\\.\\s*(.+?)\\.\\s+"
+    u"[A-Z][A-Za-z ]+,\\s*\\d+\\s*\\(\\d+\\),\\s*\\d+\\s*-\\s*\\d+\\.")
+
+
+def _en_title_line_ok(s):
+    """单行英题候选守卫: 英文题名形态, 排正文/署名/机构/引文/书评书目。"""
+    s = (s or "").strip()
+    s = re.sub(r"^#+\s*", "", s).strip()
+    if not (12 <= len(s) <= 220):
+        return False
+    if re.search(u"[\\u3400-\\u9fff\\uf900-\\ufaff\\uac00-\\ud7a3]",
+                 re.sub(r"\([^)]*\)", "", s)):
+        return False
+    if not re.search(r"[A-Za-z\\u00c0-\\u024f]{3}", s):
+        return False
+    if "@" in s or "|" in s or "http" in s or s.lstrip().startswith("$"):
+        return False
+    if u"․" in s or u"―" in s or u"—" in s or "*" in s or u"·" in s:
+        return False      # 书评书目作者并列 / 引题 / Markdown 斜体残留
+    if re.match(r"^[A-Z][A-Za-z\-']+,\s*[A-Z][A-Za-z\-']+\*{0,4}$", s):
+        return False
+    if re.search(r"(?i)\\b(?:university|college|institute|department|"
+                 r"laborator|research cent|faculty|school of)\\b", s):
+        return False
+    if re.match(r"(?i)^(?:this|these|we |our |the study|in this|results?|"
+                r"conclusion|abstract|keyword)", s):
+        return False
+    if re.search(r"(?i)\\b(?:pp\\.|vol\\.|doi|copyright|reserved)\\b", s):
+        return False
+    if re.search(u"(?:다|요|음|임|함|됨)\\.\\s*$", s):
+        return False
+    return True
+
+
+def _clear_cross_role(j):
+    """交叉页合并块 cross_page.role='head' 会让 _pick_title 整块跳过;
+    返回 role 已清的只读副本, 供 title_en 兜底重选(不改原文产物)。"""
+    j2 = dict(j)
+    j2["unified"] = []
+    for u in j.get("unified") or []:
+        u2 = dict(u)
+        cp = dict(u.get("cross_page") or {})
+        cp["role"] = None
+        u2["cross_page"] = cp
+        j2["unified"].append(u2)
+    return j2
+
+
+def _citation_title_from_source(doc_dir, front_page=1):
+    """书评体: 英题以 '姓, 名. (年). 题名. 刊, 卷(期), 页.' 单行印出;
+    _pick_title 的 '(年).' 守卫整行拒收, 这里只在题名区(y 150-600)捞回整行,
+    交给 _join_en_subtitle 剥壳取题名。正文参考文献不在此 y 区, 不误捞。"""
+    udir = os.path.join(doc_dir, "unified")
+    try:
+        names = sorted(os.listdir(udir))
+    except OSError:
+        return None
+    for fn in names:
+        mm = re.match(r"page_(\d+)\.json$", fn)
+        if not mm or int(mm.group(1)) > front_page:
+            continue
+        try:
+            j = json.load(io.open(os.path.join(udir, fn), encoding="utf-8"))
+        except Exception:
+            continue
+        for u in j.get("unified") or []:
+            y = (u.get("box") or [0, 0])[1]
+            if not (150 <= y <= 600):
+                continue
+            for ln in (u.get("main_text") or "").split("\n"):
+                s = ln.strip()
+                if _CITATION_SHELL.search(s) and re.match(
+                        r"^[A-Z][A-Za-z\-']+,\s*[A-Z]", s):
+                    return s
+    return None
+
+
+def _join_en_subtitle(val, doc_dir, front_page=1):
+    """在 title_en 单一出口做主副题续行拼接:
+    现行 val 必须是原文行折叠的子串, 且确有 ':'/'-' 续行形态才拼; 其余原样。"""
+    if not val:
+        return val
+    m = _CITATION_SHELL.search(val)
+    if m and re.match(r"^[A-Z][A-Za-z\-']+,\s*[A-Z]", val):
+        return m.group(1).strip()   # 引文壳: 只留题名, 不取作者/刊名/页码
+    udir = os.path.join(doc_dir, "unified")
+    try:
+        names = sorted(os.listdir(udir))
+    except OSError:
+        return val
+    blocks = []
+    for fn in names:
+        mm = re.match(r"page_(\d+)\.json$", fn)
+        if not mm or int(mm.group(1)) > front_page:
+            continue
+        try:
+            j = json.load(io.open(os.path.join(udir, fn), encoding="utf-8"))
+        except Exception:
+            continue
+        for u in j.get("unified") or []:
+            if u.get("type") in ("Page-header", "Page-footer", "Page-number", "Footnote"):
+                continue
+            mt = (u.get("main_text") or "").strip()
+            if not mt or mt.startswith("<"):
+                continue
+            y = (u.get("box") or [0, 0])[1]
+            ls = [x.strip() for x in mt.split("\n") if _en_title_line_ok(x)]
+            if ls:
+                blocks.append((y, ls))
+    blocks.sort(key=lambda b: b[0])
+    pairs = []
+    for _y, ls in blocks:
+        pairs.extend(zip(ls, ls[1:]))
+    for (_y1, l1), (_y2, l2) in zip(blocks, blocks[1:]):
+        if _y2 - _y1 <= 90:
+            pairs.append((l1[-1], l2[0]))
+    # 渠道读法补充: unified 常把主/副题拆到不同块, 而某渠道单行带 ':' 前缀。
+    # 只取首页前 20 行的题名形态行, 且只在续行形态成立时配对(不取正文/署名)。
+    try:
+        from metapy.common import channel_lines
+        chl = []
+        for _p, _ch, _t in channel_lines(doc_dir):
+            if _p != front_page:
+                continue
+            for _ln in _t.split("\n")[:20]:
+                _s = _ln.strip()
+                if _en_title_line_ok(_s) and _s not in chl:
+                    chl.append(_s)
+        pairs.extend(zip(chl, chl[1:]))
+    except Exception:
+        pass
+    cands = []
+    for a, b in pairs:
+        if _SUBTITLE_CONT.match(b):
+            joined = a + (" " if b.lstrip()[0] in u"-–—" else "") + b.strip()
+            pri = 0                      # 正序: 主题 + ':'/'-' 副题
+        elif re.search(u"[:：\\-–—]\\s*$", a) and not _SUBTITLE_CONT.match(b):
+            joined = a.rstrip() + " " + b.strip()
+            pri = 1                      # 主题以 ':' 收尾 + 次行续题
+        elif _SUBTITLE_CONT.match(a) and not _SUBTITLE_CONT.match(b):
+            joined = b.strip() + ("" if a.lstrip()[0] in u":：" else " ") + a.strip()
+            pri = 2                      # 逆序: 副题行在主题行之上
+        else:
+            continue
+        if len(joined) <= 260:
+            cands.append((pri, joined))
+    vf = _fold(val)
+    hit = [(p, c) for p, c in cands if vf in _fold(c) and len(_fold(c)) > len(vf)]
+    if not hit:
+        # 卷末英文目录页常把主副题单行印全(front 页只印主题)。只认"独立单行块"
+        # 且与当前题名同文(前缀包含)或以 ':'/'-' 续行开头, 不取正文/署名/引文页。
+        ext = []
+        try:
+            from metapy.common import channel_lines
+            for _p, _ch, _t in channel_lines(doc_dir):
+                _lines = [z.strip() for z in _t.split("\n") if z.strip()]
+                if len(_lines) != 1:
+                    continue
+                _s = _lines[0]
+                if not _en_title_line_ok(_s):
+                    continue
+                if vf and vf in _fold(_s) and len(_fold(_s)) > len(vf):
+                    ext.append((0, _clean_title(_s)))
+                elif _SUBTITLE_CONT.match(_s) and _fold(_s) not in vf:
+                    _sf = _fold(_s.lstrip(u":：-–— \t"))
+                    if len(_sf) >= 18 and _sf[:18] in vf:
+                        continue   # 当前题名已有同副题(措辞差), 不再拼一遍
+                    _j = val + (" " if _s.lstrip()[0] in u"-–—" else "") + _s.strip()
+                    if len(_j) <= 260:
+                        ext.append((1, _j))
+        except Exception:
+            pass
+        if ext:
+            ext.sort(key=lambda pc: (pc[0], -len(pc[1])))
+            return ext[0][1]
+        return val
+    hit.sort(key=lambda pc: (pc[0], -len(pc[1])))
+    return hit[0][1]
+
+# ---- end title_en 单一入口 ----
 
 _AFFIL_TAIL = re.compile(
     u"(?:초빙교수|겸임교수|명예교수|특임교수|전임교수|부교수|조교수|교수|강사|선임연구원|책임연구원|"
@@ -562,7 +753,7 @@ _NOISE_AUTHOR_LINE = re.compile(
     u"키\\s*워드|Keywords?\\b|Key\\s+words?\\b|핵심\\s*주제어|주\\s*제\\s*어|"
     u"중심\\s*어|핵심\\s*어|주요\\s*어|"
     u"한글\\s*요약|논문\\s*요약|국문\\s*요약|영문\\s*요약|요약\\s*[:：]|"
-    u"초\\s*록|목\\s*차|\\d{1,2}\\s*[.)．]\\s+\\S|"
+    u"초\\s*록|조\\s*록|목\\s*차|\\d{1,2}\\s*[.)．]\\s+\\S|"
     u"논문접수|심사[일완]|게재확정일|(?:목적|연구방법|결과|결론)\\s*[:：]|"
     u"(?:이다|었다|였다)\\.\\s*$|"
     u"Abstract\\b|ABSTRACT\\b)", re.I)
@@ -572,7 +763,15 @@ def _is_noise_author_line(line):
     s = (line or "").strip()
     if not s:
         return False
-    return bool(_LAYOUT_TEMPLATE_AUTHOR.match(s) or _NOISE_AUTHOR_LINE.match(s))
+    if _LAYOUT_TEMPLATE_AUTHOR.match(s) or _NOISE_AUTHOR_LINE.match(s):
+        return True
+    # 引号包裹的韩文叙述句不是署名(13569766 '“패션은 ... 왔다1)”。' 切出 계층/물질화
+    # 误占作者槽; 真作者在旁边 '이영아, 주저자' 行)。署名从不整行被引号包裹, 零误伤。
+    if (s and s[0] in u"“‘\"" and len(_fold(s)) >= 40
+            and re.search(u"[가-힣]", s) and not re.search(r"[*†‡<]", s)
+            and re.search(u"(?:[”’\"]\\s*[。.]?\\s*$|다\\d*\\)\\s*[”’\"])", s)):
+        return True
+    return False
 
 
 # 署名块结构判据(2026-11-26): '韩名,角色' 行的下一行来自机构/职位/邮箱,
@@ -1011,6 +1210,24 @@ def _byline_lead(s):
                 or rest[0] in u" ,(*·†‡§¹²³⁴⁵⁶⁷⁸⁹$*")
     return _latin_byline_lead(s)
 
+
+# 拉丁姓名 + 韩文机构粘连署名行(13567400 'Huang Linyu 세종대학교' 实证): 整行含
+# 机构词会被 affils_zone 误收、真作者丢失。只认 2-3 个大写拉丁词起首、紧接韩文
+# 机构词的行; 用 _looks_affil 验收机构侧, 韩文正文/题名残句不会命中。
+_LATIN_KO_BYLINE = re.compile(
+    u"^([A-Z][A-Za-z'-]+(?:[ \\t]+[A-Z][A-Za-z'-]+){1,2})[ \\t]+([가-힣].*)$")
+
+
+def _split_latin_ko_byline(s):
+    m = _LATIN_KO_BYLINE.match((s or "").strip())
+    if not m or not _latin_author_ok(m.group(1), "en"):
+        return None
+    tail = m.group(2).strip()
+    if len(tail) > 80 or not _looks_affil(tail):
+        return None
+    return m.group(1), tail
+
+
 def _parse_author_line(line, u, foot_affil):
     """作者行解析: 上标集合化(*/**/***/†/‡/¹²/LaTeX $^{1)}$ 全归一) + 机构剥离 + 职称/角色词剥离
     + 括号内罗马拼音硬锚 + OCR 粘连名(홍영식서울교육대학교)按机构词表切开。
@@ -1132,6 +1349,18 @@ def _parse_author_line(line, u, foot_affil):
                      "affiliation": _aff or None,
                      "role": _role0, "roman": None}]
     out = []
+    # 署名机构混排(13567459): '김주삼 아시아·태평양교류협력연구원' —— 韩名 + 空格 + 机构,
+    # 机构内含'·'(아시아·태평양...)会被当作者分隔符切成假作者'태평양'。整行形如
+    # '韩名2-4 + 空格 + 含·的机构' 且机构以机构词缀收尾时, 名止于空格, 机构整段归 affiliation。
+    # 全库该精确形态仅 1 篇, 零误伤。
+    _name_org = re.match(u"^([가-힣]{2,4})\\s+(.+·.+)$", line)
+    if (_name_org and _looks_affil(_name_org.group(2))
+            and not re.search(r"[*†‡<]", _name_org.group(2))   # 机构名不含作者星标
+            and re.search(u"(?:연구원|연구소|센터|재단|학회|협회|대학|학교|부|과|팀)$",
+                          _name_org.group(2).strip())):
+        return [{"name": _name_org.group(1), "markers": _mk0,
+                 "affiliation": _strip_affil_tail(_name_org.group(2).strip()) or None,
+                 "role": _role0, "roman": None}]
     glued_names = list(re.finditer(u"([가-힣]{2,4})(?:<sup>\\d+</sup>|\\*{0,2})?(\\([^)]+\\))", line))
     #  glued_names 是“韩名(韩文机构)”多作者粘连专用; 长句里多个'韩词(英文术语)'是正文
     # (13581817 摘要实证), 不得在这里截断成假作者。
@@ -1182,7 +1411,7 @@ def _parse_author_line(line, u, foot_affil):
         tk = SUP_LATEX.sub("", tk)
         tk = re.sub(r"<sup>.*?</sup>", "", tk, flags=re.I)
         tk = re.sub(r"</?sup>", "", tk, flags=re.I)
-        tk = re.sub(r"(\*{1,4}|†|‡|§)+(?=$|[\s·•,.])", "", tk).strip(" ·•,․")
+        tk = re.sub(r"(\*{1,4}|†|‡|§)+(?=$|[\s·•,.(\(（])", "", tk).strip(" ·•,․")
         role = None
         mrole = ROLE_WORDS.search(tk)
         _role_paren_lead = bool(re.match(u"^\\([^)）]*\\)", tk))
@@ -1497,6 +1726,13 @@ def front_doc(doc, out_root):
             if _looks_affil(_v):
                 affils_zone.append(_v)
             continue
+        # 拉丁姓名+韩文机构粘连署名(13567400): 先按结构切开, 避免整行被当机构行吞掉。
+        _lka = _split_latin_ko_byline(s)
+        if _lka:
+            authors.append({"name": _lka[0], "markers": [], "affiliation": _lka[1],
+                            "role": None, "roman": None, "uid": u["uid"],
+                            "page": front_page, "box": _author_line_box(u, s)})
+            continue
         # 作者行后面的机构行(13581817 '안현욱 손영우† / 연세대학교 심리학과' 实证): 先按机构归类,
         # 否则 '연세대학교…' 会被 OCR 粘连逻辑切成假作者 '연세'。
         if AFFIL_HEAD.search(s) and not _byline_lead(s):
@@ -1613,7 +1849,7 @@ def front_doc(doc, out_root):
     affils = [_clean_affil(x) for x in affils if x]
     affils = [x for x in affils if _looks_affil(x)]
 
-    def _best_text(u, line_idx=0, keep_all=False, majority=False):
+    def _best_text(u, line_idx=0, keep_all=False, majority=False, en_channel=False):
         """题名取值: 主读法之外, 若各渠道 dice 与主读法≥0.8, 取断行/空格最多者(dots 断行='\n' 版
         本即带空格的正确形态); 多行块按主读法首行的折叠长度截前缀(英题名+韩作者行同块形态)。
         line_idx>0 时直接取该行的渠道最优读法(副标题块次行的英题名, 13563529)。
@@ -1650,6 +1886,12 @@ def front_doc(doc, out_root):
                 if not _s:
                     continue
                 if _parts:
+                    # R2: 英题块常把署名/机构行并进同一块; 这些行含韩文或邮箱/角色分隔符,
+                    # 继续拼接会被外层"[가-힣]/@/|"守卫整条作废。按行截断, 只留题名本身。
+                    # 必须只作用于英题通道——韩题在 lang=en/pt/fr/ru 时也走 keep_all, 误伤会截题。
+                    if en_channel and (re.search(u"[가-힣]", _s) or "@" in _s or "|" in _s
+                                       or _s.lstrip().startswith("$")):
+                        break
                     if re.search(r"[.!?。]$", _parts[-1]) or _front_head(_s) \
                             or len(" ".join(_parts)) > 200:
                         break
@@ -1676,6 +1918,14 @@ def front_doc(doc, out_root):
             bl = [x.strip() for x in best.split("\n") if x.strip()]
             if bl:
                 return bl[min(line_idx, len(bl) - 1)].strip()
+        if en_channel:
+            # R2b: 英题块常把署名/机构行并进同一块(lang=ko 走非 keep_all 路径), 直接拼行会把
+            # 韩文署名一起拼进 title_en, 外层守卫再整条作废。逐行滤掉署名/机构行。
+            _ls = [x.strip() for x in best.split("\n") if x.strip()
+                   and not re.search(u"[가-힣]", x) and "@" not in x and "|" not in x
+                   and not x.lstrip().startswith("$")]
+            if _ls:
+                best = "\n".join(_ls)
         val = re.sub(r"\s*\n\s*", " ", best).strip()
         val = re.sub(r"^#+\s*", "", val)
         if re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", _fold(mt)) \
@@ -1725,11 +1975,24 @@ def front_doc(doc, out_root):
         t = _clean_title(t)
         t = t.replace(r"\langle", "<").replace(r"\rangle", ">")
         t = re.sub(r"\\\*", "", t)
-        # 英题前粘韩文副题时，从'韩文之后的第一个英文词'起取
-        _m = next((m for m in re.finditer(r"[A-Za-z]{4,}", t)
-                   if re.search(u"[가-힣]", t[:m.start()])), None)
-        if _m:
-            t = t[_m.start():]
+        t = t.replace("*", "")
+        # 题名块被 ISSN 题录行占槽时(13569395), 渠道长读法把 ISSN 段粘在英题前;
+        # 剥掉 'ISSN 2671-4744 (Print)' 这类题录段, 只留英题主体。
+        t = re.sub(r"(?i)\b(?:p?e?issn)\s*[\d-]+\s*\([^)]{2,20}\)\s*", "", t).strip()
+        # 韩文位置判据(2026-11-26 标题实质文字差 Round 1):
+        # ① 韩文在前缀(≤20字符): 英题前粘韩文副题, 从韩文之后的英文词起取(原规则);
+        # ② 韩文在尾部: 渠道长读法把'김용, Yong, Kim'作者行粘在英题后,
+        #    此时原规则会把罗马作者名当英题(13569381/13569387/13569393/13569395/
+        #    13569419/13569420 实证)。改为从韩文处截断, 只留已抽到的英题主体。
+        _ko = re.search(u"[가-힣]", t)
+        if _ko:
+            if _ko.start() <= 20:
+                _m = next((m for m in re.finditer(r"[A-Za-z]{4,}", t)
+                           if re.search(u"[가-힣]", t[:m.start()])), None)
+                if _m:
+                    t = t[_m.start():]
+            else:
+                t = t[:_ko.start()]
         return t.strip()
 
     # —— 体例兜底(2026-11-12 全覆盖): 英文期刊/SpringerOpen/老式韩文期刊把题名判为
@@ -2403,7 +2666,42 @@ def front_doc(doc, out_root):
     if title_value:
         title_value = _strip_title_byline(title_value)
 
-    _title_en_val = _clean_title_en(_best_text(t_en, li_en, keep_all=lang in ("ru", "pt", "fr", "en"), majority=lang in ("ru", "pt", "fr", "en"))) if t_en else None
+    # title_en 单一入口: 原路径 -> role 清障重选 -> 渠道长读法 -> 主副题续行拼接
+    # R3: 不少韩刊把英题印在英文摘要页(p2/p3)而非首页; 首页无英题时只补 title_en,
+    # 不触碰韩文 title / 作者 / 机构等任何既有字段。判据=该页确有 Abstract 头 + 英题块。
+    if t_en is None:
+        for _pi in range(front_page + 1, min(front_page + 4, 6)):
+            _pfp = os.path.join(udir, "page_%d.json" % _pi)
+            if not os.path.isfile(_pfp):
+                continue
+            _jp = json.load(io.open(_pfp, encoding="utf-8"))
+            _is_abs = any(re.search(r"(?im)^\s*(?:■\s*)?Abstract\b",
+                                    (u.get("main_text") or "").strip())
+                          for u in _jp.get("unified") or [])
+            if not _is_abs:
+                continue
+            _lang_p = _langid.classify_page(_jp)
+            _te2, _li2 = _pick_title(_jp, False, _lang_p)
+            if _te2 is None:
+                continue
+            _val2 = _clean_title_en(_best_text(
+                _te2, _li2,
+                keep_all=_lang_p in ("ru", "pt", "fr", "en"),
+                majority=_lang_p in ("ru", "pt", "fr", "en"), en_channel=True))
+            if _val2 and len(_val2) >= 15 and not re.search(u"[가-힣]", _val2):
+                t_en, li_en = _te2, _li2
+                t_en_c = _conf(t_en)
+                t_en_c["page"] = _pi + 1   # _conf 默认取 front_page, 摘要页需改正
+                break
+    _title_en_val = _clean_title_en(_best_text(t_en, li_en, keep_all=lang in ("ru", "pt", "fr", "en"), majority=lang in ("ru", "pt", "fr", "en"), en_channel=True)) if t_en else None
+    if not _title_en_val and j0 is not None:
+        _te2, _li2 = _pick_title(_clear_cross_role(j0), False, lang)
+        if _te2 is not None:
+            _title_en_val = _clean_title_en(
+                _best_text(_te2, _li2, keep_all=lang in ("ru", "pt", "fr", "en"),
+                           majority=lang in ("ru", "pt", "fr", "en")))
+        if not _title_en_val:
+            _title_en_val = _citation_title_from_source(doc_dir, front_page)
     if _title_en_val and t_en:
         # 英题同块渠道读法更长时取长读法(副标题被截断的 5 篇)
         for _r in (t_en.get("readings") or []):
@@ -2412,6 +2710,25 @@ def front_doc(doc, out_root):
                 if len(_rl) > len(_title_en_val) \
                         and _fold(_title_en_val) in _fold(_rl):
                     _title_en_val = _rl
+
+    if _title_en_val:
+        _title_en_val = _join_en_subtitle(_title_en_val, doc_dir, front_page)
+
+    if _title_en_val and (
+            "@" in _title_en_val or "|" in _title_en_val
+            or _title_en_val.lstrip().startswith("$")
+            or re.search(u"[가-힣]", re.sub(r"\([^)]*\)", "", _title_en_val))):
+        _title_en_val = None
+
+    # 多作者篇: 题名残片无机构无标记时不当作者(13567389 아세안)
+    # 题名中带拉丁缩略语括注的韩词(아세안(ASEAN))是主题词, 不是作者
+    _tv = title_value or ""
+    _aff_cnt = sum(1 for a in authors if a.get("affiliation"))
+    if _aff_cnt >= 2:
+        authors = [a for a in authors if not (
+            re.fullmatch(u"[가-힣]{2,4}", a.get("name") or "")
+            and not a.get("affiliation") and not a.get("markers")
+            and re.search(re.escape(a.get("name") or "") + r"\s*\([A-Za-z]", _tv))]
 
     meta.update({
         "doc": doc,
@@ -2678,9 +2995,18 @@ def _selftest():
             == [u"허성관"]
             and [a["name"] for a in _parse_author_line(u"홍영식서울교육대학교", None, {})]
             == [u"홍영식"])
+    # 41) 拉丁姓名+韩文机构粘连署名(13567400): 整行不得被当机构行吞掉, 切成真名+机构。
+    ok41 = (_split_latin_ko_byline(u"Huang Linyu 세종대학교")
+            == ("Huang Linyu", u"세종대학교")
+            and _split_latin_ko_byline(u"Inseok Lee 연세대학교 심리학과")
+            == ("Inseok Lee", u"연세대학교 심리학과")
+            and _split_latin_ko_byline(u"서의석 경기대학교") is None
+            and _split_latin_ko_byline("Huang Linyu, Sejong University") is None
+            and _split_latin_ko_byline(u"현재 관광 산업과 문화 사업이 번성하는 대배경 하에") is None)
     oks = (ok1, ok2, ok3, ok4, ok5, ok6, ok7, ok8, ok9, ok10, ok11, ok12, ok13, ok14,
            ok15, ok16, ok17, ok18, ok19, ok20, ok21, ok22, ok23, ok24, ok25, ok26,
-           ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37, ok38, ok39, ok40)
+           ok27, ok28, ok29, ok30, ok31, ok32, ok33, ok34, ok35, ok36, ok37, ok38, ok39,
+           ok40, ok41)
     for i, ok in enumerate(oks, 1):
         if not ok:
             print("FAIL [front case %d]" % i)

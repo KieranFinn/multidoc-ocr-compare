@@ -699,6 +699,82 @@ def abstract_doc(doc, out_root):
                 m = re.match(r"^-\s*([A-Z][A-Za-z .\-']{3,40})\s*-$", ln.strip())
                 if m:
                     tail_roman.append(m.group(1).strip())
+    # —— 红标题名差 Round 2(2026-11-26): 英文摘要区题名兜底 ——
+    # 老口径只在 ABS_HEAD_EN 命中独立节头、且题名在头块**下方** Section-header 时才供题,
+    # 但 KCI 尾部英摘常见两种体例均未覆盖:
+    #   ① '<Abstract>\nA Study on ...' —— 头与题同块, 题在头块次行(13567044 等 40 篇);
+    #   ② 'I Abstract Han, Seung Yong\n(Global Cyber University)' + 下一节头是题名
+    #      —— 头行带序号/作者前缀, ABS_HEAD_EN 整行不匹配(13564032 等)。
+    # 这里只在 title_en 仍空时补位, 不动已有值; 候选行要求拉丁主导、长度 25-220、
+    # 排除署名行/引文/关键词/ISSN/URL, 因此不会把作者或摘要正文当英题。
+    if tail_title_en is None:
+        def _latin_title(s):
+            s = re.sub(r"^#+\s*", "", (s or "").strip()).strip()
+            f = _fold(s)
+            if not (25 <= len(f) <= 220):
+                return False
+            if re.match(r"^\([^)]{3,100}\)$", s):   # 括号机构/署名行, 不是题名
+                return False
+            if re.search(u"[가-힣]", s) or "@" in s or "http" in s or re.search(r"10\.\d{4,}/", s):
+                return False
+            if re.search(r"[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]", re.sub(r"\([^)]*\)", "", s)):
+                return False
+            if KW_LINE.match(s) or ABS_HEAD_EN.match(s) or re.match(r"(?i)^(?:p?e?issn)\b", s):
+                return False
+            if re.search(r"\((?:19|20)\d{2}[a-z]?\)\.", s) \
+                    or re.match(r"^[A-Z][A-Za-z\-']+,\s*[A-Z]", s):
+                return False
+            if re.search(r"(?i)\((?:University|Univ\.|College|Institute|Laborator|Centre|Center|"
+                         r"Hospital|School|Academy)\b[^)]*\)\s*$", s):
+                return False
+            # 摘要正文句不是题名(13564461 'In addition, malicious technological…' 实证)
+            if re.match(r"(?i)^(?:In addition|This |The study|These |We |Results?|Conclusion|"
+                        r"Moreover|Furthermore|However|First|Second|Third|Therefore|Thus|"
+                        r"Overall|Based on)\b", s):
+                return False
+            if s.rstrip().endswith(".") and len(s) > 100:
+                return False
+            return len(re.sub(r"[^A-Za-z]", "", s)) >= 20
+
+        _abs_head2 = re.compile(r"(?i)^\s*(?:[IVX]{1,3}\s+)?[<\(]?\s*Abstracts?\s*[>\)]?(?![A-Za-z])")
+        for p in list(reversed(pages)) + ([0] if pages else []):
+            for u in pdata[p]["unified"]:
+                # 尾英摘头块常被 m3 标 cross_page.role='tail'; 这是正文拼接标记, 不是噪声,
+                # 不能像跨页正文那样整块跳过(13564032 'I Abstract Han, Seung Yong' 实证)。
+                if u.get("cross_page", {}).get("role") not in (None, "", "tail"):
+                    continue
+                t = (u.get("main_text") or "").strip()
+                if not t:
+                    continue
+                lines = t.split("\n")
+                for hi, ln in enumerate(lines):
+                    if not _abs_head2.match(ln.strip()):
+                        continue
+                    # ① 同块次行即英题: '<Abstract>\nTitle'
+                    if hi + 1 < len(lines) and _latin_title(lines[hi + 1]):
+                        tail_title_en = {"value": re.sub(r"[*_]", "", lines[hi + 1]).strip(),
+                                         "page": p + 1, "box": u["box"], "uid": u["uid"]}
+                    # ② 头块下方的首个拉丁题名行
+                    if tail_title_en is None:
+                        below = [b for b in pdata[p]["unified"]
+                                 if b.get("cross_page", {}).get("role") in (None, "", "tail")
+                                 and b["box"][1] > u["box"][1] + 20
+                                 and b["type"] in ("Section-header", "Text")]
+                        below.sort(key=lambda b: b["box"][1])
+                        for b in below[:3]:
+                            for cand in (b.get("main_text") or "").split("\n")[:2]:
+                                if _latin_title(cand):
+                                    tail_title_en = {"value": re.sub(r"[*_]", "", cand).strip(),
+                                                     "page": p + 1, "box": b["box"], "uid": b["uid"]}
+                                    break
+                            if tail_title_en:
+                                break
+                    if tail_title_en:
+                        break
+                if tail_title_en:
+                    break
+            if tail_title_en:
+                break
     # keywords 行(顺带)
     kws = []
     for p in pages:

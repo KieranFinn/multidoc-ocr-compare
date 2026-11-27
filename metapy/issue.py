@@ -701,6 +701,10 @@ def _kw_parse(s, lines, i):
     有冒号取冒号后, 无冒号剥头词尾部/空白; 剥 '(Key Words)' 式标签残留(B3);
     同块续行(行尾逗/分号/· 未完结, ≤4 行, 遇头词/摘要头/목차行停); 逗号/分号切分。
     items 长度>1、≤15; raw=命中行+续行原文(审计留痕)。"""
+    s0 = s
+    # '*' 与 ■/◆ 同属列表项符号(13570516/13570522 实证: '* 키워드 : …' 被 KW_LINE 拒之门外,
+    # 于是后页正文首行 '키워드 분석에서…' 顶替成关键词)。剥标记后再匹配, 结构与 ■ 等价。
+    s = re.sub(u"^\\*+\\s*", "", s)
     m = KW_LINE.match(s)
     if not m:
         return None
@@ -720,12 +724,54 @@ def _kw_parse(s, lines, i):
             break
         acc += " " + nxt
         jj += 1
-    raw = [s] + [lines[k].strip() for k in range(i + 1, jj) if lines[k].strip()]
+    raw = [s0] + [lines[k].strip() for k in range(i + 1, jj) if lines[k].strip()]
     items = [x.strip().strip(".").strip() for x in _KW_SPLIT.split(acc)]
     if len(items) == 1 and re.match(r"^(?:关\s*键\s*词|關\s*鍵\s*詞|关\s*键\s*字)", s):
         items = [x.strip().strip(".。") for x in items[0].split() if x.strip()]
     items = [x for x in items if x and len(x) > 1][:15]
     return en, items, raw
+
+
+def _strip_glued_byline(kws, kw_loc, pdata, meta):
+    """[结构判据] 剥掉粘在关键词尾部的署名+机构。
+
+    根因①(整列不同): 老式版式把署名行压在关键词行同一 Text 块, 文本层读成
+    '…, 복지사업황해동 한국지방행정연구원' —— 最后一个关键词与署名行零空格粘连。
+    不用机构词表/宽正则(此前在 abs.py 试正则误切真关键词, 已回退); 改用两条硬证据:
+      1. 同页存在**独立块**, 其整行文本 == 粘连后缀;
+      2. 该独立块含本篇已抽出的作者名(authors[].name)。
+    两条同时满足才剥, 且只剥"整段后缀", 不切词内部。幂等: 重跑仍从原文抽到同一粘连行。
+    """
+    if not kws or not kw_loc:
+        return kws
+    names = [str(a.get("name") or "").strip() for a in (meta.get("authors") or [])
+             if isinstance(a, dict) and a.get("name") and len(str(a["name"]).strip()) >= 2]
+    if not names:
+        return kws
+    page = kw_loc.get("page")
+    pg = pdata.get((page or 1) - 1) if page else None
+    if pg is None:
+        return kws
+    bylines = []
+    for u in pg.get("unified", []):
+        t = (u.get("main_text") or "").strip()
+        if not t or len(t) > 60 or KW_LINE.match(t):
+            continue
+        if any(n in t for n in names):
+            bylines.append(t)
+    if not bylines:
+        return kws
+    out = list(kws)
+    for i, item in enumerate(out):
+        for bl in bylines:
+            pos = item.rfind(bl)
+            if pos <= 0:               # 只剥尾部; pos==0 表示整项就是署名, 不当关键词处理
+                continue
+            head = item[:pos].rstrip(u" ,，·")
+            if len(head) > 1:
+                out[i] = head
+                break
+    return out
 
 
 def _publication_year(source):
@@ -1258,8 +1304,16 @@ def issue_doc(doc, out_root):
                     if kws:
                         continue
                     kws, kw_raw, kw_loc = items, raw, {"page": p + 1, "uid": u["uid"]}
+    # OCR 坏行守卫(13570225 实证): 冒号后前导空字段('주제어 : , , X Y Z')说明该渠道
+    # 逗号丢失, 切出的单项是伪结果; 同篇 paddle 渠道有完整逗号版。置空走渠道兜底,
+    # 用"有 ≥2 个逗号分项"的结构证据择善, 不从 ODPS 取词。
+    if kws and kw_raw and re.match(u"^[^:：]*[:：]\\s*[,，]", kw_raw[0]):
+        kws, kw_raw, kw_loc = [], [], None
     # 关键词渠道兜底: 老式期刊把 주제어/핵심어 行放在正文里, unified 归并成 Text 块后
     # KW_LINE(要求行首头词)抓不到; 只在 keywords[] 仍为空时, 从三渠道原文按行内头词补。
+    # 注意: 这是"行内任意位置"的松匹配, 命中正文句/引文句时会拿整句当关键词(整列不同根因②);
+    # 它只是兜底, 证据等级低于首页方括号双语块——下方 bracket 路径可覆盖它。
+    kw_from_channel = False
     if not kws:
         _KW_ANY = re.compile(u"(?:주제\\s*어|핵심\\s*어|키\\s*워드|중심\\s*어|주요\\s*어|关\\s*键\\s*词|關\\s*鍵\\s*詞|关\\s*键\\s*字|Key\\s*words?|Keywords?)", re.I)
         for p, ch, t in ch_lines:
@@ -1267,10 +1321,26 @@ def issue_doc(doc, out_root):
                 mm = _KW_ANY.search(ln)
                 if not mm:
                     continue
+                if mm.start() > 0:
+                    # 头词嵌在列表行中间(OCR 把标签粘进词内, 如 '…생주제어각' / '이주제어주영')。
+                    # 若整行是"多项短列表"且无句子特征(句末点号/引文年/URL), 则整行才是关键词表;
+                    # 只剥标签 token, 保留头词前面的项目 —— 不靠词表, 靠"列表结构 + 无句子特征"。
+                    whole = [x.strip().strip("。") for x in re.split(u"[,，;；·、]", ln) if x.strip()]
+                    if len(whole) >= 4 and max(len(x) for x in whole) <= 40 \
+                            and not re.search(u"[。]|\\((?:19|20)\\d{2}\\)", ln) \
+                            and not re.search(r"https?://|www\.", ln):
+                        whole = [re.sub(u"(?:주제\\s*어|핵심\\s*어|키\\s*워드|중심\\s*어|주요\\s*어)",
+                                        "", x).strip() for x in whole]
+                        items = [x for x in whole if len(x) > 1]
+                        if 2 <= len(items) <= 15:
+                            kws, kw_raw, kw_loc = items, [ln.strip()], {"page": p, "uid": None}
+                            kw_from_channel = True
+                            break
                 rest = ln[mm.end():].lstrip(u" 】〉>）)]：:·.-*")
                 items = [x.strip().strip("。") for x in re.split(u"[,，;；·、]", rest) if x.strip()]
                 if 2 <= len(items) <= 15 and max(len(x) for x in items) < 60:
                     kws, kw_raw, kw_loc = items, [ln.strip()], {"page": p, "uid": None}
+                    kw_from_channel = True
                     break
             if kws:
                 break
@@ -1292,7 +1362,11 @@ def issue_doc(doc, out_root):
                 items = [x.strip() for x in t[1:-1].split("/") if x.strip()]
                 ko, en = [], []
                 for item in items:
-                    if "," in item and _hangul_ratio(item) >= 0.2:
+                    # 双语分界是结构: 组内用 '/', 英→韩组界用 ','. 旧实现给整项加
+                    # _hangul_ratio>=0.2 门槛, 短韩词(如 '어휘 습득' 仅 4 字)被门槛刷掉,
+                    # 于是末英词+首韩词粘成一项并判成英文, 韩文关键词永远丢第一个。
+                    # 改用分界两侧各自的语种归属判定, 不靠整项比例, 也不靠词表。
+                    if "," in item:
                         left, right = item.rsplit(",", 1)
                         if _hangul_ratio(left) < 0.2 and re.search(r"[A-Za-z]", left) \
                                 and _hangul_ratio(right) >= 0.2:
@@ -1304,8 +1378,12 @@ def issue_doc(doc, out_root):
                     elif re.search(r"[A-Za-z]", item):
                         en.append(item)
                 if ko and en:
-                    if not kws:
+                    # 首页方括号双语块是印在原文上的关键词表, 证据强于"正文行内命中头词"的
+                    # 渠道兜底。兜底值存在时以本路径覆盖, 避免整段正文/引文占关键词槽。
+                    if not kws or kw_from_channel:
                         kws, kw_raw, kw_loc = ko, [t], {"page": 1, "uid": u["uid"]}
+                        kw_from_channel = False
+                        audit["keywords_bracket_over_channel"] = True
                     if not kws_en:
                         kws_en, kw_raw_en, kw_loc_en = en, [t], {"page": 1, "uid": u["uid"]}
                     break
@@ -1315,6 +1393,11 @@ def issue_doc(doc, out_root):
            and not re.search(r"https?://|www\.", k)]
     kws_en = [k for k in kws_en if len(k) <= 50 and u"。" not in k
               and not re.search(r"https?://|www\.", k)]
+    # 根因①: 关键词尾粘署名+机构 —— 同页独立署名块 + 已抽作者名双证据才剥, 见函数注释。
+    _kws_before = list(kws)
+    kws = _strip_glued_byline(kws, kw_loc, pdata, meta)
+    if kws != _kws_before:
+        audit["keywords_byline_glue_stripped"] = {"before": _kws_before, "after": kws}
     # 卷期同源复制守卫(2026-11-17): issue==volume 且两候选页集相同 = 同一行被双写(제N집/
     # BMC 卷:文号 体例), 期号是复制值不是证据 → 置空, 由 audit 记 note。
     _ia = res.get("_audit") or {}
