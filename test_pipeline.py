@@ -1145,8 +1145,10 @@ class WorkspaceTest(unittest.TestCase):
             deadline = time.time() + 5
             while len(calls) < 2 and time.time() < deadline:
                 time.sleep(0.05)
-            self.assertEqual(calls, [("one", os.path.join(tmp, "main")),
-                                     ("two", os.path.join(tmp, "lab"))])
+            # parallel=2: 两个任务同时开跑, calls 的 append 顺序不确定(CI py3.12 上
+            # 实测偶发 "two" 先于 "one"), 这里只断言"各自守住提交时的工作区", 不比顺序
+            self.assertCountEqual(calls, [("one", os.path.join(tmp, "main")),
+                                          ("two", os.path.join(tmp, "lab"))])
             # calls 只代表"开跑", 不代表"落盘完"; 等队列与在跑集合都清空再退出 with
             while (runner.queued or runner.running) and time.time() < deadline:
                 time.sleep(0.05)
