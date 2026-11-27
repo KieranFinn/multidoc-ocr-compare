@@ -65,3 +65,11 @@ _kjcss.txt
 
 # 本地私有数据: 期刊 DOI 注册表
 _doi_registry.json
+
+# 版面模板原型(layoutx)的运行产物: 指纹/差异清单每次重跑生成, 不入库(代码与报告入库)
+layoutx/fingerprints.jsonl
+layoutx/diff.jsonl
+# 版面原型跑出来的 953 篇产物(与 out/ 同性质)
+out_layout/
+# 一次性扫描脚本: 量误杀面用, 跑完即弃
+_scan_guard.py

@@ -1,0 +1,4727 @@
+{
+ "seed": 20261127,
+ "author_superset_total": 8,
+ "author_superset_sample": [
+  {
+   "doc": "13564501",
+   "cluster_id": "C00",
+   "category": "新版更优",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": false,
+     "old": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향",
+     "new": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향¹",
+     "evidence": [
+      {
+       "value": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향¹",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          174.1,
+          238.5,
+          858.4,
+          276.7
+         ]
+        },
+        {
+         "page": 11,
+         "channel": "dots",
+         "box": [
+          521.5,
+          69.7,
+          881.7,
+          92.3
+         ]
+        },
+        {
+         "page": 9,
+         "channel": "dots",
+         "box": [
+          520.7,
+          69.0,
+          882.4,
+          92.3
+         ]
+        }
+       ],
+       "excerpt": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향¹"
+      },
+      {
+       "value": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          524.3,
+          76.3,
+          881.2,
+          98.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          184.8,
+          244.9,
+          858.7,
+          281.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          520.7,
+          68.3,
+          883.2,
+          93.0
+         ]
+        }
+       ],
+       "excerpt": "모국어에 기반한 음운인식이 파닉스 학습에 미치는 영향"
+      }
+     ],
+     "channel_votes": {
+      "old": 3,
+      "new": 1
+     },
+     "assessment": "new_better"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Enhancing in reading skills in phonics’ acquisition method by the use of native language basis",
+     "new": "Enhancing in reading skills in phonics’ acquisition method by the use of native language basis"
+    },
+    "authors": {
+     "same": false,
+     "old": [
+      {
+       "name": "김형엽",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "조국",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김형엽",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "evidence": [
+      {
+       "value": "김형엽",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          805.5,
+          336.5,
+          922.1,
+          454.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          850.9,
+          392.3,
+          922.2,
+          418.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          851.3,
+          393.8,
+          923.3,
+          418.8
+         ]
+        }
+       ],
+       "excerpt": "조 국<sup>2</sup>(고려대학교)김형엽<sup>3</sup>(고려대학교)"
+      },
+      {
+       "value": "조국",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          805.5,
+          336.5,
+          922.1,
+          454.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          848.6,
+          331.5,
+          922.2,
+          357.0
+         ]
+        },
+        {
+         "page": 18,
+         "channel": "mineru",
+         "box": [
+          119.4,
+          364.1,
+          924.2,
+          574.8
+         ]
+        }
+       ],
+       "excerpt": "조 국<sup>2</sup>(고려대학교)김형엽<sup>3</sup>(고려대학교)"
+      }
+     ],
+     "assessment": "new_better"
+    },
+    "affiliations": {
+     "same": false,
+     "old": [],
+     "new": [
+      "고려대학교",
+      "2 제1저자. 고려대학교 아동코칭학과",
+      "3 교신저자. 고려대학교 글로벌대학 영미학",
+      "조 국2(고려대학교)김형엽3(고려대학교"
+     ],
+     "evidence": [
+      {
+       "value": "고려대학교",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          805.5,
+          336.5,
+          922.1,
+          454.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          121.4,
+          1276.8,
+          850.5,
+          1303.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          121.4,
+          1303.0,
+          476.2,
+          1332.0
+         ]
+        }
+       ],
+       "excerpt": "조 국<sup>2</sup>(고려대학교)김형엽<sup>3</sup>(고려대학교)"
+      },
+      {
+       "value": "2 제1저자. 고려대학교 아동코칭학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          121.4,
+          1303.0,
+          476.2,
+          1332.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          112.5,
+          1280.4,
+          847.2,
+          1360.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1309.7,
+          473.1,
+          1334.8
+         ]
+        }
+       ],
+       "excerpt": "2 제1저자. 고려대학교 아동코칭학과 석사과정"
+      },
+      {
+       "value": "3 교신저자. 고려대학교 글로벌대학 영미학",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          121.4,
+          1330.6,
+          459.9,
+          1356.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          112.5,
+          1280.4,
+          847.2,
+          1360.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1335.8,
+          454.4,
+          1361.9
+         ]
+        }
+       ],
+       "excerpt": "3 교신저자. 고려대학교 글로벌대학 영미학"
+      },
+      {
+       "value": "조 국2(고려대학교)김형엽3(고려대학교",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          805.5,
+          336.5,
+          922.1,
+          454.2
+         ]
+        }
+       ],
+       "excerpt": "조 국<sup>2</sup>(고려대학교)김형엽<sup>3</sup>(고려대학교)"
+      }
+     ],
+     "assessment": "new_better"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "읽기학습",
+      "음소인식",
+      "음운인식",
+      "파닉스",
+      "연음",
+      "특수목적영어"
+     ],
+     "new": [
+      "읽기학습",
+      "음소인식",
+      "음운인식",
+      "파닉스",
+      "연음",
+      "특수목적영어"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "L1 to L2 reading ability",
+      "phonetic awareness",
+      "phonological awareness",
+      "phonics",
+      "prolonged",
+      "ESP L1 to L2"
+     ],
+     "new": [
+      "L1 to L2 reading ability",
+      "phonetic awareness",
+      "phonological awareness",
+      "phonics",
+      "prolonged",
+      "ESP L1 to L2"
+     ]
+    }
+   }
+  }
+ ],
+ "unresolved_all": [
+  {
+   "doc": "13563533",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "글로컬대학으로서 강원대학교 특성화 전략과 과제",
+     "new": "# 글로컬대학으로서 강원대학교 특성화 전략과 과제"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Kangwon National University’s Specialization Strategies and Challenges as a Glocal University",
+     "new": "Kangwon National University’s Specialization Strategies and Challenges as a Glocal University"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "정진근",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "정진근",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "글로컬대학으로서 강원대학교 특성화 전략과 과제"
+     ],
+     "new": [
+      "강원대학교 기획처장. 강원대학교 법학전문대학원"
+     ],
+     "evidence": [
+      {
+       "value": "글로컬대학으로서 강원대학교 특성화 전략과 과제",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          221.7,
+          216.8,
+          1017.3,
+          265.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          214.6,
+          212.2,
+          1020.4,
+          262.4
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          215.7,
+          213.5,
+          1022.2,
+          262.4
+         ]
+        }
+       ],
+       "excerpt": "글로컬대학으로서 강원대학교 특성화 전략과 과제"
+      },
+      {
+       "value": "강원대학교 기획처장. 강원대학교 법학전문대학원",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          1635.0,
+          487.7,
+          1662.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          73.6,
+          1642.3,
+          480.1,
+          1667.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          71.9,
+          1643.7,
+          483.5,
+          1669.6
+         ]
+        }
+       ],
+       "excerpt": "강원대학교 기획처장. 강원대학교 법학전문대학원 교수"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "글로벌",
+      "글로컬",
+      "디지털 대변혁",
+      "인공지능",
+      "대학특성화",
+      "학령인구"
+     ],
+     "new": [
+      "글로벌",
+      "글로컬",
+      "디지털 대변혁",
+      "인공지능",
+      "대학특성화",
+      "학령인구"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Global",
+      "Glocal",
+      "Digital Transformation",
+      "Artificial Intelligence",
+      "University Specialization",
+      "Declining School-age Population"
+     ],
+     "new": [
+      "Global",
+      "Glocal",
+      "Digital Transformation",
+      "Artificial Intelligence",
+      "University Specialization",
+      "Declining School-age Population"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13563546",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "군사 접경지역 화천군 상서면 산양리의 역사 문화자원 콘텐츠와 활용 방안",
+     "new": "군사 접경지역 화천군 상서면 산양리의 역사 문화자원 콘텐츠와 활용 방안"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Contents and Utilization of Historical Cultural Resources in Sanyang-ri, Sangseo-myeon, Hwacheon-gun, Military Border Area",
+     "new": "Contents and Utilization of Historical Cultural Resources in Sanyang-ri, Sangseo-myeon, Hwacheon-gun, Military Border Area"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "유춘동",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "유춘동",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "지방행정연구학회"
+     ],
+     "new": [
+      "강원대학교 국어국문학과"
+     ],
+     "evidence": [
+      {
+       "value": "지방행정연구학회",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          640.2,
+          1523.6,
+          1161.3,
+          1607.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          640.0,
+          1530.5,
+          1165.2,
+          1667.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          640.9,
+          1531.1,
+          1167.0,
+          1613.3
+         ]
+        }
+       ],
+       "excerpt": "1 김상민·박진경,「지방자치단체의 인구 감소 및 인구구조 변화 대응 전략: 강원도 화천군을 사례로」,『지방행정연구』32(1), 지방행정연구학회, 2018, 125~160쪽."
+      },
+      {
+       "value": "강원대학교 국어국문학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          1635.0,
+          324.2,
+          1662.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          73.6,
+          1642.3,
+          315.1,
+          1667.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          71.9,
+          1643.7,
+          317.8,
+          1668.6
+         ]
+        }
+       ],
+       "excerpt": "• 강원대학교 국어국문학과 교수"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "강원도 화천군",
+      "상서면 산양리",
+      "DMZ 접경지역",
+      "역사 문화자원 콘텐츠",
+      "아카이브"
+     ],
+     "new": [
+      "강원도 화천군",
+      "상서면 산양리",
+      "DMZ 접경지역",
+      "역사 문화자원 콘텐츠",
+      "아카이브"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Hwacheon-gun",
+      "Gangwon-do",
+      "Sanyang-ri",
+      "Sangseo-myeon",
+      "DMZ border area",
+      "historical and cultural resources",
+      "local cultural resources",
+      "contents"
+     ],
+     "new": [
+      "Hwacheon-gun",
+      "Gangwon-do",
+      "Sanyang-ri",
+      "Sangseo-myeon",
+      "DMZ border area",
+      "historical and cultural resources",
+      "local cultural resources",
+      "contents"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13563590",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "K-줌비의 새로운 흐름과 타자와의 공존 가능성 2016년 이후줌비 영화를 중심으로",
+     "new": "K-줌비의 새로운 흐름과 타자와의 공존 가능성 2016년 이후줌비 영화를 중심으로"
+    },
+    "title_en": {
+     "same": true,
+     "old": "The New Wave of K-Zombies and the Possibility of Coexistence with Others : Focusing on Zombie Films since 2016",
+     "new": "The New Wave of K-Zombies and the Possibility of Coexistence with Others : Focusing on Zombie Films since 2016"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김형식",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "김형식",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "순천향대학교 향설나눔대학"
+     ],
+     "new": [
+      "순천향대학교 향설나눔대학"
+     ]
+    },
+    "keywords": {
+     "same": false,
+     "old": [
+      "K- antis비",
+      "뛰는 K- antis비",
+      "포스트 K- antis비",
+      "타자",
+      "공존"
+     ],
+     "new": [
+      "K- 좀비",
+      "뛰는 K- 좀비",
+      "포스트 K- 좀비",
+      "타자",
+      "공존"
+     ],
+     "evidence": [
+      {
+       "value": "K- antis비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          911.1,
+          553.6,
+          940.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          168.0,
+          1196.5,
+          426.7,
+          1227.8
+         ]
+        },
+        {
+         "page": 9,
+         "channel": "mineru",
+         "box": [
+          662.2,
+          851.9,
+          1020.9,
+          885.0
+         ]
+        }
+       ],
+       "excerpt": "핵심어 K- antis비, 뛰는 K- antis비, 포스트 K- antis비, 타자, 공존"
+      },
+      {
+       "value": "뛰는 K- antis비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          911.1,
+          553.6,
+          940.7
+         ]
+        }
+       ],
+       "excerpt": "핵심어 K- antis비, 뛰는 K- antis비, 포스트 K- antis비, 타자, 공존"
+      },
+      {
+       "value": "포스트 K- antis비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          911.1,
+          553.6,
+          940.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          168.0,
+          1196.5,
+          426.7,
+          1227.8
+         ]
+        },
+        {
+         "page": 9,
+         "channel": "mineru",
+         "box": [
+          662.2,
+          851.9,
+          1020.9,
+          885.0
+         ]
+        }
+       ],
+       "excerpt": "핵심어 K- antis비, 뛰는 K- antis비, 포스트 K- antis비, 타자, 공존"
+      },
+      {
+       "value": "타자",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          249.7,
+          211.6,
+          989.2,
+          298.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          911.1,
+          553.6,
+          940.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          200.9,
+          1151.2,
+          457.2,
+          1182.6
+         ]
+        }
+       ],
+       "excerpt": "K-줌비의 새로운 흐름과 타자와의 공존 가능성 2016년 이후줌비 영화를 중심으로"
+      },
+      {
+       "value": "공존",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          249.7,
+          211.6,
+          989.2,
+          298.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          911.1,
+          553.6,
+          940.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          168.0,
+          1060.7,
+          426.7,
+          1088.6
+         ]
+        }
+       ],
+       "excerpt": "K-줌비의 새로운 흐름과 타자와의 공존 가능성 2016년 이후줌비 영화를 중심으로"
+      },
+      {
+       "value": "K- 좀비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          637.8,
+          1170.4,
+          1162.5,
+          1525.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          168.0,
+          1333.9,
+          390.1,
+          1365.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          243.9,
+          206.3,
+          989.0,
+          256.4
+         ]
+        }
+       ],
+       "excerpt": "21세기 들어 ‘ 좀비 르네상스’라 불릴 만큼 좀비는 전 세계적 열풍을 일으키며 대중문화의 주요한 아이콘으로 등 극했다.¹ 하지만 현실적인 설정과 내용을 다루는 영화가 인기를 끼는 한국 사회에서 좀비 영화는 비현실적 장르라 여겨져 쉽게 대중화되지 않았다. 그러나 최근 코로나 19(COVID-19)를 비롯한 여러 감염병 사태, 기후 위기를 비롯한 자연재해의 범람을 거치며, 점차 좀비는 비현실적인 캐릭터가 아닌 현실감 있는 캐릭터로 받아들여지계되었다.² 특히 2016년 한국 최초의 블록버스터 좀비 영화\n<부산행>(2016)이 천만 영화 대열에 합류하는 성공을 거두\n게 된다. 물론 이전에도 소규모 독립 영화나 저예산 영화에\n서 한국산 좀비가 등장했지만, 별다른 반향을 일으키지 못\n했고 대중적인지도와 영향력이 미미했다. 2016년 이전까\n지 좀비는 해외의 낮선 괴물로 여겨졌으며 자생하지 못했\n다. <부산행>의 흉행 이후 비로소 좀비는 주변에서 쉽게 볼\n수 있는 괴물로 자리 잡으며 한국 사회"
+      },
+      {
+       "value": "뛰는 K- 좀비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          72.0,
+          544.4,
+          1165.2,
+          941.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          72.0,
+          1016.8,
+          1165.2,
+          1367.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          108.3,
+          545.8,
+          1167.0,
+          712.5
+         ]
+        }
+       ],
+       "excerpt": "**국문요약** 좀비는 21세기 들어 가장 유행한 대중문화의 주요 아이콘 중 하나다. 한국 사회에서 좀비는 2016년 <부산행>의 성공 이후 성공적으로 한국 사회에 안착하였으며, 이제 K- 좀비는 전 세계로 수출되어 좀비 장르의 흥행을 견인하고 있다. 본 연구는 K- 좀비의 등장 이후 색다른 유형의 K- 좀비가 등장하고 있다는 점에 주목하여, K- 좀비의 새로운 흐름과 변화양상을 살펴보았다. 그리고 이를 위해 K- 좀비를 ‘ 뛰는 K- 좀비’와 ‘포스트 K- 좀비’의 두 종류로 구분하였다.\n\n 뛰는 K- 좀비는 현재 K- 좀비의 대다수이자 주류에 해당하는 형태로, 바이러스를 통해 전파되며 빠르게 뛰어 묵시록적 공포를 자극하는 파괴적인 괴물이다. 뛰는 K- 좀비는 좀비를 통해 현대사회의 부조리와 모순을 폭로하고 인간의 추악한 속물성을 보여준다. 반면 ‘포스트 K- 좀비’는 느리고 굿朱며, 어던지 어설프고 안쓰러운 괴물이다. 이 글에서는 이러한 구분에 의거하여 두 종류의 특징, 의미, "
+      },
+      {
+       "value": "포스트 K- 좀비",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          72.0,
+          544.4,
+          1165.2,
+          941.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          72.0,
+          1016.8,
+          1165.2,
+          1367.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          108.3,
+          545.8,
+          1167.0,
+          712.5
+         ]
+        }
+       ],
+       "excerpt": "**국문요약** 좀비는 21세기 들어 가장 유행한 대중문화의 주요 아이콘 중 하나다. 한국 사회에서 좀비는 2016년 <부산행>의 성공 이후 성공적으로 한국 사회에 안착하였으며, 이제 K- 좀비는 전 세계로 수출되어 좀비 장르의 흥행을 견인하고 있다. 본 연구는 K- 좀비의 등장 이후 색다른 유형의 K- 좀비가 등장하고 있다는 점에 주목하여, K- 좀비의 새로운 흐름과 변화양상을 살펴보았다. 그리고 이를 위해 K- 좀비를 ‘ 뛰는 K- 좀비’와 ‘포스트 K- 좀비’의 두 종류로 구분하였다.\n\n 뛰는 K- 좀비는 현재 K- 좀비의 대다수이자 주류에 해당하는 형태로, 바이러스를 통해 전파되며 빠르게 뛰어 묵시록적 공포를 자극하는 파괴적인 괴물이다. 뛰는 K- 좀비는 좀비를 통해 현대사회의 부조리와 모순을 폭로하고 인간의 추악한 속물성을 보여준다. 반면 ‘포스트 K- 좀비’는 느리고 굿朱며, 어던지 어설프고 안쓰러운 괴물이다. 이 글에서는 이러한 구분에 의거하여 두 종류의 특징, 의미, "
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "K-Zombie",
+      "Running K-Zombie",
+      "Post-K-Zombie",
+      "Other",
+      "Coexistence"
+     ],
+     "new": [
+      "K-Zombie",
+      "Running K-Zombie",
+      "Post-K-Zombie",
+      "Other",
+      "Coexistence"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13563600",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "<내부자들>에 나타난 미학적 반복 구조와 변주의 의미",
+     "new": "# <내부자들>에 나타난 미학적 반복 구조와 변주의 의미"
+    },
+    "title_en": {
+     "same": true,
+     "old": "A study on the meaning of aesthetic repetition structure and variation in <Inside Men>",
+     "new": "A study on the meaning of aesthetic repetition structure and variation in <Inside Men>"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김남석",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "김남석",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "현대영화연구소"
+     ],
+     "new": [
+      "국립부경대학교 국어국문학과"
+     ],
+     "evidence": [
+      {
+       "value": "현대영화연구소",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          643.9,
+          1579.3,
+          1162.5,
+          1662.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          640.0,
+          1586.8,
+          1165.2,
+          1667.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          652.3,
+          1588.4,
+          1168.0,
+          1669.6
+         ]
+        }
+       ],
+       "excerpt": "1 정민아,「〈내부자들:디 오리지널〉,범죄영화 장르의 진화와 폭력의 서사화 방식」,『현대영화연구』(12-1),현대영화연구소,2016,107~131쪽;이지호,「사회고발 장르 영화의 의미구성과 사회 문화적 의미:영화〈내부"
+      },
+      {
+       "value": "국립부경대학교 국어국문학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          80.1,
+          1635.0,
+          354.7,
+          1661.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          72.0,
+          1642.3,
+          346.6,
+          1667.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          71.9,
+          1643.7,
+          349.1,
+          1668.6
+         ]
+        }
+       ],
+       "excerpt": "• 국립부경대학교 국어국문학과 교수"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "<내부자들>",
+      "성 접대",
+      "반복",
+      "변주",
+      "구도"
+     ],
+     "new": [
+      "<내부자들>",
+      "성 접대",
+      "반복",
+      "변주",
+      "구도"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "<Inside Men>",
+      "sexual entertainment",
+      "repetition",
+      "variation",
+      "composition"
+     ],
+     "new": [
+      "<Inside Men>",
+      "sexual entertainment",
+      "repetition",
+      "variation",
+      "composition"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13564384",
+   "cluster_id": "C03",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "스마트폰 해킹 기법의 최신 동향 및 군에 미치는 보안위협 연구",
+     "new": "스마트폰 해킹 기법의 최신 동향 및 군에미치는 보안위협 연구"
+    },
+    "title_en": {
+     "same": false,
+     "old": null,
+     "new": "The Research Latest Trend in Smartphone Hacking Techniques and Security Threats on the Military Kim Yoon Young* Sim Chung Sik",
+     "evidence": [
+      {
+       "value": "The Research Latest Trend in Smartphone Hacking Techniques and Security Threats on the Military Kim Yoon Young* Sim Chung Sik",
+       "channel_supported": false,
+       "hits": [],
+       "excerpt": null
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김윤영",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "심충식",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "김윤영",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "심충식",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "국방부"
+     ],
+     "new": [
+      "국방부"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "제로클릭 익스플로잇",
+      "허위 기지국",
+      "개방형 Wi-Fi",
+      "심스와핑",
+      "USB 해킹 충전기",
+      "볼트쉬며"
+     ],
+     "new": [
+      "제로클릭 익스플로잇",
+      "허위 기지국",
+      "개방형 Wi-Fi",
+      "심스와핑",
+      "USB 해킹 충전기",
+      "볼트쉬며"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Zero-Click Exploit",
+      "Fake Cellphone Tower",
+      "Public Wi-Fi",
+      "SIM-Swapping",
+      "USB charger Scam",
+      "VoltSchemer"
+     ],
+     "new": [
+      "Zero-Click Exploit",
+      "Fake Cellphone Tower",
+      "Public Wi-Fi",
+      "SIM-Swapping",
+      "USB charger Scam",
+      "VoltSchemer"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567051",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "영유아 미디어 활용 관련 인적 상호작용 연구 동향 : 2003~2024년 국내 학술논문 분석",
+     "new": "# 영유아 미디어 활용 관련 인적 상호작용 연구 동향 : 2003~2024년 국내 학술논문 분석"
+    },
+    "title_en": {
+     "same": false,
+     "old": "Research Trends on Human Interaction Related to Media Use in Infants and Young Children : Analysis of Domestic Academic Papers from 2003 to 2024",
+     "new": "Human Ecology Research』 55(1), 1-12.",
+     "evidence": [
+      {
+       "value": "Human Ecology Research』 55(1), 1-12.",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          123.5,
+          598.2,
+          803.6,
+          663.4
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "dots",
+         "box": [
+          115.5,
+          596.2,
+          803.2,
+          659.1
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "paddle",
+         "box": [
+          115.7,
+          598.0,
+          804.3,
+          661.7
+         ]
+        }
+       ],
+       "excerpt": "김서희·황성온. 2017. “유아의 스마트미디어 몰입경향성과 친사회적 행동의 관계에서자기 조절력의 매개 효과.” 『Human Ecology Research』 55(1), 1-12."
+      },
+      {
+       "value": "Research Trends on Human Interaction Related to Media Use in Infants and Young Children : Analysis of Domestic Academic Papers from 2003 to 2024",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 30,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          265.9,
+          803.6,
+          378.9
+         ]
+        },
+        {
+         "page": 30,
+         "channel": "dots",
+         "box": [
+          114.8,
+          261.7,
+          803.2,
+          372.0
+         ]
+        },
+        {
+         "page": 30,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          263.6,
+          806.4,
+          372.0
+         ]
+        }
+       ],
+       "excerpt": "Research Trends on Human Interaction Related to Media Use in Infants and Young Children : Analysis of Domestic Academic Papers from 2003 to 2024"
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "박희숙",
+       "affiliation": "백석예술대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "박희숙",
+       "affiliation": "백석예술대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "박희숙 백석예술대학교"
+     ],
+     "new": [
+      "백석예술대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "영유아",
+      "미디어 노출",
+      "인적 상호작용",
+      "미디어 중재",
+      "양육스트레스",
+      "유아 미디어 중독",
+      "연구 동향박희숙 백석예술대학교"
+     ],
+     "new": [
+      "영유아",
+      "미디어 노출",
+      "인적 상호작용",
+      "미디어 중재",
+      "양육스트레스",
+      "유아 미디어 중독",
+      "연구 동향박희숙 백석예술대학교"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Infants and toddlers",
+      "media exposure",
+      "human interaction",
+      "mediation of children’s media use",
+      "parenting stress",
+      "infant media addiction",
+      "research trends"
+     ],
+     "new": [
+      "Infants and toddlers",
+      "media exposure",
+      "human interaction",
+      "mediation of children’s media use",
+      "parenting stress",
+      "infant media addiction",
+      "research trends"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567061",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "국방정책 홍보수단으로서 국방백서 역할 분석 : 문재인 정부 발간 국방백서를 중심으로",
+     "new": "국방정책 홍보수단으로서 국방백서 역할 분석 :문재인 정부 발간 국방백서를 중심으로"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Analysis of the Role of the Defense White Paper as a Means of Promoting Defense Policy : Based on the Defense White Paper published by the Moon Jae-in government",
+     "new": "Analysis of the Role of the Defense White Paper as a Means of Promoting Defense Policy : Based on the Defense White Paper published by the Moon Jae-in government"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "최정준",
+       "affiliation": "국방부 군사편찬연구소",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "최정준",
+       "affiliation": "국방부 군사편찬연구소",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "국방부 군사편찬연구소"
+     ],
+     "new": [
+      "국방부 군사편찬연구소",
+      "군사편찬연구소"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "문재인 정부",
+      "국방정책",
+      "국방개혁 2.0",
+      "국방백서",
+      "코로나-19"
+     ],
+     "new": [
+      "문재인 정부",
+      "국방정책",
+      "국방개혁 2.0",
+      "국방백서",
+      "코로나-19"
+     ]
+    },
+    "keywords_en": {
+     "same": false,
+     "old": [
+      "Moon Jae-in government",
+      "defense policy",
+      "defense white paper",
+      "defense reform 2.0",
+      "MND)"
+     ],
+     "new": [
+      "Moon Jae-in government",
+      "defense policy",
+      "defense white paper",
+      "defense reform 2.0",
+      "COVID-19"
+     ],
+     "evidence": [
+      {
+       "value": "Moon Jae-in government",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          207.4,
+          805.4,
+          348.3
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          468.0,
+          807.2,
+          1063.5
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1103.4,
+          805.4,
+          1156.6
+         ]
+        }
+       ],
+       "excerpt": "Analysis of the Role of the Defense White Paper as a Means of Promoting Defense Policy : Based on the Defense White Paper published by the Moon Jae-in government"
+      },
+      {
+       "value": "defense policy",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          207.4,
+          805.4,
+          348.3
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          468.0,
+          807.2,
+          1063.5
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1103.4,
+          805.4,
+          1156.6
+         ]
+        }
+       ],
+       "excerpt": "Analysis of the Role of the Defense White Paper as a Means of Promoting Defense Policy : Based on the Defense White Paper published by the Moon Jae-in government"
+      },
+      {
+       "value": "defense white paper",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          207.4,
+          805.4,
+          348.3
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          468.0,
+          807.2,
+          1063.5
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1103.4,
+          805.4,
+          1156.6
+         ]
+        }
+       ],
+       "excerpt": "Analysis of the Role of the Defense White Paper as a Means of Promoting Defense Policy : Based on the Defense White Paper published by the Moon Jae-in government"
+      },
+      {
+       "value": "defense reform 2.0",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          468.0,
+          807.2,
+          1063.5
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1103.4,
+          805.4,
+          1156.6
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "dots",
+         "box": [
+          114.8,
+          468.6,
+          803.2,
+          1058.1
+         ]
+        }
+       ],
+       "excerpt": "This study analyzes the 2018 Defense White Pa<sub>p</sub>er and the . It focuses on how the Defense White Paper promotes defense policy to examine the Moon Jae-in government's defense policy. First, the government raised funds for promoting Defense Reform 2.0 and secured public support through the two defense white papers published during its term. Second, it won support by elevating the Korea-U.S. alliance to a complementary and solid relationship and introducing the process for transitioning w"
+      },
+      {
+       "value": "MND)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 24,
+         "channel": "mineru",
+         "box": [
+          123.5,
+          578.3,
+          803.6,
+          646.1
+         ]
+        },
+        {
+         "page": 24,
+         "channel": "dots",
+         "box": [
+          116.2,
+          578.1,
+          801.7,
+          640.4
+         ]
+        },
+        {
+         "page": 24,
+         "channel": "paddle",
+         "box": [
+          114.6,
+          579.3,
+          805.3,
+          642.9
+         ]
+        }
+       ],
+       "excerpt": "“국방백서.” www.mnd.mil/user/indexSub.action?codyMenySeq=18224762 &site d=mnd&menuUIType-sub(검색일: 2025/5/4)."
+      },
+      {
+       "value": "COVID-19",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          468.0,
+          807.2,
+          1063.5
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1103.4,
+          805.4,
+          1156.6
+         ]
+        },
+        {
+         "page": 25,
+         "channel": "dots",
+         "box": [
+          114.8,
+          468.6,
+          803.2,
+          1058.1
+         ]
+        }
+       ],
+       "excerpt": "This study analyzes the 2018 Defense White Pa<sub>p</sub>er and the . It focuses on how the Defense White Paper promotes defense policy to examine the Moon Jae-in government's defense policy. First, the government raised funds for promoting Defense Reform 2.0 and secured public support through the two defense white papers published during its term. Second, it won support by elevating the Korea-U.S. alliance to a complementary and solid relationship and introducing the process for transitioning w"
+      }
+     ],
+     "assessment": "different_unresolved"
+    }
+   }
+  },
+  {
+   "doc": "13567085",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "세대효과와 투표선택 : 2017-2024년 한국 선거를 중심으로",
+     "new": "세대효과와 투표선택 :2017-2024년 한국 선거를 중심으로"
+    },
+    "title_en": {
+     "same": false,
+     "old": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections",
+     "new": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)",
+     "evidence": [
+      {
+       "value": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 31,
+         "channel": "mineru",
+         "box": [
+          320.0,
+          477.3,
+          807.2,
+          545.1
+         ]
+        },
+        {
+         "page": 31,
+         "channel": "paddle",
+         "box": [
+          313.6,
+          475.2,
+          807.4,
+          540.8
+         ]
+        }
+       ],
+       "excerpt": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)"
+      },
+      {
+       "value": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 31,
+         "channel": "mineru",
+         "box": [
+          180.5,
+          333.7,
+          745.6,
+          404.2
+         ]
+        },
+        {
+         "page": 31,
+         "channel": "dots",
+         "box": [
+          173.2,
+          333.0,
+          741.0,
+          396.6
+         ]
+        },
+        {
+         "page": 31,
+         "channel": "paddle",
+         "box": [
+          172.0,
+          332.5,
+          746.0,
+          401.2
+         ]
+        }
+       ],
+       "excerpt": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections"
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "장은영",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "이수현",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "이정우",
+       "affiliation": "신라대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "장은영",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "이수현",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "이정우",
+       "affiliation": "신라대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "신라대학교"
+     ],
+     "new": [
+      "신라대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "세대효과",
+      "세대균열",
+      "투표선택"
+     ],
+     "new": [
+      "세대효과",
+      "세대균열",
+      "투표선택"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "generation effects",
+      "generational cleavage",
+      "vote choice"
+     ],
+     "new": [
+      "generation effects",
+      "generational cleavage",
+      "vote choice"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567094",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "뮤지엄 시어터 관람의 교육적 경험에 관한 연구 : 고궁박물관의 ‘녹단’을 중심으로",
+     "new": "뮤지엄 시어터 관람의 교육적 경험에 관한 연구 :고궁박물관의 ‘녹단’을 중심으로"
+    },
+    "title_en": {
+     "same": false,
+     "old": null,
+     "new": "A Study on the Educational Experience of Museum Theater Viewing : Focusing on ‘Lu Duan’ at the Palace Museum in China Ma, Ruo-Yun·Kim, Sun-Young (Hongik University)",
+     "evidence": [
+      {
+       "value": "A Study on the Educational Experience of Museum Theater Viewing : Focusing on ‘Lu Duan’ at the Palace Museum in China Ma, Ruo-Yun·Kim, Sun-Young (Hongik University)",
+       "channel_supported": false,
+       "hits": [],
+       "excerpt": null
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "마야운",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "마야운",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "홍익대학교"
+     ],
+     "new": [
+      "홍익대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "뮤지엄 시어터",
+      "관람 경험",
+      "박물관 교육",
+      "교육 연극",
+      "고궁박물관"
+     ],
+     "new": [
+      "뮤지엄 시어터",
+      "관람 경험",
+      "박물관 교육",
+      "교육 연극",
+      "고궁박물관"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Museum Theatre",
+      "Audience Experience",
+      "Museum Education",
+      "Educational Theatre",
+      "The Palace Museum"
+     ],
+     "new": [
+      "Museum Theatre",
+      "Audience Experience",
+      "Museum Education",
+      "Educational Theatre",
+      "The Palace Museum"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567111",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "민간 주도 복합문화공간의 지역재생 사례 고찰 : 나주 ‘마중 39-17’을 중심으로",
+     "new": "# 민간 주도 복합문화공간의 지역재생 사례 고찰 : 나주 ‘마중 39-17’을 중심으로"
+    },
+    "title_en": {
+     "same": false,
+     "old": null,
+     "new": "A Case Study on Privately-Led Complex Cultural Spaces and Local Regeneration : Focused on Majung 39-17 in Naju Hyunjung Go·Sunyoung Kim (Hongik University)",
+     "evidence": [
+      {
+       "value": "A Case Study on Privately-Led Complex Cultural Spaces and Local Regeneration : Focused on Majung 39-17 in Naju Hyunjung Go·Sunyoung Kim (Hongik University)",
+       "channel_supported": false,
+       "hits": [],
+       "excerpt": null
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "고현정",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "고현정",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "홍익대학교"
+     ],
+     "new": [
+      "홍익대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "복합문화공간",
+      "공간 삼중성 이론",
+      "문화적 재생",
+      "마중 39-17",
+      "지속 가능성"
+     ],
+     "new": [
+      "복합문화공간",
+      "공간 삼중성 이론",
+      "문화적 재생",
+      "마중 39-17",
+      "지속 가능성"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Complex Cultural Space",
+      "Spatial Triad Theory",
+      "Cultural Regeneration",
+      "Majung 39-17",
+      "Sustainability"
+     ],
+     "new": [
+      "Complex Cultural Space",
+      "Spatial Triad Theory",
+      "Cultural Regeneration",
+      "Majung 39-17",
+      "Sustainability"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567139",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "‘제3의 장소’ 관점에서 본 도농복합지역 문예회관의 특성 및 발전 방안 : 순천문화예술회관을 중심으로",
+     "new": "# ‘제3의 장소’ 관점에서 본 도농복합지역 문예회관의 특성 및 발전 방안 : 순천문화예술회관을 중심으로"
+    },
+    "title_en": {
+     "same": false,
+     "old": null,
+     "new": "A Study on the Characteristics and Development Strategy of Arts Center in Urban and Rural Mixed Areas from the ‘Third Place’ Perspective : Focused on Suncheon Culture & Arts Center Kim, Sun-Jeong·Kim, Sun-Young (Hongik University)",
+     "evidence": [
+      {
+       "value": "A Study on the Characteristics and Development Strategy of Arts Center in Urban and Rural Mixed Areas from the ‘Third Place’ Perspective : Focused on Suncheon Culture & Arts Center Kim, Sun-Jeong·Kim, Sun-Young (Hongik University)",
+       "channel_supported": false,
+       "hits": [],
+       "excerpt": null
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김선정",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "김선정",
+       "affiliation": null,
+       "roman": null
+      },
+      {
+       "name": "김선영",
+       "affiliation": "홍익대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "홍익대학교"
+     ],
+     "new": [
+      "홍익대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "도농복합지역",
+      "문화예술회관",
+      "‘제3의 장소’",
+      "‘제3의 장소’로서의 문예회관",
+      "순천문예회관"
+     ],
+     "new": [
+      "도농복합지역",
+      "문화예술회관",
+      "‘제3의 장소’",
+      "‘제3의 장소’로서의 문예회관",
+      "순천문예회관"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Urban-Rural Mixed Area",
+      "Cultural & Art Center",
+      "‘Third Place’",
+      "Culture & Arts Center as a ‘Third Place’",
+      "Suncheon Cultural & Arts Center"
+     ],
+     "new": [
+      "Urban-Rural Mixed Area",
+      "Cultural & Art Center",
+      "‘Third Place’",
+      "Culture & Arts Center as a ‘Third Place’",
+      "Suncheon Cultural & Arts Center"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567223",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "공공외교 자산으로써 방탄소년단과 중남미 A.R.M.Y.",
+     "new": "# 공공외교 자산으로써 방탄소년단과 중남미 A.R.M.Y."
+    },
+    "title_en": {
+     "same": false,
+     "old": "BTS and Latin America A.R.M.Y. as public diplomatic assets",
+     "new": "Armys Love BTS Brasil BTS 1022",
+     "evidence": [
+      {
+       "value": "Armys Love BTS Brasil BTS 1022",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 16,
+         "channel": "mineru",
+         "box": [
+          313.7,
+          325.7,
+          531.0,
+          366.9
+         ]
+        }
+       ],
+       "excerpt": "Armys Love BTS Brasil BTS 1022"
+      },
+      {
+       "value": "BTS and Latin America A.R.M.Y. as public diplomatic assets",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 26,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          337.7,
+          805.4,
+          408.1
+         ]
+        },
+        {
+         "page": 26,
+         "channel": "dots",
+         "box": [
+          115.5,
+          334.5,
+          803.2,
+          399.7
+         ]
+        },
+        {
+         "page": 26,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          335.5,
+          806.4,
+          401.2
+         ]
+        }
+       ],
+       "excerpt": "BTS and Latin America A.R.M.Y. as public diplomatic assets"
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "임수진",
+       "affiliation": "대구가톨릭대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "임수진",
+       "affiliation": "대구가토릭대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "임수진 대구가톨릭대학교"
+     ],
+     "new": [
+      "대구가톨릭대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "방탄소년단",
+      "BTS",
+      "ARMY",
+      "공공외교",
+      "소프트파워임수진 대구가톨릭대학교"
+     ],
+     "new": [
+      "방탄소년단",
+      "BTS",
+      "ARMY",
+      "공공외교",
+      "소프트파워임수진 대구가톨릭대학교"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "BTS",
+      "ARMY",
+      "Public Diplomacy",
+      "Softpower",
+      "K-Wave Sujin Lim"
+     ],
+     "new": [
+      "BTS",
+      "ARMY",
+      "Public Diplomacy",
+      "Softpower",
+      "K-Wave Sujin Lim"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567236",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "The Good Doctor의 자폐스페트럼장애 재현 연구",
+     "new": "The Good Doctor의 자폐스페트럼장애 재현 연구"
+    },
+    "title_en": {
+     "same": true,
+     "old": "A Study of ASD Representation in The Good Doctor",
+     "new": "A Study of ASD Representation in *The Good Doctor"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김세령",
+       "affiliation": "호서대학교",
+       "roman": null
+      },
+      {
+       "name": "남세현",
+       "affiliation": "한신대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "김세령",
+       "affiliation": "호서대학교",
+       "roman": null
+      },
+      {
+       "name": "남세현",
+       "affiliation": "한신대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "호서대학교",
+      "한신대학교"
+     ],
+     "new": [
+      "호서대학교",
+      "한신대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "미국 드라마 굿 닥터",
+      "자폐스펙트럼장애",
+      "장애 재현",
+      "다양성",
+      "사회적 장애 인식"
+     ],
+     "new": [
+      "미국 드라마 굿 닥터",
+      "자폐스펙트럼장애",
+      "장애 재현",
+      "다양성",
+      "사회적 장애 인식"
+     ]
+    },
+    "keywords_en": {
+     "same": false,
+     "old": [
+      "the Good Doctor Autism Spectrum Disorder (ASD)",
+      "disability representation",
+      "diversity",
+      "societal perceptions of disability Kim",
+      "Se-Ryoung"
+     ],
+     "new": [
+      "the Good Doctor",
+      "Autism Spectrum Disorder (ASD)",
+      "disability representation",
+      "diversity",
+      "societal perceptions of disability"
+     ],
+     "evidence": [
+      {
+       "value": "the Good Doctor Autism Spectrum Disorder (ASD)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 35,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1126.0,
+          803.6,
+          1179.2
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "dots",
+         "box": [
+          115.5,
+          1127.7,
+          801.7,
+          1179.5
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1128.4,
+          805.3,
+          1182.7
+         ]
+        }
+       ],
+       "excerpt": "Keywords : the Good Doctor Autism Spectrum Disorder (ASD), disability representation, diversity, societal perceptions of disability"
+      },
+      {
+       "value": "disability representation",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 35,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1126.0,
+          803.6,
+          1179.2
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "dots",
+         "box": [
+          115.5,
+          1127.7,
+          801.7,
+          1179.5
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1128.4,
+          805.3,
+          1182.7
+         ]
+        }
+       ],
+       "excerpt": "Keywords : the Good Doctor Autism Spectrum Disorder (ASD), disability representation, diversity, societal perceptions of disability"
+      },
+      {
+       "value": "diversity",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 17,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          257.9,
+          807.2,
+          646.1
+         ]
+        },
+        {
+         "page": 17,
+         "channel": "dots",
+         "box": [
+          114.0,
+          252.7,
+          803.2,
+          645.6
+         ]
+        },
+        {
+         "page": 17,
+         "channel": "paddle",
+         "box": [
+          110.4,
+          254.2,
+          809.6,
+          649.1
+         ]
+        }
+       ],
+       "excerpt": "그런데 2024년 시즌 7까지 드라마가 계속되는 동안 ASD의 재현과관련된 여러 문제 제기와 함께 ASD 담론에도 변화가 있었다. 특히ASD에 대해 전문가나 가족이 아닌 당사자들이 목소리를 내면서 백인남성으로 전형화된 재현, 비장애인 배우의 장애 연기에 대한 비판이 나왔다. 장애 운동 차원에서 ASD의 다양성이 강조되면서 ‘신경 다양성’과 정당한 편의 제공을 강조하는 새로운 담론이 부각되었다. 이러한 현실의 비판과 변화가 투영된 시즌 7에서는 ASD가 있는 여자 의대생 찰리 역을 ASD 당사자 배우가 연기하고 있고 단회 출연이 아니라 대부분의 에피소드에서 지속적으로 등장하고 있다. 시즌 7에는 ‘자폐증(Autism)’이라는 용어와 함께 ‘스펙트럼(spectrum)’과 ‘신경 다양(성)(Neurodiver(sity))’이라는 용어가 직접적으로 사용되고 있다."
+      },
+      {
+       "value": "societal perceptions of disability Kim",
+       "channel_supported": false,
+       "hits": [],
+       "excerpt": null
+      },
+      {
+       "value": "Se-Ryoung",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 35,
+         "channel": "mineru",
+         "box": [
+          646.0,
+          273.9,
+          805.4,
+          300.5
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "dots",
+         "box": [
+          648.0,
+          270.7,
+          801.7,
+          294.7
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "paddle",
+         "box": [
+          644.9,
+          270.9,
+          806.4,
+          295.9
+         ]
+        }
+       ],
+       "excerpt": "Kim, Se-Ryoung"
+      },
+      {
+       "value": "the Good Doctor",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          159.8,
+          171.0,
+          761.2,
+          208.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          114.8,
+          470.2,
+          804.8,
+          974.0
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          158.3,
+          171.9,
+          764.7,
+          210.5
+         ]
+        }
+       ],
+       "excerpt": "The Good Doctor의 자폐스페트럼장애 재현 연구*"
+      },
+      {
+       "value": "Autism Spectrum Disorder (ASD)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 4,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          970.5,
+          807.2,
+          1096.8
+         ]
+        },
+        {
+         "page": 4,
+         "channel": "dots",
+         "box": [
+          114.8,
+          973.4,
+          804.0,
+          1194.5
+         ]
+        },
+        {
+         "page": 4,
+         "channel": "paddle",
+         "box": [
+          114.6,
+          973.2,
+          807.4,
+          1097.2
+         ]
+        }
+       ],
+       "excerpt": "1) 사회적 장애 인식 개선을 위해 영상 미디어에서 장애 재현의 바람직한 방향을 모색하려는 연구목적을 고려하여 한국의 법적 기준으로 과거의 장애 인식이 반영되어 있는‘자폐성 장애’라는 용어 대신 최근의 장애 인식 변화를 반영한 세계보건기구(WHO)의국제질병분류 ICD-11, 미국의 정신건강 진단기준인 DSM-5에 따라 ‘자폐스펙트럼장애(Autism Spectrum Disorder, ASD)’라는 용어를 사용하였다."
+      },
+      {
+       "value": "societal perceptions of disability",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 35,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          396.2,
+          807.2,
+          1090.1
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1126.0,
+          803.6,
+          1179.2
+         ]
+        },
+        {
+         "page": 35,
+         "channel": "dots",
+         "box": [
+          114.0,
+          395.2,
+          804.8,
+          1085.0
+         ]
+        }
+       ],
+       "excerpt": "The study aimed to analyze and critically evaluate the representation of Autism Spectrum Disorder (ASD) in the Good , through an interdisciplinary approach combining cultural studies and disability studies, while also proposing practical strategies for the representation of ASD in dramas that significantly influence societal perceptions of disability. The results of the study were as follows. Firstly, the narrative promoted an inclusive society through the ASD protagonist's co-development journe"
+      }
+     ],
+     "assessment": "different_unresolved"
+    }
+   }
+  },
+  {
+   "doc": "13567244",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": false,
+     "old": "손은경 경북대학교",
+     "new": "# 이주와 공간 그리고 트랜스내셔널 서사 : 테브픽 바세르의 영화 <40평방미터 독일>을 중심으로",
+     "evidence": [
+      {
+       "value": "# 이주와 공간 그리고 트랜스내셔널 서사 : 테브픽 바세르의 영화 <40평방미터 독일>을 중심으로",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          147.6,
+          803.6,
+          235.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          114.8,
+          144.7,
+          800.3,
+          226.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          110.4,
+          143.8,
+          804.3,
+          230.3
+         ]
+        }
+       ],
+       "excerpt": "이주와 공간 그리고 트랜스내셔널 서사 : 테브픽바세르의 영화 <40평방미터 독일>을 중심으로*"
+      },
+      {
+       "value": "손은경 경북대학교",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          643.3,
+          311.1,
+          805.4,
+          341.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          647.3,
+          307.4,
+          801.7,
+          334.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          642.9,
+          308.5,
+          806.4,
+          338.6
+         ]
+        }
+       ],
+       "excerpt": "손은경 경북대학교"
+      }
+     ],
+     "channel_votes": {
+      "old": 3,
+      "new": 3
+     },
+     "assessment": "different_unresolved"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Migration, Space, and Transnational Narratives : Focusing on Tevfik Başer's Film <40 Square Meters of Germany>",
+     "new": "Migration, Space, and Transnational Narratives : Focusing on Tevfik Başer's Film <40 Square Meters of Germany>"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "손은경",
+       "affiliation": "경북대학교",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "손은경",
+       "affiliation": "경북대학교",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "손은경 경북대학교"
+     ],
+     "new": [
+      "경북대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "이주",
+      "공간",
+      "트랜스내셔널 서사",
+      "독립적 트랜스내셔널 영화",
+      "테브픽바세르",
+      "40평방미터 독일"
+     ],
+     "new": [
+      "이주",
+      "공간",
+      "트랜스내셔널 서사",
+      "독립적 트랜스내셔널 영화",
+      "테브픽바세르",
+      "40평방미터 독일"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Migration",
+      "Space",
+      "Transnational Narratives",
+      "independent transnational cienema",
+      "Tevfik Başer",
+      "40 Square Meters of Germany"
+     ],
+     "new": [
+      "Migration",
+      "Space",
+      "Transnational Narratives",
+      "independent transnational cienema",
+      "Tevfik Başer",
+      "40 Square Meters of Germany"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13567332",
+   "cluster_id": "C01",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "사라지는 지역 문화자원으로서 골목길에 대한 연구 : 문화적·사회적·경제적 측면",
+     "new": "사라지는 지역 문화자원으로서 골목길에 대한 연구 : 문화적·사회적·경제적 측면"
+    },
+    "title_en": {
+     "same": true,
+     "old": "A Study on the Activation of Disappearing Alleyway as Local Cultural Resources : Focused on cultural, social and economic Value of the Alleyway",
+     "new": "A Study on the Activation of Disappearing Alleyway as Local Cultural Resources : Focused on cultural, social and economic Value of the Alleyway"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "노영희",
+       "affiliation": "건국대학교",
+       "roman": null
+      },
+      {
+       "name": "이진욱",
+       "affiliation": "건국대학교 지식콘텐츠연구소",
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "노영희",
+       "affiliation": "건국대학교",
+       "roman": null
+      },
+      {
+       "name": "이진욱",
+       "affiliation": "건국대학교 지식콘텐츠연구소",
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "건국대학교",
+      "건국대학교 지식콘텐츠연구소"
+     ],
+     "new": [
+      "건국대학교",
+      "건국대학교 지식콘텐츠연구소"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "지역 문화 자원",
+      "골목길",
+      "근린주구",
+      "문화적 가치",
+      "사회적 가치",
+      "경제적 가치"
+     ],
+     "new": [
+      "지역 문화 자원",
+      "골목길",
+      "근린주구",
+      "문화적 가치",
+      "사회적 가치",
+      "경제적 가치"
+     ]
+    },
+    "keywords_en": {
+     "same": false,
+     "old": [
+      "Local Cultural Resources",
+      "Alleyways",
+      "neighborhood unit",
+      "cultural value",
+      "social value",
+      "Institue for KCDT)"
+     ],
+     "new": [
+      "Local Cultural Resources",
+      "Alleyways",
+      "neighborhood unit",
+      "cultural value",
+      "social value",
+      "economic value"
+     ],
+     "evidence": [
+      {
+       "value": "Local Cultural Resources",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          273.9,
+          805.4,
+          378.9
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1074.2,
+          803.6,
+          1130.0
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "dots",
+         "box": [
+          115.5,
+          270.7,
+          802.5,
+          371.2
+         ]
+        }
+       ],
+       "excerpt": "A Study on the Activation of Disappearing Alleyway as Local Cultural Resources : Focused on cultural, social and economic Value of the Alleyway"
+      },
+      {
+       "value": "Alleyways",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          509.2,
+          807.2,
+          1040.9
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1074.2,
+          803.6,
+          1130.0
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "dots",
+         "box": [
+          115.5,
+          511.3,
+          802.5,
+          1037.0
+         ]
+        }
+       ],
+       "excerpt": "This study focuses on the decline of alleyways due to the expansion of apartment complexes. It evaluates the impact of this decline on the community of local neighborhoods. In particular, it examines the cultural, social, and economic values of alleyways to establish a direct correlation between the decline of alleyways and the formation of community in local neighborhoods. Based on its analysis, this study draws three conclusions. First, alleyways are not fossilized cultural heritage; they are "
+      },
+      {
+       "value": "neighborhood unit",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 17,
+         "channel": "mineru",
+         "box": [
+          117.1,
+          973.1,
+          809.9,
+          1185.8
+         ]
+        },
+        {
+         "page": 17,
+         "channel": "dots",
+         "box": [
+          114.8,
+          974.9,
+          802.5,
+          1183.2
+         ]
+        },
+        {
+         "page": 17,
+         "channel": "paddle",
+         "box": [
+          110.4,
+          976.3,
+          809.6,
+          1188.8
+         ]
+        }
+       ],
+       "excerpt": "광장과 공원은 그 발생과 기원에서 있어 사뭇 다른 역사를 서로 가지고 있지만, 오늘날 유럽 사회의 도시형성 과정에 있어 그 역할과 기능은 유사한 의미를 지닌다. 그것은 바로 광장과 공원 주변에 거주하고있는 사람들을 위한 시설, 즉 근린주구(neighborhood unit)를 구성하는 기본 요소라는 것이다. 근린주구란 도시 내의 가장 기초적인 공동지역사회를 이르는 말로 근린생활권이라고도 하는데(방승환 외 2021,"
+      },
+      {
+       "value": "cultural value",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1074.2,
+          803.6,
+          1130.0
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "dots",
+         "box": [
+          115.5,
+          1079.1,
+          802.5,
+          1128.5
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1079.5,
+          805.3,
+          1133.6
+         ]
+        }
+       ],
+       "excerpt": "Keywords : Local Cultural Resources, Alleyways, neighborhood unit, cultural value, social value, economic value"
+      },
+      {
+       "value": "social value",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1074.2,
+          803.6,
+          1130.0
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "dots",
+         "box": [
+          115.5,
+          1079.1,
+          802.5,
+          1128.5
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "paddle",
+         "box": [
+          112.5,
+          1079.5,
+          805.3,
+          1133.6
+         ]
+        }
+       ],
+       "excerpt": "Keywords : Local Cultural Resources, Alleyways, neighborhood unit, cultural value, social value, economic value"
+      },
+      {
+       "value": "Institue for KCDT)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          436.8,
+          422.8,
+          807.2,
+          490.6
+         ]
+        }
+       ],
+       "excerpt": "Younghee Noh·Jinwook Lee (Konkuk University, Institue for KCDT)"
+      },
+      {
+       "value": "economic value",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          273.9,
+          805.4,
+          378.9
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          509.2,
+          807.2,
+          1040.9
+         ]
+        },
+        {
+         "page": 29,
+         "channel": "mineru",
+         "box": [
+          120.8,
+          1074.2,
+          803.6,
+          1130.0
+         ]
+        }
+       ],
+       "excerpt": "A Study on the Activation of Disappearing Alleyway as Local Cultural Resources : Focused on cultural, social and economic Value of the Alleyway"
+      }
+     ],
+     "assessment": "different_unresolved"
+    }
+   }
+  },
+  {
+   "doc": "13568678",
+   "cluster_id": "C05",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "1933년 이전 윤석중 문학과 한국 구비 동요의 관계",
+     "new": "# 1933년 이전 윤석중 문학과 한국 구비 동요의 관계"
+    },
+    "title_en": {
+     "same": false,
+     "old": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933",
+     "new": "Conatus of Korean Oral Children's Songs in Yun Seok-Joong's Works Before 1933",
+     "evidence": [
+      {
+       "value": "Conatus of Korean Oral Children's Songs in Yun Seok-Joong's Works Before 1933",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 41,
+         "channel": "dots",
+         "box": [
+          246.9,
+          300.0,
+          702.9,
+          363.8
+         ]
+        }
+       ],
+       "excerpt": "Conatus of Korean Oral Children's Songs in\nYun Seok-Joong's Works Before 1933"
+      },
+      {
+       "value": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 41,
+         "channel": "mineru",
+         "box": [
+          249.9,
+          300.5,
+          709.1,
+          369.6
+         ]
+        },
+        {
+         "page": 41,
+         "channel": "paddle",
+         "box": [
+          244.0,
+          297.0,
+          709.8,
+          366.8
+         ]
+        }
+       ],
+       "excerpt": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933"
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "홍승진",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "홍승진",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "년 이전 윤석중 문학과 한국 구비 동요의 관계"
+     ],
+     "new": [
+      "서울대학교 국어국문학과"
+     ],
+     "evidence": [
+      {
+       "value": "년 이전 윤석중 문학과 한국 구비 동요의 관계",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          176.5,
+          291.0,
+          762.4,
+          326.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          168.8,
+          289.5,
+          752.4,
+          319.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          167.8,
+          288.7,
+          764.1,
+          322.0
+         ]
+        }
+       ],
+       "excerpt": "1933년 이전 윤석중 문학과 한국 구비 동요의 관계"
+      },
+      {
+       "value": "서울대학교 국어국문학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          139.7,
+          1194.2,
+          709.1,
+          1253.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          130.3,
+          1213.9,
+          553.5,
+          1238.9
+         ]
+        }
+       ],
+       "excerpt": "<sup>*</sup> 서울대학교 국어국문학과 조교수, damyun21@hanmail.net"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "윤석중",
+      "민요",
+      "한국 구비 동요",
+      "공동체",
+      "정서",
+      "활력"
+     ],
+     "new": [
+      "윤석중",
+      "민요",
+      "한국 구비 동요",
+      "공동체",
+      "정서",
+      "활력"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [],
+     "new": []
+    }
+   }
+  },
+  {
+   "doc": "13568682",
+   "cluster_id": "C05",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "『新少年』 창간호 서지적 분석과 ‘새소년’ 의미 고찰",
+     "new": "『新少年』 창간호 서지적 분석과 ‘새소년’ 의미 고찰"
+    },
+    "title_en": {
+     "same": false,
+     "old": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy",
+     "new": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a Study on the Meaning of the New Boy",
+     "evidence": [
+      {
+       "value": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a Study on the Meaning of the New Boy",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 24,
+         "channel": "dots",
+         "box": [
+          149.3,
+          300.0,
+          803.4,
+          363.8
+         ]
+        }
+       ],
+       "excerpt": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a\nStudy on the Meaning of the New Boy"
+      },
+      {
+       "value": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 24,
+         "channel": "mineru",
+         "box": [
+          154.4,
+          299.1,
+          805.6,
+          370.9
+         ]
+        },
+        {
+         "page": 24,
+         "channel": "paddle",
+         "box": [
+          145.9,
+          297.0,
+          807.9,
+          368.8
+         ]
+        }
+       ],
+       "excerpt": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy"
+      }
+     ],
+     "channel_votes": {
+      "old": 0,
+      "new": 0
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "최미선",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "최미선",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "경상국립대학교"
+     ],
+     "new": [
+      "경상국립대학교"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "신소년",
+      "신소년 창간호",
+      "새 소년",
+      "현담문고",
+      "신소년 초기 집필진",
+      "근대의식"
+     ],
+     "new": [
+      "신소년",
+      "신소년 창간호",
+      "새 소년",
+      "현담문고",
+      "신소년 초기 집필진",
+      "근대의식"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [],
+     "new": []
+    }
+   }
+  },
+  {
+   "doc": "13569382",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "3차원 가상착의를 활용한 제6·8차 사이즈코리아 데이터 기반 여군 전투복의 치수적합성 평가",
+     "new": "3차원 가상착의를 활용한 제6·8차 사이즈코리아 데이터 기반 여군 전투복의 치수적합성 평가"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Evaluation of the Size Suitability of Army Combat Uniforms for Women Using 3D Virtual Simulation Based on the Sixth and Eighth Size Korea Data",
+     "new": "Evaluation of the Size Suitability of Army Combat Uniforms for Women Using 3D Virtual Simulation Based on the Sixth and Eighth Size Korea Data"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "이옥경",
+       "affiliation": null,
+       "roman": "Okkyung Lee"
+      },
+      {
+       "name": "이예진",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "이옥경",
+       "affiliation": null,
+       "roman": "Okkyung Lee"
+      },
+      {
+       "name": "이예진",
+       "affiliation": null,
+       "roman": "Yejin Lee"
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "Kyungpook National University",
+      "Department of Clothing and Textiles",
+      "Chungnam National University"
+     ],
+     "new": [
+      "충남대학교, 의류학과",
+      "경북대학교"
+     ],
+     "evidence": [
+      {
+       "value": "Kyungpook National University",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          129.2,
+          548.8,
+          332.1,
+          572.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          120.1,
+          507.7,
+          501.2,
+          567.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          120.9,
+          549.1,
+          325.2,
+          568.9
+         ]
+        }
+       ],
+       "excerpt": "Kyungpook National University"
+      },
+      {
+       "value": "Department of Clothing and Textiles",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          584.0,
+          509.8,
+          973.7,
+          572.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          528.5,
+          506.5,
+          550.4
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          120.1,
+          507.7,
+          501.2,
+          567.6
+         ]
+        }
+       ],
+       "excerpt": "충남대학교, 의류학과, 교수 Professor, Department of Clothing and Textiles, Chungnam National University"
+      },
+      {
+       "value": "Chungnam National University",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          584.0,
+          509.8,
+          973.7,
+          572.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          114.4,
+          1348.3,
+          963.4,
+          1452.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          583.7,
+          507.7,
+          975.2,
+          567.6
+         ]
+        }
+       ],
+       "excerpt": "충남대학교, 의류학과, 교수 Professor, Department of Clothing and Textiles, Chungnam National University"
+      },
+      {
+       "value": "충남대학교, 의류학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          584.0,
+          509.8,
+          973.7,
+          572.2
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          583.7,
+          507.7,
+          975.2,
+          567.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          583.7,
+          508.4,
+          748.4,
+          530.2
+         ]
+        }
+       ],
+       "excerpt": "충남대학교, 의류학과, 교수 Professor, Department of Clothing and Textiles, Chungnam National University"
+      },
+      {
+       "value": "경북대학교",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          129.2,
+          509.8,
+          305.9,
+          531.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          120.1,
+          507.7,
+          501.2,
+          567.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          120.9,
+          508.4,
+          296.0,
+          530.2
+         ]
+        }
+       ],
+       "excerpt": "경북대학교, 의류학과, 조교수"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "army combat uniforms",
+      "3D virtual simulation",
+      "size suitability",
+      "Size Korea data",
+      "women"
+     ],
+     "new": [
+      "army combat uniforms",
+      "3D virtual simulation",
+      "size suitability",
+      "Size Korea data",
+      "women"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "army combat uniforms",
+      "3D virtual simulation",
+      "size suitability",
+      "Size Korea data",
+      "women"
+     ],
+     "new": [
+      "army combat uniforms",
+      "3D virtual simulation",
+      "size suitability",
+      "Size Korea data",
+      "women"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13569394",
+   "cluster_id": "C04",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": false,
+     "old": "터보팬의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망 ISSN 2671-4744(Print) ISSN 2671-9673(Online)",
+     "new": "터보펜의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망",
+     "evidence": [
+      {
+       "value": "터보펜의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          147.8,
+          206.3,
+          761.5,
+          299.3
+         ]
+        }
+       ],
+       "excerpt": "터보펜의 잔여 유효 수명 예측을 위한\n다수 소수 특징 추출 병렬연결 합성곱 신경망"
+      },
+      {
+       "value": "터보팬의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망 ISSN 2671-4744(Print) ISSN 2671-9673(Online)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          149.0,
+          209.4,
+          763.0,
+          299.0
+         ]
+        }
+       ],
+       "excerpt": "터보팬의 잔여 유효 수명 예측을 위한\n다수 소수 특징 추출 병렬연결 합성곱 신경망\nISSN 2671-4744(Print)\nISSN 2671-9673(Online)"
+      }
+     ],
+     "channel_votes": {
+      "old": 1,
+      "new": 1
+     },
+     "assessment": "different_unresolved"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Parallel-connected convolutional neural network with minority and majority feature extraction for the estimation of the remaining useful life of turbofans",
+     "new": "Parallel-connected convolutional neural network with minority and majority feature extraction for the estimation of the remaining useful life of turbofans"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "김해영",
+       "affiliation": null,
+       "roman": "Haeyoung Kim"
+      },
+      {
+       "name": "김도윤",
+       "affiliation": null,
+       "roman": "Doyun Kim"
+      },
+      {
+       "name": "반재필",
+       "affiliation": null,
+       "roman": "Jaepil Ban"
+      },
+      {
+       "name": "구교권",
+       "affiliation": null,
+       "roman": "Gyogwon Koo"
+      },
+      {
+       "name": "정재진",
+       "affiliation": null,
+       "roman": "Jae Jin Jeong"
+      }
+     ],
+     "new": [
+      {
+       "name": "김해영",
+       "affiliation": null,
+       "roman": "Haeyoung Kim"
+      },
+      {
+       "name": "김도윤",
+       "affiliation": null,
+       "roman": "Doyun Kim"
+      },
+      {
+       "name": "반재필",
+       "affiliation": null,
+       "roman": "Jaepil Ban"
+      },
+      {
+       "name": "구교권",
+       "affiliation": null,
+       "roman": "Gyogwon Koo"
+      },
+      {
+       "name": "정재진",
+       "affiliation": null,
+       "roman": "Jae Jin Jeong"
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "School of Electronic Engineering",
+      "Institute of Technology",
+      "Institute of Science and Technology"
+     ],
+     "new": [
+      "금오공과대학교, 전자공학과"
+     ],
+     "evidence": [
+      {
+       "value": "School of Electronic Engineering",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          491.1,
+          401.6,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          430.1,
+          491.1,
+          704.8,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          735.5,
+          491.1,
+          1006.8,
+          598.7
+         ]
+        }
+       ],
+       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
+      },
+      {
+       "value": "Institute of Technology",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          491.1,
+          401.6,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          430.1,
+          491.1,
+          704.8,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          735.5,
+          491.1,
+          1006.8,
+          598.7
+         ]
+        }
+       ],
+       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
+      },
+      {
+       "value": "Institute of Science and Technology",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          626.7,
+          401.6,
+          751.4
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          118.6,
+          649.5,
+          392.3,
+          747.6
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          118.8,
+          624.0,
+          395.0,
+          751.1
+         ]
+        }
+       ],
+       "excerpt": "구교권, Gyogwon Koo 대구경북과학기술원, 지능형로봇연구부, 선임연구원 Senior Researcher, Division of Intelligent Robot, Daegu Gyeongbuk Institute of Science and Technology"
+      },
+      {
+       "value": "금오공과대학교, 전자공학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          491.1,
+          401.6,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          430.1,
+          491.1,
+          704.8,
+          581.5
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          735.5,
+          491.1,
+          1006.8,
+          598.7
+         ]
+        }
+       ],
+       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "time series forecasting",
+      "RUL",
+      "deep learning",
+      "C-MAPSS",
+      "CNN"
+     ],
+     "new": [
+      "time series forecasting",
+      "RUL",
+      "deep learning",
+      "C-MAPSS",
+      "CNN"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "time series forecasting",
+      "RUL",
+      "deep learning",
+      "C-MAPSS",
+      "CNN"
+     ],
+     "new": [
+      "time series forecasting",
+      "RUL",
+      "deep learning",
+      "C-MAPSS",
+      "CNN"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13569399",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "신뢰성 기술 측면에서 국방정책 개선방향 연구",
+     "new": "신뢰성 기술 측면에서 국방정책 개선방향 연구"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Improving Defense Policy from the Perspective of Reliability Engineering",
+     "new": "Improving Defense Policy from the Perspective of Reliability Engineering"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "성시일",
+       "affiliation": null,
+       "roman": "Siil Sung"
+      },
+      {
+       "name": "박재훈",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "성시일",
+       "affiliation": null,
+       "roman": "Siil Sung"
+      },
+      {
+       "name": "박재훈",
+       "affiliation": null,
+       "roman": "Jaehun Park"
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "Department of Business Administration",
+      "Changwon National University",
+      "Department of Industrial Management Information Engineering",
+      "Kyunggi University"
+     ],
+     "new": [
+      "국립창원대학교 경영학과 생산관리전공",
+      "경기대학교, 산업경영정보공학과"
+     ],
+     "evidence": [
+      {
+       "value": "Department of Business Administration",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          570.3,
+          433.5,
+          979.4,
+          494.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          570.1,
+          430.5,
+          979.7,
+          491.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          569.1,
+          451.0,
+          981.8,
+          493.8
+         ]
+        }
+       ],
+       "excerpt": "국립창원대학교 경영학과 생산관리전공 교수Professor, Department of Business Administration, ChangwonNational University"
+      },
+      {
+       "value": "Changwon National University",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          570.3,
+          433.5,
+          979.4,
+          494.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          114.4,
+          1326.5,
+          1047.8,
+          1441.8
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          570.1,
+          430.5,
+          979.7,
+          491.1
+         ]
+        }
+       ],
+       "excerpt": "국립창원대학교 경영학과 생산관리전공 교수Professor, Department of Business Administration, ChangwonNational University"
+      },
+      {
+       "value": "Department of Industrial Management Information Engineering",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          129.2,
+          453.7,
+          529.3,
+          494.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          121.6,
+          430.5,
+          524.3,
+          491.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          121.9,
+          452.1,
+          526.3,
+          493.8
+         ]
+        }
+       ],
+       "excerpt": "Professor, Department of Industrial Management Information Engineering, Kyunggi University"
+      },
+      {
+       "value": "Kyunggi University",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          129.2,
+          453.7,
+          529.3,
+          494.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          121.6,
+          430.5,
+          524.3,
+          491.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          121.9,
+          452.1,
+          526.3,
+          493.8
+         ]
+        }
+       ],
+       "excerpt": "Professor, Department of Industrial Management Information Engineering, Kyunggi University"
+      },
+      {
+       "value": "국립창원대학교 경영학과 생산관리전공",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          570.3,
+          433.5,
+          979.4,
+          494.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          570.1,
+          430.5,
+          979.7,
+          491.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          570.1,
+          431.2,
+          830.7,
+          452.1
+         ]
+        }
+       ],
+       "excerpt": "국립창원대학교 경영학과 생산관리전공 교수Professor, Department of Business Administration, ChangwonNational University"
+      },
+      {
+       "value": "경기대학교, 산업경영정보공학과",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          131.5,
+          435.0,
+          352.6,
+          455.3
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          121.6,
+          430.5,
+          524.3,
+          491.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          121.9,
+          432.3,
+          346.1,
+          452.1
+         ]
+        }
+       ],
+       "excerpt": "경기대학교, 산업경영정보공학과, 교수"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "reliability",
+      "prognostics and health management",
+      "condition-based maintenance",
+      "maintenance policy",
+      "defense policy"
+     ],
+     "new": [
+      "reliability",
+      "prognostics and health management",
+      "condition-based maintenance",
+      "maintenance policy",
+      "defense policy"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "reliability",
+      "prognostics and health management",
+      "condition-based maintenance",
+      "maintenance policy",
+      "defense policy"
+     ],
+     "new": [
+      "reliability",
+      "prognostics and health management",
+      "condition-based maintenance",
+      "maintenance policy",
+      "defense policy"
+     ]
+    }
+   }
+  },
+  {
+   "doc": "13569404",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "신속소요 연구개발 사업의 품질관리 절차 연구",
+     "new": "신속소요 연구개발 사업의 품질관리 절차 연구"
+    },
+    "title_en": {
+     "same": true,
+     "old": "Study on quality control process for rapid R&D acquisition",
+     "new": "Study on quality control process for rapid R&D acquisition"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "조관준",
+       "affiliation": null,
+       "roman": "Kwan-Jun Jo"
+      },
+      {
+       "name": "홍희현",
+       "affiliation": null,
+       "roman": "Hee-hyeon Hong"
+      },
+      {
+       "name": "강요한",
+       "affiliation": null,
+       "roman": "Yo-Han Kang"
+      },
+      {
+       "name": "서원범",
+       "affiliation": null,
+       "roman": "Won-Bum Seo"
+      }
+     ],
+     "new": [
+      {
+       "name": "조관준",
+       "affiliation": null,
+       "roman": "Kwan-Jun Jo"
+      },
+      {
+       "name": "홍희현",
+       "affiliation": null,
+       "roman": "Hee-hyeon Hong"
+      },
+      {
+       "name": "강요한",
+       "affiliation": null,
+       "roman": "Yo-Han Kang"
+      },
+      {
+       "name": "서원범",
+       "affiliation": null,
+       "roman": "Won-Bum Seo"
+      }
+     ]
+    },
+    "affiliations": {
+     "same": false,
+     "old": [
+      "Planning Department",
+      "Ammunition center"
+     ],
+     "new": [
+      "국방기술품질원, 유도탄약센터",
+      "연구원"
+     ],
+     "evidence": [
+      {
+       "value": "Planning Department",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          371.1,
+          334.4,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          584.0,
+          371.1,
+          791.4,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          811.9,
+          371.1,
+          1019.3,
+          516.1
+         ]
+        }
+       ],
+       "excerpt": "조관준<sup>†</sup>, Kwan-Jun Jo 국방기술품질원, 품질기획실, 선임연구원 Senior Researcher, Quality Planning Department, Defense agency for Technology and Quality"
+      },
+      {
+       "value": "Ammunition center",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          354.9,
+          371.1,
+          553.2,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          351.1,
+          392.9,
+          543.9,
+          510.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          118.8,
+          367.8,
+          327.3,
+          512.6
+         ]
+        }
+       ],
+       "excerpt": "홍희현, Hee-hyeon Hong 국방기술품질원, 유도탄약센터, 연구원 Researcher, PGM & Ammunition center, Defense agency for Technology and Quality"
+      },
+      {
+       "value": "국방기술품질원, 유도탄약센터",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          354.9,
+          371.1,
+          553.2,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          351.1,
+          392.9,
+          543.9,
+          510.7
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "paddle",
+         "box": [
+          118.8,
+          367.8,
+          327.3,
+          512.6
+         ]
+        }
+       ],
+       "excerpt": "홍희현, Hee-hyeon Hong 국방기술품질원, 유도탄약센터, 연구원 Researcher, PGM & Ammunition center, Defense agency for Technology and Quality"
+      },
+      {
+       "value": "연구원",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          127.0,
+          371.1,
+          334.4,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          354.9,
+          371.1,
+          553.2,
+          516.1
+         ]
+        },
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          584.0,
+          371.1,
+          791.4,
+          516.1
+         ]
+        }
+       ],
+       "excerpt": "조관준<sup>†</sup>, Kwan-Jun Jo 국방기술품질원, 품질기획실, 선임연구원 Senior Researcher, Quality Planning Department, Defense agency for Technology and Quality"
+      }
+     ],
+     "assessment": "different_unresolved"
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "rapid R&D Acquisition",
+      "quality control process",
+      "APQP",
+      "government quality assurance process",
+      "SE development process"
+     ],
+     "new": [
+      "rapid R&D Acquisition",
+      "quality control process",
+      "APQP",
+      "government quality assurance process",
+      "SE development process"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "rapid R&D Acquisition",
+      "quality control process",
+      "APQP",
+      "government quality assurance process",
+      "SE development process"
+     ],
+     "new": [
+      "rapid R&D Acquisition",
+      "quality control process",
+      "APQP",
+      "government quality assurance process",
+      "SE development process"
+     ]
+    }
+   }
+  }
+ ]
+}

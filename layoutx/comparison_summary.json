@@ -1,0 +1,40 @@
+{
+  "total": 953,
+  "categories": {
+    "新版更优": 709,
+    "一致": 223,
+    "双错且不同": 21
+  },
+  "fields": {
+    "title": {
+      "same": 787,
+      "new_better": 151,
+      "different_unresolved": 15
+    },
+    "title_en": {
+      "new_better": 393,
+      "same": 533,
+      "different_unresolved": 27
+    },
+    "authors": {
+      "same": 868,
+      "new_better": 58,
+      "different_unresolved": 27
+    },
+    "affiliations": {
+      "same": 588,
+      "new_better": 312,
+      "different_unresolved": 53
+    },
+    "keywords": {
+      "same": 900,
+      "different_unresolved": 35,
+      "new_better": 18
+    },
+    "keywords_en": {
+      "same": 750,
+      "new_better": 187,
+      "different_unresolved": 16
+    }
+  }
+}

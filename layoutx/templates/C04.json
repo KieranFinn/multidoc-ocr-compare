@@ -1,0 +1,7 @@
+{
+  "cluster_id": "C04",
+  "zones": {"title": "section_header_with_optional_issn", "english_title": "between_title_and_author_grid", "authors": "narrow_horizontal_cells", "keywords": "first_page"},
+  "author_grammar": "korean_name_comma_roman_name",
+  "channel_policy": "prefer_dots_when_author_grid",
+  "min_confidence": 0.75
+}

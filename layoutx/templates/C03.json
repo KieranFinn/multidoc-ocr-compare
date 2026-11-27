@@ -1,0 +1,7 @@
+{
+  "cluster_id": "C03",
+  "zones": {"title": "first_section_header_y_0.10_0.19", "authors": "single_line_below_title", "abstract": "first_page", "keywords": "first_page"},
+  "author_grammar": "single_line_preserve_transliterated_names",
+  "channel_policy": "unified_best_reading",
+  "min_confidence": 0.75
+}
