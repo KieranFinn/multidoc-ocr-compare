@@ -16,6 +16,9 @@ expectedFailure：基线已知缺口（题名追加人名被判 new_better），
 本文件不联网、不调用 front_doc()、不写 out_layout / diff.jsonl；
 A 层用 monkeypatch 提供合成页面数据，B 层只读现有结果文件。
 运行：python -m pytest layoutx/test_layoutx.py -q  或  python layoutx/test_layoutx.py
+
+新增守卫（保护“继续完善”后的底线）：裁定 reason 齐备、doc/字段级 new_worse 归零、
+different_unresolved 不超过基线，以及两例合成判优回归（单渠道 OCR 异读、期刊名误作机构）。
 """
 
 import json
@@ -35,11 +38,22 @@ import extract
 
 DIFF_PATH = os.path.join(HERE, "diff.jsonl")
 SUMMARY_PATH = os.path.join(HERE, "comparison_summary.json")
+MANUAL_REVIEW_PATH = os.path.join(HERE, "manual_review.json")
 EXTRACT_PATH = os.path.join(HERE, "extract.py")
 COMPARE_PATH = os.path.join(HERE, "compare.py")
 
 GARBAGE_AUTHOR_TOKENS = ("조록", "본체론", "알고리즘", "유형분류", "평가하였고")
 AUTHOR_SUPERSET_BASELINE = 14
+
+# “继续完善”守卫基线。manual_review 当前 32 条；超出部分视为新增裁定。
+MANUAL_REVIEW_BASELINE = 32
+MIN_REASON_LEN = 20
+VAGUE_REASON_MARKERS = ("人工判定更好", "人工判定较优", "人工复核更优", "人工认为更好")
+UNRESOLVED_TOTAL_BASELINE = 165
+UNRESOLVED_FIELD_BASELINE = {
+    "title": 14, "title_en": 20, "authors": 27,
+    "affiliations": 53, "keywords": 35, "keywords_en": 16,
+}
 
 
 def _fake_load(mapping):
@@ -75,7 +89,7 @@ class UnitTests(unittest.TestCase):
     def test_lower_page_isolated_short_text_is_not_author_evidence(self):
         """模拟 조록：paddle 片段 y≈771，无星标/罗马名/机构配对，且位于作者区之外。"""
         unified = {"w": 1000, "h": 1000, "unified": [
-            {"type": "Text", "box": [100, 100, 900, 140],
+            {"type": "Text", "box": [155, 213, 760, 304],
              "main_text": "스팸 대응을 위한 성과지표 개선 방안 연구"},
         ]}
         merged = {"w": 1000, "h": 1000, "channels": {"paddle": [
@@ -129,6 +143,45 @@ class UnitTests(unittest.TestCase):
         self.assertFalse(single, affs)
         self.assertEqual(compare.aff_norm("LIG넥스원, 레이다기술팀"),
                          compare.aff_norm("LIG넥스원 레이다기술팀"))
+
+    def test_title_ocr_variant_prefer_multichannel(self):
+        """旧题名仅单渠道命中（OCR 异读）、新题名被两渠道支持时应判 new_better。"""
+        old_title = "멘로드라마의 전략과 정치성"
+        new_title = "멜로드라마의 전략과 정치성"
+        raws = [
+            {"page": 1, "channel": "mineru", "text": old_title, "box": [0, 0, 100, 20]},
+            {"page": 1, "channel": "dots", "text": new_title, "box": [0, 0, 100, 20]},
+            {"page": 1, "channel": "paddle", "text": new_title, "box": [0, 0, 100, 20]},
+        ]
+        old = {"title": {"value": old_title}, "title_en": {"value": None}}
+        new = {"title": {"value": new_title}, "title_en": {"value": None}}
+        with mock.patch.object(compare, "raw_channels", lambda doc: raws):
+            result = compare.verdict("TEST00004", old, new)
+        title = result["fields"]["title"]
+        self.assertEqual({"old": 1, "new": 2}, title["channel_votes"])
+        self.assertEqual("new_better", title.get("assessment"))
+
+    def test_affiliation_journal_name_not_better(self):
+        """旧机构是期刊名/参考文献片段、新机构是真实大学机构时应判 new_better。"""
+        old_affs = ["한국어문연구 제12집"]
+        new_affs = ["서울대학교 국어국문학과"]
+        raws = [
+            {"page": 1, "channel": "mineru", "text": new_affs[0], "box": [0, 0, 100, 20]},
+            {"page": 1, "channel": "dots", "text": "참고문헌: " + old_affs[0],
+             "box": [0, 200, 100, 220]},
+            {"page": 1, "channel": "paddle", "text": new_affs[0], "box": [0, 0, 100, 20]},
+        ]
+        old = {"title": {"value": "제목"}, "title_en": {"value": None},
+               "affiliations": old_affs}
+        new = {"title": {"value": "제목"}, "title_en": {"value": None},
+               "affiliations": new_affs}
+        with mock.patch.object(compare, "raw_channels", lambda doc: raws):
+            result = compare.verdict("TEST00005", old, new)
+        aff = result["fields"]["affiliations"]
+        self.assertFalse(aff["same"])
+        self.assertEqual("new_better", aff.get("assessment"))
+        self.assertTrue(any(e["channel_supported"] and e["value"] == new_affs[0]
+                            for e in aff["evidence"]))
 
 
 class IntegrationTests(unittest.TestCase):
@@ -213,6 +266,58 @@ class IntegrationTests(unittest.TestCase):
         authors = self._new_values("13569417", "authors") or []
         self.assertEqual(4, len(authors), authors)
         self.assertTrue(all(a.get("roman") for a in authors), authors)
+
+    def test_manual_review_entries_have_reasons(self):
+        """每条“新版更优”裁定须有 >=20 字 reason；新增裁定不得空泛。"""
+        with open(MANUAL_REVIEW_PATH, encoding="utf-8") as f:
+            entries = json.load(f)
+        self.assertTrue(entries, "manual_review.json 不应为空")
+        for idx, entry in enumerate(entries):
+            if entry.get("verdict") != "新版更优":
+                continue
+            doc = entry.get("doc")
+            reason = entry.get("reason")
+            self.assertIsInstance(reason, str, "裁定 %s 的 reason 必须是字符串" % doc)
+            reason = reason.strip()
+            self.assertTrue(reason, "裁定 %s 的 reason 不能为空" % doc)
+            self.assertGreaterEqual(
+                len(reason), MIN_REASON_LEN,
+                "裁定 %s 的 reason 不足 %d 字: %s" % (doc, MIN_REASON_LEN, reason))
+            if idx >= MANUAL_REVIEW_BASELINE:
+                for marker in VAGUE_REASON_MARKERS:
+                    self.assertNotIn(
+                        marker, reason,
+                        "新增裁定 %s 的 reason 不能空泛（%s）: %s" % (doc, marker, reason))
+
+    def test_no_new_worse_after_adjudication(self):
+        """集成守卫：证据裁定/规则增强后 doc 级与字段级 new_worse 仍须为 0。"""
+        doc_worse = [r["doc"] for r in self.records if r.get("category") == "新版更差"]
+        self.assertEqual([], doc_worse, "doc 级出现新版更差: %s" % doc_worse)
+        field_worse = [(r["doc"], f) for r in self.records
+                       for f, fr in r["fields"].items()
+                       if fr.get("assessment") == "new_worse"]
+        self.assertEqual([], field_worse, "字段级出现 new_worse: %s" % field_worse)
+
+    def test_unresolved_reduced(self):
+        """字段级 different_unresolved 不得回归：总数与每字段都不超过基线。
+
+        注意：UNRESOLVED_FIELD_BASELINE 是本轮（165 = 14+20+27+53+35+16）的实测值，
+        总数基线即各字段基线之和，所以总数只能断言"不超过"，否则每条字段守卫
+        都合规时该断言仍恒假。真正下降时把基线常量一起下调即可。"""
+        counts = {f: 0 for f in UNRESOLVED_FIELD_BASELINE}
+        for record in self.records:
+            for field, fr in record["fields"].items():
+                if fr.get("assessment") == "different_unresolved":
+                    counts[field] = counts.get(field, 0) + 1
+        total = sum(counts.values())
+        self.assertLessEqual(
+            total, UNRESOLVED_TOTAL_BASELINE,
+            "different_unresolved 总数超过基线 %d: %d，明细=%s"
+            % (UNRESOLVED_TOTAL_BASELINE, total, counts))
+        for field, baseline in UNRESOLVED_FIELD_BASELINE.items():
+            self.assertLessEqual(
+                counts.get(field, 0), baseline,
+                "%s 未决 %d 超过基线 %d" % (field, counts.get(field, 0), baseline))
 
 
 if __name__ == "__main__":

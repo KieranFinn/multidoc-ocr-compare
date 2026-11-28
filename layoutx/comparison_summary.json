@@ -2,19 +2,19 @@
   "total": 953,
   "categories": {
     "新版更优": 709,
-    "一致": 223,
-    "双错且不同": 21
+    "一致": 227,
+    "双错且不同": 17
   },
   "fields": {
     "title": {
       "same": 787,
-      "new_better": 151,
-      "different_unresolved": 15
+      "new_better": 152,
+      "different_unresolved": 14
     },
     "title_en": {
       "new_better": 393,
-      "same": 533,
-      "different_unresolved": 27
+      "same": 540,
+      "different_unresolved": 20
     },
     "authors": {
       "same": 868,

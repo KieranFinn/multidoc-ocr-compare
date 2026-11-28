@@ -702,6 +702,133 @@
    }
   },
   {
+   "doc": "13563549",
+   "cluster_id": "C00",
+   "category": "双错且不同",
+   "abstain": false,
+   "fields": {
+    "title": {
+     "same": true,
+     "old": "정철 시문집 편찬 과정 고찰",
+     "new": "# 정철 시문집 편찬 과정 고찰"
+    },
+    "title_en": {
+     "same": false,
+     "old": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections : With a Focus on the Recently Unearthed Yugosanpyeon (遺稿散編)",
+     "new": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections : With a Focus on the Recently Unearthed Yugoslanpyeon(遺稿散編)",
+     "evidence": [
+      {
+       "value": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections : With a Focus on the Recently Unearthed Yugoslanpyeon(遺稿散編)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "mineru",
+         "box": [
+          363.2,
+          309.0,
+          878.2,
+          364.7
+         ]
+        }
+       ],
+       "excerpt": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections : With a Focus on the Recently Unearthed Yugoslanpyeon(遺稿散編)"
+      },
+      {
+       "value": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections : With a Focus on the Recently Unearthed Yugosanpyeon (遺稿散編)",
+       "channel_supported": true,
+       "hits": [
+        {
+         "page": 1,
+         "channel": "dots",
+         "box": [
+          357.9,
+          305.2,
+          876.4,
+          359.2
+         ]
+        }
+       ],
+       "excerpt": "An Analysis of the Editorial Process in Jeong Cheol's Poetry Collections\n: With a Focus on the Recently Unearthed *Yugosanpyeon* (遺稿散編)"
+      }
+     ],
+     "channel_votes": {
+      "old": 1,
+      "new": 1
+     },
+     "assessment": "different_unresolved"
+    },
+    "authors": {
+     "same": true,
+     "old": [
+      {
+       "name": "임미정",
+       "affiliation": null,
+       "roman": null
+      }
+     ],
+     "new": [
+      {
+       "name": "임미정",
+       "affiliation": null,
+       "roman": null
+      }
+     ]
+    },
+    "affiliations": {
+     "same": true,
+     "old": [
+      "연세대학교 국학연구원 연구"
+     ],
+     "new": [
+      "연세대학교 국학연구원 연구"
+     ]
+    },
+    "keywords": {
+     "same": true,
+     "old": [
+      "송강",
+      "정철",
+      "정홍명",
+      "유고산편",
+      "송강유고",
+      "송강속고",
+      "송강집"
+     ],
+     "new": [
+      "송강",
+      "정철",
+      "정홍명",
+      "유고산편",
+      "송강유고",
+      "송강속고",
+      "송강집"
+     ]
+    },
+    "keywords_en": {
+     "same": true,
+     "old": [
+      "Songgang",
+      "Jeong Cheol",
+      "Jeong Hongmyeong",
+      "Songgangjip",
+      "Songgangyugo",
+      "Yugoslanpyeon",
+      "Songgangsokgo"
+     ],
+     "new": [
+      "Songgang",
+      "Jeong Cheol",
+      "Jeong Hongmyeong",
+      "Songgangjip",
+      "Songgangyugo",
+      "Yugoslanpyeon",
+      "Songgangsokgo"
+     ]
+    }
+   }
+  },
+  {
    "doc": "13563590",
    "cluster_id": "C00",
    "category": "双错且不同",
@@ -1214,111 +1341,6 @@
    }
   },
   {
-   "doc": "13564384",
-   "cluster_id": "C03",
-   "category": "双错且不同",
-   "abstain": false,
-   "fields": {
-    "title": {
-     "same": true,
-     "old": "스마트폰 해킹 기법의 최신 동향 및 군에 미치는 보안위협 연구",
-     "new": "스마트폰 해킹 기법의 최신 동향 및 군에미치는 보안위협 연구"
-    },
-    "title_en": {
-     "same": false,
-     "old": null,
-     "new": "The Research Latest Trend in Smartphone Hacking Techniques and Security Threats on the Military Kim Yoon Young* Sim Chung Sik",
-     "evidence": [
-      {
-       "value": "The Research Latest Trend in Smartphone Hacking Techniques and Security Threats on the Military Kim Yoon Young* Sim Chung Sik",
-       "channel_supported": false,
-       "hits": [],
-       "excerpt": null
-      }
-     ],
-     "channel_votes": {
-      "old": 0,
-      "new": 0
-     },
-     "assessment": "different_unresolved"
-    },
-    "authors": {
-     "same": true,
-     "old": [
-      {
-       "name": "김윤영",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "심충식",
-       "affiliation": null,
-       "roman": null
-      }
-     ],
-     "new": [
-      {
-       "name": "김윤영",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "심충식",
-       "affiliation": null,
-       "roman": null
-      }
-     ]
-    },
-    "affiliations": {
-     "same": true,
-     "old": [
-      "국방부"
-     ],
-     "new": [
-      "국방부"
-     ]
-    },
-    "keywords": {
-     "same": true,
-     "old": [
-      "제로클릭 익스플로잇",
-      "허위 기지국",
-      "개방형 Wi-Fi",
-      "심스와핑",
-      "USB 해킹 충전기",
-      "볼트쉬며"
-     ],
-     "new": [
-      "제로클릭 익스플로잇",
-      "허위 기지국",
-      "개방형 Wi-Fi",
-      "심스와핑",
-      "USB 해킹 충전기",
-      "볼트쉬며"
-     ]
-    },
-    "keywords_en": {
-     "same": true,
-     "old": [
-      "Zero-Click Exploit",
-      "Fake Cellphone Tower",
-      "Public Wi-Fi",
-      "SIM-Swapping",
-      "USB charger Scam",
-      "VoltSchemer"
-     ],
-     "new": [
-      "Zero-Click Exploit",
-      "Fake Cellphone Tower",
-      "Public Wi-Fi",
-      "SIM-Swapping",
-      "USB charger Scam",
-      "VoltSchemer"
-     ]
-    }
-   }
-  },
-  {
    "doc": "13567051",
    "cluster_id": "C01",
    "category": "双错且不同",
@@ -1790,167 +1812,6 @@
    }
   },
   {
-   "doc": "13567085",
-   "cluster_id": "C01",
-   "category": "双错且不同",
-   "abstain": false,
-   "fields": {
-    "title": {
-     "same": true,
-     "old": "세대효과와 투표선택 : 2017-2024년 한국 선거를 중심으로",
-     "new": "세대효과와 투표선택 :2017-2024년 한국 선거를 중심으로"
-    },
-    "title_en": {
-     "same": false,
-     "old": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections",
-     "new": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)",
-     "evidence": [
-      {
-       "value": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 31,
-         "channel": "mineru",
-         "box": [
-          320.0,
-          477.3,
-          807.2,
-          545.1
-         ]
-        },
-        {
-         "page": 31,
-         "channel": "paddle",
-         "box": [
-          313.6,
-          475.2,
-          807.4,
-          540.8
-         ]
-        }
-       ],
-       "excerpt": "Eunyoung Jang·Suhyeon Lee·Jeongwoo Lee (Silla University)"
-      },
-      {
-       "value": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 31,
-         "channel": "mineru",
-         "box": [
-          180.5,
-          333.7,
-          745.6,
-          404.2
-         ]
-        },
-        {
-         "page": 31,
-         "channel": "dots",
-         "box": [
-          173.2,
-          333.0,
-          741.0,
-          396.6
-         ]
-        },
-        {
-         "page": 31,
-         "channel": "paddle",
-         "box": [
-          172.0,
-          332.5,
-          746.0,
-          401.2
-         ]
-        }
-       ],
-       "excerpt": "Generational Effects and Voting Choices : The 2017-2024 Korean Elections"
-      }
-     ],
-     "channel_votes": {
-      "old": 0,
-      "new": 0
-     },
-     "assessment": "different_unresolved"
-    },
-    "authors": {
-     "same": true,
-     "old": [
-      {
-       "name": "장은영",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "이수현",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "이정우",
-       "affiliation": "신라대학교",
-       "roman": null
-      }
-     ],
-     "new": [
-      {
-       "name": "장은영",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "이수현",
-       "affiliation": null,
-       "roman": null
-      },
-      {
-       "name": "이정우",
-       "affiliation": "신라대학교",
-       "roman": null
-      }
-     ]
-    },
-    "affiliations": {
-     "same": true,
-     "old": [
-      "신라대학교"
-     ],
-     "new": [
-      "신라대학교"
-     ]
-    },
-    "keywords": {
-     "same": true,
-     "old": [
-      "세대효과",
-      "세대균열",
-      "투표선택"
-     ],
-     "new": [
-      "세대효과",
-      "세대균열",
-      "투표선택"
-     ]
-    },
-    "keywords_en": {
-     "same": true,
-     "old": [
-      "generation effects",
-      "generational cleavage",
-      "vote choice"
-     ],
-     "new": [
-      "generation effects",
-      "generational cleavage",
-      "vote choice"
-     ]
-    }
-   }
-  },
-  {
    "doc": "13567094",
    "cluster_id": "C01",
    "category": "双错且不同",
@@ -2249,145 +2110,6 @@
       "‘Third Place’",
       "Culture & Arts Center as a ‘Third Place’",
       "Suncheon Cultural & Arts Center"
-     ]
-    }
-   }
-  },
-  {
-   "doc": "13567223",
-   "cluster_id": "C00",
-   "category": "双错且不同",
-   "abstain": false,
-   "fields": {
-    "title": {
-     "same": true,
-     "old": "공공외교 자산으로써 방탄소년단과 중남미 A.R.M.Y.",
-     "new": "# 공공외교 자산으로써 방탄소년단과 중남미 A.R.M.Y."
-    },
-    "title_en": {
-     "same": false,
-     "old": "BTS and Latin America A.R.M.Y. as public diplomatic assets",
-     "new": "Armys Love BTS Brasil BTS 1022",
-     "evidence": [
-      {
-       "value": "Armys Love BTS Brasil BTS 1022",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 16,
-         "channel": "mineru",
-         "box": [
-          313.7,
-          325.7,
-          531.0,
-          366.9
-         ]
-        }
-       ],
-       "excerpt": "Armys Love BTS Brasil BTS 1022"
-      },
-      {
-       "value": "BTS and Latin America A.R.M.Y. as public diplomatic assets",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 26,
-         "channel": "mineru",
-         "box": [
-          120.8,
-          337.7,
-          805.4,
-          408.1
-         ]
-        },
-        {
-         "page": 26,
-         "channel": "dots",
-         "box": [
-          115.5,
-          334.5,
-          803.2,
-          399.7
-         ]
-        },
-        {
-         "page": 26,
-         "channel": "paddle",
-         "box": [
-          112.5,
-          335.5,
-          806.4,
-          401.2
-         ]
-        }
-       ],
-       "excerpt": "BTS and Latin America A.R.M.Y. as public diplomatic assets"
-      }
-     ],
-     "channel_votes": {
-      "old": 0,
-      "new": 0
-     },
-     "assessment": "different_unresolved"
-    },
-    "authors": {
-     "same": true,
-     "old": [
-      {
-       "name": "임수진",
-       "affiliation": "대구가톨릭대학교",
-       "roman": null
-      }
-     ],
-     "new": [
-      {
-       "name": "임수진",
-       "affiliation": "대구가토릭대학교",
-       "roman": null
-      }
-     ]
-    },
-    "affiliations": {
-     "same": true,
-     "old": [
-      "임수진 대구가톨릭대학교"
-     ],
-     "new": [
-      "대구가톨릭대학교"
-     ]
-    },
-    "keywords": {
-     "same": true,
-     "old": [
-      "방탄소년단",
-      "BTS",
-      "ARMY",
-      "공공외교",
-      "소프트파워임수진 대구가톨릭대학교"
-     ],
-     "new": [
-      "방탄소년단",
-      "BTS",
-      "ARMY",
-      "공공외교",
-      "소프트파워임수진 대구가톨릭대학교"
-     ]
-    },
-    "keywords_en": {
-     "same": true,
-     "old": [
-      "BTS",
-      "ARMY",
-      "Public Diplomacy",
-      "Softpower",
-      "K-Wave Sujin Lim"
-     ],
-     "new": [
-      "BTS",
-      "ARMY",
-      "Public Diplomacy",
-      "Softpower",
-      "K-Wave Sujin Lim"
      ]
     }
    }
@@ -3261,60 +2983,9 @@
      "new": "# 1933년 이전 윤석중 문학과 한국 구비 동요의 관계"
     },
     "title_en": {
-     "same": false,
+     "same": true,
      "old": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933",
-     "new": "Conatus of Korean Oral Children's Songs in Yun Seok-Joong's Works Before 1933",
-     "evidence": [
-      {
-       "value": "Conatus of Korean Oral Children's Songs in Yun Seok-Joong's Works Before 1933",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 41,
-         "channel": "dots",
-         "box": [
-          246.9,
-          300.0,
-          702.9,
-          363.8
-         ]
-        }
-       ],
-       "excerpt": "Conatus of Korean Oral Children's Songs in\nYun Seok-Joong's Works Before 1933"
-      },
-      {
-       "value": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 41,
-         "channel": "mineru",
-         "box": [
-          249.9,
-          300.5,
-          709.1,
-          369.6
-         ]
-        },
-        {
-         "page": 41,
-         "channel": "paddle",
-         "box": [
-          244.0,
-          297.0,
-          709.8,
-          366.8
-         ]
-        }
-       ],
-       "excerpt": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933"
-      }
-     ],
-     "channel_votes": {
-      "old": 0,
-      "new": 0
-     },
-     "assessment": "different_unresolved"
+     "new": "Conatus of Korean Oral Children’s Songs in Yun Seok-Joong’orks Before 1933"
     },
     "authors": {
      "same": true,
@@ -3426,125 +3097,6 @@
       "공동체",
       "정서",
       "활력"
-     ]
-    },
-    "keywords_en": {
-     "same": true,
-     "old": [],
-     "new": []
-    }
-   }
-  },
-  {
-   "doc": "13568682",
-   "cluster_id": "C05",
-   "category": "双错且不同",
-   "abstain": false,
-   "fields": {
-    "title": {
-     "same": true,
-     "old": "『新少年』 창간호 서지적 분석과 ‘새소년’ 의미 고찰",
-     "new": "『新少年』 창간호 서지적 분석과 ‘새소년’ 의미 고찰"
-    },
-    "title_en": {
-     "same": false,
-     "old": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy",
-     "new": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a Study on the Meaning of the New Boy",
-     "evidence": [
-      {
-       "value": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a Study on the Meaning of the New Boy",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 24,
-         "channel": "dots",
-         "box": [
-          149.3,
-          300.0,
-          803.4,
-          363.8
-         ]
-        }
-       ],
-       "excerpt": "A Bibliographical analysis of the First Issue of *Shinsonyeon* and a\nStudy on the Meaning of the New Boy"
-      },
-      {
-       "value": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 24,
-         "channel": "mineru",
-         "box": [
-          154.4,
-          299.1,
-          805.6,
-          370.9
-         ]
-        },
-        {
-         "page": 24,
-         "channel": "paddle",
-         "box": [
-          145.9,
-          297.0,
-          807.9,
-          368.8
-         ]
-        }
-       ],
-       "excerpt": "A Bibliographical analysis of the First Issue of Sinsonyeon and a Study on the Meaning of the New Boy"
-      }
-     ],
-     "channel_votes": {
-      "old": 0,
-      "new": 0
-     },
-     "assessment": "different_unresolved"
-    },
-    "authors": {
-     "same": true,
-     "old": [
-      {
-       "name": "최미선",
-       "affiliation": null,
-       "roman": null
-      }
-     ],
-     "new": [
-      {
-       "name": "최미선",
-       "affiliation": null,
-       "roman": null
-      }
-     ]
-    },
-    "affiliations": {
-     "same": true,
-     "old": [
-      "경상국립대학교"
-     ],
-     "new": [
-      "경상국립대학교"
-     ]
-    },
-    "keywords": {
-     "same": true,
-     "old": [
-      "신소년",
-      "신소년 창간호",
-      "새 소년",
-      "현담문고",
-      "신소년 초기 집필진",
-      "근대의식"
-     ],
-     "new": [
-      "신소년",
-      "신소년 창간호",
-      "새 소년",
-      "현담문고",
-      "신소년 초기 집필진",
-      "근대의식"
      ]
     },
     "keywords_en": {
@@ -3829,318 +3381,6 @@
       "size suitability",
       "Size Korea data",
       "women"
-     ]
-    }
-   }
-  },
-  {
-   "doc": "13569394",
-   "cluster_id": "C04",
-   "category": "双错且不同",
-   "abstain": false,
-   "fields": {
-    "title": {
-     "same": false,
-     "old": "터보팬의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망 ISSN 2671-4744(Print) ISSN 2671-9673(Online)",
-     "new": "터보펜의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망",
-     "evidence": [
-      {
-       "value": "터보펜의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "dots",
-         "box": [
-          147.8,
-          206.3,
-          761.5,
-          299.3
-         ]
-        }
-       ],
-       "excerpt": "터보펜의 잔여 유효 수명 예측을 위한\n다수 소수 특징 추출 병렬연결 합성곱 신경망"
-      },
-      {
-       "value": "터보팬의 잔여 유효 수명 예측을 위한 다수 소수 특징 추출 병렬연결 합성곱 신경망 ISSN 2671-4744(Print) ISSN 2671-9673(Online)",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "paddle",
-         "box": [
-          149.0,
-          209.4,
-          763.0,
-          299.0
-         ]
-        }
-       ],
-       "excerpt": "터보팬의 잔여 유효 수명 예측을 위한\n다수 소수 특징 추출 병렬연결 합성곱 신경망\nISSN 2671-4744(Print)\nISSN 2671-9673(Online)"
-      }
-     ],
-     "channel_votes": {
-      "old": 1,
-      "new": 1
-     },
-     "assessment": "different_unresolved"
-    },
-    "title_en": {
-     "same": true,
-     "old": "Parallel-connected convolutional neural network with minority and majority feature extraction for the estimation of the remaining useful life of turbofans",
-     "new": "Parallel-connected convolutional neural network with minority and majority feature extraction for the estimation of the remaining useful life of turbofans"
-    },
-    "authors": {
-     "same": true,
-     "old": [
-      {
-       "name": "김해영",
-       "affiliation": null,
-       "roman": "Haeyoung Kim"
-      },
-      {
-       "name": "김도윤",
-       "affiliation": null,
-       "roman": "Doyun Kim"
-      },
-      {
-       "name": "반재필",
-       "affiliation": null,
-       "roman": "Jaepil Ban"
-      },
-      {
-       "name": "구교권",
-       "affiliation": null,
-       "roman": "Gyogwon Koo"
-      },
-      {
-       "name": "정재진",
-       "affiliation": null,
-       "roman": "Jae Jin Jeong"
-      }
-     ],
-     "new": [
-      {
-       "name": "김해영",
-       "affiliation": null,
-       "roman": "Haeyoung Kim"
-      },
-      {
-       "name": "김도윤",
-       "affiliation": null,
-       "roman": "Doyun Kim"
-      },
-      {
-       "name": "반재필",
-       "affiliation": null,
-       "roman": "Jaepil Ban"
-      },
-      {
-       "name": "구교권",
-       "affiliation": null,
-       "roman": "Gyogwon Koo"
-      },
-      {
-       "name": "정재진",
-       "affiliation": null,
-       "roman": "Jae Jin Jeong"
-      }
-     ]
-    },
-    "affiliations": {
-     "same": false,
-     "old": [
-      "School of Electronic Engineering",
-      "Institute of Technology",
-      "Institute of Science and Technology"
-     ],
-     "new": [
-      "금오공과대학교, 전자공학과"
-     ],
-     "evidence": [
-      {
-       "value": "School of Electronic Engineering",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          127.0,
-          491.1,
-          401.6,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          430.1,
-          491.1,
-          704.8,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          735.5,
-          491.1,
-          1006.8,
-          598.7
-         ]
-        }
-       ],
-       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
-      },
-      {
-       "value": "Institute of Technology",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          127.0,
-          491.1,
-          401.6,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          430.1,
-          491.1,
-          704.8,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          735.5,
-          491.1,
-          1006.8,
-          598.7
-         ]
-        }
-       ],
-       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
-      },
-      {
-       "value": "Institute of Science and Technology",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          127.0,
-          626.7,
-          401.6,
-          751.4
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "dots",
-         "box": [
-          118.6,
-          649.5,
-          392.3,
-          747.6
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "paddle",
-         "box": [
-          118.8,
-          624.0,
-          395.0,
-          751.1
-         ]
-        }
-       ],
-       "excerpt": "구교권, Gyogwon Koo 대구경북과학기술원, 지능형로봇연구부, 선임연구원 Senior Researcher, Division of Intelligent Robot, Daegu Gyeongbuk Institute of Science and Technology"
-      },
-      {
-       "value": "금오공과대학교, 전자공학과",
-       "channel_supported": true,
-       "hits": [
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          127.0,
-          491.1,
-          401.6,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          430.1,
-          491.1,
-          704.8,
-          581.5
-         ]
-        },
-        {
-         "page": 1,
-         "channel": "mineru",
-         "box": [
-          735.5,
-          491.1,
-          1006.8,
-          598.7
-         ]
-        }
-       ],
-       "excerpt": "김해영, Haeyoung Kim 금오공과대학교, 전자공학과, 석사 School of Electronic Engineering, Kumoh National Institute of Technology"
-      }
-     ],
-     "assessment": "different_unresolved"
-    },
-    "keywords": {
-     "same": true,
-     "old": [
-      "time series forecasting",
-      "RUL",
-      "deep learning",
-      "C-MAPSS",
-      "CNN"
-     ],
-     "new": [
-      "time series forecasting",
-      "RUL",
-      "deep learning",
-      "C-MAPSS",
-      "CNN"
-     ]
-    },
-    "keywords_en": {
-     "same": true,
-     "old": [
-      "time series forecasting",
-      "RUL",
-      "deep learning",
-      "C-MAPSS",
-      "CNN"
-     ],
-     "new": [
-      "time series forecasting",
-      "RUL",
-      "deep learning",
-      "C-MAPSS",
-      "CNN"
      ]
     }
    }

@@ -224,9 +224,13 @@ def strip_title(text):
     lines = []
     for line in raw_lines:
         line, _ = split_trailing_byline(line)
-        line = re.sub(r"<sup>.*?</sup>", "", line, flags=re.I)
+        # 序数上标（21<sup>st</sup>）是题名文字，不能随标签一起丢掉。
+        line = re.sub(r"<sup>([^<]*)</sup>",
+                      lambda m: m.group(1) if re.fullmatch(r"(?:st|nd|rd|th)", m.group(1), re.I) else "",
+                      line, flags=re.I)
         line = re.sub(r"</?sup>", "", line, flags=re.I)
-        line = re.sub(r"\bISSN\s*[\dXx-]+\s*\(?(?:Print|Online)?\)?", "", line, flags=re.I)
+        line = re.sub(r"</?sub>", "", line, flags=re.I)
+        line = re.sub(r"(?:\bISSN\s*[\dXx-]+\s*\(?(?:Print|Online)?\)?\s*)+", "", line, flags=re.I)
         line = re.sub(r"\s*\*{1,4}\s*$", "", line)
         if line.strip():
             lines.append(line.strip())
@@ -285,9 +289,14 @@ def best_title(u):
     cleaned = [(t, ch) for t, ch in cleaned if t]
     if not cleaned:
         return None, None
-    # 多渠道异读（含 ISSN 粘连）按渠道票数择优，而不是固定取 dots 的首个读法。
-    if len(cleaned) > 1 and len({ch for _, ch in cleaned}) > 1:
-        return vote_title_readings(cleaned)
+    # 题名块混入 ISSN/页码时，unified 主读法通常已去除结构噪声且最完整；
+    # 仅在主读法缺失时才退回多渠道投票，避免固定取 dots 的异读。
+    if re.search(r"ISSN", u.get("main_text") or "", re.I):
+        main_clean = strip_title(u.get("main_text"))
+        if main_clean:
+            return main_clean, "main"
+        if len(cleaned) > 1:
+            return vote_title_readings(cleaned)
     main = strip_title(u.get("main_text"))
     if main:
         return main, "main"
@@ -347,17 +356,49 @@ def expanded_readings(p):
     return out
 
 
-def english_channel_support(doc, text, page):
-    """英题候选在多少个独立 OCR 渠道的同页原文中以完整串出现（page 为 1-based 页码）。"""
-    key = fold(text)
-    if not key or not page:
+def _norm_en_text(text):
+    """英题归一：撇号直/弯同值，忽略大小写与标点，便于跨渠道异读比对。"""
+    t = (text or "").lower().replace("’", "'").replace("‘", "'")
+    t = re.sub(r"<\/?(?:sup|sub)>", "", t, flags=re.I)
+    t = re.sub(r"\$\s*\^\s*\{([^}]*)\}\s*\$", r"\1", t)
+    return " ".join(re.sub(r"[^a-z0-9]+", " ", t).split())
+
+
+def english_channel_support(doc, text, page, box=None):
+    """英题候选在多少个独立 OCR 渠道的同页近框位置上出现（page 为 1-based 页码）。"""
+    key = _norm_en_text(text)
+    if len(key) < 20 or not page:
         return 0
     path = os.path.join(OLD, doc, "merged", "page_%d.json" % (page - 1))
     if not os.path.exists(path):
         return 0
     channels = load(path).get("channels") or {}
-    return sum(any(key in fold(b.get("text")) for b in channels.get(ch) or [])
-               for ch in ("dots", "paddle", "mineru"))
+    count = 0
+    for ch in ("dots", "paddle", "mineru"):
+        hit = False
+        for b in channels.get(ch) or []:
+            other = _norm_en_text(b.get("text"))
+            if len(other) < 20 or not (key in other or other in key):
+                continue
+            if box:
+                bbox = b.get("box") or [0, 0, 0, 0]
+                # 统一块常把多行题名合并成一个更高的框，用纵向重叠而非 y1 差值判定近框。
+                if bbox[3] + 10 < box[1] or box[3] + 10 < bbox[1] or abs(bbox[0] - box[0]) > 80:
+                    continue
+            hit = True
+            break
+        count += hit
+    return count
+
+
+def abstract_page(p):
+    """该页是否为英文摘要页（页内带独立 Abstract 结构标签）。"""
+    for u in p["unified"]:
+        text = clean(u.get("main_text"))
+        if (re.search(r"\bAbstract\b", text, re.I) and u["box"][1] < .35 * p["h"]
+                and len(text) < 200):
+            return True
+    return False
 
 
 def caption_context(u, p):
@@ -389,11 +430,7 @@ def global_english_title(ps, front_title, front_u, doc):
         text = re.sub(r"\s+(?:Department\s+of\s+[^|]*\bUniversity\b|Senior\s+Research|Principal\s+Researcher|Specialized\s+public\s+officer).*$", "", text)
         if len(re.findall(r"\b(?:19|20)\d{2}\b", text)) >= 2:
             front_title = None
-        front_support = english_channel_support(doc, text, front_u.get("page", 1) if front_u else 1)
-        # 跨块拼接的"题名+署名"在任何单一渠道都无支持，不能当英题输出。
-        if front_u and (front_u.get("review") or front_u.get("divergence") or front_u.get("cross_page")):
-            front_support = 0
-        if front_title and front_support >= 1 and not re.search(r"[가-힣]", re.sub(r"\([^)]*[가-힣][^)]*\)", "", text)) and len(re.findall(r"[A-Za-z]", text)) >= 12 and not re.search(r"<table>|^\[.*/|\b(?:Vol\.?|pp\.)\b|\b(?:Received|Accepted|Revised)\b\s*[:：]?\s+(?:[A-Z][a-z]+,?\s+\d|\d)|^#+|www\.|^\.\s*\d{4}|^[a-z]|^[A-Z][a-z]+,.*\b(?:19|20)\d{2}\b|^\([a-z]\).*Figure\s+\d+|^Figure\s+\d+|^†?\s*Corresponding\s+Author|\bis\s+expected\s+to\b|__|^Tel\s*:|^※\s*Keywords|^\$|\btxtin\b|\b(?:New York|Intermission)\b.*\b(?:19|20)\d{2}\b|\b(?:Universitat|World Englishes|ESP Review|Special Education|Cambridge Scholars)\b.*\b(?:19|20)\d{2}\b", text):
+        if front_title and not re.search(r"[가-힣]", re.sub(r"\([^)]*[가-힣][^)]*\)", "", text)) and len(re.findall(r"[A-Za-z]", text)) >= 12 and not re.search(r"<table>|^\[.*/|\b(?:Vol\.?|pp\.)\b|\b(?:Received|Accepted|Revised)\b\s*[:：]?\s+(?:[A-Z][a-z]+,?\s+\d|\d)|^#+|www\.|^\.\s*\d{4}|^[a-z]|^[A-Z][a-z]+,.*\b(?:19|20)\d{2}\b|^\([a-z]\).*Figure\s+\d+|^Figure\s+\d+|^†?\s*Corresponding\s+Author|\bis\s+expected\s+to\b|__|^Tel\s*:|^※\s*Keywords|^\$|\btxtin\b|\b(?:New York|Intermission)\b.*\b(?:19|20)\d{2}\b|\b(?:Universitat|World Englishes|ESP Review|Special Education|Cambridge Scholars)\b.*\b(?:19|20)\d{2}\b", text):
             return text, front_u
     candidates = []
     for p in ps:
@@ -415,13 +452,17 @@ def global_english_title(ps, front_title, front_u, doc):
                             break
                 if re.search(r"[가-힣]", re.sub(r"\([^)]*[가-힣][^)]*\)", "", line)):
                     continue
-                lines.append(line.lstrip(":：-–— "))
+                # 以 '-' 包裹结尾的是副题（'- An ... Perspective -'），不能当列表符号剥掉。
+                if re.match(r"^-\s+\S", line) and not line.rstrip().endswith("-"):
+                    line = line[1:]
+                lines.append(line.lstrip(":：–— "))
             text = clean(" ".join(lines))
             text = re.sub(r"^<Abstract>\s*", "", text, flags=re.I)
             text = re.sub(r"\s+[가-힣]{2,4}\([A-Za-z][^)]*\).*$", "", text)
             if re.search(r"<table>|\"image_source\"|^\[.*/|\b(?:Vol\.?|pp\.)\b|\b(?:Received|Accepted|Revised)\b\s*[:：]?\s+(?:[A-Z][a-z]+,?\s+\d|\d)|^#+|www\.|^\.\s*\d{4}|^[A-Z][a-z]+,.*\bUniversity\b|^[A-Z][a-z]+,.*\b(?:19|20)\d{2}\b|^\([a-z]\).*Figure\s+\d+|^Figure\s+\d+|^†?\s*Corresponding\s+Author|\bis\s+expected\s+to\b|__|^Tel\s*:|^※\s*Keywords|^\$|\btxtin\b|\b(?:New York|Intermission)\b.*\b(?:19|20)\d{2}\b|\b(?:Universitat|World Englishes|ESP Review|Special Education|Cambridge Scholars)\b.*\b(?:19|20)\d{2}\b", text, re.I):
                 continue
-            if len(re.findall(r"\b(?:19|20)\d{2}\b", text)) >= 2:
+            years = re.sub(r"\b(?:19|20)\d{2}\s*[-–]\s*(?:19|20)\d{2}\b", "", text)
+            if len(re.findall(r"\b(?:19|20)\d{2}\b", years)) >= 2:
                 continue
             if re.match(r"^[a-z]", text) or re.match(r"^As\s+(?:they|he|she)\b", text, re.I):
                 continue
@@ -430,7 +471,7 @@ def global_english_title(ps, front_title, front_u, doc):
             if len(re.findall(r"(?:\b(?:I|II|III|IV|V|VI)|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ])[.)]", text)) >= 2:
                 continue
             text = re.sub(r"\s+[A-Z][a-z-]+,?(?:\s+[A-Z][a-z-]+)+\s+\([^)]*(?:University|College|Institute|UNIVERSITY|COLLEGE|INSTITUTE)[^)]*\)$", "", text)
-            text = re.sub(r"\s+[A-Z][a-z]+,\s+[A-Z][a-z]+$|\s+Professor,\s+Department\s+.*$", "", text)
+            text = re.sub(r"\s+[A-Z][a-z]{1,6},\s+[A-Z][a-z]+$|\s+Professor,\s+Department\s+.*$", "", text)
             text = re.sub(r"\s+(?:Department\s+of\s+[^|]*\bUniversity\b|Senior\s+Research|Principal\s+Researcher|Specialized\s+public\s+officer).*$", "", text)
             letters = len(re.findall(r"[A-Za-z]", text))
             if letters < 12 or len(text) > 360 or len(text.split()) < 4 or "@" in text or "http" in text:
@@ -439,15 +480,23 @@ def global_english_title(ps, front_title, front_u, doc):
                 continue
             if re.fullmatch(r"[A-Z][A-Za-z' .,&†‡*-]{2,80}", text) and len(text.split()) <= 4 and not re.search(r"\b(?:on|of|the|in|and|for|study|analysis)\b", text, re.I):
                 continue
-            support = english_channel_support(doc, text, p["page"])
-            if support < 1:
-                continue
             y = u["box"][1] / p["h"]
             if p["page"] > 1 and y > .48:
                 continue
-            # 后部页的英题必须是多渠道一致的英文摘要区题名，且不能紧邻图注/网页出处。
-            if p["page"] > 3 and (support < 2 or caption_context(u, p)):
+            # 题名后粘作者署名（'... Kim Yoon Young* Sim Chung Sik**'）不是渠道原文里的题名。
+            if re.search(r"\b[A-Z][a-z'-]+\s+[A-Z][a-z'-]+\s*\*{1,3}\s*[A-Z][a-z'-]+", text):
                 continue
+            # 'SURNAME, GIVEN NAME (University/Institution)' 是署名行，不是英题候选。
+            if (len(text.split()) <= 15 and re.search(
+                    r"\([^)]*\b(?:Univ\.?|University|College|Institute|School|Foundation|Cent(?:er|re))\b[^)]*\)\s*$",
+                    text, re.I)):
+                continue
+            # 后部页候选只要有近框渠道支持、位于上部题名区且无图注上下文即可接受。
+            if p["page"] >= 8:
+                support = english_channel_support(doc, text, p["page"], u.get("box"))
+                if not (support >= 2 and not caption_context(u, p)
+                        and u.get("type") in ("Section-header", "Text") and y < .45):
+                    continue
             score = (4 if u.get("type") == "Section-header" else 0) + min(len(text), 150) / 150
             score += .05 if re.search(r"\d+(?:st|nd|rd|th)\b", text, re.I) else 0
             score += 5 if p["page"] == 1 else 0

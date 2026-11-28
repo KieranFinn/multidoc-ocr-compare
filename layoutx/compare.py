@@ -337,6 +337,23 @@ def aff_secondary_removed(old_v, new_v, ev):
     return False
 
 
+def is_pseudo_english_title(value):
+    """title_en 的伪英题：韩文署名/星标/脚注残片，而不是英文题名。
+
+    判据只依赖文本形态：去掉 sup/sub 标签、星标与脚注编号后，
+    若不存在成词拉丁字母串（[A-Za-z]{3,}），或只剩韩文短名，则不视为有效英题。
+    """
+    s = str(value or "").strip()
+    if not s:
+        return False
+    core = re.sub(r"</?(?:sup|sub)>", "", s, flags=re.I)
+    core = re.sub(r"[*†‡¹²³⁴⁵⁶⁷⁸⁹]+", "", core)
+    core = re.sub(r"[\[(]\s*\d+\s*[\])]\s*$", "", core).strip()
+    if not re.search(r"[A-Za-z]{3,}", core):
+        return True
+    return bool(re.fullmatch(r"[가-힣]{2,6}\s*[A-Za-z]{0,2}\s*", core))
+
+
 def verdict(doc, old, new):
     fields = {}
     any_worse = any_better = any_other = False
@@ -371,6 +388,9 @@ def verdict(doc, old, new):
             if f == "title_en" and (len(str(ov or "")) > 350 or re.match(r"(?:This\s+(?:study|paper)|As\s+modern|As\s+an\s+example)\b", str(ov or ""), re.I)):
                 old_sup = False
             if f == "title_en" and re.fullmatch(r"[^.!?]{3,110}\([^)]*(?:University|College|Institute)[^)]*\)+", str(ov or ""), re.I) and not re.search(r"\b(?:Study|Analysis|Effect|Development|Narrative|Folkloristic)\b", str(ov or ""), re.I):
+                old_sup = False
+            if f == "title_en" and is_pseudo_english_title(ov):
+                # 旧值是韩文署名/星标残片，不是英题；新值为空是正确清理。
                 old_sup = False
             if f in ("keywords", "keywords_en") and any(re.search(r"\d+\(\d+\)|\d+-\d+\.", x) for x in ov):
                 old_sup = False
